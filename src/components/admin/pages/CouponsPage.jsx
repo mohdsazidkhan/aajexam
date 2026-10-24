@@ -343,7 +343,7 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-start">
           <Field label="Coupon name (code)" hint={editing ? 'Cannot be changed after creation.' : 'Letters, numbers, - and _ (saved in capitals).'}>
-            <input className={`${inputCls} uppercase font-bold tracking-wide`} value={form.code} onChange={(e) => set('code', e.target.value.toUpperCase())} disabled={editing} maxLength={30} required placeholder="DIWALI50" />
+            <input className={`uppercase font-bold tracking-wide border border-slate-300 dark:border-slate-700 ${inputCls}`} value={form.code} onChange={(e) => set('code', e.target.value.toUpperCase())} disabled={editing} maxLength={30} required placeholder="DIWALI50" />
           </Field>
           <Field label="Total uses" hint="0 / empty = unlimited">
             <input className={inputCls} type="number" min="0" value={form.usageLimit} onChange={(e) => set('usageLimit', e.target.value)} />

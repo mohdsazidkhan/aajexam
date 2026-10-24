@@ -256,7 +256,7 @@ const EmailCampaignsListPage = () => {
       <select
         value={itemsPerPage}
         onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
-        className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10"
+        className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 border border-slate-300 dark:border-slate-700"
       >
         {PAGE_SIZE_OPTIONS.map(v => <option key={v} value={v}>{v} per page</option>)}
       </select>

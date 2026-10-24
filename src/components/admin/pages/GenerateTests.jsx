@@ -968,14 +968,14 @@ function StatChip({ icon, label, color = '#64748b' }) {
 // ─────────────────────────────────────────────
 const selectStyle = {
   width: '100%', padding: '10px 12px', borderRadius: 10,
-  background: 'rgba(var(--gt-fg),0.06)', border: '1px solid rgba(var(--gt-fg),0.12)',
+  background: 'rgba(var(--gt-fg),0.06)', border: '1px solid rgba(var(--gt-fg),0.28)',
   color: 'var(--gt-text)', fontSize: 13, fontFamily: 'inherit',
   outline: 'none', cursor: 'pointer',
 };
 
 const inputStyle = {
   width: '100%', padding: '10px 12px', borderRadius: 10,
-  background: 'rgba(var(--gt-fg),0.06)', border: '1px solid rgba(var(--gt-fg),0.12)',
+  background: 'rgba(var(--gt-fg),0.06)', border: '1px solid rgba(var(--gt-fg),0.28)',
   color: 'var(--gt-text)', fontSize: 13, fontFamily: 'inherit',
   outline: 'none', boxSizing: 'border-box',
 };

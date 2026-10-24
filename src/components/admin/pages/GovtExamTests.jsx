@@ -436,9 +436,9 @@ const AdminGovtExamTests = () => {
             {/* Modal */}
             <AnimatePresence>
                {showModal && (
-                  <div className="fixed inset-0 z-[100]">
+                  <div className="fixed inset-0 z-[999]">
                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-[#0A0F1E]/80 backdrop-blur-xl" />
-                     <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 xl:left-auto xl:w-1/2 bg-white dark:bg-[#0D1225] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-outfit">
+                     <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0D1225] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-outfit">
 
                         <div className="p-3 xl:p-10 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
                            <div className="flex items-center gap-3">
@@ -467,7 +467,7 @@ const AdminGovtExamTests = () => {
                                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Paste your questions JSON below to import in bulk</p>
                                        </div>
                                     </div>
-                                    <textarea value={jsonText} onChange={(e) => setJsonText(e.target.value)} placeholder='{ "questions": [...] }' rows="15" className="w-full p-3 xl:p-5 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] font-mono text-xs outline-none shadow-sm resize-none" />
+                                    <textarea value={jsonText} onChange={(e) => setJsonText(e.target.value)} placeholder='{ "questions": [...] }' rows="15" className="w-full p-3 xl:p-5 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] font-mono text-xs outline-none shadow-sm resize-none border-slate-300 dark:border-slate-700" />
                                     <button onClick={handleBulkUpload} className="w-full mt-4 xl:mt-4 py-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-[2rem] font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
                                        <UploadCloud className="w-5 h-5" /> Import Questions
                                     </button>
@@ -481,16 +481,16 @@ const AdminGovtExamTests = () => {
                                        <div className="space-y-3 xl:space-y-3">
                                           <div className="space-y-2">
                                              <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Test Title</label>
-                                             <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="Test Name" required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
+                                             <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="Test Name" required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm border-slate-300 dark:border-slate-700" />
                                           </div>
                                           <div className="grid grid-cols-2 gap-3 xl:gap-3">
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Total Marks</label>
-                                                <input type="number" value={formData.totalMarks} onChange={(e) => setFormData({ ...formData, totalMarks: parseInt(e.target.value) })} className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm" />
+                                                <input type="number" value={formData.totalMarks} onChange={(e) => setFormData({ ...formData, totalMarks: parseInt(e.target.value) })} className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm border-slate-300 dark:border-slate-700" />
                                              </div>
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Duration (Min)</label>
-                                                <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) })} className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm" />
+                                                <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) })} className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm border-slate-300 dark:border-slate-700" />
                                              </div>
                                           </div>
                                           <div className="flex items-center gap-3 p-4 bg-slate-50 dark:bg-white/5 rounded-lg xl:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 shadow-sm">
@@ -538,7 +538,7 @@ const AdminGovtExamTests = () => {
                                        <div className="space-y-3 xl:space-y-3">
                                           <div className="space-y-2">
                                              <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Question Statement</label>
-                                             <textarea value={currentQuestion.questionText} onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })} placeholder="Enter question text..." rows="3" className="w-full p-4 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none" />
+                                             <textarea value={currentQuestion.questionText} onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })} placeholder="Enter question text..." rows="3" className="w-full p-4 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none border-slate-300 dark:border-slate-700" />
                                           </div>
                                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                              {currentQuestion.options.map((opt, idx) => (
@@ -552,23 +552,23 @@ const AdminGovtExamTests = () => {
                                                          const newOps = [...currentQuestion.options];
                                                          newOps[idx] = e.target.value;
                                                          setCurrentQuestion({ ...currentQuestion, options: newOps });
-                                                      }} placeholder={`Choice ${idx + 1}`} className="w-full pl-14 pr-4 py-2.5 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-[11px] font-bold outline-none transition-all" />
+                                                      }} placeholder={`Choice ${idx + 1}`} className="w-full pl-14 pr-4 py-2.5 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-[11px] font-bold outline-none transition-all border-slate-300 dark:border-slate-700" />
                                                    </div>
                                                 </div>
                                              ))}
                                           </div>
                                           <div className="space-y-2">
                                              <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Explanation (Optional)</label>
-                                             <textarea value={currentQuestion.explanation} onChange={(e) => setCurrentQuestion({ ...currentQuestion, explanation: e.target.value })} placeholder="Optional: Correct answer logic..." rows="2" className="w-full p-4 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none" />
+                                             <textarea value={currentQuestion.explanation} onChange={(e) => setCurrentQuestion({ ...currentQuestion, explanation: e.target.value })} placeholder="Optional: Correct answer logic..." rows="2" className="w-full p-4 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none border-slate-300 dark:border-slate-700" />
                                           </div>
                                           <div className="grid grid-cols-2 gap-3 xl:gap-3">
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Section</label>
-                                                <input type="text" value={currentQuestion.section} onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })} placeholder="E.G. REASONING" className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
+                                                <input type="text" value={currentQuestion.section} onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })} placeholder="E.G. REASONING" className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm border-slate-300 dark:border-slate-700" />
                                              </div>
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Difficulty</label>
-                                                <select value={currentQuestion.difficulty} onChange={(e) => setCurrentQuestion({ ...currentQuestion, difficulty: e.target.value })} className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm">
+                                                <select value={currentQuestion.difficulty} onChange={(e) => setCurrentQuestion({ ...currentQuestion, difficulty: e.target.value })} className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm border-slate-300 dark:border-slate-700">
                                                    <option value="easy">Easy</option>
                                                    <option value="medium">Medium</option>
                                                    <option value="hard">Hard</option>

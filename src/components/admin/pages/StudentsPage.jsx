@@ -681,7 +681,7 @@ const StudentsPage = () => {
         {/* Create Subscription Modal */}
         <AnimatePresence>
           {showCreateModal && (
-            <div className="fixed inset-0 z-[100]">
+            <div className="fixed inset-0 z-[999]">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -695,7 +695,7 @@ const StudentsPage = () => {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-                className="absolute inset-y-0 right-0 left-0 xl:left-auto xl:w-1/2 bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-sans"
+                className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-sans"
               >
                 <div className="p-4 xl:p-14 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <div className="flex items-center gap-3 xl:gap-3">
@@ -732,7 +732,7 @@ const StudentsPage = () => {
                           required
                           value={createFormData.email}
                           onChange={(e) => setCreateFormData({ ...createFormData, email: e.target.value })}
-                          className="w-full pl-16 pr-8 py-2 xl:py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all shadow-sm"
+                          className="w-full pl-16 pr-8 py-2 xl:py-3 bg-white dark:bg-black border-2 focus:border-primary-500/50 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all shadow-sm border-slate-300 dark:border-slate-700"
                           placeholder="ENTER STUDENT EMAIL ADDRESS..."
                         />
                       </div>
@@ -806,7 +806,7 @@ const StudentsPage = () => {
         {/* Edit City Modal */}
         <AnimatePresence>
           {cityEditStudent && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

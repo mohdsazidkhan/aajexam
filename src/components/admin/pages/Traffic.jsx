@@ -99,7 +99,7 @@ const UsersModal = ({ kind, range, segment, onClose }) => {
   const td = 'px-2 py-1.5 text-xs whitespace-nowrap';
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-3" onClick={onClose}>
+    <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-3" onClick={onClose}>
       <div className="w-full max-w-4xl h-[70vh] min-h-[70vh] max-h-[70vh] flex flex-col overflow-hidden bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xl relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
         <div className="flex items-start justify-between gap-3 p-4 border-b border-slate-200 dark:border-slate-700">
           <div>
@@ -276,7 +276,7 @@ export default function Traffic() {
             value={rangeId}
             onChange={(e) => setRangeId(e.target.value)}
             aria-label="Date range"
-            className="order-2 md:order-3 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="order-2 md:order-3 px-3 py-2 rounded-xl border dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500 border-slate-300"
           >
             {RANGES.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
           </select>

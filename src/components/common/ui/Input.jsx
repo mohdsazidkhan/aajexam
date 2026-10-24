@@ -68,7 +68,7 @@ const Input = ({
           ${variants[variant]} 
           ${isFocused ? 'scale-[1.01] -translate-y-1' : ''}
           ${error ? 'border-black/30 dark:border-white/30 ring-4 ring-black/5 dark:ring-white/5' : ''}
-          ${isFocused ? 'border-primary-600' : 'border-slate-200 dark:border-slate-800'}
+          ${isFocused ? 'border-primary-600' : 'border-slate-300 dark:border-slate-700'}
           rounded-2xl border-2
         `}
       >

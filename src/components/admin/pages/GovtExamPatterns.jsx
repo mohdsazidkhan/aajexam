@@ -74,6 +74,7 @@ const AdminGovtExamPatterns = () => {
   const user = getCurrentUser();
   useEffect(() => {
     loadCategories();
+    loadAllExams();
     // Check for examId in URL params
     const urlParams = new URLSearchParams(window.location.search);
     const examId = urlParams.get('examId');
@@ -82,6 +83,16 @@ const AdminGovtExamPatterns = () => {
       handleExamChange(examId);
     }
   }, []);
+
+  // Exam filter lists every exam until a category narrows it down.
+  const loadAllExams = async () => {
+    try {
+      const res = await API.getAllExams({ limit: 1000 });
+      if (res?.success) setExams(res.data || []);
+    } catch (err) {
+      console.error("Exams fetch error", err);
+    }
+  };
 
   const loadCategories = async () => {
     try {
@@ -96,9 +107,12 @@ const AdminGovtExamPatterns = () => {
   const handleCategoryChange = async (categoryId) => {
     setSelectedCategory(categoryId);
     setSelectedExam("all");
-    setExams([]);
     setPatterns([]);
-    if (!categoryId || categoryId === 'all') return;
+    if (!categoryId || categoryId === 'all') {
+      loadAllExams();
+      return;
+    }
+    setExams([]);
     setLoading(true);
     try {
       const res = await API.getExamsByCategory(categoryId);
@@ -407,9 +421,9 @@ const AdminGovtExamPatterns = () => {
 
     <AnimatePresence>
       {showModal && (
-        <div className="fixed inset-0 z-[100]">
+        <div className="fixed inset-0 z-[999]">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-slate-950/60 backdrop-blur-md" />
-          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 xl:left-auto xl:w-1/2 bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
+          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
             <div className="p-3 xl:p-5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl shadow-sm"><Binary className="w-6 h-6" /></div>
@@ -420,21 +434,21 @@ const AdminGovtExamPatterns = () => {
               </div>
               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg xl:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
             </div>
-            <div className="flex flex-col xl:flex-row flex-1 overflow-hidden">
-              <div className="w-full xl:w-2/5 p-3 xl:p-5 border-r border-slate-100 dark:border-white/5 overflow-y-auto custom-scrollbar">
+            <div className="flex flex-col flex-1 min-h-0 overflow-y-auto custom-scrollbar">
+              <div className="w-full shrink-0 p-3 xl:p-5 border-b border-slate-100 dark:border-white/5">
                 <form onSubmit={handleSubmit} className="space-y-2 xl:space-y-3 xl:space-y-4">
                   <div className="space-y-2 xl:space-y-3">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-600 pl-3 block ml-2">Pattern Title</label>
-                    <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="E.G. TIER 1 CLASSIC" required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
+                    <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="E.G. TIER 1 CLASSIC" required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm border-slate-300 dark:border-slate-700" />
                   </div>
                   <div className="grid grid-cols-2 gap-3 xl:gap-3">
                     <div className="space-y-2 xl:space-y-3">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-600 pl-3 block ml-2">Duration (Min)</label>
-                      <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) || 0 })} required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none" />
+                      <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) || 0 })} required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none border-slate-300 dark:border-slate-700" />
                     </div>
                     <div className="space-y-2 xl:space-y-3">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-black dark:border-white pl-3 block ml-2">Negative Marking</label>
-                      <input type="number" step="0.01" value={formData.negativeMarking} onChange={(e) => setFormData({ ...formData, negativeMarking: parseFloat(e.target.value) || 0 })} className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-black/30 dark:focus:border-white/30 rounded-2xl text-xs font-black outline-none" />
+                      <input type="number" step="0.01" value={formData.negativeMarking} onChange={(e) => setFormData({ ...formData, negativeMarking: parseFloat(e.target.value) || 0 })} className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-black/30 dark:focus:border-white/30 rounded-2xl text-xs font-black outline-none border-slate-300 dark:border-slate-700" />
                     </div>
                   </div>
                   <div className="pt-8 border-t-2 border-slate-100 dark:border-white/5 space-y-2 xl:space-y-3">
@@ -448,7 +462,7 @@ const AdminGovtExamPatterns = () => {
                   </div>
                 </form>
               </div>
-              <div className="flex-1 p-3 xl:p-5 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-black/20">
+              <div className="w-full shrink-0 p-3 xl:p-5 bg-slate-50/30 dark:bg-black/20">
                 <div className="max-w-2xl mx-auto space-y-10">
                   <div className="space-y-2 xl:space-y-3">
                     <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-600" /> Sections ({formData.sections.length})</h3>
@@ -470,23 +484,23 @@ const AdminGovtExamPatterns = () => {
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-3 mt-4">
                       <div className="xl:col-span-2 space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Section Name</label>
-                        <input type="text" value={newSection.name} onChange={(e) => setNewSection({ ...newSection, name: e.target.value })} placeholder="E.G. QUANTITATIVE APTITUDE" className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black uppercase outline-none focus:border-primary-500/30" />
+                        <input type="text" value={newSection.name} onChange={(e) => setNewSection({ ...newSection, name: e.target.value })} placeholder="E.G. QUANTITATIVE APTITUDE" className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black uppercase outline-none focus:border-primary-500/30 dark:border-slate-700" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Total Questions</label>
-                        <input type="number" value={newSection.totalQuestions} onChange={(e) => setNewSection({ ...newSection, totalQuestions: parseInt(e.target.value) || 0 })} className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none" />
+                        <input type="number" value={newSection.totalQuestions} onChange={(e) => setNewSection({ ...newSection, totalQuestions: parseInt(e.target.value) || 0 })} className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none dark:border-slate-700" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Marks / Question</label>
-                        <input type="number" value={newSection.marksPerQuestion} onChange={(e) => setNewSection({ ...newSection, marksPerQuestion: parseFloat(e.target.value) || 0 })} className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none" />
+                        <input type="number" value={newSection.marksPerQuestion} onChange={(e) => setNewSection({ ...newSection, marksPerQuestion: parseFloat(e.target.value) || 0 })} className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none dark:border-slate-700" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Negative / Question</label>
-                        <input type="number" step="0.01" value={newSection.negativePerQuestion} onChange={(e) => setNewSection({ ...newSection, negativePerQuestion: parseFloat(e.target.value) || 0 })} className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none" />
+                        <input type="number" step="0.01" value={newSection.negativePerQuestion} onChange={(e) => setNewSection({ ...newSection, negativePerQuestion: parseFloat(e.target.value) || 0 })} className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none dark:border-slate-700" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Time (Optional Min)</label>
-                        <input type="text" value={newSection.sectionDuration} onChange={(e) => setNewSection({ ...newSection, sectionDuration: e.target.value })} placeholder="30" className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none" />
+                        <input type="text" value={newSection.sectionDuration} onChange={(e) => setNewSection({ ...newSection, sectionDuration: e.target.value })} placeholder="30" className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none dark:border-slate-700" />
                       </div>
                     </div>
                     <button type="button" onClick={handleAddSection} className="w-full mt-4 xl:mt-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-3">

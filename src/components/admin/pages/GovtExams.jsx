@@ -207,7 +207,7 @@ const AdminGovtExams = () => {
         placeholder="Search exam name or code..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full pl-10 pr-4 py-2.5 bg-slate-100 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm"
+        className="w-full pl-10 pr-4 py-2.5 bg-slate-100 dark:bg-black border-2 focus:border-primary-500/30 rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm border-slate-300 dark:border-slate-700"
       />
     </div>
   );
@@ -385,9 +385,9 @@ const AdminGovtExams = () => {
 
     <AnimatePresence>
       {showModal && (
-        <div className="fixed inset-0 z-[100]">
+        <div className="fixed inset-0 z-[999]">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-slate-950/60 backdrop-blur-md" />
-          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 xl:left-auto xl:w-1/2 bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
+          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
             <div className="p-3 xl:p-5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl shadow-sm">
@@ -404,7 +404,7 @@ const AdminGovtExams = () => {
               <div className="space-y-2 xl:space-y-3 xl:space-y-4">
                 <div className="space-y-2 xl:space-y-3">
                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Category</label>
-                  <select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase tracking-widest outline-none appearance-none cursor-pointer">
+                  <select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase tracking-widest outline-none appearance-none cursor-pointer border-slate-300 dark:border-slate-700">
                     <option value="">Select Category...</option>
                     {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>)}
                   </select>
@@ -412,20 +412,20 @@ const AdminGovtExams = () => {
                 <div className="grid grid-cols-2 gap-3 xl:gap-3">
                   <div className="space-y-2 xl:space-y-3">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Exam Code</label>
-                    <input type="text" value={formData.code} onChange={(e) => setFormData({ ...formData, code: e.target.value.toUpperCase() })} placeholder="E.G. SSC" required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
+                    <input type="text" value={formData.code} onChange={(e) => setFormData({ ...formData, code: e.target.value.toUpperCase() })} placeholder="E.G. SSC" required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm border-slate-300 dark:border-slate-700" />
                   </div>
                   <div className="space-y-2 xl:space-y-3">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Full Name</label>
-                    <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Exam Name" required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
+                    <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Exam Name" required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm border-slate-300 dark:border-slate-700" />
                   </div>
                 </div>
                 <div className="space-y-2 xl:space-y-3">
                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Overview (Description)</label>
-                  <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} placeholder="Exam Details" rows="4" className="w-full px-4 xl:px-5 py-2 xl:py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase outline-none shadow-sm resize-none" />
+                  <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} placeholder="Exam Details" rows="4" className="w-full px-4 xl:px-5 py-2 xl:py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase outline-none shadow-sm resize-none border-slate-300 dark:border-slate-700" />
                 </div>
                 <div className="space-y-2 xl:space-y-3">
                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Logo URL</label>
-                  <input type="text" value={formData.logo} onChange={(e) => setFormData({ ...formData, logo: e.target.value })} placeholder="https://..." className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm" />
+                  <input type="text" value={formData.logo} onChange={(e) => setFormData({ ...formData, logo: e.target.value })} placeholder="https://..." className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm border-slate-300 dark:border-slate-700" />
                 </div>
                 <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-3xl flex items-center justify-between border-2 border-slate-100 dark:border-white/5">
                   <div className="flex items-center gap-3">

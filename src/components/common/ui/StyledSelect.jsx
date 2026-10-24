@@ -52,7 +52,7 @@ const StyledSelect = ({
   };
 
   return (
-    <div className={`relative ${className}`} ref={ref}>
+    <div data-styled-select className={`relative ${className}`} ref={ref}>
       <div
         onClick={() => !disabled && setIsOpen((prev) => !prev)}
         className={`flex items-center gap-2 px-3 xl:px-4 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black shadow-sm transition-all ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer focus-within:border-primary-700'}`}

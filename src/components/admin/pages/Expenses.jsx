@@ -349,7 +349,7 @@ const AdminExpenses = () => {
                 {/* Expense Modal */}
                 <AnimatePresence>
                     {showModal && (
-                        <div className="fixed inset-0 z-[100]">
+                        <div className="fixed inset-0 z-[999]">
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -362,7 +362,7 @@ const AdminExpenses = () => {
                                 animate={{ x: 0 }}
                                 exit={{ x: '100%' }}
                                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-                                className="absolute inset-y-0 right-0 left-0 xl:left-auto xl:w-1/2 bg-white dark:bg-slate-900 xl:rounded-l-2xl shadow-2xl overflow-hidden flex flex-col border-l-2 border-slate-100 dark:border-white/10"
+                                className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-slate-900 xl:rounded-l-2xl shadow-2xl overflow-hidden flex flex-col border-l-2 border-slate-100 dark:border-white/10"
                             >
                                 <div className="bg-slate-900 p-4 xl:p-10 text-white relative overflow-hidden">
                                     <div className="absolute top-0 right-0 p-3 xl:p-5 opacity-10">
@@ -388,7 +388,7 @@ const AdminExpenses = () => {
                                                 value={formData.title}
                                                 onChange={e => setFormData({ ...formData, title: e.target.value })}
                                                 placeholder="TITLE E.G. META ADS - AUG 2024"
-                                                className="w-full pl-14 pr-6 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
+                                                className="w-full pl-14 pr-6 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all border-slate-300 dark:border-slate-700"
                                             />
                                         </div>
                                     </div>
@@ -404,7 +404,7 @@ const AdminExpenses = () => {
                                                     value={formData.amount}
                                                     onChange={e => setFormData({ ...formData, amount: e.target.value })}
                                                     placeholder="0.00"
-                                                    className="w-full pl-14 pr-6 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all tabular-nums"
+                                                    className="w-full pl-14 pr-6 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all tabular-nums border-slate-300 dark:border-slate-700"
                                                 />
                                             </div>
                                         </div>
@@ -417,7 +417,7 @@ const AdminExpenses = () => {
                                                     type="date"
                                                     value={formData.date}
                                                     onChange={e => setFormData({ ...formData, date: e.target.value })}
-                                                    className="w-full pl-14 pr-6 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
+                                                    className="w-full pl-14 pr-6 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all border-slate-300 dark:border-slate-700"
                                                 />
                                             </div>
                                         </div>
@@ -428,7 +428,7 @@ const AdminExpenses = () => {
                                         <select
                                             value={formData.category}
                                             onChange={e => setFormData({ ...formData, category: e.target.value })}
-                                            className="w-full px-4 xl:px-5 py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all cursor-pointer shadow-sm"
+                                            className="w-full px-4 xl:px-5 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all cursor-pointer shadow-sm border-slate-300 dark:border-slate-700"
                                         >
                                             {expenseCategories.map(cat => <option key={cat.id} value={cat.id}>{cat.label}</option>)}
                                         </select>
@@ -440,7 +440,7 @@ const AdminExpenses = () => {
                                             value={formData.description}
                                             onChange={e => setFormData({ ...formData, description: e.target.value })}
                                             rows="3"
-                                            className="w-full px-4 xl:px-5 py-2 xl:py-3 bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all resize-none"
+                                            className="w-full px-4 xl:px-5 py-2 xl:py-3 bg-white dark:bg-black border-2 focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all resize-none border-slate-300 dark:border-slate-700"
                                             placeholder="ADD A NOTE ABOUT THIS EXPENSE..."
                                         />
                                     </div>

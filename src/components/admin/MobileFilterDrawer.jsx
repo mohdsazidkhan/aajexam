@@ -26,14 +26,14 @@ const AdminMobileFilterDrawer = () => {
         <>
           <div
             onClick={() => setDrawerOpen(false)}
-            className="fixed inset-0 z-[190]"
+            className="fixed inset-0 z-[998]"
           />
           <motion.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-            className="fixed top-0 right-0 bottom-0 z-[200] w-[300px] max-w-sm xl:max-w-[300px] bg-slate-50 dark:bg-slate-950 border-l-2 border-slate-100 dark:border-slate-800 shadow-[-8px_0_24px_rgba(0,0,0,0.15)] flex flex-col"
+            className="fixed top-0 right-0 bottom-0 z-[999] w-[300px] max-w-sm xl:w-[350px] xl:max-w-[350px] bg-slate-50 dark:bg-slate-950 border-l-2 border-slate-100 dark:border-slate-800 shadow-[-8px_0_24px_rgba(0,0,0,0.15)] flex flex-col"
           >
             <div className="flex items-center justify-between px-4 h-12 border-b-2 border-slate-100 dark:border-slate-800 shrink-0">
               <div className="flex items-center gap-2 min-w-0">
@@ -54,7 +54,7 @@ const AdminMobileFilterDrawer = () => {
               </button>
             </div>
             {/* !w-full beats pages' own sm:w-auto/sm:w-56 (viewport, not container, media queries) so controls stay full-width in this narrow drawer regardless of screen size. */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3 [&>*]:!w-full [&_input]:!w-full [&_select]:!w-full">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3 [&>*]:!w-full [&_input]:!w-full [&_select]:!w-full [&_[data-styled-select]]:!w-full [&_[data-styled-select]]:!max-w-none [&_[data-styled-select]]:!min-w-0 [&_div:has(>[data-styled-select])]:!w-full">
               {header.filters}
             </div>
           </motion.div>

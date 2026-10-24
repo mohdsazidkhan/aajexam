@@ -775,7 +775,7 @@ const AdminSubscriptions = () => {
         {/* Extend Subscription Modal */}
         <AnimatePresence>
           {showExtendModal && (
-            <div className="fixed inset-0 z-[100]">
+            <div className="fixed inset-0 z-[999]">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -788,7 +788,7 @@ const AdminSubscriptions = () => {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-                className="absolute inset-y-0 right-0 left-0 xl:left-auto xl:w-1/2 bg-white dark:bg-slate-900 xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col"
+                className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-slate-900 xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col"
               >
                 <div className="absolute top-0 right-0 p-3 xl:p-5">
                   <motion.button whileHover={{ rotate: 90 }} onClick={closeExtendModal} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl">
@@ -813,7 +813,7 @@ const AdminSubscriptions = () => {
                       <select
                         value={extendForm.plan}
                         onChange={(e) => setExtendForm({ ...extendForm, plan: e.target.value })}
-                        className="w-full bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 xl:px-4 py-2.5 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                        className="w-full bg-white dark:bg-black border-2 focus:border-primary-500/50 rounded-2xl px-3 xl:px-4 py-2.5 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer border-slate-300 dark:border-slate-700"
                       >
                         <option value="free">Free</option>
                         <option value="basic">Basic</option>
@@ -826,7 +826,7 @@ const AdminSubscriptions = () => {
                       <select
                         value={extendForm.duration}
                         onChange={(e) => setExtendForm({ ...extendForm, duration: e.target.value })}
-                        className="w-full bg-white dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 xl:px-4 py-2.5 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                        className="w-full bg-white dark:bg-black border-2 focus:border-primary-500/50 rounded-2xl px-3 xl:px-4 py-2.5 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer border-slate-300 dark:border-slate-700"
                       >
                         <option value="1 month">1 Month</option>
                         <option value="2 months">2 Months</option>

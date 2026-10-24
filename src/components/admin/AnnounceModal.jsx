@@ -116,7 +116,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                     setSpecificUser(null);
                     setSelectedUsers([]);
                   }}
-                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
+                  className="w-full px-3 py-2.5 border-2 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600 border-slate-300"
                 >
                   <option value="all">All users</option>
                   <option value="pro">PRO subscribers only</option>
@@ -145,7 +145,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                   onChange={(e) => setComposeForm((f) => ({ ...f, title: e.target.value }))}
                   maxLength={200}
                   placeholder="e.g. New PYQ papers added!"
-                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
+                  className="w-full px-3 py-2.5 border-2 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600 border-slate-300"
                 />
               </div>
               <div>
@@ -156,7 +156,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                   maxLength={500}
                   rows={4}
                   placeholder="What do you want to tell them?"
-                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
+                  className="w-full px-3 py-2.5 border-2 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600 border-slate-300"
                 />
               </div>
               <button

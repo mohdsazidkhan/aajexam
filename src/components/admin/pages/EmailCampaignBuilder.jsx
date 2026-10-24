@@ -415,7 +415,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                   placeholder={mode === 'html' ? 'Paste raw HTML for the email body...' : 'Write your message. Line breaks are preserved. Basic HTML like <b>bold</b> works too.'}
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  className={`${inputClass} font-mono text-sm`}
+                  className={`font-mono text-sm border border-slate-300 dark:border-slate-700 ${inputClass}`}
                 />
                 <p className="text-xs text-slate-400 mt-1">
                   {mode === 'html' ? 'Raw HTML mode — content is used verbatim inside the branded shell.' : 'Simple mode — newlines become line breaks; basic inline HTML allowed.'}

@@ -376,7 +376,7 @@ const AdminReelEdit = () => {
                         </button>
                         <input type="text" value={opt}
                           onChange={e => { const n = [...options]; n[i] = e.target.value; setOptions(n); }}
-                          placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 ${inputClass}`} required />
+                          placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} required />
                       </div>
                     ))}
                     <p className="text-xs text-primary-600">Correct: {String.fromCharCode(65 + correctAnswerIndex)}</p>
@@ -407,7 +407,7 @@ const AdminReelEdit = () => {
                         <span className="text-xs font-bold text-slate-400 w-5">{i + 1}.</span>
                         <input type="text" value={kp}
                           onChange={e => { const n = [...keyPoints]; n[i] = e.target.value; setKeyPoints(n); }}
-                          className={`flex-1 ${inputClass}`} />
+                          className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                         <button aria-label="Delete" type="button" onClick={() => { if (keyPoints.length > 1) setKeyPoints(keyPoints.filter((_, j) => j !== i)); }}
                           className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
@@ -433,7 +433,7 @@ const AdminReelEdit = () => {
                         <span className="text-xs font-bold text-slate-400 w-14">Step {i + 1}</span>
                         <input type="text" value={s}
                           onChange={e => { const n = [...steps]; n[i] = e.target.value; setSteps(n); }}
-                          className={`flex-1 ${inputClass}`} />
+                          className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                         <button aria-label="Delete" type="button" onClick={() => { if (steps.length > 1) setSteps(steps.filter((_, j) => j !== i)); }}
                           className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
@@ -447,7 +447,7 @@ const AdminReelEdit = () => {
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <input type="text" value={t}
                           onChange={e => { const n = [...tryYourself]; n[i] = e.target.value; setTryYourself(n); }}
-                          className={`flex-1 ${inputClass}`} />
+                          className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                         <button aria-label="Delete" type="button" onClick={() => { if (tryYourself.length > 1) setTryYourself(tryYourself.filter((_, j) => j !== i)); }}
                           className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
@@ -489,10 +489,10 @@ const AdminReelEdit = () => {
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <input type="text" value={row.key}
                           onChange={e => { const n = [...tableData]; n[i] = { ...n[i], key: e.target.value }; setTableData(n); }}
-                          placeholder="Label" className={`flex-1 ${inputClass}`} />
+                          placeholder="Label" className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                         <input type="text" value={row.value}
                           onChange={e => { const n = [...tableData]; n[i] = { ...n[i], value: e.target.value }; setTableData(n); }}
-                          placeholder="Value" className={`flex-1 ${inputClass}`} />
+                          placeholder="Value" className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                         <button aria-label="Delete" type="button" onClick={() => { if (tableData.length > 1) setTableData(tableData.filter((_, j) => j !== i)); }}
                           className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
@@ -522,7 +522,7 @@ const AdminReelEdit = () => {
                         <span className="text-xs font-bold text-slate-400 w-5">{i + 1}.</span>
                         <input type="text" value={opt.text}
                           onChange={e => { const n = [...pollOptions]; n[i] = { text: e.target.value }; setPollOptions(n); }}
-                          placeholder={`Option ${i + 1}`} className={`flex-1 ${inputClass}`} />
+                          placeholder={`Option ${i + 1}`} className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                         {pollOptions.length > 2 && (
                           <button aria-label="Delete" type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}
                             className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
@@ -552,7 +552,7 @@ const AdminReelEdit = () => {
                 {/* Search */}
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                  <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder="Search audio..." className={`${inputClass} pl-9`} />
+                  <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder="Search audio..." className={`pl-9 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                 </div>
 
                 {/* Audio List */}

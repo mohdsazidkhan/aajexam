@@ -426,7 +426,7 @@ const LocationsPage = () => {
         {/* State Modal */}
         <AnimatePresence>
           {stateModal && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setStateModal(false)} className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-3xl" />
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-white dark:bg-[#0A0F1E] rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
                 <div className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
@@ -447,7 +447,7 @@ const LocationsPage = () => {
         {/* City Modal */}
         <AnimatePresence>
           {cityModal && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setCityModal(false)} className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-3xl" />
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-white dark:bg-[#0A0F1E] rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
                 <div className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">

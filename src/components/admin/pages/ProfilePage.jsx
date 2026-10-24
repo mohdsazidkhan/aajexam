@@ -122,7 +122,7 @@ const AdminProfilePage = () => {
                 <div className="relative">
                   <input
                     type={showPass[item.id] ? 'text' : 'password'}
-                    className={`${FIELD_CLASSNAME} pr-12`}
+                    className={`pr-12 border border-slate-300 dark:border-slate-700 ${FIELD_CLASSNAME}`}
                     value={passwordData[item.id]}
                     onChange={(event) => setPasswordData({ ...passwordData, [item.id]: event.target.value })}
                   />

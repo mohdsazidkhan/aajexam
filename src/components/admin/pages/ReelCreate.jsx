@@ -353,7 +353,7 @@ const AdminReelCreate = () => {
                             value={opt}
                             onChange={(e) => handleOptionChange(i, e.target.value)}
                             placeholder={`Option ${String.fromCharCode(65 + i)}`}
-                            className={`flex-1 ${inputClass}`}
+                            className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`}
                             required
                           />
                         </div>
@@ -383,7 +383,7 @@ const AdminReelCreate = () => {
                       {keyPoints.map((kp, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
                           <span className="text-xs font-bold text-slate-400 w-5">{i + 1}.</span>
-                          <input type="text" value={kp} onChange={e => handleArrayChange(setKeyPoints, keyPoints, i, e.target.value)} placeholder="Key point..." className={`flex-1 ${inputClass}`} />
+                          <input type="text" value={kp} onChange={e => handleArrayChange(setKeyPoints, keyPoints, i, e.target.value)} placeholder="Key point..." className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                           <button aria-label="Delete" type="button" onClick={() => removeArrayItem(setKeyPoints, keyPoints, i)} className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       ))}
@@ -404,7 +404,7 @@ const AdminReelCreate = () => {
                       {steps.map((s, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
                           <span className="text-xs font-bold text-slate-400 w-14">Step {i + 1}</span>
-                          <input type="text" value={s} onChange={e => handleArrayChange(setSteps, steps, i, e.target.value)} placeholder="Step description..." className={`flex-1 ${inputClass}`} />
+                          <input type="text" value={s} onChange={e => handleArrayChange(setSteps, steps, i, e.target.value)} placeholder="Step description..." className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                           <button aria-label="Delete" type="button" onClick={() => removeArrayItem(setSteps, steps, i)} className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       ))}
@@ -414,7 +414,7 @@ const AdminReelCreate = () => {
                       <label className={labelClass}>Try Yourself Examples</label>
                       {tryYourself.map((t, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
-                          <input type="text" value={t} onChange={e => handleArrayChange(setTryYourself, tryYourself, i, e.target.value)} placeholder="e.g. 45² = 2025" className={`flex-1 ${inputClass}`} />
+                          <input type="text" value={t} onChange={e => handleArrayChange(setTryYourself, tryYourself, i, e.target.value)} placeholder="e.g. 45² = 2025" className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                           <button aria-label="Delete" type="button" onClick={() => removeArrayItem(setTryYourself, tryYourself, i)} className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       ))}
@@ -451,8 +451,8 @@ const AdminReelCreate = () => {
                       <label className={labelClass}>Data Table (Key-Value pairs)</label>
                       {tableData.map((row, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
-                          <input type="text" value={row.key} onChange={e => handleTableChange(i, 'key', e.target.value)} placeholder="Label (e.g. Repo Rate)" className={`flex-1 ${inputClass}`} />
-                          <input type="text" value={row.value} onChange={e => handleTableChange(i, 'value', e.target.value)} placeholder="Value (e.g. 6.00%)" className={`flex-1 ${inputClass}`} />
+                          <input type="text" value={row.key} onChange={e => handleTableChange(i, 'key', e.target.value)} placeholder="Label (e.g. Repo Rate)" className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
+                          <input type="text" value={row.value} onChange={e => handleTableChange(i, 'value', e.target.value)} placeholder="Value (e.g. 6.00%)" className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                           <button aria-label="Delete" type="button" onClick={() => { if (tableData.length > 1) setTableData(tableData.filter((_, j) => j !== i)); }} className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       ))}
@@ -477,7 +477,7 @@ const AdminReelCreate = () => {
                       {pollOptions.map((opt, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
                           <span className="text-xs font-bold text-slate-400 w-5">{i + 1}.</span>
-                          <input type="text" value={opt.text} onChange={e => handlePollOptionChange(i, e.target.value)} placeholder={`Option ${i + 1}`} className={`flex-1 ${inputClass}`} required={i < 2} />
+                          <input type="text" value={opt.text} onChange={e => handlePollOptionChange(i, e.target.value)} placeholder={`Option ${i + 1}`} className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} required={i < 2} />
                           {pollOptions.length > 2 && (
                             <button aria-label="Delete" type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))} className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                           )}
@@ -505,7 +505,7 @@ const AdminReelCreate = () => {
                   {/* Search */}
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                    <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder="Search audio..." className={`${inputClass} pl-9`} />
+                    <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder="Search audio..." className={`pl-9 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
                   </div>
 
                   {/* Audio List */}
