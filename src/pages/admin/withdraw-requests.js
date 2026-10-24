@@ -1,14 +1,21 @@
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import { AdminTableSkeleton } from '../../components/admin/Skeletons';
 
-const AdminWithdrawRequests = dynamic(() => import('../../components/admin/pages/WithdrawRequests'), {
+// Withdrawal requests + referral rewards live on one "Payouts" page (tabs).
+const PayoutsPage = dynamic(() => import('../../components/admin/pages/PayoutsPage'), {
   ssr: false,
   loading: () => <AdminTableSkeleton />
 });
 
 export default function WithdrawRequests() {
   return (
-    <AdminWithdrawRequests />
+    <>
+      <Head>
+        <title>Payouts - AajExam Admin</title>
+        <meta name="robots" content="noindex,nofollow" />
+      </Head>
+      <PayoutsPage />
+    </>
   );
 }
-

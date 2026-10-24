@@ -24,7 +24,7 @@ import {
 
 const PAGE_LIMIT = DEFAULT_PAGE_SIZE;
 
-export default function ReferralHistory() {
+export default function ReferralHistory({ tabs = null }) {
   const { isMounted, isRouterReady, router } = useSSR();
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -274,6 +274,7 @@ export default function ReferralHistory() {
       <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         <Sidebar />
         <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+{tabs}
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         </div>
       </div>
@@ -284,6 +285,7 @@ export default function ReferralHistory() {
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
       <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+{tabs}
 
       <div className="flex-1 min-h-0 overflow-auto flex flex-col transition-all duration-500">
 

@@ -1,21 +1,8 @@
-import dynamic from 'next/dynamic';
-import Head from 'next/head';
-import { AdminTableSkeleton } from '../../components/admin/Skeletons';
-
-const ReferralHistory = dynamic(() => import('../../components/admin/pages/ReferralHistory'), {
-  ssr: false,
-  loading: () => <AdminTableSkeleton />
-});
-
-export default function ReferralHistoryPage() {
-  return (
-    <>
-      <Head>
-        <title>Referral History - AajExam Admin</title>
-        <meta name="robots" content="noindex,nofollow" />
-      </Head>
-      <ReferralHistory />
-    </>
-  );
+// Merged into the Payouts page (Referral rewards tab); old links and bookmarks keep working.
+export default function ReferralHistoryRedirect() {
+  return null;
 }
 
+export async function getServerSideProps() {
+  return { redirect: { destination: '/admin/withdraw-requests?tab=rewards', permanent: false } };
+}

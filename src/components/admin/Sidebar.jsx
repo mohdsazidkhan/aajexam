@@ -173,7 +173,6 @@ const Sidebar = () => {
         { path: '/admin/payment-transactions', icon: CreditCard, label: 'Transactions', key: 'transactions' },
         { path: '/admin/subscriptions', icon: ShieldCheck, label: 'Plans', key: 'subscriptions' },
         { path: '/admin/bank-details', icon: FileText, label: 'Bank Details', key: 'bank-details' },
-        { path: '/admin/referral-history', icon: Globe, label: 'Payouts', key: 'referral-history' },
         { path: '/admin/expenses', icon: History, label: 'Expenses', key: 'platform-expenses' },
       ]
     },
