@@ -8,6 +8,7 @@ const KS = {
   'Language': 'زبان',
   'Search theme...': 'تھیم ژھارٕو...',
   'Search font...': 'فونٹ ژھارٕو...',
+  'Search language...': 'زَبان ژھارو...',
   'Search exam...': 'امتحان ژھارٕو...',
   'No theme found': 'کانہہ تھیم ناہ لبمُت',
   'No font found': 'کانہہ فونٹ ناہ لبمُت',

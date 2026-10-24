@@ -8,6 +8,7 @@ const PA = {
   'Language': 'ਭਾਸ਼ਾ',
   'Search theme...': 'ਥੀਮ ਖੋਜੋ...',
   'Search font...': 'ਫੌਂਟ ਖੋਜੋ...',
+  'Search language...': 'ਭਾਸ਼ਾ ਖੋਜੋ...',
   'Search exam...': 'ਪ੍ਰੀਖਿਆ ਖੋਜੋ...',
   'No theme found': 'ਕੋਈ ਥੀਮ ਨਹੀਂ ਮਿਲੀ',
   'No font found': 'ਕੋਈ ਫੌਂਟ ਨਹੀਂ ਮਿਲਿਆ',

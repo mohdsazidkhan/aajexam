@@ -8,6 +8,7 @@ const SAT = {
   'Language': 'ᱯᱟᱹᱨᱥᱤ',
   'Search theme...': 'ᱛᱷᱤᱢ ᱥᱮᱸᱫᱽᱨᱟ...',
   'Search font...': 'ᱯᱷᱚᱱᱴ ᱥᱮᱸᱫᱽᱨᱟ...',
+  'Search language...': 'ᱨᱚᱲ ᱥᱮᱸᱫᱽᱨᱟ...',
   'Search exam...': 'ᱯᱨᱤᱠᱷᱟ ᱥᱮᱸᱫᱽᱨᱟ...',
   'No theme found': 'ᱛᱷᱤᱢ ᱵᱟᱝ ᱧᱟᱢᱠᱟᱱᱟ',
   'No font found': 'ᱯᱷᱚᱱᱴ ᱵᱟᱝ ᱧᱟᱢᱠᱟᱱᱟ',

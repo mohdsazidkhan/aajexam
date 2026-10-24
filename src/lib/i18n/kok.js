@@ -8,6 +8,7 @@ const KOK = {
   'Language': 'भास',
   'Search theme...': 'थीम सोद्प...',
   'Search font...': 'फॉन्ट सोद्प...',
+  'Search language...': 'भास सोदात...',
   'Search exam...': 'परिक्षा सोद्प...',
   'No theme found': 'थीम मेळ्ळी ना',
   'No font found': 'फॉन्ट मेळ्ळो ना',

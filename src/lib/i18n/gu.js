@@ -8,6 +8,7 @@ const GU = {
   'Language': 'ભાષા',
   'Search theme...': 'થીમ શોધો...',
   'Search font...': 'ફોન્ટ શોધો...',
+  'Search language...': 'ભાષા શોધો...',
   'Search exam...': 'પરીક્ષા શોધો...',
   'No theme found': 'કોઈ થીમ મળી નથી',
   'No font found': 'કોઈ ફોન્ટ મળ્યો નથી',

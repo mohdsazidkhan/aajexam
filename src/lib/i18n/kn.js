@@ -8,6 +8,7 @@ const KN = {
   'Language': 'ಭಾಷೆ',
   'Search theme...': 'ಥೀಮ್ ಹುಡುಕಿ...',
   'Search font...': 'ಫಾಂಟ್ ಹುಡುಕಿ...',
+  'Search language...': 'ಭಾಷೆ ಹುಡುಕಿ...',
   'Search exam...': 'ಪರೀಕ್ಷೆ ಹುಡುಕಿ...',
   'No theme found': 'ಥೀಮ್ ಸಿಗಲಿಲ್ಲ',
   'No font found': 'ಫಾಂಟ್ ಸಿಗಲಿಲ್ಲ',

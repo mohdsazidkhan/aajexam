@@ -9,6 +9,7 @@ const HI = {
   'Language': 'भाषा',
   'Search theme...': 'थीम खोजें...',
   'Search font...': 'फ़ॉन्ट खोजें...',
+  'Search language...': 'भाषा खोजें...',
   'Search exam...': 'परीक्षा खोजें...',
   'No theme found': 'कोई थीम नहीं मिली',
   'No font found': 'कोई फ़ॉन्ट नहीं मिला',

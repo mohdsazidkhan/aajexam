@@ -8,6 +8,7 @@ const TE = {
   'Language': 'భాష',
   'Search theme...': 'థీమ్ వెతకండి...',
   'Search font...': 'ఫాంట్ వెతకండి...',
+  'Search language...': 'భాష కోసం వెతకండి...',
   'Search exam...': 'పరీక్ష వెతకండి...',
   'No theme found': 'థీమ్ కనబడలేదు',
   'No font found': 'ఫాంట్ కనబడలేదు',

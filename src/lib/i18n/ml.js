@@ -8,6 +8,7 @@ const ML = {
   'Language': 'ഭാഷ',
   'Search theme...': 'തീം തിരയുക...',
   'Search font...': 'ഫോണ്ട് തിരയുക...',
+  'Search language...': 'ഭാഷ തിരയുക...',
   'Search exam...': 'പരീക്ഷ തിരയുക...',
   'No theme found': 'തീം ഒന്നും കണ്ടില്ല',
   'No font found': 'ഫോണ്ട് ഒന്നും കണ്ടില്ല',

@@ -8,6 +8,7 @@ const MAI = {
   'Language': 'भाषा',
   'Search theme...': 'थीम खोजू करू...',
   'Search font...': 'फॉन्ट खोजू करू...',
+  'Search language...': 'भाषा ताकू...',
   'Search exam...': 'परीक्षा खोजू करू...',
   'No theme found': 'कोनो थीम नहि भेटल',
   'No font found': 'कोनो फॉन्ट नहि भेटल',

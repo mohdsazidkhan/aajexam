@@ -8,6 +8,7 @@ const AS = {
   'Language': 'ভাষা',
   'Search theme...': 'থীম সন্ধান কৰক...',
   'Search font...': 'ফণ্ট সন্ধান কৰক...',
+  'Search language...': 'ভাষা বিচাৰক...',
   'Search exam...': 'পৰীক্ষা সন্ধান কৰক...',
   'No theme found': 'কোনো থীম পোৱা নগ\'ল',
   'No font found': 'কোনো ফণ্ট পোৱা নগ\'ল',

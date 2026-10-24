@@ -8,6 +8,7 @@ const SA = {
   'Language': 'भाषा',
   'Search theme...': 'विषयं शोधयतु...',
   'Search font...': 'अक्षरशैलीं शोधयतु...',
+  'Search language...': 'भाषां अन्विष्यताम्...',
   'Search exam...': 'परीक्षां शोधयतु...',
   'No theme found': 'कोऽपि विषयः न प्राप्तः',
   'No font found': 'काचित् अक्षरशैली न प्राप्ता',

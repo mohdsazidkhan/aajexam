@@ -8,6 +8,7 @@ const MR = {
   'Language': 'भाषा',
   'Search theme...': 'थीम शोधा...',
   'Search font...': 'फॉन्ट शोधा...',
+  'Search language...': 'भाषा शोधा...',
   'Search exam...': 'परीक्षा शोधा...',
   'No theme found': 'थीम सापडली नाही',
   'No font found': 'फॉन्ट सापडला नाही',

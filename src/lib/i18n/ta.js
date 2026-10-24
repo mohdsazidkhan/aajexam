@@ -8,6 +8,7 @@ const TA = {
   'Language': 'மொழி',
   'Search theme...': 'தீம் தேடுங்கள்...',
   'Search font...': 'எழுத்துரு தேடுங்கள்...',
+  'Search language...': 'மொழியைத் தேடுங்கள்...',
   'Search exam...': 'தேர்வு தேடுங்கள்...',
   'No theme found': 'தீம் கிடைக்கவில்லை',
   'No font found': 'எழுத்துரு கிடைக்கவில்லை',

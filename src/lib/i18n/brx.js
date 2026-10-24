@@ -8,6 +8,7 @@ const BODO = {
   'Language': 'राव',
   'Search theme...': 'थिम नागिर...',
   'Search font...': 'फन्ट नागिर...',
+  'Search language...': 'राव नायदो...',
   'Search exam...': 'फरिखा नागिर...',
   'No theme found': 'थिम मोनाखै',
   'No font found': 'फन्ट मोनाखै',

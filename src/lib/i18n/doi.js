@@ -8,6 +8,7 @@ const DogriDict = {
   'Language': 'भाशा',
   'Search theme...': 'थीम तपाओ...',
   'Search font...': 'फौंट तपाओ...',
+  'Search language...': 'भाषा लब्भो...',
   'Search exam...': 'परीक्षा तपाओ...',
   'No theme found': 'कोई थीम नेईं मिली',
   'No font found': 'कोई फौंट नेईं मिलेआ',

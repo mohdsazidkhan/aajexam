@@ -8,6 +8,7 @@ const MANIPURI = {
   'Language': 'ꯂꯣꯟ',
   'Search theme...': 'ꯊꯤꯝ ꯊꯤꯒꯅ...',
   'Search font...': 'ꯐꯣꯟꯠ ꯊꯤꯒꯅ...',
+  'Search language...': 'ꯂꯣꯟ ꯊꯤꯕꯤꯌꯨ...',
   'Search exam...': 'ꯑꯦꯒꯖꯥꯝ ꯊꯤꯒꯅ...',
   'No theme found': 'ꯊꯤꯝ ꯑꯃꯠꯇ ꯐꯪꯗꯦ',
   'No font found': 'ꯐꯣꯟꯠ ꯑꯃꯠꯇ ꯐꯪꯗꯦ',

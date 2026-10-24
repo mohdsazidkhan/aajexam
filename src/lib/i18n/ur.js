@@ -8,6 +8,7 @@ const UrduDict = {
   'Language': 'زبان',
   'Search theme...': 'تھیم تلاش کریں...',
   'Search font...': 'فونٹ تلاش کریں...',
+  'Search language...': 'زبان تلاش کریں...',
   'Search exam...': 'امتحان تلاش کریں...',
   'No theme found': 'کوئی تھیم نہیں ملی',
   'No font found': 'کوئی فونٹ نہیں ملا',

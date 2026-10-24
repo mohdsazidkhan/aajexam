@@ -8,6 +8,7 @@ const NE = {
   'Language': 'भाषा',
   'Search theme...': 'थिम खोज्नुहोस्...',
   'Search font...': 'फन्ट खोज्नुहोस्...',
+  'Search language...': 'भाषा खोज्नुहोस्...',
   'Search exam...': 'परीक्षा खोज्नुहोस्...',
   'No theme found': 'कुनै थिम फेला परेन',
   'No font found': 'कुनै फन्ट फेला परेन',

@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence, m as motion } from 'framer-motion';
-import { Check, Sun, Moon, Search, Type, Settings } from 'lucide-react';
+import { Check, Sun, Moon, Search, Type, Settings, Palette, ALargeSmall, Languages, SlidersHorizontal, Target, Zap, Eye } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import { getCurrentUser } from '../../lib/utils/authUtils';
@@ -30,22 +30,44 @@ const darkOption = (theme) => ({ key: `${theme.id}-dark`, themeId: theme.id, isD
 // Each colour's Dark and Light sit side by side, the default green pair first.
 const THEME_OPTIONS = OFFERED_PRESETS.flatMap((theme) => [darkOption(theme), lightOption(theme)]);
 
-const TARGET_TAB = { id: 'targets', label: 'Target Exams' };
+const TARGET_TAB = { id: 'targets', label: 'Target Exams', icon: Target };
 const TABS = [
-  { id: 'theme', label: 'Themes' },
-  { id: 'font', label: 'Font Family' },
-  { id: 'size', label: 'Text Size' },
-  { id: 'language', label: 'Language' },
-  { id: 'display', label: 'Display' },
+  { id: 'theme', label: 'Themes', icon: Palette },
+  { id: 'font', label: 'Font Family', icon: Type },
+  { id: 'size', label: 'Text Size', icon: ALargeSmall },
+  { id: 'language', label: 'Language', icon: Languages },
+  { id: 'display', label: 'Display', icon: SlidersHorizontal },
 ];
+
+// Shared look of every selectable card in the settings panel: a ticket-style tile whose
+// selected state is outlined and tinted in the active theme colour.
+const CARD_BASE = 'relative w-full flex items-center gap-3 px-3 py-2.5 text-left border bg-white dark:bg-slate-800/60 transition-all hover:-translate-y-0.5 hover:shadow-md';
+const CARD_IDLE = 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-slate-300 dark:hover:border-slate-500';
+const CARD_ON = 'text-slate-900 dark:text-white shadow-md';
+const cardStyle = (selected, hex) => (selected ? { borderColor: hex, backgroundColor: `${hex}1f`, boxShadow: `0 0 0 1px ${hex}` } : undefined);
+const IDX = 'w-5 text-[9px] font-black text-slate-400 dark:text-slate-500 flex-shrink-0 text-left tabular-nums';
+const CheckBadge = ({ hex }) => (
+  <span className="w-5 h-5 flex items-center justify-center flex-shrink-0 text-white shadow" style={{ backgroundColor: hex, borderRadius: 999 }}>
+    <Check className="w-3 h-3" strokeWidth={3.5} />
+  </span>
+);
+// Small square tile (icon or glyph) in a colour.
+const Tile = ({ hex, children, className = '' }) => (
+  <span
+    className={`w-9 h-9 flex items-center justify-center flex-shrink-0 text-white font-black shadow-sm rotate-[-4deg] ${className}`}
+    style={{ background: `linear-gradient(135deg, ${hex}, ${hex}cc)`, borderRadius: 10 }}
+  >
+    {children}
+  </span>
+);
 
 // On/off comfort switches in the Display tab (see lib/displayPrefs.js and styles/displayModes.css).
 const DISPLAY_SWITCHES = [
-  { key: 'liteMode', label: 'Lite mode', hint: 'Saves data and runs faster on slow phones: no blur effects, no animations, no reel music and fewer pictures.' },
-  { key: 'reduceMotion', label: 'Reduce motion', hint: 'Stops sliding and fading animations. It also follows the reduce-motion setting of your device.' },
-  { key: 'eyeComfort', label: 'Eye comfort', hint: 'Adds a soft warm tint that cuts blue light, easier on the eyes at night.' },
-  { key: 'pureBlack', label: 'Pure black dark mode', hint: 'A true black background in dark mode. Saves battery on OLED screens.', needsDark: true },
-  { key: 'colorBlind', label: 'Colour-blind friendly', hint: 'Adds a tick or cross mark to answers and uses blue and orange instead of green and red.' },
+  { key: 'liteMode', icon: Zap, label: 'Lite mode', hint: 'Saves data and runs faster on slow phones: no blur effects, no animations, no reel music and fewer pictures.' },
+  { key: 'reduceMotion', icon: SlidersHorizontal, label: 'Reduce motion', hint: 'Stops sliding and fading animations. It also follows the reduce-motion setting of your device.' },
+  { key: 'eyeComfort', icon: Eye, label: 'Eye comfort', hint: 'Adds a soft warm tint that cuts blue light, easier on the eyes at night.' },
+  { key: 'pureBlack', icon: Moon, label: 'Pure black dark mode', hint: 'A true black background in dark mode. Saves battery on OLED screens.', needsDark: true },
+  { key: 'colorBlind', icon: Palette, label: 'Colour-blind friendly', hint: 'Adds a tick or cross mark to answers and uses blue and orange instead of green and red.' },
 ];
 // Indian scripts need a font with proper glyphs: switching to such a language selects that
 // script's font (unless one of its fonts is already chosen) and remembers the previous English
@@ -83,6 +105,12 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
     const query = search.trim().toLowerCase();
     if (!query) return THEME_OPTIONS;
     return THEME_OPTIONS.filter((option) => option.label.toLowerCase().includes(query));
+  }, [search]);
+
+  const filteredLanguages = useMemo(() => {
+    const query = search.trim().toLowerCase();
+    if (!query) return LANGUAGE_OPTIONS;
+    return LANGUAGE_OPTIONS.filter((option) => `${option.native} ${option.label}`.toLowerCase().includes(query));
   }, [search]);
 
   // One best font per language, shown as "Font - Language"; the current language's font first.
@@ -240,25 +268,26 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               className="fixed inset-x-0 bottom-0 z-[170] w-full h-[75vh] bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-lg flex flex-col"
             >
               <div className="flex-shrink-0 p-4 pb-2">
-                <div className="flex items-center gap-1 mb-3 bg-slate-100 dark:bg-slate-800 rounded-xl p-1 overflow-x-auto no-scrollbar">
+                <div className="flex items-center gap-1 mb-3 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 overflow-x-auto no-scrollbar" style={{ borderRadius: 14 }}>
                   {tabs.map((tabItem) => (
                     <button
                       key={tabItem.id}
                       type="button"
                       onClick={() => { setTab(tabItem.id); setSearch(''); }}
-                      style={tab === tabItem.id ? { backgroundColor: activeHex } : undefined}
-                      className={`flex-1 whitespace-nowrap text-center text-xs font-black uppercase tracking-wide px-2.5 py-2 rounded-lg transition-all ${
+                      style={tab === tabItem.id ? { background: `linear-gradient(135deg, ${activeHex}, ${activeHex}d9)`, borderRadius: 10 } : { borderRadius: 10 }}
+                      className={`flex-1 flex items-center justify-center gap-1.5 whitespace-nowrap text-center text-xs font-black uppercase tracking-wide px-2.5 py-2 transition-all ${
                         tab === tabItem.id
-                          ? 'text-white shadow-sm'
-                          : 'text-slate-500 dark:text-slate-400'
+                          ? 'text-white shadow-md'
+                          : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white'
                       }`}
                     >
+                      <tabItem.icon className="w-3.5 h-3.5 flex-shrink-0" />
                       {translate(tabItem.label)}
                     </button>
                   ))}
                 </div>
 
-                {tab !== 'size' && tab !== 'language' && tab !== 'display' && (
+                {tab !== 'size' && tab !== 'display' && (
                   <div className="flex items-center gap-2 px-1">
                     <div className="relative flex-1 min-w-0">
                       <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -266,8 +295,8 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         type="text"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder={tab === 'theme' ? translate('Search theme...') : tab === 'targets' ? translate('Search exam...') : translate('Search font...')}
-                        className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:font-normal outline-none focus:ring-2 focus:ring-primary-500/50"
+                        placeholder={tab === 'theme' ? translate('Search theme...') : tab === 'targets' ? translate('Search exam...') : tab === 'language' ? translate('Search language...') : translate('Search font...')}
+                        className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:font-normal outline-none focus:ring-2 focus:ring-primary-500/50"
                       />
                     </div>
                     {tab === 'theme' && (
@@ -277,7 +306,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         aria-checked={followSystem}
                         onClick={() => dispatch(setFollowSystem(!followSystem))}
                         title={translate('Follow your device setting')}
-                        className="flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-black text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800"
+                        className="flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-black text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
                       >
                         <span className="whitespace-nowrap">{translate('Auto Dark / Light')}</span>
                         <span
@@ -295,7 +324,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               {tab === 'targets' && loggedIn && (
                 <>
                   <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-4">
-                    <p className="text-xs font-semibold text-slate-400 px-1 pb-3">
+                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-3 mb-3 border-b border-dashed border-slate-200 dark:border-slate-700">
                       {translate('Select the exams you are preparing for.')} {selectedExamIds.length ? translate('{count} selected.', { count: selectedExamIds.length }) : translate('Nothing selected means all exams.')}
                     </p>
                     {filteredExams.length === 0 && (
@@ -309,14 +338,12 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                             key={exam._id}
                             type="button"
                             onClick={() => toggleTargetExam(exam._id)}
-                            style={active ? { backgroundColor: activeHex, borderColor: activeHex } : undefined}
-                            className={`w-full flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border transition-all ${
-                              active ? 'text-white' : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary-500'
-                            }`}
+                            style={cardStyle(active, activeHex)}
+                            className={`${CARD_BASE} text-xs font-bold ${active ? CARD_ON : CARD_IDLE}`}
                           >
-                            <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
-                            {active && <Check className="w-3 h-3 flex-shrink-0" />}
+                            <span className={IDX}>{index + 1}.</span>
                             <span className="flex-1 text-left truncate">{exam.name}</span>
+                            {active && <CheckBadge hex={activeHex} />}
                           </button>
                         );
                       })}
@@ -346,7 +373,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'theme' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
-                  <p className="col-span-full text-xs font-semibold text-slate-400 px-1 pb-1">
+                  <p className="col-span-full text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-2 mb-1 border-b border-dashed border-slate-200 dark:border-slate-700">
                     {translate('Pick a colour with Dark or Light mode, or turn on Auto to follow your device.')}
                   </p>
                   {filteredThemeOptions.length === 0 && (
@@ -359,25 +386,19 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         key={option.key}
                         type="button"
                         onClick={() => handleSelectTheme(option)}
-                        style={isSelected ? { backgroundColor: option.hex } : undefined}
-                        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                          isSelected
-                            ? 'text-white'
-                            : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
-                        }`}
+                        style={cardStyle(isSelected, option.hex)}
+                        className={`${CARD_BASE} text-sm font-semibold ${isSelected ? CARD_ON : CARD_IDLE}`}
                       >
-                        <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
+                        <span className={IDX}>{index + 1}.</span>
                         <span
-                          className="w-5 h-5 rounded-full border-2 border-white/50 flex-shrink-0"
-                          style={{ backgroundColor: option.hex }}
-                        />
+                          className="relative w-10 h-10 overflow-hidden flex-shrink-0 flex items-start justify-center pt-1 ring-1 ring-black/10 dark:ring-white/10 shadow-sm"
+                          style={{ background: option.isDark ? '#0f172a' : '#ffffff', borderRadius: 10 }}
+                        >
+                          {option.isDark ? <Moon className="w-3.5 h-3.5" style={{ color: option.hex }} /> : <Sun className="w-3.5 h-3.5" style={{ color: option.hex }} />}
+                          <span className="absolute inset-x-0 bottom-0 h-3.5" style={{ background: `linear-gradient(90deg, ${option.hex}, ${option.hex}aa)` }} />
+                        </span>
                         <span className="flex-1 text-left truncate">{option.label}</span>
-                        {option.isDark ? (
-                          <Moon className={`w-3.5 h-3.5 flex-shrink-0 ${isSelected ? 'text-white/90' : 'text-slate-400'}`} />
-                        ) : (
-                          <Sun className={`w-3.5 h-3.5 flex-shrink-0 ${isSelected ? 'text-white/90' : 'text-slate-400'}`} />
-                        )}
-                        {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
+                        {isSelected && <CheckBadge hex={option.hex} />}
                       </button>
                     );
                   })}
@@ -386,7 +407,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'font' && (
                 <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
-                  <p className="text-xs font-semibold text-slate-400 px-1 pb-3">
+                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-3 mb-3 border-b border-dashed border-slate-200 dark:border-slate-700">
                     {translate('Choose a font for the whole website. Picking one also switches to that language.')}
                   </p>
                   {filteredFonts.length === 0 && (
@@ -401,17 +422,13 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                           key={item.code}
                           type="button"
                           onClick={() => handleSelectFont(item)}
-                          style={isSelected ? { backgroundColor: activeHex } : undefined}
-                          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                            isSelected
-                              ? 'text-white'
-                              : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
-                          }`}
+                          style={cardStyle(isSelected, activeHex)}
+                          className={`${CARD_BASE} text-sm font-semibold ${isSelected ? CARD_ON : CARD_IDLE}`}
                         >
-                          <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
-                          <Type className={`w-4 h-4 flex-shrink-0 ${isSelected ? 'text-white/90' : 'text-slate-400'}`} />
+                          <span className={IDX}>{index + 1}.</span>
+                          <Tile hex={activeHex}><Type className="w-4 h-4" /></Tile>
                           <span className="flex-1 text-left truncate">{item.font} - {item.label}</span>
-                          {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
+                          {isSelected && <CheckBadge hex={activeHex} />}
                         </button>
                       );
                     })}
@@ -422,36 +439,33 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'language' && (
                 <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
-                  <p className="text-xs font-semibold text-slate-400 px-1 pb-3">
+                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-3 mb-3 border-b border-dashed border-slate-200 dark:border-slate-700">
                     {translate('Choose your website language. Tests and quizzes are available in English and Hindi only.')}
                   </p>
                   <div className="grid grid-cols-1 xl:grid-cols-4 gap-2">
-                    {LANGUAGE_OPTIONS.map((option, index) => {
+                    {filteredLanguages.map((option, index) => {
                       const isSelected = option.code === lang;
                       return (
                         <button
                           key={option.code}
                           type="button"
                           onClick={() => handleSelectLanguage(option.code)}
-                          style={isSelected ? { backgroundColor: activeHex } : undefined}
-                          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
-                            isSelected
-                              ? 'text-white'
-                              : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
-                          }`}
+                          style={cardStyle(isSelected, activeHex)}
+                          className={`${CARD_BASE} ${isSelected ? CARD_ON : CARD_IDLE}`}
                         >
-                          <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
+                          <span className={IDX}>{index + 1}.</span>
+                          <Tile hex={activeHex} className="text-base"><span aria-hidden="true">{Array.from(option.native || option.label)[0]}</span></Tile>
                           <span className="flex-1 text-left">
                             <span className="block text-sm font-semibold">
                               {option.native}{option.speakers ? ' - Avg. Population' : ''}
                             </span>
                             {(option.native !== option.label || option.speakers) && (
-                              <span className={`block text-xs ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>
+                              <span className="block text-xs text-slate-500 dark:text-slate-400">
                                 {option.label}{option.speakers ? ` - ${option.speakers}` : ''}
                               </span>
                             )}
                           </span>
-                          {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
+                          {isSelected && <CheckBadge hex={activeHex} />}
                         </button>
                       );
                     })}
@@ -461,7 +475,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'display' && (
                 <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
-                  <p className="text-xs font-semibold text-slate-400 px-1 pb-3">
+                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-3 mb-3 border-b border-dashed border-slate-200 dark:border-slate-700">
                     {translate('Make the site lighter, calmer and easier to read. Each switch applies right away.')}
                   </p>
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
@@ -474,8 +488,10 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                           role="switch"
                           aria-checked={on}
                           onClick={() => dispatch(setDisplayPref({ key: item.key, value: !on }))}
-                          className="w-full flex items-center gap-3 px-3 py-3 rounded-xl text-left bg-slate-50 dark:bg-slate-800/60 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                          style={cardStyle(on, activeHex)}
+                          className={`${CARD_BASE} py-3 ${on ? CARD_ON : CARD_IDLE}`}
                         >
+                          <Tile hex={on ? activeHex : '#94a3b8'}>{React.createElement(item.icon || Zap, { className: 'w-4 h-4' })}</Tile>
                           <span className="flex-1 min-w-0">
                             <span className="block text-sm font-bold text-slate-800 dark:text-slate-100">{translate(item.label)}</span>
                             <span className="block text-xs font-medium text-slate-500 dark:text-slate-400 leading-snug mt-0.5">
@@ -498,7 +514,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'size' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
-                  <p className="col-span-full text-xs font-semibold text-slate-400 px-1 pb-1">
+                  <p className="col-span-full text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-2 mb-1 border-b border-dashed border-slate-200 dark:border-slate-700">
                     {translate('Choose how large the text appears across the website.')}
                   </p>
                   {TEXT_SIZE_PRESETS.map((preset, index) => {
@@ -508,22 +524,18 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         key={preset.id}
                         type="button"
                         onClick={() => handleSelectTextSize(preset.id)}
-                        style={isSelected ? { backgroundColor: activeHex } : undefined}
-                        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
-                          isSelected
-                            ? 'text-white'
-                            : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
-                        }`}
+                        style={cardStyle(isSelected, activeHex)}
+                        className={`${CARD_BASE} ${isSelected ? CARD_ON : CARD_IDLE}`}
                       >
-                        <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
-                        <span className="w-8 text-center font-black leading-none flex-shrink-0" style={{ fontSize: `${preset.px}px` }}>
+                        <span className={IDX}>{index + 1}.</span>
+                        <span className="w-12 h-10 flex items-center justify-center flex-shrink-0 font-black leading-none bg-slate-100 dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-700" style={{ fontSize: `${preset.px}px`, color: activeHex, borderRadius: 10 }}>
                           {translate('Aa')}
                         </span>
                         <span className="flex-1 text-left">
                           <span className="block text-sm font-semibold">{preset.shortLabel} — {preset.label}</span>
-                          <span className={`block text-xs ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>{preset.px}px</span>
+                          <span className="block text-xs text-slate-500 dark:text-slate-400">{preset.px}px</span>
                         </span>
-                        {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
+                        {isSelected && <CheckBadge hex={activeHex} />}
                       </button>
                     );
                   })}

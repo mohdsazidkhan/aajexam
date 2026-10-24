@@ -8,6 +8,7 @@ const BN = {
   'Language': 'ভাষা',
   'Search theme...': 'থিম খুঁজুন...',
   'Search font...': 'ফন্ট খুঁজুন...',
+  'Search language...': 'ভাষা খুঁজুন...',
   'Search exam...': 'পরীক্ষা খুঁজুন...',
   'No theme found': 'কোনো থিম পাওয়া যায়নি',
   'No font found': 'কোনো ফন্ট পাওয়া যায়নি',

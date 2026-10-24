@@ -8,6 +8,7 @@ const OR_ = {
   'Language': 'ଭାଷା',
   'Search theme...': 'ଥିମ୍ ଖୋଜନ୍ତୁ...',
   'Search font...': 'ଫଣ୍ଟ ଖୋଜନ୍ତୁ...',
+  'Search language...': 'ଭାଷା ଖୋଜନ୍ତୁ...',
   'Search exam...': 'ପରୀକ୍ଷା ଖୋଜନ୍ତୁ...',
   'No theme found': 'କୌଣସି ଥିମ୍ ମିଳିଲା ନାହିଁ',
   'No font found': 'କୌଣସି ଫଣ୍ଟ ମିଳିଲା ନାହିଁ',

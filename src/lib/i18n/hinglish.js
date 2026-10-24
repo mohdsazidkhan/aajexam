@@ -9,6 +9,7 @@ const HINGLISH = {
   'Language': 'Language',
   'Search theme...': 'Theme search karein...',
   'Search font...': 'Font search karein...',
+  'Search language...': 'Bhasha khojen...',
   'Search exam...': 'Exam search karein...',
   'No theme found': 'Koi theme nahi mili',
   'No font found': 'Koi font nahi mila',

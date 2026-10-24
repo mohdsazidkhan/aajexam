@@ -8,6 +8,7 @@ const SD = {
   'Language': 'ॿोली',
   'Search theme...': 'थीम ढूंढ्यो...',
   'Search font...': 'फोंट ढूंढ्यो...',
+  'Search language...': 'भाषा खोजियो...',
   'Search exam...': 'इम्तिहान ढूंढ्यो...',
   'No theme found': 'कोई थीम कोन लधी',
   'No font found': 'कोई फोंट कोन लधो',
