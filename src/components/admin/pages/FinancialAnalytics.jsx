@@ -98,15 +98,15 @@ const FinancialAnalytics = () => {
   };
 
   const statCardsSection = (
-    <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-4 mb-4 shrink-0">
+    <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-3 mb-4 shrink-0">
       {[
         { label: 'Total Revenue', val: `₹${(data?.overview?.totalRevenue || 0).toLocaleString('en-IN')}`, icon: IndianRupee },
         { label: 'Period Revenue', val: `₹${(data?.overview?.periodRevenue || 0).toLocaleString('en-IN')}`, icon: TrendingUp },
         { label: 'Subscription Plans', val: data?.subscriptionStats?.length || 0, icon: Layers },
         { label: 'Successful Payments', val: data?.paymentStats?.reduce((sum, p) => sum + p.count, 0) || 0, icon: CreditCard }
       ].map((stat) => (
-        <div key={stat.label} className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
-          <div className="p-2 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-4 h-4" /></div>
+        <div key={stat.label} className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0"><stat.icon className="w-4 h-4" /></div>
           <div className="min-w-0">
             <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.val}</div>
             <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
@@ -135,7 +135,7 @@ const FinancialAnalytics = () => {
   );
 
   const exportButton = (
-    <button onClick={handleExport} className="w-full flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700">
+    <button onClick={handleExport} className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110">
       <Download className="w-4 h-4" /> Export to CSV
     </button>
   );
@@ -188,7 +188,7 @@ const FinancialAnalytics = () => {
       render: (_, p) => {
         const idx = topRevenuePlans.indexOf(p);
         return (
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-sm ${idx === 0 ? 'bg-primary-600 text-white' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>{p.planName?.[0] || 'P'}</div>
             <div>
               <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter transition-colors">{p.planName || p._id || 'Unknown'}</div>
@@ -251,17 +251,17 @@ const FinancialAnalytics = () => {
                </div>
             ) : error ? (
               <div className="text-center py-32 bg-black/5 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-black/10 dark:border-white/10">
-                <Zap className="w-16 h-16 text-black dark:text-white mx-auto mb-6" />
+                <Zap className="w-16 h-16 text-black dark:text-white mx-auto mb-4" />
                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Something went wrong</h3>
                 <p className="text-black dark:text-white text-[10px] font-black uppercase tracking-widest">{error}</p>
               </div>
             ) : (
-              <div className="space-y-2 xl:space-y-4 xl:space-y-12">
+              <div className="space-y-2 xl:space-y-3 xl:space-y-12">
 
                 {/* Performance Grids */}
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-8">
-                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-8 shadow-sm relative">
-                    <div className="flex items-center justify-between mb-4 xl:mb-8">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-4">
+                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm relative">
+                    <div className="flex items-center justify-between mb-4 xl:mb-4">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Subscription Tiers</h3>
                        <PieChart className="w-5 h-5 text-primary-600 opacity-30" />
                     </div>
@@ -270,8 +270,8 @@ const FinancialAnalytics = () => {
                     </div>
                   </motion.div>
 
-                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-8 shadow-sm relative">
-                    <div className="flex items-center justify-between mb-4 xl:mb-8">
+                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm relative">
+                    <div className="flex items-center justify-between mb-4 xl:mb-4">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Revenue Over Time</h3>
                        <BarChart3 className="w-5 h-5 text-primary-600 opacity-30" />
                     </div>
@@ -282,10 +282,10 @@ const FinancialAnalytics = () => {
                 </div>
 
                 {/* Subscriptions Deep Dive */}
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-8 shadow-sm overflow-hidden">
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm overflow-hidden">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-4">
-                       <div className="p-3 bg-primary-500/10 text-primary-600 rounded-2xl"><Activity className="w-6 h-6" /></div>
+                    <div className="flex items-center gap-3">
+                       <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl"><Activity className="w-6 h-6" /></div>
                        <div>
                         <h3 className="text-[14px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] leading-none mb-1">Plan Performance Breakdown</h3>
                         <span className="text-[9px] font-black text-slate-400 tracking-widest uppercase italic">Revenue breakdown by subscription plan</span>

@@ -70,7 +70,7 @@ export default function AdminsPage() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search admins by name or email..."
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -83,7 +83,7 @@ export default function AdminsPage() {
 
   if (loading && admins.length === 0) {
     return (
-      <div className="min-h-screen p-3 xl:p-8">
+      <div className="min-h-screen p-3 xl:p-5">
         <AdminTableSkeleton showHeader={false} showFilters={false} />
       </div>
     );
@@ -92,7 +92,7 @@ export default function AdminsPage() {
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       {isMounted && <Sidebar />}
-      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-4">
+      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         {/* Title + filters live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
         <div className="flex-1 min-h-0 overflow-auto">
@@ -104,7 +104,7 @@ export default function AdminsPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
               >
-                <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 xl:mb-8 shadow-sm">
+                <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 xl:mb-4 shadow-sm">
                   <ShieldCheck className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                 </div>
                 <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Admins Found</h3>
@@ -119,7 +119,7 @@ export default function AdminsPage() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: Math.min(i, 10) * 0.03 }}
-                      className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex items-center gap-4 flex-wrap sm:flex-nowrap"
+                      className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex items-center gap-3 flex-wrap sm:flex-nowrap shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
                     >
                       <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center shrink-0">
                         <ShieldCheck className="w-5 h-5 text-white" />

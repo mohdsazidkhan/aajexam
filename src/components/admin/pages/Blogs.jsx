@@ -144,7 +144,7 @@ const AdminBlogs = () => {
     const cfg = {
       published: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300',
       draft: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
-      archived: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
+      archived: 'bg-gray-100 text-gray-800 dark:bg-slate-700 dark:text-gray-300'
     };
     return (
       <span className={`px-2 py-1 rounded-full text-xs font-medium ${cfg[status] || cfg.draft}`}>
@@ -212,7 +212,7 @@ const AdminBlogs = () => {
   ];
 
   const renderTableView = () => (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col">
+    <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
       <ResponsiveTable
         data={blogs}
         columns={blogTableColumns}
@@ -226,14 +226,14 @@ const AdminBlogs = () => {
   );
 
   const renderGridView = () => (
-    <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-3">
       {blogs.map((blog, idx) => {
         const serialNumber = (currentPage - 1) * itemsPerPage + idx + 1;
         return (
-        <div key={blog._id} className="bg-white dark:bg-gray-800 rounded-lg xl:rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
+        <div key={blog._id} className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
           <div className="relative mb-3">
             <img src={blog.featuredImage || '/default_banner.png'} alt={blog.title} className="w-full h-40 rounded-lg object-cover" />
-            <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
+            <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
           </div>
           <div className="flex items-start justify-between gap-2">
             <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2">{blog.title}</h3>
@@ -273,10 +273,10 @@ const AdminBlogs = () => {
       {blogs.map((blog, idx) => {
         const serialNumber = (currentPage - 1) * itemsPerPage + idx + 1;
         return (
-        <div key={blog._id} className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm flex items-start gap-4">
+        <div key={blog._id} className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 flex items-start gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
           <div className="relative w-16 h-16 flex-shrink-0">
             <img src={blog.featuredImage || '/default_banner.png'} alt={blog.title} className="w-16 h-16 rounded-lg object-cover" />
-            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
+            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
@@ -286,7 +286,7 @@ const AdminBlogs = () => {
               {blog.isPinned && <Pin className="w-3 h-3 text-black dark:text-white fill-black dark:fill-white" />}
             </div>
             <div className="mt-0.5 text-xs text-black dark:text-white break-all"><code>/blog/{blog.slug}</code></div>
-            <div className="mt-1 text-xs text-gray-500 dark:text-gray-400 flex gap-4">
+            <div className="mt-1 text-xs text-gray-500 dark:text-gray-400 flex gap-3">
               <span>{blog.exam?.name || 'N/A'}</span>
               <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {blog.views || 0}</span>
               <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {blog.likes || 0}</span>
@@ -310,7 +310,7 @@ const AdminBlogs = () => {
 
   const searchInput = (
     <input type="text" name="search" value={filters.search} onChange={handleFilterChange} placeholder="Search blogs..."
-      className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm w-full" />
+      className="px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm w-full" />
   );
 
   const statusSelect = (
@@ -370,7 +370,7 @@ const AdminBlogs = () => {
     <motion.button
       whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
       onClick={() => router.push('/admin/blogs/create')}
-      className="w-full px-4 xl:px-6 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
+      className="w-full px-4 xl:px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
     >
       <Plus className="w-4 h-4" /> NEW BLOG
     </motion.button>

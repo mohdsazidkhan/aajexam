@@ -73,7 +73,7 @@ const AdminNavbar = () => {
               className={`hidden xl:flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 shrink-0 ${
                 isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-primary-600 text-white shadow-sm hover:scale-105'
+                  : 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-md hover:scale-105'
               }`}
             >
               {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -111,7 +111,7 @@ const AdminNavbar = () => {
               <button
                 onClick={() => setDrawerOpen(true)}
                 aria-label="Open filters"
-                className="flex w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
+                className="flex w-8 h-8 rounded-lg bg-primary-50 ring-1 ring-primary-200 dark:bg-slate-800 dark:ring-white/10 items-center justify-center text-primary-700 dark:text-primary-200 hover:text-primary-900 dark:hover:text-white hover:shadow-md transition-all flex-shrink-0"
               >
                 <Filter className="w-3.5 h-3.5" />
               </button>
@@ -121,7 +121,7 @@ const AdminNavbar = () => {
             <Link
               href="/admin/notifications"
               aria-label="Notifications"
-              className="hidden xl:flex relative w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
+              className="hidden xl:flex relative w-8 h-8 rounded-lg bg-primary-50 ring-1 ring-primary-200 dark:bg-slate-800 dark:ring-white/10 items-center justify-center text-primary-700 dark:text-primary-200 hover:text-primary-900 dark:hover:text-white hover:shadow-md transition-all flex-shrink-0"
             >
               <Bell className="w-3.5 h-3.5" />
               {notifCount > 0 && (
@@ -132,7 +132,7 @@ const AdminNavbar = () => {
             </Link>
 
             {/* Theme colour + dark mode */}
-            <ThemeColorMenuButton buttonClassName="flex w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0" />
+            <ThemeColorMenuButton buttonClassName="flex w-8 h-8 rounded-lg bg-primary-50 ring-1 ring-primary-200 dark:bg-slate-800 dark:ring-white/10 items-center justify-center text-primary-700 dark:text-primary-200 hover:text-primary-900 dark:hover:text-white hover:shadow-md transition-all flex-shrink-0" />
 
             {/* Profile avatar */}
             <button
@@ -156,7 +156,7 @@ const AdminNavbar = () => {
               className={`xl:hidden flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${
                 isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-primary-600 text-white shadow-sm'
+                  : 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-md'
               }`}
             >
               {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -175,7 +175,7 @@ const AdminNavbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               role="menu"
-              className="fixed top-12 xl:top-16 right-3 xl:right-8 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-sm z-[170]"
+              className="fixed top-12 xl:top-16 right-3 xl:right-8 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-2xl z-[170]"
             >
               {/* User info */}
               <div className="px-3 py-2.5 mb-1 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-800/50">

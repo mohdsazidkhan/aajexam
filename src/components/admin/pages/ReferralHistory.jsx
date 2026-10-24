@@ -157,7 +157,7 @@ export default function ReferralHistory() {
       render: (_, tx) => (
         tx.invitee ? (
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary-500/10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs border border-primary-500/20">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs border border-primary-500/20">
               <User className="w-5 h-5" />
             </div>
             <div>
@@ -202,16 +202,16 @@ export default function ReferralHistory() {
   ];
 
   const summaryCards = summary && (
-    <div className="grid grid-cols-2 xl:flex xl:flex-wrap gap-2 xl:gap-4 mb-4 shrink-0">
-      <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
-        <div className="p-2 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><DollarSign className="w-4 h-4" /></div>
+    <div className="grid grid-cols-2 xl:flex xl:flex-wrap gap-2 xl:gap-3 mb-4 shrink-0">
+      <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0"><DollarSign className="w-4 h-4" /></div>
         <div className="min-w-0">
           <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.totalRewards?.toLocaleString() || 0}</div>
           <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Rewards</div>
         </div>
       </div>
-      <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
-        <div className="p-2 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><Award className="w-4 h-4" /></div>
+      <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0"><Award className="w-4 h-4" /></div>
         <div className="min-w-0">
           <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.plan99Rewards?.toLocaleString() || 0}</div>
           <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Plan 99</div>
@@ -228,7 +228,7 @@ export default function ReferralHistory() {
         value={searchTerm}
         onChange={(e) => handleSearch(e.target.value)}
         placeholder="Search..."
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -300,7 +300,7 @@ export default function ReferralHistory() {
             <p className="text-sm text-slate-400 mt-2">No referral transactions found for the selected filter. Try a different filter.</p>
           </div>
         ) : (
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
             <ResponsiveTable data={transactions} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
           </div>
         )}

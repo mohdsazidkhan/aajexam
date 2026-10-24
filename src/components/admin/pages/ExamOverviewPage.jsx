@@ -52,7 +52,7 @@ const StatCard = ({ title, count, icon: Icon, color }) => (
 );
 
 const ExamDetails = ({ exam }) => (
-  <div className="p-6 flex flex-col gap-6 bg-slate-50/50 dark:bg-slate-900/30 border-t border-slate-200 dark:border-white/10">
+  <div className="p-4 flex flex-col gap-3 bg-slate-50/50 dark:bg-slate-900/30 border-t border-slate-200 dark:border-white/10">
 
     {/* Patterns */}
     <div>
@@ -145,7 +145,7 @@ const ExamDetails = ({ exam }) => (
     {/* Questions */}
     <div>
       <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><HelpCircle className="w-3 h-3" /> Questions ({formatNumber(exam.counts.questions)})</h4>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg p-4 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
         <div className="flex flex-col">
           <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Mock Tests</span>
           <span className="text-sm font-bold text-black dark:text-white mt-0.5">{formatNumber(exam.counts.mockQuestions)} Qs</span>
@@ -278,7 +278,7 @@ const ExamOverviewPage = () => {
         placeholder="Search exams, subjects, topics..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:border-primary-700"
+        className="w-full pl-10 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:border-primary-600"
       />
     </div>
   );
@@ -322,8 +322,8 @@ const ExamOverviewPage = () => {
       <div className="flex flex-col items-center justify-center min-h-[80vh] text-center">
         <AlertCircle className="w-16 h-16 text-black dark:text-white mb-4" />
         <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Error Loading Overview</h2>
-        <p className="text-slate-500 dark:text-slate-400 mb-6">{error}</p>
-        <button onClick={fetchData} className="px-6 py-2 bg-primary-600 text-white rounded-lg font-bold">Try Again</button>
+        <p className="text-slate-500 dark:text-slate-400 mb-4">{error}</p>
+        <button onClick={fetchData} className="px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg font-bold">Try Again</button>
       </div>
     );
   }
@@ -336,7 +336,7 @@ const ExamOverviewPage = () => {
       {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
       {/* Overall Statistics */}
-      <div className="grid grid-cols-2 xl:grid-cols-5 gap-4 mb-4">
+      <div className="grid grid-cols-2 xl:grid-cols-5 gap-3 mb-4">
         <StatCard title="Exam Categories" count={overallStats.categories} icon={Layers} color="indigo" />
         <StatCard title="Exams" count={overallStats.exams} icon={GraduationCap} color="blue" />
         <StatCard title="Exam Patterns" count={overallStats.patterns} icon={LayoutDashboard} color="cyan" />
@@ -378,7 +378,7 @@ const ExamOverviewPage = () => {
               <tbody>
                 {filteredExams.length === 0 ? (
                   <tr>
-                    <td colSpan="13" className="p-8 text-center text-slate-500">No exams found matching your criteria.</td>
+                    <td colSpan="13" className="p-5 text-center text-slate-500">No exams found matching your criteria.</td>
                   </tr>
                 ) : (
                   filteredExams.map((exam) => {
@@ -460,18 +460,18 @@ const ExamOverviewPage = () => {
         {viewMode === 'list' && (
           <div className="p-4 flex flex-col gap-3">
             {filteredExams.length === 0 ? (
-              <div className="p-8 text-center text-slate-500">No exams found matching your criteria.</div>
+              <div className="p-5 text-center text-slate-500">No exams found matching your criteria.</div>
             ) : (
               filteredExams.map((exam, idx) => {
                 const isExpanded = expandedRows.has(exam._id);
                 const serialNumber = idx + 1;
                 return (
                   <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30">
-                    <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                      <div className="flex items-center gap-4">
-                        <div className="relative w-10 h-10 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0">
+                    <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="relative w-10 h-10 rounded-lg bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow flex items-center justify-center shrink-0">
                           <GraduationCap className="w-5 h-5" />
-                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-900">{serialNumber}</span>
+                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-900">{serialNumber}</span>
                         </div>
                         <div>
                           <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -540,17 +540,17 @@ const ExamOverviewPage = () => {
 
         {/* GRID VIEW */}
         {viewMode === 'grid' && (
-          <div className="p-0 xl:p-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="p-0 xl:p-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
             {filteredExams.length === 0 ? (
-              <div className="col-span-full p-8 text-center text-slate-500">No exams found matching your criteria.</div>
+              <div className="col-span-full p-5 text-center text-slate-500">No exams found matching your criteria.</div>
             ) : (
               filteredExams.map((exam, idx) => {
                 const isExpanded = expandedRows.has(exam._id);
                 const serialNumber = idx + 1;
                 return (
-                  <div key={exam._id} className="relative border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30 flex flex-col">
-                    <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
-                    <div className="p-5 flex-1 flex flex-col">
+                  <div key={exam._id} className="relative border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30 flex flex-col shadow-md before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                    <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
+                    <div className="p-4 flex-1 flex flex-col">
                       <div className="flex justify-between items-start mb-4">
                         <div>
                           <h3 className="font-bold text-slate-900 dark:text-white text-lg leading-tight mb-1">{exam.name}</h3>
@@ -563,7 +563,7 @@ const ExamOverviewPage = () => {
                         )}
                       </div>
 
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6 mt-auto">
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4 mt-auto">
                         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Patterns</div>
                           <div className="text-lg font-bold text-black dark:text-white leading-none">{exam.counts.patterns}</div>

@@ -129,7 +129,7 @@ const AdminStudyPlanPage = () => {
         placeholder="Search by username, name, email, exam..."
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -198,7 +198,7 @@ const AdminStudyPlanPage = () => {
                   <ResponsiveTable data={plans} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
                 </Card>
               ) : viewMode === 'grid' ? (
-                <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
+                <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                   {plans.map((plan) => (
                     <Card key={plan._id} className="flex flex-col gap-2 relative">
                       <button
@@ -230,10 +230,10 @@ const AdminStudyPlanPage = () => {
                   ))}
                 </div>
               ) : (
-                <div className="h-full overflow-auto space-y-2 xl:space-y-4">
+                <div className="h-full overflow-auto space-y-2 xl:space-y-3">
                   {plans.map((plan) => (
                     <Card key={plan._id} className="">
-                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                         <div>
                           <div className="text-sm text-slate-400 uppercase tracking-[0.2em]">{plan.exam?.name || 'Unknown Exam'}</div>
                           <h2 className="text-xl font-black text-slate-900 dark:text-white">{plan.title || 'Study Plan'}</h2>

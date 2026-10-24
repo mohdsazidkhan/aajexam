@@ -195,7 +195,7 @@ const Sidebar = () => {
       <nav ref={navRef} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium relative z-10">
         {displaySections.map((section, idx) => (
           <div key={idx}>
-            <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-3 mb-2">
+            <h3 className="text-[11px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-[0.3em] px-3 mb-2">
               {section.title}
             </h3>
             <div className="space-y-0.5">
@@ -204,11 +204,11 @@ const Sidebar = () => {
                 return (
                   <Link key={itemIdx} href={item.path} onClick={() => handleNavClick(item.key)} data-active={isActiveRoute(item.path) ? 'true' : undefined}>
                     <button className={`w-full flex items-center gap-3 px-3 py-2 transition-all duration-200 relative group overflow-hidden ${active
-                      ? 'text-white'
-                      : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                      ? 'text-primary-950'
+                      : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-primary-800 hover:bg-primary-50'
                       }`}>
                       {active && (
-                        <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-primary-600 shadow-sm" />
+                        <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 shadow-md" />
                       )}
                       <item.icon className="w-4 h-4 relative z-10 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
                       <span className="text-[11px] xl:text-[13px] font-bold tracking-wide relative z-10 uppercase">{item.label}</span>
@@ -228,7 +228,7 @@ const Sidebar = () => {
       <div className="p-4 border-t border-slate-100 dark:border-white/5 space-y-2">
         <Link href="/admin/profile" onClick={() => handleNavClick('profile')}>
           <button className={`w-full py-3 rounded-lg xl:rounded-xl text-[11px] font-bold tracking-wide transition-colors flex items-center justify-center gap-2 group ${isActiveRoute('/admin/profile')
-            ? 'bg-primary-600 text-white'
+            ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow'
             : 'bg-slate-100 dark:bg-white/10 text-black dark:text-white hover:bg-slate-200 dark:hover:bg-white/20'
             }`}>
             <User className="w-4 h-4" /> PROFILE
@@ -236,7 +236,7 @@ const Sidebar = () => {
         </Link>
         <button
           onClick={() => secureLogout(router)}
-          className="w-full py-3 rounded-lg xl:rounded-xl bg-red-500 hover:bg-red-600 text-white text-[11px] font-bold tracking-wide transition-colors flex items-center justify-center gap-2 group"
+          className="w-full py-3 rounded-lg xl:rounded-xl bg-gradient-to-r from-red-500 to-red-600 hover:brightness-110 text-white text-[11px] font-black tracking-wide shadow-md transition-all flex items-center justify-center gap-2 group"
         >
           <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> LOG OUT
         </button>

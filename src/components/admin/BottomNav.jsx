@@ -23,18 +23,18 @@ import {
 import { m as motion, AnimatePresence } from 'framer-motion';
 
 const REEL_TYPES = [
-  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'MCQ with explanation' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Quick fact or one-liner' },
-  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Shortcut or formula' },
-  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Community poll' },
+  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'MCQ with explanation' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Quick fact or one-liner' },
+  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Shortcut or formula' },
+  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Daily CA card' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Community poll' },
 ];
 
 const CONTENT_TYPES = [
-  { path: '/admin/quiz/questions', label: 'Quiz Question', icon: BrainCircuit, gradient: 'bg-slate-900 dark:bg-white', iconColor: 'text-white dark:text-slate-900', desc: 'Add a question to a quiz' },
-  { path: '/admin/blogs/create', label: 'Blog', icon: PenSquare, gradient: 'bg-slate-900 dark:bg-white', iconColor: 'text-white dark:text-slate-900', desc: 'Write a new blog post' },
-  { path: '/admin/current-affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-slate-900 dark:bg-white', iconColor: 'text-white dark:text-slate-900', desc: 'Add a current affairs entry' },
-  { path: '/admin/pyq/create', label: 'PYQ Paper', icon: FileText, gradient: 'bg-slate-900 dark:bg-white', iconColor: 'text-white dark:text-slate-900', desc: 'Add a previous year paper' },
+  { path: '/admin/quiz/questions', label: 'Quiz Question', icon: BrainCircuit, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Add a question to a quiz' },
+  { path: '/admin/blogs/create', label: 'Blog', icon: PenSquare, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Write a new blog post' },
+  { path: '/admin/current-affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Add a current affairs entry' },
+  { path: '/admin/pyq/create', label: 'PYQ Paper', icon: FileText, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Add a previous year paper' },
 ];
 
 const AdminBottomNav = () => {
@@ -164,8 +164,8 @@ const AdminBottomNav = () => {
                 onClick={() => setShowCreate((prev) => !prev)}
                 className="flex-1 min-w-0 flex items-center justify-center -translate-y-5"
               >
-                <div className="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center shadow-lg">
-                  {showCreate ? <X className="w-6 h-6 text-white" /> : <Plus className="w-7 h-7 text-white" />}
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary-300 to-primary-500 ring-4 ring-white dark:ring-black flex items-center justify-center shadow-lg">
+                  {showCreate ? <X className="w-6 h-6 text-primary-950" /> : <Plus className="w-7 h-7 text-primary-950" />}
                 </div>
               </button>
             );
@@ -175,7 +175,7 @@ const AdminBottomNav = () => {
           return (
             <Link key={item.path} href={item.path} className="flex-1 min-w-0 flex justify-center" aria-current={isActive ? 'page' : undefined}>
               <div className={`w-full flex flex-col items-center justify-center gap-0.5 transition-all ${
-                isActive ? 'bg-primary-600 text-white' : 'text-slate-400 dark:text-slate-500'
+                isActive ? 'bg-gradient-to-t from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950' : 'text-slate-400 dark:text-slate-500'
               }`}>
                 <span className="relative inline-flex">
                   <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />

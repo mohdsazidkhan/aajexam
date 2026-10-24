@@ -157,7 +157,7 @@ const AdminMostActiveUsers = () => {
         },
         {
             key: 'user', header: 'User', render: (_, u) => (
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm uppercase">
                         {u.name?.[0]?.toUpperCase() || 'U'}
                     </div>
@@ -217,7 +217,7 @@ const AdminMostActiveUsers = () => {
                 placeholder="Search name, username, email, phone..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+                className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
             />
         </div>
     );
@@ -289,7 +289,7 @@ const AdminMostActiveUsers = () => {
 
     if (loading && users.length === 0) {
         return (
-            <div className="min-h-screen p-3 xl:p-8">
+            <div className="min-h-screen p-3 xl:p-5">
                 <AdminDashboardSkeleton />
             </div>
         );
@@ -339,7 +339,7 @@ const AdminMostActiveUsers = () => {
                         ) : (
                             <div className="space-y-2">
                                 {(detailTab === 'quizzes' ? detail.quizzes : detail.exams).map((a) => (
-                                    <div key={a.id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                                    <div key={a.id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                         <div className="flex-1 min-w-0">
                                             <div className="text-sm font-bold text-slate-900 dark:text-white truncate">{a.title}</div>
                                             <div className="text-[10px] text-slate-400">{formatDateTime(a.date)}</div>
@@ -377,7 +377,7 @@ const AdminMostActiveUsers = () => {
                             { label: "Time Spent", value: formatDuration(summary.totalTimeSpent), icon: Clock }
                         ].map((stat) => (
                             <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-                                <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+                                <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
                                 <div className="min-w-0">
                                     <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">{stat.value}</div>
                                     <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
@@ -395,7 +395,7 @@ const AdminMostActiveUsers = () => {
                                     animate={{ opacity: 1, scale: 1 }}
                                     className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                                 >
-                                    <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 xl:mb-8" />
+                                    <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 xl:mb-4" />
                                     <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO DATA FOUND</h3>
                                     <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No activity found for this period.</p>
                                 </motion.div>
@@ -409,7 +409,7 @@ const AdminMostActiveUsers = () => {
                                     {viewMode === 'grid' && (
                                         <div className="grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                                             {pagedUsers.map((u) => (
-                                                <div key={u.userId} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+                                                <div key={u.userId} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                     <div className="flex items-start justify-between gap-2">
                                                         <div className="relative w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-sm">
                                                             {u.name?.[0]?.toUpperCase() || 'U'}
@@ -447,7 +447,7 @@ const AdminMostActiveUsers = () => {
                                     {viewMode === 'list' && (
                                         <div className="space-y-3">
                                             {pagedUsers.map((u) => (
-                                                <div key={u.userId} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-4">
+                                                <div key={u.userId} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                     <div className="relative w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center shrink-0 font-black text-sm">
                                                         {u.name?.[0]?.toUpperCase() || 'U'}
                                                         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{u.rank}</span>
@@ -457,7 +457,7 @@ const AdminMostActiveUsers = () => {
                                                             <h3 className="text-sm font-bold text-slate-900 dark:text-white">{u.name || 'Unknown'}</h3>
                                                             {u.rank <= 3 && <Trophy className="w-4 h-4 text-primary-600" />}
                                                         </div>
-                                                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-slate-400">
+                                                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-slate-400">
                                                             <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5" /> {u.email}</span>
                                                             <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> Last active {formatDate(u.lastActive)}</span>
                                                             <span className="flex items-center gap-1"><Flame className="w-3.5 h-3.5" /> {u.currentStreak} (best {u.longestStreak})</span>
@@ -483,7 +483,7 @@ const AdminMostActiveUsers = () => {
                                     )}
 
                                     {viewMode === 'table' && (
-                                        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
+                                        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                             <ResponsiveTable data={pagedUsers} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} emptyMessage="No activity found" fillHeight />
                                         </div>
                                     )}

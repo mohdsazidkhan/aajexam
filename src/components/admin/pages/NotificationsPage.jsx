@@ -196,14 +196,14 @@ const AdminNotificationsPage = () => {
   const clearAllButton = (
     <button
       onClick={handleClearAll}
-      className="w-full px-4 xl:px-6 py-2.5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-black dark:text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all flex items-center justify-center gap-2 active:scale-95"
+      className="w-full px-4 xl:px-4 py-2.5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-black dark:text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all flex items-center justify-center gap-2 active:scale-95"
     >
       <Trash2 className="w-4 h-4" /> Clear All
     </button>
   );
 
   const paginationControl = totalPages > 1 && (
-    <div className="flex justify-center items-center gap-4 text-[10px] font-black uppercase tracking-widest">
+    <div className="flex justify-center items-center gap-3 text-[10px] font-black uppercase tracking-widest">
       <button aria-label="Previous"
         onClick={handlePrev}
         disabled={page <= 1}
@@ -241,7 +241,7 @@ const AdminNotificationsPage = () => {
 
   if (loading && items.length === 0) {
     return (
-      <div className="min-h-screen p-3 xl:p-8">
+      <div className="min-h-screen p-3 xl:p-5">
         <AdminTableSkeleton showHeader={false} showFilters={false} />
       </div>
     );
@@ -259,16 +259,16 @@ const AdminNotificationsPage = () => {
             className="mb-4"
           >
             {typeCounts.filter((tc) => tc.count > 0).length > 0 && (
-              <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-4">
+              <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-3">
                 {typeCounts.filter((tc) => tc.count > 0).map((tc) => (
                   <button
                     type="button"
                     key={tc.type}
                     onClick={() => setTypeFilter((cur) => (cur === tc.type ? '' : tc.type))}
                     aria-pressed={typeFilter === tc.type}
-                    className={`group relative overflow-hidden flex items-center gap-3 px-4 xl:px-5 py-4 bg-white/80 dark:bg-white/5 border-2 rounded-lg xl:rounded-[2rem] shadow-sm hover:border-primary-500/30 hover:scale-[1.02] transition-all text-left ${typeFilter === tc.type ? 'border-primary-600' : 'border-slate-100 dark:border-white/10'}`}
+                    className={`group relative overflow-hidden flex items-center gap-3 px-4 xl:px-4 py-2.5 bg-white/80 dark:bg-white/5 border-2 rounded-lg xl:rounded-[2rem] shadow-sm hover:border-primary-500/30 hover:scale-[1.02] transition-all text-left ${typeFilter === tc.type ? 'border-primary-600' : 'border-slate-100 dark:border-white/10'}`}
                   >
-                    <div className="p-2 xl:p-3 rounded-xl xl:rounded-2xl bg-primary-600 text-white shadow-sm shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="p-2 xl:p-3 rounded-xl xl:rounded-2xl bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white shadow-sm shrink-0 group-hover:scale-110 transition-transform">
                       {getIconByType(tc.type, 'w-3.5 h-3.5 xl:w-5 xl:h-5')}
                     </div>
                     <div className="min-w-0">
@@ -295,7 +295,7 @@ const AdminNotificationsPage = () => {
                  animate={{ opacity: 1, scale: 1 }}
                  className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                >
-                 <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 xl:mb-8 shadow-sm">
+                 <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 xl:mb-4 shadow-sm">
                    <Bell className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Notifications</h3>
@@ -306,7 +306,7 @@ const AdminNotificationsPage = () => {
                  key="stream"
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
-                 className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-8"
+                 className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-4"
                >
                  {items.map((n, i) => {
                    const href = typeToPath[n.type] || '/admin/notifications';
@@ -328,9 +328,9 @@ const AdminNotificationsPage = () => {
                        }}
                        className="group relative rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-primary-500/30 p-2 xl:p-4 cursor-pointer transition-all shadow-sm hover:scale-[1.02] flex flex-col bg-primary-500/5 dark:bg-primary-500/10 active-signal"
                      >
-                        <div className="flex items-center justify-between gap-4 mb-4 xl:mb-6">
-                           <div className="flex items-center gap-4 min-w-0">
-                              <div className="p-3 rounded-2xl bg-primary-600 text-white shadow-sm transition-colors">
+                        <div className="flex items-center justify-between gap-3 mb-4 xl:mb-4">
+                           <div className="flex items-center gap-3 min-w-0">
+                              <div className="p-3 rounded-2xl bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white shadow-sm transition-colors">
                                  {getIconByType(n.type)}
                               </div>
                               <div>

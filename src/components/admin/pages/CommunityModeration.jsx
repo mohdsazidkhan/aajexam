@@ -112,7 +112,7 @@ export default function CommunityModeration() {
   const renderActions = (item, isBusy) => (
     <div className="flex items-center gap-1.5 shrink-0">
       {item.status !== 'approved' && (
-        <button disabled={isBusy} onClick={() => updateStatus(item._id, 'approved')} title="Approve" className="p-2 bg-primary-50 dark:bg-primary-500/10 text-primary-600 rounded-lg hover:bg-primary-600 hover:text-white transition-all disabled:opacity-50">
+        <button disabled={isBusy} onClick={() => updateStatus(item._id, 'approved')} title="Approve" className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg hover:bg-primary-600 hover:text-white transition-all disabled:opacity-50">
           <Check className="w-4 h-4" />
         </button>
       )}
@@ -166,7 +166,7 @@ export default function CommunityModeration() {
         value={searchTerm}
         onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
         placeholder="Search questions..."
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -175,7 +175,7 @@ export default function CommunityModeration() {
     <select
       value={status}
       onChange={(e) => { setStatus(e.target.value); setPage(1); }}
-      className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700"
+      className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
     >
       <option value="">All statuses</option>
       <option value="pending">Pending ({statusCounts.pending || 0})</option>
@@ -226,7 +226,7 @@ export default function CommunityModeration() {
 
   if (loading && items.length === 0) {
     return (
-      <div className="min-h-screen p-3 xl:p-8">
+      <div className="min-h-screen p-3 xl:p-5">
         <AdminTableSkeleton showHeader={false} showFilters={false} />
       </div>
     );
@@ -235,7 +235,7 @@ export default function CommunityModeration() {
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       {isMounted && <Sidebar />}
-      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-4">
+      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
 
         {/* Title + filters live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
@@ -248,7 +248,7 @@ export default function CommunityModeration() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
               >
-                <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 xl:mb-8 shadow-sm">
+                <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 xl:mb-4 shadow-sm">
                   <MessageCircle className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                 </div>
                 <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">Nothing to Review</h3>
@@ -268,7 +268,7 @@ export default function CommunityModeration() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: Math.min(i, 10) * 0.03 }}
-                      className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3"
+                      className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
                     >
                       <div className="flex items-start justify-between gap-3 flex-wrap">
                         <div className="flex items-center gap-2 flex-wrap">
@@ -292,7 +292,7 @@ export default function CommunityModeration() {
                           ))}
                         </div>
                       )}
-                      <div className="flex items-center gap-4 text-[11px] font-bold text-slate-400">
+                      <div className="flex items-center gap-3 text-[11px] font-bold text-slate-400">
                         <span>{item.exam?.name || 'General'}</span>
                         <span>{item.answerCount || 0} answers</span>
                         <span>{item.views || 0} views</span>

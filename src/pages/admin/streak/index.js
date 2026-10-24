@@ -79,7 +79,7 @@ const AdminStreakPage = () => {
         placeholder="Search by name, email, username..."
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -150,11 +150,11 @@ const AdminStreakPage = () => {
                       <ResponsiveTable data={rankedLeaderboard} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
                     </Card>
                   ) : viewMode === 'grid' ? (
-                    <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
+                    <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                       {rankedLeaderboard.map((entry, i) => (
                         <Card key={entry._id || i} className="flex flex-col gap-3">
                           <div className="flex items-start justify-between gap-2">
-                            <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0"><Flame className="w-5 h-5" /></div>
+                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow flex items-center justify-center shrink-0"><Flame className="w-5 h-5" /></div>
                             <span className="text-[10px] font-black text-slate-400">#{entry.rank}</span>
                           </div>
                           <div>
@@ -172,13 +172,13 @@ const AdminStreakPage = () => {
                   ) : (
                     <div className="h-full overflow-auto space-y-3">
                       {rankedLeaderboard.map((entry, i) => (
-                        <Card key={entry._id || i} className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <Card key={entry._id || i} className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                           <div>
                             <div className="text-xs uppercase tracking-[0.2em] text-slate-400">#{entry.rank}</div>
                             <h2 className="text-lg font-black text-slate-900 dark:text-white">{entry.user?.name || entry.user?.username || 'Unknown'}</h2>
                             <p className="text-sm text-slate-500 dark:text-slate-400">Current streak: <span className="font-bold text-black dark:text-white">{entry.currentStreak}</span></p>
                           </div>
-                          <div className="flex items-center gap-6 text-sm text-slate-600 dark:text-slate-300">
+                          <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
                             <div><span className="font-black text-slate-900 dark:text-white">{entry.totalActiveDays}</span> active days</div>
                             <div><span className="font-black text-slate-900 dark:text-white">{entry.longestStreak}</span> longest streak</div>
                           </div>

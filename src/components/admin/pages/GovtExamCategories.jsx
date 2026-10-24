@@ -225,7 +225,7 @@ const AdminGovtExamCategories = () => {
   const addCategoryButton = (
     <button
       onClick={handleCreate}
-      className="w-full px-4 py-2.5 bg-primary-600 text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all outline-none"
+      className="w-full px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all outline-none"
     >
       <Plus className="w-5 h-5" /> ADD CATEGORY
     </button>
@@ -275,7 +275,7 @@ const AdminGovtExamCategories = () => {
               animate={{ opacity: 1, scale: 1 }}
               className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
             >
-              <Shield className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 xl:mb-8" />
+              <Shield className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 xl:mb-4" />
               <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO CATEGORIES FOUND</h3>
               <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">Add categories to start managing government exams.</p>
             </motion.div>
@@ -303,22 +303,22 @@ const AdminGovtExamCategories = () => {
 
               {/* List View */}
               {viewMode === "list" && (
-                <div className="h-full overflow-auto space-y-3 xl:space-y-6">
+                <div className="h-full overflow-auto space-y-3 xl:space-y-3">
                   {categories.map((category, i) => (
                     <motion.div
                       key={category._id || i}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col xl:flex-row items-center gap-2 xl:gap-8"
+                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col xl:flex-row items-center gap-2 xl:gap-4"
                     >
                       <div className={`relative w-11 h-11 xl:w-20 xl:h-20 rounded-lg xl:rounded-[2rem] flex items-center justify-center shrink-0 border-2 shadow-sm transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-primary-600 border-primary-200 text-white shadow-sm' : 'bg-primary-600 border-primary-200 text-white shadow-sm'}`}>
                         {category.type === 'Central' ? <Globe className="w-5 h-5 xl:w-10 xl:h-10" /> : <Map className="w-5 h-5 xl:w-10 xl:h-10" />}
-                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] xl:text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{i + 1}</span>
+                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] xl:text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{i + 1}</span>
                       </div>
 
                       <div className="flex-1 text-center xl:text-left space-y-1 xl:space-y-2">
-                        <div className="flex flex-col xl:flex-row items-center gap-1.5 xl:gap-4">
+                        <div className="flex flex-col xl:flex-row items-center gap-1.5 xl:gap-3">
                           <h3 className="text-sm xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{category.name}</h3>
                           <div className={`px-2.5 py-0.5 xl:px-4 xl:py-1 rounded-full text-[7px] xl:text-[8px] font-black uppercase tracking-widest border ${category.type === 'Central' ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 border-primary-100 dark:border-primary-600' : 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 border-primary-100 dark:border-primary-600'}`}>
                             {category.type?.toUpperCase()}
@@ -331,11 +331,11 @@ const AdminGovtExamCategories = () => {
                         </div>
                       </div>
 
-                      <div className="flex gap-2 xl:gap-4">
-                        <button aria-label="Edit" onClick={() => handleEdit(category)} className="p-2 xl:p-6 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg xl:rounded-[2rem] hover:text-primary-600 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-sm">
+                      <div className="flex gap-2 xl:gap-3">
+                        <button aria-label="Edit" onClick={() => handleEdit(category)} className="p-2 xl:p-4 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg xl:rounded-[2rem] hover:text-primary-600 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-sm">
                           <Edit className="w-3.5 h-3.5 xl:w-6 xl:h-6" />
                         </button>
-                        <button aria-label="Delete" onClick={() => handleDelete(category._id)} className="p-2 xl:p-6 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg xl:rounded-[2rem] hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 hover:scale-105 active:scale-95 transition-all shadow-sm">
+                        <button aria-label="Delete" onClick={() => handleDelete(category._id)} className="p-2 xl:p-4 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg xl:rounded-[2rem] hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 hover:scale-105 active:scale-95 transition-all shadow-sm">
                           <Trash2 className="w-3.5 h-3.5 xl:w-6 xl:h-6" />
                         </button>
                       </div>
@@ -346,7 +346,7 @@ const AdminGovtExamCategories = () => {
 
               {/* Grid View */}
               {viewMode === "grid" && (
-                <div className="h-auto overflow-auto grid content-start items-start grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-8">
+                <div className="h-auto overflow-auto grid content-start items-start grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-4">
                   {categories.map((category, i) => (
                     <motion.div
                       key={category._id || i}
@@ -355,13 +355,13 @@ const AdminGovtExamCategories = () => {
                       transition={{ delay: i * 0.05 }}
                       className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center"
                     >
-                      <div className={`relative w-10 h-10 xl:w-16 xl:h-16 rounded-xl xl:rounded-2xl flex items-center justify-center mb-2 xl:mb-6 border-2 shadow-sm group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-primary-600 border-primary-200 text-white' : 'bg-primary-600 border-primary-200 text-white'}`}>
+                      <div className={`relative w-10 h-10 xl:w-16 xl:h-16 rounded-xl xl:rounded-2xl flex items-center justify-center mb-2 xl:mb-4 border-2 shadow-sm group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-primary-600 border-primary-200 text-white' : 'bg-primary-600 border-primary-200 text-white'}`}>
                         {category.type === 'Central' ? <Globe className="w-5 h-5 xl:w-8 xl:h-8" /> : <Map className="w-5 h-5 xl:w-8 xl:h-8" />}
-                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] xl:text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{i + 1}</span>
+                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] xl:text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{i + 1}</span>
                       </div>
 
                       <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 xl:mb-2">{category.name}</h3>
-                      <div className={`px-2.5 py-0.5 xl:px-4 xl:py-1 rounded-full text-[7px] xl:text-[8px] font-black uppercase tracking-widest border mb-2 xl:mb-8 ${category.type === 'Central' ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>
+                      <div className={`px-2.5 py-0.5 xl:px-4 xl:py-1 rounded-full text-[7px] xl:text-[8px] font-black uppercase tracking-widest border mb-2 xl:mb-4 ${category.type === 'Central' ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>
                         {category.type?.toUpperCase()}
                       </div>
 
@@ -402,8 +402,8 @@ const AdminGovtExamCategories = () => {
                 className="absolute top-16 right-0 bottom-0 left-0 xl:left-64 bg-white dark:bg-[#0f172a] xl:rounded-l-[2rem] border-l-2 border-slate-100 dark:border-white/5 overflow-hidden flex flex-col shadow-2xl"
               >
                 <div className="p-4 xl:p-10 border-b-2 border-slate-50 dark:border-white/5 flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary-500/10 text-primary-600 rounded-2xl">
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl">
                       <Settings className="w-6 h-6" />
                     </div>
                     <h2 className="text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
@@ -415,14 +415,14 @@ const AdminGovtExamCategories = () => {
                   </button>
                 </div>
 
-                <form onSubmit={handleSubmit} className="flex-1 p-4 xl:p-10 space-y-2 xl:space-y-4 xl:space-y-8 overflow-y-auto">
+                <form onSubmit={handleSubmit} className="flex-1 p-4 xl:p-10 space-y-2 xl:space-y-3 xl:space-y-4 overflow-y-auto">
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">CATEGORY NAME</label>
                     <input
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 xl:px-8 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-sm"
+                      className="w-full px-4 xl:px-5 py-3 bg-white dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-600 transition-all font-outfit dark:text-white shadow-sm"
                       placeholder="Category name..."
                       required
                     />
@@ -434,7 +434,7 @@ const AdminGovtExamCategories = () => {
                       <select
                         value={formData.type}
                         onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                        className="w-full px-4 xl:px-8 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-sm appearance-none cursor-pointer"
+                        className="w-full px-4 xl:px-5 py-3 bg-white dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-600 transition-all font-outfit dark:text-white shadow-sm appearance-none cursor-pointer"
                         required
                       >
                         <option value="Central">CENTRAL</option>
@@ -450,22 +450,22 @@ const AdminGovtExamCategories = () => {
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       rows="4"
-                      className="w-full px-4 xl:px-8 py-3 xl:py-6 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-sm"
+                      className="w-full px-4 xl:px-5 py-2 xl:py-3 bg-white dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-600 transition-all font-outfit dark:text-white shadow-sm"
                       placeholder="Enter description..."
                     />
                   </div>
 
-                  <div className="flex gap-4 pt-4">
+                  <div className="flex gap-3 pt-4">
                     <button
                       type="button"
                       onClick={() => setShowModal(false)}
-                      className="flex-1 p-6 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
+                      className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
                     >
                       CANCEL
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 p-6 bg-primary-600 text-white rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-sm hover:scale-105 active:scale-95 transition-all outline-none"
+                      className="flex-1 p-4 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-sm hover:scale-105 active:scale-95 transition-all outline-none"
                     >
                       {editingCategory ? "SAVE CHANGES" : "CREATE CATEGORY"}
                     </button>

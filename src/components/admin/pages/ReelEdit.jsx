@@ -29,7 +29,7 @@ const TYPE_COLORS = {
   poll: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
-const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
+const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-white dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
 const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
 
 const AdminReelEdit = () => {
@@ -283,7 +283,7 @@ const AdminReelEdit = () => {
           <div className="mt-4 xl:mt-2">
 
             {/* Header */}
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-4">
               <button aria-label="Back" onClick={() => router.push('/admin/reels')} className="p-2 rounded-lg xl:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
                 <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
               </button>
@@ -295,13 +295,13 @@ const AdminReelEdit = () => {
               </span>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-3">
 
               {/* Status + Common Fields */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 space-y-2 xl:space-y-4">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                 <h3 className="font-bold text-slate-900 dark:text-white">Common Details</h3>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className={labelClass}>Status</label>
                     <select value={status} onChange={e => setStatus(e.target.value)} className={inputClass}>
@@ -359,7 +359,7 @@ const AdminReelEdit = () => {
 
               {/* Question Fields */}
               {type === 'question' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 xl:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-bold text-black dark:text-white">Question Details</h3>
                   <div>
                     <label className={labelClass}>Question Text *</label>
@@ -394,7 +394,7 @@ const AdminReelEdit = () => {
 
               {/* Fact Fields */}
               {type === 'fact' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 xl:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-bold text-primary-600 dark:text-primary-400">Fact Details</h3>
                   <div>
                     <label className={labelClass}>Highlight Text</label>
@@ -420,7 +420,7 @@ const AdminReelEdit = () => {
 
               {/* Tip Fields */}
               {type === 'tip' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 xl:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-bold text-black dark:text-white">Trick / Shortcut Details</h3>
                   <div>
                     <label className={labelClass}>Formula</label>
@@ -460,9 +460,9 @@ const AdminReelEdit = () => {
 
               {/* CA Fields */}
               {type === 'current_affairs' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 xl:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-bold text-black dark:text-white">Current Affairs Details</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className={labelClass}>Date</label>
                       <input type="date" value={caDate} onChange={e => setCaDate(e.target.value)} className={inputClass} />
@@ -509,7 +509,7 @@ const AdminReelEdit = () => {
 
               {/* Poll Fields */}
               {type === 'poll' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 xl:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-bold text-primary-600 dark:text-primary-400">Poll Details</h3>
                   <div>
                     <label className={labelClass}>Poll Question</label>
@@ -538,7 +538,7 @@ const AdminReelEdit = () => {
               )}
 
               {/* Audio & Duration — Instagram Style */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-5 space-y-2 xl:space-y-4">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                 <div className="flex items-center justify-between">
                   <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     <Music className="w-5 h-5 text-black dark:text-white" /> Add Audio
@@ -586,7 +586,7 @@ const AdminReelEdit = () => {
                     </div>
                   ))}
                   {filteredAudios.length === 0 && (
-                    <p className="text-sm text-slate-400 text-center py-4">No audio found</p>
+                    <p className="text-sm text-slate-400 text-center py-2.5">No audio found</p>
                   )}
                 </div>
 
@@ -621,7 +621,7 @@ const AdminReelEdit = () => {
                   {saving ? 'Saving...' : 'Save Changes'}
                 </Button>
                 <button type="button" onClick={() => router.push('/admin/reels')}
-                  className="px-6 py-2.5 rounded-lg xl:rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
+                  className="px-4 py-2.5 rounded-lg xl:rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
                   Cancel
                 </button>
               </div>

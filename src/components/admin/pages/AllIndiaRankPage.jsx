@@ -121,7 +121,7 @@ const AllIndiaRankPage = () => {
     },
     {
       key: 'subscriptionStatus', header: 'Plan', align: 'right', render: (_, row) => (
-        <span className={`inline-flex px-2 py-1 text-[10px] font-black rounded-full ${row.subscriptionStatus === 'PRO' ? 'bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200' : 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'}`}>
+        <span className={`inline-flex px-2 py-1 text-[10px] font-black rounded-full ${row.subscriptionStatus === 'PRO' ? 'bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200' : 'bg-gray-100 text-gray-800 dark:bg-slate-900 dark:text-gray-200'}`}>
           {row.subscriptionStatus || 'FREE'}
         </span>
       )
@@ -136,7 +136,7 @@ const AllIndiaRankPage = () => {
         value={searchTerm}
         onChange={handleSearch}
         placeholder="Search by name, username, email or city..."
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -209,7 +209,7 @@ const AllIndiaRankPage = () => {
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : data.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-20 h-20 bg-slate-100 dark:bg-slate-900 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-slate-100 dark:bg-slate-900 rounded-[2rem] flex items-center justify-center mx-auto mb-4">
                 <Trophy className="w-10 h-10 text-slate-300" />
               </div>
               <h3 className="text-lg font-black text-slate-500 uppercase">No Rankings Found</h3>
@@ -219,7 +219,7 @@ const AllIndiaRankPage = () => {
             <AnimatePresence mode="wait">
               <motion.div key={`${examId}-${currentPage}-${viewMode}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="flex-1 min-h-0 flex flex-col">
                 {viewMode === 'table' && (
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                     <ResponsiveTable data={data} columns={columns} viewModes={['table']} currentView="table" showPagination={false} showViewToggle={false} fillHeight />
                   </div>
                 )}
@@ -237,7 +237,7 @@ const AllIndiaRankPage = () => {
                               <p className="text-[8px] sm:text-[10px] text-slate-400 break-words leading-tight">{row.username ? `@${row.username}` : row.email}</p>
                             </div>
                           </div>
-                          <span className={`shrink-0 inline-flex px-1.5 sm:px-2 py-0.5 sm:py-1 text-[7px] sm:text-[10px] font-black rounded-full ${row.subscriptionStatus === 'PRO' ? 'bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200' : 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'}`}>{row.subscriptionStatus || 'FREE'}</span>
+                          <span className={`shrink-0 inline-flex px-1.5 sm:px-2 py-0.5 sm:py-1 text-[7px] sm:text-[10px] font-black rounded-full ${row.subscriptionStatus === 'PRO' ? 'bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200' : 'bg-gray-100 text-gray-800 dark:bg-slate-900 dark:text-gray-200'}`}>{row.subscriptionStatus || 'FREE'}</span>
                         </div>
                         {row.city && (
                           <div className="flex items-center gap-1 text-[8px] sm:text-[10px] font-semibold text-primary-600">
@@ -263,7 +263,7 @@ const AllIndiaRankPage = () => {
                 {viewMode === 'list' && (
                   <div className="flex-1 min-h-0 overflow-auto grid grid-cols-1 gap-3">
                     {data.map((row, i) => (
-                      <motion.div key={row.userId || i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+                      <motion.div key={row.userId || i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                         <div className="flex items-center gap-3 flex-1 min-w-0">
                           <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black italic text-sm shrink-0 ${row.rank <= 3 ? 'bg-primary-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>#{row.rank}</div>
                           <div className="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white font-black text-sm uppercase shrink-0">{row.name?.charAt(0) || 'U'}</div>
@@ -272,7 +272,7 @@ const AllIndiaRankPage = () => {
                             <div className="text-[10px] text-slate-400 break-words">{row.username ? `@${row.username}` : row.email}{row.city ? ` · ${row.city}` : ''}</div>
                           </div>
                         </div>
-                        <div className="flex flex-wrap items-center gap-4 sm:gap-6 shrink-0 pl-[52px] sm:pl-0">
+                        <div className="flex flex-wrap items-center gap-3 sm:gap-3 shrink-0 pl-[52px] sm:pl-0">
                           <div className="text-center">
                             <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{row.totalExams}</div>
                             <div className="text-[9px] font-bold text-slate-400 uppercase">Exams</div>
@@ -282,7 +282,7 @@ const AllIndiaRankPage = () => {
                             <div className="text-[9px] font-bold text-slate-400 uppercase">Score</div>
                           </div>
                           <div className="px-3 py-1 rounded-lg text-[10px] font-black uppercase bg-primary-500/10 text-primary-600 border border-primary-500/20">{row.avgAccuracy || 0}%</div>
-                          <span className={`inline-flex px-2 py-1 text-[10px] font-black rounded-full ${row.subscriptionStatus === 'PRO' ? 'bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200' : 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'}`}>{row.subscriptionStatus || 'FREE'}</span>
+                          <span className={`inline-flex px-2 py-1 text-[10px] font-black rounded-full ${row.subscriptionStatus === 'PRO' ? 'bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200' : 'bg-gray-100 text-gray-800 dark:bg-slate-900 dark:text-gray-200'}`}>{row.subscriptionStatus || 'FREE'}</span>
                         </div>
                       </motion.div>
                     ))}

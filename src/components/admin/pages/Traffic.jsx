@@ -50,15 +50,19 @@ const Stat = ({ label, value, sub, Icon, tone, cur, prev, inverse, onClick }) =>
   return (
     <Wrap
       {...(onClick ? { type: 'button', onClick, title: 'Click to see who' } : {})}
-      className={`bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 max-md:p-2 w-full flex items-center gap-3 max-md:gap-2 text-left ${onClick ? 'cursor-pointer hover:border-primary-500 transition-colors' : ''}`}
+      style={{ borderRadius: 14 }}
+      className={`group relative isolate overflow-hidden w-full px-2.5 py-2 text-left bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 ring-1 ring-primary-200 dark:ring-white/10 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all ${onClick ? 'cursor-pointer' : ''}`}
     >
-      <div className={`p-2 max-md:p-1.5 rounded-lg shrink-0 ${tone}`}><Icon className="w-4 h-4" /></div>
-      <div className="min-w-0 max-md:flex max-md:flex-wrap max-md:items-baseline max-md:gap-x-2 max-md:gap-y-0">
-        <div className="text-lg max-md:text-base font-black tabular-nums text-slate-900 dark:text-white leading-none">{value}</div>
-        <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mt-1 max-md:mt-0">{label}</div>
-        {cur !== undefined ? <div className="mt-0.5 max-md:mt-0"><Delta cur={cur} prev={prev} inverse={inverse} /></div> : null}
-        {sub ? <div className="text-[10px] text-slate-400 mt-0.5 max-md:mt-0">{sub}</div> : null}
+      <Icon className="pointer-events-none absolute -right-2 -bottom-2 w-14 h-14 text-primary-600/10 dark:text-white/10 rotate-12" />
+      <div className="flex items-start justify-between gap-2">
+        <div className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-600 dark:text-white/75 leading-tight">{label}</div>
+        <span className="shrink-0 w-7 h-7 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
       </div>
+      <div className="mt-1 flex items-baseline justify-between gap-2">
+        <div className="text-2xl font-black font-outfit tabular-nums leading-none text-primary-700 dark:text-primary-200">{value}</div>
+        {cur !== undefined ? <Delta cur={cur} prev={prev} inverse={inverse} /> : null}
+      </div>
+      {sub ? <div className="mt-1.5 pt-1.5 border-t border-dashed border-primary-300 dark:border-white/25 text-[10px] font-bold text-slate-600 dark:text-white/70 leading-tight">{sub}</div> : null}
     </Wrap>
   );
 };
@@ -91,12 +95,12 @@ const UsersModal = ({ kind, range, segment, onClose }) => {
 
   const isSignup = kind === 'signup';
   const users = state.data?.users || [];
-  const th = 'px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-slate-400 text-left whitespace-nowrap';
+  const th = 'px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-primary-900 dark:text-white text-left whitespace-nowrap';
   const td = 'px-2 py-1.5 text-xs whitespace-nowrap';
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-3" onClick={onClose}>
-      <div className="w-full max-w-4xl h-[70vh] min-h-[70vh] max-h-[70vh] flex flex-col overflow-hidden bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xl" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
+      <div className="w-full max-w-4xl h-[70vh] min-h-[70vh] max-h-[70vh] flex flex-col overflow-hidden bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xl relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
         <div className="flex items-start justify-between gap-3 p-4 border-b border-slate-200 dark:border-slate-700">
           <div>
             <div className="text-sm font-black text-slate-900 dark:text-white">{isSignup ? 'Signed up' : 'Logged in'} · {range.label}</div>
@@ -109,8 +113,8 @@ const UsersModal = ({ kind, range, segment, onClose }) => {
         </div>
         <div className="min-h-0 flex-1 overflow-y-auto overflow-x-auto overscroll-contain touch-pan-y [-webkit-overflow-scrolling:touch]">
           {state.error ? <div className="m-4 p-3 rounded-xl bg-rose-500/10 text-rose-600 text-sm font-bold">{state.error}</div> : null}
-          {state.loading ? <div className="p-6 text-xs text-slate-400">Loading…</div> : null}
-          {!state.loading && !state.error && users.length === 0 ? <div className="p-6 text-xs text-slate-400">No users in this period.</div> : null}
+          {state.loading ? <div className="p-4 text-xs text-slate-400">Loading…</div> : null}
+          {!state.loading && !state.error && users.length === 0 ? <div className="p-4 text-xs text-slate-400">No users in this period.</div> : null}
           {users.length > 0 ? (
             <div className="md:hidden grid grid-cols-1 gap-2 p-2">
               {users.map((u, i) => (
@@ -133,7 +137,7 @@ const UsersModal = ({ kind, range, segment, onClose }) => {
           ) : null}
           {users.length > 0 ? (
             <table className="w-full max-md:hidden">
-              <thead className="sticky top-0 bg-slate-50 dark:bg-slate-800 z-10">
+              <thead className="sticky top-0 z-10 bg-gradient-to-r from-primary-100 via-primary-50 to-white dark:from-primary-700 dark:via-primary-800 dark:to-primary-900">
                 <tr className="border-b border-slate-200 dark:border-slate-700">
                   <th className={th}>#</th>
                   <th className={th}>Name</th>
@@ -193,13 +197,13 @@ const countryName = (code) => {
 };
 
 const List = ({ title, rows }) => (
-  <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-2.5 h-48 max-lg:h-auto flex flex-col">
-    <div className="shrink-0 text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{title}</div>
-    <div className="min-h-0 flex-1 overflow-y-auto max-lg:overflow-visible">
-      {rows.length === 0 ? <div className="text-xs text-slate-400">No data yet</div> : rows.map((r) => (
-        <div key={r.k} className="flex justify-between gap-3 text-xs py-0.5">
+  <div className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-700 shadow-md h-52 max-lg:h-auto flex flex-col" style={{ borderRadius: 14 }}>
+    <div className="shrink-0 px-3 py-2 bg-gradient-to-r from-primary-100 via-primary-50 to-white dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 border-b border-primary-200 dark:border-transparent text-[10px] font-black uppercase tracking-[0.14em] text-primary-900 dark:text-white">{title}</div>
+    <div className="min-h-0 flex-1 overflow-y-auto max-lg:overflow-visible px-3 py-1">
+      {rows.length === 0 ? <div className="py-2 text-xs text-slate-400">No data yet</div> : rows.map((r) => (
+        <div key={r.k} className="flex items-center justify-between gap-3 text-xs py-1.5 border-b border-dashed border-slate-200 dark:border-slate-700 last:border-0">
           <span className={`font-bold ${r.cap ? 'capitalize' : ''}`}>{r.k}</span>
-          <span className="tabular-nums text-right">{r.v}</span>
+          <span className="tabular-nums text-right font-black text-primary-700 dark:text-primary-200">{r.v}</span>
         </div>
       ))}
     </div>
@@ -237,12 +241,12 @@ export default function Traffic() {
   useAdminMobileHeader({ title: 'Traffic', count: data?.summary?.current?.visitors || 0, filters: null });
 
   if (loading && !data && !error) {
-    return <div className="min-h-screen p-3 xl:p-8"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>;
+    return <div className="min-h-screen p-3 xl:p-5"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>;
   }
 
   const rows = data?.days || [];
   const sum = (k) => rows.reduce((t, r) => t + (r[k] || 0), 0);
-  const th = 'px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-slate-400 text-right leading-tight';
+  const th = 'px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-primary-900 dark:text-white text-right leading-tight';
   const td = 'px-2 py-1.5 text-xs tabular-nums text-right';
 
   return (
@@ -251,9 +255,9 @@ export default function Traffic() {
       {usersModal ? <UsersModal kind={usersModal} range={range} segment={segment} onClose={() => setUsersModal(null)} /> : null}
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="order-1 flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400">
-            <Activity className="w-4 h-4" /> Traffic          </div>
-          <div className="order-3 md:order-2 w-full md:w-auto flex gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-800 max-w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="tablist">
+          <div className="order-1 flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300">
+            <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Activity className="w-4 h-4" /></span> Traffic          </div>
+          <div className="order-3 md:order-2 w-full md:w-auto flex gap-1 p-1 bg-background-surface border border-slate-200 dark:border-slate-700 shadow-sm max-w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="tablist">
             {SEGMENTS.map((s) => (
               <button
                 key={s.id}
@@ -262,7 +266,7 @@ export default function Traffic() {
                 aria-selected={segment === s.id}
                 title={s.hint}
                 onClick={() => setSegment(s.id)}
-                className={`px-3 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider whitespace-nowrap transition-colors ${segment === s.id ? 'bg-primary-600 text-white' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
+                style={{ borderRadius: 999 }} className={`px-3.5 py-1.5 text-[11px] font-black uppercase tracking-wider whitespace-nowrap transition-all ${segment === s.id ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow' : 'text-slate-500 dark:text-slate-400 hover:bg-primary-50 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white'}`}
               >
                 {s.label}
               </button>
@@ -306,7 +310,7 @@ export default function Traffic() {
               <col className="w-[11%]" /><col className="w-[11%]" />
               <col className="w-[10%]" /><col className="w-[10%]" /><col className="w-[12%]" />
             </colgroup>
-            <thead className="sticky top-0 bg-slate-50 dark:bg-slate-900 z-10">
+            <thead className="sticky top-0 z-10 bg-gradient-to-r from-primary-100 via-primary-50 to-white dark:from-primary-700 dark:via-primary-800 dark:to-primary-900">
               <tr className="border-b border-slate-200 dark:border-slate-700">
                 <th className={`${th} text-left`}>Day</th>
                 <th className={th}>Visitors</th>

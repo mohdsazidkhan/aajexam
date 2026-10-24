@@ -159,7 +159,7 @@ const AdminReferralAnalytics = () => {
     const columns = [
         {
             key: 'user', header: 'User', render: (_, user) => (
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:bg-primary-700 transition-all uppercase">
                         {user.name?.[0]?.toUpperCase()}
                     </div>
@@ -208,7 +208,7 @@ const AdminReferralAnalytics = () => {
                 placeholder="Search users..."
                 value={searchTerm}
                 onChange={handleSearch}
-                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+                className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
             />
         </div>
     );
@@ -296,7 +296,7 @@ const AdminReferralAnalytics = () => {
 
     if (loading && analytics.length === 0) {
         return (
-            <div className="min-h-screen p-3 xl:p-8">
+            <div className="min-h-screen p-3 xl:p-5">
                 <AdminDashboardSkeleton />
             </div>
         );
@@ -319,7 +319,7 @@ const AdminReferralAnalytics = () => {
                             { label: "This Month", value: summary.monthlyReferralsSum, icon: Zap }
                         ].map((stat) => (
                             <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-                                <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+                                <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
                                 <div className="min-w-0">
                                     <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">{stat.value}</div>
                                     <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
@@ -338,7 +338,7 @@ const AdminReferralAnalytics = () => {
                                 animate={{ opacity: 1, scale: 1 }}
                                 className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                             >
-                                <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 xl:mb-8" />
+                                <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 xl:mb-4" />
                                 <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO DATA FOUND</h3>
                                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No referral data found for the selected filters.</p>
                             </motion.div>
@@ -354,7 +354,7 @@ const AdminReferralAnalytics = () => {
                                 {viewMode === 'grid' && (
                                     <div className="grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                                         {analytics.map((user, i) => (
-                                            <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+                                            <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                 <div className="flex items-start justify-between gap-2">
                                                     <div className="relative w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-sm">
                                                         {user.name?.[0]?.toUpperCase() || 'U'}
@@ -386,7 +386,7 @@ const AdminReferralAnalytics = () => {
                                 {viewMode === 'list' && (
                                     <div className="h-full overflow-auto space-y-3">
                                         {analytics.map((user, i) => (
-                                            <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-4">
+                                            <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                 <div className="relative w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center shrink-0 font-black text-sm">
                                                     {user.name?.[0]?.toUpperCase() || 'U'}
                                                     <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{i + 1 + (pagination.page - 1) * pagination.limit}</span>
@@ -396,7 +396,7 @@ const AdminReferralAnalytics = () => {
                                                         <h3 className="text-sm font-bold text-slate-900 dark:text-white">{user.name || 'Unknown'}</h3>
                                                         <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 text-[10px] font-black"><Hash className="w-3 h-3" />{user.referralCode}</span>
                                                     </div>
-                                                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-slate-400">
+                                                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-slate-400">
                                                         <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5" /> {user.email}</span>
                                                         <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> Joined {new Date(user.createdAt).toLocaleDateString()}</span>
                                                     </div>
@@ -418,7 +418,7 @@ const AdminReferralAnalytics = () => {
 
                                 {/* Table Visualization */}
                                 {viewMode === 'table' && (
-                                    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
+                                    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                         <ResponsiveTable data={analytics} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} emptyMessage="No referral data found" fillHeight />
                                     </div>
                                 )}

@@ -129,7 +129,7 @@ const Table = ({ rows, cols, empty = 'Nothing yet' }) => {
     return (
       <div className="flex flex-col gap-2">
         {rows.map((row, i) => (
-          <div key={row._id || i} className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-white/5 px-3 py-2 flex flex-wrap items-center gap-x-5 gap-y-1">
+          <div key={row._id || i} className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-white/5 px-3 py-2 flex flex-wrap items-center gap-x-3 gap-y-1">
             <div className="flex items-center gap-2 min-w-0 sm:min-w-[220px] flex-1 basis-full sm:basis-auto">
               <SNo n={i + 1} />
               <div className="min-w-0 text-sm font-bold break-words">{cols[0].r(row, i)}</div>
@@ -253,13 +253,13 @@ export default function UserFullDetail() {
 
       {/* Header */}
       <Card className="shrink-0">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-3">
           <div className="flex items-start justify-between gap-3">
             {p.profilePicture ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={p.profilePicture} alt="" className="w-16 h-16 rounded-2xl object-cover" referrerPolicy="no-referrer" />
             ) : (
-              <div className="w-16 h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-2xl uppercase">{p.name?.[0] || 'U'}</div>
+              <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center font-black text-2xl uppercase">{p.name?.[0] || 'U'}</div>
             )}
             {tab !== 'settings' && <ViewSwitch view={view} setView={setView} className="sm:hidden" />}
           </div>
@@ -271,7 +271,7 @@ export default function UserFullDetail() {
               {p.role === 'admin' ? <Pill tone="sky"><ShieldCheck className="inline w-3 h-3 -mt-0.5" /> Admin</Pill> : null}
               {p.hasGoogle ? <Pill tone="sky">Google</Pill> : null}
             </div>
-            <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500 font-bold break-all sm:break-normal">
+            <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500 font-bold break-all sm:break-normal">
               <span className="inline-flex items-center gap-1"><Mail className="w-3.5 h-3.5" />{p.email}</span>
               {p.phone ? <span className="inline-flex items-center gap-1"><Phone className="w-3.5 h-3.5" />{p.phone}</span> : null}
               {p.city || p.state ? <span className="inline-flex items-center gap-1"><MapPin className="w-3.5 h-3.5" />{[p.city, p.state].filter(Boolean).join(', ')}</span> : null}

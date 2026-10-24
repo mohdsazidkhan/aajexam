@@ -60,7 +60,7 @@ const AdminExamNews = () => {
   const handleEdit = (n) => { setEditId(n._id); setForm({ title: n.title, content: n.content, type: n.type, examName: n.examName || '', officialLink: n.officialLink || '', isPinned: n.isPinned, tags: (n.tags || []).join(', ') }); setShowForm(true); };
   const handleDelete = async (id) => { if (!confirm('Delete?')) return; try { await API.request(`/api/admin/exam-news/${id}`, { method: 'DELETE' }); toast.success('Deleted'); fetchData(); } catch (e) { } };
 
-  const inputClass = "w-full px-4 py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
+  const inputClass = "w-full px-4 py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
 
   const typeColor = (t) => {
     if (t === 'result' || t === 'answer_key') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600';
@@ -116,7 +116,7 @@ const AdminExamNews = () => {
   const searchInput = (
     <div className="relative w-full xl:w-56">
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-      <input type="text" placeholder="Search title or content..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+      <input type="text" placeholder="Search title or content..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
     </div>
   );
 
@@ -136,7 +136,7 @@ const AdminExamNews = () => {
   );
 
   const addNewButton = (
-    <button onClick={() => { setShowForm(true); setEditId(null); }} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-primary-600 text-white">
+    <button onClick={() => { setShowForm(true); setEditId(null); }} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white">
       <Plus className="w-3 h-3" /> Add New
     </button>
   );
@@ -225,7 +225,7 @@ const AdminExamNews = () => {
             /* ── List View ── */
             <div className="h-full overflow-auto space-y-2">
               {news.map((n, i) => (
-                <Card key={n._id || i} className="!p-4 flex items-center gap-4">
+                <Card key={n._id || i} className="!p-4 flex items-center gap-3">
                   {n.isPinned && <Pin className="w-4 h-4 text-black dark:text-white flex-shrink-0" />}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
@@ -256,15 +256,15 @@ const AdminExamNews = () => {
               <div className="fixed inset-0 xl:left-64 xl:top-16 z-50">
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowForm(false); setEditId(null); }} className="absolute inset-0 bg-black/50" />
                 <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-0 bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
-                  <div className="p-5 border-b-2 border-slate-100 dark:border-slate-700/50 flex items-center justify-between shrink-0">
+                  <div className="p-4 border-b-2 border-slate-100 dark:border-slate-700/50 flex items-center justify-between shrink-0">
                     <div>
                       <h2 className="text-base font-bold text-slate-900 dark:text-white">{editId ? 'Edit Exam News' : 'Add New Exam News'}</h2>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Fill in the details below</p>
                     </div>
                     <button aria-label="Close" onClick={() => { setShowForm(false); setEditId(null); }} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
                   </div>
-                  <div className="p-5 space-y-2 xl:space-y-4 overflow-y-auto flex-1">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="p-4 space-y-2 xl:space-y-3 overflow-y-auto flex-1">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Type</label>
                         <select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })} className={inputClass}>
@@ -294,9 +294,9 @@ const AdminExamNews = () => {
                     </div>
                     <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300 font-bold cursor-pointer"><input type="checkbox" checked={form.isPinned} onChange={e => setForm({ ...form, isPinned: e.target.checked })} className="rounded" /> Pin to top</label>
                   </div>
-                  <div className="p-5 border-t-2 border-slate-100 dark:border-slate-700/50 flex items-center gap-3 shrink-0">
-                    <button onClick={handleSave} className="px-6 py-2.5 bg-primary-600 hover:bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
-                    <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-6 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg xl:rounded-xl text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
+                  <div className="p-4 border-t-2 border-slate-100 dark:border-slate-700/50 flex items-center gap-3 shrink-0">
+                    <button onClick={handleSave} className="px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
+                    <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-4 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg xl:rounded-xl text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
                   </div>
                 </motion.div>
               </div>

@@ -258,10 +258,10 @@ const LocationsPage = () => {
     <>
       <div className="relative w-full">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-        <input type="text" placeholder="Search states..." value={stateSearch} onChange={e => setStateSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+        <input type="text" placeholder="Search states..." value={stateSearch} onChange={e => setStateSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
       </div>
       {viewToggleButtons}
-      <button onClick={openCreateState} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700">
+      <button onClick={openCreateState} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110">
         <Plus className="w-4 h-4" /> Add State
       </button>
       <Pagination
@@ -280,7 +280,7 @@ const LocationsPage = () => {
     <>
       <div className="relative w-full">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-        <input type="text" placeholder="Search cities..." value={citySearch} onChange={e => setCitySearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+        <input type="text" placeholder="Search cities..." value={citySearch} onChange={e => setCitySearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
       </div>
       <StyledSelect
         icon={Landmark}
@@ -291,7 +291,7 @@ const LocationsPage = () => {
         className="w-full xl:w-56"
       />
       {viewToggleButtons}
-      <button onClick={openCreateCity} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700">
+      <button onClick={openCreateCity} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110">
         <Plus className="w-4 h-4" /> Add City
       </button>
       <Pagination
@@ -315,11 +315,11 @@ const LocationsPage = () => {
   if (!isMounted) return null;
 
   const renderGridCard = (item, idx, { Icon, title, subtitle, onEdit, onDelete, page, itemsPerPage }) => (
-    <div key={item._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+    <div key={item._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
       <div className="flex items-start justify-between gap-2">
-        <div className="relative w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0">
+        <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow flex items-center justify-center shrink-0">
           <Icon className="w-5 h-5" />
-          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
+          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
         </div>
         <StatusBadge isActive={item.isActive} />
       </div>
@@ -335,10 +335,10 @@ const LocationsPage = () => {
   );
 
   const renderListRow = (item, idx, { Icon, title, subtitle, onEdit, onDelete, page, itemsPerPage }) => (
-    <div key={item._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3">
-      <div className="relative w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0">
+    <div key={item._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+      <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow flex items-center justify-center shrink-0">
         <Icon className="w-5 h-5" />
-        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
+        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
       </div>
       <div className="flex-1 min-w-0">
         <h3 className="font-bold text-slate-900 dark:text-white truncate">{title}</h3>
@@ -360,11 +360,11 @@ const LocationsPage = () => {
         <div className="flex-1 min-h-0 overflow-auto">
           {activeTab === 'states' ? (
             statesLoading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : viewMode === 'table' ? (
-              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                 <ResponsiveTable data={states} columns={stateColumns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} emptyMessage="No states found" fillHeight />
               </div>
             ) : viewMode === 'grid' ? (
-              <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
+              <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                 {states.map((s, idx) => renderGridCard(s, idx, {
                   Icon: Landmark,
                   title: s.name,
@@ -373,7 +373,7 @@ const LocationsPage = () => {
                   page: statePage,
                   itemsPerPage: stateItemsPerPage
                 }))}
-                {states.length === 0 && <div className="col-span-full py-8 text-center text-slate-400">No states found</div>}
+                {states.length === 0 && <div className="col-span-full py-4 text-center text-slate-400">No states found</div>}
               </div>
             ) : (
               <div className="h-full overflow-auto space-y-2">
@@ -385,16 +385,16 @@ const LocationsPage = () => {
                   page: statePage,
                   itemsPerPage: stateItemsPerPage
                 }))}
-                {states.length === 0 && <div className="py-8 text-center text-slate-400">No states found</div>}
+                {states.length === 0 && <div className="py-4 text-center text-slate-400">No states found</div>}
               </div>
             )
           ) : (
             citiesLoading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : viewMode === 'table' ? (
-              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                 <ResponsiveTable data={cities} columns={cityColumns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} emptyMessage="No cities found" fillHeight />
               </div>
             ) : viewMode === 'grid' ? (
-              <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
+              <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                 {cities.map((c, idx) => renderGridCard(c, idx, {
                   Icon: MapPin,
                   title: c.name,
@@ -404,7 +404,7 @@ const LocationsPage = () => {
                   page: cityPage,
                   itemsPerPage: cityItemsPerPage
                 }))}
-                {cities.length === 0 && <div className="col-span-full py-8 text-center text-slate-400">No cities found</div>}
+                {cities.length === 0 && <div className="col-span-full py-4 text-center text-slate-400">No cities found</div>}
               </div>
             ) : (
               <div className="h-full overflow-auto space-y-2">
@@ -417,7 +417,7 @@ const LocationsPage = () => {
                   page: cityPage,
                   itemsPerPage: cityItemsPerPage
                 }))}
-                {cities.length === 0 && <div className="py-8 text-center text-slate-400">No cities found</div>}
+                {cities.length === 0 && <div className="py-4 text-center text-slate-400">No cities found</div>}
               </div>
             )
           )}
@@ -429,13 +429,13 @@ const LocationsPage = () => {
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setStateModal(false)} className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-3xl" />
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-white dark:bg-[#0A0F1E] rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
-                <div className="p-6 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+                <div className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <h2 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingState ? 'Edit' : 'Add'} State</h2>
                   <button aria-label="Close" onClick={() => setStateModal(false)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>
                 </div>
-                <form onSubmit={handleStateSubmit} className="p-6 space-y-4">
-                  <input required placeholder="State name" value={stateForm.name} onChange={e => setStateForm({ name: e.target.value })} className="w-full px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-sm font-semibold" />
-                  <button type="submit" className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all">
+                <form onSubmit={handleStateSubmit} className="p-4 space-y-3">
+                  <input required placeholder="State name" value={stateForm.name} onChange={e => setStateForm({ name: e.target.value })} className="w-full px-4 py-2 bg-white dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-sm font-semibold" />
+                  <button type="submit" className="w-full py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all">
                     {editingState ? 'Save Changes' : 'Create State'}
                   </button>
                 </form>
@@ -450,12 +450,12 @@ const LocationsPage = () => {
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setCityModal(false)} className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-3xl" />
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-white dark:bg-[#0A0F1E] rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
-                <div className="p-6 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+                <div className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <h2 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingCity ? 'Edit' : 'Add'} City</h2>
                   <button aria-label="Close" onClick={() => setCityModal(false)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>
                 </div>
-                <form onSubmit={handleCitySubmit} className="p-6 space-y-4">
-                  <input required placeholder="City name" value={cityForm.name} onChange={e => setCityForm({ ...cityForm, name: e.target.value })} className="w-full px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-sm font-semibold" />
+                <form onSubmit={handleCitySubmit} className="p-4 space-y-3">
+                  <input required placeholder="City name" value={cityForm.name} onChange={e => setCityForm({ ...cityForm, name: e.target.value })} className="w-full px-4 py-2 bg-white dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-sm font-semibold" />
                   <StyledSelect
                     icon={Landmark}
                     value={cityForm.state}
@@ -464,7 +464,7 @@ const LocationsPage = () => {
                     placeholder="Select state"
                     className="w-full"
                   />
-                  <button type="submit" className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all">
+                  <button type="submit" className="w-full py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all">
                     {editingCity ? 'Save Changes' : 'Create City'}
                   </button>
                 </form>

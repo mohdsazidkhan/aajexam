@@ -88,7 +88,7 @@ const Field = ({ label, hint, children }) => (
   </label>
 );
 
-const inputCls = 'mt-1 w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm';
+const inputCls = 'mt-1 w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm';
 
 // Live "what will the user pay" calculation, priced with the same formula the server uses at checkout.
 const rs = (n) => `₹${Number(n.toFixed(2))}`;
@@ -111,9 +111,9 @@ const PricePreview = ({ form }) => {
 
   return (
     <div className="shrink-0 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-      <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-black/40">Calculation - what the user will pay</div>
+      <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-white dark:bg-black/40">Calculation - what the user will pay</div>
       {!valid ? (
-        <p className="px-3 py-3 text-xs text-slate-500 dark:text-slate-400">Enter the discount value above to see the price of each plan.</p>
+        <p className="px-3 py-2 text-xs text-slate-500 dark:text-slate-400">Enter the discount value above to see the price of each plan.</p>
       ) : (
         <>
           <div className="sm:hidden divide-y divide-slate-100 dark:divide-slate-700">
@@ -126,7 +126,7 @@ const PricePreview = ({ form }) => {
                 </div>
               );
               return (
-                <div key={p.id} className="px-3 py-3 space-y-1.5">
+                <div key={p.id} className="px-3 py-2 space-y-1.5">
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-black text-slate-800 dark:text-slate-100">{p.label}</span>
                     <span className="text-base font-black text-primary-600">{rs(finalAmount)}</span>
@@ -245,17 +245,17 @@ const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
   ];
   return createPortal(
     <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60" onClick={onClose}>
-      <div onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-hidden bg-white dark:bg-slate-800 rounded-t-2xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col">
-        <div className="shrink-0 flex items-center justify-between gap-3 p-4 sm:p-5 pb-3 border-b border-slate-100 dark:border-slate-700">
+      <div onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-hidden bg-white dark:bg-slate-800 rounded-t-2xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <div className="shrink-0 flex items-center justify-between gap-3 p-4 sm:p-4 pb-3 border-b border-slate-100 dark:border-slate-700">
           <div className="min-w-0 text-2xl font-black tracking-widest text-primary-600">{c.code}</div>
           <div className="shrink-0 flex items-center gap-2">
             <span className={`inline-block px-2.5 py-1 rounded-full text-xs font-bold ${st.cls}`}>{st.label}</span>
             <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"><X className="w-5 h-5" /></button>
           </div>
         </div>
-        <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-5 flex flex-col gap-4">
+        <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-4 flex flex-col gap-3">
         <p className="text-sm text-slate-600 dark:text-slate-300">{c.description}</p>
-        <dl className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-3 text-sm">
+        <dl className="grid grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-3 text-sm">
           {rows.map(([k, v]) => (
             <div key={k}>
               <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{k}</dt>
@@ -265,9 +265,9 @@ const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
         </dl>
         <PricePreview form={c} />
         </div>
-        <div className="shrink-0 px-4 sm:px-5 py-3 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-2">
+        <div className="shrink-0 px-4 sm:px-4 py-2 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-2">
           <button type="button" onClick={onClose} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 sm:border-0">Close</button>
-          <button type="button" onClick={() => onEdit(c)} className="flex-1 sm:flex-none px-5 py-2.5 sm:py-2 rounded-xl text-sm font-bold bg-primary-600 text-white hover:bg-primary-700">Edit</button>
+          <button type="button" onClick={() => onEdit(c)} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white hover:brightness-110">Edit</button>
         </div>
       </div>
     </div>,
@@ -330,7 +330,7 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
   // Portal to <body>: inside the admin layout, `fixed` is clipped under the top header.
   return createPortal(
     <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60" onClick={onClose}>
-      <form onSubmit={submit} onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white dark:bg-slate-800 rounded-t-2xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 p-4 sm:p-5 flex flex-col gap-4">
+      <form onSubmit={submit} onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white dark:bg-slate-800 rounded-t-2xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 p-4 sm:p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
         <div className="flex items-center justify-between">
           <h3 className="font-bold text-lg text-slate-900 dark:text-white">{editing ? `Edit ${coupon.code}` : 'New coupon'}</h3>
           <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"><X className="w-5 h-5" /></button>
@@ -403,9 +403,9 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
           Active
         </label>
 
-        <div className="sticky bottom-0 -mx-4 sm:mx-0 -mb-4 sm:mb-0 px-4 sm:px-0 py-3 sm:py-0 sm:pt-2 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700 sm:border-0 flex justify-end gap-2">
+        <div className="sticky bottom-0 -mx-4 sm:mx-0 -mb-4 sm:mb-0 px-4 sm:px-0 py-2 sm:py-0 sm:pt-2 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700 sm:border-0 flex justify-end gap-2">
           <button type="button" onClick={onClose} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 sm:border-0">Cancel</button>
-          <button type="submit" disabled={saving} className="flex-1 sm:flex-none px-5 py-2.5 sm:py-2 rounded-xl text-sm font-bold bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-50">
+          <button type="submit" disabled={saving} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white hover:brightness-110 disabled:opacity-50">
             {saving ? 'Saving…' : editing ? 'Save changes' : 'Create coupon'}
           </button>
         </div>
@@ -530,7 +530,7 @@ const CouponsPage = () => {
   );
 
   const newButton = (
-    <button onClick={() => setEditing({})} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700">
+    <button onClick={() => setEditing({})} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110">
       <Plus className="w-4 h-4" /> New coupon
     </button>
   );
@@ -546,7 +546,7 @@ const CouponsPage = () => {
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-4">
+      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         {/* Title + view toggle + New coupon live in the navbar (title/count) and the filter drawer, like the other admin pages */}
         {loading ? (
           <AdminTableSkeleton showHeader={false} showFilters={false} />
@@ -567,7 +567,7 @@ const CouponsPage = () => {
             {viewMode === 'list' && (
               <div className="flex flex-col gap-3 pb-6">
                 {coupons.map((c) => (
-                  <div key={c._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-4 xl:gap-5">
+                  <div key={c._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                     {/* Code + offer */}
                     <div className="xl:w-52 shrink-0">
                       <div className="text-xl font-black tracking-widest text-primary-600">{c.code}</div>
@@ -606,7 +606,7 @@ const CouponsPage = () => {
             {viewMode === 'grid' && (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 pb-6">
                 {coupons.map((c) => (
-                  <div key={c._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+                  <div key={c._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <div className="text-xl font-black tracking-widest text-primary-600 truncate">{c.code}</div>

@@ -243,7 +243,7 @@ const DashboardAnalytics = () => {
 
   const RecentActivityTableView = () => (
     recentActivities.length > 0 ? (
-      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
         <ResponsiveTable
           data={recentActivities}
           columns={recentActivityColumns}
@@ -265,10 +265,10 @@ const DashboardAnalytics = () => {
   );
 
   const RecentActivityCardView = () => (
-    <div className="h-full overflow-y-auto grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-4 content-start">
+    <div className="h-full overflow-y-auto grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-3 content-start">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-white dark:bg-slate-900/40 backdrop-blur-xl border border-slate-100 dark:border-white/5 rounded-2xl p-4 hover:shadow-sm transition-all duration-200">
+          <div key={i} className="bg-white dark:bg-slate-900/40 backdrop-blur-xl border border-slate-100 dark:border-white/5 rounded-2xl p-4 hover:shadow-sm transition-all duration-200 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center">
                 <User className="w-5 h-5 text-primary-600" />
@@ -403,7 +403,7 @@ const DashboardAnalytics = () => {
   );
 
   const statCardsSection = (
-    <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2 xl:gap-4 mb-4 shrink-0">
+    <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2 xl:gap-3 mb-4 shrink-0">
       {[
         { label: 'Total Users', icon: Users, value: data?.overview?.totalUsers },
         { label: 'Total Quizzes', icon: BarChart3, value: data?.overview?.totalQuizzes },
@@ -414,9 +414,9 @@ const DashboardAnalytics = () => {
       ].map((stat, i) => (
         <div
           key={i}
-          className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm"
+          className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
         >
-          <div className="p-2 bg-primary-500/10 text-primary-600 rounded-lg shrink-0">
+          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0">
             <stat.icon className="w-4 h-4" />
           </div>
           <div className="min-w-0">
@@ -471,15 +471,15 @@ const DashboardAnalytics = () => {
   );
 
   if (error) return (
-    <div className="min-h-screen bg-background-page p-6 text-black dark:text-white">
-      <div className="container mx-auto py-0 xl:py-4 px-4 xl:px-10 bg-slate-100 dark:bg-slate-800 border border-black dark:border-white py-3 rounded">
+    <div className="min-h-screen bg-background-page p-4 text-black dark:text-white">
+      <div className="container mx-auto py-0 xl:py-2.5 px-4 xl:px-10 bg-slate-100 dark:bg-slate-800 border border-black dark:border-white py-2 rounded">
         {error}
       </div>
       </div>
   );
 
   if (!data) return (
-    <div className="min-h-screen bg-background-page p-6 text-center text-slate-700 dark:text-gray-400 dark:text-gray-300">
+    <div className="min-h-screen bg-background-page p-4 text-center text-slate-700 dark:text-gray-400 dark:text-gray-300">
       No data available
     </div>
   );
@@ -492,7 +492,7 @@ const DashboardAnalytics = () => {
           {statCardsSection}
 
           {/* Tables */}
-          <div className="flex-1 min-h-0 overflow-auto flex flex-col gap-4">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col gap-3">
             {/* Recent Activity */}
             <div className="flex-1 min-h-0 overflow-auto flex flex-col">
               <div className="flex-1 min-h-0 overflow-auto">

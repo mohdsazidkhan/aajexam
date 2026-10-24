@@ -94,9 +94,9 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl xl:rounded-[2rem] border-2 border-slate-200 dark:border-slate-800 shadow-sm p-5 xl:p-8"
+            className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl xl:rounded-[2rem] border-2 border-slate-200 dark:border-slate-800 p-4 xl:p-5 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
           >
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg xl:text-2xl font-black uppercase italic tracking-tighter flex items-center gap-2">
                 <Megaphone className="w-5 h-5 text-primary-600" /> Announce
               </h3>
@@ -105,7 +105,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
               </button>
             </div>
 
-            <form onSubmit={handleSendBroadcast} className="space-y-4">
+            <form onSubmit={handleSendBroadcast} className="space-y-3">
               <div>
                 <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Send to</label>
                 <select
@@ -116,7 +116,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                     setSpecificUser(null);
                     setSelectedUsers([]);
                   }}
-                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
+                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
                 >
                   <option value="all">All users</option>
                   <option value="pro">PRO subscribers only</option>
@@ -145,7 +145,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                   onChange={(e) => setComposeForm((f) => ({ ...f, title: e.target.value }))}
                   maxLength={200}
                   placeholder="e.g. New PYQ papers added!"
-                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
+                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
                 />
               </div>
               <div>
@@ -156,13 +156,13 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                   maxLength={500}
                   rows={4}
                   placeholder="What do you want to tell them?"
-                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
+                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
                 />
               </div>
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary-600 text-white rounded-lg xl:rounded-xl font-black uppercase text-xs tracking-widest hover:bg-primary-700 transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-xl font-black uppercase text-xs tracking-widest hover:brightness-110 transition-all disabled:opacity-50"
               >
                 <Send className="w-4 h-4" /> {sending ? 'Sending...' : 'Send Announcement'}
               </button>

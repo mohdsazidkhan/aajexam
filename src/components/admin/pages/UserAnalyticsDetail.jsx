@@ -33,7 +33,7 @@ function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 })
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 + 0.3 }}
-            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden cursor-default"
+            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-4 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden cursor-default"
         >
             <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -102,15 +102,15 @@ const AdminUserAnalyticsDetail = () => {
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 md:p-8 xl:p-12 mb-4 shadow-sm overflow-hidden group"
+                    className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 md:p-5 xl:p-12 mb-4 shadow-sm overflow-hidden group"
                 >
-                    <div className="absolute top-0 right-0 p-3 xl:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <div className="absolute top-0 right-0 p-3 xl:p-5 opacity-5 group-hover:opacity-10 transition-opacity">
                         <PieChart className="w-64 h-64 text-primary-600 -rotate-12" />
                     </div>
 
-                    <div className="relative z-10 flex flex-col xl:flex-row xl:items-center justify-between gap-4 xl:gap-12">
-                        <div className="space-y-3 xl:space-y-6">
-                            <div className="flex items-center gap-4">
+                    <div className="relative z-10 flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-12">
+                        <div className="space-y-3 xl:space-y-3">
+                            <div className="flex items-center gap-3">
                                 <motion.button
                                     whileHover={{ scale: 1.1, x: -5 }}
                                     whileTap={{ scale: 0.9 }}
@@ -122,12 +122,12 @@ const AdminUserAnalyticsDetail = () => {
                             </div>
 
                             {!loading && (
-                                <div className="flex flex-wrap items-center gap-3 xl:gap-6">
-                                    <div className="flex items-center gap-3 px-3 xl:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
+                                <div className="flex flex-wrap items-center gap-3 xl:gap-3">
+                                    <div className="flex items-center gap-3 px-3 xl:px-4 py-2 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
                                         <Mail className="w-4 h-4 text-slate-400" />
                                         <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{userData.email || 'N/A'}</span>
                                     </div>
-                                    <div className="flex items-center gap-3 px-3 xl:px-6 py-3 bg-primary-500/10 rounded-2xl border-2 border-primary-500/20">
+                                    <div className="flex items-center gap-3 px-3 xl:px-4 py-2 bg-primary-500/10 rounded-2xl border-2 border-primary-500/20">
                                         <TrendingUp className="w-4 h-4 text-primary-600" />
                                         <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest italic tracking-tighter">{userData.subscriptionStatus?.toUpperCase() || 'FREE'}</span>
                                     </div>
@@ -172,7 +172,7 @@ const AdminUserAnalyticsDetail = () => {
                             animate={{ opacity: 1, scale: 1 }}
                             className="max-w-2xl mx-auto bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl xl:rounded-[3.5rem] p-4 xl:p-12 text-center shadow-sm"
                         >
-                            <div className="w-20 h-20 bg-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-4 xl:mb-8 shadow-sm">
+                            <div className="w-20 h-20 bg-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-4 xl:mb-4 shadow-sm">
                                 <Zap className="w-10 h-10 text-white" />
                             </div>
                             <h3 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-4">Failed to load data. Please try again.</h3>
@@ -181,22 +181,22 @@ const AdminUserAnalyticsDetail = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => router.push('/admin/analytics/users-overview')}
-                                className="px-4 xl:px-8 py-4 bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm"
+                                className="px-4 xl:px-5 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white font-black uppercase tracking-widest rounded-2xl shadow-sm"
                             >
                                 Back to Users
                             </motion.button>
                         </motion.div>
                     ) : data && (
-                        <div className="space-y-2 xl:space-y-4 xl:space-y-12">
+                        <div className="space-y-2 xl:space-y-3 xl:space-y-12">
                             {/* Financial Matrix */}
                             <motion.section
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="space-y-2 xl:space-y-4 xl:space-y-8"
+                                className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
-                                <div className="flex items-center gap-4">
-                                    <div className="p-4 bg-primary-500/20 text-primary-600 rounded-2xl shadow-sm">
+                                <div className="flex items-center gap-3">
+                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl shadow-sm">
                                         <Coins className="w-6 h-6" />
                                     </div>
                                     <div>
@@ -204,7 +204,7 @@ const AdminUserAnalyticsDetail = () => {
                                         <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Earnings and expenses overview</p>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-5 gap-3 xl:gap-6">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-5 gap-3 xl:gap-3">
                                     <MetricCard i={0} color="emerald" icon={ArrowUp} label="Total Earnings" value={`₹${totalEarnings.toLocaleString('en-IN')}`} sub="All-time earnings" />
                                     <MetricCard i={1} color="rose" icon={ArrowDown} label="Total Payouts" value={`₹${totalExpenses.toLocaleString('en-IN')}`} sub="Withdrawals" />
                                     <MetricCard i={2} color={netEarnings >= 0 ? "emerald" : "rose"} icon={Wallet} label="Net Balance" value={`₹${Math.abs(netEarnings).toLocaleString('en-IN')}`} sub={netEarnings >= 0 ? "Positive balance" : "Negative balance"} />
@@ -218,10 +218,10 @@ const AdminUserAnalyticsDetail = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className="space-y-2 xl:space-y-4 xl:space-y-8"
+                                className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
-                                <div className="flex items-center gap-4">
-                                    <div className="p-4 bg-primary-500/10 text-primary-600 rounded-2xl shadow-sm">
+                                <div className="flex items-center gap-3">
+                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl shadow-sm">
                                         <Trophy className="w-6 h-6" />
                                     </div>
                                     <div>
@@ -229,7 +229,7 @@ const AdminUserAnalyticsDetail = () => {
                                         <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Quiz accuracy and leaderboard standing</p>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-6">
+                                <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-3">
                                     <MetricCard i={0} color="purple" icon={Star} label="High Score Wins" value={totalHighScoreWins.toLocaleString('en-IN')} sub="Leaderboard wins" />
                                     <MetricCard i={1} color="indigo" icon={TrendingUp} label="Avg. Accuracy" value={`${averageAccuracy.toFixed(2)}%`} sub="Overall correctness" />
                                     <MetricCard i={2} color="cyan" icon={GraduationCap} label="Quiz Attempts" value={testAttemptsCount.toLocaleString('en-IN')} sub="Total attempts" />
@@ -241,9 +241,9 @@ const AdminUserAnalyticsDetail = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="space-y-2 xl:space-y-4 xl:space-y-8"
+                                className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
-                                <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-3">
                                     <div className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl shadow-sm">
                                         <Activity className="w-6 h-6" />
                                     </div>
@@ -252,7 +252,7 @@ const AdminUserAnalyticsDetail = () => {
                                         <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Daily, weekly, and monthly progress</p>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-6">
+                                <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-3">
                                     <MetricCard i={0} color="rose" icon={Zap} label="Status" value={`Student`} sub={'Active'} />
                                     <MetricCard i={1} color="indigo" icon={Zap} label="Tests Taken" value={`0`} sub="Total tests completed" />
                                     <MetricCard i={2} color="indigo" icon={Zap} label="Average Score" value={`0%`} sub="Overall accuracy" />
@@ -264,9 +264,9 @@ const AdminUserAnalyticsDetail = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
-                                className="space-y-2 xl:space-y-4 xl:space-y-8"
+                                className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
-                                <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-3">
                                     <div className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl shadow-sm">
                                         <Users className="w-6 h-6" />
                                     </div>
@@ -275,7 +275,7 @@ const AdminUserAnalyticsDetail = () => {
                                         <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Followers, following, and referrals</p>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-6">
+                                <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-3">
                                     <MetricCard i={0} color="rose" icon={Users} label="Followers" value={followersCount.toLocaleString('en-IN')} sub="People following this user" />
                                     <MetricCard i={1} color="cyan" icon={Users} label="Following" value={followingCount.toLocaleString('en-IN')} sub="People this user follows" />
                                     <MetricCard i={2} color="amber" icon={UserPlus} label="Referrals" value={referralCount.toLocaleString('en-IN')} sub="Users referred" />
@@ -287,10 +287,10 @@ const AdminUserAnalyticsDetail = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
-                                className="space-y-2 xl:space-y-4 xl:space-y-8"
+                                className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
-                                <div className="flex items-center gap-4">
-                                    <div className="p-4 bg-primary-500/10 text-primary-600 rounded-2xl shadow-sm">
+                                <div className="flex items-center gap-3">
+                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl shadow-sm">
                                         <Book className="w-6 h-6" />
                                     </div>
                                     <div>
@@ -298,7 +298,7 @@ const AdminUserAnalyticsDetail = () => {
                                         <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Questions, categories, quizzes, and blogs created</p>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-2 xl:grid-cols-5 gap-3 xl:gap-6">
+                                <div className="grid grid-cols-2 xl:grid-cols-5 gap-3 xl:gap-3">
                                     <MetricCard i={0} color="purple" icon={HelpCircle} label="Questions" value={questionsPostedCount.toLocaleString('en-IN')} sub="Questions posted" />
                                     <MetricCard i={1} color="rose" icon={Folder} label="Categories" value={categoriesCreatedCount.toLocaleString('en-IN')} sub="Categories created" />
                                     <MetricCard i={2} color="emerald" icon={Layers} label="Subcategories" value={subcategoriesCreatedCount.toLocaleString('en-IN')} sub="Subcategories created" />

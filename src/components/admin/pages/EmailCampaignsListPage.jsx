@@ -211,7 +211,7 @@ const EmailCampaignsListPage = () => {
 
   const newCampaignButton = (
     <Link href="/admin/email-campaigns/new"
-      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium bg-primary-600 hover:bg-primary-600 text-white shadow-sm">
+      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:bg-primary-600 text-white shadow-sm">
       <Plus size={20} /> New Campaign
     </Link>
   );
@@ -299,7 +299,7 @@ const EmailCampaignsListPage = () => {
               <p className="text-slate-500 dark:text-slate-400 mb-4">
                 {filter === 'all' ? 'No campaigns yet.' : `No ${filter} campaigns.`}
               </p>
-              <Link href="/admin/email-campaigns/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-600 hover:bg-primary-600 text-white text-sm">
+              <Link href="/admin/email-campaigns/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:bg-primary-600 text-white text-sm">
                 <Plus size={16} /> Create your first campaign
               </Link>
             </div>
@@ -320,7 +320,7 @@ const EmailCampaignsListPage = () => {
             /* ---------- LIST ---------- */
             <div className="flex-1 min-h-0 overflow-auto space-y-2">
               {campaigns.map((c, idx) => (
-                <div key={c._id} className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 p-4 flex flex-wrap items-center gap-4">
+                <div key={c._id} className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 p-4 flex flex-wrap items-center gap-3">
                   <div className="flex-1 min-w-[200px]">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 text-[9px] font-black flex items-center justify-center">{(page - 1) * itemsPerPage + idx + 1}</span>
@@ -347,10 +347,10 @@ const EmailCampaignsListPage = () => {
             </div>
           ) : (
             /* ---------- GRID ---------- */
-            <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
               {campaigns.map((c, idx) => (
                 <div key={c._id} className="relative bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 p-4 flex flex-col">
-                  <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10">{(page - 1) * itemsPerPage + idx + 1}</span>
+                  <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{(page - 1) * itemsPerPage + idx + 1}</span>
                   <div className="flex items-start justify-between gap-2 mb-2 pl-6">
                     <StatusBadge status={c.status} />
                     <span className="text-[10px] font-mono text-slate-400">#{String(c._id).slice(-6)}</span>

@@ -123,7 +123,7 @@ const AdminPYQ = () => {
   const searchInput = (
     <div className="relative w-full sm:w-56">
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-      <input type="text" placeholder="Search paper title..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+      <input type="text" placeholder="Search paper title..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
     </div>
   );
 
@@ -133,7 +133,7 @@ const AdminPYQ = () => {
       <select
         value={selectedExamId}
         onChange={handleExamChange}
-        className="w-full sm:w-auto pl-8 pr-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 transition sm:min-w-[160px]"
+        className="w-full sm:w-auto pl-8 pr-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 transition sm:min-w-[160px]"
       >
         <option value="">All Exams</option>
         {exams.map(exam => (
@@ -159,7 +159,7 @@ const AdminPYQ = () => {
   );
 
   const newPyqButton = (
-    <button onClick={() => router.push('/admin/pyq/create')} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-primary-600 text-white">
+    <button onClick={() => router.push('/admin/pyq/create')} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white">
       <Plus className="w-3 h-3" /> New PYQ
     </button>
   );
@@ -214,7 +214,7 @@ const AdminPYQ = () => {
                 <ResponsiveTable data={tests} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
               </Card>
             ) : viewMode === 'grid' ? (
-              <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
+              <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                 {tests.map((t, i) => {
                   const examId = t.examPattern?.exam?._id ? String(t.examPattern.exam._id) : null;
                   const maxYear = examId ? maxYearByExam[examId] : null;
@@ -222,7 +222,7 @@ const AdminPYQ = () => {
                   return (
                     <Card key={t._id || i} className="flex flex-col gap-3">
                       <div className="flex items-start justify-between gap-2">
-                        <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0"><FileText className="w-5 h-5" /></div>
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow flex items-center justify-center shrink-0"><FileText className="w-5 h-5" /></div>
                         <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>{isFree ? 'FREE' : 'PRO'}</span>
                       </div>
                       <div>
@@ -248,7 +248,7 @@ const AdminPYQ = () => {
                   const maxYear = examId ? maxYearByExam[examId] : null;
                   const isFree = maxYear != null && Number(t.pyqYear) === Number(maxYear);
                   return (
-                  <Card key={t._id || i} className="flex items-center gap-4">
+                  <Card key={t._id || i} className="flex items-center gap-3">
                     <div className="flex-1 min-w-0 space-y-1.5">
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[10px] font-black text-primary-600 dark:text-primary-300">{t.pyqYear || 'PYQ'}</span>

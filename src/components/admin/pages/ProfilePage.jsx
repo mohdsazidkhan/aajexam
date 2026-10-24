@@ -10,7 +10,7 @@ import { useSSR } from '../../../hooks/useSSR';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 import { getCurrentUser, secureLogout } from '../../../lib/utils/authUtils';
 
-const FIELD_CLASSNAME = 'w-full px-4 py-3.5 rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold outline-none focus:border-primary-700 focus:bg-primary-500/5 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-600';
+const FIELD_CLASSNAME = 'w-full px-4 py-3.5 rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-black font-bold outline-none focus:border-primary-600 focus:bg-primary-500/5 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-600';
 
 const PASSWORD_FIELDS = [
   { id: 'old', label: 'Current password' },
@@ -56,11 +56,11 @@ const AdminProfilePage = () => {
   };
 
   return (
-    <div className="space-y-4 xl:space-y-6 mt-4 mb-4">
+    <div className="space-y-3 xl:space-y-3 mt-4 mb-4">
       {/* Admin info */}
-      <Card className="p-5 xl:p-8" radius="3xl">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-          <div className="flex items-center gap-5">
+      <Card className="p-4 xl:p-5" radius="3xl">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+          <div className="flex items-center gap-3">
             <div className="w-16 h-16 xl:w-20 xl:h-20 rounded-full overflow-hidden bg-primary-600 p-[3px] flex-shrink-0">
               <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-xl xl:text-2xl font-black uppercase">
                 {user?.name?.charAt(0) || 'A'}
@@ -79,7 +79,7 @@ const AdminProfilePage = () => {
 
           <div className="hidden sm:block w-px self-stretch bg-slate-200 dark:bg-slate-800 mx-1" />
 
-          <div className="grid grid-cols-2 gap-3 mt-4 sm:mt-0 sm:flex sm:items-center sm:gap-6 min-w-0">
+          <div className="grid grid-cols-2 gap-3 mt-4 sm:mt-0 sm:flex sm:items-center sm:gap-3 min-w-0">
             <div className="flex items-center gap-2.5 min-w-0 p-3 sm:p-0 rounded-xl border border-slate-200 dark:border-slate-800 sm:border-none">
               <div className="p-2 bg-background-surface-secondary rounded-lg text-content-secondary flex-shrink-0">
                 <Mail className="w-4 h-4" />
@@ -103,19 +103,19 @@ const AdminProfilePage = () => {
       </Card>
 
       {/* Change password */}
-      <Card className="p-5 xl:p-8 space-y-6" radius="3xl">
-        <div className="flex items-center justify-between gap-4">
+      <Card className="p-4 xl:p-5 space-y-3" radius="3xl">
+        <div className="flex items-center justify-between gap-3">
           <div className="space-y-1">
             <h2 className="text-lg xl:text-xl font-black font-outfit tracking-tight text-content-primary">Change password</h2>
             <p className="text-sm font-medium text-content-secondary">Use a strong password to keep your account safe.</p>
           </div>
-          <div className="p-3 bg-primary-600 text-white rounded-2xl shadow-sm hidden sm:block">
+          <div className="p-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl shadow-sm hidden sm:block">
             <Lock className="w-5 h-5" />
           </div>
         </div>
 
-        <form onSubmit={handleChangePassword} className="space-y-5">
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
+        <form onSubmit={handleChangePassword} className="space-y-3">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-3">
             {PASSWORD_FIELDS.map((item) => (
               <div key={item.id} className="space-y-2">
                 <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{item.label}</label>
@@ -145,10 +145,10 @@ const AdminProfilePage = () => {
       </Card>
 
       {/* Logout */}
-      <Card className="p-5 xl:p-8" radius="3xl">
+      <Card className="p-4 xl:p-5" radius="3xl">
         <button
           onClick={() => secureLogout(router)}
-          className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-sm font-black uppercase tracking-wide bg-red-500 hover:bg-red-600 text-white shadow-sm transition-colors"
+          className="w-full flex items-center justify-center gap-3 py-2.5 rounded-2xl text-sm font-black uppercase tracking-wide bg-red-500 hover:bg-red-600 text-white shadow-sm transition-colors"
         >
           <LogOut className="w-4 h-4" /> Log out
         </button>

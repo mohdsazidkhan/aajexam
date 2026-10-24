@@ -102,8 +102,8 @@ const AdminUsersAnalytics = () => {
             key: 'name',
             header: 'User Profile',
             render: (_, s) => (
-                <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-lg shadow-sm">{(s.name || 'U')[0]}</div>
+                <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center font-black text-lg shadow-sm">{(s.name || 'U')[0]}</div>
                     <div>
                         <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 group-hover:text-primary-600 transition-colors tracking-tight">{s.name || 'Anonymous'}</div>
                         <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none truncate max-w-[150px]">{s.email || 'N/A'}</div>
@@ -146,14 +146,14 @@ const AdminUsersAnalytics = () => {
             align: 'right',
             render: (_, s) => (
                 <div className="flex justify-end">
-                    <motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl shadow-sm hover:bg-primary-700 hover:text-white transition-colors"><ArrowRight className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl shadow-sm hover:bg-primary-700 hover:text-white transition-colors"><ArrowRight className="w-5 h-5" /></motion.button>
                 </div>
             )
         }
     ];
 
     const statCardsSection = (
-        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-2 xl:gap-4 mb-4 shrink-0">
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-2 xl:gap-3 mb-4 shrink-0">
             {[
                  { label: 'Total Users', val: summary.totalUsers || totalUsers, icon: Users, color: 'primary' },
                  { label: 'Monthly Revenue', val: summary.totalRevenue || 0, icon: TrendingUp, color: 'primary', isCurrency: true },
@@ -161,7 +161,7 @@ const AdminUsersAnalytics = () => {
                  { label: 'Other Expenses', val: summary.totalCustomExpenses || 0, icon: Target, color: 'primary', isCurrency: true },
                  { label: 'Net Profit', val: summary.netPlatform || 0, icon: Activity, color: summary.netPlatform >= 0 ? 'primary' : 'rose', isCurrency: true, isNet: true }
              ].map((stat) => (
-                <div key={stat.label} className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <div key={stat.label} className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                     <div className={`p-2 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-lg shrink-0`}><stat.icon className="w-4 h-4" /></div>
                     <div className="min-w-0">
                         <div className="flex items-baseline gap-0.5">
@@ -180,7 +180,7 @@ const AdminUsersAnalytics = () => {
     const searchInput = (
         <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-            <input type="text" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="Search by name or email..." className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+            <input type="text" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="Search by name or email..." className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
         </div>
     );
 
@@ -209,7 +209,7 @@ const AdminUsersAnalytics = () => {
     );
 
     const expensesButton = (
-        <button onClick={() => router.push('/admin/expenses')} className="w-full flex items-center justify-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2 rounded-lg xl:rounded-xl text-sm font-bold">
+        <button onClick={() => router.push('/admin/expenses')} className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  px-4 py-2 rounded-lg xl:rounded-xl text-sm font-bold">
             <Wallet className="w-4 h-4" /> Expenses
         </button>
     );
@@ -263,13 +263,13 @@ const AdminUsersAnalytics = () => {
                              <div className="flex items-center justify-center py-32"><AdminDashboardSkeleton /></div>
                         ) : error ? (
                             <div className="text-center py-32">
-                                <div className="p-3 xl:p-8 bg-black/10 dark:bg-white/10 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-6 inline-block text-black dark:text-white text-2xl xl:text-6xl">!</div>
+                                <div className="p-3 xl:p-5 bg-black/10 dark:bg-white/10 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 inline-block text-black dark:text-white text-2xl xl:text-6xl">!</div>
                                  <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Something went wrong</h3>
                                  <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
                             </div>
                         ) : students.length === 0 ? (
                             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
-                                <Globe className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-8 opacity-20" />
+                                <Globe className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
                                  <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter italic">No Users Found</h3>
                                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your search or filters.</p>
                             </div>
@@ -277,7 +277,7 @@ const AdminUsersAnalytics = () => {
                             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-auto flex flex-col">
                                 <div className="flex-1 min-h-0 overflow-auto">
                                 {viewMode === 'table' && (
-                                    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
+                                    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                         <ResponsiveTable
                                             data={students}
                                             columns={usersTableColumns}
@@ -293,9 +293,9 @@ const AdminUsersAnalytics = () => {
                                 {viewMode === 'grid' && (
                                     <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-3 items-start">
                                         {students.map((s, idx) => (
-                                            <div key={s._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+                                            <div key={s._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                 <div className="flex items-start justify-between gap-2">
-                                                    <div className="relative w-10 h-10 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl flex items-center justify-center font-black text-sm">
+                                                    <div className="relative w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-xl flex items-center justify-center font-black text-sm">
                                                         {(s.name || 'U')[0]}
                                                         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
                                                     </div>
@@ -309,7 +309,7 @@ const AdminUsersAnalytics = () => {
                                                     <span className="text-slate-400">Earnings</span>
                                                     <span className="font-black text-primary-600">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</span>
                                                 </div>
-                                                <button onClick={() => goToUser(s._id)} className="w-full py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg text-xs font-bold hover:bg-primary-700 transition-all">View Details</button>
+                                                <button onClick={() => goToUser(s._id)} className="w-full py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg text-xs font-bold hover:bg-primary-700 transition-all">View Details</button>
                                             </div>
                                         ))}
                                     </div>
@@ -318,8 +318,8 @@ const AdminUsersAnalytics = () => {
                                 {viewMode === 'list' && (
                                     <div className="h-full overflow-auto space-y-3">
                                         {students.map((s, idx) => (
-                                            <div key={s._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex items-center gap-4">
-                                                <div className="relative w-10 h-10 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl flex items-center justify-center font-black text-sm shrink-0">
+                                            <div key={s._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                                                <div className="relative w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-xl flex items-center justify-center font-black text-sm shrink-0">
                                                     {(s.name || 'U')[0]}
                                                     <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
                                                 </div>

@@ -150,14 +150,14 @@ const AdminDailyChallenge = () => {
   ];
 
   const bulkYearSelect = (
-    <select value={bulkYear} onChange={e => setBulkYear(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
+    <select value={bulkYear} onChange={e => setBulkYear(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black outline-none">
       <option value={new Date().getFullYear()}>{new Date().getFullYear()}</option>
       <option value={new Date().getFullYear() + 1}>{new Date().getFullYear() + 1}</option>
     </select>
   );
 
   const bulkMonthSelect = (
-    <select value={bulkMonth} onChange={e => setBulkMonth(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
+    <select value={bulkMonth} onChange={e => setBulkMonth(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black outline-none">
       {Array.from({ length: 12 }).map((_, i) => (
         <option key={i} value={i}>{new Date(2000, i, 1).toLocaleString('default', { month: 'long' })}</option>
       ))}
@@ -165,7 +165,7 @@ const AdminDailyChallenge = () => {
   );
 
   const bulkCountSelect = (
-    <select value={bulkCount} onChange={e => setBulkCount(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
+    <select value={bulkCount} onChange={e => setBulkCount(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black outline-none">
       <option value={5}>5 Questions / Day</option>
       <option value={10}>10 Questions / Day</option>
       <option value={15}>15 Questions / Day</option>
@@ -174,7 +174,7 @@ const AdminDailyChallenge = () => {
   );
 
   const generateMonthButton = (
-    <button onClick={autoGenerateMonth} disabled={bulkGenerating} className="w-full xl:w-auto px-4 py-2 bg-primary-600 text-white rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 flex items-center justify-center">
+    <button onClick={autoGenerateMonth} disabled={bulkGenerating} className="w-full xl:w-auto px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 flex items-center justify-center">
       <Calendar className="w-3 h-3 inline mr-1" />{bulkGenerating ? 'Generating...' : 'Generate Month'}
     </button>
   );
@@ -257,7 +257,7 @@ const AdminDailyChallenge = () => {
               <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2 mb-3 overflow-hidden">
                 <div className="bg-primary-600 h-2 rounded-full transition-all duration-300" style={{ width: `${(bulkProgress.current / bulkProgress.total) * 100}%` }}></div>
               </div>
-              <div className="flex gap-4 text-[10px] font-bold">
+              <div className="flex gap-3 text-[10px] font-bold">
                 <span className="text-slate-500">Total: {bulkProgress.total}</span>
                 <span className="text-primary-600">Success: {bulkProgress.success}</span>
                 <span className="text-black dark:text-white">Skipped: {bulkProgress.skipped}</span>
@@ -271,11 +271,11 @@ const AdminDailyChallenge = () => {
         {challenges.length === 0 ? (
           <Card className="text-center"><p className="text-slate-400 font-bold">No challenges created yet</p></Card>
         ) : viewMode === 'table' ? (
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto xl:h-full flex flex-col">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto xl:h-full flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
             <ResponsiveTable data={challenges} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
           </div>
         ) : viewMode === 'grid' ? (
-          <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
+          <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
             {challenges.map((c, i) => (
               <Card key={c._id || i} className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
@@ -294,7 +294,7 @@ const AdminDailyChallenge = () => {
         ) : (
           <div className="h-full overflow-auto space-y-2">
             {challenges.map((c, i) => (
-              <Card key={c._id || i} className="flex items-center gap-4">
+              <Card key={c._id || i} className="flex items-center gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <Calendar className="w-3 h-3 text-slate-400" />

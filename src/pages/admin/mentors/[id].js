@@ -49,7 +49,7 @@ const AdminMentorDetail = () => {
     <AdminRoute>
       <div className="min-h-screen pb-6 xl:pb-12">
         <Head><title>{mentor.user?.name || 'Mentor'} - Admin</title></Head>
-        <div className="py-0 xl:py-6 space-y-2 xl:space-y-4">
+        <div className="py-0 xl:py-3 space-y-2 xl:space-y-3">
           <Link href="/admin/mentors" className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline w-fit">
             <ArrowLeft className="w-4 h-4" /> Back to Mentors
           </Link>
@@ -74,7 +74,7 @@ const AdminMentorDetail = () => {
                 <select
                   value={mentor.status}
                   onChange={e => updateStatus(e.target.value, e.target.value === 'active' ? true : undefined)}
-                  className="px-2 py-1.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold bg-slate-50 dark:bg-black outline-none"
+                  className="px-2 py-1.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold bg-white dark:bg-black outline-none"
                 >
                   <option value="pending">Pending</option>
                   <option value="active">Active</option>

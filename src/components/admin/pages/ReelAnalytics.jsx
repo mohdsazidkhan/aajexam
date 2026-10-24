@@ -161,11 +161,11 @@ const AdminReelAnalytics = () => {
         {/* Body */}
         <div className="flex-1 min-h-0 overflow-auto overflow-y-auto">
           {loading ? <AdminDashboardSkeleton /> : data ? (
-            <div className="space-y-4 pb-4">
+            <div className="space-y-3 pb-4">
 
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
                 {/* Type Breakdown */}
-                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-3 sm:p-4">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-3 sm:p-4 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight text-xs">By Type</h3>
                   <div className="space-y-1">
                     {data.typeBreakdown.map(item => (
@@ -184,11 +184,11 @@ const AdminReelAnalytics = () => {
                 </div>
 
                 {/* Subject Breakdown */}
-                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-3 sm:p-4">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-3 sm:p-4 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight text-xs">By Subject</h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
                     {data.subjectBreakdown.map(item => (
-                      <div key={item._id} className="px-2 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700">
+                      <div key={item._id} className="px-2 py-1.5 rounded-lg bg-white dark:bg-black border border-slate-100 dark:border-slate-700">
                         <p className="font-black text-slate-900 dark:text-white text-[10px] truncate uppercase tracking-tight">{item._id}</p>
                         <p className="text-[9px] font-bold text-slate-400 mt-0.5">{item.count} reels &middot; {item.views} views</p>
                       </div>
@@ -198,7 +198,7 @@ const AdminReelAnalytics = () => {
               </div>
 
               {/* Top Reels */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 sm:p-5">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 sm:p-4 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm">Top 10 Reels</h3>
                   <ViewToggle currentView={topReelsView} onViewChange={setTopReelsView} views={['table', 'list', 'grid']} />
@@ -211,7 +211,7 @@ const AdminReelAnalytics = () => {
             </div>
           ) : (
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
-              <BarChart3 className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-8 opacity-20" />
+              <BarChart3 className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
               <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">No Analytics Data</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Create some reels first to see analytics.</p>
             </div>

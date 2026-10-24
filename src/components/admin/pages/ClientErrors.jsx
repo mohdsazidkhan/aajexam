@@ -164,7 +164,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
     {
       key: 'actions', header: 'ACTIONS', align: 'center', render: (_, e) => (
         <div className="flex justify-center gap-1.5">
-          <button onClick={() => setSelected(e)} title="View details" className="p-2 rounded-lg bg-primary-500/10 text-primary-600 hover:bg-primary-600 hover:text-white transition"><Eye className="w-4 h-4" /></button>
+          <button onClick={() => setSelected(e)} title="View details" className="p-2 rounded-lg bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow hover:bg-primary-600 hover:text-white transition"><Eye className="w-4 h-4" /></button>
           {e.status !== 'resolved'
             ? <button onClick={() => setItemStatus(e, 'resolved')} title="Mark resolved" className="p-2 rounded-lg bg-emerald-500/10 text-emerald-600 hover:bg-emerald-600 hover:text-white transition"><CheckCircle2 className="w-4 h-4" /></button>
             : <button onClick={() => setItemStatus(e, 'open')} title="Reopen" className="p-2 rounded-lg bg-amber-500/10 text-amber-600 hover:bg-amber-600 hover:text-white transition"><RotateCcw className="w-4 h-4" /></button>}
@@ -183,15 +183,15 @@ export default function ClientErrors({ kind = 'mobile' }) {
           value={searchTerm}
           onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
           placeholder="Search message, screen, endpoint, user..."
-          className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+          className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
         />
       </div>
       <div className="flex gap-2 flex-wrap">
-        <select value={type} onChange={(e) => { setType(e.target.value); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
+        <select value={type} onChange={(e) => { setType(e.target.value); setPage(1); }} className="px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
           <option value="">All types</option>
           {TYPE_OPTIONS.map((t) => <option key={t} value={t}>{t}</option>)}
         </select>
-        <select value={sort} onChange={(e) => { setSort(e.target.value); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
+        <select value={sort} onChange={(e) => { setSort(e.target.value); setPage(1); }} className="px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
           <option value="recent">Most recent</option>
           <option value="count">Most frequent</option>
         </select>
@@ -215,11 +215,11 @@ export default function ClientErrors({ kind = 'mobile' }) {
   useAdminMobileHeader({ title, count: pagination.total || 0, filters });
 
   if (loading && items.length === 0 && !error) {
-    return <div className="min-h-screen p-3 xl:p-8"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>;
+    return <div className="min-h-screen p-3 xl:p-5"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>;
   }
 
   const stat = (label, value, Icon, tone) => (
-    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3">
+    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
       <div className={`p-2 rounded-lg ${tone}`}><Icon className="w-4 h-4" /></div>
       <div>
         <div className="text-lg font-black tabular-nums text-slate-900 dark:text-white leading-none">{value ?? 0}</div>
@@ -269,13 +269,13 @@ export default function ClientErrors({ kind = 'mobile' }) {
               <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.25em]">Nothing reported for these filters. That is good news.</p>
             </div>
           ) : viewMode === 'table' ? (
-            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
               <ResponsiveTable data={items} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
               {items.map((e) => (
-                <div key={e._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-2">
+                <div key={e._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-2 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <div className="flex items-center justify-between gap-2">
                     <OriginBadge origin={e.origin} />
                     <span className="text-sm font-black tabular-nums">×{e.count}</span>
@@ -303,13 +303,13 @@ export default function ClientErrors({ kind = 'mobile' }) {
         {selected ? (
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/60 flex items-end sm:items-center justify-center p-0 sm:p-6"
+            className="fixed inset-0 z-[100] bg-black/60 flex items-end sm:items-center justify-center p-0 sm:p-4"
             onClick={() => setSelected(null)}
           >
             <motion.div
               initial={{ y: 40 }} animate={{ y: 0 }} exit={{ y: 40 }}
               onClick={(ev) => ev.stopPropagation()}
-              className="bg-white dark:bg-slate-900 w-full sm:max-w-3xl max-h-[90dvh] overflow-auto rounded-t-3xl sm:rounded-3xl border border-slate-200 dark:border-slate-700 p-5"
+              className="bg-white dark:bg-slate-900 w-full sm:max-w-3xl max-h-[90dvh] overflow-auto rounded-t-3xl sm:rounded-3xl border border-slate-200 dark:border-slate-700 p-4"
             >
               <div className="flex items-start justify-between gap-3 mb-3">
                 <div className="flex flex-wrap items-center gap-2">
@@ -321,7 +321,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
               </div>
               <h2 className="text-base font-black leading-snug mb-3 break-words">{selected.message}</h2>
 
-              <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs mb-4">
+              <dl className="grid grid-cols-2 gap-x-3 gap-y-2 text-xs mb-4">
                 {[
                   ['Occurrences', selected.count],
                   ['Reopened', selected.reopenedCount || 0],
@@ -339,11 +339,11 @@ export default function ClientErrors({ kind = 'mobile' }) {
               </dl>
 
               {selected.stack ? (<><div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1">Stack trace</div>
-                <pre className="text-[10px] leading-relaxed bg-slate-50 dark:bg-black rounded-xl p-3 overflow-auto max-h-56 mb-3 whitespace-pre-wrap break-words">{selected.stack}</pre></>) : null}
+                <pre className="text-[10px] leading-relaxed bg-white dark:bg-black rounded-xl p-3 overflow-auto max-h-56 mb-3 whitespace-pre-wrap break-words">{selected.stack}</pre></>) : null}
               {selected.componentStack ? (<><div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1">Component stack</div>
-                <pre className="text-[10px] leading-relaxed bg-slate-50 dark:bg-black rounded-xl p-3 overflow-auto max-h-40 mb-3 whitespace-pre-wrap break-words">{selected.componentStack}</pre></>) : null}
+                <pre className="text-[10px] leading-relaxed bg-white dark:bg-black rounded-xl p-3 overflow-auto max-h-40 mb-3 whitespace-pre-wrap break-words">{selected.componentStack}</pre></>) : null}
               {selected.extra ? (<><div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1">Extra</div>
-                <pre className="text-[10px] leading-relaxed bg-slate-50 dark:bg-black rounded-xl p-3 overflow-auto max-h-40 mb-3 whitespace-pre-wrap break-words">{JSON.stringify(selected.extra, null, 2)}</pre></>) : null}
+                <pre className="text-[10px] leading-relaxed bg-white dark:bg-black rounded-xl p-3 overflow-auto max-h-40 mb-3 whitespace-pre-wrap break-words">{JSON.stringify(selected.extra, null, 2)}</pre></>) : null}
               {selected.userAgent ? <div className="text-[10px] text-slate-400 break-words mb-4">UA: {selected.userAgent}</div> : null}
 
               <div className="flex flex-wrap gap-2">

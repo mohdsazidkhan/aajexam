@@ -99,7 +99,7 @@ const AdminWithdrawRequests = () => {
     {
       key: 'user', header: 'Student', render: (_, req) => (
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-primary-500/10 text-primary-600 rounded-full flex items-center justify-center font-black text-xs uppercase">{req.userId?.name?.[0] || 'U'}</div>
+          <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-full flex items-center justify-center font-black text-xs uppercase">{req.userId?.name?.[0] || 'U'}</div>
           <div>
             <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight leading-none mb-1">{req.userId?.name || 'N/A'}</div>
             <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">{req.userId?.email || 'N/A'}</div>
@@ -149,12 +149,12 @@ const AdminWithdrawRequests = () => {
           </div>
           {req.status === 'pending' && (
             <div className="flex gap-2">
-              <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'approved')} className="p-2 bg-primary-600 text-white rounded-lg shadow-sm"><CheckCircle2 className="w-4 h-4" /></motion.button>
-              <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id,'rejected')} className="p-2 bg-primary-600 text-white rounded-lg shadow-sm"><XCircle className="w-4 h-4"/></motion.button>
+              <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'approved')} className="p-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg shadow-sm"><CheckCircle2 className="w-4 h-4" /></motion.button>
+              <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id,'rejected')} className="p-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg shadow-sm"><XCircle className="w-4 h-4"/></motion.button>
             </div>
           )}
           {req.status === 'approved' && (
-            <motion.button whileHover={{ scale: 1.02 }} onClick={() => updateStatus(req._id, 'paid')} className="w-full py-2 bg-primary-600 text-white rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2">
+            <motion.button whileHover={{ scale: 1.02 }} onClick={() => updateStatus(req._id, 'paid')} className="w-full py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2">
               <Send className="w-3 h-3" /> Mark as Paid
             </motion.button>
           )}
@@ -235,7 +235,7 @@ const AdminWithdrawRequests = () => {
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : items.length === 0 ? (
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
-              <CreditCard className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-8 opacity-20" />
+              <CreditCard className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
               <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">No Withdrawal Requests</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">No pending withdrawal requests at this time.</p>
             </div>
@@ -250,9 +250,9 @@ const AdminWithdrawRequests = () => {
                   {items.map((req, idx) => (
                     <motion.div key={req._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }} className="bg-white dark:bg-white/5 rounded-lg xl:rounded-xl border-2 border-slate-100 dark:border-white/10 p-3 xl:p-4 shadow-sm flex flex-col sm:flex-row sm:items-center gap-3 hover:border-primary-500/20 transition-all">
                       <div className="flex items-center gap-3 flex-1 min-w-0">
-                        <div className="relative w-10 h-10 bg-primary-500/10 text-primary-600 rounded-full flex items-center justify-center font-black text-xs uppercase shrink-0">
+                        <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-full flex items-center justify-center font-black text-xs uppercase shrink-0">
                           {req.userId?.name?.[0] || 'U'}
-                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{req._sno}</span>
+                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{req._sno}</span>
                         </div>
                         <div className="min-w-0">
                           <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight leading-none mb-1 truncate">{req.userId?.name || 'N/A'}</div>
@@ -293,12 +293,12 @@ const AdminWithdrawRequests = () => {
 
                       {req.status === 'pending' && (
                         <div className="flex gap-2 shrink-0">
-                          <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'approved')} className="p-2 bg-primary-600 text-white rounded-lg shadow-sm"><CheckCircle2 className="w-4 h-4" /></motion.button>
-                          <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'rejected')} className="p-2 bg-primary-600 text-white rounded-lg shadow-sm"><XCircle className="w-4 h-4" /></motion.button>
+                          <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'approved')} className="p-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg shadow-sm"><CheckCircle2 className="w-4 h-4" /></motion.button>
+                          <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'rejected')} className="p-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg shadow-sm"><XCircle className="w-4 h-4" /></motion.button>
                         </div>
                       )}
                       {req.status === 'approved' && (
-                        <motion.button whileHover={{ scale: 1.02 }} onClick={() => updateStatus(req._id, 'paid')} className="shrink-0 px-4 py-2 bg-primary-600 text-white rounded-lg text-[9px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2">
+                        <motion.button whileHover={{ scale: 1.02 }} onClick={() => updateStatus(req._id, 'paid')} className="shrink-0 px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg text-[9px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2">
                           <Send className="w-3 h-3" /> Mark as Paid
                         </motion.button>
                       )}
@@ -306,12 +306,12 @@ const AdminWithdrawRequests = () => {
                   ))}
                 </div>
               ) : (
-                <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-8">
+                <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-4">
                   {items.map((req, idx) => (
-                    <motion.div key={req._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-8 shadow-sm relative font-outfit overflow-hidden group hover:border-primary-500/20 transition-all">
+                    <motion.div key={req._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm relative font-outfit overflow-hidden group hover:border-primary-500/20 transition-all">
                       <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-600" />
-                      <div className="flex justify-between items-start mb-4 xl:mb-8">
-                        <div className="flex items-center gap-4">
+                      <div className="flex justify-between items-start mb-4 xl:mb-4">
+                        <div className="flex items-center gap-3">
                           <div className="w-12 h-12 bg-primary-600 text-white rounded-2xl flex items-center justify-center font-black italic shadow-sm text-xs">{req.userId?.name?.[0] || 'U'}</div>
                           <div>
                             <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{req.userId?.name || 'N/A'}</h3>
@@ -321,7 +321,7 @@ const AdminWithdrawRequests = () => {
                         <div className={`px-3 py-1 rounded-lg xl:rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>
                       </div>
 
-                      <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 mb-4 xl:mb-8 border-2 border-slate-100 dark:border-white/5">
+                      <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-4 mb-4 xl:mb-4 border-2 border-slate-100 dark:border-white/5">
                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Withdrawal Amount</div>
                         <div className="text-3xl font-black text-primary-600 italic tracking-tighter leading-none mb-4">{formatCurrency(req.amount)}</div>
                         <div className="pt-4 border-t-2 border-slate-100 dark:border-white/5">
@@ -339,13 +339,13 @@ const AdminWithdrawRequests = () => {
                       <div className="flex gap-3 mt-auto">
                         {req.status === 'pending' ? (
                           <>
-                            <motion.button onClick={() => updateStatus(req._id, 'approved')} whileHover={{ scale: 1.02 }} className="flex-1 py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2"><CheckCircle2 className="w-4 h-4" /> Approve</motion.button>
+                            <motion.button onClick={() => updateStatus(req._id, 'approved')} whileHover={{ scale: 1.02 }} className="flex-1 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2"><CheckCircle2 className="w-4 h-4" /> Approve</motion.button>
                             <motion.button onClick={() => updateStatus(req._id, 'rejected')} whileHover={{ scale: 1.02 }} className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl border border-black/20 dark:border-white/20 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"><XCircle className="w-5 h-5" /></motion.button>
                           </>
                         ) : req.status === 'approved' ? (
-                          <motion.button onClick={() => updateStatus(req._id, 'paid')} whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2"><CreditCard className="w-4 h-4" /> Mark as Paid</motion.button>
+                          <motion.button onClick={() => updateStatus(req._id, 'paid')} whileHover={{ scale: 1.02 }} className="w-full py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2"><CreditCard className="w-4 h-4" /> Mark as Paid</motion.button>
                         ) : (
-                          <div className="w-full py-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[10px] font-black uppercase text-center border-2 border-slate-200/50">Processed</div>
+                          <div className="w-full py-2.5 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[10px] font-black uppercase text-center border-2 border-slate-200/50">Processed</div>
                         )}
                       </div>
                     </motion.div>

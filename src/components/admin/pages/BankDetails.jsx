@@ -123,7 +123,7 @@ export default function AdminBankDetails() {
   const bankDetailsColumns = [
     {
       key: 'user', header: 'USER', render: (_, detail) => (
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-primary-600 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
             <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-600">
               {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
@@ -191,7 +191,7 @@ export default function AdminBankDetails() {
   ];
 
   const TableView = () => (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
       <ResponsiveTable
         data={bankDetails}
         columns={bankDetailsColumns}
@@ -207,12 +207,12 @@ export default function AdminBankDetails() {
   const CardView = () => (
     <div className="grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
       {bankDetails.map((detail, idx) => (
-        <div key={detail._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+        <div key={detail._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-3 min-w-0">
               <div className="relative w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
                 {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
-                <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * limit + idx + 1}</span>
+                <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * limit + idx + 1}</span>
               </div>
               <div className="min-w-0">
                 <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{detail.user?.name || "N/A"}</h3>
@@ -260,11 +260,11 @@ export default function AdminBankDetails() {
   const ListView = () => (
     <div className="h-full overflow-auto space-y-3">
       {bankDetails.map((detail, idx) => (
-        <div key={detail._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-6">
+        <div key={detail._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
           <div className="flex items-center gap-3">
             <div className="relative w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
               {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
-              <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * limit + idx + 1}</span>
+              <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * limit + idx + 1}</span>
             </div>
             <div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">{detail.user?.name || "N/A"}</h3>
@@ -308,7 +308,7 @@ export default function AdminBankDetails() {
         placeholder="Search by name, email, or bank details..."
         value={searchTerm}
         onChange={(e) => handleSearch(e.target.value)}
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );

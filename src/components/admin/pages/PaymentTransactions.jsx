@@ -207,14 +207,14 @@ const AdminPaymentTransactions = () => {
 
     if (items.length === 0) {
       return (
-        <div className="px-4 py-4 xl:px-6 bg-slate-50 dark:bg-black/20 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+        <div className="px-4 py-2.5 xl:px-4 bg-white dark:bg-black/20 text-[10px] font-black text-slate-400 uppercase tracking-widest">
           No additional payment details available
         </div>
       );
     }
 
     return (
-      <div className="px-4 py-4 xl:px-6 xl:py-5 bg-slate-50 dark:bg-black/20 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="px-4 py-2.5 xl:px-4 xl:py-3 bg-white dark:bg-black/20 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
         {items.map((item) => (
           <div key={item.label} className="min-w-0">
             <div className="flex items-center gap-1.5 text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">
@@ -351,7 +351,7 @@ const AdminPaymentTransactions = () => {
         placeholder="Search by order ID or username..."
         value={filters.search}
         onChange={(e) => handleFilterChange('search', e.target.value)}
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -418,7 +418,7 @@ const AdminPaymentTransactions = () => {
   const exportButton = (
     <button
       onClick={exportToCSV}
-      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700"
+      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
     >
       <Download className="w-4 h-4" /> Export to CSV
     </button>
@@ -477,7 +477,7 @@ const AdminPaymentTransactions = () => {
             { label: 'Paying Users', val: summary.activeUsers || 0, icon: Users }
           ].map((stat) => (
             <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-              <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+              <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
               <div className="min-w-0">
                 <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.isCurrency ? formatCurrency(stat.val) : stat.val.toLocaleString()}</div>
                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
@@ -490,13 +490,13 @@ const AdminPaymentTransactions = () => {
         <div className="flex-1 min-h-0 overflow-auto flex flex-col">
         <AnimatePresence mode="wait">
           {error ? (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 p-3 xl:p-8 rounded-3xl text-center">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 p-3 xl:p-5 rounded-3xl text-center">
               <AlertTriangle className="w-12 h-12 text-black dark:text-white mx-auto mb-4" />
               <div className="text-black dark:text-white font-black uppercase tracking-widest">{error}</div>
             </motion.div>
           ) : transactions.length === 0 ? (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center shadow-sm">
-              <ReceiptText className="w-16 h-16 text-slate-300 dark:text-slate-700 mx-auto mb-4 xl:mb-8 opacity-20" />
+              <ReceiptText className="w-16 h-16 text-slate-300 dark:text-slate-700 mx-auto mb-4 xl:mb-4 opacity-20" />
               <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Transactions Found</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your filters or search terms to find transactions.</p>
             </motion.div>
@@ -504,7 +504,7 @@ const AdminPaymentTransactions = () => {
             <>
             <div className="flex-1 min-h-0 overflow-auto">
               {viewMode === 'table' && (
-                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <ResponsiveTable
                     data={transactions}
                     columns={transactionColumns}
@@ -520,7 +520,7 @@ const AdminPaymentTransactions = () => {
               {viewMode === 'grid' && (
                 <div className="grid content-start grid-cols-1 sm:grid-cols-2 gap-3 items-start">
                   {transactions.map((t, idx) => (
-                    <div key={t._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 overflow-hidden">
+                    <div key={t._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 overflow-hidden shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                       <div className="flex items-center justify-between gap-2">
                         <div className="flex items-center gap-1.5">
                           <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 text-[9px] font-black flex items-center justify-center">{(pagination.currentPage - 1) * filters.limit + idx + 1}</span>
@@ -556,18 +556,18 @@ const AdminPaymentTransactions = () => {
                 <div className="h-full overflow-auto space-y-3">
                   {transactions.map((t, idx) => (
                     <div key={t._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                      <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 xl:gap-4">
+                      <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 xl:gap-3">
                       <div className="flex items-center gap-3">
                         <div className={`relative p-2.5 rounded-xl border ${getStatusColor(t.payuStatus || t.status)}`}>
                           {getStatusIcon(t.payuStatus || t.status)}
-                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(pagination.currentPage - 1) * filters.limit + idx + 1}</span>
+                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(pagination.currentPage - 1) * filters.limit + idx + 1}</span>
                         </div>
                         <div>
                           <div className="text-sm font-bold text-slate-900 dark:text-white">{t.user?.name || 'Unknown User'}</div>
                           <div className="text-[10px] text-slate-400">{formatDateTime(t.createdAt)}</div>
                         </div>
                       </div>
-                      <div className="flex flex-wrap items-center gap-4 shrink-0">
+                      <div className="flex flex-wrap items-center gap-3 shrink-0">
                         <div className="text-right">
                           <div className="text-[9px] font-bold text-slate-400 uppercase">Plan</div>
                           <div className="text-xs font-black text-primary-600 uppercase">{t.planId || 'N/A'}</div>

@@ -322,7 +322,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
     if (next && !recipients) loadRecipients(1);
   };
 
-  const inputClass = "w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-black text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:opacity-60 disabled:cursor-not-allowed";
+  const inputClass = "w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-black text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:opacity-60 disabled:cursor-not-allowed";
   const pct = campaign && campaign.totalTargeted
     ? Math.min(100, Math.round((campaign.processed / campaign.totalTargeted) * 100))
     : 0;
@@ -330,19 +330,19 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
   useAdminMobileHeader({ title: campaignIdProp ? 'Edit Email Campaign' : 'New Email Campaign' });
 
-  if (!isMounted || isLoading) return <div className="p-4 xl:p-8"><AdminFormSkeleton fields={6} /></div>;
+  if (!isMounted || isLoading) return <div className="p-4 xl:p-5"><AdminFormSkeleton fields={6} /></div>;
 
   return (
     <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
       <div className="adminContent w-full mx-auto">
-        <div className="mb-6">
+        <div className="mb-4">
           <Link href="/admin/email-campaigns" className="text-sm text-black dark:text-white hover:underline inline-flex items-center gap-1 mb-2">
             ← All campaigns
           </Link>
         </div>
 
         {/* ===== Step indicator ===== */}
-        <div className="flex items-center gap-1 mb-6 overflow-x-auto">
+        <div className="flex items-center gap-1 mb-4 overflow-x-auto">
           {STEPS.map((s, i) => (
             <React.Fragment key={s.key}>
               <div className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap ${
@@ -358,7 +358,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
           ))}
         </div>
 
-        <div className="bg-white dark:bg-white/5 rounded-2xl shadow-sm p-6 border border-slate-100 dark:border-white/10">
+        <div className="bg-white dark:bg-white/5 rounded-2xl shadow-sm p-4 border border-slate-100 dark:border-white/10">
           <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
             <div>
               <h2 className="text-xl font-bold flex items-center gap-2">
@@ -375,9 +375,9 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             )}
           </div>
 
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
             {/* --- Editor --- */}
-            <div className="space-y-2 xl:space-y-4">
+            <div className="space-y-2 xl:space-y-3">
               {!canEditFields && (
                 <div className="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
                   {isPublished
@@ -438,7 +438,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {/* ---- Step 1: Save as Draft ---- */}
               {canEditFields && (
                 <button onClick={saveDraft} disabled={isSavingDraft}
-                  className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-slate-700 hover:bg-slate-800 dark:hover:bg-white/20 text-white disabled:opacity-50">
+                  className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-slate-700 hover:bg-slate-800 dark:hover:bg-white/20 text-white disabled:opacity-50">
                   {isSavingDraft ? 'Saving…' : campaign ? '💾 Update Draft' : '💾 Save as Draft'}
                 </button>
               )}
@@ -466,7 +466,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {/* ---- Step 3: Publish ---- */}
               {isDraft && campaign && (
                 <button onClick={publishNow} disabled={busyAction}
-                  className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-primary-600 hover:bg-primary-800 text-white shadow-sm disabled:opacity-50">
+                  className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white shadow-sm disabled:opacity-50">
                   🚀 Publish Now
                 </button>
               )}
@@ -480,7 +480,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {isPublished && (
                 <div className="space-y-3 border-t border-slate-100 dark:border-white/10 pt-4">
                   <button onClick={sendToAll} disabled={busyAction}
-                    className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-primary-600 hover:bg-primary-600 text-white shadow-sm disabled:opacity-50">
+                    className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:bg-primary-600 text-white shadow-sm disabled:opacity-50">
                     <Send size={20} /> Send To All Users
                   </button>
 
@@ -493,7 +493,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             </div>
 
             {/* --- Right column: preview + campaign progress --- */}
-            <div className="space-y-2 xl:space-y-4">
+            <div className="space-y-2 xl:space-y-3">
               {campaign && (
                 <div className="border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl p-4 bg-slate-50 dark:bg-white/5">
                   <div className="flex items-center justify-between mb-2">
@@ -534,10 +534,10 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
                       <div className="flex flex-wrap gap-2 mt-3">
                         {isSendingPhase && isRunning && (
-                          <button onClick={pauseDriver} className="flex-1 py-2 px-3 rounded-lg text-sm bg-primary-600 hover:bg-primary-800 text-white">Pause</button>
+                          <button onClick={pauseDriver} className="flex-1 py-2 px-3 rounded-lg text-sm bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white">Pause</button>
                         )}
                         {isSendingPhase && !isRunning && (
-                          <button onClick={continueDriver} disabled={busyAction} className="flex-1 py-2 px-3 rounded-lg text-sm bg-primary-600 hover:bg-primary-600 text-white disabled:opacity-50">
+                          <button onClick={continueDriver} disabled={busyAction} className="flex-1 py-2 px-3 rounded-lg text-sm bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:bg-primary-600 text-white disabled:opacity-50">
                             {campaign.remainingToday > 0 ? 'Continue Sending' : 'Continue (quota resets tomorrow)'}
                           </button>
                         )}
