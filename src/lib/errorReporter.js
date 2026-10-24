@@ -21,6 +21,14 @@ const IGNORED = [
   /extension:\/\//i,
   /chrome-extension|moz-extension|safari-extension/i,
   /Loading chunk .* failed|ChunkLoadError/i, // happens right after every deploy; the page reloads itself
+  // Google Sign-In (accounts.google.com/gsi/client) throws minified errors of its own when One Tap is blocked
+  // or dismissed. On Safari the stack has no URL, so match the exact messages it produces.
+  /accounts\.google\.com\/gsi|gsi\/client/i,
+  /^(Uncaught )?(Error: )?pa$/,
+  /^La$/,
+  /undefined is not an object \(evaluating 'a\.J'\)/,
+  // The visitor's own connection dropped: nothing for us to fix.
+  /^Network error: Unable to connect to server/i,
 ];
 
 const browserName = () => {
@@ -35,7 +43,7 @@ export function reportWebError({ type = 'js', message, errorName, stack, compone
   try {
     if (typeof window === 'undefined') return;
     const msg = String(message || 'Unknown error');
-    if (IGNORED.some((rx) => rx.test(msg) || rx.test(stack || ''))) return;
+    if (IGNORED.some((rx) => rx.test(msg) || rx.test(stack || '') || rx.test(errorName || '') || rx.test(extra?.file || ''))) return;
     if (endpoint && String(endpoint).includes(ENDPOINT)) return; // never report the reporter
     if (sent >= MAX_PER_PAGE_LOAD) return;
 

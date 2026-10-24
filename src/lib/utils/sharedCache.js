@@ -70,3 +70,15 @@ export async function writeCache(key, value, ttlSec) {
         await ApiCache.updateOne({ key }, { $set: { value, expiresAt: new Date(Date.now() + ttlSec * 1000) } }, { upsert: true });
     } catch { /* best-effort */ }
 }
+
+/** Last known value even if it has expired: used to keep serving something when recomputing fails (timeouts, DB blips). */
+export async function readStaleCache(key) {
+    const hit = L1.get(key);
+    if (hit) return hit.value;
+    try {
+        const row = await ApiCache.findOne({ key }).select('value').lean();
+        return row ? row.value : null;
+    } catch {
+        return null;
+    }
+}

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { readCache, writeCache } from '@/lib/utils/sharedCache';
+import { readCache, writeCache, readStaleCache } from '@/lib/utils/sharedCache';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import Exam from '@/models/Exam';
@@ -139,6 +139,13 @@ export async function GET() {
         return response;
 
     } catch (error) {
+        // Recomputing the platform-wide counts can time out; the landing page is better off with slightly old numbers than an error.
+        const stale = await readStaleCache('landing-stats');
+        if (stale) {
+            const staleRes = NextResponse.json(stale);
+            staleRes.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+            return staleRes;
+        }
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }

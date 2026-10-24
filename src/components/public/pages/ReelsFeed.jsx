@@ -351,13 +351,18 @@ const ActionBar = ({ reel, onLike, onBookmark, onShare, onExplanation, showExpla
   };
 
   const handleShare = async () => {
-    if (navigator.share) {
-      await navigator.share({ title: reel.title || translate('AajExam Reel'), text: reel.questionText || reel.title || reel.content, url: window.location.href });
-    } else {
-      await navigator.clipboard.writeText(window.location.href);
-      toast.success(translate('Link copied!'));
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: reel.title || translate('AajExam Reel'), text: reel.questionText || reel.title || reel.content, url: window.location.href });
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        toast.success(translate('Link copied!'));
+      }
+      onShare(reel._id);
+    } catch (err) {
+      // The user closing the share sheet ("Share canceled") is not a failure and is not a share.
+      if (err?.name !== 'AbortError') throw err;
     }
-    onShare(reel._id);
   };
 
   return (

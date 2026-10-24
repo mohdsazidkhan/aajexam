@@ -217,7 +217,9 @@ export async function deleteClientError(req, source, id) {
             const r = await ClientError.deleteOne({ _id: id, source });
             return NextResponse.json({ success: true, deleted: r.deletedCount });
         }
-        const r = await ClientError.deleteMany({ source, status: 'resolved' });
+        // ?scope=all wipes every report of this source (open ones included); the default stays resolved-only.
+        const all = new URL(req.url).searchParams.get('scope') === 'all';
+        const r = await ClientError.deleteMany(all ? { source } : { source, status: 'resolved' });
         return NextResponse.json({ success: true, deleted: r.deletedCount });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

@@ -681,6 +681,10 @@ class ApiService {
     return this.request(`/api/admin/${kind}-errors/${id}`, { method: 'DELETE' });
   }
 
+  async deleteAllClientErrors(kind) {
+    return this.request(`/api/admin/${kind}-errors?scope=all`, { method: 'DELETE' });
+  }
+
   async purgeResolvedClientErrors(kind) {
     return this.request(`/api/admin/${kind}-errors`, { method: 'DELETE' });
   }

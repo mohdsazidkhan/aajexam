@@ -126,6 +126,18 @@ export default function ClientErrors({ kind = 'mobile' }) {
     } catch (e) { toast.error('Could not purge'); }
   };
 
+  const deleteAll = async () => {
+    const total = pagination.total || 0;
+    if (!window.confirm(`Delete ALL ${isApp ? 'app' : 'web'} error reports (open, resolved and ignored)? This cannot be undone.`)) return;
+    if (total > 0 && !window.confirm(`Really delete everything? ${total} report(s) will be removed.`)) return;
+    try {
+      const res = await API.deleteAllClientErrors(kind);
+      toast.success(`Deleted ${res.deleted || 0} errors`);
+      setPage(1);
+      load();
+    } catch (e) { toast.error('Could not delete'); }
+  };
+
   const columns = [
     { key: 'origin', header: 'ORIGIN', render: (_, e) => <OriginBadge origin={e.origin} /> },
     {
@@ -163,13 +175,13 @@ export default function ClientErrors({ kind = 'mobile' }) {
     { key: 'status', header: 'STATUS', align: 'center', render: (_, e) => <StatusBadge status={e.status} /> },
     {
       key: 'actions', header: 'ACTIONS', align: 'center', render: (_, e) => (
-        <div className="flex justify-center gap-1.5">
-          <button onClick={() => setSelected(e)} title="View details" className="p-2 rounded-lg bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow hover:bg-primary-600 hover:text-white transition"><Eye className="w-4 h-4" /></button>
+        <div className="flex justify-center gap-1">
+          <button onClick={() => setSelected(e)} title="View details" className="p-1.5 rounded-lg bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow hover:bg-primary-600 hover:text-white transition"><Eye className="w-4 h-4" /></button>
           {e.status !== 'resolved'
-            ? <button onClick={() => setItemStatus(e, 'resolved')} title="Mark resolved" className="p-2 rounded-lg bg-emerald-500/10 text-emerald-600 hover:bg-emerald-600 hover:text-white transition"><CheckCircle2 className="w-4 h-4" /></button>
-            : <button onClick={() => setItemStatus(e, 'open')} title="Reopen" className="p-2 rounded-lg bg-amber-500/10 text-amber-600 hover:bg-amber-600 hover:text-white transition"><RotateCcw className="w-4 h-4" /></button>}
-          {e.status !== 'ignored' ? <button onClick={() => setItemStatus(e, 'ignored')} title="Ignore" className="p-2 rounded-lg bg-slate-500/10 text-slate-500 hover:bg-slate-600 hover:text-white transition"><EyeOff className="w-4 h-4" /></button> : null}
-          <button onClick={() => remove(e)} title="Delete" className="p-2 rounded-lg bg-black/10 dark:bg-white/10 text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition"><Trash2 className="w-4 h-4" /></button>
+            ? <button onClick={() => setItemStatus(e, 'resolved')} title="Mark resolved" className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-600 hover:bg-emerald-600 hover:text-white transition"><CheckCircle2 className="w-4 h-4" /></button>
+            : <button onClick={() => setItemStatus(e, 'open')} title="Reopen" className="p-1.5 rounded-lg bg-amber-500/10 text-amber-600 hover:bg-amber-600 hover:text-white transition"><RotateCcw className="w-4 h-4" /></button>}
+          {e.status !== 'ignored' ? <button onClick={() => setItemStatus(e, 'ignored')} title="Ignore" className="p-1.5 rounded-lg bg-slate-500/10 text-slate-500 hover:bg-slate-600 hover:text-white transition"><EyeOff className="w-4 h-4" /></button> : null}
+          <button onClick={() => remove(e)} title="Delete" className="p-1.5 rounded-lg bg-black/10 dark:bg-white/10 text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition"><Trash2 className="w-4 h-4" /></button>
         </div>
       )
     },
@@ -177,38 +189,30 @@ export default function ClientErrors({ kind = 'mobile' }) {
 
   const filters = (
     <div className="flex flex-col gap-2 w-full">
-      <div className="relative w-full">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-        <input
-          value={searchTerm}
-          onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
-          placeholder="Search message, screen, endpoint, user..."
-          className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
-        />
-      </div>
-      <div className="flex gap-2 flex-wrap">
-        <select value={type} onChange={(e) => { setType(e.target.value); setPage(1); }} className="px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
+      <div className="flex flex-wrap items-center gap-2">
+        <div className="relative flex-1 min-w-[200px]">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <input
+            value={searchTerm}
+            onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
+            placeholder="Search message, screen, endpoint, user..."
+            className="w-full pl-9 pr-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold outline-none focus:border-primary-500"
+          />
+        </div>
+        <select value={type} onChange={(e) => { setType(e.target.value); setPage(1); }} className="px-2.5 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
           <option value="">All types</option>
           {TYPE_OPTIONS.map((t) => <option key={t} value={t}>{t}</option>)}
         </select>
-        <select value={sort} onChange={(e) => { setSort(e.target.value); setPage(1); }} className="px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
+        <select value={sort} onChange={(e) => { setSort(e.target.value); setPage(1); }} className="px-2.5 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
           <option value="recent">Most recent</option>
           <option value="count">Most frequent</option>
         </select>
-        <button onClick={() => setViewMode(viewMode === 'table' ? 'grid' : 'table')} className="px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-bold flex items-center gap-1.5">
+        <button onClick={() => setViewMode(viewMode === 'table' ? 'grid' : 'table')} className="px-2.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-bold flex items-center gap-1.5 hover:border-primary-400 transition-colors">
           {viewMode === 'table' ? <><LayoutGrid className="w-4 h-4" /> Grid</> : <><TableIcon className="w-4 h-4" /> Table</>}
         </button>
-        <button onClick={purge} className="px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-bold flex items-center gap-1.5"><Trash2 className="w-4 h-4" /> Purge resolved</button>
+        <button onClick={purge} className="px-2.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-bold flex items-center gap-1.5 hover:border-primary-400 transition-colors"><Trash2 className="w-4 h-4" /> Purge resolved</button>
+        <button onClick={deleteAll} className="px-2.5 py-2 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-500/30 text-xs font-black flex items-center gap-1.5 hover:bg-red-600 hover:text-white transition-colors"><Trash2 className="w-4 h-4" /> Delete all</button>
       </div>
-      <Pagination
-        compact
-        currentPage={page}
-        totalPages={pagination.totalPages || 1}
-        onPageChange={setPage}
-        totalItems={pagination.total || 0}
-        itemsPerPage={itemsPerPage}
-        onItemsPerPageChange={(n) => { setItemsPerPage(n); setPage(1); }}
-      />
     </div>
   );
 
@@ -218,12 +222,12 @@ export default function ClientErrors({ kind = 'mobile' }) {
     return <div className="min-h-screen p-3 xl:p-5"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>;
   }
 
-  const stat = (label, value, Icon, tone) => (
-    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-      <div className={`p-2 rounded-lg ${tone}`}><Icon className="w-4 h-4" /></div>
-      <div>
-        <div className="text-lg font-black tabular-nums text-slate-900 dark:text-white leading-none">{value ?? 0}</div>
-        <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mt-1">{label}</div>
+  const stat = (label, value, Icon) => (
+    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 px-2.5 py-2 flex items-center gap-2.5 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all min-w-0">
+      <span className="w-7 h-7 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
+      <div className="min-w-0">
+        <div className="text-base font-black tabular-nums text-slate-900 dark:text-white leading-none">{value ?? 0}</div>
+        <div className="text-[8px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1 leading-tight">{label}</div>
       </div>
     </div>
   );
@@ -232,27 +236,24 @@ export default function ClientErrors({ kind = 'mobile' }) {
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       {isMounted && <Sidebar />}
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
-        <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400">
-          {isApp ? <Smartphone className="w-4 h-4" /> : <Globe className="w-4 h-4" />} {title} · reported by {isApp ? 'the mobile app' : 'the website'}
-        </div>
 
-        <div className="grid grid-cols-2 xl:grid-cols-5 gap-2">
-          {stat('Open', summary.open, Bug, 'bg-amber-500/10 text-amber-600')}
-          {stat('Open · Backend', summary.openBackend, Server, 'bg-rose-500/10 text-rose-600')}
-          {stat('Open · Frontend', summary.openFrontend, Monitor, 'bg-sky-500/10 text-sky-600')}
-          {stat('Last 24h', summary.last24h, Clock, 'bg-violet-500/10 text-violet-600')}
-          {stat('Total occurrences', summary.totalOccurrences, Users, 'bg-slate-500/10 text-slate-600')}
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-2">
+          {stat('Open', summary.open, Bug)}
+          {stat('Open · Backend', summary.openBackend, Server)}
+          {stat('Open · Frontend', summary.openFrontend, Monitor)}
+          {stat('Last 24h', summary.last24h, Clock)}
+          {stat('Total occurrences', summary.totalOccurrences, Users)}
         </div>
 
         <div className="flex flex-wrap gap-2">
-          <div className="flex gap-1 bg-slate-100 dark:bg-white/5 p-1 rounded-xl">
+          <div className="flex gap-1 bg-slate-100 dark:bg-white/5 p-1 rounded-xl max-w-full overflow-x-auto no-scrollbar">
             {STATUS_TABS.map((t) => (
-              <button key={t.id} onClick={() => { setStatus(t.id); setPage(1); }} className={`px-3 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider transition ${status === t.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-500 hover:bg-white dark:hover:bg-white/10'}`}>{t.label}</button>
+              <button key={t.id} onClick={() => { setStatus(t.id); setPage(1); }} className={`shrink-0 px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider transition ${status === t.id ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow' : 'text-slate-500 hover:bg-white dark:hover:bg-white/10'}`}>{t.label}</button>
             ))}
           </div>
-          <div className="flex gap-1 bg-slate-100 dark:bg-white/5 p-1 rounded-xl">
+          <div className="flex gap-1 bg-slate-100 dark:bg-white/5 p-1 rounded-xl max-w-full overflow-x-auto no-scrollbar">
             {ORIGIN_TABS.map((t) => (
-              <button key={t.id} onClick={() => { setOrigin(t.id); setPage(1); }} className={`px-3 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider transition ${origin === t.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-500 hover:bg-white dark:hover:bg-white/10'}`}>{t.label}</button>
+              <button key={t.id} onClick={() => { setOrigin(t.id); setPage(1); }} className={`shrink-0 px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider transition ${origin === t.id ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow' : 'text-slate-500 hover:bg-white dark:hover:bg-white/10'}`}>{t.label}</button>
             ))}
           </div>
         </div>
@@ -261,7 +262,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
 
         {error ? <div className="p-4 rounded-xl bg-rose-500/10 text-rose-600 text-sm font-bold">{error}</div> : null}
 
-        <div className="flex-1 min-h-0 overflow-auto">
+        <div className={`flex-1 min-h-0 ${viewMode === 'table' && items.length > 0 ? 'overflow-hidden flex flex-col' : 'overflow-auto'}`}>
           {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 text-center bg-white/50 dark:bg-white/5 rounded-2xl border-2 border-dashed border-slate-100 dark:border-white/5">
               <Bug className="w-14 h-14 text-slate-300 dark:text-slate-600 mb-4" />
@@ -269,13 +270,13 @@ export default function ClientErrors({ kind = 'mobile' }) {
               <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.25em]">Nothing reported for these filters. That is good news.</p>
             </div>
           ) : viewMode === 'table' ? (
-            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col flex-1 min-h-0 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
               <ResponsiveTable data={items} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2.5 items-start pb-4">
               {items.map((e) => (
-                <div key={e._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-2 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                <div key={e._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex flex-col gap-2 shadow-md hover:shadow-xl transition-shadow relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <div className="flex items-center justify-between gap-2">
                     <OriginBadge origin={e.origin} />
                     <span className="text-sm font-black tabular-nums">×{e.count}</span>
@@ -289,14 +290,32 @@ export default function ClientErrors({ kind = 'mobile' }) {
                     <span className="text-[10px] font-bold text-slate-400">{fmt(e.lastSeenAt)}</span>
                   </div>
                   <div className="flex gap-1.5">
-                    <button onClick={() => setSelected(e)} className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-primary-500/10 text-primary-600 hover:bg-primary-600 hover:text-white transition text-[11px] font-black uppercase tracking-wider"><Eye className="w-3.5 h-3.5" /> View</button>
-                    <button onClick={() => remove(e)} className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-black/10 dark:bg-white/10 text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition text-[11px] font-black uppercase tracking-wider"><Trash2 className="w-3.5 h-3.5" /> Delete</button>
+                    <button onClick={() => setSelected(e)} className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg bg-primary-500/10 text-primary-700 dark:text-primary-300 hover:bg-primary-600 hover:text-white transition text-[11px] font-black uppercase tracking-wide"><Eye className="w-3.5 h-3.5" /> View</button>
+                    {e.status !== 'resolved'
+                      ? <button onClick={() => setItemStatus(e, 'resolved')} aria-label="Mark resolved" className="px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-600 hover:bg-emerald-600 hover:text-white transition"><CheckCircle2 className="w-4 h-4" /></button>
+                      : <button onClick={() => setItemStatus(e, 'open')} aria-label="Reopen" className="px-3 py-1.5 rounded-lg bg-amber-500/10 text-amber-600 hover:bg-amber-600 hover:text-white transition"><RotateCcw className="w-4 h-4" /></button>}
+                    <button onClick={() => remove(e)} aria-label="Delete" className="px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white transition"><Trash2 className="w-4 h-4" /></button>
                   </div>
                 </div>
               ))}
             </div>
           )}
         </div>
+
+        {items.length > 0 && (
+          <div className="shrink-0">
+            <Pagination
+        compact
+        inline
+        currentPage={page}
+        totalPages={pagination.totalPages || 1}
+        onPageChange={setPage}
+        totalItems={pagination.total || 0}
+        itemsPerPage={itemsPerPage}
+        onItemsPerPageChange={(n) => { setItemsPerPage(n); setPage(1); }}
+      />
+          </div>
+        )}
       </div>
 
       <AnimatePresence>
@@ -309,7 +328,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
             <motion.div
               initial={{ y: 40 }} animate={{ y: 0 }} exit={{ y: 40 }}
               onClick={(ev) => ev.stopPropagation()}
-              className="bg-white dark:bg-slate-900 w-full sm:max-w-3xl max-h-[90dvh] overflow-auto rounded-t-3xl sm:rounded-3xl border border-slate-200 dark:border-slate-700 p-4"
+              className="bg-white dark:bg-slate-900 w-full sm:max-w-3xl max-h-[92dvh] overflow-auto rounded-t-2xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 p-3 sm:p-4"
             >
               <div className="flex items-start justify-between gap-3 mb-3">
                 <div className="flex flex-wrap items-center gap-2">
@@ -319,7 +338,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
                 </div>
                 <button aria-label="Close" onClick={() => setSelected(null)} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10"><X className="w-5 h-5" /></button>
               </div>
-              <h2 className="text-base font-black leading-snug mb-3 break-words">{selected.message}</h2>
+              <h2 className="text-sm sm:text-base font-black leading-snug mb-3 break-words">{selected.message}</h2>
 
               <dl className="grid grid-cols-2 gap-x-3 gap-y-2 text-xs mb-4">
                 {[
@@ -346,7 +365,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
                 <pre className="text-[10px] leading-relaxed bg-white dark:bg-black rounded-xl p-3 overflow-auto max-h-40 mb-3 whitespace-pre-wrap break-words">{JSON.stringify(selected.extra, null, 2)}</pre></>) : null}
               {selected.userAgent ? <div className="text-[10px] text-slate-400 break-words mb-4">UA: {selected.userAgent}</div> : null}
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap justify-end gap-2 pt-3 border-t border-slate-100 dark:border-white/10">
                 {selected.status !== 'resolved'
                   ? <button onClick={() => setItemStatus(selected, 'resolved')} className="px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-black uppercase tracking-wider">Mark resolved</button>
                   : <button onClick={() => setItemStatus(selected, 'open')} className="px-4 py-2 rounded-xl bg-amber-600 text-white text-xs font-black uppercase tracking-wider">Reopen</button>}

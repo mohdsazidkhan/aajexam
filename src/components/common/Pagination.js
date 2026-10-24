@@ -21,6 +21,7 @@ const Pagination = ({
   itemsPerPageOptions = PAGE_SIZE_OPTIONS,
   showInfo = true,
   compact = false,
+  inline = false, // compact + info / page buttons / page size on ONE row from xl up (used under full-width lists)
   sticky = true
 }) => {
   const { translate, rich } = useTranslate();
@@ -128,6 +129,16 @@ const Pagination = ({
         </motion.button>
       </div>
   );
+
+  if (compact && inline) {
+    return (
+      <div className="sticky bottom-0 z-20 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-1 py-2 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800 rounded-b-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.04)] transition-colors duration-300">
+        <div className="order-1 min-w-0 flex-1">{infoBlock}</div>
+        <div className="order-2 xl:order-3 shrink-0 xl:flex-1 xl:flex xl:justify-end">{pageSizeBlock}</div>
+        <div className="order-3 xl:order-2 w-full xl:w-auto flex items-center justify-center">{navBlock}</div>
+      </div>
+    );
+  }
 
   if (compact) {
     return (
