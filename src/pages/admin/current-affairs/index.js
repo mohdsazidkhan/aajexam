@@ -233,9 +233,9 @@ const AdminCurrentAffairs = () => {
           {/* Add / Edit Drawer */}
           <AnimatePresence>
             {showForm && (
-              <div className="fixed inset-0 xl:left-64 xl:top-16 z-50">
+              <div className="fixed inset-0 z-[999]">
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowForm(false); setEditId(null); }} className="absolute inset-0 bg-black/50" />
-                <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-0 bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
+                <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full xl:w-[50vw] bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
                   <div className="p-4 border-b-2 border-slate-100 dark:border-slate-700/50 flex items-center justify-between shrink-0">
                     <div>
                       <h2 className="text-base font-bold text-slate-900 dark:text-white">{editId ? 'Edit Current Affair' : 'Add New Current Affair'}</h2>

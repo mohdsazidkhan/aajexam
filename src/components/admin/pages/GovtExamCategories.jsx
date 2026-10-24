@@ -395,11 +395,11 @@ const AdminGovtExamCategories = () => {
                 className="absolute inset-0 bg-slate-900/60 backdrop-blur-xl"
               />
               <motion.div
-                initial={{ y: '100%' }}
-                animate={{ y: 0 }}
-                exit={{ y: '100%' }}
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-                className="absolute top-16 right-0 bottom-0 left-0 xl:left-64 bg-white dark:bg-[#0f172a] xl:rounded-l-[2rem] border-l-2 border-slate-100 dark:border-white/5 overflow-hidden flex flex-col shadow-2xl"
+                className="absolute inset-y-0 right-0 left-0 xl:left-auto xl:w-1/2 bg-white dark:bg-[#0f172a] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/5 overflow-hidden flex flex-col shadow-2xl"
               >
                 <div className="p-4 xl:p-10 border-b-2 border-slate-50 dark:border-white/5 flex items-center justify-between">
                   <div className="flex items-center gap-3">

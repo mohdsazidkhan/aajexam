@@ -335,34 +335,37 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
   return (
     <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
       <div className="adminContent w-full mx-auto">
-        <div className="mb-4">
-          <Link href="/admin/email-campaigns" className="text-sm text-black dark:text-white hover:underline inline-flex items-center gap-1 mb-2">
+        {/* ===== Header: back link + step indicator in one row ===== */}
+        <div className="relative isolate overflow-hidden mb-3 px-3 py-2.5 flex flex-wrap items-center justify-between gap-3 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 ring-1 ring-primary-200 dark:ring-white/10 shadow-lg" style={{ borderRadius: 16 }}>
+          <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+          <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+          <Link href="/admin/email-campaigns" className="inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-black text-primary-900 dark:text-white bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/20 ring-1 ring-primary-200 dark:ring-white/20 transition-colors" style={{ borderRadius: 999 }}>
             ← All campaigns
           </Link>
+
+          <div className="flex items-center gap-1.5 overflow-x-auto max-w-full">
+            {STEPS.map((s, i) => (
+              <React.Fragment key={s.key}>
+                <div className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-black whitespace-nowrap transition-all ${
+                  i < activeStep ? 'bg-primary-100 text-primary-800 ring-1 ring-primary-300 dark:bg-primary-400/20 dark:text-primary-200 dark:ring-white/15'
+                    : i === activeStep ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-md'
+                    : 'bg-white/70 text-slate-500 ring-1 ring-primary-200/70 dark:bg-white/5 dark:text-slate-400 dark:ring-white/10'
+                }`} style={{ borderRadius: 999 }}>
+                  {i + 1}. {s.label}
+                  {i === activeStep && status === 'paused' && ' (paused)'}
+                </div>
+                {i < STEPS.length - 1 && <div className="w-4 border-t border-dashed border-primary-400/70 dark:border-white/25 shrink-0" />}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
 
-        {/* ===== Step indicator ===== */}
-        <div className="flex items-center gap-1 mb-4 overflow-x-auto">
-          {STEPS.map((s, i) => (
-            <React.Fragment key={s.key}>
-              <div className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap ${
-                i < activeStep ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300'
-                  : i === activeStep ? 'bg-primary-600 text-white'
-                  : 'bg-slate-100 text-slate-400 dark:bg-white/5 dark:text-slate-500'
-              }`}>
-                {i + 1}. {s.label}
-                {i === activeStep && status === 'paused' && ' (paused)'}
-              </div>
-              {i < STEPS.length - 1 && <div className="w-4 h-px bg-slate-300 dark:bg-white/10 shrink-0" />}
-            </React.Fragment>
-          ))}
-        </div>
-
-        <div className="bg-white dark:bg-white/5 rounded-2xl shadow-sm p-4 border border-slate-100 dark:border-white/10">
+        <div className="relative overflow-hidden bg-background-surface shadow-md p-4 border border-slate-200 dark:border-white/10" style={{ borderRadius: 16 }}>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
           <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
             <div>
-              <h2 className="text-xl font-bold flex items-center gap-2">
-                <PenSquare className="text-primary-600" /> Custom Email Template
+              <h2 className="text-xl font-black font-outfit uppercase tracking-tight flex items-center gap-2.5">
+                <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
               </h2>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                 The platform logo &amp; footer are added automatically.
@@ -389,21 +392,21 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               )}
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Subject *</label>
+                <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200 mb-1">Subject *</label>
                 <input type="text" disabled={!canEditFields} placeholder="e.g. New PYQ Papers Added This Week!" value={subject} onChange={(e) => setSubject(e.target.value)} className={inputClass} />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Heading</label>
+                <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200 mb-1">Heading</label>
                 <input type="text" disabled={!canEditFields} placeholder="Big title shown under the logo" value={heading} onChange={(e) => setHeading(e.target.value)} className={inputClass} />
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Content *</label>
+                  <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200">Content *</label>
                   <div className="flex rounded-lg overflow-hidden border border-slate-300 dark:border-white/10 text-xs">
-                    <button type="button" disabled={!canEditFields} onClick={() => setMode('simple')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'simple' ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>Simple</button>
-                    <button type="button" disabled={!canEditFields} onClick={() => setMode('html')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'html' ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>HTML</button>
+                    <button type="button" disabled={!canEditFields} onClick={() => setMode('simple')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'simple' ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white font-black' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>Simple</button>
+                    <button type="button" disabled={!canEditFields} onClick={() => setMode('html')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'html' ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white font-black' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>HTML</button>
                   </div>
                 </div>
                 <textarea
@@ -426,11 +429,11 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Button Text</label>
+                  <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200 mb-1">Button Text</label>
                   <input type="text" disabled={!canEditFields} placeholder="e.g. Start Practicing" value={ctaText} onChange={(e) => setCtaText(e.target.value)} className={inputClass} />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Button URL</label>
+                  <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200 mb-1">Button URL</label>
                   <input type="text" disabled={!canEditFields} placeholder="https://..." value={ctaUrl} onChange={(e) => setCtaUrl(e.target.value)} className={inputClass} />
                 </div>
               </div>
@@ -446,7 +449,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {/* ---- Step 2: Send a test (while still a draft) ---- */}
               {isDraft && campaign && (
                 <div className="border-t border-slate-100 dark:border-white/10 pt-4">
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200 mb-1">
                     Send Test Email
                     {campaign.testSentAt && <span className="ml-2 text-[10px] text-primary-600">✓ sent to {campaign.testSentTo}</span>}
                   </label>
@@ -616,13 +619,13 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Live Preview</label>
+                  <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200">Live Preview</label>
                   <button onClick={openPreviewTab}
-                    className="flex items-center gap-1 text-xs px-2 py-1 rounded bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/20">
+                    className="flex items-center gap-1 text-xs font-black px-2.5 py-1 bg-primary-100 dark:bg-primary-400/20 text-primary-800 dark:text-primary-200 hover:brightness-95 transition-all" style={{ borderRadius: 999 }}>
                     <ExternalLink size={12} /> Open in new tab
                   </button>
                 </div>
-                <div className="border border-slate-200 dark:border-white/10 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-900 p-3 h-[420px] overflow-y-auto">
+                <div className="border border-dashed border-primary-300 dark:border-white/20 overflow-hidden bg-primary-50/60 dark:bg-slate-900 p-3 h-[420px] overflow-y-auto" style={{ borderRadius: 12 }}>
                   <div dangerouslySetInnerHTML={{ __html: previewHtml }} />
                 </div>
               </div>
