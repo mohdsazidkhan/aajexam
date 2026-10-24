@@ -279,7 +279,7 @@ const AdminGovtExamResults = () => {
   const resultColumns = [
     {
       key: 'rank', header: 'Rank', render: (_, a) => (
-        <div className={`w-6 xl:w-12 h-6 xl:h-12 rounded-lg xl:rounded-xl text-white flex items-center justify-center font-black italic text-sm ${a.rank <= 3 ? 'bg-primary-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>
+        <div className={`w-6 xl:w-12 h-6 xl:h-12 rounded-lg xl:rounded-xl flex items-center justify-center font-black italic text-sm ${a.rank <= 3 ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white shadow-md' : 'bg-slate-200 dark:bg-white/15 text-slate-800 dark:text-white'}`}>
           #{a.rank || '-'}
         </div>
       )
@@ -474,7 +474,7 @@ const AdminGovtExamResults = () => {
                       <motion.div key={a._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm font-outfit group">
                         <div className="h-1.5 -mt-3 xl:-mt-8 -mx-3 xl:-mx-8 mb-4 xl:mb-4 bg-primary-600 rounded-t-lg xl:rounded-t-xl xl:rounded-t-[3rem]" />
                         <div className="flex justify-between items-start mb-4 xl:mb-4">
-                          <div className={`relative w-12 h-12 rounded-2xl flex items-center justify-center font-black italic shadow-sm ${a.rank <= 3 ? 'bg-primary-600 text-white' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>
+                          <div className={`relative w-12 h-12 rounded-2xl flex items-center justify-center font-black italic shadow-sm ${a.rank <= 3 ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white' : 'bg-slate-800 text-white dark:bg-white dark:text-slate-900'}`}>
                             #{a.rank || '-'}
                             <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{serialNumber}</span>
                           </div>
@@ -506,7 +506,7 @@ const AdminGovtExamResults = () => {
                       return (
                       <motion.div key={a._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 xl:gap-3 hover:border-primary-500/30 transition-all font-outfit shadow-sm group">
                         <div className="flex items-center gap-3 xl:gap-3">
-                          <div className={`relative w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-sm ${a.rank <= 3 ?'bg-primary-600 text-white':'bg-slate-900 text-white dark:bg-white'}`}>
+                          <div className={`relative w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-sm ${a.rank <= 3 ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white' : 'bg-slate-800 text-white dark:bg-white dark:text-slate-900'}`}>
                             #{a.rank ||'-'}
                             <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{serialNumber}</span>
                           </div>
@@ -556,58 +556,60 @@ const AdminGovtExamResults = () => {
                     <button aria-label="Close" onClick={() => setShowDetails(false)} className="p-2.5 bg-red-500/10 hover:bg-red-500/20 rounded-xl text-red-600 dark:text-red-400 transition-colors shadow-sm shrink-0"><X className="w-5 h-5" /></button>
                   </div>
 
-                  <div className="flex-1 overflow-y-auto p-3 xl:p-4 custom-scrollbar space-y-3 xl:space-y-3">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 xl:gap-3">
+                  <div className="flex-1 overflow-y-auto p-3 custom-scrollbar space-y-2.5">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                       {[
                         { label: 'Score', val: selectedAttempt.score, icon: Target, color: 'primary' },
                         { label: 'Accuracy', val: `${selectedAttempt.accuracy?.toFixed(1)}%`, icon: TrendingUp, color: 'primary' },
                         { label: 'Time Spent', val: formatTime(selectedAttempt.totalTime), icon: Clock, color: 'primary' },
                         { label: 'Rank', val: `#${selectedAttempt.rank || '-'}`, icon: Trophy, color: 'primary' }
                       ].map((s, i) => (
-                        <div key={i} className="bg-slate-50 dark:bg-white/5 p-3 rounded-xl border-2 border-slate-100 dark:border-white/5">
-                          <div className={`p-2 bg-${s.color}-500/10 text-${s.color}-500 rounded-lg w-fit mb-2`}><s.icon className="w-3.5 h-3.5" /></div>
-                          <div className="text-lg xl:text-xl font-black text-slate-900 dark:text-white uppercase italic">{s.val}</div>
-                          <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{s.label}</div>
+                        <div key={i} className="flex items-center gap-2.5 px-3 py-2 bg-slate-50 dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10">
+                          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 rounded-lg shrink-0"><s.icon className="w-4 h-4" /></div>
+                          <div className="min-w-0">
+                            <div className="text-base font-black text-slate-900 dark:text-white uppercase italic leading-tight truncate">{s.val}</div>
+                            <div className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-tight">{s.label}</div>
+                          </div>
                         </div>
                       ))}
                     </div>
 
-                    <div className="space-y-2 xl:space-y-3">
-                      <div className="flex items-center gap-2 mb-2">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
                         <Binary className="w-4 h-4 text-primary-600" />
                         <h3 className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Questions & Answers</h3>
                       </div>
-                      <div className="space-y-2 xl:space-y-3">
+                      <div className="space-y-2">
                         {selectedAttempt.answers?.map((ans, i) => {
                           const q = selectedAttempt.practiceTest?.questions?.find(
                             (qq) => String(qq._id) === String(ans.questionId)
                           );
                           const hasSelection = ans.selectedIndex !== undefined && ans.selectedIndex !== null && ans.selectedIndex >= 0;
                           return (
-                            <div key={i} className="p-3 xl:p-4 bg-white dark:bg-white/5 rounded-lg xl:rounded-xl border-2 border-slate-100 dark:border-white/5 group">
-                              <div className="flex flex-col md:flex-row md:items-start justify-between gap-2 xl:gap-3 mb-2 xl:mb-3">
-                                <div className="flex items-start gap-2 xl:gap-3">
-                                  <div className="w-8 h-8 shrink-0 rounded-lg flex items-center justify-center font-black text-xs italic shadow-sm bg-primary-600 text-white">{i + 1}</div>
+                            <div key={i} className="px-3 py-2.5 bg-white dark:bg-white/5 rounded-lg border border-slate-200 dark:border-white/10 group">
+                              <div className="flex items-start justify-between gap-2 mb-2">
+                                <div className="flex items-start gap-2.5 min-w-0">
+                                  <div className="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center font-black text-xs italic bg-gradient-to-br from-primary-500 to-primary-700 text-white">{i + 1}</div>
                                   <div>
-                                    <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-snug mb-1.5">{q?.questionText || 'Question not available'}</p>
-                                    <div className="flex gap-3">
-                                      <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest border-l-2 border-slate-300 pl-2">Section: {q?.section || 'General'}</span>
-                                      <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest border-l-2 border-slate-300 pl-2">Difficulty: {q?.difficulty || 'Medium'}</span>
+                                    <p className="text-[13px] font-bold text-slate-800 dark:text-slate-200 leading-snug mb-1">{q?.questionText || 'Question not available'}</p>
+                                    <div className="flex flex-wrap gap-x-3 gap-y-0.5">
+                                      <span className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest border-l-2 border-slate-300 pl-2">Section: {q?.section || 'General'}</span>
+                                      <span className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest border-l-2 border-slate-300 pl-2">Difficulty: {q?.difficulty || 'Medium'}</span>
                                     </div>
                                   </div>
                                 </div>
-                                <div className={`px-3 py-1.5 rounded-lg text-[10px] font-black uppercase flex items-center gap-1.5 shadow-sm shrink-0 ${ans.isCorrect ? 'bg-primary-500/10 text-primary-600 border border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20'}`}>
+                                <div className={`px-2.5 py-1 rounded-lg text-[9px] font-black uppercase flex items-center gap-1 shrink-0 ${ans.isCorrect ? 'bg-primary-500/10 text-primary-600 border border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20'}`}>
                                   {ans.isCorrect ? <CheckCircle2 className="w-3.5 h-3.5" /> : <AlertCircle className="w-3.5 h-3.5" />}
                                   {ans.isCorrect ? 'Correct' : (hasSelection ? 'Incorrect' : 'Not Answered')}
                                 </div>
                               </div>
                               {q?.options?.length > 0 && (
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
                                   {q.options.map((opt, oi) => {
                                     const isCorrectOpt = oi === q.correctAnswerIndex;
                                     const isSelectedOpt = oi === ans.selectedIndex;
                                     return (
-                                      <div key={oi} className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-2 border-2 ${
+                                      <div key={oi} className={`px-2.5 py-1.5 rounded-lg text-[11px] font-bold flex items-center gap-2 border ${
                                         isCorrectOpt ? 'bg-primary-500/10 border-primary-500/30 text-primary-600'
                                           : isSelectedOpt ? 'bg-red-500/10 border-red-500/30 text-red-600 dark:text-red-400'
                                           : 'bg-slate-50 dark:bg-white/5 border-transparent text-slate-500 dark:text-slate-400'
