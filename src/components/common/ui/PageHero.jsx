@@ -41,7 +41,7 @@ const PageHero = ({ icon: Icon, eyebrow, title, subtitle, badge, actions, center
             </div>
           )}
           <div className="min-w-0">
-            {eyebrow && <p className="text-[10px] xl:text-xs font-black uppercase tracking-[0.25em] text-slate-500 dark:text-white/60 truncate">AajExam · {eyebrow}</p>}
+            {eyebrow && <p className="text-[10px] xl:text-xs font-black uppercase tracking-[0.25em] text-slate-600 dark:text-white/80 truncate">AajExam · {eyebrow}</p>}
             <div className="flex flex-wrap items-center gap-2">
               <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight leading-tight">{title}</h1>
               {badge && (
@@ -50,7 +50,7 @@ const PageHero = ({ icon: Icon, eyebrow, title, subtitle, badge, actions, center
                 </span>
               )}
             </div>
-            {subtitle && <p className="mt-1 text-xs xl:text-sm font-semibold text-slate-600 dark:text-white/75">{subtitle}</p>}
+            {subtitle && <p className="mt-1 text-xs xl:text-sm font-semibold text-slate-700 dark:text-white/90">{subtitle}</p>}
           </div>
         </div>
         {center && <div className="w-full min-w-0">{center}</div>}
