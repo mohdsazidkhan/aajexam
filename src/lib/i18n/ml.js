@@ -1850,7 +1850,7 @@ const ML = {
   'Ad-free practice': 'പരസ്യരഹിത പരിശീലനം',
   'PRO badge on profile & leaderboard': 'പ്രൊഫൈലിലും ലീഡർബോർഡിലും PRO ബാഡ്ജ്',
   'Every PYQ, every year': 'എല്ലാ PYQ-യും, എല്ലാ വർഷവും',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'സൗജന്യ പ്ലാനിൽ ഓരോ പരീക്ഷാ പാറ്റേണിന്റെയും ഏറ്റവും പുതിയ വർഷം അൺലോക്ക് ആകുന്നു. ഇതുവരെ പ്രസിദ്ധീകരിച്ച എല്ലാ മുൻവർഷ പേപ്പറുകളും PRO അൺലോക്ക് ചെയ്യുന്നു.',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'സൗജന്യ പ്ലാനിൽ ഓരോ പരീക്ഷയുടെയും ഏറ്റവും പുതിയ വർഷം അൺലോക്ക് ആകുന്നു. ഇതുവരെ പ്രസിദ്ധീകരിച്ച എല്ലാ മുൻവർഷ പേപ്പറുകളും PRO അൺലോക്ക് ചെയ്യുന്നു.',
   'Know your readiness': 'നിങ്ങളുടെ സന്നദ്ധത അറിയൂ',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO നിങ്ങളുടെ ശ്രമങ്ങളെ യഥാർത്ഥ പരീക്ഷാ സന്നദ്ധതാ സ്കോർ, സെക്ഷൻ തിരിച്ചുള്ള വിശകലനം, പൂർണ്ണ ശ്രമ ചരിത്രം എന്നിവയാക്കി മാറ്റുന്നു.',
   'A plan, not just quizzes': 'ക്വിസുകൾ മാത്രമല്ല, ഒരു പദ്ധതി',

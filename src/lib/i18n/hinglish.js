@@ -1863,7 +1863,7 @@ const HINGLISH = {
   'Ad-free practice': 'Ad-free practice',
   'PRO badge on profile & leaderboard': 'Profile aur leaderboard par PRO badge',
   'Every PYQ, every year': 'Har PYQ, har year',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'Free mein har exam pattern ka latest year unlock hota hai. PRO mein ab tak publish hue har purane year ka paper unlock hota hai.',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'Free mein har exam ka latest year unlock hota hai. PRO mein ab tak publish hue har purane year ka paper unlock hota hai.',
   'Know your readiness': 'Apni readiness jaanein',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO aapke attempts ko asli Exam Readiness Score, section-wise analytics aur poori attempt history mein badal deta hai.',
   'A plan, not just quizzes': 'Sirf quizzes nahi, ek plan',

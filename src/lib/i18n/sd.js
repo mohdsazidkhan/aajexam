@@ -1850,7 +1850,7 @@ const SD = {
   'Ad-free practice': 'इश्तिहार कान सवाय मश्क',
   'PRO badge on profile & leaderboard': 'प्रोफ़ाइल ऐं लीडरबोर्ड ते PRO बैज',
   'Every PYQ, every year': 'हर PYQ, हर साल',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'मुफ़्त में हर इम्तिहान जे नमूने जो ताज़ो साल खुले थो. PRO में हाणे ताईं शाया थियल हर पुराणे साल जो प्रश्नपत्र खुले थो.',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'मुफ़्त में हर इम्तिहान जो ताज़ो साल खुले थो. PRO में हाणे ताईं शाया थियल हर पुराणे साल जो प्रश्नपत्र खुले थो.',
   'Know your readiness': 'पंहिंजी तैयारी जाणो',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO तव्हां जूं कोशिशूं असली इम्तिहान तैयारी स्कोर, सेक्शन मुताबिक़ तजज़िये ऐं पूरे कोशिश इतिहास में बदलाए थो.',
   'A plan, not just quizzes': 'सिर्फ़ क्विज़ कोन, हिकु मंसूबो',

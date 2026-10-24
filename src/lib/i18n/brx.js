@@ -1850,7 +1850,7 @@ const BODO = {
   'Ad-free practice': 'एड-मुक्त प्राक्टिस',
   'PRO badge on profile & leaderboard': 'प्रोफाइल आरो लिडारबोर्डआव PRO ब्याज',
   'Every PYQ, every year': 'गासै PYQ, गासै बोसोर',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'फ्रीआव फालांगि एग्जाम पैटार्ननि गोदान बोसोरखौ खुलि होयो। PRO आ दासिम फोसाबनाय गासै बोसोरनि पेजारखौ खुलि होयो।',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'फ्रीआव फालांगि एग्जामनि गोदान बोसोरखौ खुलि होयो। PRO आ दासिम फोसाबनाय गासै बोसोरनि पेजारखौ खुलि होयो।',
   'Know your readiness': 'नोंथांनि फिनथायखौ मिथि',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO आ नोंथांनि एटेम्टखौ असल एग्जाम रेडिनेस स्कोर, सेक्शन-वारि एनालिटिक्स आरो फुल एटेम्ट हिस्टोरिआव सोलायो।',
   'A plan, not just quizzes': 'खालि क्विज नङा, मोनसे प्लान',

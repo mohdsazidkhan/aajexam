@@ -1850,7 +1850,7 @@ const TE = {
   'Ad-free practice': 'యాడ్-ఫ్రీ ప్రాక్టీస్',
   'PRO badge on profile & leaderboard': 'ప్రొఫైల్, లీడర్‌బోర్డ్‌లో PRO బ్యాడ్జ్',
   'Every PYQ, every year': 'ప్రతి PYQ, ప్రతి సంవత్సరం',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'ఉచిత ప్లాన్ ప్రతి పరీక్ష నమూనాకు తాజా సంవత్సరాన్ని అన్‌లాక్ చేస్తుంది. PRO ఇప్పటివరకు ప్రచురితమైన ప్రతి గత సంవత్సరం పేపర్‌ను అన్‌లాక్ చేస్తుంది.',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'ఉచిత ప్లాన్ ప్రతి పరీక్షకు తాజా సంవత్సరాన్ని అన్‌లాక్ చేస్తుంది. PRO ఇప్పటివరకు ప్రచురితమైన ప్రతి గత సంవత్సరం పేపర్‌ను అన్‌లాక్ చేస్తుంది.',
   'Know your readiness': 'మీ సన్నద్ధత తెలుసుకోండి',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO మీ ప్రయత్నాలను నిజమైన పరీక్ష సన్నద్ధత స్కోర్, సెక్షన్ వారీ అనలిటిక్స్, పూర్తి ప్రయత్న హిస్టరీగా మారుస్తుంది.',
   'A plan, not just quizzes': 'కేవలం క్విజ్‌లు కాదు, ఒక ప్లాన్',

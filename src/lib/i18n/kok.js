@@ -1850,7 +1850,7 @@ const KOK = {
   'Ad-free practice': 'जाहिरात-मुक्त सराव',
   'PRO badge on profile & leaderboard': 'प्रोफाइल आनी लीडरबोर्डाचेर PRO बॅज',
   'Every PYQ, every year': 'दर PYQ, दर वर्स',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'फुकट प्लॅनांत दर परिक्षा आराखड्याचें ताजें वर्स उक्तें जाता. PRO आतांमेरेन प्रकाशीत जाल्लें दर फाटलें वर्साचें प्रस्नपत्र उक्तें करता.',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'फुकट प्लॅनांत दर परिक्षेचें ताजें वर्स उक्तें जाता. PRO आतांमेरेन प्रकाशीत जाल्लें दर फाटलें वर्साचें प्रस्नपत्र उक्तें करता.',
   'Know your readiness': 'तुमची तयारी जाणात',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO तुमचे यत्न खऱ्या परिक्षा तयारी स्कोर, विभागा प्रमाण विश्लेषण आनी पुराय यत्न इतिहासांत बदलता.',
   'A plan, not just quizzes': 'फक्त क्विझ न्हय, एक योजना',

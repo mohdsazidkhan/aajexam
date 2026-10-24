@@ -1850,7 +1850,7 @@ const KS = {
   'Ad-free practice': 'اشتہار سے پاک مشق',
   'PRO badge on profile & leaderboard': 'پروفائل تہٕ لیڈر بورڈ پر PRO بیج',
   'Every PYQ, every year': 'ہر PYQ، ہر سال',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'مفت منٛز ہر امتحانی پیٹرن کا تازہ ترین سال کھلتا چھُ۔ PRO منٛز اب تک شائع ہونے والا ہر پچھلے سال کا پیپر کھلتا چھُ۔',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'مفت منٛز ہر امتحان کا تازہ ترین سال کھلتا چھُ۔ PRO منٛز اب تک شائع ہونے والا ہر پچھلے سال کا پیپر کھلتا چھُ۔',
   'Know your readiness': 'پننۍ تیاری جانیں',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO تُہنٕز کوششوں کو اصلی امتحانی تیاری کے اسکور، سیکشن کے لحاظ سے تجزیے تہٕ مکمل کوششوں کی تاریخ منٛز بدل دیتا چھُ۔',
   'A plan, not just quizzes': 'صرف کوئزز ناہ، ایک منصوبہ',

@@ -130,22 +130,28 @@ practiceTestSchema.pre('findOneAndUpdate', async function linkEditedQuestions(ne
 
 attachSlugHook(practiceTestSchema, { sourceField: 'title' });
 
-// Keeps accessLevel self-maintaining per examPattern: the latest-year PYQ is
-// always FREE (all others PRO), and the most recently added non-PYQ practice
-// test is always FREE (all others PRO). Runs after any save or delete so a
-// newly added or removed paper automatically shifts which one is free,
+// Keeps accessLevel self-maintaining. PYQs: per EXAM, the latest year (across all of the exam's patterns) is FREE and every
+// earlier year is PRO. Non-PYQ practice tests: per examPattern, the most recently added one is FREE, the rest PRO.
+// Runs after any save or delete so a newly added or removed paper automatically shifts which one is free,
 // without a separate manual/scripted recompute step.
 async function syncAccessLevel(Model, examPatternId, isPYQ) {
     if (!examPatternId) return;
     try {
         if (isPYQ) {
-            const docs = await Model.find({ examPattern: examPatternId, isPYQ: true }).select('pyqYear').lean();
+            // every pattern of the same exam share one "latest year"
+            let patternIds = [examPatternId];
+            const pattern = await ExamPattern.findById(examPatternId).select('exam').lean();
+            if (pattern?.exam) {
+                const siblings = await ExamPattern.find({ exam: pattern.exam }).select('_id').lean();
+                if (siblings.length) patternIds = siblings.map((x) => x._id);
+            }
+            const docs = await Model.find({ examPattern: { $in: patternIds }, isPYQ: true }).select('pyqYear').lean();
             if (!docs.length) return;
             const years = docs.filter((d) => d.pyqYear).map((d) => d.pyqYear);
             if (!years.length) return;
             const maxYear = Math.max(...years);
-            await Model.updateMany({ examPattern: examPatternId, isPYQ: true, pyqYear: maxYear }, { $set: { accessLevel: 'FREE' } });
-            await Model.updateMany({ examPattern: examPatternId, isPYQ: true, pyqYear: { $ne: maxYear } }, { $set: { accessLevel: 'PRO' } });
+            await Model.updateMany({ examPattern: { $in: patternIds }, isPYQ: true, pyqYear: maxYear }, { $set: { accessLevel: 'FREE' } });
+            await Model.updateMany({ examPattern: { $in: patternIds }, isPYQ: true, pyqYear: { $ne: maxYear } }, { $set: { accessLevel: 'PRO' } });
         } else {
             const latest = await Model.findOne({ examPattern: examPatternId, isPYQ: { $ne: true } })
                 .sort({ createdAt: -1 })

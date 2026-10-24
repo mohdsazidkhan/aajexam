@@ -1872,7 +1872,7 @@ const HI = {
   'Ad-free practice': 'विज्ञापन-मुक्त अभ्यास',
   'PRO badge on profile & leaderboard': 'प्रोफ़ाइल और लीडरबोर्ड पर PRO बैज',
   'Every PYQ, every year': 'हर PYQ, हर वर्ष',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'मुफ़्त में हर परीक्षा पैटर्न का नवीनतम वर्ष खुलता है। PRO में अब तक प्रकाशित हर पिछले वर्ष का पेपर खुलता है।',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'मुफ़्त में हर परीक्षा का नवीनतम वर्ष खुलता है। PRO में अब तक प्रकाशित हर पिछले वर्ष का पेपर खुलता है।',
   'Know your readiness': 'अपनी तैयारी जानें',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO आपके प्रयासों को असली परीक्षा तैयारी स्कोर, सेक्शन-वार विश्लेषण और पूरे प्रयास इतिहास में बदल देता है।',
   'A plan, not just quizzes': 'सिर्फ़ क्विज़ नहीं, एक योजना',

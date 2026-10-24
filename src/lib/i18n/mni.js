@@ -1850,7 +1850,7 @@ const MANIPURI = {
   'Ad-free practice': 'ꯑꯦꯗ-ꯐ꯭ꯔꯤ ꯄ꯭ꯔꯥꯛꯇꯤꯁ',
   'PRO badge on profile & leaderboard': 'ꯄ꯭ꯔꯣꯐꯥꯏꯜ ꯑꯃꯁꯨꯡ ꯂꯤꯗꯔꯕꯣꯔꯗꯇ PRO ꯕꯦꯖ',
   'Every PYQ, every year': 'ꯄꯤꯋꯥꯏꯀ꯭ꯌꯨ ꯑꯃꯥ ꯑꯃꯥ, ꯆꯍꯤ ꯑꯃꯥ ꯑꯃꯥ',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'ꯐ꯭ꯔꯤꯅꯥ ꯑꯃꯥ ꯑꯃꯥ ꯏꯒꯖꯥꯃ ꯄꯦꯇꯔꯟꯒꯤ ꯅꯨꯡꯁꯤꯕ ꯆꯍꯤ ꯑꯗꯨ ꯍꯥꯡꯗꯣꯛꯏ꯫ PRO ꯅꯥ ꯍꯧꯖꯤꯛ ꯐꯥꯎꯕ ꯄꯤꯕ ꯆꯍꯤ ꯃꯥꯡꯂꯣꯟꯗꯨꯅꯥ ꯂꯩꯕ ꯄꯦꯄꯔ ꯄꯨꯝꯅꯃꯛ ꯍꯥꯡꯗꯣꯛꯏ',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'ꯐ꯭ꯔꯤꯅꯥ ꯑꯃꯥ ꯑꯃꯥ ꯏꯒꯖꯥꯃꯒꯤ ꯅꯨꯡꯁꯤꯕ ꯆꯍꯤ ꯑꯗꯨ ꯍꯥꯡꯗꯣꯛꯏ꯫ PRO ꯅꯥ ꯍꯧꯖꯤꯛ ꯐꯥꯎꯕ ꯄꯤꯕ ꯆꯍꯤ ꯃꯥꯡꯂꯣꯟꯗꯨꯅꯥ ꯂꯩꯕ ꯄꯦꯄꯔ ꯄꯨꯝꯅꯃꯛ ꯍꯥꯡꯗꯣꯛꯏ',
   'Know your readiness': 'ꯅꯪꯒꯤ ꯇꯥꯔꯥꯏ ꯂꯩꯕꯗꯨ ꯈꯪꯂꯨ',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO ꯅꯥ ꯅꯪꯒꯤ ꯑꯦꯇꯦꯝꯞꯇ ꯗꯨ ꯑꯁꯜ ꯏꯒꯖꯥꯃ ꯔꯦꯗꯤꯅꯦꯁ ꯁ꯭ꯀꯣꯔ, ꯁꯦꯛꯁꯟ-ꯋꯥꯏꯁ ꯑꯦꯅꯥꯂꯤꯇꯤꯛꯁ ꯑꯃꯁꯨꯡ ꯄꯨꯝꯅꯃꯛ ꯑꯦꯇꯦꯝꯞꯇ ꯍꯤꯁꯇꯣꯔꯤꯗ ꯁꯣꯂꯥꯏ',
   'A plan, not just quizzes': 'ꯀ꯭ꯋꯤꯖ ꯈꯛ ꯅꯠꯇꯦ, ꯄ꯭ꯂꯥꯟ ꯑꯃꯥ',

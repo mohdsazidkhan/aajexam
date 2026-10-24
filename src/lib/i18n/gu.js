@@ -1850,7 +1850,7 @@ const GU = {
   'Ad-free practice': 'જાહેરાત-મુક્ત પ્રેક્ટિસ',
   'PRO badge on profile & leaderboard': 'પ્રોફાઇલ અને લીડરબોર્ડ પર PRO બેજ',
   'Every PYQ, every year': 'દરેક PYQ, દરેક વર્ષ',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'મફત પ્લાન દરેક પરીક્ષા પેટર્નનું નવીનતમ વર્ષ અનલૉક કરે છે. PRO અત્યાર સુધી પ્રકાશિત થયેલું દરેક ગત વર્ષનું પેપર અનલૉક કરે છે.',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'મફત પ્લાન દરેક પરીક્ષાનું નવીનતમ વર્ષ અનલૉક કરે છે. PRO અત્યાર સુધી પ્રકાશિત થયેલું દરેક ગત વર્ષનું પેપર અનલૉક કરે છે.',
   'Know your readiness': 'તમારી તૈયારી જાણો',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO તમારા પ્રયાસોને સાચા પરીક્ષા તૈયારી સ્કોર, વિભાગ મુજબ એનાલિટિક્સ અને પૂર્ણ પ્રયાસ ઇતિહાસમાં ફેરવે છે.',
   'A plan, not just quizzes': 'ફક્ત ક્વિઝ નહીં, એક પ્લાન',

@@ -1850,7 +1850,7 @@ const MR = {
   'Ad-free practice': 'जाहिरातमुक्त सराव',
   'PRO badge on profile & leaderboard': 'प्रोफाइल आणि लीडरबोर्डवर PRO बॅज',
   'Every PYQ, every year': 'प्रत्येक PYQ, प्रत्येक वर्ष',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'मोफत प्लॅन प्रत्येक परीक्षा पद्धतीचे नवीनतम वर्ष अनलॉक करतो. PRO आजवर प्रकाशित झालेला प्रत्येक मागील वर्षाचा पेपर अनलॉक करतो.',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'मोफत प्लॅन प्रत्येक परीक्षेचे नवीनतम वर्ष अनलॉक करतो. PRO आजवर प्रकाशित झालेला प्रत्येक मागील वर्षाचा पेपर अनलॉक करतो.',
   'Know your readiness': 'तुमची तयारी जाणून घ्या',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO तुमच्या प्रयत्नांचे रूपांतर खऱ्या परीक्षा तयारी स्कोअर, विभागनिहाय विश्लेषण आणि संपूर्ण प्रयत्न इतिहासात करते.',
   'A plan, not just quizzes': 'फक्त क्विझ नाही, एक प्लॅन',

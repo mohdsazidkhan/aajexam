@@ -1850,7 +1850,7 @@ const TA = {
   'Ad-free practice': 'விளம்பரமில்லாப் பயிற்சி',
   'PRO badge on profile & leaderboard': 'சுயவிவரம் & தரவரிசைப் பட்டியலில் PRO பேட்ஜ்',
   'Every PYQ, every year': 'ஒவ்வொரு PYQ, ஒவ்வொரு ஆண்டு',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'இலவசத் திட்டம் ஒவ்வொரு தேர்வு முறையின் சமீபத்திய ஆண்டைத் திறக்கும். PRO இதுவரை வெளியிடப்பட்ட ஒவ்வொரு முந்தைய ஆண்டுத் தாளையும் திறக்கும்.',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'இலவசத் திட்டம் ஒவ்வொரு தேர்வின் சமீபத்திய ஆண்டைத் திறக்கும். PRO இதுவரை வெளியிடப்பட்ட ஒவ்வொரு முந்தைய ஆண்டுத் தாளையும் திறக்கும்.',
   'Know your readiness': 'உங்கள் தயார்நிலையை அறியுங்கள்',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO உங்கள் முயற்சிகளை உண்மையான தேர்வு தயார்நிலை மதிப்பெண், பிரிவு வாரிப் பகுப்பாய்வு, முழு முயற்சி வரலாறாக மாற்றுகிறது.',
   'A plan, not just quizzes': 'வினாடி வினாக்கள் மட்டுமல்ல, ஒரு திட்டம்',

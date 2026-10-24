@@ -132,7 +132,7 @@ const FEATURE_GROUPS = [
 ];
 
 const HIGHLIGHTS = [
-  { icon: FileText, title: 'Every PYQ, every year', desc: 'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.', color: 'primary' },
+  { icon: FileText, title: 'Every PYQ, every year', desc: 'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.', color: 'primary' },
   { icon: Target, title: 'Know your readiness', desc: 'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.', color: 'primary' },
   { icon: CalendarDays, title: 'A plan, not just quizzes', desc: 'AI Study Planner, Revision Queue and Syllabus Tracker keep PRO learners on a structured path to exam day.', color: 'primary' },
 ];

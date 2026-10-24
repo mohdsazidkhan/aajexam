@@ -1850,7 +1850,7 @@ const UrduDict = {
   'Ad-free practice': 'اشتہار سے پاک مشق',
   'PRO badge on profile & leaderboard': 'پروفائل اور لیڈر بورڈ پر PRO بیج',
   'Every PYQ, every year': 'ہر PYQ، ہر سال',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'مفت میں ہر امتحانی پیٹرن کا تازہ ترین سال کھلتا ہے۔ PRO میں اب تک شائع ہر پچھلے سال کا پیپر کھلتا ہے۔',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'مفت میں ہر امتحان کا تازہ ترین سال کھلتا ہے۔ PRO میں اب تک شائع ہر پچھلے سال کا پیپر کھلتا ہے۔',
   'Know your readiness': 'اپنی تیاری جانیں',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO آپ کی کوششوں کو اصل امتحانی تیاری اسکور، سیکشن وار تجزیے اور مکمل کوشش کی تاریخ میں بدل دیتا ہے۔',
   'A plan, not just quizzes': 'صرف کوئزز نہیں، ایک منصوبہ',

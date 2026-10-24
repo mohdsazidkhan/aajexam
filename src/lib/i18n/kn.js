@@ -1850,7 +1850,7 @@ const KN = {
   'Ad-free practice': 'ಜಾಹೀರಾತು-ರಹಿತ ಅಭ್ಯಾಸ',
   'PRO badge on profile & leaderboard': 'ಪ್ರೊಫೈಲ್ ಮತ್ತು ಲೀಡರ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ PRO ಬ್ಯಾಡ್ಜ್',
   'Every PYQ, every year': 'ಪ್ರತಿ PYQ, ಪ್ರತಿ ವರ್ಷ',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'ಉಚಿತ ಪ್ಲಾನ್ ಪ್ರತಿ ಪರೀಕ್ಷೆ ಮಾದರಿಗೆ ಇತ್ತೀಚಿನ ವರ್ಷವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡುತ್ತದೆ. PRO ಇದುವರೆಗೆ ಪ್ರಕಟವಾದ ಪ್ರತಿ ಹಿಂದಿನ ವರ್ಷದ ಪತ್ರಿಕೆಯನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡುತ್ತದೆ.',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'ಉಚಿತ ಪ್ಲಾನ್ ಪ್ರತಿ ಪರೀಕ್ಷೆಗೆ ಇತ್ತೀಚಿನ ವರ್ಷವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡುತ್ತದೆ. PRO ಇದುವರೆಗೆ ಪ್ರಕಟವಾದ ಪ್ರತಿ ಹಿಂದಿನ ವರ್ಷದ ಪತ್ರಿಕೆಯನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡುತ್ತದೆ.',
   'Know your readiness': 'ನಿಮ್ಮ ಸಿದ್ಧತೆ ತಿಳಿಯಿರಿ',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO ನಿಮ್ಮ ಪ್ರಯತ್ನಗಳನ್ನು ನಿಜವಾದ ಪರೀಕ್ಷೆ ಸಿದ್ಧತೆ ಸ್ಕೋರ್, ವಿಭಾಗವಾರು ವಿಶ್ಲೇಷಣೆ ಮತ್ತು ಪೂರ್ಣ ಪ್ರಯತ್ನ ಇತಿಹಾಸವಾಗಿ ಪರಿವರ್ತಿಸುತ್ತದೆ.',
   'A plan, not just quizzes': 'ರಸಪ್ರಶ್ನೆಗಳು ಮಾತ್ರವಲ್ಲ, ಒಂದು ಪ್ಲಾನ್',

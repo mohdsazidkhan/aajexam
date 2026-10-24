@@ -1850,7 +1850,7 @@ const NE = {
   'Ad-free practice': 'विज्ञापनमुक्त अभ्यास',
   'PRO badge on profile & leaderboard': 'प्रोफाइल र लिडरबोर्डमा PRO ब्याज',
   'Every PYQ, every year': 'हरेक PYQ, हरेक वर्ष',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'निःशुल्कमा हरेक परीक्षा ढाँचाको पछिल्लो वर्ष खुल्छ। PRO ले अहिलेसम्म प्रकाशित हरेक अघिल्लो वर्षको प्रश्नपत्र खोल्छ।',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'निःशुल्कमा हरेक परीक्षाको पछिल्लो वर्ष खुल्छ। PRO ले अहिलेसम्म प्रकाशित हरेक अघिल्लो वर्षको प्रश्नपत्र खोल्छ।',
   'Know your readiness': 'आफ्नो तयारी थाहा पाउनुहोस्',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO ले तपाईंका प्रयासलाई वास्तविक परीक्षा तयारी स्कोर, खण्डअनुसार विश्लेषण र पूरा प्रयास इतिहासमा बदल्छ।',
   'A plan, not just quizzes': 'क्विज मात्र होइन, एउटा योजना',

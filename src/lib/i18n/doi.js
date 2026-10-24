@@ -1850,7 +1850,7 @@ const DogriDict = {
   'Ad-free practice': 'बिना इश्तिहार अभ्यास',
   'PRO badge on profile & leaderboard': 'प्रोफाइल ते लीडरबोर्ड पर PRO बैज',
   'Every PYQ, every year': 'हर PYQ, हर साल',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'मुफ्त च हर परीक्षा पैटर्न दा नमां साल खुल्लदा ऐ। PRO अजें तकर प्रकाशत हर पिछले साल दा पेपर खोल्लदा ऐ।',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'मुफ्त च हर परीक्षा दा नमां साल खुल्लदा ऐ। PRO अजें तकर प्रकाशत हर पिछले साल दा पेपर खोल्लदा ऐ।',
   'Know your readiness': 'अपनी तैयारी जानो',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO तुंदी कोशशें गी असली परीक्षा तैयारी नंबर, हिस्से मताबक विश्लेषण ते पूरे कोशश इतिहास च बदलदा ऐ।',
   'A plan, not just quizzes': 'सिर्फ क्विज़ नेईं, इक योजना',

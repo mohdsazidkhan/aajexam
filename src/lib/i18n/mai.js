@@ -1850,7 +1850,7 @@ const MAI = {
   'Ad-free practice': 'विज्ञापन-मुक्त अभ्यास',
   'PRO badge on profile & leaderboard': 'प्रोफाइल आ लीडरबोर्ड पर PRO बैज',
   'Every PYQ, every year': 'प्रत्येक PYQ, प्रत्येक वर्ष',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'मुफ्त मे प्रत्येक परीक्षा पैटर्नक नवीनतम वर्ष खुजैत अछि। PRO मे आब धरि प्रकाशित प्रत्येक पछिला वर्षक पेपर खुजैत अछि।',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'मुफ्त मे प्रत्येक परीक्षाक नवीनतम वर्ष खुजैत अछि। PRO मे आब धरि प्रकाशित प्रत्येक पछिला वर्षक पेपर खुजैत अछि।',
   'Know your readiness': 'अपन तैयारी जानू',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO अहाँक प्रयासकेँ असली परीक्षा तैयारी स्कोर, सेक्शन-वार विश्लेषण आ पूरा प्रयास इतिहास मे बदलि दैत अछि।',
   'A plan, not just quizzes': 'केवल क्विज नहि, एकटा योजना',

@@ -518,7 +518,7 @@ const AdminGovtExamTests = () => {
                                        <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Duration (Min)</label>
                                        <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all" />
                                     </div>
-                                    <div className="col-span-2 xl:col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg" title="Auto-managed: the latest-year PYQ test per pattern is Free, the rest are PRO">
+                                    <div className="col-span-2 xl:col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg" title="Auto-managed: the latest-year PYQ tests of each exam are Free, the rest are PRO">
                                        <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-widest shrink-0 ${editingTest?.accessLevel === 'FREE' ? 'bg-primary-500/10 text-primary-600' : 'bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-200'}`}>
                                           {editingTest ? (editingTest.accessLevel === 'FREE' ? 'Free' : 'PRO') : 'Auto'}
                                        </span>

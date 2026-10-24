@@ -1850,7 +1850,7 @@ const SAT = {
   'Ad-free practice': 'ᱵᱤᱡᱽᱧᱟᱯᱚᱱ ᱵᱟᱝ ᱯᱨᱮᱠᱴᱤᱥ',
   'PRO badge on profile & leaderboard': 'ᱯᱨᱚᱯᱷᱟᱭᱤᱞ ᱟᱨ ᱞᱤᱰᱟᱨᱵᱚᱨᱰ ᱨᱮ PRO ᱵᱮᱡ',
   'Every PYQ, every year': 'ᱡᱷᱚᱛᱚ PYQ, ᱡᱷᱚᱛᱚ ᱥᱟᱞ',
-  'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.': 'ᱵᱷᱟᱲᱟᱣ ᱵᱟᱝ ᱨᱮ ᱡᱷᱚᱛᱚ ᱯᱨᱤᱠᱷᱟ ᱯᱮᱴᱟᱨᱱ ᱨᱮᱱᱟᱜ ᱱᱟᱣᱟ ᱥᱟᱞ ᱠᱷᱩᱞᱟᱹ ᱦᱩᱭ. PRO ᱨᱮ ᱱᱤᱛᱚᱜ ᱦᱟᱛᱟᱣ ᱯᱷᱚᱞ ᱟᱠᱟᱱ ᱡᱷᱚᱛᱚ ᱢᱟᱲᱟᱝ ᱥᱟᱞ ᱠᱷᱟᱛᱟ ᱠᱷᱩᱞᱟᱹ ᱦᱩᱭ.',
+  'Free unlocks the latest year of each exam. PRO unlocks every previous year paper ever published.': 'ᱵᱷᱟᱲᱟᱣ ᱵᱟᱝ ᱨᱮ ᱡᱷᱚᱛᱚ ᱯᱨᱤᱠᱷᱟ ᱨᱮᱱᱟᱜ ᱱᱟᱣᱟ ᱥᱟᱞ ᱠᱷᱩᱞᱟᱹ ᱦᱩᱭ. PRO ᱨᱮ ᱱᱤᱛᱚᱜ ᱦᱟᱛᱟᱣ ᱯᱷᱚᱞ ᱟᱠᱟᱱ ᱡᱷᱚᱛᱚ ᱢᱟᱲᱟᱝ ᱥᱟᱞ ᱠᱷᱟᱛᱟ ᱠᱷᱩᱞᱟᱹ ᱦᱩᱭ.',
   'Know your readiness': 'ᱟᱢᱟᱜ ᱛᱤᱭᱟᱨᱤ ᱵᱟᱰᱟᱭ ᱢᱮ',
   'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.': 'PRO ᱟᱢᱟᱜ ᱪᱮᱥᱴᱟ ᱠᱚ ᱥᱟᱹᱠᱷᱤ ᱯᱨᱤᱠᱷᱟ ᱛᱤᱭᱟᱨᱤ ᱥᱠᱳᱨ, ᱥᱮᱠᱥᱚᱱ ᱞᱮᱠᱟᱛᱮ ᱵᱤᱥᱞᱮᱥᱚᱱ ᱟᱨ ᱯᱩᱨᱟᱹ ᱪᱮᱥᱴᱟ ᱤᱛᱤᱦᱟᱥ ᱨᱮ ᱵᱚᱫᱚᱞ ᱮᱫᱟ.',
   'A plan, not just quizzes': 'ᱠᱣᱤᱡ ᱜᱮ ᱵᱟᱝ, ᱢᱤᱫ ᱯᱞᱟᱱ',
