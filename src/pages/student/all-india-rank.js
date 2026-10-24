@@ -239,13 +239,13 @@ const MyRankCard = ({ entry, totalUsers }) => {
   ];
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="sticky bottom-4 z-30 px-1">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-800 via-primary-700 to-primary-600 text-white shadow-lg ring-1 ring-white/20 px-3 py-2">
-        <Trophy className="pointer-events-none absolute -right-2 -bottom-4 w-20 h-20 text-white/10 -rotate-12" />
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white shadow-lg ring-1 ring-slate-200 dark:ring-white/20 px-3 py-2">
+        <Trophy className="pointer-events-none absolute -right-2 -bottom-4 w-20 h-20 text-slate-900/10 dark:text-white/10 -rotate-12" />
         {/* One row on desktop (rank · avatar · name · top % · stats); wraps on small screens */}
         <div className="relative flex flex-wrap items-center gap-x-3 gap-y-1.5">
-          <div className="flex items-baseline gap-1.5 rounded-xl bg-white/15 px-2.5 py-1 ring-1 ring-white/25">
-            <span className="text-sm sm:text-base font-black uppercase tracking-wide text-white">{translate('Your Rank')}</span>
-            <span className="text-xl sm:text-2xl font-black leading-none text-primary-200">#{entry.rank}</span>
+          <div className="flex items-baseline gap-1.5 rounded-xl bg-white/80 dark:bg-white/15 px-2.5 py-1 ring-1 ring-slate-200 dark:ring-white/25">
+            <span className="text-sm sm:text-base font-black uppercase tracking-wide text-slate-900 dark:text-white">{translate('Your Rank')}</span>
+            <span className="text-xl sm:text-2xl font-black leading-none text-slate-600 dark:text-primary-200">#{entry.rank}</span>
           </div>
           <Avatar entry={entry} size="sm" />
 <div className="min-w-0">
@@ -254,17 +254,17 @@ const MyRankCard = ({ entry, totalUsers }) => {
               {entry.subscriptionStatus === 'PRO' && <ProBadge size="xs" className="flex-shrink-0" />}
             </div>
             <div className="flex items-center gap-2 flex-wrap">
-              {entry.username && <p className="text-[10px] font-bold text-white/70 truncate">@{entry.username}</p>}
+              {entry.username && <p className="text-[10px] font-bold text-slate-700 dark:text-white/70 truncate">@{entry.username}</p>}
               {topPct !== null && (
-                <p className="text-[10px] font-bold text-primary-200 whitespace-nowrap">{translate('Top {percent}% of {total} ranked students', { percent: topPct, total: totalUsers })}</p>
+                <p className="text-[10px] font-bold text-slate-600 dark:text-primary-200 whitespace-nowrap">{translate('Top {percent}% of {total} ranked students', { percent: topPct, total: totalUsers })}</p>
               )}
             </div>
           </div>
           <div className="flex flex-wrap gap-1.5 xl:ml-auto">
             {chips.map((c) => (
-              <span key={c.label} className="inline-flex items-center gap-1 rounded-full bg-black/30 ring-1 ring-white/25 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-white">
-                <span className="text-white/90">{c.label}</span>
-                <span className="font-black text-primary-200">{c.value}</span>
+              <span key={c.label} className="inline-flex items-center gap-1 rounded-full bg-black/30 ring-1 ring-slate-200 dark:ring-white/25 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-slate-900 dark:text-white">
+                <span className="text-slate-700 dark:text-white/90">{c.label}</span>
+                <span className="font-black text-slate-600 dark:text-primary-200">{c.value}</span>
               </span>
             ))}
           </div>
@@ -369,7 +369,7 @@ const AllIndiaRankPage = () => {
                     {/* PRO badge — gold, animated sparkle */}
                     <motion.div
                       initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                      className="inline-flex items-center gap-1.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-[0_2px_12px_rgba(251,191,36,0.4)]"
+                      className="inline-flex items-center gap-1.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-[0_2px_12px_rgba(251,191,36,0.4)]"
                     >
                       <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}>
                         <Sparkles className="w-3.5 h-3.5" />

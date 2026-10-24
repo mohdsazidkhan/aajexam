@@ -22,11 +22,11 @@ import { m as motion, AnimatePresence } from 'framer-motion';
 import useTranslate from '../../hooks/useTranslate';
 
 const REEL_TYPES = [
-  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'MCQ with explanation' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Quick fact or one-liner' },
-  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Shortcut or formula' },
-  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Community poll' },
+  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-gradient-to-br from-primary-300 to-primary-400 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'MCQ with explanation' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-gradient-to-br from-primary-300 to-primary-400 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Quick fact or one-liner' },
+  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-gradient-to-br from-primary-300 to-primary-400 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Shortcut or formula' },
+  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-gradient-to-br from-primary-300 to-primary-400 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Daily CA card' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-gradient-to-br from-primary-300 to-primary-400 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Community poll' },
 ];
 
 const StudentBottomNav = () => {
@@ -118,7 +118,7 @@ const StudentBottomNav = () => {
                 onClick={() => setShowCreate((prev) => !prev)}
                 className="flex-1 min-w-0 flex items-center justify-center -translate-y-5"
               >
-                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary-300 to-primary-500 ring-4 ring-white dark:ring-black flex items-center justify-center shadow-lg">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary-300 to-primary-400 ring-4 ring-white dark:ring-black flex items-center justify-center shadow-lg">
                   {showCreate ? <X className="w-6 h-6 text-primary-950" /> : <Plus className="w-7 h-7 text-primary-950" />}
                 </div>
               </button>
@@ -130,7 +130,7 @@ const StudentBottomNav = () => {
           return (
             <Link key={item.path} href={item.path} className="flex-1 min-w-0 flex justify-center" aria-current={isActive ? 'page' : undefined}>
               <div className={`w-full flex flex-col items-center justify-center gap-0.5 transition-all ${
-                isActive ? 'bg-gradient-to-t from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950' : 'text-slate-400 dark:text-slate-500'
+                isActive ? 'bg-gradient-to-t from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black' : 'text-slate-400 dark:text-slate-500'
               }`}>
                 <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />
                 <span className={`text-[11px] ${isActive ? 'font-bold' : 'font-medium'}`}>{translate(item.name)}</span>

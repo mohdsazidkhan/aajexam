@@ -112,7 +112,7 @@ export default function MentorProfilePage() {
   if (!mentor) return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
-        <span className="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 18 }}><Users className="w-8 h-8" /></span>
+        <span className="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 18 }}><Users className="w-8 h-8" /></span>
         <p className="text-lg font-bold text-slate-500">{translate('Mentor not found')}</p>
         <button onClick={() => router.push('/mentors')} className="mt-4 text-sm font-bold text-primary-600">{translate('Back to Mentors')}</button>
       </div>
@@ -140,9 +140,9 @@ export default function MentorProfilePage() {
       <div className="container mx-auto py-4 xl:py-4 xl:py-8 space-y-3 xl:space-y-6">
 
         {/* Profile Header */}
-        <Card className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10">
+        <Card className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10">
           <div className="flex items-start gap-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg] flex items-center justify-center font-black text-2xl shrink-0" style={{ borderRadius: 18 }}>
+            <div className="w-16 h-16 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg] flex items-center justify-center font-black text-2xl shrink-0" style={{ borderRadius: 18 }}>
               {mentor.user?.name?.charAt(0) || 'M'}
             </div>
             <div className="flex-1">
@@ -163,7 +163,7 @@ export default function MentorProfilePage() {
         {/* Exams Cleared */}
         {mentor.examsCleared?.length > 0 && (
           <Card>
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Award className="w-4 h-4" /></span> {translate('Exams Cleared')}</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Award className="w-4 h-4" /></span> {translate('Exams Cleared')}</h2>
             <div className="flex flex-col gap-2">
               {mentor.examsCleared.map((exam, i) => (
                 <div key={i} className="flex items-center justify-between p-3 bg-primary-50 dark:bg-primary-900/10 rounded-lg xl:rounded-xl border border-dashed border-primary-300 dark:border-white/15">
@@ -190,7 +190,7 @@ export default function MentorProfilePage() {
         {/* Daily Routine */}
         {mentor.dailyRoutine && (
           <Card>
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span> {translate('Daily Routine')}</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span> {translate('Daily Routine')}</h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">{mentor.dailyRoutine}</p>
           </Card>
         )}
@@ -212,7 +212,7 @@ export default function MentorProfilePage() {
         {/* Books */}
         {mentor.booksRecommended?.length > 0 && (
           <Card>
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span> {translate('Recommended Books')}</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span> {translate('Recommended Books')}</h2>
             <div className="flex flex-wrap gap-2">
               {mentor.booksRecommended.map((book, i) => (
                 <span key={i} className="px-3 py-1.5 bg-primary-50 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/15 rounded-lg text-xs font-bold text-slate-800 dark:text-white">{book}</span>
@@ -235,7 +235,7 @@ export default function MentorProfilePage() {
 
         {/* AMA Section */}
         <Card>
-          <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-4 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><MessageCircle className="w-4 h-4" /></span> {translate('Ask Me Anything')}</h2>
+          <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-4 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><MessageCircle className="w-4 h-4" /></span> {translate('Ask Me Anything')}</h2>
 
           {/* Ask Question */}
           <div className="flex gap-2 mb-5">
@@ -243,7 +243,7 @@ export default function MentorProfilePage() {
               onKeyDown={e => e.key === 'Enter' && handleAskQuestion()}
               className="flex-1 bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-300 dark:border-slate-700" />
             <button aria-label={translate('Send')} onClick={handleAskQuestion} disabled={askingQuestion || !question.trim()}
-              className="px-4 py-2.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
+              className="px-4 py-2.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
               <Send className="w-4 h-4" />
             </button>
           </div>
@@ -269,7 +269,7 @@ export default function MentorProfilePage() {
                           onKeyDown={e => e.key === 'Enter' && handleAnswer(thread._id)}
                           className="flex-1 bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2 px-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border border-slate-300 dark:border-slate-700" />
                         <button aria-label={translate('Send')} onClick={() => handleAnswer(thread._id)} disabled={submittingAnswer || !answerText.trim()}
-                          className="px-3 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
+                          className="px-3 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
                           <Send className="w-4 h-4" />
                         </button>
                         <button onClick={() => { setAnsweringId(null); setAnswerText(''); }}

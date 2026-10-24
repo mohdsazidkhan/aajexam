@@ -80,10 +80,10 @@ const QuizResultPage = () => {
 
         {/* Result Card */}
         <div className="text-center mb-6">
-          <div className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 ring-1 ring-primary-200 dark:ring-white/10 shadow-xl p-5 xl:p-8" style={{ borderRadius: 16 }}>
+          <div className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl p-5 xl:p-8" style={{ borderRadius: 16 }}>
             <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} /><div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} /><div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
             <div className="flex justify-center mb-3">
-              <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg]" style={{ borderRadius: 18 }}>
+              <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg]" style={{ borderRadius: 18 }}>
                 <Trophy className="w-8 h-8" />
               </div>
             </div>
@@ -91,26 +91,26 @@ const QuizResultPage = () => {
             {quiz?.subject && <p className="text-sm font-semibold text-slate-600 dark:text-white/75 mb-4">{quiz.applicableExams?.map(e => e.name).join(', ') || ''} · {quiz.subject?.name}{quiz.topic?.name ? ` · ${quiz.topic.name}` : ''}</p>}
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-              <div className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-primary-200 dark:ring-white/20 p-3 transition-colors" style={{ borderRadius: 10 }}>
+              <div className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 p-3 transition-colors" style={{ borderRadius: 10 }}>
                 <div className="text-2xl font-black font-outfit text-primary-700 dark:text-primary-200">{attempt.correctCount}</div>
                 <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75">{translate('Correct')}</div>
               </div>
-              <div className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-primary-200 dark:ring-white/20 p-3 transition-colors" style={{ borderRadius: 10 }}>
+              <div className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 p-3 transition-colors" style={{ borderRadius: 10 }}>
                 <div className="text-2xl font-black font-outfit text-primary-700 dark:text-primary-200">{attempt.wrongCount}</div>
                 <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75">{translate('Wrong')}</div>
               </div>
-              <div className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-primary-200 dark:ring-white/20 p-3 transition-colors" style={{ borderRadius: 10 }}>
+              <div className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 p-3 transition-colors" style={{ borderRadius: 10 }}>
                 <div className="text-2xl font-black font-outfit text-primary-700 dark:text-primary-200">{Math.round(attempt.percentage || 0)}%</div>
                 <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75">{translate('Score')}</div>
               </div>
-              <div className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-primary-200 dark:ring-white/20 p-3 transition-colors" style={{ borderRadius: 10 }}>
+              <div className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 p-3 transition-colors" style={{ borderRadius: 10 }}>
                 <div className="text-2xl font-black font-outfit text-primary-700 dark:text-primary-200">{Math.round(attempt.accuracy || 0)}%</div>
                 <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75">{translate('Accuracy')}</div>
               </div>
             </div>
 
             {attempt.rank && (
-              <div className="bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow px-4 py-2 inline-flex items-center gap-2" style={{ borderRadius: 999 }}>
+              <div className="bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow px-4 py-2 inline-flex items-center gap-2" style={{ borderRadius: 999 }}>
                 <Crown className="w-4 h-4" />
                 <span className="font-semibold text-sm">{translate('Rank #{rank} · Top {percentile}%', { rank: attempt.rank, percentile: Math.round(attempt.percentile || 0) })}</span>
               </div>
@@ -122,7 +122,7 @@ const QuizResultPage = () => {
         <div className="relative overflow-hidden bg-background-surface shadow-md p-4 xl:p-8 border border-slate-200 dark:border-slate-800 mb-6" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 12 }}>
+            <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 12 }}>
               <Brain className="w-5 h-5" />
             </div>
             <h2 className="text-lg font-black uppercase tracking-tight text-slate-800 dark:text-white">{translate('Question Review')}</h2>
@@ -141,7 +141,7 @@ const QuizResultPage = () => {
               return (
                 <div key={index} style={{ borderRadius: 14 }} className={`relative overflow-hidden p-4 xl:p-5 border border-l-4 shadow-sm ${isSkipped ? 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 border-l-slate-400' : isCorrect ? 'bg-primary-50/60 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700 border-l-primary-500' : 'bg-red-50/70 dark:bg-red-900/20 border-red-200 dark:border-red-800 border-l-red-500'}`}>
                   <div className="flex items-start gap-3 mb-3">
-                    <div style={{ borderRadius: 10 }} className={`w-8 h-8 flex items-center justify-center text-sm font-black shrink-0 shadow ${isSkipped ? 'bg-slate-400 text-white' : isCorrect ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white' : 'bg-gradient-to-br from-red-500 to-red-700 text-white'}`}>
+                    <div style={{ borderRadius: 10 }} className={`w-8 h-8 flex items-center justify-center text-sm font-black shrink-0 shadow ${isSkipped ? 'bg-slate-400 text-white' : isCorrect ? 'bg-gradient-to-br from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white' : 'bg-gradient-to-br from-red-500 to-red-700 text-white'}`}>
                       {index + 1}
                     </div>
                     <div className="flex-1 min-w-0">

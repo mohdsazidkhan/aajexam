@@ -175,7 +175,7 @@ const PaymentHistoryPage = () => {
    ];
 
    const viewToggleButtons = (
-      <div className="flex items-center gap-1 p-1 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 10 }}>
+      <div className="flex items-center gap-1 p-1 bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 10 }}>
          {[
             { icon: TableIcon, id: 'table', label: translate('Table') },
             { icon: LayoutGrid, id: 'grid', label: translate('Grid') },
@@ -185,7 +185,7 @@ const PaymentHistoryPage = () => {
                key={mode.id}
                onClick={() => setViewMode(mode.id)}
                title={mode.label}
-               className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg transition-all ${viewMode === mode.id ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow' : 'text-slate-500 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/10'}`}
+               className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg transition-all ${viewMode === mode.id ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow' : 'text-slate-500 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/10'}`}
             >
                <mode.icon className="w-4 h-4" />
                <span className="text-[9px] font-black uppercase tracking-widest">{mode.label}</span>
@@ -202,7 +202,7 @@ const PaymentHistoryPage = () => {
             { label: translate('Successful'), val: summary.successCount || 0 },
             { label: translate('Pending Amount'), val: summary.pendingAmount || 0, isCurrency: true }
          ].map((stat) => (
-            <div key={stat.label} className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+            <div key={stat.label} className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
                <p className="text-base xl:text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200 tabular-nums whitespace-nowrap">{stat.isCurrency ? formatCurrency(stat.val) : stat.val.toLocaleString()}</p>
                <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 whitespace-nowrap">{stat.label}</p>
             </div>

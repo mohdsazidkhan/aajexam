@@ -250,7 +250,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                     <div className="flex items-center gap-3">
                         <button aria-label="Back" onClick={() => router.push('/admin/pyq')} className="p-2 rounded-lg xl:rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition"><ArrowLeft className="w-5 h-5" /></button>
                     </div>
-                    <button onClick={handleSubmit} disabled={saving} className="px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
+                    <button onClick={handleSubmit} disabled={saving} className="px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
                         <Save className="w-4 h-4" /> {saving ? 'Saving...' : 'Save'}
                     </button>
                 </div>
@@ -325,7 +325,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                     <Card className="space-y-3">
                         <div className="flex items-center justify-between">
                             <h2 className="text-sm font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider">Questions ({form.questions.length})</h2>
-                            <button type="button" onClick={addQuestion} className="px-3 py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg text-xs font-bold hover:bg-primary-600 transition flex items-center gap-1">
+                            <button type="button" onClick={addQuestion} className="px-3 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg text-xs font-bold hover:bg-primary-600 transition flex items-center gap-1">
                                 <Plus className="w-3 h-3" /> Add Question
                             </button>
                         </div>
@@ -440,7 +440,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
 
                     <div className="flex justify-end gap-3">
                         <button type="button" onClick={() => router.push('/admin/pyq')} className="px-4 py-2.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg xl:rounded-xl text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-600 transition">Cancel</button>
-                        <button type="submit" disabled={saving} className="px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
+                        <button type="submit" disabled={saving} className="px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
                             <Save className="w-4 h-4" /> {saving ? 'Saving...' : (mode === 'edit' ? 'Update PYQ' : 'Create PYQ')}
                         </button>
                     </div>

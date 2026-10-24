@@ -90,9 +90,9 @@ const ResponsiveTable = ({
   const renderTableView = () => (
     <div className={`${fillHeight ? 'flex-1 min-h-0 overflow-auto' : 'max-h-[65vh]'} overflow-auto rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md transition-all duration-300`}>
       <table className="w-full border-collapse bg-white dark:bg-slate-900">
-        <thead className="sticky top-0 z-10 bg-gradient-to-r from-primary-100 via-primary-50 to-white dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 border-b border-primary-200 dark:border-transparent">
+        <thead className="sticky top-0 z-10 bg-gradient-to-r from-slate-100 via-slate-50 to-white dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 border-b border-slate-200 dark:border-transparent">
           <tr>
-            <th className="px-3 py-2 text-left text-[10px] font-black text-primary-900 dark:text-white uppercase tracking-[0.2em] font-outfit whitespace-nowrap">
+            <th className="px-3 py-2 text-left text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] font-outfit whitespace-nowrap">
               {translate('S.No.')}
             </th>
             {columns.map((column, index) => {
@@ -100,7 +100,7 @@ const ResponsiveTable = ({
               return (
                 <th
                   key={index}
-                  className={`px-3 py-2 text-[10px] font-black text-primary-900 dark:text-white uppercase tracking-[0.2em] font-outfit whitespace-nowrap ${column.align === 'center' ? 'text-center' : column.align === 'right' ? 'text-right' : 'text-left'
+                  className={`px-3 py-2 text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] font-outfit whitespace-nowrap ${column.align === 'center' ? 'text-center' : column.align === 'right' ? 'text-right' : 'text-left'
                     } ${isStickyActions ? 'sticky right-0 z-20 bg-primary-50 dark:bg-primary-800 border-l border-primary-200 dark:border-primary-700' : ''}`}
                 >
                   {column.header}
@@ -108,7 +108,7 @@ const ResponsiveTable = ({
               );
             })}
             {actions.length > 0 && (
-              <th className="px-3 py-2 text-left text-[10px] font-black text-primary-900 dark:text-white uppercase tracking-[0.2em] font-outfit whitespace-nowrap sticky right-0 z-20 bg-primary-50 dark:bg-primary-800 border-l border-primary-200 dark:border-primary-700">
+              <th className="px-3 py-2 text-left text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] font-outfit whitespace-nowrap sticky right-0 z-20 bg-primary-50 dark:bg-primary-800 border-l border-primary-200 dark:border-primary-700">
                 {translate('Actions')}
               </th>
             )}

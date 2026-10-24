@@ -274,7 +274,7 @@ const AdminGovtExamTests = () => {
       {
          key: 'actions', header: 'Actions', align: 'right', render: (_, test) => (
             <div className="flex justify-end gap-3">
-               <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(test)} className="p-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-xl shadow-sm"><Edit3 className="w-4 h-4" /></motion.button>
+               <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(test)} className="p-3 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-xl shadow-sm"><Edit3 className="w-4 h-4" /></motion.button>
                <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(test._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg xl:rounded-xl border border-black/20 dark:border-white/20"><Trash2 className="w-4 h-4" /></motion.button>
             </div>
          )
@@ -404,7 +404,7 @@ const AdminGovtExamTests = () => {
                                  <div className="flex justify-between items-start mb-2 xl:mb-4">
                                     <div className="relative p-2 xl:p-4 bg-slate-100 dark:bg-white/5 rounded-lg xl:rounded-2xl group-hover:scale-110 transition-transform">
                                        <FileText className="w-4 h-4 xl:w-6 xl:h-6 text-slate-400 group-hover:text-primary-600" />
-                                       <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{idx + 1}</span>
+                                       <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{idx + 1}</span>
                                     </div>
                                     <div className={`px-2.5 py-0.5 xl:px-4 xl:py-1 rounded-lg xl:rounded-xl text-[7px] xl:text-[8px] font-black uppercase tracking-widest border-2 ${test.accessLevel === 'FREE' ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
                                        {test.accessLevel === 'FREE' ? 'FREE' : 'PRO'}
@@ -422,7 +422,7 @@ const AdminGovtExamTests = () => {
                                     </div>
                                  </div>
                                  <div className="flex gap-2 xl:gap-3 pt-2 xl:pt-6 border-t-2 border-slate-100 dark:border-white/5">
-                                    <motion.button onClick={() => handleEdit(test)} className="flex-1 py-2.5 xl:py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-2xl text-[9px] xl:text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-1.5"><Edit3 className="w-3.5 h-3.5 xl:w-4 xl:h-4" /> Edit</motion.button>
+                                    <motion.button onClick={() => handleEdit(test)} className="flex-1 py-2.5 xl:py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-2xl text-[9px] xl:text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-1.5"><Edit3 className="w-3.5 h-3.5 xl:w-4 xl:h-4" /> Edit</motion.button>
                                     <motion.button onClick={() => handleDelete(test._id)} className="p-2.5 xl:p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg xl:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"><Trash2 className="w-3.5 h-3.5 xl:w-5 xl:h-5" /></motion.button>
                                  </div>
                               </motion.div>
@@ -437,7 +437,7 @@ const AdminGovtExamTests = () => {
                                  <div className="flex items-center gap-2 xl:gap-3">
                                     <div className="relative w-10 h-10 xl:w-16 xl:h-16 bg-slate-100 dark:bg-white/10 rounded-lg xl:rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary-700 group-hover:text-white transition-all">
                                        <FileText className="w-5 h-5 xl:w-8 xl:h-8" />
-                                       <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{idx + 1}</span>
+                                       <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{idx + 1}</span>
                                     </div>
                                     <div>
                                        <h3 className="text-xs xl:text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-0.5 xl:mb-1">{test.title}</h3>
@@ -471,7 +471,7 @@ const AdminGovtExamTests = () => {
 
                         <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
                            <div className="flex items-center gap-3">
-                              <div className="p-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl shadow-sm"><Settings className="w-5 h-5" /></div>
+                              <div className="p-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl shadow-sm"><Settings className="w-5 h-5" /></div>
                               <div>
                                  <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{editingTest ? 'Edit' : 'Add'} <span className="text-primary-600">Test</span></h2>
                                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{editingTest ? `Editing: ${editingTest.title}` : 'Create a new practice test'}</p>
@@ -497,7 +497,7 @@ const AdminGovtExamTests = () => {
                                        </div>
                                     </div>
                                     <textarea value={jsonText} onChange={(e) => setJsonText(e.target.value)} placeholder='{ "questions": [...] }' rows="15" className="w-full p-3 xl:p-5 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] font-mono text-xs outline-none shadow-sm resize-none border-slate-300 dark:border-slate-700" />
-                                    <button onClick={handleBulkUpload} className="w-full mt-4 xl:mt-4 py-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-[2rem] font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
+                                    <button onClick={handleBulkUpload} className="w-full mt-4 xl:mt-4 py-3 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-[2rem] font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
                                        <UploadCloud className="w-5 h-5" /> Import Questions
                                     </button>
                                  </div>
@@ -541,7 +541,7 @@ const AdminGovtExamTests = () => {
                                              return secs.length > 1 ? (
                                                 <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
                                                    {['all', ...secs].map(sec => (
-                                                      <button key={sec} type="button" onClick={() => setQSection(sec)} className={`shrink-0 px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider transition-all ${qSection === sec ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/20'}`}>{sec === 'all' ? 'All' : sec}</button>
+                                                      <button key={sec} type="button" onClick={() => setQSection(sec)} className={`shrink-0 px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider transition-all ${qSection === sec ? 'bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white shadow' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/20'}`}>{sec === 'all' ? 'All' : sec}</button>
                                                    ))}
                                                 </div>
                                              ) : null;
@@ -558,7 +558,7 @@ const AdminGovtExamTests = () => {
                                              const active = editingQIndex === i;
                                              return (
                                                 <div key={i} onClick={() => handleEditQuestion(i)} className={`group flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${active ? 'border-primary-500 bg-primary-50 dark:bg-primary-500/10 ring-2 ring-primary-500/20' : 'border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 hover:border-primary-300 hover:shadow-sm'}`}>
-                                                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-black text-xs ${active ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white' : 'bg-slate-900 dark:bg-white/10 text-white'}`}>{i + 1}</div>
+                                                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-black text-xs ${active ? 'bg-gradient-to-br from-primary-600 to-primary-800 text-white' : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow'}`}>{i + 1}</div>
                                                    <div className="flex-1 min-w-0">
                                                       <p className="text-xs font-bold text-slate-700 dark:text-slate-200 line-clamp-2 leading-snug">{q.questionText}</p>
                                                       <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
@@ -628,7 +628,7 @@ const AdminGovtExamTests = () => {
                                              </select>
                                           </div>
                                        </div>
-                                       <button type="button" onClick={handleAddQuestion} className="w-full py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+                                       <button type="button" onClick={handleAddQuestion} className="w-full py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:brightness-110 transition-all">
                                           {editingQIndex !== null ? <><CheckCircle className="w-4 h-4" /> Update Question</> : <><Plus className="w-4 h-4" /> Add Question</>}
                                        </button>
                                     </div>
@@ -637,7 +637,7 @@ const AdminGovtExamTests = () => {
                                  {/* Fixed footer */}
                                  <div className="shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] flex gap-3 justify-end items-center">
  <button type="button" onClick={() => setShowModal(false)} className="px-6 py-2.5 bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 rounded-lg font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Cancel</button>
- <button type="submit" className="px-6 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+ <button type="submit" className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:brightness-110 transition-all">
  <CheckCircle2 className="w-4 h-4" /> {editingTest ? 'Save Changes' : 'Create Test'}
  </button>
  </div>

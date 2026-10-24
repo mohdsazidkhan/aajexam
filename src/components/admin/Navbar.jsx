@@ -73,7 +73,7 @@ const AdminNavbar = () => {
               className={`hidden xl:flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 shrink-0 ${
                 isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-md hover:scale-105'
+                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-md hover:scale-105'
               }`}
             >
               {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -156,7 +156,7 @@ const AdminNavbar = () => {
               className={`xl:hidden flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${
                 isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-md'
+                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-md'
               }`}
             >
               {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}

@@ -136,7 +136,7 @@ export default function UserReferralDetail() {
             key: 'invitee', header: 'REFERRED USER', render: (_, tx) => (
                 tx.invitee ? (
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm">
+                        <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm">
                             {tx.invitee.name?.[0].toUpperCase() || 'U'}
                         </div>
                         <div>
@@ -188,7 +188,7 @@ export default function UserReferralDetail() {
                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-4 xl:mb-4">{error || 'No user ID was provided. Please go back and select a user.'}</p>
                 <button
                     onClick={() => router.push('/admin/referral-history')}
-                    className="px-4 xl:px-5 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center gap-3 transition-transform hover:scale-105"
+                    className="px-4 xl:px-5 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center gap-3 transition-transform hover:scale-105"
                 >
                     <ArrowLeft className="w-4 h-4" /> Back to History
                 </button>
@@ -273,7 +273,7 @@ export default function UserReferralDetail() {
                 {/* Table Controller */}
                 <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 xl:p-10 mb-4 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-4 shrink-0">
                     <div className="flex items-center gap-3">
-                        <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg xl:rounded-xl">
+                        <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl">
                             <Zap className="w-5 h-5" />
                         </div>
                         <div>

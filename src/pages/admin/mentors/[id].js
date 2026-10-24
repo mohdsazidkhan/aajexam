@@ -13,9 +13,9 @@ import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext
 
 const Panel = ({ icon: Icon, title, children, className = '' }) => (
   <section className={`relative overflow-hidden bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md ${className}`}>
-    <div className="relative flex items-center gap-2.5 px-4 py-2.5 bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 border-b border-primary-200 dark:border-transparent dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white">
+    <div className="relative flex items-center gap-2.5 px-4 py-2.5 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
       <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
-      <span className="relative w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></span>
+      <span className="relative w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></span>
       <h2 className="relative text-xs font-black uppercase tracking-[0.14em]">{title}</h2>
     </div>
     <div className="p-4">{children}</div>
@@ -66,25 +66,25 @@ const AdminMentorDetail = () => {
           </Link>
 
           {/* Header */}
-          <section className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 ring-1 ring-primary-200 dark:ring-white/10 shadow-xl p-4 xl:p-5" style={{ borderRadius: 16 }}>
+          <section className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl p-4 xl:p-5" style={{ borderRadius: 16 }}>
             <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
             <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
             <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
 
             <div className="flex items-start justify-between flex-wrap gap-3">
               <div className="flex items-start gap-3 min-w-0">
-                <div className="w-14 h-14 xl:w-16 xl:h-16 shrink-0 flex items-center justify-center text-2xl font-black bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg]" style={{ borderRadius: 18 }}>
+                <div className="w-14 h-14 xl:w-16 xl:h-16 shrink-0 flex items-center justify-center text-2xl font-black bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg]" style={{ borderRadius: 18 }}>
                   {(mentor.user?.name || 'M').charAt(0).toUpperCase()}
                 </div>
                 <div className="min-w-0">
                   <h1 className="flex items-center gap-2 text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">
                     <span className="truncate">{mentor.user?.name || 'Unknown'}</span>
-                    {mentor.isVerified && <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 text-primary-950 text-[9px] font-black uppercase tracking-wider"><Shield className="w-3 h-3" /> Verified</span>}
+                    {mentor.isVerified && <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 text-black text-[9px] font-black uppercase tracking-wider"><Shield className="w-3 h-3" /> Verified</span>}
                   </h1>
                   <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
-                    {mentor.user?.email && <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20 text-[10px] font-bold text-slate-700 dark:text-white/80"><Mail className="w-3 h-3" /> {mentor.user.email}</span>}
-                    {mentor.user?.username && <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20 text-[10px] font-bold text-slate-700 dark:text-white/80"><AtSign className="w-3 h-3" /> {mentor.user.username}</span>}
-                    {mentor.user?.createdAt && <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20 text-[10px] font-bold text-slate-700 dark:text-white/80"><CalendarDays className="w-3 h-3" /> Joined: {new Date(mentor.user.createdAt).toLocaleDateString('en-IN')}</span>}
+                    {mentor.user?.email && <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 text-[10px] font-bold text-slate-700 dark:text-white/80"><Mail className="w-3 h-3" /> {mentor.user.email}</span>}
+                    {mentor.user?.username && <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 text-[10px] font-bold text-slate-700 dark:text-white/80"><AtSign className="w-3 h-3" /> {mentor.user.username}</span>}
+                    {mentor.user?.createdAt && <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 text-[10px] font-bold text-slate-700 dark:text-white/80"><CalendarDays className="w-3 h-3" /> Joined: {new Date(mentor.user.createdAt).toLocaleDateString('en-IN')}</span>}
                   </div>
                   {mentor.verifiedBy && (
                     <p className="mt-1.5 text-[10px] font-bold text-slate-500 dark:text-white/60">Verified by {mentor.verifiedBy.name} on {new Date(mentor.verifiedAt).toLocaleDateString('en-IN')}</p>
@@ -105,7 +105,7 @@ const AdminMentorDetail = () => {
                   <option value="rejected">Rejected</option>
                 </select>
                 {mentor.status === 'active' && !mentor.isVerified && (
-                  <button onClick={() => updateStatus('active', true)} className="px-3 py-2 bg-gradient-to-r from-primary-500 to-primary-700 text-white rounded-lg text-[10px] font-black uppercase tracking-wider shadow-md hover:brightness-110 transition-all"><Shield className="w-3 h-3 inline mr-1" />Verify</button>
+                  <button onClick={() => updateStatus('active', true)} className="px-3 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white rounded-lg text-[10px] font-black uppercase tracking-wider shadow-md hover:brightness-110 transition-all"><Shield className="w-3 h-3 inline mr-1" />Verify</button>
                 )}
               </div>
             </div>
@@ -118,9 +118,9 @@ const AdminMentorDetail = () => {
                 { icon: Clock, value: mentor.preparationMonths || 0, label: 'Prep Months' },
                 { icon: MessageCircle, value: mentor.amaThreads?.length || 0, label: 'AMA Threads' },
               ].map((st) => (
-                <div key={st.label} className="relative overflow-hidden flex items-center gap-3 px-3 py-2.5 bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-primary-200 dark:ring-white/20 transition-colors" style={{ borderRadius: 12 }}>
+                <div key={st.label} className="relative overflow-hidden flex items-center gap-3 px-3 py-2.5 bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 transition-colors" style={{ borderRadius: 12 }}>
                   <st.icon className="absolute -right-2 -bottom-2 w-12 h-12 text-primary-600/10 dark:text-white/10" />
-                  <span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><st.icon className="w-4 h-4" /></span>
+                  <span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><st.icon className="w-4 h-4" /></span>
                   <div className="min-w-0">
                     <p className="text-xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{st.value}</p>
                     <p className="mt-1 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 leading-tight">{st.label}</p>

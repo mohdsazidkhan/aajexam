@@ -62,7 +62,7 @@ const ReferralBanner = ({ user }) => {
 
   return (
     <section
-      className="relative overflow-hidden mb-8 font-outfit text-slate-900 dark:text-white shadow-xl ring-1 ring-primary-200 dark:ring-white/10 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-600 dark:via-primary-700 dark:to-primary-900"
+      className="relative overflow-hidden mb-8 font-outfit text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-primary-600 dark:via-primary-700 dark:to-primary-900"
       style={{ borderRadius: 16 }}
     >
       {/* Decoration */}
@@ -76,7 +76,7 @@ const ReferralBanner = ({ user }) => {
         <div className="p-5 xl:p-8 space-y-5">
           {/* Header */}
           <div className="flex items-start gap-3 xl:gap-4">
-            <div className="shrink-0 w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-6deg]" style={{ borderRadius: 12 }}>
+            <div className="shrink-0 w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-6deg]" style={{ borderRadius: 12 }}>
               <Gift className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
             <div className="min-w-0">
@@ -90,7 +90,7 @@ const ReferralBanner = ({ user }) => {
           </div>
 
           {/* Reward pill */}
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 px-3 py-1.5 text-xs font-black shadow-[0_4px_18px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black px-3 py-1.5 text-xs font-black shadow-[0_4px_18px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
             <Sparkles className="w-4 h-4 shrink-0" />
             {translate('Earn ₹{amount} when your friend buys a PRO plan', { amount: config.QUIZ_CONFIG.REFERRAL_REWARD_PRO })}
           </div>
@@ -129,7 +129,7 @@ const ReferralBanner = ({ user }) => {
           <div className="space-y-3">
             <button
               onClick={() => setShowShareOptions(!showShareOptions)}
-              className="w-full flex items-center justify-center gap-3 py-3.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 font-black uppercase tracking-widest text-sm shadow-lg hover:brightness-105 transition-all active:translate-y-0.5"
+              className="w-full flex items-center justify-center gap-3 py-3.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black font-black uppercase tracking-widest text-sm shadow-lg hover:brightness-105 transition-all active:translate-y-0.5"
             >
               <Share2 className="w-5 h-5" />
               {translate('Share with Friends')}

@@ -47,15 +47,15 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
         <div className="hidden xl:flex justify-end mb-4"><BackButton onClick={() => router.back()}><ArrowLeft className="w-4 h-4" /> {translate('Back')}</BackButton></div>
 
         {/* Hero */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white shadow-xl ring-1 ring-white/10 p-5 xl:p-6 mb-5" style={{ borderRadius: 16 }}>
+        <div className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-5 xl:p-6 mb-5" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '18px 18px' }} />
           <div className="pointer-events-none absolute -bottom-24 right-6 w-72 h-72 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="relative">
-          <BookMarked className="w-8 h-8 mb-2 text-primary-300" />
+          <BookMarked className="w-8 h-8 mb-2 text-slate-600 dark:text-primary-300" />
           <h1 className="text-xl xl:text-3xl font-black uppercase">{translateData(subject.name)}</h1>
           {subject.description && <p className="text-sm opacity-80 mt-1">{subject.description}</p>}
           <div className="flex gap-3 mt-3">
-            <span className="text-xs font-bold bg-white/15 ring-1 ring-white/25 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{translate('{count} Quizzes', { count: quizzes.length })}</span>
+            <span className="text-xs font-bold bg-white/80 dark:bg-white/15 ring-1 ring-slate-200 dark:ring-white/25 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{translate('{count} Quizzes', { count: quizzes.length })}</span>
           </div>
           </div>
         </div>

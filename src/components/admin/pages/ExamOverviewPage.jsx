@@ -323,7 +323,7 @@ const ExamOverviewPage = () => {
         <AlertCircle className="w-16 h-16 text-black dark:text-white mb-4" />
         <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Error Loading Overview</h2>
         <p className="text-slate-500 dark:text-slate-400 mb-4">{error}</p>
-        <button onClick={fetchData} className="px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg font-bold">Try Again</button>
+        <button onClick={fetchData} className="px-4 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg font-bold">Try Again</button>
       </div>
     );
   }
@@ -469,9 +469,9 @@ const ExamOverviewPage = () => {
                   <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30">
                     <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
                       <div className="flex items-center gap-3">
-                        <div className="relative w-10 h-10 rounded-lg bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow flex items-center justify-center shrink-0">
+                        <div className="relative w-10 h-10 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow flex items-center justify-center shrink-0">
                           <GraduationCap className="w-5 h-5" />
-                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-900">{serialNumber}</span>
+                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-900">{serialNumber}</span>
                         </div>
                         <div>
                           <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -549,7 +549,7 @@ const ExamOverviewPage = () => {
                 const serialNumber = idx + 1;
                 return (
                   <div key={exam._id} className="relative border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30 flex flex-col shadow-md before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                    <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
+                    <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
                     <div className="p-4 flex-1 flex flex-col">
                       <div className="flex justify-between items-start mb-4">
                         <div>

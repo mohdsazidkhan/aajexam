@@ -59,7 +59,7 @@ const SubjectAccordion = ({ subject }) => {
         className="w-full flex items-center justify-between p-4 sm:p-5 bg-background-surface hover:bg-primary-50/60 dark:hover:bg-white/5 transition-colors"
       >
         <div className="flex items-center gap-4">
-          <div style={{ borderRadius: 14 }} className={`w-12 h-12 flex items-center justify-center flex-shrink-0 ${isAllDone ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white shadow rotate-[-4deg]' : 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]'}`}>
+          <div style={{ borderRadius: 14 }} className={`w-12 h-12 flex items-center justify-center flex-shrink-0 ${isAllDone ? 'bg-gradient-to-br from-primary-600 to-primary-800 text-white shadow rotate-[-4deg]' : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]'}`}>
             <BookOpen className="w-6 h-6" />
           </div>
           <div className="text-left">
@@ -104,7 +104,7 @@ const SubjectAccordion = ({ subject }) => {
 
                       {!topic.isCompleted && (
                         <Link href={`/quizzes?topic=${topic.slug}`}>
-                          <button className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow text-[10px] font-black uppercase hover:brightness-105 transition-all">
+                          <button className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow text-[10px] font-black uppercase hover:brightness-105 transition-all">
                             <PlayCircle className="w-3 h-3" /> Practice
                           </button>
                         </Link>
@@ -236,7 +236,7 @@ const SyllabusTrackerPage = () => {
                     {rich('You have mastered <0></0> out of <1></1> topics for this exam.', [() => <strong className="text-primary-600">{trackerData.completedTopics}</strong>, () => <strong>{trackerData.totalTopics}</strong>])}
                   </p>
                   {trackerData.overallProgress === 100 && (
-                    <div className="mt-3 inline-flex items-center gap-1.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow px-3 py-1.5 rounded-lg text-xs font-black uppercase">
+                    <div className="mt-3 inline-flex items-center gap-1.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow px-3 py-1.5 rounded-lg text-xs font-black uppercase">
                       <CheckCircle2 className="w-4 h-4" /> Syllabus Completed!
                     </div>
                   )}
@@ -245,7 +245,7 @@ const SyllabusTrackerPage = () => {
 
               {/* Accordions */}
               <div>
-                <h3 className="flex items-center gap-2.5 text-sm font-black text-content-primary uppercase mb-3 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span>{translate('Subjects')}</h3>
+                <h3 className="flex items-center gap-2.5 text-sm font-black text-content-primary uppercase mb-3 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span>{translate('Subjects')}</h3>
                 {trackerData.syllabus.length === 0 ? (
                   <div className="text-center py-10 bg-background-surface border-2 border-dashed border-primary-300 dark:border-slate-700" style={{ borderRadius: 16 }}>
                     <p className="text-sm font-bold text-content-muted">{translate('No syllabus data found for this exam.')}</p>

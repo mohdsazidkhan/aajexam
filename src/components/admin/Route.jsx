@@ -33,7 +33,7 @@ export default function AdminRoute({ children }) {
           </p>
           <button
             onClick={() => router.push('/student/dashboard')}
-            className="w-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:bg-primary-600 text-white font-black py-3 px-5 rounded-3xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
+            className="w-full bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:bg-primary-600 text-white font-black py-3 px-5 rounded-3xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
           >
             Go to Home
           </button>

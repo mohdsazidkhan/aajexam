@@ -61,8 +61,8 @@ const StudentNavbar = () => {
   const rawPlan = (user.subscriptionStatus || 'FREE').toUpperCase();
   const isExpired = rawPlan === 'PRO' && user.subscriptionExpiry && new Date(user.subscriptionExpiry) <= new Date();
   const plan = isExpired ? 'EXPIRED' : rawPlan;
-  const planBadgeClassWeb = `absolute top-2 right-1 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow'}`;
-  const planBadgeClassMobile = `absolute top-1 -right-[45px] px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow'}`;
+  const planBadgeClassWeb = `absolute top-2 right-1 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow'}`;
+  const planBadgeClassMobile = `absolute top-1 -right-[45px] px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow'}`;
 
   return (
     <>
@@ -78,7 +78,7 @@ const StudentNavbar = () => {
               aria-expanded={isSidebarOpen}
               className={`hidden xl:flex w-10 h-10 rounded-2xl items-center justify-center transition-all active:scale-95 ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-md hover:scale-105'
+                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-md hover:scale-105'
                 }`}
             >
               {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -123,7 +123,7 @@ const StudentNavbar = () => {
             >
               <Bell className="w-4 h-4 xl:w-5 xl:h-5" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 text-[9px] font-black flex items-center justify-center shadow">
+                <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black text-[9px] font-black flex items-center justify-center shadow">
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>
               )}
@@ -169,7 +169,7 @@ const StudentNavbar = () => {
               aria-expanded={isSidebarOpen}
               className={`xl:hidden flex w-9 h-9 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-md'
+                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-md'
                 }`}
             >
               {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -191,9 +191,9 @@ const StudentNavbar = () => {
               className="fixed top-12 xl:top-16 right-3 xl:right-8 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-2xl z-[170] overflow-hidden"
             >
               {/* User info */}
-              <div className="px-3 py-2.5 mb-1 rounded-lg xl:rounded-xl bg-gradient-to-r from-primary-100 via-primary-50 to-white dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 ring-1 ring-primary-200 dark:ring-white/10">
+              <div className="px-3 py-2.5 mb-1 rounded-lg xl:rounded-xl bg-gradient-to-r from-slate-100 via-slate-50 to-white dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 ring-1 ring-slate-200 dark:ring-white/10">
 
-                <p className="text-[12px] font-bold text-primary-900 dark:text-white/80 truncate">{user.email}</p>
+                <p className="text-[12px] font-bold text-slate-900 dark:text-white/80 truncate">{user.email}</p>
               </div>
 
               {[

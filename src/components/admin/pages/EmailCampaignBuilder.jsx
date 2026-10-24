@@ -336,10 +336,10 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
     <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
       <div className="adminContent w-full mx-auto">
         {/* ===== Header: back link + step indicator in one row ===== */}
-        <div className="relative isolate overflow-hidden mb-3 px-3 py-2.5 flex flex-wrap items-center justify-between gap-3 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 ring-1 ring-primary-200 dark:ring-white/10 shadow-lg" style={{ borderRadius: 16 }}>
+        <div className="relative isolate overflow-hidden mb-3 px-3 py-2.5 flex flex-wrap items-center justify-between gap-3 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-lg" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
           <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <Link href="/admin/email-campaigns" className="inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-black text-primary-900 dark:text-white bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/20 ring-1 ring-primary-200 dark:ring-white/20 transition-colors" style={{ borderRadius: 999 }}>
+          <Link href="/admin/email-campaigns" className="inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-black text-slate-900 dark:text-white bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/20 ring-1 ring-slate-200 dark:ring-white/20 transition-colors" style={{ borderRadius: 999 }}>
             ← All campaigns
           </Link>
 
@@ -348,7 +348,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               <React.Fragment key={s.key}>
                 <div className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-black whitespace-nowrap transition-all ${
                   i < activeStep ? 'bg-primary-100 text-primary-800 ring-1 ring-primary-300 dark:bg-primary-400/20 dark:text-primary-200 dark:ring-white/15'
-                    : i === activeStep ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-md'
+                    : i === activeStep ? 'bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white shadow-md'
                     : 'bg-white/70 text-slate-500 ring-1 ring-primary-200/70 dark:bg-white/5 dark:text-slate-400 dark:ring-white/10'
                 }`} style={{ borderRadius: 999 }}>
                   {i + 1}. {s.label}
@@ -365,7 +365,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
           <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
             <div>
               <h2 className="text-xl font-black font-outfit uppercase tracking-tight flex items-center gap-2.5">
-                <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
+                <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
               </h2>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                 The platform logo &amp; footer are added automatically.
@@ -405,8 +405,8 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                 <div className="flex items-center justify-between mb-1">
                   <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200">Content *</label>
                   <div className="flex rounded-lg overflow-hidden border border-slate-300 dark:border-white/10 text-xs">
-                    <button type="button" disabled={!canEditFields} onClick={() => setMode('simple')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'simple' ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white font-black' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>Simple</button>
-                    <button type="button" disabled={!canEditFields} onClick={() => setMode('html')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'html' ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white font-black' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>HTML</button>
+                    <button type="button" disabled={!canEditFields} onClick={() => setMode('simple')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'simple' ? 'bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white font-black' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>Simple</button>
+                    <button type="button" disabled={!canEditFields} onClick={() => setMode('html')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'html' ? 'bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white font-black' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>HTML</button>
                   </div>
                 </div>
                 <textarea
@@ -469,7 +469,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {/* ---- Step 3: Publish ---- */}
               {isDraft && campaign && (
                 <button onClick={publishNow} disabled={busyAction}
-                  className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white shadow-sm disabled:opacity-50">
+                  className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white shadow-sm disabled:opacity-50">
                   🚀 Publish Now
                 </button>
               )}
@@ -483,7 +483,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {isPublished && (
                 <div className="space-y-3 border-t border-slate-100 dark:border-white/10 pt-4">
                   <button onClick={sendToAll} disabled={busyAction}
-                    className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:bg-primary-600 text-white shadow-sm disabled:opacity-50">
+                    className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:bg-primary-600 text-white shadow-sm disabled:opacity-50">
                     <Send size={20} /> Send To All Users
                   </button>
 
@@ -537,10 +537,10 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
                       <div className="flex flex-wrap gap-2 mt-3">
                         {isSendingPhase && isRunning && (
-                          <button onClick={pauseDriver} className="flex-1 py-2 px-3 rounded-lg text-sm bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white">Pause</button>
+                          <button onClick={pauseDriver} className="flex-1 py-2 px-3 rounded-lg text-sm bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white">Pause</button>
                         )}
                         {isSendingPhase && !isRunning && (
-                          <button onClick={continueDriver} disabled={busyAction} className="flex-1 py-2 px-3 rounded-lg text-sm bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:bg-primary-600 text-white disabled:opacity-50">
+                          <button onClick={continueDriver} disabled={busyAction} className="flex-1 py-2 px-3 rounded-lg text-sm bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:bg-primary-600 text-white disabled:opacity-50">
                             {campaign.remainingToday > 0 ? 'Continue Sending' : 'Continue (quota resets tomorrow)'}
                           </button>
                         )}

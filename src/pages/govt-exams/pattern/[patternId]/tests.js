@@ -147,9 +147,9 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       </section>
 
       {/* --- Pattern Quest Card --- */}
-      <Card className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white border-none shadow-xl ring-1 ring-white/10 overflow-hidden relative">
+      <Card className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10 overflow-hidden relative">
         <div className="relative z-10 space-y-3">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
             <Zap className="w-4 h-4" />
             {translate('Practice Tests')}
           </div>
@@ -163,7 +163,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
             </div>
           </div>
         </div>
-        <Award className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-white/10 -rotate-12" />
+        <Award className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-slate-900/10 dark:text-white/10 -rotate-12" />
       </Card>
 
       {/* --- Quests List --- */}

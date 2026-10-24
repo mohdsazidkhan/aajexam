@@ -184,19 +184,19 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* Contact */}
-                    <div className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-4 xl:p-8 mb-8" style={{ borderRadius: 16 }}>
+                    <div className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-4 xl:p-8 mb-8" style={{ borderRadius: 16 }}>
                         <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
                         <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
                         <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
 
                         <div className="flex items-center gap-3 mb-5 xl:mb-6">
-                            <div className="w-11 h-11 xl:w-12 xl:h-12 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+                            <div className="w-11 h-11 xl:w-12 xl:h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
                                 <FaEnvelope className="text-lg xl:text-xl" />
                             </div>
                             <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('Connect with Sazid')}</h2>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 xl:gap-4 pt-4 border-t border-dashed border-primary-300 dark:border-white/25">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 xl:gap-4 pt-4 border-t border-dashed border-slate-300 dark:border-white/25">
                             {[
                                 { href: `mailto:${config.CONTACT.EMAIL}`, icon: FaEnvelope, label: translate('Email'), external: false },
                                 { href: 'https://www.linkedin.com/in/mohd-sazid-khan', icon: FaLinkedin, label: translate('LinkedIn'), external: true },
@@ -206,7 +206,7 @@ export default function AboutAuthor() {
                                     key={c.label}
                                     href={c.href}
                                     {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                                    className="group relative flex items-center gap-3 px-4 py-3.5 bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-primary-200 dark:ring-white/20 hover:-translate-y-1 hover:shadow-lg transition-all"
+                                    className="group relative flex items-center gap-3 px-4 py-3.5 bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 hover:-translate-y-1 hover:shadow-lg transition-all"
                                     style={{ borderRadius: 12 }}
                                 >
                                     <span className="w-10 h-10 shrink-0 bg-gradient-to-br from-primary-600 to-primary-800 text-white flex items-center justify-center shadow group-hover:rotate-[-4deg] transition-transform" style={{ borderRadius: 10 }}>

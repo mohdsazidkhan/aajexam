@@ -145,7 +145,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
         <Card className={`
           relative overflow-hidden text-center py-8 px-5 xl:py-12 xl:px-8 border-none shadow-sm
-          ${isGreat ? 'bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 text-slate-900 dark:text-white shadow-xl ring-1 ring-primary-200 dark:ring-white/10' : 'bg-background-surface'}
+          ${isGreat ? 'bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10' : 'bg-background-surface'}
         `}>
           <div className="relative z-10 space-y-6">
             <motion.div
@@ -185,13 +185,13 @@ const TestResult = ({ resolvedId } = {}) => {
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="mt-6 inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20"
+                className="mt-6 inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20"
               >
                 <span className="text-base xl:text-lg font-black tracking-wide">
                   {translate('All India Rank')} <span className="text-primary-700 dark:text-primary-200">#{result.rank}</span> {translate('of {total}', { total: lbStats.totalParticipants.toLocaleString('en-IN') })}
                 </span>
                 <span className="hidden sm:inline h-5 w-px bg-primary-300 dark:bg-white/30" />
-                <span className="text-xs xl:text-sm font-black uppercase tracking-widest px-3 py-1 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow">
+                <span className="text-xs xl:text-sm font-black uppercase tracking-widest px-3 py-1 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow">
                   {translate('{band} · Beat {pct}% candidates', { band: translate(percentileBand), pct: beatPct })}
                 </span>
               </motion.div>
@@ -238,7 +238,7 @@ const TestResult = ({ resolvedId } = {}) => {
           }
         ].map((item, idx) => (
           <Card key={idx} className="flex flex-col items-center text-center gap-1.5 hover:-translate-y-0.5 hover:shadow-xl transition-all">
-            <div className="w-14 h-14 shrink-0 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow" style={{ borderRadius: 16 }}>
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow" style={{ borderRadius: 16 }}>
               <item.icon className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
             <span className="text-xl xl:text-2xl font-black font-outfit">{item.value}</span>
@@ -257,7 +257,7 @@ const TestResult = ({ resolvedId } = {}) => {
               onClick={() => setActiveTab(tab)}
               className={`
                  px-8 py-3 rounded-full font-black uppercase text-sm transition-all
-                 ${activeTab === tab ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow' : 'text-gray-400 hover:text-gray-600'}
+                 ${activeTab === tab ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow' : 'text-gray-400 hover:text-gray-600'}
                `}
             >
               {translate(tab)}
@@ -286,7 +286,7 @@ const TestResult = ({ resolvedId } = {}) => {
                 </div>
                 <Card padded={false} className="overflow-hidden">
                   <table className="w-full">
-                    <thead className="bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white text-xs font-black uppercase border-b border-primary-200 dark:border-transparent">
+                    <thead className="bg-gradient-to-r from-slate-100 via-slate-50 to-white text-primary-900 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white text-xs font-black uppercase border-b border-slate-200 dark:border-transparent">
                       <tr>
                         <th className="px-6 py-4 text-left">{translate('Player')}</th>
                         <th className="px-6 py-4 text-center">{translate('Score')}</th>

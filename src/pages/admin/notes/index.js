@@ -132,7 +132,7 @@ const AdminNotes = () => {
   );
 
   const addNoteButton = (
-    <button onClick={() => { setShowForm(true); setEditId(null); }} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white">
+    <button onClick={() => { setShowForm(true); setEditId(null); }} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white">
       <Plus className="w-3 h-3" /> Add Note
     </button>
   );
@@ -245,7 +245,7 @@ const AdminNotes = () => {
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowForm(false); setEditId(null); }} className="absolute inset-0 bg-black/50" />
                 <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
                   <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-slate-700/50 flex items-center justify-between shrink-0">
-                    <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><div>
+                    <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><div>
                       <h2 className="text-base font-bold text-slate-900 dark:text-white">{editId ? 'Edit Note' : 'Add New Note'}</h2>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Fill in the details below</p>
                     </div></div>
@@ -295,7 +295,7 @@ const AdminNotes = () => {
                     </div>
                   </div>
                   <div className="px-4 py-2.5 border-t border-slate-200 dark:border-slate-700 flex items-center gap-3 shrink-0 justify-end items-center">
- <button onClick={handleSave} className="px-6 px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
+ <button onClick={handleSave} className="px-6 px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
  <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-4 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg xl:rounded-xl text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
  </div>
                 </motion.div>

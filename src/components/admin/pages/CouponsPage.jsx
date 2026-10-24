@@ -110,8 +110,8 @@ const PricePreview = ({ form }) => {
   };
 
   return (
-    <div className="shrink-0 rounded-xl border border-primary-200 dark:border-slate-700 overflow-hidden shadow-sm">
-      <div className="px-3 py-2 text-[11px] font-black uppercase tracking-[0.14em] bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white">Calculation - what the user will pay</div>
+    <div className="shrink-0 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+      <div className="px-3 py-2 text-[11px] font-black uppercase tracking-[0.14em] bg-gradient-to-r from-slate-100 via-slate-50 to-white text-primary-900 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">Calculation - what the user will pay</div>
       {!valid ? (
         <p className="px-3 py-2 text-xs text-slate-500 dark:text-slate-400">Enter the discount value above to see the price of each plan.</p>
       ) : (
@@ -157,7 +157,7 @@ const PricePreview = ({ form }) => {
                 const { discount, finalAmount } = computeDiscount(coupon, p.price);
                 return (
                   <tr key={p.id} className="border-t border-dashed border-slate-200 dark:border-slate-700 text-right align-top hover:bg-primary-50/40 dark:hover:bg-white/5 transition-colors">
-                    <td className="px-3 py-2 text-left"><span className="inline-block px-2 py-0.5 text-xs font-black text-primary-900 dark:text-white bg-gradient-to-r from-primary-100 to-primary-50 dark:from-white/10 dark:to-white/5" style={{ borderRadius: 8 }}>{p.label}</span></td>
+                    <td className="px-3 py-2 text-left"><span className="inline-block px-2 py-0.5 text-xs font-black text-slate-900 dark:text-white bg-gradient-to-r from-primary-100 to-primary-50 dark:from-white/10 dark:to-white/5" style={{ borderRadius: 8 }}>{p.label}</span></td>
                     <td className="px-3 py-2 text-slate-500 dark:text-slate-400">{rs(p.normalPrice)}</td>
                     <td className="px-3 py-2 text-slate-500 dark:text-slate-400">{p.saving > 0 ? `-${rs(p.saving)}` : '-'}</td>
                     <td className="px-3 py-2 font-bold text-slate-700 dark:text-slate-200">{rs(p.price)}</td>
@@ -246,10 +246,10 @@ const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
   return createPortal(
     <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60" onClick={onClose}>
       <div onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-hidden relative bg-white dark:bg-slate-800 rounded-t-2xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-        <div className="shrink-0 relative isolate overflow-hidden flex items-center justify-between gap-3 px-4 py-3 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 border-b border-primary-200 dark:border-transparent">
+        <div className="shrink-0 relative isolate overflow-hidden flex items-center justify-between gap-3 px-4 py-3 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-b border-slate-200 dark:border-transparent">
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
           <div className="min-w-0 flex items-center gap-3">
-            <span className="w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><Tag className="w-5 h-5" /></span>
+            <span className="w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><Tag className="w-5 h-5" /></span>
             <span className="text-2xl font-black font-outfit tracking-[0.2em] text-primary-700 dark:text-primary-200 truncate">{c.code}</span>
           </div>
           <div className="shrink-0 flex items-center gap-2">
@@ -272,7 +272,7 @@ const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
         </div>
         <div className="shrink-0 px-4 sm:px-4 py-2 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-2">
           <button type="button" onClick={onClose} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-black uppercase tracking-wide text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-primary-500 transition-colors">Close</button>
-          <button type="button" onClick={() => onEdit(c)} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-black uppercase tracking-wide bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white hover:brightness-110">Edit</button>
+          <button type="button" onClick={() => onEdit(c)} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-black uppercase tracking-wide bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white hover:brightness-110">Edit</button>
         </div>
       </div>
     </div>,
@@ -410,7 +410,7 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
 
         <div className="sticky bottom-0 -mx-4 sm:mx-0 -mb-4 sm:mb-0 px-4 sm:px-0 py-2 sm:py-0 sm:pt-2 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700 sm:border-0 flex justify-end gap-2">
           <button type="button" onClick={onClose} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 sm:border-0">Cancel</button>
-          <button type="submit" disabled={saving} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white hover:brightness-110 disabled:opacity-50">
+          <button type="submit" disabled={saving} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white hover:brightness-110 disabled:opacity-50">
             {saving ? 'Saving…' : editing ? 'Save changes' : 'Create coupon'}
           </button>
         </div>
@@ -535,7 +535,7 @@ const CouponsPage = () => {
   );
 
   const newButton = (
-    <button onClick={() => setEditing({})} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110">
+    <button onClick={() => setEditing({})} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110">
       <Plus className="w-4 h-4" /> New coupon
     </button>
   );

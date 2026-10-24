@@ -181,7 +181,7 @@ const AdminUserAnalyticsDetail = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => router.push('/admin/analytics/users-overview')}
-                                className="px-4 xl:px-5 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white font-black uppercase tracking-widest rounded-2xl shadow-sm"
+                                className="px-4 xl:px-5 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white font-black uppercase tracking-widest rounded-2xl shadow-sm"
                             >
                                 Back to Users
                             </motion.button>
@@ -196,7 +196,7 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
                                 <div className="flex items-center gap-3">
-                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl shadow-sm">
+                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-2xl shadow-sm">
                                         <Coins className="w-6 h-6" />
                                     </div>
                                     <div>
@@ -221,7 +221,7 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
                                 <div className="flex items-center gap-3">
-                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl shadow-sm">
+                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-2xl shadow-sm">
                                         <Trophy className="w-6 h-6" />
                                     </div>
                                     <div>
@@ -290,7 +290,7 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
                                 <div className="flex items-center gap-3">
-                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl shadow-sm">
+                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-2xl shadow-sm">
                                         <Book className="w-6 h-6" />
                                     </div>
                                     <div>

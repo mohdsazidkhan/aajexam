@@ -15,7 +15,7 @@ import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext
 
 const IN = 'w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm font-semibold text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 disabled:opacity-60';
 const LB = 'block text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.14em] mb-1';
-const TILE = 'w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]';
+const TILE = 'w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]';
 
 const STATUSES = ['active', 'inactive', 'suspended', 'banned'];
 const SOCIAL_FIELDS = [
@@ -203,7 +203,7 @@ const StudentEditPage = ({ studentId }) => {
               </div>
               <div className="inline-flex p-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
                 <Link href={`/admin/user-details/${studentId}`} className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/10">Details</Link>
-                <span className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow">Edit</span>
+                <span className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow">Edit</span>
               </div>
             </div>
 
@@ -309,7 +309,7 @@ const StudentEditPage = ({ studentId }) => {
                           key={ex._id}
                           type="button"
                           onClick={() => toggleExam(String(ex._id))}
-                          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wide border transition-all ${on ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white border-transparent shadow' : 'bg-white dark:bg-black text-slate-600 dark:text-slate-300 border-slate-300 dark:border-slate-700 hover:border-primary-400'}`}
+                          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wide border transition-all ${on ? 'bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white border-transparent shadow' : 'bg-white dark:bg-black text-slate-600 dark:text-slate-300 border-slate-300 dark:border-slate-700 hover:border-primary-400'}`}
                         >
                           {on && <Check className="w-3 h-3" />}
                           {ex.code || ex.name}
@@ -325,7 +325,7 @@ const StudentEditPage = ({ studentId }) => {
             <div className="shrink-0 -mx-1 px-4 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] flex items-center justify-end gap-3">
               {dirty && <span className="mr-auto text-[10px] font-black uppercase tracking-wider text-amber-600 dark:text-amber-400">Unsaved changes</span>}
               <button type="button" onClick={() => router.push('/admin/students')} className="px-6 py-2.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Cancel</button>
-              <button type="submit" disabled={saving || !dirty} className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
+              <button type="submit" disabled={saving || !dirty} className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
                 <Save className="w-4 h-4" /> {saving ? 'Saving...' : 'Save changes'}
               </button>
             </div>

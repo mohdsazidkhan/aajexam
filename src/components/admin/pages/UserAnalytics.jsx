@@ -239,7 +239,7 @@ const UserAnalytics = () => {
   const exportButton = (
     <button
       onClick={handleExport}
-      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
+      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
     >
       <Download className="w-4 h-4" /> Export to CSV
     </button>
@@ -278,7 +278,7 @@ const UserAnalytics = () => {
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg xl:rounded-xl">
+              <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl">
                 <LineChart className="w-5 h-5" />
               </div>
               <div>

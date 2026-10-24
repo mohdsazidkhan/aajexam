@@ -57,7 +57,7 @@ const TestStartModal = ({
         <div className="pointer-events-none absolute inset-x-0 top-0 h-1 z-10 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
         <div className="text-center">
           {/* Header */}
-          <div className="w-10 xl:w-20 h-10 xl:h-20 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center mx-auto mb-6 shadow-lg" style={{ borderRadius: 18 }}>
+          <div className="w-10 xl:w-20 h-10 xl:h-20 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] flex items-center justify-center mx-auto mb-6 shadow-lg" style={{ borderRadius: 18 }}>
             <FaSchool className="text-xl xl:text-3xl" />
           </div>
 
@@ -94,26 +94,26 @@ const TestStartModal = ({
 
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                   <BookOpen className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{translateData(categoryName)}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{translateData(examTitle)}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                   <Clock className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{durationText}</span>
               </div>
               {pattern?.totalMarks && (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                     <Trophy className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{translate('{count} Marks', { count: pattern.totalMarks })}</span>
@@ -121,7 +121,7 @@ const TestStartModal = ({
               )}
               {pattern?.negativeMarking > 0 ? (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                     <Info className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest text-center">
@@ -130,7 +130,7 @@ const TestStartModal = ({
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest text-center">
@@ -219,7 +219,7 @@ const TestStartModal = ({
               onClick={() => onConfirm()}
               disabled={!acceptedRules}
               className={`flex-[2] px-5 sm:px-8 py-4 sm:py-5 rounded-2xl sm:rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest transition-all border-2 ${acceptedRules
-                ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 border-primary-300 shadow-lg hover:brightness-105 active:translate-y-0.5'
+                ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black border-primary-300 shadow-lg hover:brightness-105 active:translate-y-0.5'
                 : 'bg-slate-200 dark:bg-slate-700 text-content-secondary border-slate-300 dark:border-slate-600 cursor-not-allowed opacity-50'
                 }`}
             >

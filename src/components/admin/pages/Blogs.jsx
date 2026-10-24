@@ -197,7 +197,7 @@ const AdminBlogs = () => {
           {blog.status === 'published' ? (
             <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Unpublish</button>
           ) : (
-            <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
+            <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
           )}
           <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured" className={`${blog.isFeatured ? 'p-1.5 rounded-lg bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200 transition-colors' : 'p-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-400 hover:text-primary-600 transition-colors'}`}>
             <Star className={`w-4 h-4 ${blog.isFeatured ? 'fill-current' : ''}`} />
@@ -235,7 +235,7 @@ const AdminBlogs = () => {
         <div key={blog._id} className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
           <div className="relative mb-3">
             <img src={blog.featuredImage || '/default_banner.png'} alt={blog.title} className="w-full h-40 rounded-lg object-cover" />
-            <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
+            <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
           </div>
           <div className="flex items-start justify-between gap-2">
             <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2">{blog.title}</h3>
@@ -252,7 +252,7 @@ const AdminBlogs = () => {
             {blog.status === 'published' ? (
               <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Unpublish</button>
             ) : (
-              <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
+              <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
             )}
             <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured" className={`${blog.isFeatured ? 'p-1.5 rounded-lg bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200 transition-colors' : 'p-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-400 hover:text-primary-600 transition-colors'}`}>
             <Star className={`w-4 h-4 ${blog.isFeatured ? 'fill-current' : ''}`} />
@@ -278,7 +278,7 @@ const AdminBlogs = () => {
         <div key={blog._id} className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 flex items-start gap-3 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
           <div className="relative w-16 h-16 flex-shrink-0">
             <img src={blog.featuredImage || '/default_banner.png'} alt={blog.title} className="w-16 h-16 rounded-lg object-cover" />
-            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
+            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
@@ -299,7 +299,7 @@ const AdminBlogs = () => {
               {blog.status === 'published' ? (
                 <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Unpublish</button>
               ) : (
-                <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
+                <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
               )}
               <button onClick={() => handleDelete(blog._id)} className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors text-[10px] font-black uppercase tracking-wider px-2.5">Delete</button>
             </div>
@@ -372,7 +372,7 @@ const AdminBlogs = () => {
     <motion.button
       whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
       onClick={() => router.push('/admin/blogs/create')}
-      className="w-full px-4 xl:px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
+      className="w-full px-4 xl:px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
     >
       <Plus className="w-4 h-4" /> NEW BLOG
     </motion.button>

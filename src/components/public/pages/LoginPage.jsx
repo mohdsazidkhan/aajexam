@@ -90,13 +90,13 @@ const LoginPage = () => {
   return (
     <MobileAppWrapper showHeader={true} title={translate('Login')}>
       <div className="flex-1 flex flex-col xl:flex-row items-stretch">
-        <div className="hidden xl:flex w-1/2 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-800 dark:via-primary-900 dark:to-primary-950 p-16 flex-col justify-center items-start relative overflow-hidden">
+        <div className="hidden xl:flex w-1/2 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-primary-800 dark:via-primary-900 dark:to-primary-950 p-16 flex-col justify-center items-start relative overflow-hidden">
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '20px 20px' }} />
           <div className="pointer-events-none absolute -top-24 -left-20 w-80 h-80 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="pointer-events-none absolute -bottom-28 right-10 w-96 h-96 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="space-y-4 xl:space-y-8 relative z-10">
             <motion.div animate={{ rotate: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-              <div className="p-5 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-xl w-fit rotate-[-4deg]" style={{ borderRadius: 18 }}>
+              <div className="p-5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-xl w-fit rotate-[-4deg]" style={{ borderRadius: 18 }}>
                 <Trophy className="w-12 h-12" />
               </div>
             </motion.div>

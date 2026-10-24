@@ -52,7 +52,7 @@ const SignupGate = ({ score, total }) => {
 
   return (
     <div className="text-center">
-      <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg mb-3 rotate-[-4deg]" style={{ borderRadius: 14 }}>
+      <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg mb-3 rotate-[-4deg]" style={{ borderRadius: 14 }}>
         <span className="text-2xl font-black">{score}/{total}</span>
       </div>
       <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
@@ -146,7 +146,7 @@ export default function SampleQuiz() {
         <div className="pointer-events-none absolute -top-16 -right-10 w-56 h-56 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
         {phase === 'idle' || phase === 'loading' ? (
           <div className="text-center">
-            <div className="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg flex items-center justify-center rotate-[-4deg]" style={{ borderRadius: 14 }}>
+            <div className="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg flex items-center justify-center rotate-[-4deg]" style={{ borderRadius: 14 }}>
               <Sparkles className="w-7 h-7" />
             </div>
             <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">

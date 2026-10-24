@@ -160,7 +160,7 @@ const AdminReferralAnalytics = () => {
         {
             key: 'user', header: 'User', render: (_, user) => (
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:bg-primary-700 transition-all uppercase">
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:bg-primary-700 transition-all uppercase">
                         {user.name?.[0]?.toUpperCase()}
                     </div>
                     <div>
@@ -319,7 +319,7 @@ const AdminReferralAnalytics = () => {
                             { label: "This Month", value: summary.monthlyReferralsSum, icon: Zap }
                         ].map((stat) => (
                             <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-                                <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+                                <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
                                 <div className="min-w-0">
                                     <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">{stat.value}</div>
                                     <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
@@ -356,7 +356,7 @@ const AdminReferralAnalytics = () => {
                                         {analytics.map((user, i) => (
                                             <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                 <div className="flex items-start justify-between gap-2">
-                                                    <div className="relative w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-sm">
+                                                    <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-xl flex items-center justify-center font-black text-sm">
                                                         {user.name?.[0]?.toUpperCase() || 'U'}
                                                         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{i + 1 + (pagination.page - 1) * pagination.limit}</span>
                                                     </div>
@@ -387,7 +387,7 @@ const AdminReferralAnalytics = () => {
                                     <div className="h-full overflow-auto space-y-3">
                                         {analytics.map((user, i) => (
                                             <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                                                <div className="relative w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center shrink-0 font-black text-sm">
+                                                <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-xl flex items-center justify-center shrink-0 font-black text-sm">
                                                     {user.name?.[0]?.toUpperCase() || 'U'}
                                                     <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{i + 1 + (pagination.page - 1) * pagination.limit}</span>
                                                 </div>

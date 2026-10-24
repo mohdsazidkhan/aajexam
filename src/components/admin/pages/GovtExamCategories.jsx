@@ -225,7 +225,7 @@ const AdminGovtExamCategories = () => {
   const addCategoryButton = (
     <button
       onClick={handleCreate}
-      className="w-full px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all outline-none"
+      className="w-full px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all outline-none"
     >
       <Plus className="w-5 h-5" /> ADD CATEGORY
     </button>
@@ -314,7 +314,7 @@ const AdminGovtExamCategories = () => {
                     >
                       <div className={`relative w-11 h-11 xl:w-20 xl:h-20 rounded-lg xl:rounded-[2rem] flex items-center justify-center shrink-0 border-2 shadow-sm transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-primary-600 border-primary-200 text-white shadow-sm' : 'bg-primary-600 border-primary-200 text-white shadow-sm'}`}>
                         {category.type === 'Central' ? <Globe className="w-5 h-5 xl:w-10 xl:h-10" /> : <Map className="w-5 h-5 xl:w-10 xl:h-10" />}
-                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] xl:text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{i + 1}</span>
+                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] xl:text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{i + 1}</span>
                       </div>
 
                       <div className="flex-1 text-center xl:text-left space-y-1 xl:space-y-2">
@@ -357,7 +357,7 @@ const AdminGovtExamCategories = () => {
                     >
                       <div className={`relative w-10 h-10 xl:w-16 xl:h-16 rounded-xl xl:rounded-2xl flex items-center justify-center mb-2 xl:mb-4 border-2 shadow-sm group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-primary-600 border-primary-200 text-white' : 'bg-primary-600 border-primary-200 text-white'}`}>
                         {category.type === 'Central' ? <Globe className="w-5 h-5 xl:w-8 xl:h-8" /> : <Map className="w-5 h-5 xl:w-8 xl:h-8" />}
-                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] xl:text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{i + 1}</span>
+                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] xl:text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{i + 1}</span>
                       </div>
 
                       <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 xl:mb-2">{category.name}</h3>
@@ -403,7 +403,7 @@ const AdminGovtExamCategories = () => {
               >
                 <div className="px-4 py-2.5 border-b-2 border-slate-50 dark:border-white/5 flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl">
+                    <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-2xl">
                       <Settings className="w-5 h-5" />
                     </div>
                     <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
@@ -467,7 +467,7 @@ const AdminGovtExamCategories = () => {
  </button>
  <button
  type="submit"
- className="px-6 p-4 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-sm hover:scale-105 active:scale-95 transition-all outline-none"
+ className="px-6 p-4 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-sm hover:scale-105 active:scale-95 transition-all outline-none"
  >
  {editingCategory ? "SAVE CHANGES" : "CREATE CATEGORY"}
  </button>

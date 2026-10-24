@@ -103,7 +103,7 @@ const AdminUsersAnalytics = () => {
             header: 'User Profile',
             render: (_, s) => (
                 <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center font-black text-lg shadow-sm">{(s.name || 'U')[0]}</div>
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center font-black text-lg shadow-sm">{(s.name || 'U')[0]}</div>
                     <div>
                         <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 group-hover:text-primary-600 transition-colors tracking-tight">{s.name || 'Anonymous'}</div>
                         <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none truncate max-w-[150px]">{s.email || 'N/A'}</div>
@@ -146,7 +146,7 @@ const AdminUsersAnalytics = () => {
             align: 'right',
             render: (_, s) => (
                 <div className="flex justify-end">
-                    <motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl shadow-sm hover:bg-primary-700 hover:text-white transition-colors"><ArrowRight className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl shadow-sm hover:bg-primary-700 hover:text-white transition-colors"><ArrowRight className="w-5 h-5" /></motion.button>
                 </div>
             )
         }
@@ -209,7 +209,7 @@ const AdminUsersAnalytics = () => {
     );
 
     const expensesButton = (
-        <button onClick={() => router.push('/admin/expenses')} className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  px-4 py-2 rounded-lg xl:rounded-xl text-sm font-bold">
+        <button onClick={() => router.push('/admin/expenses')} className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  px-4 py-2 rounded-lg xl:rounded-xl text-sm font-bold">
             <Wallet className="w-4 h-4" /> Expenses
         </button>
     );
@@ -295,7 +295,7 @@ const AdminUsersAnalytics = () => {
                                         {students.map((s, idx) => (
                                             <div key={s._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                 <div className="flex items-start justify-between gap-2">
-                                                    <div className="relative w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-xl flex items-center justify-center font-black text-sm">
+                                                    <div className="relative w-10 h-10 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-xl flex items-center justify-center font-black text-sm">
                                                         {(s.name || 'U')[0]}
                                                         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
                                                     </div>
@@ -309,7 +309,7 @@ const AdminUsersAnalytics = () => {
                                                     <span className="text-slate-400">Earnings</span>
                                                     <span className="font-black text-primary-600">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</span>
                                                 </div>
-                                                <button onClick={() => goToUser(s._id)} className="w-full py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg text-xs font-bold hover:bg-primary-700 transition-all">View Details</button>
+                                                <button onClick={() => goToUser(s._id)} className="w-full py-2 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg text-xs font-bold hover:bg-primary-700 transition-all">View Details</button>
                                             </div>
                                         ))}
                                     </div>
@@ -319,7 +319,7 @@ const AdminUsersAnalytics = () => {
                                     <div className="h-full overflow-auto space-y-3">
                                         {students.map((s, idx) => (
                                             <div key={s._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                                                <div className="relative w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-xl flex items-center justify-center font-black text-sm shrink-0">
+                                                <div className="relative w-10 h-10 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-xl flex items-center justify-center font-black text-sm shrink-0">
                                                     {(s.name || 'U')[0]}
                                                     <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
                                                 </div>

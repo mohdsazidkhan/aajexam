@@ -187,11 +187,11 @@ const FeaturesPage = () => {
             </div>
           </Card>
 
-          <Card className="isolate p-4 xl:p-10 space-y-3 xl:space-y-6 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 ring-2 ring-primary-400/60 dark:ring-white/20 shadow-xl relative overflow-hidden">
+          <Card className="isolate p-4 xl:p-10 space-y-3 xl:space-y-6 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-2 ring-primary-400/60 dark:ring-white/20 shadow-xl relative overflow-hidden">
             <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
             <Crown className="absolute -bottom-8 -right-8 w-44 h-44 text-primary-600/10 dark:text-white/5 rotate-[-12deg]" />
             <div className="flex items-center justify-between relative z-10">
-              <div className="p-2.5 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 14 }}>
+              <div className="p-2.5 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 14 }}>
                 <Crown className="w-5 h-5 xl:w-7 xl:h-7" />
               </div>
               <ProBadge size="sm" />
@@ -227,7 +227,7 @@ const FeaturesPage = () => {
                   <div className="flex items-center justify-between gap-2 min-h-[24px]">
                     <h3 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{translate(plan.label)}</h3>
                     {plan.badge && (
-                      <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow whitespace-nowrap" style={{ borderRadius: 999 }}>{translate(plan.badge)}</span>
+                      <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow whitespace-nowrap" style={{ borderRadius: 999 }}>{translate(plan.badge)}</span>
                     )}
                   </div>
                   <div className="flex items-end gap-2">
@@ -252,7 +252,7 @@ const FeaturesPage = () => {
         <section className="grid grid-cols-1 xl:grid-cols-3 gap-4 xl:gap-8">
           {HIGHLIGHTS.map((h, i) => (
             <Card key={i} className="group relative overflow-hidden space-y-2.5 xl:space-y-5 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-              <div className="p-2.5 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] group-hover:rotate-0 transition-transform w-fit" style={{ borderRadius: 14 }}>
+              <div className="p-2.5 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] group-hover:rotate-0 transition-transform w-fit" style={{ borderRadius: 14 }}>
                 <h.icon className="w-4 h-4 xl:w-6 xl:h-6" />
               </div>
               <div className="space-y-1 xl:space-y-2">
@@ -273,9 +273,9 @@ const FeaturesPage = () => {
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-6">
             {FEATURE_GROUPS.map((group) => (
               <Card key={group.title} className="p-0 overflow-hidden" padded={false}>
-                <div className="relative flex items-center gap-2 xl:gap-3 px-3 py-2.5 xl:px-6 xl:py-4 bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 border-b border-primary-200 dark:border-transparent dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white">
+                <div className="relative flex items-center gap-2 xl:gap-3 px-3 py-2.5 xl:px-6 xl:py-4 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
                   <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
-                  <div className="relative p-2 xl:p-2.5 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+                  <div className="relative p-2 xl:p-2.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
                     <group.icon className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
                   </div>
                   <h3 className="relative text-xs xl:text-sm font-black font-outfit uppercase tracking-[0.14em]">{translate(group.title)}</h3>
@@ -305,7 +305,7 @@ const FeaturesPage = () => {
 
         {/* --- CTA --- */}
         <section className="px-0 py-4 xl:py-8">
-          <Card className="p-5 xl:p-16 text-center bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 border border-primary-200 dark:border-slate-800 text-slate-900 dark:text-white shadow-xl relative overflow-hidden" style={{ borderRadius: 16 }}>
+          <Card className="p-5 xl:p-16 text-center bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 border border-primary-200 dark:border-slate-800 text-slate-900 dark:text-white shadow-xl relative overflow-hidden" style={{ borderRadius: 16 }}>
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
             <div className="relative z-10 space-y-2 xl:space-y-4 xl:space-y-8">

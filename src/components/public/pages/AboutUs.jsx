@@ -89,7 +89,7 @@ const AboutUs = () => {
 
             {/* --- Mission & Vision --- */}
             <section className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
-               <Card className="p-6 xl:p-10 space-y-8 border-none bg-primary-50 dark:bg-slate-900 text-slate-900 dark:text-white shadow-xl ring-1 ring-primary-200 dark:ring-white/10 relative overflow-hidden">
+               <Card className="p-6 xl:p-10 space-y-8 border-none bg-primary-50 dark:bg-slate-900 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 relative overflow-hidden">
                   <div className="relative z-10 space-y-6">
                      <div className="inline-flex items-center gap-2 bg-primary-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest text-primary-700 dark:text-primary-400 backdrop-blur-sm border border-primary-500/30">
                         <Rocket className="w-4 h-4" /> OUR MISSION
@@ -165,14 +165,14 @@ const AboutUs = () => {
 
             {/* --- CTA --- */}
             <section>
-               <Card className="p-8 xl:p-12 text-center bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 border-none text-white shadow-xl ring-1 ring-white/10 relative overflow-hidden">
+               <Card className="p-8 xl:p-12 text-center bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-none text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 relative overflow-hidden">
                   <div className="relative z-10 space-y-8">
                      <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tight">{translate('Ready to Begin?')}</h2>
                      <p className="text-lg font-medium opacity-90 max-w-2xl mx-auto leading-relaxed">{translate('Join thousands of students who are already passing exams and earning cash by referring friends to AajExam.')}</p>
                      <Button onClick={() => router.push('/')} variant="secondary" size="lg" className="mx-auto px-12 py-6 text-sm font-black">{translate('START LEARNING FOR FREE')}</Button>
                   </div>
-                  <Sparkles className="absolute top-10 left-10 w-24 h-24 text-white/10" />
-                  <ShieldCheck className="absolute bottom-10 right-10 w-20 xl:w-32 h-20 xl:h-32 text-white/10" />
+                  <Sparkles className="absolute top-10 left-10 w-24 h-24 text-slate-900/10 dark:text-white/10" />
+                  <ShieldCheck className="absolute bottom-10 right-10 w-20 xl:w-32 h-20 xl:h-32 text-slate-900/10 dark:text-white/10" />
                </Card>
             </section>
 

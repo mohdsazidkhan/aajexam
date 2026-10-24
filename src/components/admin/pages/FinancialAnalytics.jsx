@@ -106,7 +106,7 @@ const FinancialAnalytics = () => {
         { label: 'Successful Payments', val: data?.paymentStats?.reduce((sum, p) => sum + p.count, 0) || 0, icon: CreditCard }
       ].map((stat) => (
         <div key={stat.label} className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0"><stat.icon className="w-4 h-4" /></div>
+          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg shrink-0"><stat.icon className="w-4 h-4" /></div>
           <div className="min-w-0">
             <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.val}</div>
             <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
@@ -135,7 +135,7 @@ const FinancialAnalytics = () => {
   );
 
   const exportButton = (
-    <button onClick={handleExport} className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110">
+    <button onClick={handleExport} className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110">
       <Download className="w-4 h-4" /> Export to CSV
     </button>
   );
@@ -285,7 +285,7 @@ const FinancialAnalytics = () => {
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm overflow-hidden">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                       <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl"><Activity className="w-6 h-6" /></div>
+                       <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-2xl"><Activity className="w-6 h-6" /></div>
                        <div>
                         <h3 className="text-[14px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] leading-none mb-1">Plan Performance Breakdown</h3>
                         <span className="text-[9px] font-black text-slate-400 tracking-widest uppercase italic">Revenue breakdown by subscription plan</span>

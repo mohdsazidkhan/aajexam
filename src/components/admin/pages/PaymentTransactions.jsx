@@ -418,7 +418,7 @@ const AdminPaymentTransactions = () => {
   const exportButton = (
     <button
       onClick={exportToCSV}
-      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
+      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
     >
       <Download className="w-4 h-4" /> Export to CSV
     </button>
@@ -477,7 +477,7 @@ const AdminPaymentTransactions = () => {
             { label: 'Paying Users', val: summary.activeUsers || 0, icon: Users }
           ].map((stat) => (
             <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-              <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+              <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
               <div className="min-w-0">
                 <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.isCurrency ? formatCurrency(stat.val) : stat.val.toLocaleString()}</div>
                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
@@ -560,7 +560,7 @@ const AdminPaymentTransactions = () => {
                       <div className="flex items-center gap-3">
                         <div className={`relative p-2.5 rounded-xl border ${getStatusColor(t.payuStatus || t.status)}`}>
                           {getStatusIcon(t.payuStatus || t.status)}
-                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(pagination.currentPage - 1) * filters.limit + idx + 1}</span>
+                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(pagination.currentPage - 1) * filters.limit + idx + 1}</span>
                         </div>
                         <div>
                           <div className="text-sm font-bold text-slate-900 dark:text-white">{t.user?.name || 'Unknown User'}</div>

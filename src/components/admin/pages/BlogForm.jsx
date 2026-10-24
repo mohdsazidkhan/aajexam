@@ -323,7 +323,7 @@ const AdminBlogForm = () => {
             </button>
             <motion.button type="submit" disabled={loading}
               whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-              className="px-5 py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white rounded-lg font-bold text-sm flex items-center gap-2 disabled:opacity-50 shadow-sm">
+              className="px-5 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white rounded-lg font-bold text-sm flex items-center gap-2 disabled:opacity-50 shadow-sm">
               <Save className="w-4 h-4" />
               {loading ? 'Saving...' : isEdit ? 'Update Blog' : 'Create Blog'}
             </motion.button>

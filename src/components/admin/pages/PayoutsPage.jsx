@@ -26,7 +26,7 @@ export default function PayoutsPage() {
             href={t.href}
             replace
             scroll={false}
-            className={`px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider transition-all ${active === t.id ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow' : 'text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/10'}`}
+            className={`px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider transition-all ${active === t.id ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow' : 'text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/10'}`}
           >
             {t.label}
           </Link>

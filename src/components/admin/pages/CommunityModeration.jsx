@@ -116,7 +116,7 @@ export default function CommunityModeration() {
   const renderActions = (item, isBusy) => (
     <div className="flex items-center gap-1.5 shrink-0">
       {item.status !== 'approved' && (
-        <button disabled={isBusy} onClick={() => updateStatus(item._id, 'approved')} title="Approve" className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg hover:bg-primary-600 hover:text-white transition-all disabled:opacity-50">
+        <button disabled={isBusy} onClick={() => updateStatus(item._id, 'approved')} title="Approve" className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg hover:bg-primary-600 hover:text-white transition-all disabled:opacity-50">
           <Check className="w-4 h-4" />
         </button>
       )}

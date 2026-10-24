@@ -134,9 +134,9 @@ const ContactUs = ({ contactInfo = {
                      </Card>
 
                      {/* Support Info */}
-                     <Card className="border-none bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white shadow-xl ring-1 ring-white/10 overflow-hidden group relative">
+                     <Card className="border-none bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 overflow-hidden group relative">
                         <div className="flex items-center gap-5 relative z-10">
-                           <div className="w-14 h-14 bg-white/20 rounded-2xl backdrop-blur-md border-2 border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 shadow-sm">
+                           <div className="w-14 h-14 bg-white/80 dark:bg-white/20 rounded-2xl backdrop-blur-md border-2 border-slate-200 dark:border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 shadow-sm">
                               <Headset className="w-8 h-8" />
                            </div>
                            <div className="space-y-1">
@@ -144,7 +144,7 @@ const ContactUs = ({ contactInfo = {
                               <p className="text-xs font-medium opacity-90">{translate('Students always come first. We are ready to help.')}</p>
                            </div>
                         </div>
-                        <Sparkles className="absolute top-0 right-0 w-20 xl:w-32 h-20 xl:h-32 text-white/10 pointer-events-none" />
+                        <Sparkles className="absolute top-0 right-0 w-20 xl:w-32 h-20 xl:h-32 text-slate-900/10 dark:text-white/10 pointer-events-none" />
                      </Card>
                   </div>
 

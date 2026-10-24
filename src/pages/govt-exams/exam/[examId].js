@@ -225,41 +225,41 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </section>
 
       {/* Exam Hero */}
-      <Card className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white border-none shadow-xl ring-1 ring-white/10 overflow-hidden relative">
+      <Card className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10 overflow-hidden relative">
         <div className="relative z-10 space-y-3">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
           </div>
           <h1 className="text-xl md:text-2xl xl:text-4xl font-black uppercase tracking-tight">{translate('{name} Preparation', { name: translateData(examName) })}</h1>
-          {exam?.code && <p className="text-primary-100 font-black text-lg opacity-80">{translate('Code: {code}', { code: exam.code })}</p>}
+          {exam?.code && <p className="text-slate-600 dark:text-primary-100 font-black text-lg opacity-80">{translate('Code: {code}', { code: exam.code })}</p>}
           <div className="flex flex-wrap gap-2 pt-2">
             {subjects.length > 0 && (
-              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
                 <BookOpen className="w-3.5 h-3.5" /> {translate('{count} Subjects', { count: subjects.length })}
               </span>
             )}
             {topics.length > 0 && (
-              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
                 <FolderOpen className="w-3.5 h-3.5" /> {translate('{count} Topics', { count: topics.length })}
               </span>
             )}
-            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
               <FileText className="w-3.5 h-3.5" /> {translate('{count} Tests', { count: practiceTests.length })}
             </span>
-            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
               <History className="w-3.5 h-3.5" /> {pyqs.length} PYQ&apos;s
             </span>
-            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
               <BrainCircuit className="w-3.5 h-3.5" /> {translate('{count} Quizzes', { count: quizzes.length })}
             </span>
             {questionCount > 0 && (
-              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
                 <ListChecks className="w-3.5 h-3.5" /> {translate('{count} Questions', { count: questionCount })}
               </span>
             )}
           </div>
         </div>
-        <Target className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-white/10 -rotate-12" />
+        <Target className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-slate-900/10 dark:text-white/10 -rotate-12" />
       </Card>
 
       {/* About / SEO long-form intro — server-rendered for crawlers */}
@@ -701,12 +701,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Contextual registration CTA — only for logged-out visitors */}
       {!isAuthenticated() && (
-        <Card className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white border-none shadow-xl ring-1 ring-white/10">
+        <Card className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10">
           <div className="flex items-start gap-4">
             <UserPlus className="w-8 h-8 shrink-0" />
             <div>
               <h3 className="text-base xl:text-lg font-black uppercase tracking-tight mb-1">{translate('Want to save your progress?')}</h3>
-              <p className="text-sm font-medium text-white/90 mb-4">
+              <p className="text-sm font-medium text-slate-700 dark:text-white/90 mb-4">
                 {translate('Create a free AajExam account to save your {name} practice history, track your accuracy over time, and pick up any test where you left off.', { name: translateData(examName) })}
               </p>
               <Button variant="secondary" size="sm" onClick={() => router.push('/register')} className="font-black">

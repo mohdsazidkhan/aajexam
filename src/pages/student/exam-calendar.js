@@ -81,7 +81,7 @@ const EventCard = ({ event, compact = false }) => {
         style={{ borderRadius: 14 }} className="relative overflow-hidden flex items-start gap-3 p-3.5 pl-4 border border-slate-200 dark:border-slate-800 bg-background-surface shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all group cursor-pointer"
       >
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
-        <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+        <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
           <Icon className="w-4 h-4" />
         </div>
         <div className="flex-1 min-w-0">
@@ -94,7 +94,7 @@ const EventCard = ({ event, compact = false }) => {
           <div className="flex items-center gap-1 mt-1.5">
             <Clock className="w-3 h-3 text-content-muted" />
             <span className="text-[10px] font-bold text-content-muted">{dateStr}</span>
-            <span className="ml-1 text-[9px] font-black uppercase px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950" style={{ borderRadius: 999 }}>
+            <span className="ml-1 text-[9px] font-black uppercase px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black" style={{ borderRadius: 999 }}>
               {translate(cfg.label)}
             </span>
           </div>
@@ -120,11 +120,11 @@ const DayPanel = ({ date, events, onClose }) => {
         className="mt-4"
       >
         <Card padded={false} className="overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 border-b border-primary-200 dark:border-transparent dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white">
+          <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
             <div className="flex items-center gap-2">
-              <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><CalendarDays className="w-4 h-4" /></span>
+              <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><CalendarDays className="w-4 h-4" /></span>
               <span className="text-sm font-black">{dateLabel}</span>
-              <span className="text-[10px] font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black px-2 py-0.5 rounded-full">
                 {events.length} event{events.length > 1 ? 's' : ''}
               </span>
             </div>
@@ -238,7 +238,7 @@ const ExamCalendarPage = () => {
               {['admit_card', 'result', 'vacancy', 'notification'].map(typeKey => {
                 const cfg = getType(typeKey);
                 return (
-                  <div key={typeKey} className="flex items-center gap-1.5 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-2.5 py-1 shrink-0 whitespace-nowrap" style={{ borderRadius: 999 }}>
+                  <div key={typeKey} className="flex items-center gap-1.5 bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-2.5 py-1 shrink-0 whitespace-nowrap" style={{ borderRadius: 999 }}>
                     <div className={`w-2 h-2 rounded-full ${cfg.dot}`} />
                     <span className="text-[10px] font-black text-slate-800 dark:text-white uppercase">{translate(cfg.label)}</span>
                   </div>
@@ -247,7 +247,7 @@ const ExamCalendarPage = () => {
             </div>
           }
         >
-          <div className="space-y-3 border-t border-dashed border-primary-300 dark:border-white/25 pt-4">
+          <div className="space-y-3 border-t border-dashed border-slate-300 dark:border-white/25 pt-4">
         {/* ── Month Navigation ── */}
         <div className="flex items-center justify-between gap-3">
           <button
@@ -304,7 +304,7 @@ const ExamCalendarPage = () => {
                   transition-all duration-150
                   ${hasEvents ? 'cursor-pointer' : 'cursor-default opacity-60'}
                   ${isToday
-                    ? 'bg-gradient-to-br from-primary-300 to-primary-500 border-primary-400 shadow-lg'
+                    ? 'bg-gradient-to-br from-primary-300 to-primary-400 border-primary-400 shadow-lg'
                     : isSelected
                       ? 'bg-primary-50 dark:bg-primary-950/30 border-primary-500 ring-2 ring-primary-500/30'
                       : 'bg-background-surface border-slate-200 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700'}
@@ -348,11 +348,11 @@ const ExamCalendarPage = () => {
               onClick={() => setShowUpcoming(v => !v)}
             >
               <div className="flex items-center gap-2">
-                <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span>
+                <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span>
                 <h2 className="text-base sm:text-lg font-black text-content-primary uppercase tracking-tight">
                   {translate('Upcoming (Next 30 Days)')}
                 </h2>
-                <span className="text-[10px] font-black bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-black bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black px-2 py-0.5 rounded-full">
                   {upcoming.length}
                 </span>
               </div>
@@ -393,7 +393,7 @@ const ExamCalendarPage = () => {
             <h3 className="text-lg font-black text-content-muted uppercase">{translate('No events this month')}</h3>
             <p className="text-sm text-content-muted font-bold">{translate('Check back later or navigate to another month.')}</p>
             <Link href="/exam-news">
-              <button className="px-6 py-2.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow-lg hover:brightness-105 rounded-full font-black text-xs uppercase mt-2 transition-all">
+              <button className="px-6 py-2.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-lg hover:brightness-105 rounded-full font-black text-xs uppercase mt-2 transition-all">
                 {translate('View Exam News')}
               </button>
             </Link>

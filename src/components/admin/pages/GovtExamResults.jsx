@@ -279,7 +279,7 @@ const AdminGovtExamResults = () => {
   const resultColumns = [
     {
       key: 'rank', header: 'Rank', render: (_, a) => (
-        <div className={`w-6 xl:w-12 h-6 xl:h-12 rounded-lg xl:rounded-xl flex items-center justify-center font-black italic text-sm ${a.rank <= 3 ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white shadow-md' : 'bg-slate-200 dark:bg-white/15 text-slate-800 dark:text-white'}`}>
+        <div className={`w-6 xl:w-12 h-6 xl:h-12 rounded-lg xl:rounded-xl flex items-center justify-center font-black italic text-sm ${a.rank <= 3 ? 'bg-gradient-to-br from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white shadow-md' : 'bg-slate-200 dark:bg-white/15 text-slate-800 dark:text-white'}`}>
           #{a.rank || '-'}
         </div>
       )
@@ -287,7 +287,7 @@ const AdminGovtExamResults = () => {
     {
       key: 'user', header: 'Student', render: (_, a) => (
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-full flex items-center justify-center font-black text-xs uppercase shadow-sm">{a.user?.name?.[0] || 'U'}</div>
+          <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-full flex items-center justify-center font-black text-xs uppercase shadow-sm">{a.user?.name?.[0] || 'U'}</div>
           <div>
             <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1">{a.user?.name || 'N/A'}</div>
             <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest truncate max-w-[150px]">{a.user?.email || 'N/A'}</div>
@@ -405,7 +405,7 @@ const AdminGovtExamResults = () => {
     <motion.button
       whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
       onClick={handleExportCSV}
-      className="w-full px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-xl shadow-sm flex items-center justify-center gap-2 font-bold text-sm"
+      className="w-full px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-xl shadow-sm flex items-center justify-center gap-2 font-bold text-sm"
     >
       <Download className="w-4 h-4" /> Export to CSV
     </motion.button>
@@ -474,9 +474,9 @@ const AdminGovtExamResults = () => {
                       <motion.div key={a._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm font-outfit group">
                         <div className="h-1.5 -mt-3 xl:-mt-8 -mx-3 xl:-mx-8 mb-4 xl:mb-4 bg-primary-600 rounded-t-lg xl:rounded-t-xl xl:rounded-t-[3rem]" />
                         <div className="flex justify-between items-start mb-4 xl:mb-4">
-                          <div className={`relative w-12 h-12 rounded-2xl flex items-center justify-center font-black italic shadow-sm ${a.rank <= 3 ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white' : 'bg-slate-800 text-white dark:bg-white dark:text-slate-900'}`}>
+                          <div className={`relative w-12 h-12 rounded-2xl flex items-center justify-center font-black italic shadow-sm ${a.rank <= 3 ? 'bg-gradient-to-br from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white' : 'bg-slate-800 text-white dark:bg-white dark:text-slate-900'}`}>
                             #{a.rank || '-'}
-                            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{serialNumber}</span>
+                            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{serialNumber}</span>
                           </div>
                           <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border-2 ${a.accuracy >= 75 ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>{a.accuracy?.toFixed(1)}% ACC</div>
                         </div>
@@ -492,7 +492,7 @@ const AdminGovtExamResults = () => {
                             <span className="text-sm font-black text-slate-900 dark:text-white">{formatTime(a.totalTime)}</span>
                           </div>
                         </div>
-                        <motion.button onClick={() => handleViewDetails(a._id)} whileHover={{ scale: 1.02 }} className="w-full py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">View Details</motion.button>
+                        <motion.button onClick={() => handleViewDetails(a._id)} whileHover={{ scale: 1.02 }} className="w-full py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">View Details</motion.button>
                       </motion.div>
                       );
                     })}
@@ -506,9 +506,9 @@ const AdminGovtExamResults = () => {
                       return (
                       <motion.div key={a._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 xl:gap-3 hover:border-primary-500/30 transition-all font-outfit shadow-sm group">
                         <div className="flex items-center gap-3 xl:gap-3">
-                          <div className={`relative w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-sm ${a.rank <= 3 ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white' : 'bg-slate-800 text-white dark:bg-white dark:text-slate-900'}`}>
+                          <div className={`relative w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-sm ${a.rank <= 3 ? 'bg-gradient-to-br from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white' : 'bg-slate-800 text-white dark:bg-white dark:text-slate-900'}`}>
                             #{a.rank ||'-'}
-                            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{serialNumber}</span>
+                            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{serialNumber}</span>
                           </div>
                           <div>
                             <div className="flex items-center gap-3 mb-1">
@@ -526,7 +526,7 @@ const AdminGovtExamResults = () => {
                             <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{formatTime(a.totalTime)}</div>
                             <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">{a.submittedAt ? new Date(a.submittedAt).toLocaleDateString() : 'N/A'}</div>
                           </div>
-                          <motion.button onClick={() => handleViewDetails(a._id)} whileHover={{ scale: 1.05 }} className="px-3 xl:px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm">View Details</motion.button>
+                          <motion.button onClick={() => handleViewDetails(a._id)} whileHover={{ scale: 1.05 }} className="px-3 xl:px-4 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm">View Details</motion.button>
                         </div>
                       </motion.div>
                       );
@@ -565,7 +565,7 @@ const AdminGovtExamResults = () => {
                         { label: 'Rank', val: `#${selectedAttempt.rank || '-'}`, icon: Trophy, color: 'primary' }
                       ].map((s, i) => (
                         <div key={i} className="flex items-center gap-2.5 px-3 py-2 bg-slate-50 dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10">
-                          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 rounded-lg shrink-0"><s.icon className="w-4 h-4" /></div>
+                          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black rounded-lg shrink-0"><s.icon className="w-4 h-4" /></div>
                           <div className="min-w-0">
                             <div className="text-base font-black text-slate-900 dark:text-white uppercase italic leading-tight truncate">{s.val}</div>
                             <div className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-tight">{s.label}</div>
@@ -589,7 +589,7 @@ const AdminGovtExamResults = () => {
                             <div key={i} className="px-3 py-2.5 bg-white dark:bg-white/5 rounded-lg border border-slate-200 dark:border-white/10 group">
                               <div className="flex items-start justify-between gap-2 mb-2">
                                 <div className="flex items-start gap-2.5 min-w-0">
-                                  <div className="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center font-black text-xs italic bg-gradient-to-br from-primary-500 to-primary-700 text-white">{i + 1}</div>
+                                  <div className="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center font-black text-xs italic bg-gradient-to-br from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white">{i + 1}</div>
                                   <div>
                                     <p className="text-[13px] font-bold text-slate-800 dark:text-slate-200 leading-snug mb-1">{q?.questionText || 'Question not available'}</p>
                                     <div className="flex flex-wrap gap-x-3 gap-y-0.5">

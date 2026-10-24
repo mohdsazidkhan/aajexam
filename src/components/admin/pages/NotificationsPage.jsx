@@ -268,7 +268,7 @@ const AdminNotificationsPage = () => {
                     aria-pressed={typeFilter === tc.type}
                     className={`group relative overflow-hidden flex items-center gap-3 px-4 xl:px-4 py-2.5 bg-white/80 dark:bg-white/5 border-2 rounded-lg xl:rounded-[2rem] shadow-sm hover:border-primary-500/30 hover:scale-[1.02] transition-all text-left ${typeFilter === tc.type ? 'border-primary-600' : 'border-slate-100 dark:border-white/10'}`}
                   >
-                    <div className="p-2 xl:p-3 rounded-xl xl:rounded-2xl bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white shadow-sm shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="p-2 xl:p-3 rounded-xl xl:rounded-2xl bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white shadow-sm shrink-0 group-hover:scale-110 transition-transform">
                       {getIconByType(tc.type, 'w-3.5 h-3.5 xl:w-5 xl:h-5')}
                     </div>
                     <div className="min-w-0">
@@ -330,7 +330,7 @@ const AdminNotificationsPage = () => {
                      >
                         <div className="flex items-center justify-between gap-3 mb-4 xl:mb-4">
                            <div className="flex items-center gap-3 min-w-0">
-                              <div className="p-3 rounded-2xl bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white shadow-sm transition-colors">
+                              <div className="p-3 rounded-2xl bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white shadow-sm transition-colors">
                                  {getIconByType(n.type)}
                               </div>
                               <div>

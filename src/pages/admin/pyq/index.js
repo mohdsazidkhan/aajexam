@@ -159,7 +159,7 @@ const AdminPYQ = () => {
   );
 
   const newPyqButton = (
-    <button onClick={() => router.push('/admin/pyq/create')} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white">
+    <button onClick={() => router.push('/admin/pyq/create')} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white">
       <Plus className="w-3 h-3" /> New PYQ
     </button>
   );
@@ -222,7 +222,7 @@ const AdminPYQ = () => {
                   return (
                     <Card key={t._id || i} className="flex flex-col gap-3">
                       <div className="flex items-start justify-between gap-2">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow flex items-center justify-center shrink-0"><FileText className="w-5 h-5" /></div>
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow flex items-center justify-center shrink-0"><FileText className="w-5 h-5" /></div>
                         <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>{isFree ? 'FREE' : 'PRO'}</span>
                       </div>
                       <div>

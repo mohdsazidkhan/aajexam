@@ -43,7 +43,7 @@ const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) 
    return (
    <div className="flex items-center justify-between mb-4 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15">
       <div className="flex items-center gap-2.5">
-         <div className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+         <div className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
             <IconComp className="w-[18px] h-[18px]" />
          </div>
          <h2 className="text-base xl:text-lg font-black text-slate-900 dark:text-white tracking-tight uppercase">
@@ -52,7 +52,7 @@ const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) 
       </div>
       <button
          onClick={onViewAll}
-         className="flex items-center gap-0.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all"
+         className="flex items-center gap-0.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all"
       >
          <span className="text-xs font-extrabold text-primary-950">{translate('View All')}</span>
          <ChevronRight className="w-3.5 h-3.5 text-primary-950" />
@@ -74,7 +74,7 @@ const GovtExamCard = ({ item, onClick }) => {
       style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
          <GraduationCap className="w-6 h-6" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -97,7 +97,7 @@ const QuizCard = ({ item, onClick }) => {
       style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
          <Brain className="w-5 h-5" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -122,7 +122,7 @@ const SubjectCard = ({ item, onClick }) => {
       style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
          <BookOpen className="w-6 h-6" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -147,7 +147,7 @@ const TopicCard = ({ item, onClick }) => {
       style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
          <Layers className="w-5 h-5" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -212,7 +212,7 @@ const ReelCard = ({ item, onClick }) => {
       style={{ borderRadius: 14 }}
       >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-         <div className="flex items-center gap-1.5 self-start px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow rounded-lg">
+         <div className="flex items-center gap-1.5 self-start px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow rounded-lg">
             <TypeIcon className="w-3.5 h-3.5" />
             <span className="text-[10px] font-extrabold uppercase tracking-wide">{translate(cfg.label)}</span>
          </div>
@@ -358,19 +358,19 @@ const HomePage = () => {
       <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-2 xl:mt-4">
             {/* ── Scorecard hero ── */}
             <section className="px-0 py-2 xl:py-3">
-               <div className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-3 xl:p-5" style={{ borderRadius: 16 }}>
+               <div className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-3 xl:p-5" style={{ borderRadius: 16 }}>
                   <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
                   <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
                   <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
 
                   <div className="grid grid-cols-1 xl:grid-cols-[240px_minmax(0,1fr)] gap-3 xl:gap-4">
                      {/* Readiness */}
-                     <div className="relative overflow-hidden flex flex-col justify-center gap-2 px-4 py-3 bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20" style={{ borderRadius: 12 }}>
+                     <div className="relative overflow-hidden flex flex-col justify-center gap-2 px-4 py-3 bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20" style={{ borderRadius: 12 }}>
                         <TrendingUp className="absolute -right-3 -bottom-3 w-20 h-20 text-primary-600/10 dark:text-white/10" />
                         <div className="relative flex items-center justify-between gap-2">
                            <span className="text-[10px] xl:text-xs font-black uppercase tracking-[0.2em] text-slate-600 dark:text-white/75">{translate('Readiness')}</span>
                            {streakCount > 0 && (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow" style={{ borderRadius: 999 }}>
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow" style={{ borderRadius: 999 }}>
                                  <Flame className="w-3.5 h-3.5 fill-current" />
                                  <span className="text-xs font-black">{streakCount}</span>
                               </span>
@@ -394,7 +394,7 @@ const HomePage = () => {
                            { icon: Flame, value: formatSecondsSpent(dailyChallengeTimeSpentSeconds), label: 'Challenge Time' },
                            { icon: Film, value: formatSecondsSpent(reelTimeSpentSeconds), label: 'Reels Time' },
                         ].map(({ icon: Icon, value, label }, idx) => (
-                           <div key={idx} className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-primary-200 dark:ring-white/20 px-3 py-2.5 transition-colors" style={{ borderRadius: 10 }}>
+                           <div key={idx} className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 px-3 py-2.5 transition-colors" style={{ borderRadius: 10 }}>
                               <Icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-primary-600/10 dark:text-white/10" />
                               <p className="relative text-base xl:text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200 truncate">{value}</p>
                               <p className="relative mt-1 text-[9px] xl:text-[10px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 leading-tight truncate">{translate(label)}</p>
@@ -423,7 +423,7 @@ const HomePage = () => {
                         style={{ borderRadius: 12 }}
                      >
                         <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
-                        <span className="ml-1 w-9 h-9 xl:w-10 xl:h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
+                        <span className="ml-1 w-9 h-9 xl:w-10 xl:h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
                            <Icon className="w-4 h-4 xl:w-5 xl:h-5" />
                         </span>
                         <p className="flex-1 min-w-0 text-slate-900 dark:text-white text-[11px] xl:text-xs font-black uppercase tracking-wide leading-tight">{translate(label)}</p>

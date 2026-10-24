@@ -221,7 +221,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                     { label: totalPYQs === 1 ? 'verified PYQ paper' : 'verified PYQ papers', value: totalPYQs },
                                     { label: examsWithPYQ.length === 1 ? 'exam' : 'exams', value: examsWithPYQ.length },
                                 ].map((st) => (
-                                    <div key={st.label} className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+                                    <div key={st.label} className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
                                         <p className="text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{st.value}</p>
                                         <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 whitespace-nowrap">{st.label}</p>
                                     </div>

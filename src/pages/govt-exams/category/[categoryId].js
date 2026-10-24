@@ -111,7 +111,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 dark:bg-white/10 rounded-full blur-3xl -ml-32 -mb-32" />
 
           <div className="relative z-10 space-y-6">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow px-4 py-1.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em]">
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow px-4 py-1.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em]">
               <Target className="w-3 h-3" />
               {translate('{type} Category', { type: category?.type || translate('Competitive') })}
             </div>

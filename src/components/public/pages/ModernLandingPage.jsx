@@ -20,6 +20,11 @@ import {
    BookOpen,
    Layers,
    Gamepad2,
+   GraduationCap,
+   Pencil,
+   Lightbulb,
+   Award,
+   Check,
 } from 'lucide-react';
 import { m as motion } from 'framer-motion';
 import MobileAppWrapper from "../../common/MobileAppWrapper";
@@ -119,23 +124,52 @@ const ModernLandingPage = () => {
 
    return (
       <MobileAppWrapper showHeader={true} title={translate('Home')}>
-         <section className="relative overflow-hidden -mx-4 xl:-mx-8 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-900 dark:via-slate-950 dark:to-black text-slate-900 dark:text-white">
-            <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '22px 22px' }} />
+         <div className="xl:min-h-[calc(100vh-4rem)] xl:flex xl:flex-col">
+         <section className="relative overflow-hidden -mx-4 xl:-mx-8 xl:flex-1 xl:flex xl:items-center bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-primary-900 dark:via-slate-950 dark:to-black text-slate-900 dark:text-white">
+            <div className="pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+            <div className="pointer-events-none absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)', backgroundSize: '8px 8px' }} />
             <div className="pointer-events-none absolute -top-32 -left-24 w-96 h-96 bg-primary-300/30 dark:bg-primary-500/20 blur-3xl" style={{ borderRadius: '50%' }} />
             <div className="pointer-events-none absolute -bottom-40 right-10 w-[28rem] h-[28rem] bg-primary-300/25 dark:bg-primary-300/10 blur-3xl" style={{ borderRadius: '50%' }} />
 
-            <div className="container mx-auto px-3 xl:px-6 relative z-10">
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden text-primary-600/20 dark:text-primary-300/15">
+               {[
+                  { Icon: BookOpen, pos: 'top-[8%] left-[44%]', size: 'w-9 h-9', dur: 6, rot: 12 },
+                  { Icon: Brain, pos: 'top-[18%] left-[3%]', size: 'w-12 h-12', dur: 7, rot: -10 },
+                  { Icon: Target, pos: 'bottom-[14%] left-[40%]', size: 'w-10 h-10', dur: 8, rot: 360 },
+                  { Icon: Rocket, pos: 'top-[10%] right-[4%]', size: 'w-12 h-12', dur: 6.5, rot: 8 },
+                  { Icon: Star, pos: 'top-[46%] left-[47%]', size: 'w-6 h-6', dur: 5, rot: 180 },
+                  { Icon: Medal, pos: 'bottom-[10%] right-[3%]', size: 'w-10 h-10', dur: 7.5, rot: -12 },
+                  { Icon: Layers, pos: 'bottom-[8%] left-[4%]', size: 'w-9 h-9', dur: 9, rot: 10 },
+                  { Icon: Zap, pos: 'top-[36%] right-[46%]', size: 'w-7 h-7', dur: 5.5, rot: -15 },
+               ].map(({ Icon, pos, size, dur, rot }, i) => (
+                  <motion.span
+                     key={i}
+                     className={`absolute ${pos}`}
+                     animate={{ y: [0, -18, 0], x: [0, 8, 0], rotate: [0, rot, 0] }}
+                     transition={{ duration: dur, repeat: Infinity, ease: 'easeInOut', delay: i * 0.4 }}
+                  >
+                     <Icon className={size} strokeWidth={1.5} />
+                  </motion.span>
+               ))}
+            </div>
+
+            <div className="container mx-auto px-3 xl:px-6 relative z-10 w-full">
                <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_0.9fr] items-center gap-6 xl:gap-10 py-5 xl:py-10">
                   {/* Copy */}
                   <div className="space-y-5 xl:space-y-7 text-center xl:text-left">
-                     <div className="inline-flex uppercase items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 text-[10px] xl:text-xs font-black tracking-[0.15em] shadow-[0_4px_20px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
+                     <div className="inline-flex uppercase items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-[10px] xl:text-xs font-black tracking-[0.15em] shadow-[0_4px_20px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
                         <Sparkles className="w-4 h-4" />
                         {translate('Trusted by students across India')}
                      </div>
 
                      <h1 className="text-3xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-[1.05]">
                         {translate('Prepare Today.')}
-                        <span className="block text-primary-600 dark:text-primary-300">{translate('Succeed Tomorrow.')}</span>
+                        <span className="relative inline-block text-primary-600 dark:text-primary-300">
+                           {translate('Succeed Tomorrow.')}
+                           <svg aria-hidden="true" viewBox="0 0 300 12" preserveAspectRatio="none" className="absolute left-0 -bottom-1.5 w-full h-2.5 text-primary-400 dark:text-primary-300">
+                              <path d="M2 8 C 50 2, 100 11, 150 6 S 250 3, 298 7" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+                           </svg>
+                        </span>
                      </h1>
 
                      <p className="text-base xl:text-xl text-slate-700 dark:text-slate-300 font-bold max-w-xl mx-auto xl:mx-0 leading-relaxed">
@@ -180,11 +214,40 @@ const ModernLandingPage = () => {
                   </div>
 
                   {/* Student pass: decorative ticket with live counts */}
+                  <div className="relative mx-auto w-full max-w-md">
+                  {[
+                     { Icon: GraduationCap, cls: '-top-5 -left-5 xl:-left-8', d: 0 },
+                     { Icon: Lightbulb, cls: '-top-4 right-6', d: 0.6 },
+                     { Icon: Pencil, cls: 'top-1/2 -right-4 xl:-right-7', d: 1.2 },
+                     { Icon: Award, cls: '-bottom-5 right-10', d: 1.8 },
+                  ].map(({ Icon, cls, d }) => (
+                     <motion.span
+                        key={cls}
+                        aria-hidden="true"
+                        animate={{ y: [0, -8, 0] }}
+                        transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut', delay: d }}
+                        className={`hidden sm:flex absolute z-20 w-11 h-11 items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-lg ring-2 ring-white dark:ring-slate-900 ${cls}`}
+                        style={{ borderRadius: 14 }}
+                     >
+                        <Icon className="w-5 h-5" />
+                     </motion.span>
+                  ))}
+                  <div aria-hidden="true" className="hidden sm:block absolute z-20 -bottom-6 -left-4 xl:-left-8 w-28 p-2.5 bg-white dark:bg-slate-800 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 rotate-[4deg]" style={{ borderRadius: 10 }}>
+                     {[1, 0, 2, 3].map((on, r) => (
+                        <div key={r} className="flex items-center justify-between py-[3px]">
+                           {[0, 1, 2, 3].map((c) => (
+                              <span key={c} className={`flex items-center justify-center w-4 h-4 border-2 ${c === on ? 'bg-primary-600 border-primary-600 text-white' : 'border-slate-300 dark:border-slate-600'}`} style={{ borderRadius: '50%' }}>
+                                 {c === on && <Check className="w-2.5 h-2.5" strokeWidth={4} />}
+                              </span>
+                           ))}
+                        </div>
+                     ))}
+                  </div>
                   <motion.div
                      initial={{ opacity: 0, y: 24, rotate: 0 }}
                      animate={{ opacity: 1, y: 0, rotate: -2 }}
                      transition={{ duration: 0.5 }}
-                     className="relative mx-auto w-full max-w-md overflow-hidden text-white shadow-2xl ring-1 ring-white/10 bg-gradient-to-br from-primary-700 via-primary-800 to-primary-950"
+                     className="relative w-full overflow-hidden text-white shadow-2xl ring-1 ring-white/10 bg-gradient-to-br from-primary-700 via-primary-800 to-primary-950"
                      style={{ borderRadius: 16 }}
                   >
                      <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '16px 16px' }} />
@@ -194,7 +257,7 @@ const ModernLandingPage = () => {
                         <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.25em]">
                            <Trophy className="w-4 h-4 text-primary-300" /> AajExam · {translate('Student profile')}
                         </span>
-                        <span className="px-2.5 py-0.5 text-[10px] font-black uppercase tracking-widest bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950">{translate('FREE')}</span>
+                        <span className="px-2.5 py-0.5 text-[10px] font-black uppercase tracking-widest bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black">{translate('FREE')}</span>
                      </div>
 
                      <div className="relative p-4 xl:p-5 space-y-4">
@@ -234,12 +297,13 @@ const ModernLandingPage = () => {
                         </div>
                      </div>
                   </motion.div>
+                  </div>
                </div>
             </div>
          </section>
 
          {/* ── Ticker Stats ── */}
-         <section className="bg-gradient-to-r from-primary-700 via-primary-800 to-primary-900 text-white border-y border-primary-900 overflow-hidden relative flex px-0 py-3 xl:py-5">
+         <section className="border-y border-slate-200 dark:border-white/10 text-slate-800 dark:text-white overflow-hidden relative flex px-0 py-3 xl:py-5">
             <style>{`
                @keyframes marquee {
                   0% { transform: translateX(0); }
@@ -259,30 +323,31 @@ const ModernLandingPage = () => {
                {/* Repeat content twice for seamless loop */}
                {[0, 1].map((iteration) => (
                   <div key={iteration} className="flex items-center gap-12 pr-12">
-                     <div className="flex items-center gap-2 font-semibold text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-300 animate-pulse"></span>
-                        <span className="text-primary-300 font-bold text-lg">🔥 {stats.registeredLast30Days}</span>
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-white/90">
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-500 dark:bg-primary-300 animate-pulse"></span>
+                        <span className="text-primary-700 dark:text-primary-300 font-bold text-lg">🔥 {stats.registeredLast30Days}</span>
                         {translate('Registered Users (Last 30 Days)')}
                      </div>
-                     <div className="flex items-center gap-2 font-semibold text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-300 animate-pulse"></span>
-                        <span className="text-primary-300 font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-white/90">
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-500 dark:bg-primary-300 animate-pulse"></span>
+                        <span className="text-primary-700 dark:text-primary-300 font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
                         {translate('Practice Test Attempts (Last 30 Days)')}
                      </div>
-                     <div className="flex items-center gap-2 font-semibold text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-300 animate-pulse"></span>
-                        <span className="text-primary-300 font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-white/90">
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-500 dark:bg-primary-300 animate-pulse"></span>
+                        <span className="text-primary-700 dark:text-primary-300 font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
                         {translate("PYQ's Attempts (Last 30 Days)")}
                      </div>
-                     <div className="flex items-center gap-2 font-semibold text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-300 animate-pulse"></span>
-                        <span className="text-primary-300 font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-white/90">
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-500 dark:bg-primary-300 animate-pulse"></span>
+                        <span className="text-primary-700 dark:text-primary-300 font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
                         {translate('Quiz Attempts (Last 30 Days)')}
                      </div>
                   </div>
                ))}
             </div>
          </section>
+         </div>
 
          {/* ── Try before signup ── */}
          <SampleQuiz />
@@ -293,9 +358,9 @@ const ModernLandingPage = () => {
                <div className="w-full">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 xl:gap-6 relative">
                      {[
-                        { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Police, Banking etc.", icon: Target, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-500" },
-                        { step: 2, title: "Practice Daily", desc: "Take Subject or Topic wise quizzes and tests.", icon: Zap, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-500" },
-                        { step: 3, title: "Track & Get Job", desc: "Analyze performance and get your dream job.", icon: Trophy, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-500" }
+                        { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Police, Banking etc.", icon: Target, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-400" },
+                        { step: 2, title: "Practice Daily", desc: "Take Subject or Topic wise quizzes and tests.", icon: Zap, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-400" },
+                        { step: 3, title: "Track & Get Job", desc: "Analyze performance and get your dream job.", icon: Trophy, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-400" }
                      ].map((item, i) => (
                         <div key={i} className="relative flex flex-col overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all" style={{ borderRadius: 16 }}>
                            <div className="h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
@@ -325,7 +390,7 @@ const ModernLandingPage = () => {
 
          <section className="px-0 py-3 xl:py-5">
             <div className="container mx-auto px-3 xl:px-0">
-               <div className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-800 dark:via-primary-900 dark:to-primary-950 ring-1 ring-primary-200 dark:ring-white/10 shadow-xl p-3 xl:p-6" style={{ borderRadius: 16 }}>
+               <div className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-primary-800 dark:via-primary-900 dark:to-primary-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl p-3 xl:p-6" style={{ borderRadius: 16 }}>
                   <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
                   <div className="relative grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2 xl:gap-4">
                      {[
@@ -354,7 +419,7 @@ const ModernLandingPage = () => {
             </div>
             <div className="container mx-auto px-3 xl:px-0 relative z-10">
                <div className="text-center space-y-2 xl:space-y-3 mb-5 xl:mb-6">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow-[0_4px_20px_rgba(251,191,36,0.35)] rounded-full text-xs font-black tracking-[0.1em] uppercase">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-[0_4px_20px_rgba(251,191,36,0.35)] rounded-full text-xs font-black tracking-[0.1em] uppercase">
                      <span className="w-2 h-2 rounded-full bg-amber-950 animate-pulse" />
                      {translate('Last Year PYQ — Always Free')}
                   </div>
@@ -381,7 +446,7 @@ const ModernLandingPage = () => {
                         <div className="h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
 
                         <div className="flex-1 p-3 xl:p-4 flex flex-col items-center text-center gap-2.5">
-                           <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
+                           <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
                               <BookOpen className="w-4 h-4" />
                            </span>
                            <span className="text-sm xl:text-base font-black text-slate-900 dark:text-white leading-tight">{exam.name}</span>
@@ -402,7 +467,7 @@ const ModernLandingPage = () => {
                         <div className="relative border-t-2 border-dashed border-primary-500/30 bg-primary-600/5 py-2 text-center">
                            <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
                            <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
-                           <span className="inline-block px-2.5 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 text-[10px] font-black uppercase tracking-wider shadow" style={{ borderRadius: 999 }}>{translate('Latest Free')}</span>
+                           <span className="inline-block px-2.5 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-[10px] font-black uppercase tracking-wider shadow" style={{ borderRadius: 999 }}>{translate('Latest Free')}</span>
                         </div>
                      </motion.div>
                   )) : null}
@@ -425,7 +490,7 @@ const ModernLandingPage = () => {
                      whileTap={{ scale: 0.97 }}
                      data-cta="landing_pyq_start"
                      onClick={() => router.push('/register')}
-                     className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 hover:brightness-105 font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-sm"
+                     className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black hover:brightness-105 font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-sm"
                   >
                      {translate('Start Free PYQ Practice →')}
                   </motion.button>
@@ -449,9 +514,9 @@ const ModernLandingPage = () => {
                </div>
 
                <div className="grid grid-cols-1 xl:grid-cols-12 gap-3 xl:gap-5">
-                  <Card className="xl:col-span-8 p-5 xl:p-8 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 border-none shadow-xl text-white flex flex-col justify-between group overflow-hidden relative rounded-[2rem] xl:rounded-[4rem]">
+                  <Card className="xl:col-span-8 p-5 xl:p-8 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-none shadow-xl text-slate-900 dark:text-white flex flex-col justify-between group overflow-hidden relative rounded-[2rem] xl:rounded-[4rem]">
                      <div className="space-y-6 relative z-10 max-w-xl">
-                        <div className="p-4 xl:p-5 bg-white/20 backdrop-blur-md rounded-3xl xl:rounded-[2.5rem] w-fit shadow-sm border-2 border-white/20">
+                        <div className="p-4 xl:p-5 bg-white/80 dark:bg-white/20 backdrop-blur-md rounded-3xl xl:rounded-[2.5rem] w-fit shadow-sm border-2 border-slate-200 dark:border-white/20">
                            <Trophy className="w-10 h-10 xl:w-12 xl:h-12" />
                         </div>
                         <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-[0.95]">{translate('See your progress')}</h3>
@@ -463,12 +528,12 @@ const ModernLandingPage = () => {
                         </div>
                      </div>
                      <Rocket className="absolute -right-16 -bottom-16 w-[300px] xl:w-[400px] h-[300px] xl:h-[400px] opacity-10 rotate-12 group-hover:rotate-45 transition-transform duration-1000" />
-                     <div className="absolute top-0 right-0 w-full h-full bg-white/10 pointer-events-none" />
+                     <div className="absolute top-0 right-0 w-full h-full bg-white/80 dark:bg-white/10 pointer-events-none" />
                   </Card>
 
                   <Card className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] xl:rounded-[4rem] shadow-sm">
                      <div className="space-y-2 xl:space-y-4">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg] w-fit rounded-2xl">
+                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg] w-fit rounded-2xl">
                            <Flame className="w-8 h-8 xl:w-10 xl:h-10" />
                         </div>
                         <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('Practice every day')}</h3>
@@ -489,7 +554,7 @@ const ModernLandingPage = () => {
 
                   <Card className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] xl:rounded-[4rem] shadow-sm">
                      <div className="space-y-2 xl:space-y-4">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg] w-fit rounded-2xl">
+                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg] w-fit rounded-2xl">
                            <Zap className="w-8 h-8 xl:w-10 xl:h-10" />
                         </div>
                         <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('See your test results')}</h3>
@@ -510,7 +575,7 @@ const ModernLandingPage = () => {
 
                   <Card className="xl:col-span-8 p-4 xl:p-8 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-sm flex flex-col xl:flex-row items-center gap-6 xl:gap-10 overflow-hidden group rounded-[2rem] xl:rounded-[4rem]">
                      <div className="flex-1 space-y-2 xl:space-y-4 relative z-10 text-center xl:text-left">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg] w-fit rounded-2xl mx-auto xl:mx-0">
+                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg] w-fit rounded-2xl mx-auto xl:mx-0">
                            <Medal className="w-10 h-10 xl:w-12 xl:h-12" />
                         </div>
                         <h3 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">{translate('Refer & Earn')}</h3>
@@ -547,7 +612,7 @@ const ModernLandingPage = () => {
                            <div key={index} className="relative flex flex-col overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all group" style={{ borderRadius: 16 }}>
                               <div className="h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                               <div className="flex flex-col items-center p-4 xl:p-6">
-                                 <div className="w-14 h-14 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 flex items-center justify-center mb-3 shadow-lg rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 14 }}>
+                                 <div className="w-14 h-14 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black flex items-center justify-center mb-3 shadow-lg rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 14 }}>
                                     <item.icon className="w-8 h-8" />
                                  </div>
                                  <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-2">{translate(item.title)}</h3>
@@ -583,7 +648,7 @@ const ModernLandingPage = () => {
                      <button
                         data-cta="landing_final_cta"
                         onClick={() => router.push('/register')}
-                        className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 font-outfit font-black uppercase tracking-[0.1em] text-sm shadow-xl hover:brightness-105 active:scale-95 transition-all"
+                        className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black font-outfit font-black uppercase tracking-[0.1em] text-sm shadow-xl hover:brightness-105 active:scale-95 transition-all"
                      >
                         {translate('Join Now For Free')} <ArrowRight className="w-5 h-5" />
                      </button>

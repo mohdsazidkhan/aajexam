@@ -226,7 +226,7 @@ const Sidebar = () => {
       <div className="p-4 border-t border-slate-100 dark:border-white/5 space-y-2">
         <Link href="/admin/profile" onClick={() => handleNavClick('profile')}>
           <button className={`w-full py-3 rounded-lg xl:rounded-xl text-[11px] font-bold tracking-wide transition-colors flex items-center justify-center gap-2 group ${isActiveRoute('/admin/profile')
-            ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow'
+            ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow'
             : 'bg-slate-100 dark:bg-white/10 text-black dark:text-white hover:bg-slate-200 dark:hover:bg-white/20'
             }`}>
             <User className="w-4 h-4" /> PROFILE

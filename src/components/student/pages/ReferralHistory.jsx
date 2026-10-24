@@ -191,11 +191,11 @@ export default function ReferralHistory() {
                icon={Users}
                title={rich('Referral <0>History</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
                actions={user && (
-                  <div className="w-full xl:w-auto xl:min-w-[300px] px-3 py-2 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 text-left" style={{ borderRadius: 12 }}>
+                  <div className="w-full xl:w-auto xl:min-w-[300px] px-3 py-2 bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 text-left" style={{ borderRadius: 12 }}>
                      <p className="text-[9px] xl:text-xs font-black text-slate-600 dark:text-white/75 uppercase tracking-widest leading-none mb-1">{translate('Your Referral Code')}</p>
                      <div className="flex items-center gap-2 xl:gap-3">
                         <p className="flex-1 text-sm xl:text-lg font-bold font-mono tracking-wider truncate text-primary-700 dark:text-primary-200">{user.referralCode}</p>
-                        <button type="button" className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }} onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                        <button type="button" className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }} onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                            <Copy className="w-3.5 h-3.5 xl:w-4 xl:h-4" /> COPY LINK
                         </button>
                      </div>
@@ -216,7 +216,7 @@ export default function ReferralHistory() {
                      <div key={i} className="group relative overflow-hidden p-3 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all" style={{ borderRadius: 12 }}>
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                         <div className="flex justify-between items-start mb-1.5">
-                           <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+                           <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
                               <s.icon className="w-4 h-4" />
                            </div>
                         </div>
@@ -357,7 +357,7 @@ export default function ReferralHistory() {
                <div className="space-y-3">
                   <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 xl:gap-8">
                      <div className="space-y-2">
-                        <h2 className="flex items-center gap-2.5 text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
+                        <h2 className="flex items-center gap-2.5 text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
                      </div>
 
                      <div className="w-full xl:w-auto xl:min-w-[320px] space-y-2 xl:space-y-4">
@@ -373,7 +373,7 @@ export default function ReferralHistory() {
                                        <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none">{translate(b.label)}</p>
                                        <p className="text-xl font-black font-outfit text-content-primary uppercase">₹{amount.toLocaleString()}</p>
                                     </div>
-                                    <div className="text-[10px] font-black px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow" style={{ borderRadius: 999 }}>
+                                    <div className="text-[10px] font-black px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow" style={{ borderRadius: 999 }}>
                                        {translate('{count} FRIENDS', { count })}
                                     </div>
                                  </div>
@@ -389,7 +389,7 @@ export default function ReferralHistory() {
                <div className="space-y-2 xl:space-y-3">
                   <div className="flex items-center justify-between">
                      <div className="space-y-1 xl:space-y-2">
-                        <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
+                        <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
                      </div>
                   </div>
 
@@ -412,12 +412,12 @@ export default function ReferralHistory() {
                            <Card className="overflow-hidden" padded={false}>
                               <div className="overflow-x-auto">
                                  <table className="w-full text-left border-collapse">
-                                    <thead className="bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white">
+                                    <thead className="bg-gradient-to-r from-slate-100 via-slate-50 to-white text-primary-900 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
                                        <tr>
-                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-primary-200 dark:border-transparent">{translate('Student')}</th>
-                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-primary-200 dark:border-transparent">{translate('Reward Type')}</th>
-                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-primary-200 dark:border-transparent">{translate('Reward')}</th>
-                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-primary-200 dark:border-transparent text-right">{translate('Status')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-slate-200 dark:border-transparent">{translate('Student')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-slate-200 dark:border-transparent">{translate('Reward Type')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-slate-200 dark:border-transparent">{translate('Reward')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-slate-200 dark:border-transparent text-right">{translate('Status')}</th>
                                        </tr>
                                     </thead>
                                     <tbody className="divide-y divide-border-primary">
@@ -425,7 +425,7 @@ export default function ReferralHistory() {
                                           <motion.tr key={tx._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition-colors">
                                              <td className="px-4 py-3">
                                                 <div className="flex items-center gap-3">
-                                                   <div className="w-8 h-8 flex items-center justify-center font-black text-sm bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+                                                   <div className="w-8 h-8 flex items-center justify-center font-black text-sm bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
                                                       {(tx.invitee?.name || 'S').charAt(0).toUpperCase()}
                                                    </div>
                                                    <div>
@@ -435,7 +435,7 @@ export default function ReferralHistory() {
                                                 </div>
                                              </td>
                                              <td className="px-4 py-3">
-                                                <span className="px-3 py-1 text-[10px] font-black tracking-widest uppercase bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-200 ring-1 ring-primary-200 dark:ring-white/10" style={{ borderRadius: 999 }}>
+                                                <span className="px-3 py-1 text-[10px] font-black tracking-widest uppercase bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-200 ring-1 ring-slate-200 dark:ring-white/10" style={{ borderRadius: 999 }}>
                                                    {translate(rewardLabels[tx.rewardType] || '')}
                                                 </span>
                                              </td>
@@ -460,7 +460,7 @@ export default function ReferralHistory() {
                                     <button
                                        key={i}
                                        onClick={() => setPage(i + 1)}
-                                       style={{ borderRadius: 10 }} className={`w-10 h-10 text-xs font-black transition-all ${page === i + 1 ? 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow' : 'bg-background-surface text-content-secondary border border-slate-200 dark:border-slate-700 hover:border-primary-500'}`}
+                                       style={{ borderRadius: 10 }} className={`w-10 h-10 text-xs font-black transition-all ${page === i + 1 ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow' : 'bg-background-surface text-content-secondary border border-slate-200 dark:border-slate-700 hover:border-primary-500'}`}
                                     >
                                        {i + 1}
                                     </button>

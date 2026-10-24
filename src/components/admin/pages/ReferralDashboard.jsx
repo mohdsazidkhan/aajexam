@@ -87,7 +87,7 @@ export default function ReferralDashboard() {
       header: 'USER',
       render: (_, u) => (
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm transition-all uppercase">
+          <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm transition-all uppercase">
             {u.name?.[0]?.toUpperCase() || 'U'}
           </div>
           <div>

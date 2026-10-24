@@ -69,7 +69,7 @@ const CircleProgress = ({ value = 0, size = 80, strokeWidth = 8, color = '#6366f
 const StatMini = ({ icon: Icon, label, value }) => (
    <div className="relative overflow-hidden flex items-center gap-2.5 p-2.5 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all min-w-0" style={{ borderRadius: 12 }}>
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
-      <div className="ml-1 w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+      <div className="ml-1 w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
          <Icon className="w-4 h-4" />
       </div>
       <div className="min-w-0">
@@ -82,7 +82,7 @@ const StatMini = ({ icon: Icon, label, value }) => (
 // --- Helper: Section Header ---
 const SectionHeader = ({ icon: Icon, title, subtitle }) => (
    <div className="flex items-center gap-2.5 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15">
-      {Icon && <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></div>}
+      {Icon && <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></div>}
       <div>
          <h2 className="text-base xl:text-lg font-black font-outfit uppercase tracking-tight">{title}</h2>
          {subtitle && <p className="text-xs text-content-secondary font-bold">{subtitle}</p>}
@@ -237,7 +237,7 @@ const MyAnalyticsPage = () => {
             <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1.5 max-w-full p-1.5 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md" style={{ borderRadius: 14 }}>
                {TABS.map(tab => (
                   <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                     style={{ borderRadius: 999 }} className={`flex-shrink-0 whitespace-nowrap flex items-center gap-1.5 px-4 py-2 font-black text-[11px] xl:text-xs uppercase tracking-wide transition-all ${activeTab === tab.key ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow' : 'text-content-secondary hover:text-primary-700 dark:hover:text-primary-200 hover:bg-primary-50 dark:hover:bg-white/10'}`}>
+                     style={{ borderRadius: 999 }} className={`flex-shrink-0 whitespace-nowrap flex items-center gap-1.5 px-4 py-2 font-black text-[11px] xl:text-xs uppercase tracking-wide transition-all ${activeTab === tab.key ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow' : 'text-content-secondary hover:text-primary-700 dark:hover:text-primary-200 hover:bg-primary-50 dark:hover:bg-white/10'}`}>
                      <tab.icon className="w-3.5 h-3.5" />
                      {translate(tab.label)}
                   </button>
@@ -320,7 +320,7 @@ const MyAnalyticsPage = () => {
                            <div className="space-y-2 xl:space-y-3">
                               <div className="flex items-center justify-between gap-2">
                                  <SectionHeader icon={Zap} title={translate('Quiz History')} />
-                                 <Link href="/student/quiz-history" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
+                                 <Link href="/student/quiz-history" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
                               </div>
                               <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {quizAttempts.map((a, idx) => (
@@ -400,7 +400,7 @@ const MyAnalyticsPage = () => {
                            <div className="space-y-2 xl:space-y-3">
                               <div className="flex items-center justify-between gap-2">
                                  <SectionHeader icon={GraduationCap} title={translate('Exam History')} />
-                                 <Link href="/student/exam-history" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
+                                 <Link href="/student/exam-history" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
                               </div>
                               <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {examAttempts.map((a, idx) => (
@@ -623,7 +623,7 @@ const MyAnalyticsPage = () => {
                            <div className="space-y-2 xl:space-y-3">
                               <div className="flex items-center justify-between gap-2">
                                  <SectionHeader icon={FileText} title={translate('My Reels')} />
-                                 <Link href="/student/my-reels" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
+                                 <Link href="/student/my-reels" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
                               </div>
                               <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {myReelsList.map((r, idx) => (
@@ -667,7 +667,7 @@ const MyAnalyticsPage = () => {
                      <>
                         <div className="grid grid-cols-2 xl:grid-cols-4 gap-2">
                            <Card padded={false} radius="xl" className="col-span-2 xl:col-span-1 bg-gradient-to-br from-primary-600 to-primary-800 text-white border-none shadow-lg flex items-center gap-2.5 p-2.5">
-                              <div className="w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Wallet className="w-4 h-4" /></div>
+                              <div className="w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Wallet className="w-4 h-4" /></div>
                               <div className="min-w-0">
                                  <p className="text-xl font-black font-outfit leading-tight">{wallet?.balance || 0}</p>
                                  <p className="text-[9px] font-black opacity-70 uppercase leading-tight">{translate('Wallet Balance')}</p>
@@ -687,7 +687,7 @@ const MyAnalyticsPage = () => {
                                  <p className="font-black text-base font-mono tracking-wider leading-tight truncate">{referral?.code || '---'}</p>
                               </div>
                               <button onClick={copyReferralCode} aria-label={translate('Copy')}
-                                 className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow hover:brightness-105 rounded-lg shrink-0 transition-all">
+                                 className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow hover:brightness-105 rounded-lg shrink-0 transition-all">
                                  {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                               </button>
                            </Card>

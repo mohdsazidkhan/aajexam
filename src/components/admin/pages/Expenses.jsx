@@ -175,7 +175,7 @@ const AdminExpenses = () => {
         {
             key: 'category', header: 'Category', render: (_, expense) => (
                 <div className="text-center">
-                    <span className="px-4 py-1.5 rounded-lg xl:rounded-xl bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white text-[9px] font-black uppercase tracking-widest shadow-sm">
+                    <span className="px-4 py-1.5 rounded-lg xl:rounded-xl bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white text-[9px] font-black uppercase tracking-widest shadow-sm">
                         {expense.category}
                     </span>
                 </div>
@@ -202,7 +202,7 @@ const AdminExpenses = () => {
                     <motion.button
                         whileHover={{ scale: 1.1 }}
                         onClick={() => handleOpenModal(expense)}
-                        className="p-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg xl:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm"
+                        className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm"
                     >
                         <Edit3 className="w-4 h-4" />
                     </motion.button>
@@ -220,7 +220,7 @@ const AdminExpenses = () => {
 
     const totalExpensesCard = (
         <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 w-full xl:w-fit mb-4 shrink-0 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-            <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0"><IndianRupee className="w-4 h-4" /></div>
+            <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg shrink-0"><IndianRupee className="w-4 h-4" /></div>
             <div className="min-w-0">
                 <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{formatAmount(summary.totalAmount)}</div>
                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Expenses</div>
@@ -263,7 +263,7 @@ const AdminExpenses = () => {
     const addExpenseButton = (
         <button
             onClick={() => handleOpenModal()}
-            className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
+            className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
         >
             <PlusCircle className="w-4 h-4" /> Add Expense
         </button>
@@ -310,7 +310,7 @@ const AdminExpenses = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-2 xl:gap-0 xl:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 xl:p-0 p-2">
                     {summary?.categories?.map((cat) => (
                         <div key={cat._id} className="flex items-center gap-2 px-3 py-2">
-                            <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0 uppercase font-black text-[10px] w-7 h-7 flex items-center justify-center">{cat._id.charAt(0)}</div>
+                            <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg shrink-0 uppercase font-black text-[10px] w-7 h-7 flex items-center justify-center">{cat._id.charAt(0)}</div>
                             <div className="min-w-0">
                                 <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{formatAmount(cat.totalAmount)}</div>
                                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate capitalize">{cat._id}</div>
@@ -366,7 +366,7 @@ const AdminExpenses = () => {
                             >
                                 <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
                                     <div className="flex items-center gap-2.5">
-                                        <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-xl"><Receipt className="w-5 h-5" /></div>
+                                        <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-xl"><Receipt className="w-5 h-5" /></div>
                                         <div>
                                             <h2 className="text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{isEditing ? 'Edit Expense' : 'Add Expense'}</h2>
                                             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mt-1">Enter the expense details below</p>
@@ -460,7 +460,7 @@ const AdminExpenses = () => {
  whileHover={{ x: 5 }}
  type="submit"
  disabled={formLoading}
- className="px-6 py-3 rounded-lg xl:rounded-[2rem] bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-sm disabled:opacity-50"
+ className="px-6 py-3 rounded-lg xl:rounded-[2rem] bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-sm disabled:opacity-50"
  >
  {formLoading ? 'SAVING...' : (isEditing ? 'SAVE CHANGES' : 'ADD EXPENSE')}
  </motion.button>

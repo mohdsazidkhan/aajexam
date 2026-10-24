@@ -510,7 +510,7 @@ const StudentsPage = () => {
   const newProButton = (
     <button
       onClick={() => setShowCreateModal(true)}
-      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
+      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
     >
       <UserPlus className="w-4 h-4" /> New PRO
     </button>
@@ -583,7 +583,7 @@ const StudentsPage = () => {
                       >
                         <div className="relative w-20 h-20 bg-primary-600 rounded-lg xl:rounded-[2rem] flex items-center justify-center text-white text-xl xl:text-3xl font-black shadow-sm group-hover:scale-110 transition-transform shrink-0">
                           {student.name?.charAt(0).toUpperCase()}
-                          <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(currentPage - 1) * itemsPerPage + i + 1}</span>
+                          <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(currentPage - 1) * itemsPerPage + i + 1}</span>
                         </div>
 
                         <div className="flex-1 space-y-2 xl:space-y-3">
@@ -641,7 +641,7 @@ const StudentsPage = () => {
                           <div className="w-24 h-24 bg-primary-600 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
-                          <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{(currentPage - 1) * itemsPerPage + i + 1}</span>
+                          <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{(currentPage - 1) * itemsPerPage + i + 1}</span>
                           <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-lg xl:rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-sm">
                             <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'PRO' ? 'text-black dark:text-white' : 'text-slate-300'}`} />
                           </div>
@@ -669,7 +669,7 @@ const StudentsPage = () => {
                           <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="flex-1">
                           <motion.button
                             whileHover={{ scale: 1.05 }}
-                            className="w-full py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-sm"
+                            className="w-full py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-sm"
                           >
                             VIEW PROFILE
                           </motion.button>
@@ -795,7 +795,7 @@ const StudentsPage = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         disabled={createLoading}
-                        className="flex-1 py-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                        className="flex-1 py-3 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all flex items-center justify-center gap-3 disabled:opacity-50"
                       >
                         {createLoading ? (
                           <RefreshCcw className="w-4 h-4 animate-spin" />
@@ -834,7 +834,7 @@ const StudentsPage = () => {
               >
                 <div className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <div className="flex items-center gap-3">
-                    <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-xl shadow-sm">
+                    <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-xl shadow-sm">
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div>
@@ -879,7 +879,7 @@ const StudentsPage = () => {
                       whileTap={{ scale: 0.97 }}
                       disabled={cityLoading}
                       onClick={handleSaveCity}
-                      className="flex-1 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="flex-1 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       {cityLoading ? <RefreshCcw className="w-4 h-4 animate-spin" /> : 'Save'}
                     </motion.button>

@@ -157,7 +157,7 @@ const AdminGovtExams = () => {
   const examColumns = [
     {
       key: 'code', header: 'Exam Code', render: (_, exam) => (
-        <span className="px-3 py-1 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg text-[10px] font-black">{exam.code}</span>
+        <span className="px-3 py-1 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg text-[10px] font-black">{exam.code}</span>
       )
     },
     {
@@ -184,11 +184,11 @@ const AdminGovtExams = () => {
       key: 'actions', header: 'Actions', align: 'right', render: (_, exam) => (
         <div className="flex justify-end gap-3">
           <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`}>
-            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg xl:rounded-xl border border-primary-500/20">
+            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl border border-primary-500/20">
               <Zap className="w-4 h-4" />
             </motion.button>
           </Link>
-          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(exam)} className="p-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-xl">
+          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(exam)} className="p-3 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-xl">
             <Edit3 className="w-4 h-4" />
           </motion.button>
           <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(exam._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg xl:rounded-xl border border-black/20 dark:border-white/20">
@@ -246,7 +246,7 @@ const AdminGovtExams = () => {
     <motion.button
       whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
       onClick={handleCreate}
-      className="w-full xl:w-auto px-4 xl:px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:brightness-110 text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
+      className="w-full xl:w-auto px-4 xl:px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
     >
       <Plus className="w-4 h-4" /> ADD EXAM
     </motion.button>
@@ -314,7 +314,7 @@ const AdminGovtExams = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-3 xl:gap-3 mb-4 xl:mb-4 group">
-                    <div className="relative p-3 xl:p-4 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-2xl shadow-sm transition-transform group-hover:rotate-6 shrink-0">
+                    <div className="relative p-3 xl:p-4 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-2xl shadow-sm transition-transform group-hover:rotate-6 shrink-0">
                       <Building2 className="w-4 h-4 xl:w-8 xl:h-8" />
                       <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0A0F1E]">{serialNumber}</span>
                     </div>
@@ -332,7 +332,7 @@ const AdminGovtExams = () => {
                   </div>
                   <div className="flex gap-3 pt-3 xl:pt-6 border-t-2 border-slate-100 dark:border-white/5">
                     <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`} className="flex-1">
-                      <motion.button whileHover={{ scale: 1.02 }} className="w-full py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">Patterns</motion.button>
+                      <motion.button whileHover={{ scale: 1.02 }} className="w-full py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">Patterns</motion.button>
                     </Link>
                     <motion.button onClick={() => handleEdit(exam)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg xl:rounded-xl hover:text-primary-600 transition-colors"><Edit3 className="w-5 h-5" /></motion.button>
                     <motion.button onClick={() => handleDelete(exam._id)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg xl:rounded-xl hover:text-black dark:hover:text-white transition-colors"><Trash2 className="w-5 h-5" /></motion.button>
@@ -350,7 +350,7 @@ const AdminGovtExams = () => {
                 return (
                 <motion.div key={exam._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 xl:gap-3 hover:border-primary-500/30 transition-all font-outfit shadow-sm">
                   <div className="flex items-center gap-3 xl:gap-3">
-                    <div className="relative min-w-[4.5rem] h-16 px-2 shrink-0 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center text-center font-black italic shadow-sm group-hover:-rotate-3 transition-transform text-[10px] leading-tight break-words">
+                    <div className="relative min-w-[4.5rem] h-16 px-2 shrink-0 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center text-center font-black italic shadow-sm group-hover:-rotate-3 transition-transform text-[10px] leading-tight break-words">
                       {exam.code}
                       <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0A0F1E]">{serialNumber}</span>
                     </div>
@@ -367,7 +367,7 @@ const AdminGovtExams = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`}>
-                      <motion.button whileHover={{ scale: 1.05 }} className="px-4 xl:px-5 py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm">Manage Patterns</motion.button>
+                      <motion.button whileHover={{ scale: 1.05 }} className="px-4 xl:px-5 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm">Manage Patterns</motion.button>
                     </Link>
                     <div className="w-px h-10 bg-slate-100 dark:bg-white/10 mx-2" />
                     <motion.button onClick={() => handleEdit(exam)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg xl:rounded-xl hover:text-primary-600"><Edit3 className="w-5 h-5" /></motion.button>
@@ -390,7 +390,7 @@ const AdminGovtExams = () => {
           <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
             <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl shadow-sm">
+                <div className="p-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl shadow-sm">
                   <Settings className="w-5 h-5" />
                 </div>
                 <div>
@@ -430,7 +430,7 @@ const AdminGovtExams = () => {
                 </div>
                 <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-3xl flex items-center justify-between border-2 border-slate-100 dark:border-white/5">
                   <div className="flex items-center gap-3">
-                    <div className={`p-3 rounded-lg xl:rounded-xl ${formData.isActive ? 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow ' : 'bg-slate-200'}`}><Zap className="w-5 h-5" /></div>
+                    <div className={`p-3 rounded-lg xl:rounded-xl ${formData.isActive ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow ' : 'bg-slate-200'}`}><Zap className="w-5 h-5" /></div>
                     <div>
                       <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Active Status</p>
                       <p className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">{formData.isActive ? 'Published & Active' : 'Hidden from Students'}</p>
@@ -442,7 +442,7 @@ const AdminGovtExams = () => {
               </div>
 <div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] justify-end items-center">
  <button type="button" onClick={() => setShowModal(false)} className="px-6 py-3 bg-slate-100 dark:bg-white/5 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest">Cancel</button>
- <button type="submit" className="px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
+ <button type="submit" className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
  <CheckCircle2 className="w-5 h-5" /> {editingExam ? 'Save Changes' : 'Register Exam'}
  </button>
  </div>

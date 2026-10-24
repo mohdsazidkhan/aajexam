@@ -162,7 +162,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-xl font-black uppercase text-xs tracking-widest hover:brightness-110 transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-xl font-black uppercase text-xs tracking-widest hover:brightness-110 transition-all disabled:opacity-50"
               >
                 <Send className="w-4 h-4" /> {sending ? 'Sending...' : 'Send Announcement'}
               </button>

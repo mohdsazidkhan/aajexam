@@ -133,7 +133,7 @@ const AdminInterviewQuestions = () => {
   );
 
   const addQuestionButton = (
-    <button onClick={() => { setShowForm(true); setEditId(null); setForm(emptyForm); }} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white">
+    <button onClick={() => { setShowForm(true); setEditId(null); setForm(emptyForm); }} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white">
       <Plus className="w-3 h-3" /> Add Question
     </button>
   );
@@ -193,7 +193,7 @@ const AdminInterviewQuestions = () => {
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-1.5">
-                        <span className="w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shrink-0">{serialNumber}</span>
+                        <span className="w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shrink-0">{serialNumber}</span>
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ring-1 bg-primary-100 text-primary-800 ring-primary-200 dark:bg-primary-400/20 dark:text-primary-200 dark:ring-white/15">{q.category?.type || '—'}</span>
                       </div>
                       <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 flex items-center gap-1"><Eye className="w-3 h-3" /> {q.views || 0}</span>
@@ -217,7 +217,7 @@ const AdminInterviewQuestions = () => {
                 <Card key={q._id || i} className="!p-3 flex items-start justify-between gap-2 hover:shadow-xl hover:-translate-y-0.5 transition-all">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5 mb-1.5 flex-wrap">
-                      <span className="w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shrink-0">{serialNumber}</span>
+                      <span className="w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shrink-0">{serialNumber}</span>
                       <span className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ring-1 bg-primary-100 text-primary-800 ring-primary-200 dark:bg-primary-400/20 dark:text-primary-200 dark:ring-white/15 whitespace-nowrap">{q.category?.type || '—'}</span>
                       {q.category?.name && (
                         <span className="shrink-0 text-[11px] text-slate-400 dark:text-slate-500 whitespace-nowrap truncate max-w-[120px]">{q.category.name}</span>
@@ -247,7 +247,7 @@ const AdminInterviewQuestions = () => {
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowForm(false); setEditId(null); }} className="absolute inset-0 bg-black/50" />
                 <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
                   <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-slate-700/50 flex items-center justify-between shrink-0">
-                    <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><div>
+                    <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><div>
                       <h2 className="text-base font-bold text-slate-900 dark:text-white">{editId ? 'Edit Question' : 'Add New Question'}</h2>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Fill in the details below</p>
                     </div></div>
@@ -329,7 +329,7 @@ const AdminInterviewQuestions = () => {
                     </div>
                   </div>
                   <div className="px-4 py-2.5 border-t border-slate-200 dark:border-slate-700 flex items-center gap-3 shrink-0 justify-end items-center">
- <button onClick={handleSave} className="px-6 px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
+ <button onClick={handleSave} className="px-6 px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
  <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-4 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg xl:rounded-xl text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
  </div>
                 </motion.div>

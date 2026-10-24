@@ -143,7 +143,7 @@ const SubscriptionPage = () => {
         {/* Membership pass: current plan + validity, with a perforated side stub */}
         {subscription && (
           <section
-            className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 text-slate-900 shadow-xl ring-1 ring-primary-200 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 dark:text-white dark:ring-white/10"
+            className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 text-slate-900 shadow-xl ring-1 ring-primary-200 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 dark:text-white dark:ring-white/10"
             style={{ borderRadius: 16 }}
           >
             <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
@@ -160,7 +160,7 @@ const SubscriptionPage = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
+                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
                     <Crown className="w-7 h-7 xl:w-8 xl:h-8" />
                   </div>
                   <div className="min-w-0">
@@ -206,7 +206,7 @@ const SubscriptionPage = () => {
                 {(isFreePlan || !isActive) && (
                   <button
                     onClick={() => document.getElementById('pro-plans')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 font-black uppercase tracking-widest text-xs shadow-lg hover:brightness-105 active:translate-y-0.5 transition-all"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black font-black uppercase tracking-widest text-xs shadow-lg hover:brightness-105 active:translate-y-0.5 transition-all"
                   >
                     <Sparkles className="w-4 h-4" /> {translate('View PRO plans')}
                   </button>
@@ -282,13 +282,13 @@ const SubscriptionPage = () => {
                   <div className="relative p-4 xl:p-6 space-y-3 flex-1">
                     <div className="flex items-start justify-between gap-2 min-h-[28px]">
                       <div className="flex items-center gap-2 min-w-0">
-                        <span className={`w-8 h-8 flex items-center justify-center shrink-0 ${hl ? 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950' : 'bg-primary-500/10 text-primary-600 dark:text-primary-300'}`} style={{ borderRadius: 10 }}>
+                        <span className={`w-8 h-8 flex items-center justify-center shrink-0 ${hl ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black' : 'bg-primary-500/10 text-primary-600 dark:text-primary-300'}`} style={{ borderRadius: 10 }}>
                           <Crown className="w-4 h-4" />
                         </span>
                         <h3 className="text-base xl:text-xl font-black font-outfit tracking-tight truncate">{translate(plan.label)}</h3>
                       </div>
                       {plan.badge && (
-                        <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider px-2 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow whitespace-nowrap" style={{ borderRadius: 999 }}>
+                        <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider px-2 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow whitespace-nowrap" style={{ borderRadius: 999 }}>
                           {translate(plan.badge)}
                         </span>
                       )}
@@ -325,7 +325,7 @@ const SubscriptionPage = () => {
                     <button
                       disabled={!!buyingPlan}
                       onClick={() => handleBuy(plan)}
-                      className={`w-full flex items-center justify-center gap-2 py-3.5 text-xs xl:text-sm font-black uppercase tracking-widest shadow-lg transition-all active:translate-y-0.5 disabled:opacity-60 ${hl ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 hover:brightness-105' : 'bg-primary-600 hover:bg-primary-700 text-white'}`}
+                      className={`w-full flex items-center justify-center gap-2 py-3.5 text-xs xl:text-sm font-black uppercase tracking-widest shadow-lg transition-all active:translate-y-0.5 disabled:opacity-60 ${hl ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black hover:brightness-105' : 'bg-primary-600 hover:bg-primary-700 text-white'}`}
                     >
                       {isBuying ? (
                         <>

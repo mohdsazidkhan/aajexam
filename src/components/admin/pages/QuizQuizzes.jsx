@@ -230,7 +230,7 @@ const AdminQuizQuizzes = () => {
   );
 
   const createQuizButton = (
-    <button onClick={openCreate} className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-600"><Plus className="w-4 h-4" /> Create Quiz</button>
+    <button onClick={openCreate} className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-600"><Plus className="w-4 h-4" /> Create Quiz</button>
   );
 
   const paginationControl = quizzes.length > 0 && (
@@ -283,9 +283,9 @@ const AdminQuizQuizzes = () => {
               {quizzes.map((q, idx) => (
                 <div key={q._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <div className="flex items-start justify-between gap-2">
-                    <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow flex items-center justify-center shrink-0">
+                    <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow flex items-center justify-center shrink-0">
                       <BrainCircuit className="w-5 h-5" />
-                      <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
+                      <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
                     </div>
                     <span className={`inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full ring-1 ${q.status === 'published' ? 'bg-primary-100 text-primary-800 ring-primary-200 dark:bg-primary-400/20 dark:text-primary-200 dark:ring-white/15' : 'bg-slate-100 text-slate-600 ring-slate-200 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10'}`}><span className="w-1.5 h-1.5 rounded-full bg-current" />{q.status}</span>
                   </div>
@@ -344,7 +344,7 @@ const AdminQuizQuizzes = () => {
           <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
           <div className="w-full h-full flex flex-col">
 <div className="shrink-0 flex justify-between items-center px-4 py-2.5 border-b border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><h2 className="text-base font-black uppercase tracking-tight text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Quiz</h2></div>
+              <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><h2 className="text-base font-black uppercase tracking-tight text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Quiz</h2></div>
               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </div>
             <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
@@ -368,7 +368,7 @@ const AdminQuizQuizzes = () => {
               </div>
               <input placeholder="Tags (comma separated)" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
               </div>
-<div className="flex shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] justify-end items-center"><button type="submit" className="px-6 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white py-2.5 rounded-lg xl:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create as Draft'}</button></div>
+<div className="flex shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] justify-end items-center"><button type="submit" className="px-6 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white py-2.5 rounded-lg xl:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create as Draft'}</button></div>
             </form>
           </div>
           </motion.div>
@@ -401,7 +401,7 @@ const AdminQuizQuizzes = () => {
                 ))
               }
             </div>
-            <button onClick={handleAddQuestions} disabled={!selectedQIds.length} className="mt-4 w-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white py-2.5 rounded-lg xl:rounded-xl font-bold hover:bg-primary-600 disabled:opacity-30">Add {selectedQIds.length} Questions</button>
+            <button onClick={handleAddQuestions} disabled={!selectedQIds.length} className="mt-4 w-full bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white py-2.5 rounded-lg xl:rounded-xl font-bold hover:bg-primary-600 disabled:opacity-30">Add {selectedQIds.length} Questions</button>
           </div>
           </motion.div>
         </div>

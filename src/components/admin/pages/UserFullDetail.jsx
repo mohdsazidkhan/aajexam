@@ -246,7 +246,7 @@ export default function UserFullDetail() {
         </Link>
         {p._id ? (
           <div className="inline-flex p-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-            <span className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow">Details</span>
+            <span className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow">Details</span>
             <Link href={`/admin/students/${p._id}`} className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/10">Edit</Link>
           </div>
         ) : null}
@@ -265,7 +265,7 @@ export default function UserFullDetail() {
               // eslint-disable-next-line @next/next/no-img-element
               <img src={p.profilePicture} alt="" className="w-16 h-16 rounded-2xl object-cover" referrerPolicy="no-referrer" />
             ) : (
-              <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center font-black text-2xl uppercase">{p.name?.[0] || 'U'}</div>
+              <div className="w-16 h-16 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center font-black text-2xl uppercase">{p.name?.[0] || 'U'}</div>
             )}
             {tab !== 'settings' && <ViewSwitch view={view} setView={setView} className="sm:hidden" />}
           </div>

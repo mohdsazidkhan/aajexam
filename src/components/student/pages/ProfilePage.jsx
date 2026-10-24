@@ -212,7 +212,7 @@ const ProfilePage = () => {
 
         {/* Hero — "Student admit card": a hall-ticket styled profile with a perforated rank stub */}
         <section
-          className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 text-slate-900 shadow-xl ring-1 ring-primary-200 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 dark:text-white dark:ring-white/10"
+          className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 text-slate-900 shadow-xl ring-1 ring-primary-200 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 dark:text-white dark:ring-white/10"
           style={{ borderRadius: 16 }}
         >
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
@@ -226,7 +226,7 @@ const ProfilePage = () => {
               <span className="text-[10px] xl:text-xs font-black uppercase tracking-[0.25em] truncate">AajExam · {translate('Student profile')}</span>
             </div>
             <span
-              className={`shrink-0 px-2.5 py-0.5 text-[10px] xl:text-xs font-black uppercase tracking-widest ${isPro ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow-[0_2px_12px_rgba(251,191,36,0.45)]' : 'bg-slate-200 text-slate-700 ring-1 ring-slate-300 dark:bg-white/15 dark:text-white dark:ring-white/30'}`}
+              className={`shrink-0 px-2.5 py-0.5 text-[10px] xl:text-xs font-black uppercase tracking-widest ${isPro ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-[0_2px_12px_rgba(251,191,36,0.45)]' : 'bg-slate-200 text-slate-700 ring-1 ring-slate-300 dark:bg-white/15 dark:text-white dark:ring-white/30'}`}
             >
               {isPro ? 'PRO' : translate('FREE')}
             </span>
@@ -288,7 +288,7 @@ const ProfilePage = () => {
               </div>
 
               {/* Footer: actions, socials and barcode */}
-              <div className="flex flex-wrap items-end justify-between gap-3 pt-3 border-t border-dashed border-primary-300 dark:border-white/25">
+              <div className="flex flex-wrap items-end justify-between gap-3 pt-3 border-t border-dashed border-slate-300 dark:border-white/25">
                 <div className="flex flex-wrap items-center gap-2">
                   {student?.username && (
                     <Button variant="secondary" size="sm" icon={Eye} className="rounded-xl text-xs font-black" onClick={() => router.push(`/u/${student.username}`)}>
@@ -326,7 +326,7 @@ const ProfilePage = () => {
               </div>
 
               <div className="grid grid-cols-2 xl:grid-cols-1 gap-2">
-                <div className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
+                <div className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
                   <p className="text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-white/70 leading-none">{translate('Exam AIR')}</p>
                   <div className="flex items-baseline justify-between gap-2">
                     <p className="text-3xl font-black font-outfit leading-tight text-primary-700 dark:text-primary-200">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
@@ -336,7 +336,7 @@ const ProfilePage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
+                <div className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
                   <p className="text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-white/70 leading-none">{translate('Quiz AIR')}</p>
                   <div className="flex items-baseline justify-between gap-2">
                     <p className="text-3xl font-black font-outfit leading-tight">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
@@ -356,7 +356,7 @@ const ProfilePage = () => {
         </section>
 
         {/* Sub-tab navigation — green segmented bar */}
-        <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-white ring-1 ring-primary-200 dark:ring-0 dark:bg-gradient-to-r dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 shadow-md relative z-20 w-fit max-w-full" style={{ borderRadius: 12 }}>
+        <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-white ring-1 ring-primary-200 dark:ring-0 dark:bg-gradient-to-r dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 shadow-md relative z-20 w-fit max-w-full" style={{ borderRadius: 12 }}>
           {[
             { id: 'profile', label: 'My Profile', icon: Award },
             { id: 'bank', label: 'Bank Details', icon: Wallet },
@@ -496,7 +496,7 @@ const ProfilePage = () => {
                 icon={Wallet}
                 title={translate('Payout details')}
                 subtitle={translate('Add your bank details to receive Referral Rewards')}
-                right={bankDetails ? <span className="px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 text-[10px] font-black uppercase tracking-widest">{translate('Linked')}</span> : null}
+                right={bankDetails ? <span className="px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-[10px] font-black uppercase tracking-widest">{translate('Linked')}</span> : null}
               >
                 {bankDetails ? (
                   <div className="flex flex-col lg:flex-row lg:items-center gap-5">

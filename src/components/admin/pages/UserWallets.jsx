@@ -217,7 +217,7 @@ const AdminUserWallets = () => {
     <button
       onClick={handleResetClaimableRewards}
       disabled={resetting}
-      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110 disabled:opacity-50"
+      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110 disabled:opacity-50"
     >
       <RefreshCcw className={`w-4 h-4 ${resetting ? 'animate-spin' : ''}`} />
       {resetting ? 'Resetting...' : 'Reset All Rewards'}
@@ -288,7 +288,7 @@ const AdminUserWallets = () => {
                     <div className="flex items-center gap-3">
                       <div className="relative w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
                         {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
-                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
+                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
                       </div>
                       <div className="min-w-0">
                         <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate">{row.user?.name || row.name || 'Unknown'}</h4>
@@ -323,7 +323,7 @@ const AdminUserWallets = () => {
                     <div className="flex items-center gap-3">
                       <div className="relative w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
                         {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
-                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
+                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
                       </div>
                       <div className="min-w-0">
                         <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate">{row.user?.name || row.name || 'Unknown'}</h4>

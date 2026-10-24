@@ -112,7 +112,7 @@ const AdminReelAnalytics = () => {
       {data.topReels.map((reel, i) => (
         <div key={reel._id} className="group p-3 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-primary-300 hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black shrink-0 shadow ${i < 3 ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white' : 'bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-200'}`}>{i + 1}</span>
+            <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black shrink-0 shadow ${i < 3 ? 'bg-gradient-to-br from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white' : 'bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-200'}`}>{i + 1}</span>
             <span className="px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-primary-100 text-primary-800 dark:bg-primary-400/20 dark:text-primary-200 capitalize">{reel.type?.replace('_', ' ')}</span>
           </div>
           <p className="flex-1 text-xs sm:text-sm font-bold text-slate-900 dark:text-white line-clamp-2 leading-snug">
@@ -143,7 +143,7 @@ const AdminReelAnalytics = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2 w-full">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex items-center gap-3 px-3 py-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all min-w-0">
-                  <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 rounded-lg shadow shrink-0">
+                  <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black rounded-lg shadow shrink-0">
                     <stat.icon className="w-4 h-4" />
                   </div>
                   <div className="min-w-0">
@@ -166,7 +166,7 @@ const AdminReelAnalytics = () => {
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
                 {/* Type Breakdown */}
                 <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-3 sm:p-4 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                  <h3 className="flex items-center gap-2.5 font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Flame className="w-3.5 h-3.5" /></span>By Type</h3>
+                  <h3 className="flex items-center gap-2.5 font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Flame className="w-3.5 h-3.5" /></span>By Type</h3>
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
                     {(() => {
                       const maxCount = Math.max(1, ...data.typeBreakdown.map(i => i.count || 0));
@@ -191,7 +191,7 @@ const AdminReelAnalytics = () => {
 
                 {/* Subject Breakdown */}
                 <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-3 sm:p-4 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                  <h3 className="flex items-center gap-2.5 font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><BarChart3 className="w-3.5 h-3.5" /></span>By Subject</h3>
+                  <h3 className="flex items-center gap-2.5 font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><BarChart3 className="w-3.5 h-3.5" /></span>By Subject</h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     {(() => {
                       const maxViews = Math.max(1, ...data.subjectBreakdown.map(i => i.views || 0));
@@ -215,7 +215,7 @@ const AdminReelAnalytics = () => {
               {/* Top Reels */}
               <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 sm:p-4 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="flex items-center gap-2.5 font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm"><span className="w-7 h-7 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Eye className="w-3.5 h-3.5" /></span>Top 10 Reels</h3>
+                  <h3 className="flex items-center gap-2.5 font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm"><span className="w-7 h-7 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Eye className="w-3.5 h-3.5" /></span>Top 10 Reels</h3>
                   <ViewToggle currentView={topReelsView} onViewChange={setTopReelsView} views={['table', 'list', 'grid']} />
                 </div>
                 {topReelsView === 'table' && <TopReelsTableView />}

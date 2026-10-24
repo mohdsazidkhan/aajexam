@@ -77,7 +77,7 @@ const MentorsPage = () => {
               </div>
             }
             actions={
-              <button onClick={() => router.push('/mentor/apply')} className="px-4 h-10 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow rounded-xl text-xs font-black shrink-0 hover:brightness-105 transition-all">{translate('Become Mentor')}</button>
+              <button onClick={() => router.push('/mentor/apply')} className="px-4 h-10 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow rounded-xl text-xs font-black shrink-0 hover:brightness-105 transition-all">{translate('Become Mentor')}</button>
             }
           />
 

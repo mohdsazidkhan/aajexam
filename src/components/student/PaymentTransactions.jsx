@@ -212,7 +212,7 @@ const PaymentTransactions = () => {
     <div className="relative bg-background-surface shadow-md border border-slate-200 dark:border-slate-800 overflow-hidden font-outfit mb-4 xl:mb-6" style={{ borderRadius: 16 }}>
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 z-10 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 border-b border-primary-200 dark:border-transparent dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white p-3 xl:p-4 pt-4 relative overflow-hidden group">
+      <div className="bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white p-3 xl:p-4 pt-4 relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-white/10 transition-colors"></div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 xl:gap-4 relative z-10">
           <div>
@@ -221,7 +221,7 @@ const PaymentTransactions = () => {
           <div className="flex items-center w-full sm:w-auto">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="w-full sm:w-auto bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 hover:brightness-105 px-3 py-2 xl:px-4 xl:py-2 rounded-lg xl:rounded-xl transition-all active:translate-y-0.5 flex items-center justify-center space-x-2 xl:space-x-3 shadow-md"
+              className="w-full sm:w-auto bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black hover:brightness-105 px-3 py-2 xl:px-4 xl:py-2 rounded-lg xl:rounded-xl transition-all active:translate-y-0.5 flex items-center justify-center space-x-2 xl:space-x-3 shadow-md"
             >
               <FaFilter className="text-xs xl:text-sm" />
               <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest">{translate('Filters')}</span>
@@ -234,7 +234,7 @@ const PaymentTransactions = () => {
       {summary && (
         <div className="p-2 xl:p-3 bg-white dark:bg-slate-900/50">
           <div className="grid grid-cols-3 gap-2 xl:gap-3">
-            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-primary-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
+            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Total Investment')}</p>
@@ -242,12 +242,12 @@ const PaymentTransactions = () => {
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
                   <FaRupeeSign className="text-xs xl:text-lg" />
                 </div>
               </div>
             </div>
-            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-primary-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
+            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Total Transactions')}</p>
@@ -255,12 +255,12 @@ const PaymentTransactions = () => {
                     {summary.totalTransactions || 0}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
                   <FaReceipt className="text-xs xl:text-lg" />
                 </div>
               </div>
             </div>
-            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-primary-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
+            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Successful Clear')}</p>
@@ -268,7 +268,7 @@ const PaymentTransactions = () => {
                     {summary.paymentOrders?.completed || 0}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
                   <FaCheckCircle className="text-xs xl:text-lg" />
                 </div>
               </div>

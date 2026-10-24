@@ -416,7 +416,7 @@ const DashboardAnalytics = () => {
           key={i}
           className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
         >
-          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg shrink-0">
+          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg shrink-0">
             <stat.icon className="w-4 h-4" />
           </div>
           <div className="min-w-0">

@@ -131,11 +131,11 @@ const CategoryDetailPage = () => {
           </div>
         </div>
 
-        <div className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-4 xl:p-6 flex items-center gap-3" style={{ borderRadius: 16 }}>
+        <div className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-4 xl:p-6 flex items-center gap-3" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
           <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 flex items-center justify-center shrink-0 shadow-lg rotate-[-4deg]" style={{ borderRadius: 12 }}>
+          <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black flex items-center justify-center shrink-0 shadow-lg rotate-[-4deg]" style={{ borderRadius: 12 }}>
             <Icon className="w-6 h-6" />
           </div>
           <div>

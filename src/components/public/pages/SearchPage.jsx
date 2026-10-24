@@ -516,7 +516,7 @@ const SearchPage = () => {
                      </button>
                   )}
                   <div className="flex-1 relative">
-                     <span className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 xl:w-8 xl:h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Search className="w-4 h-4" /></span>
+                     <span className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 xl:w-8 xl:h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Search className="w-4 h-4" /></span>
                      <input
                         ref={inputRef}
                         type="text"
@@ -569,7 +569,7 @@ const SearchPage = () => {
                         style={{ borderRadius: 999 }}
                         className={`flex-shrink-0 whitespace-nowrap flex items-center justify-center gap-1.5 px-4 py-2 text-[11px] xl:text-xs font-black uppercase tracking-wider transition-all border ${
                            activeTab === tab.key
-                              ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 border-transparent shadow-md'
+                              ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black border-transparent shadow-md'
                               : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-primary-400 hover:text-primary-700 dark:hover:text-primary-300'
                         }`}
                      >
@@ -606,7 +606,7 @@ const SearchPage = () => {
                                           <Icon className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                                           <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{translate(meta.label)}</h3>
                                        </div>
-                                       <button onClick={() => handleTabChange('reel')} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all">{translate('See all')}</button>
+                                       <button onClick={() => handleTabChange('reel')} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all">{translate('See all')}</button>
                                     </div>
                                     <div className="flex overflow-x-auto no-scrollbar gap-1.5 pb-1">
                                        {section.items.map(reel => renderReelCard(reel, 'small'))}
@@ -623,7 +623,7 @@ const SearchPage = () => {
                                        <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{translate(meta.label)}</h3>
                                     </div>
                                     {section.hasMore && (
-                                       <button onClick={() => handleTabChange(key)} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all">{translate('See all')}</button>
+                                       <button onClick={() => handleTabChange(key)} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all">{translate('See all')}</button>
                                     )}
                                  </div>
                                  <div className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-1">

@@ -51,18 +51,18 @@ const Stat = ({ label, value, sub, Icon, tone, cur, prev, inverse, onClick }) =>
     <Wrap
       {...(onClick ? { type: 'button', onClick, title: 'Click to see who' } : {})}
       style={{ borderRadius: 14 }}
-      className={`group relative isolate overflow-hidden w-full px-2.5 py-2 text-left bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 ring-1 ring-primary-200 dark:ring-white/10 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all ${onClick ? 'cursor-pointer' : ''}`}
+      className={`group relative isolate overflow-hidden w-full px-2.5 py-2 text-left bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all ${onClick ? 'cursor-pointer' : ''}`}
     >
       <Icon className="pointer-events-none absolute -right-2 -bottom-2 w-14 h-14 text-primary-600/10 dark:text-white/10 rotate-12" />
       <div className="flex items-start justify-between gap-2">
         <div className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-600 dark:text-white/75 leading-tight">{label}</div>
-        <span className="shrink-0 w-7 h-7 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
+        <span className="shrink-0 w-7 h-7 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
       </div>
       <div className="mt-1 flex items-baseline justify-between gap-2">
         <div className="text-2xl font-black font-outfit tabular-nums leading-none text-primary-700 dark:text-primary-200">{value}</div>
         {cur !== undefined ? <Delta cur={cur} prev={prev} inverse={inverse} /> : null}
       </div>
-      {sub ? <div className="mt-1.5 pt-1.5 border-t border-dashed border-primary-300 dark:border-white/25 text-[10px] font-bold text-slate-600 dark:text-white/70 leading-tight">{sub}</div> : null}
+      {sub ? <div className="mt-1.5 pt-1.5 border-t border-dashed border-slate-300 dark:border-white/25 text-[10px] font-bold text-slate-600 dark:text-white/70 leading-tight">{sub}</div> : null}
     </Wrap>
   );
 };
@@ -95,7 +95,7 @@ const UsersModal = ({ kind, range, segment, onClose }) => {
 
   const isSignup = kind === 'signup';
   const users = state.data?.users || [];
-  const th = 'px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-primary-900 dark:text-white text-left whitespace-nowrap';
+  const th = 'px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-slate-900 dark:text-white text-left whitespace-nowrap';
   const td = 'px-2 py-1.5 text-xs whitespace-nowrap';
 
   return (
@@ -137,7 +137,7 @@ const UsersModal = ({ kind, range, segment, onClose }) => {
           ) : null}
           {users.length > 0 ? (
             <table className="w-full max-md:hidden">
-              <thead className="sticky top-0 z-10 bg-gradient-to-r from-primary-100 via-primary-50 to-white dark:from-primary-700 dark:via-primary-800 dark:to-primary-900">
+              <thead className="sticky top-0 z-10 bg-gradient-to-r from-slate-100 via-slate-50 to-white dark:from-slate-800 dark:via-slate-800 dark:to-slate-900">
                 <tr className="border-b border-slate-200 dark:border-slate-700">
                   <th className={th}>#</th>
                   <th className={th}>Name</th>
@@ -198,7 +198,7 @@ const countryName = (code) => {
 
 const List = ({ title, rows }) => (
   <div className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-700 shadow-md h-52 max-lg:h-auto flex flex-col" style={{ borderRadius: 14 }}>
-    <div className="shrink-0 px-3 py-2 bg-gradient-to-r from-primary-100 via-primary-50 to-white dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 border-b border-primary-200 dark:border-transparent text-[10px] font-black uppercase tracking-[0.14em] text-primary-900 dark:text-white">{title}</div>
+    <div className="shrink-0 px-3 py-2 bg-gradient-to-r from-slate-100 via-slate-50 to-white dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 border-b border-slate-200 dark:border-transparent text-[10px] font-black uppercase tracking-[0.14em] text-slate-900 dark:text-white">{title}</div>
     <div className="min-h-0 flex-1 overflow-y-auto max-lg:overflow-visible px-3 py-1">
       {rows.length === 0 ? <div className="py-2 text-xs text-slate-400">No data yet</div> : rows.map((r) => (
         <div key={r.k} className="flex items-center justify-between gap-3 text-xs py-1.5 border-b border-dashed border-slate-200 dark:border-slate-700 last:border-0">
@@ -246,7 +246,7 @@ export default function Traffic() {
 
   const rows = data?.days || [];
   const sum = (k) => rows.reduce((t, r) => t + (r[k] || 0), 0);
-  const th = 'px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-primary-900 dark:text-white text-right leading-tight';
+  const th = 'px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-slate-900 dark:text-white text-right leading-tight';
   const td = 'px-2 py-1.5 text-xs tabular-nums text-right';
 
   return (
@@ -256,7 +256,7 @@ export default function Traffic() {
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="order-1 flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300">
-            <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Activity className="w-4 h-4" /></span> Traffic          </div>
+            <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Activity className="w-4 h-4" /></span> Traffic          </div>
           <div className="order-3 md:order-2 w-full md:w-auto flex gap-1 p-1 bg-background-surface border border-slate-200 dark:border-slate-700 shadow-sm max-w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="tablist">
             {SEGMENTS.map((s) => (
               <button
@@ -266,7 +266,7 @@ export default function Traffic() {
                 aria-selected={segment === s.id}
                 title={s.hint}
                 onClick={() => setSegment(s.id)}
-                style={{ borderRadius: 999 }} className={`px-3.5 py-1.5 text-[11px] font-black uppercase tracking-wider whitespace-nowrap transition-all ${segment === s.id ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow' : 'text-slate-500 dark:text-slate-400 hover:bg-primary-50 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white'}`}
+                style={{ borderRadius: 999 }} className={`px-3.5 py-1.5 text-[11px] font-black uppercase tracking-wider whitespace-nowrap transition-all ${segment === s.id ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow' : 'text-slate-500 dark:text-slate-400 hover:bg-primary-50 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white'}`}
               >
                 {s.label}
               </button>
@@ -310,7 +310,7 @@ export default function Traffic() {
               <col className="w-[11%]" /><col className="w-[11%]" />
               <col className="w-[10%]" /><col className="w-[10%]" /><col className="w-[12%]" />
             </colgroup>
-            <thead className="sticky top-0 z-10 bg-gradient-to-r from-primary-100 via-primary-50 to-white dark:from-primary-700 dark:via-primary-800 dark:to-primary-900">
+            <thead className="sticky top-0 z-10 bg-gradient-to-r from-slate-100 via-slate-50 to-white dark:from-slate-800 dark:via-slate-800 dark:to-slate-900">
               <tr className="border-b border-slate-200 dark:border-slate-700">
                 <th className={`${th} text-left`}>Day</th>
                 <th className={th}>Visitors</th>

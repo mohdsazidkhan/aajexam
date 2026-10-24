@@ -84,7 +84,7 @@ export default function ReferralFraudDashboard() {
     {
       key: 'user', header: 'User', render: (_, u) => (
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-slate-900 dark:bg-white/10 text-white flex items-center justify-center font-black text-xs shrink-0">{u.name?.[0]?.toUpperCase() || 'U'}</div>
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow flex items-center justify-center font-black text-xs shrink-0">{u.name?.[0]?.toUpperCase() || 'U'}</div>
           <div className="min-w-0">
             <div className="text-sm font-bold text-slate-900 dark:text-white truncate">{u.name || 'Unknown'}</div>
             <div className="text-[10px] text-slate-400 truncate">{u.email}</div>
@@ -270,7 +270,7 @@ export default function ReferralFraudDashboard() {
                     <div key={u._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex items-center gap-3 min-w-0">
-                          <div className="relative w-10 h-10 rounded-xl bg-slate-900 dark:bg-white/10 text-white flex items-center justify-center font-black text-sm shrink-0">
+                          <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow flex items-center justify-center font-black text-sm shrink-0">
                             {u.name?.[0]?.toUpperCase() || 'U'}
                             <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{serialNumber}</span>
                           </div>
@@ -297,7 +297,7 @@ export default function ReferralFraudDashboard() {
                           <div className="text-[9px] font-bold text-slate-400 uppercase">Earned</div>
                         </div>
                       </div>
-                      <button onClick={() => openInvitees(u._id)} className="w-full py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg text-xs font-bold hover:bg-primary-700 transition-all flex items-center justify-center gap-1.5"><Eye className="w-3.5 h-3.5" /> View Invitees</button>
+                      <button onClick={() => openInvitees(u._id)} className="w-full py-2 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg text-xs font-bold hover:bg-primary-700 transition-all flex items-center justify-center gap-1.5"><Eye className="w-3.5 h-3.5" /> View Invitees</button>
                     </div>
                   );
                 })}

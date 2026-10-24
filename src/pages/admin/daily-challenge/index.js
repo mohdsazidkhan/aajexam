@@ -174,7 +174,7 @@ const AdminDailyChallenge = () => {
   );
 
   const generateMonthButton = (
-    <button onClick={autoGenerateMonth} disabled={bulkGenerating} className="w-full xl:w-auto px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 flex items-center justify-center">
+    <button onClick={autoGenerateMonth} disabled={bulkGenerating} className="w-full xl:w-auto px-4 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 flex items-center justify-center">
       <Calendar className="w-3 h-3 inline mr-1" />{bulkGenerating ? 'Generating...' : 'Generate Month'}
     </button>
   );

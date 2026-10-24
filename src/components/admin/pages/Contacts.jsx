@@ -113,7 +113,7 @@ export default function AdminContacts() {
     {
       key: 'user', header: 'USER', align: 'center', render: (_, contact) => (
         <div className="flex justify-center">
-          <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase">
+          <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase">
             {contact.name?.[0].toUpperCase() || 'U'}
           </div>
         </div>
@@ -143,7 +143,7 @@ export default function AdminContacts() {
     {
       key: 'actions', header: 'ACTIONS', align: 'center', render: (_, contact) => (
         <div className="flex justify-center gap-3">
-          <button aria-label="Send" onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow border-2 border-primary-500/20 rounded-lg xl:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm active:scale-95">
+          <button aria-label="Send" onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow border-2 border-primary-500/20 rounded-lg xl:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm active:scale-95">
             <Send className="w-4 h-4" />
           </button>
           <button aria-label="Delete" onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg xl:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-sm active:scale-95">
@@ -273,7 +273,7 @@ export default function AdminContacts() {
                          transition={{ delay: i * 0.05 }}
                          className="group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary-500/30 transition-all flex flex-col items-center text-center shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
                        >
-                          <div className="relative w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center mb-3 uppercase font-black text-sm">
+                          <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-xl flex items-center justify-center mb-3 uppercase font-black text-sm">
                              {contact.name?.[0].toUpperCase() || 'U'}
                              <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + i + 1}</span>
                           </div>
@@ -291,7 +291,7 @@ export default function AdminContacts() {
                                 <span className="text-[10px] font-bold text-slate-400">{formatDate(contact.createdAt)}</span>
                              </div>
                              <div className="flex gap-1">
-                                <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg hover:bg-primary-700 hover:text-white transition-all" title="Reply">
+                                <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg hover:bg-primary-700 hover:text-white transition-all" title="Reply">
                                    <Send className="w-3.5 h-3.5" />
                                 </button>
                                 <button onClick={() => handleDelete(contact._id)} className="p-1.5 bg-slate-100 dark:bg-slate-700 text-black dark:text-white rounded-lg hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all" title="Delete">
@@ -338,7 +338,7 @@ export default function AdminContacts() {
                          <div className="flex items-center gap-1.5 shrink-0">
                             <button
                                onClick={() => window.open(`mailto:${contact.email}`, '_blank')}
-                               className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-lg hover:bg-primary-700 hover:text-white transition-all"
+                               className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg hover:bg-primary-700 hover:text-white transition-all"
                                title="Reply"
                             >
                                <Send className="w-4 h-4" />

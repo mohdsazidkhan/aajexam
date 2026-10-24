@@ -58,7 +58,7 @@ const AdminProfilePage = () => {
   return (
     <div className="space-y-3 mt-3 xl:mt-4 mb-6">
       {/* Admin hero */}
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 ring-1 ring-primary-200 dark:ring-white/10 shadow-xl p-4 xl:p-6" style={{ borderRadius: 16 }}>
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl p-4 xl:p-6" style={{ borderRadius: 16 }}>
         <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
         <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
         <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
@@ -66,7 +66,7 @@ const AdminProfilePage = () => {
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="flex items-center gap-4 min-w-0">
-            <div className="w-16 h-16 xl:w-20 xl:h-20 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] text-3xl font-black uppercase shadow-lg" style={{ borderRadius: 22 }}>
+            <div className="w-16 h-16 xl:w-20 xl:h-20 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] text-3xl font-black uppercase shadow-lg" style={{ borderRadius: 22 }}>
               {user?.name?.charAt(0) || 'A'}
             </div>
             <div className="min-w-0 space-y-1.5">
@@ -75,13 +75,13 @@ const AdminProfilePage = () => {
                 {user?.name || 'Admin'}
               </h1>
               <div className="flex flex-wrap items-center gap-1.5">
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 text-primary-950 text-[10px] font-black uppercase tracking-wider shadow">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 text-black text-[10px] font-black uppercase tracking-wider shadow">
                   <ShieldCheck className="w-3.5 h-3.5" /> Admin
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20 text-[11px] font-bold text-slate-700 dark:text-white/80 min-w-0">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 text-[11px] font-bold text-slate-700 dark:text-white/80 min-w-0">
                   <Mail className="w-3.5 h-3.5 shrink-0" /> <span className="truncate">{user?.email || 'Not available'}</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20 text-[11px] font-bold text-slate-700 dark:text-white/80 capitalize">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 text-[11px] font-bold text-slate-700 dark:text-white/80 capitalize">
                   <User className="w-3.5 h-3.5" /> {user?.role || 'Admin'}
                 </span>
               </div>
@@ -99,9 +99,9 @@ const AdminProfilePage = () => {
 
       {/* Change password */}
       <section className="relative overflow-hidden bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md">
-        <div className="relative flex items-center gap-3 px-4 py-2.5 bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 border-b border-primary-200 dark:border-transparent dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white">
+        <div className="relative flex items-center gap-3 px-4 py-2.5 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
-          <span className="relative w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Lock className="w-4 h-4" /></span>
+          <span className="relative w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Lock className="w-4 h-4" /></span>
           <div className="relative min-w-0">
             <h2 className="text-sm font-black uppercase tracking-[0.14em] leading-tight">Change password</h2>
             <p className="text-[11px] font-bold text-primary-800/70 dark:text-white/70 leading-tight">Use a strong password to keep your account safe.</p>
@@ -134,7 +134,7 @@ const AdminProfilePage = () => {
           </div>
 
           <div className="flex justify-end pt-3 border-t border-dashed border-slate-200 dark:border-slate-700">
-            <button type="submit" disabled={saving} className="w-full xl:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white text-xs font-black uppercase tracking-[0.15em] flex items-center justify-center gap-2 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition-all">
+            <button type="submit" disabled={saving} className="w-full xl:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white text-xs font-black uppercase tracking-[0.15em] flex items-center justify-center gap-2 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition-all">
               <Lock className="w-4 h-4" /> {saving ? 'Updating password...' : 'Update password'}
             </button>
           </div>
