@@ -606,6 +606,10 @@ class ApiService {
     return this.request(`/api/admin/students?${queryString}`);
   }
 
+  async getStudent(id) {
+    return this.request(`/api/admin/students/${id}`);
+  }
+
   async updateStudent(id, studentData) {
     return this.request(`/api/admin/students/${id}`, {
       method: 'PUT',

@@ -50,7 +50,11 @@ export default function CommunityModeration() {
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearch = useDebounce(searchTerm, 500);
   const [busyId, setBusyId] = useState(null);
-  const [viewMode, setViewMode] = useState('list'); // 'table' | 'list' | 'grid'
+  const [viewMode, setViewMode] = useState('table'); // 'table' | 'list' | 'grid'
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) setViewMode('grid');
+  }, []);
 
   const fetchData = async () => {
     setLoading(true);

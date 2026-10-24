@@ -227,7 +227,7 @@ export default function UserFullDetail() {
     return shell(
       <div className="text-center py-20">
         <div className="p-4 rounded-xl bg-rose-500/10 text-rose-600 text-sm font-bold inline-block">{error || 'User not found'}</div>
-        <div className="mt-4"><Link href="/admin/user-details" className="text-primary-600 font-bold text-sm">← Back to users</Link></div>
+        <div className="mt-4"><Link href="/admin/students" className="text-primary-600 font-bold text-sm">← Back to students</Link></div>
       </div>
     );
   }
@@ -241,9 +241,15 @@ export default function UserFullDetail() {
   return shell(
     <ViewContext.Provider value={view}>
       <div className="flex flex-wrap items-center justify-between gap-2 shrink-0">
-        <Link href="/admin/user-details" className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-primary-600">
-          <ArrowLeft className="w-4 h-4" /> All users
+        <Link href="/admin/students" className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-primary-600">
+          <ArrowLeft className="w-4 h-4" /> All students
         </Link>
+        {p._id ? (
+          <div className="inline-flex p-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+            <span className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow">Details</span>
+            <Link href={`/admin/students/${p._id}`} className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/10">Edit</Link>
+          </div>
+        ) : null}
         {p.username ? (
           <Link href={`/u/${p.username}`} target="_blank" className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-600">
             Public profile <ExternalLink className="w-3.5 h-3.5" />

@@ -615,15 +615,15 @@ const AdminReelEdit = () => {
               </div>
 
               {/* Submit */}
-              <div className="flex items-center gap-3">
-                <Button type="submit" disabled={saving} className="flex items-center gap-2">
-                  <Save className="w-4 h-4" />
-                  {saving ? 'Saving...' : 'Save Changes'}
-                </Button>
+              <div className="flex items-center justify-end gap-3 pt-2 pb-8">
                 <button type="button" onClick={() => router.push('/admin/reels')}
                   className="px-4 py-2.5 rounded-lg xl:rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
                   Cancel
                 </button>
+                <Button type="submit" disabled={saving} className="flex items-center gap-2">
+                  <Save className="w-4 h-4" />
+                  {saving ? 'Saving...' : 'Save Changes'}
+                </Button>
               </div>
             </form>
           </div>

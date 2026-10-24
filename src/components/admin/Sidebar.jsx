@@ -147,7 +147,6 @@ const Sidebar = () => {
       title: 'USERS',
       items: [
         { path: '/admin/students', icon: Users, label: 'Students', key: 'students' },
-        { path: '/admin/user-details', icon: User, label: 'User Details', key: 'user-details' },
         { path: '/admin/admins', icon: ShieldCheck, label: 'Admins', key: 'admins' },
         { path: '/admin/contacts', icon: Contact2, label: 'Contacts', key: 'contacts' },
         { path: '/admin/locations', icon: Landmark, label: 'Locations', key: 'locations' },

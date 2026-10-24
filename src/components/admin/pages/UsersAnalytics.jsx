@@ -82,7 +82,7 @@ const AdminUsersAnalytics = () => {
 
     const handleSearch = (e) => { e?.preventDefault(); fetchStudents(1); };
 
-    const goToUser = (id) => router.push(`/admin/user-details?id=${id}`);
+    const goToUser = (id) => router.push(`/admin/user-details/${id}`);
 
     const exportCSV = () => {
         if (!students.length) return;

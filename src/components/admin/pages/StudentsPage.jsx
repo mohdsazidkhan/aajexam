@@ -7,7 +7,7 @@ import {
   Shield, Zap, Award, Mail, Calendar, MoreVertical, Trash2, Edit3,
   CheckCircle2, XCircle, Info, ExternalLink, CreditCard, Wallet, Crown,
   TrendingUp, Settings, ArrowRight, Download, MapPin,
-  MailWarning, UserCheck, UserMinus, RefreshCcw, Plus, X
+  MailWarning, UserCheck, UserMinus, RefreshCcw, Plus, X, Eye
 } from "lucide-react";
 
 import API from '../../../lib/api';
@@ -422,16 +422,26 @@ const StudentsPage = () => {
         <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
       </button>
 
-      {/* Edit Button */}
+      {/* View details (eye) */}
       <button
         onClick={(e) => {
           e.stopPropagation();
-          // Handle edit functionality
-          // Edit student: navigate to details page
-          router.push(`/admin/students/${student._id}`);
+          router.push(`/admin/user-details/${student._id}`);
         }}
         className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
         title="View student details"
+      >
+        <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+      </button>
+
+      {/* Edit all student info */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          router.push(`/admin/students/${student._id}`);
+        }}
+        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        title="Edit student"
       >
         <Edit3 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
       </button>
@@ -555,7 +565,7 @@ const StudentsPage = () => {
                 {/* View Render Logic */}
                 {viewMode === "table" && (
                   <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                    <ResponsiveTable data={students} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} onRowClick={(student) => router.push(`/admin/students/${student._id}`)} fillHeight />
+                    <ResponsiveTable data={students} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} onRowClick={(student) => router.push(`/admin/user-details/${student._id}`)} fillHeight />
                   </div>
                 )}
 
@@ -568,7 +578,7 @@ const StudentsPage = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        onClick={() => router.push(`/admin/students/${student._id}`)}
+                        onClick={() => router.push(`/admin/user-details/${student._id}`)}
                         className="group relative bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary-500/30 transition-all flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 cursor-pointer shadow-md before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
                       >
                         <div className="relative w-20 h-20 bg-primary-600 rounded-lg xl:rounded-[2rem] flex items-center justify-center text-white text-xl xl:text-3xl font-black shadow-sm group-hover:scale-110 transition-transform shrink-0">
@@ -622,7 +632,7 @@ const StudentsPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        onClick={() => router.push(`/admin/students/${student._id}`)}
+                        onClick={() => router.push(`/admin/user-details/${student._id}`)}
                         className="group relative bg-[#0D1225]/5 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center cursor-pointer overflow-hidden"
                       >
                         <div className="absolute top-0 left-0 w-full h-2 bg-primary-600" />
