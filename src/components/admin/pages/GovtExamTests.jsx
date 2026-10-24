@@ -63,6 +63,9 @@ const AdminGovtExamTests = () => {
       tags: [],
       difficulty: "medium"
    });
+   const [editingQIndex, setEditingQIndex] = useState(null);
+   const [qSearch, setQSearch] = useState('');
+   const [qSection, setQSection] = useState('all');
    const user = getCurrentUser();
 
    useEffect(() => {
@@ -177,11 +180,37 @@ const AdminGovtExamTests = () => {
          toast.error("Fill all fields");
          return;
       }
-      setFormData(prev => ({ ...prev, questions: [...prev.questions, { ...currentQuestion }] }));
+      if (editingQIndex !== null) {
+         setFormData(prev => ({ ...prev, questions: prev.questions.map((q, idx) => (idx === editingQIndex ? { ...q, ...currentQuestion } : q)) }));
+         toast.success(`Question ${editingQIndex + 1} updated`);
+         setEditingQIndex(null);
+      } else {
+         setFormData(prev => ({ ...prev, questions: [...prev.questions, { ...currentQuestion }] }));
+      }
+      setCurrentQuestion({ questionText: "", options: ["", "", "", ""], correctAnswerIndex: 0, explanation: "", section: currentQuestion.section || "", tags: [], difficulty: "medium" });
+   };
+
+   const handleEditQuestion = (i) => {
+      const q = formData.questions[i];
+      if (!q) return;
+      setEditingQIndex(i);
+      setCurrentQuestion({ tags: [], explanation: "", section: "", difficulty: "medium", ...q, options: [...(q.options || ["", "", "", ""])] });
+   };
+
+   const handleCancelEditQuestion = () => {
+      setEditingQIndex(null);
       setCurrentQuestion({ questionText: "", options: ["", "", "", ""], correctAnswerIndex: 0, explanation: "", section: "", tags: [], difficulty: "medium" });
    };
 
-   const handleRemoveQuestion = (i) => setFormData(prev => ({ ...prev, questions: prev.questions.filter((_, idx) => idx !== i) }));
+   const handleRemoveQuestion = (i) => {
+      setFormData(prev => ({ ...prev, questions: prev.questions.filter((_, idx) => idx !== i) }));
+      if (editingQIndex === i) handleCancelEditQuestion();
+      else if (editingQIndex !== null && i < editingQIndex) setEditingQIndex(editingQIndex - 1);
+   };
+
+   useEffect(() => {
+      if (!showModal) { setEditingQIndex(null); setQSearch(''); setQSection('all'); }
+   }, [showModal]);
 
    const handleBulkUpload = () => {
       try {
@@ -440,11 +469,11 @@ const AdminGovtExamTests = () => {
                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-[#0A0F1E]/80 backdrop-blur-xl" />
                      <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0D1225] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-outfit">
 
-                        <div className="p-3 xl:p-10 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
+                        <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
                            <div className="flex items-center gap-3">
-                              <div className="p-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl shadow-sm"><Settings className="w-6 h-6" /></div>
+                              <div className="p-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl shadow-sm"><Settings className="w-5 h-5" /></div>
                               <div>
-                                 <h2 className="text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{editingTest ? 'Edit' : 'Add'} <span className="text-primary-600">Test</span></h2>
+                                 <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{editingTest ? 'Edit' : 'Add'} <span className="text-primary-600">Test</span></h2>
                                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{editingTest ? `Editing: ${editingTest.title}` : 'Create a new practice test'}</p>
                               </div>
                            </div>
@@ -456,9 +485,9 @@ const AdminGovtExamTests = () => {
                            </div>
                         </div>
 
-                        <div className="flex-1 overflow-y-auto p-3 xl:p-10 custom-scrollbar">
+                        <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
                            {uploadMode ? (
-                              <div className="max-w-4xl mx-auto space-y-2 xl:space-y-3 xl:space-y-4">
+                              <div className="w-full max-w-4xl mx-auto flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-6 space-y-3">
                                  <div className="p-3 xl:p-5 bg-primary-500/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-primary-500/20">
                                     <div className="flex items-center gap-3 mb-4">
                                        <div className="p-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm text-primary-600"><Download className="w-6 h-6" /></div>
@@ -474,119 +503,143 @@ const AdminGovtExamTests = () => {
                                  </div>
                               </div>
                            ) : (
-                              <form onSubmit={handleSubmit} className="grid grid-cols-1 xl:grid-cols-2 gap-12 container mx-auto">
-                                 <div className="space-y-10">
-                                    <section className="space-y-3 xl:space-y-3">
-                                       <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-l-4 border-primary-600 pl-3 block">Test Details</h3>
-                                       <div className="space-y-3 xl:space-y-3">
-                                          <div className="space-y-2">
-                                             <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Test Title</label>
-                                             <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="Test Name" required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm border-slate-300 dark:border-slate-700" />
-                                          </div>
-                                          <div className="grid grid-cols-2 gap-3 xl:gap-3">
-                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Total Marks</label>
-                                                <input type="number" value={formData.totalMarks} onChange={(e) => setFormData({ ...formData, totalMarks: parseInt(e.target.value) })} className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm border-slate-300 dark:border-slate-700" />
-                                             </div>
-                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Duration (Min)</label>
-                                                <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) })} className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm border-slate-300 dark:border-slate-700" />
-                                             </div>
-                                          </div>
-                                          <div className="flex items-center gap-3 p-4 bg-slate-50 dark:bg-white/5 rounded-lg xl:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 shadow-sm">
-                                             <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest shrink-0 ${editingTest?.accessLevel === 'FREE' ? 'bg-primary-500/10 text-primary-600' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white'}`}>
-                                                {editingTest ? (editingTest.accessLevel === 'FREE' ? 'Free' : 'PRO') : 'Auto'}
-                                             </div>
-                                             <div>
-                                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">Access Level</div>
-                                                <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest leading-none">Auto-managed: the latest-year PYQ test per pattern is Free, the rest are PRO</div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </section>
-
-                                    <section className="space-y-3 xl:space-y-3 border-t-2 border-slate-50 px-0 py-2.5 xl:py-4">
-                                       <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-l-4 border-primary-600 pl-3 block mb-4 xl:mb-4 flex justify-between items-center">
-                                          Questions ({formData.questions.length})
-                                          <span className="text-primary-600 tabular-nums">{formData.questions.length} / 100</span>
-                                       </h3>
-                                       <div className="space-y-2 xl:space-y-3 max-h-[400px] overflow-y-auto pr-4 custom-scrollbar">
-                                          <AnimatePresence mode="popLayout">
-                                             {formData.questions.map((q, i) => (
-                                                <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, scale: 0.9 }} className="p-4 bg-white dark:bg-white/5 rounded-lg xl:rounded-[1.5rem] border-2 border-slate-50 flex items-start gap-3 group">
-                                                   <div className="w-10 h-10 bg-slate-900 text-white rounded-lg flex items-center justify-center shrink-0 font-black text-xs">{i + 1}</div>
-                                                   <div className="flex-1">
-                                                      <p className="text-xs font-bold text-slate-700 dark:text-slate-300 line-clamp-2 mb-2 leading-relaxed">{q.questionText}</p>
-                                                      <div className="flex items-center gap-3">
-                                                         <span className="text-[8px] font-black text-primary-600 uppercase px-2 py-0.5 bg-primary-500/10 rounded-md border border-primary-500/10">{q.section || 'General'}</span>
-                                                         <span className="text-[8px] font-black text-white px-2 py-0.5 bg-slate-900 rounded-md uppercase tracking-tighter">Ans: {q.correctAnswerIndex + 1}</span>
-                                                      </div>
-                                                   </div>
-                                                   <button aria-label="Delete" type="button" onClick={() => handleRemoveQuestion(i)} className="p-3 text-slate-300 hover:text-black dark:hover:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-all opacity-0 group-hover:opacity-100"><Trash2 className="w-5 h-5" /></button>
-                                                </motion.div>
-                                             ))}
-                                          </AnimatePresence>
-                                       </div>
-                                    </section>
+                              <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
+                                 {/* Test details: one compact row */}
+                                 <div className="shrink-0 px-4 xl:px-5 py-3 border-b border-slate-100 dark:border-white/5 bg-slate-50/60 dark:bg-white/[0.03] grid grid-cols-2 xl:grid-cols-[minmax(0,1fr)_110px_110px_auto] gap-3 items-end">
+                                    <div className="col-span-2 xl:col-span-1 space-y-1">
+                                       <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Test Title</label>
+                                       <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="Test Name" required className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all" />
+                                    </div>
+                                    <div className="space-y-1">
+                                       <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Marks</label>
+                                       <input type="number" value={formData.totalMarks} onChange={(e) => setFormData({ ...formData, totalMarks: parseInt(e.target.value) })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all" />
+                                    </div>
+                                    <div className="space-y-1">
+                                       <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Duration (Min)</label>
+                                       <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all" />
+                                    </div>
+                                    <div className="col-span-2 xl:col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg" title="Auto-managed: the latest-year PYQ test per pattern is Free, the rest are PRO">
+                                       <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-widest shrink-0 ${editingTest?.accessLevel === 'FREE' ? 'bg-primary-500/10 text-primary-600' : 'bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-200'}`}>
+                                          {editingTest ? (editingTest.accessLevel === 'FREE' ? 'Free' : 'PRO') : 'Auto'}
+                                       </span>
+                                       <span className="text-[10px] font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest">Access Level</span>
+                                    </div>
                                  </div>
 
-                                 <div className="space-y-10">
-                                    <section className="rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/5 px-0 py-2.5 xl:py-4">
-                                       <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 xl:mb-4 flex items-center gap-3">
-                                          <Activity className="w-4 h-4 text-primary-600" /> Add a Question
-                                       </h3>
-                                       <div className="space-y-3 xl:space-y-3">
-                                          <div className="space-y-2">
-                                             <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Question Statement</label>
-                                             <textarea value={currentQuestion.questionText} onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })} placeholder="Enter question text..." rows="3" className="w-full p-4 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none border-slate-300 dark:border-slate-700" />
+                                 {/* Main: question list (left) + editor (right), each scrolls on its own */}
+                                 <div className="flex-1 min-h-0 grid grid-cols-1 xl:grid-cols-[minmax(340px,2fr)_3fr]">
+                                    {/* Questions list */}
+                                    <div className="min-h-0 flex flex-col border-b xl:border-b-0 xl:border-r border-slate-100 dark:border-white/5 max-xl:max-h-[45vh]">
+                                       <div className="shrink-0 px-4 xl:px-5 pt-3 pb-2 space-y-2">
+                                          <div className="flex items-center justify-between">
+                                             <h3 className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] border-l-4 border-primary-600 pl-3">Questions ({formData.questions.length})</h3>
+                                             <span className="text-[10px] font-black text-primary-600 tabular-nums">{formData.questions.length} / 100</span>
                                           </div>
-                                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                             {currentQuestion.options.map((opt, idx) => (
-                                                <div key={idx} className="space-y-2">
-                                                   <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Option {idx + 1}</label>
-                                                   <div className="relative group">
-                                                      <div onClick={() => setCurrentQuestion({ ...currentQuestion, correctAnswerIndex: idx })} className={`absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-2 cursor-pointer flex items-center justify-center transition-all ${currentQuestion.correctAnswerIndex === idx ? 'bg-primary-600 border-primary-600 text-white' : 'bg-white dark:bg-white/10 border-slate-200'}`}>
-                                                         {currentQuestion.correctAnswerIndex === idx ? <CheckCircle className="w-4 h-4" /> : <div className="w-2 h-2 rounded-full bg-slate-200" />}
+                                          <input type="text" value={qSearch} onChange={(e) => setQSearch(e.target.value)} placeholder="Search questions..." className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all" />
+                                          {(() => {
+                                             const secs = Array.from(new Set(formData.questions.map(q => q.section || 'General')));
+                                             return secs.length > 1 ? (
+                                                <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
+                                                   {['all', ...secs].map(sec => (
+                                                      <button key={sec} type="button" onClick={() => setQSection(sec)} className={`shrink-0 px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider transition-all ${qSection === sec ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/20'}`}>{sec === 'all' ? 'All' : sec}</button>
+                                                   ))}
+                                                </div>
+                                             ) : null;
+                                          })()}
+                                       </div>
+                                       <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar px-4 xl:px-5 pb-4 space-y-2">
+                                          {formData.questions.length === 0 && (
+                                             <div className="py-8 text-center text-[11px] font-black text-slate-400 uppercase tracking-widest">No questions yet</div>
+                                          )}
+                                          {formData.questions.map((q, i) => {
+                                             const text = (q.questionText || '').toLowerCase();
+                                             if (qSearch && !text.includes(qSearch.toLowerCase())) return null;
+                                             if (qSection !== 'all' && (q.section || 'General') !== qSection) return null;
+                                             const active = editingQIndex === i;
+                                             return (
+                                                <div key={i} onClick={() => handleEditQuestion(i)} className={`group flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${active ? 'border-primary-500 bg-primary-50 dark:bg-primary-500/10 ring-2 ring-primary-500/20' : 'border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 hover:border-primary-300 hover:shadow-sm'}`}>
+                                                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-black text-xs ${active ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white' : 'bg-slate-900 dark:bg-white/10 text-white'}`}>{i + 1}</div>
+                                                   <div className="flex-1 min-w-0">
+                                                      <p className="text-xs font-bold text-slate-700 dark:text-slate-200 line-clamp-2 leading-snug">{q.questionText}</p>
+                                                      <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+                                                         <span className="text-[8px] font-black text-primary-700 dark:text-primary-300 uppercase px-2 py-0.5 bg-primary-500/10 rounded-md">{q.section || 'General'}</span>
+                                                         <span className="text-[8px] font-black text-white px-2 py-0.5 bg-slate-800 dark:bg-white/20 rounded-md uppercase">Ans: {q.correctAnswerIndex + 1}</span>
                                                       </div>
-                                                      <input type="text" value={opt} onChange={(e) => {
-                                                         const newOps = [...currentQuestion.options];
-                                                         newOps[idx] = e.target.value;
-                                                         setCurrentQuestion({ ...currentQuestion, options: newOps });
-                                                      }} placeholder={`Choice ${idx + 1}`} className="w-full pl-14 pr-4 py-2.5 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-[11px] font-bold outline-none transition-all border-slate-300 dark:border-slate-700" />
                                                    </div>
+                                                   <div className="flex flex-col gap-1 shrink-0">
+                                                      <button aria-label="Edit" type="button" onClick={(e) => { e.stopPropagation(); handleEditQuestion(i); }} className="p-1.5 rounded-lg text-slate-400 hover:text-primary-600 hover:bg-primary-500/10 transition-all"><Edit3 className="w-4 h-4" /></button>
+                                                      <button aria-label="Delete" type="button" onClick={(e) => { e.stopPropagation(); handleRemoveQuestion(i); }} className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-500/10 transition-all"><Trash2 className="w-4 h-4" /></button>
+                                                   </div>
+                                                </div>
+                                             );
+                                          })}
+                                       </div>
+                                    </div>
+
+                                    {/* Question editor */}
+                                    <div className="min-h-0 overflow-y-auto custom-scrollbar px-4 xl:px-5 py-3 space-y-3">
+                                       <div className="flex items-center justify-between gap-2">
+                                          <h3 className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] flex items-center gap-2">
+                                             <Activity className="w-4 h-4 text-primary-600" /> {editingQIndex !== null ? `Edit Question ${editingQIndex + 1}` : 'Add a Question'}
+                                          </h3>
+                                          {editingQIndex !== null && (
+                                             <button type="button" onClick={handleCancelEditQuestion} className="px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/20">Cancel edit</button>
+                                          )}
+                                       </div>
+                                       <div className="space-y-1">
+                                          <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Question Statement</label>
+                                          <textarea value={currentQuestion.questionText} onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })} placeholder="Enter question text..." rows="3" className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all resize-y" />
+                                       </div>
+                                       <div className="space-y-1">
+                                          <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Options <span className="normal-case tracking-normal font-bold text-slate-400">(tap the circle to mark the correct one)</span></label>
+                                          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                             {currentQuestion.options.map((opt, idx) => (
+                                                <div key={idx} className={`flex items-center gap-2 pl-2 pr-1 rounded-lg border transition-all ${currentQuestion.correctAnswerIndex === idx ? 'border-primary-500 bg-primary-50/60 dark:bg-primary-500/10' : 'border-slate-300 dark:border-slate-700 bg-white dark:bg-black'}`}>
+                                                   <button type="button" aria-label={`Mark option ${idx + 1} correct`} onClick={() => setCurrentQuestion({ ...currentQuestion, correctAnswerIndex: idx })} className={`w-6 h-6 shrink-0 rounded-full border-2 flex items-center justify-center text-[10px] font-black transition-all ${currentQuestion.correctAnswerIndex === idx ? 'bg-primary-600 border-primary-600 text-white' : 'border-slate-300 dark:border-slate-600 text-slate-400'}`}>
+                                                      {currentQuestion.correctAnswerIndex === idx ? <CheckCircle className="w-4 h-4" /> : String.fromCharCode(65 + idx)}
+                                                   </button>
+                                                   <input type="text" value={opt} onChange={(e) => {
+                                                      const newOps = [...currentQuestion.options];
+                                                      newOps[idx] = e.target.value;
+                                                      setCurrentQuestion({ ...currentQuestion, options: newOps });
+                                                   }} placeholder={`Choice ${idx + 1}`} className="flex-1 min-w-0 py-2 bg-transparent text-xs font-bold outline-none text-slate-800 dark:text-white placeholder:text-slate-400" />
                                                 </div>
                                              ))}
                                           </div>
-                                          <div className="space-y-2">
-                                             <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Explanation (Optional)</label>
-                                             <textarea value={currentQuestion.explanation} onChange={(e) => setCurrentQuestion({ ...currentQuestion, explanation: e.target.value })} placeholder="Optional: Correct answer logic..." rows="2" className="w-full p-4 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none border-slate-300 dark:border-slate-700" />
-                                          </div>
-                                          <div className="grid grid-cols-2 gap-3 xl:gap-3">
-                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Section</label>
-                                                <input type="text" value={currentQuestion.section} onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })} placeholder="E.G. REASONING" className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm border-slate-300 dark:border-slate-700" />
-                                             </div>
-                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Difficulty</label>
-                                                <select value={currentQuestion.difficulty} onChange={(e) => setCurrentQuestion({ ...currentQuestion, difficulty: e.target.value })} className="w-full px-3 xl:px-4 py-2.5 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm border-slate-300 dark:border-slate-700">
-                                                   <option value="easy">Easy</option>
-                                                   <option value="medium">Medium</option>
-                                                   <option value="hard">Hard</option>
-                                                </select>
-                                             </div>
-                                          </div>
-                                          <button type="button" onClick={handleAddQuestion} className="w-full py-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 shadow-sm mt-4">
-                                             <Plus className="w-5 h-5" /> Add Question
-                                          </button>
                                        </div>
-                                    </section>
-
-                                    <div className="pt-10 flex gap-3 xl:gap-3">
-                                       <button type="button" onClick={() => setShowModal(false)} className="flex-1 py-3 bg-slate-100 dark:bg-white/10 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-sm">Cancel</button>
-                                       <button type="submit" className="flex-[2] py-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
-                                          <CheckCircle2 className="w-5 h-5" /> {editingTest ? 'Save Changes' : 'Create Test'}
+                                       <div className="space-y-1">
+                                          <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Explanation (Optional)</label>
+                                          <textarea value={currentQuestion.explanation} onChange={(e) => setCurrentQuestion({ ...currentQuestion, explanation: e.target.value })} placeholder="Optional: Correct answer logic..." rows="2" className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all resize-y" />
+                                       </div>
+                                       <div className="grid grid-cols-2 gap-3">
+                                          <div className="space-y-1">
+                                             <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Section</label>
+                                             <input type="text" list="test-sections" value={currentQuestion.section} onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })} placeholder="E.G. REASONING" className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all uppercase" />
+                                             <datalist id="test-sections">
+                                                {Array.from(new Set(formData.questions.map(q => q.section).filter(Boolean))).map(sec => <option key={sec} value={sec} />)}
+                                             </datalist>
+                                          </div>
+                                          <div className="space-y-1">
+                                             <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Difficulty</label>
+                                             <select value={currentQuestion.difficulty} onChange={(e) => setCurrentQuestion({ ...currentQuestion, difficulty: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all">
+                                                <option value="easy">Easy</option>
+                                                <option value="medium">Medium</option>
+                                                <option value="hard">Hard</option>
+                                             </select>
+                                          </div>
+                                       </div>
+                                       <button type="button" onClick={handleAddQuestion} className="w-full py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+                                          {editingQIndex !== null ? <><CheckCircle className="w-4 h-4" /> Update Question</> : <><Plus className="w-4 h-4" /> Add Question</>}
                                        </button>
                                     </div>
+                                 </div>
+
+                                 {/* Fixed footer */}
+                                 <div className="shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] flex gap-3">
+                                    <button type="button" onClick={() => setShowModal(false)} className="flex-1 py-2.5 bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 rounded-lg font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Cancel</button>
+                                    <button type="submit" className="flex-[2] py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+                                       <CheckCircle2 className="w-4 h-4" /> {editingTest ? 'Save Changes' : 'Create Test'}
+                                    </button>
                                  </div>
                               </form>
                            )}

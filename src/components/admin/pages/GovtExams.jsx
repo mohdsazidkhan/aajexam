@@ -388,19 +388,20 @@ const AdminGovtExams = () => {
         <div className="fixed inset-0 z-[999]">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-slate-950/60 backdrop-blur-md" />
           <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
-            <div className="p-3 xl:p-5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
+            <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl shadow-sm">
-                  <Settings className="w-6 h-6" />
+                <div className="p-2 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl shadow-sm">
+                  <Settings className="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 className="text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingExam ? 'Edit' : 'Add'} <span className="text-primary-600">Exam</span></h2>
+                  <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingExam ? 'Edit' : 'Add'} <span className="text-primary-600">Exam</span></h2>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingExam ? `Editing: ${editingExam.name}` : 'Create a new exam'}</p>
                 </div>
               </div>
               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg xl:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
             </div>
-            <form onSubmit={handleSubmit} className="flex-1 p-3 xl:p-5 overflow-y-auto custom-scrollbar">
+            <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
+<div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-5 space-y-3">
               <div className="space-y-2 xl:space-y-3 xl:space-y-4">
                 <div className="space-y-2 xl:space-y-3">
                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Category</label>
@@ -438,7 +439,8 @@ const AdminGovtExams = () => {
                   <input type="checkbox" checked={formData.isActive} onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })} className="w-6 h-6 rounded-lg text-primary-600 border-2 border-slate-300 cursor-pointer" />
                 </div>
               </div>
-              <div className="flex gap-3 pt-8">
+              </div>
+<div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)]">
                 <button type="button" onClick={() => setShowModal(false)} className="flex-1 py-3 bg-slate-100 dark:bg-white/5 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest">Cancel</button>
                 <button type="submit" className="flex-[2] py-3 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
                   <CheckCircle2 className="w-5 h-5" /> {editingExam ? 'Save Changes' : 'Register Exam'}

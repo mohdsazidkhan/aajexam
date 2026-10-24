@@ -377,7 +377,8 @@ const AdminExpenses = () => {
                                     </button>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="flex-1 p-4 xl:p-10 space-y-2 xl:space-y-3 xl:space-y-4 overflow-y-auto">
+                                <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
+<div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-5 space-y-3">
                                     <div className="space-y-2 xl:space-y-3">
                                         <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Title</label>
                                         <div className="relative group/field">
@@ -445,7 +446,8 @@ const AdminExpenses = () => {
                                         />
                                     </div>
 
-                                    <div className="flex gap-3 xl:gap-3 pt-4">
+                                    </div>
+<div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)]">
                                         <motion.button
                                             whileHover={{ x: -5 }}
                                             type="button"

@@ -215,7 +215,7 @@ const AdminInterviewCategories = () => {
               <div className="fixed inset-0 z-[999]">
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowForm(false); setEditId(null); }} className="absolute inset-0 bg-black/50" />
                 <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
-                  <div className="p-4 border-b-2 border-slate-100 dark:border-slate-700/50 flex items-center justify-between shrink-0">
+                  <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-slate-700/50 flex items-center justify-between shrink-0">
                     <div>
                       <h2 className="text-base font-bold text-slate-900 dark:text-white">{editId ? 'Edit Category' : 'Add New Category'}</h2>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Fill in the details below</p>
@@ -253,7 +253,7 @@ const AdminInterviewCategories = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="p-4 border-t-2 border-slate-100 dark:border-slate-700/50 flex items-center gap-3 shrink-0">
+                  <div className="px-4 py-2.5 border-t border-slate-200 dark:border-slate-700 flex items-center gap-3 shrink-0">
                     <button onClick={handleSave} className="px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md hover:bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
                     <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-4 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg xl:rounded-xl text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
                   </div>

@@ -401,12 +401,12 @@ const AdminGovtExamCategories = () => {
                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
                 className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0f172a] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/5 overflow-hidden flex flex-col shadow-2xl"
               >
-                <div className="p-4 xl:p-10 border-b-2 border-slate-50 dark:border-white/5 flex items-center justify-between">
+                <div className="px-4 py-2.5 border-b-2 border-slate-50 dark:border-white/5 flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-3">
-                    <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl">
-                      <Settings className="w-6 h-6" />
+                    <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rounded-2xl">
+                      <Settings className="w-5 h-5" />
                     </div>
-                    <h2 className="text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
+                    <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
                       {editingCategory ? "UPDATE CATEGORY" : "NEW CATEGORY"}
                     </h2>
                   </div>
@@ -415,7 +415,8 @@ const AdminGovtExamCategories = () => {
                   </button>
                 </div>
 
-                <form onSubmit={handleSubmit} className="flex-1 p-4 xl:p-10 space-y-2 xl:space-y-3 xl:space-y-4 overflow-y-auto">
+                <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
+<div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-5 space-y-3">
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">CATEGORY NAME</label>
                     <input
@@ -455,7 +456,8 @@ const AdminGovtExamCategories = () => {
                     />
                   </div>
 
-                  <div className="flex gap-3 pt-4">
+                  </div>
+<div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)]">
                     <button
                       type="button"
                       onClick={() => setShowModal(false)}

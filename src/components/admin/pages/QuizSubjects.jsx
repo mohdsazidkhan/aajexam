@@ -223,16 +223,18 @@ const AdminQuizSubjects = () => {
         <div className="fixed inset-0 z-[999]">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-black/50" />
           <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
-          <div className="p-4 w-full h-full overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
+          <div className="w-full h-full flex flex-col">
+<div className="shrink-0 flex justify-between items-center px-4 py-2.5 border-b border-slate-200 dark:border-slate-700">
               <h2 className="text-lg font-black text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Subject</h2>
               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </div>
-            <form onSubmit={handleSubmit} className="space-y-2 xl:space-y-3">
+            <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
+<div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-5 space-y-3">
               <input required placeholder="Subject Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
               <input placeholder="Description" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
               <input type="number" placeholder="Order" value={form.order} onChange={e => setForm({ ...form, order: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
-              <button type="submit" className="w-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white py-2.5 rounded-lg xl:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create'}</button>
+              </div>
+<div className="shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)]"><button type="submit" className="w-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white py-2.5 rounded-lg xl:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create'}</button></div>
             </form>
           </div>
           </motion.div>
