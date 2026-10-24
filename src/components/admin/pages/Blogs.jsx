@@ -142,16 +142,18 @@ const AdminBlogs = () => {
 
   const getStatusBadge = (status) => {
     const cfg = {
-      published: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300',
-      draft: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
-      archived: 'bg-gray-100 text-gray-800 dark:bg-slate-700 dark:text-gray-300'
+      published: 'bg-primary-100 text-primary-800 ring-primary-200 dark:bg-primary-400/20 dark:text-primary-200 dark:ring-white/15',
+      draft: 'bg-slate-100 text-slate-600 ring-slate-200 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10',
+      archived: 'bg-amber-100 text-amber-800 ring-amber-200 dark:bg-amber-500/20 dark:text-amber-300 dark:ring-white/10'
     };
     return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${cfg[status] || cfg.draft}`}>
+      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ring-1 ${cfg[status] || cfg.draft}`}>
+        <span className="w-1.5 h-1.5 rounded-full bg-current" />
         {status?.charAt(0).toUpperCase() + status?.slice(1)}
       </span>
     );
   };
+
 
   const blogTableColumns = [
     {
@@ -189,21 +191,21 @@ const AdminBlogs = () => {
     {
       key: 'actions', header: 'Actions', render: (_, blog) => (
         <div className="flex items-center gap-2">
-          <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 hover:text-primary-800 dark:text-primary-400">
+          <Link href={`/admin/blogs/${blog._id}/edit`} aria-label="Edit" className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-400/10 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-400/20 transition-colors">
             <Edit3 className="w-4 h-4" />
           </Link>
           {blog.status === 'published' ? (
-            <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white hover:text-black dark:hover:text-white text-xs font-bold">Unpublish</button>
+            <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Unpublish</button>
           ) : (
-            <button onClick={() => handlePublish(blog._id)} className="text-primary-600 hover:text-primary-800 dark:text-primary-400 text-xs font-bold">Publish</button>
+            <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
           )}
-          <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured">
-            <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
+          <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured" className={`${blog.isFeatured ? 'p-1.5 rounded-lg bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200 transition-colors' : 'p-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-400 hover:text-primary-600 transition-colors'}`}>
+            <Star className={`w-4 h-4 ${blog.isFeatured ? 'fill-current' : ''}`} />
           </button>
-          <button onClick={() => handleTogglePinned(blog._id)} title="Toggle Pinned">
-            <Pin className={`w-4 h-4 ${blog.isPinned ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
+          <button onClick={() => handleTogglePinned(blog._id)} title="Toggle Pinned" className={`${blog.isPinned ? 'p-1.5 rounded-lg bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200 transition-colors' : 'p-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-400 hover:text-primary-600 transition-colors'}`}>
+            <Pin className={`w-4 h-4 ${blog.isPinned ? 'fill-current' : ''}`} />
           </button>
-          <button aria-label="Delete" onClick={() => handleDelete(blog._id)} className="text-black dark:text-white hover:text-black dark:hover:text-white">
+          <button aria-label="Delete" onClick={() => handleDelete(blog._id)} className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors">
             <Trash2 className="w-4 h-4" />
           </button>
         </div>
@@ -212,7 +214,7 @@ const AdminBlogs = () => {
   ];
 
   const renderTableView = () => (
-    <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+    <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
       <ResponsiveTable
         data={blogs}
         columns={blogTableColumns}
@@ -230,7 +232,7 @@ const AdminBlogs = () => {
       {blogs.map((blog, idx) => {
         const serialNumber = (currentPage - 1) * itemsPerPage + idx + 1;
         return (
-        <div key={blog._id} className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <div key={blog._id} className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
           <div className="relative mb-3">
             <img src={blog.featuredImage || '/default_banner.png'} alt={blog.title} className="w-full h-40 rounded-lg object-cover" />
             <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
@@ -246,19 +248,19 @@ const AdminBlogs = () => {
           </div>
           <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">{formatDate(blog.createdAt)}</div>
           <div className="mt-3 flex items-center gap-2">
-            <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 text-xs font-bold">Edit</Link>
+            <Link href={`/admin/blogs/${blog._id}/edit`} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-400/10 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-400/20 transition-colors text-[10px] font-black uppercase tracking-wider px-2.5">Edit</Link>
             {blog.status === 'published' ? (
-              <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white text-xs font-bold">Unpublish</button>
+              <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Unpublish</button>
             ) : (
-              <button onClick={() => handlePublish(blog._id)} className="text-primary-600 text-xs font-bold">Publish</button>
+              <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
             )}
-            <button onClick={() => handleToggleFeatured(blog._id)}>
-              <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
-            </button>
-            <button onClick={() => handleTogglePinned(blog._id)}>
-              <Pin className={`w-4 h-4 ${blog.isPinned ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
-            </button>
-            <button aria-label="Delete" onClick={() => handleDelete(blog._id)} className="text-black dark:text-white">
+            <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured" className={`${blog.isFeatured ? 'p-1.5 rounded-lg bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200 transition-colors' : 'p-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-400 hover:text-primary-600 transition-colors'}`}>
+            <Star className={`w-4 h-4 ${blog.isFeatured ? 'fill-current' : ''}`} />
+          </button>
+            <button onClick={() => handleTogglePinned(blog._id)} title="Toggle Pinned" className={`${blog.isPinned ? 'p-1.5 rounded-lg bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200 transition-colors' : 'p-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-400 hover:text-primary-600 transition-colors'}`}>
+            <Pin className={`w-4 h-4 ${blog.isPinned ? 'fill-current' : ''}`} />
+          </button>
+            <button aria-label="Delete" onClick={() => handleDelete(blog._id)} className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors">
               <Trash2 className="w-4 h-4" />
             </button>
           </div>
@@ -273,7 +275,7 @@ const AdminBlogs = () => {
       {blogs.map((blog, idx) => {
         const serialNumber = (currentPage - 1) * itemsPerPage + idx + 1;
         return (
-        <div key={blog._id} className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 flex items-start gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <div key={blog._id} className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 flex items-start gap-3 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
           <div className="relative w-16 h-16 flex-shrink-0">
             <img src={blog.featuredImage || '/default_banner.png'} alt={blog.title} className="w-16 h-16 rounded-lg object-cover" />
             <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
@@ -293,13 +295,13 @@ const AdminBlogs = () => {
               <span>{formatDate(blog.createdAt)}</span>
             </div>
             <div className="mt-2 flex items-center gap-3">
-              <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 text-xs font-bold">Edit</Link>
+              <Link href={`/admin/blogs/${blog._id}/edit`} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-400/10 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-400/20 transition-colors text-[10px] font-black uppercase tracking-wider px-2.5">Edit</Link>
               {blog.status === 'published' ? (
-                <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white text-xs font-bold">Unpublish</button>
+                <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Unpublish</button>
               ) : (
-                <button onClick={() => handlePublish(blog._id)} className="text-primary-600 text-xs font-bold">Publish</button>
+                <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
               )}
-              <button onClick={() => handleDelete(blog._id)} className="text-black dark:text-white text-xs font-bold">Delete</button>
+              <button onClick={() => handleDelete(blog._id)} className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors text-[10px] font-black uppercase tracking-wider px-2.5">Delete</button>
             </div>
           </div>
         </div>

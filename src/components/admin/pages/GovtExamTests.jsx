@@ -635,12 +635,12 @@ const AdminGovtExamTests = () => {
                                  </div>
 
                                  {/* Fixed footer */}
-                                 <div className="shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] flex gap-3">
-                                    <button type="button" onClick={() => setShowModal(false)} className="flex-1 py-2.5 bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 rounded-lg font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Cancel</button>
-                                    <button type="submit" className="flex-[2] py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:brightness-110 transition-all">
-                                       <CheckCircle2 className="w-4 h-4" /> {editingTest ? 'Save Changes' : 'Create Test'}
-                                    </button>
-                                 </div>
+                                 <div className="shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] flex gap-3 justify-end items-center">
+ <button type="button" onClick={() => setShowModal(false)} className="px-6 py-2.5 bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 rounded-lg font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Cancel</button>
+ <button type="submit" className="px-6 py-2.5 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+ <CheckCircle2 className="w-4 h-4" /> {editingTest ? 'Save Changes' : 'Create Test'}
+ </button>
+ </div>
                               </form>
                            )}
                         </div>

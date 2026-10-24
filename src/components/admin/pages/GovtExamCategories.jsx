@@ -457,21 +457,21 @@ const AdminGovtExamCategories = () => {
                   </div>
 
                   </div>
-<div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)]">
-                    <button
-                      type="button"
-                      onClick={() => setShowModal(false)}
-                      className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
-                    >
-                      CANCEL
-                    </button>
-                    <button
-                      type="submit"
-                      className="flex-1 p-4 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-sm hover:scale-105 active:scale-95 transition-all outline-none"
-                    >
-                      {editingCategory ? "SAVE CHANGES" : "CREATE CATEGORY"}
-                    </button>
-                  </div>
+<div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] justify-end items-center">
+ <button
+ type="button"
+ onClick={() => setShowModal(false)}
+ className="px-6 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
+ >
+ CANCEL
+ </button>
+ <button
+ type="submit"
+ className="px-6 p-4 bg-gradient-to-r from-primary-500 to-primary-700 shadow-md text-white rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-sm hover:scale-105 active:scale-95 transition-all outline-none"
+ >
+ {editingCategory ? "SAVE CHANGES" : "CREATE CATEGORY"}
+ </button>
+ </div>
                 </form>
               </motion.div>
             </div>

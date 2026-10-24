@@ -447,24 +447,24 @@ const AdminExpenses = () => {
                                     </div>
 
                                     </div>
-<div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)]">
-                                        <motion.button
-                                            whileHover={{ x: -5 }}
-                                            type="button"
-                                            onClick={() => setShowModal(false)}
-                                            className="flex-1 py-3 rounded-lg xl:rounded-[2rem] bg-slate-100 dark:bg-white/5 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-[0.2em] hover:bg-slate-200 transition-all border-2 border-transparent"
-                                        >
-                                            CANCEL
-                                        </motion.button>
-                                        <motion.button
-                                            whileHover={{ x: 5 }}
-                                            type="submit"
-                                            disabled={formLoading}
-                                            className="flex-1 py-3 rounded-lg xl:rounded-[2rem] bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[10px] font-black uppercase tracking-[0.2em] shadow-sm disabled:opacity-50"
-                                        >
-                                            {formLoading ? 'SAVING...' : (isEditing ? 'SAVE CHANGES' : 'ADD EXPENSE')}
-                                        </motion.button>
-                                    </div>
+<div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] justify-end items-center">
+ <motion.button
+ whileHover={{ x: -5 }}
+ type="button"
+ onClick={() => setShowModal(false)}
+ className="px-6 py-3 rounded-lg xl:rounded-[2rem] bg-slate-100 dark:bg-white/5 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-[0.2em] hover:bg-slate-200 transition-all border-2 border-transparent"
+ >
+ CANCEL
+ </motion.button>
+ <motion.button
+ whileHover={{ x: 5 }}
+ type="submit"
+ disabled={formLoading}
+ className="px-6 py-3 rounded-lg xl:rounded-[2rem] bg-gradient-to-r from-primary-500 to-primary-700 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-sm disabled:opacity-50"
+ >
+ {formLoading ? 'SAVING...' : (isEditing ? 'SAVE CHANGES' : 'ADD EXPENSE')}
+ </motion.button>
+ </div>
                                 </form>
                             </motion.div>
                         </div>
