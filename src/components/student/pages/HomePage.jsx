@@ -43,7 +43,7 @@ const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) 
    return (
    <div className="flex items-center justify-between mb-4 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15">
       <div className="flex items-center gap-2.5">
-         <div className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+         <div className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
             <IconComp className="w-[18px] h-[18px]" />
          </div>
          <h2 className="text-base xl:text-lg font-black text-slate-900 dark:text-white tracking-tight uppercase">
@@ -52,7 +52,7 @@ const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) 
       </div>
       <button
          onClick={onViewAll}
-         className="flex items-center gap-0.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all"
+         className="flex items-center gap-0.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow hover:brightness-105 transition-all"
       >
          <span className="text-xs font-extrabold text-primary-950">{translate('View All')}</span>
          <ChevronRight className="w-3.5 h-3.5 text-primary-950" />
@@ -74,7 +74,7 @@ const GovtExamCard = ({ item, onClick }) => {
       style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
          <GraduationCap className="w-6 h-6" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -97,7 +97,7 @@ const QuizCard = ({ item, onClick }) => {
       style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
          <Brain className="w-5 h-5" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -122,7 +122,7 @@ const SubjectCard = ({ item, onClick }) => {
       style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
          <BookOpen className="w-6 h-6" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -147,7 +147,7 @@ const TopicCard = ({ item, onClick }) => {
       style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
          <Layers className="w-5 h-5" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -166,7 +166,7 @@ const REEL_TYPE_CONFIG = {
    fact: { icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Fact' },
    tip: { icon: Lightbulb, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Tip' },
    current_affairs: { icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Current Affairs' },
-   poll: { icon: BarChart3, color: 'text-primary-600', bg: 'bg-primary-500/10', label: 'Poll' },
+   poll: { icon: BarChart3, color: 'text-primary-600 dark:text-primary-300', bg: 'bg-primary-500/10', label: 'Poll' },
 };
 
 // ─── Blog Card ───
@@ -212,7 +212,7 @@ const ReelCard = ({ item, onClick }) => {
       style={{ borderRadius: 14 }}
       >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-         <div className="flex items-center gap-1.5 self-start px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow rounded-lg">
+         <div className="flex items-center gap-1.5 self-start px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow rounded-lg">
             <TypeIcon className="w-3.5 h-3.5" />
             <span className="text-[10px] font-extrabold uppercase tracking-wide">{translate(cfg.label)}</span>
          </div>
@@ -370,7 +370,7 @@ const HomePage = () => {
                         <div className="relative flex items-center justify-between gap-2">
                            <span className="text-[10px] xl:text-xs font-black uppercase tracking-[0.2em] text-slate-600 dark:text-white/75">{translate('Readiness')}</span>
                            {streakCount > 0 && (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow" style={{ borderRadius: 999 }}>
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow" style={{ borderRadius: 999 }}>
                                  <Flame className="w-3.5 h-3.5 fill-current" />
                                  <span className="text-xs font-black">{streakCount}</span>
                               </span>
@@ -423,7 +423,7 @@ const HomePage = () => {
                         style={{ borderRadius: 12 }}
                      >
                         <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
-                        <span className="ml-1 w-9 h-9 xl:w-10 xl:h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
+                        <span className="ml-1 w-9 h-9 xl:w-10 xl:h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
                            <Icon className="w-4 h-4 xl:w-5 xl:h-5" />
                         </span>
                         <p className="flex-1 min-w-0 text-slate-900 dark:text-white text-[11px] xl:text-xs font-black uppercase tracking-wide leading-tight">{translate(label)}</p>

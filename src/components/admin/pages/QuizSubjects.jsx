@@ -176,7 +176,7 @@ const AdminQuizSubjects = () => {
           {filtered.map((sub, idx) => (
             <div key={sub._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
               <div className="flex items-start justify-between gap-2">
-                <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow flex items-center justify-center shrink-0">
+                <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
                   <BookMarked className="w-5 h-5" />
                   <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{idx + 1}</span>
                 </div>
@@ -187,7 +187,7 @@ const AdminQuizSubjects = () => {
                 {!!sub.order && <p className="text-xs text-slate-400">Order: {sub.order}</p>}
               </div>
               <div className="flex gap-2 mt-auto pt-2 border-t border-slate-100 dark:border-slate-700">
-                <button onClick={() => openEdit(sub)} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-3.5 h-3.5" /> Edit</button>
+                <button onClick={() => openEdit(sub)} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-primary-600 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-3.5 h-3.5" /> Edit</button>
                 <button onClick={() => handleDelete(sub._id)} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-3.5 h-3.5" /> Delete</button>
               </div>
             </div>
@@ -198,7 +198,7 @@ const AdminQuizSubjects = () => {
         <div className="h-full overflow-auto space-y-2">
           {filtered.map((sub, idx) => (
             <div key={sub._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow flex items-center justify-center shrink-0">
+              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
                 <BookMarked className="w-5 h-5" />
                 <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{idx + 1}</span>
               </div>
@@ -225,7 +225,7 @@ const AdminQuizSubjects = () => {
           <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
           <div className="w-full h-full flex flex-col">
 <div className="shrink-0 flex justify-between items-center px-4 py-2.5 border-b border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><h2 className="text-base font-black uppercase tracking-tight text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Subject</h2></div>
+              <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><h2 className="text-base font-black uppercase tracking-tight text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Subject</h2></div>
               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </div>
             <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">

@@ -91,7 +91,7 @@ const DashboardPage = () => {
   const sections = [
     {
       title: 'USERS & ENGAGEMENT',
-      accent: 'text-primary-600',
+      accent: 'text-primary-600 dark:text-primary-300',
       cards: [
         { title: 'Total Students', count: stats.students || 0, link: '/admin/students', icon: Users, subtitle: `${stats.newStudentsThisMonth || 0} new this month` },
         { title: 'Yesterday Users', count: stats.newStudentsYesterday || 0, link: '/admin/students', icon: UserPlus, subtitle: 'Signups yesterday' },
@@ -105,7 +105,7 @@ const DashboardPage = () => {
     },
     {
       title: 'EXAMS & PRACTICE TESTS',
-      accent: 'text-primary-600',
+      accent: 'text-primary-600 dark:text-primary-300',
       cards: [
         { title: 'Exam Categories', count: stats.examCategories || 0, link: '/admin/govt-exams', icon: Layers, subtitle: 'Central & State' },
         { title: 'Exams', count: stats.exams || 0, link: '/admin/govt-exams/exams', icon: BookOpen, subtitle: `${stats.activeExams || 0} active` },
@@ -116,7 +116,7 @@ const DashboardPage = () => {
     },
     {
       title: 'QUIZ BANK',
-      accent: 'text-primary-600',
+      accent: 'text-primary-600 dark:text-primary-300',
       cards: [
         { title: 'Quizzes', count: stats.quizzes || 0, link: '/admin/quiz/quizzes', icon: Sparkles, subtitle: `${stats.publishedQuizzes || 0} published` },
         { title: 'Questions', count: stats.questions || 0, link: '/admin/quiz/questions', icon: HelpCircle, subtitle: `${stats.activeQuestions || 0} active` },
@@ -138,7 +138,7 @@ const DashboardPage = () => {
     },
     {
       title: 'FINANCE & PAYOUTS',
-      accent: 'text-primary-600',
+      accent: 'text-primary-600 dark:text-primary-300',
       cards: [
         { title: 'Total Revenue', count: formatINR(stats.totalRevenue), link: '/admin/payment-transactions', icon: Banknote, subtitle: 'Lifetime' },
         { title: 'Revenue Today', count: formatINR(stats.revenueToday), link: '/admin/payment-transactions', icon: TrendingUp, subtitle: formatINR(stats.revenueThisMonth) + ' this month' },
@@ -197,7 +197,7 @@ const DashboardPage = () => {
             <item.icon className="pointer-events-none absolute -right-3 -bottom-3 w-20 h-20 text-primary-600/10 dark:text-white/10 rotate-12" />
             <div className="flex items-start justify-between gap-2">
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 dark:text-white/75 leading-tight">{item.label}</p>
-              <span className="shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
+              <span className="shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
                 <item.icon className="w-4 h-4" />
               </span>
             </div>
@@ -237,7 +237,7 @@ const DashboardPage = () => {
                 >
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                   <div className="flex items-center justify-between gap-2 px-3 pt-3 pb-2">
-                    <span className="w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 12 }}>
+                    <span className="w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 12 }}>
                       <card.icon className="w-5 h-5" />
                     </span>
                     <span className="text-2xl xl:text-3xl font-black font-outfit tracking-tight text-primary-700 dark:text-primary-200 tabular-nums leading-none">{card.count}</span>
@@ -271,7 +271,7 @@ const DashboardPage = () => {
         <Zap className="pointer-events-none absolute right-4 top-3 w-24 h-24 xl:w-32 xl:h-32 text-primary-600/10 dark:text-white/5 rotate-12" />
 
         <div className="relative flex items-center gap-3 mb-3 xl:mb-4 pb-3 border-b border-dashed border-slate-300 dark:border-white/25">
-          <div className="w-11 h-11 xl:w-12 xl:h-12 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
+          <div className="w-11 h-11 xl:w-12 xl:h-12 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
             <Zap className="w-5 h-5 xl:w-6 xl:h-6 fill-current" />
           </div>
           <div>
@@ -303,7 +303,7 @@ const DashboardPage = () => {
             <motion.div key={i} whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>
               <Link href={action.href} className="group relative flex items-center gap-3 p-3 bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 shadow-sm hover:shadow-lg transition-all h-full" style={{ borderRadius: 12 }}>
                 <div className="pointer-events-none absolute inset-y-2 left-0 w-1 rounded-r-full bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
-                <span className="ml-1 w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 12 }}>
+                <span className="ml-1 w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 12 }}>
                   <action.icon className="w-5 h-5" />
                 </span>
                 <div className="min-w-0 flex-1">

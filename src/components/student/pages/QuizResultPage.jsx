@@ -66,7 +66,7 @@ const QuizResultPage = () => {
       <div className="min-h-screen flex items-center justify-center bg-background-page">
         <div className="text-center">
           <h1 className="text-xl font-bold text-slate-800 dark:text-white mb-3">{translate('Result Not Found')}</h1>
-          <button onClick={() => router.push('/')} className="text-primary-600 hover:underline text-sm">{translate('Go Home')}</button>
+          <button onClick={() => router.push('/')} className="text-primary-600 dark:text-primary-300 hover:underline text-sm">{translate('Go Home')}</button>
         </div>
       </div>
     );
@@ -83,7 +83,7 @@ const QuizResultPage = () => {
           <div className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl p-5 xl:p-8" style={{ borderRadius: 16 }}>
             <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} /><div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} /><div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
             <div className="flex justify-center mb-3">
-              <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg]" style={{ borderRadius: 18 }}>
+              <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg]" style={{ borderRadius: 18 }}>
                 <Trophy className="w-8 h-8" />
               </div>
             </div>
@@ -110,7 +110,7 @@ const QuizResultPage = () => {
             </div>
 
             {attempt.rank && (
-              <div className="bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow px-4 py-2 inline-flex items-center gap-2" style={{ borderRadius: 999 }}>
+              <div className="bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow px-4 py-2 inline-flex items-center gap-2" style={{ borderRadius: 999 }}>
                 <Crown className="w-4 h-4" />
                 <span className="font-semibold text-sm">{translate('Rank #{rank} · Top {percentile}%', { rank: attempt.rank, percentile: Math.round(attempt.percentile || 0) })}</span>
               </div>
@@ -122,7 +122,7 @@ const QuizResultPage = () => {
         <div className="relative overflow-hidden bg-background-surface shadow-md p-4 xl:p-8 border border-slate-200 dark:border-slate-800 mb-6" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 12 }}>
+            <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 12 }}>
               <Brain className="w-5 h-5" />
             </div>
             <h2 className="text-lg font-black uppercase tracking-tight text-slate-800 dark:text-white">{translate('Question Review')}</h2>
@@ -176,7 +176,7 @@ const QuizResultPage = () => {
                         <div key={optIdx} style={{ borderRadius: 10 }} className={`flex items-center gap-2.5 px-3 py-2.5 border text-sm ${optClass}`}>
                           <span style={{ borderRadius: 8 }} className={`w-6 h-6 shrink-0 flex items-center justify-center text-[11px] font-black ${isCorrectOpt ? 'bg-primary-500 text-white' : isSelected && !isCorrect ? 'bg-red-500 text-white' : 'bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-200'}`}>{String.fromCharCode(65 + optIdx)}</span>
                           <span className="flex-1 min-w-0 break-words font-medium text-slate-700 dark:text-slate-200">{opt.text}</span>
-                          {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-600 shrink-0" />}
+                          {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />}
                           {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0" />}
                         </div>
                       );

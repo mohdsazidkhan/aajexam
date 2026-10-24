@@ -160,7 +160,7 @@ const SubscriptionPage = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
+                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
                     <Crown className="w-7 h-7 xl:w-8 xl:h-8" />
                   </div>
                   <div className="min-w-0">
@@ -206,7 +206,7 @@ const SubscriptionPage = () => {
                 {(isFreePlan || !isActive) && (
                   <button
                     onClick={() => document.getElementById('pro-plans')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black font-black uppercase tracking-widest text-xs shadow-lg hover:brightness-105 active:translate-y-0.5 transition-all"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] font-black uppercase tracking-widest text-xs shadow-lg hover:brightness-105 active:translate-y-0.5 transition-all"
                   >
                     <Sparkles className="w-4 h-4" /> {translate('View PRO plans')}
                   </button>
@@ -225,7 +225,7 @@ const SubscriptionPage = () => {
               </p>
             )}
             <div>
-              <Link href="/features" className="inline-block text-xs xl:text-sm font-bold text-primary-600 hover:text-primary-700 underline underline-offset-4">
+              <Link href="/features" className="inline-block text-xs xl:text-sm font-bold text-primary-600 dark:text-primary-300 hover:text-primary-700 underline underline-offset-4">
                 {translate('See the full feature comparison')}
               </Link>
             </div>
@@ -248,7 +248,7 @@ const SubscriptionPage = () => {
               </div>
             ) : (
               <form onSubmit={(e) => { e.preventDefault(); applyCoupon(); }} className="flex items-stretch bg-background-surface border-2 border-dashed border-primary-500/40 shadow-sm overflow-hidden" style={{ borderRadius: 12 }}>
-                <span className="flex items-center px-3 text-primary-600"><Tag className="w-5 h-5" /></span>
+                <span className="flex items-center px-3 text-primary-600 dark:text-primary-300"><Tag className="w-5 h-5" /></span>
                 <input
                   value={couponInput}
                   onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
@@ -288,7 +288,7 @@ const SubscriptionPage = () => {
                         <h3 className="text-base xl:text-xl font-black font-outfit tracking-tight truncate">{translate(plan.label)}</h3>
                       </div>
                       {plan.badge && (
-                        <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider px-2 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow whitespace-nowrap" style={{ borderRadius: 999 }}>
+                        <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider px-2 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow whitespace-nowrap" style={{ borderRadius: 999 }}>
                           {translate(plan.badge)}
                         </span>
                       )}
@@ -325,7 +325,7 @@ const SubscriptionPage = () => {
                     <button
                       disabled={!!buyingPlan}
                       onClick={() => handleBuy(plan)}
-                      className={`w-full flex items-center justify-center gap-2 py-3.5 text-xs xl:text-sm font-black uppercase tracking-widest shadow-lg transition-all active:translate-y-0.5 disabled:opacity-60 ${hl ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black hover:brightness-105' : 'bg-primary-600 hover:bg-primary-700 text-white'}`}
+                      className={`w-full flex items-center justify-center gap-2 py-3.5 text-xs xl:text-sm font-black uppercase tracking-widest shadow-lg transition-all active:translate-y-0.5 disabled:opacity-60 ${hl ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] hover:brightness-105' : 'bg-primary-600 hover:bg-primary-700 text-white'}`}
                     >
                       {isBuying ? (
                         <>

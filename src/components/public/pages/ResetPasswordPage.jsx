@@ -84,12 +84,12 @@ const ResetPasswordPage = () => {
               <motion.div
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
-                className="w-20 h-20 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10"
+                className="w-20 h-20 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10"
               >
                 <RefreshCw className="w-10 h-10" />
               </motion.div>
               <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">
-                {rich('New <0>Password</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+                {rich('New <0>Password</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
               </h2>
               <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none px-4">{translate('Please enter your new password below.')}</p>
             </div>
@@ -102,11 +102,11 @@ const ResetPasswordPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 text-center space-y-8"
                 >
-                  <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-full flex items-center justify-center mx-auto">
                     <CircleCheck className="w-8 h-8" />
                   </div>
                   <div className="space-y-2 xl:space-y-4">
-                    <h3 className="text-lg font-black font-outfit uppercase text-primary-600">{translate('Password Updated')}</h3>
+                    <h3 className="text-lg font-black font-outfit uppercase text-primary-600 dark:text-primary-300">{translate('Password Updated')}</h3>
                     <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
                       {translate('Your password has been reset. Redirecting to login...')}
                     </p>
@@ -130,8 +130,8 @@ const ResetPasswordPage = () => {
                 >
                   {!token && (
                     <div className="p-4 bg-primary-500/10 border border-primary-500/20 rounded-2xl flex items-center gap-4">
-                      <ShieldAlert className="w-6 h-6 text-primary-600 flex-shrink-0" />
-                      <p className="text-[10px] font-black text-primary-600 uppercase tracking-widest leading-tight">
+                      <ShieldAlert className="w-6 h-6 text-primary-600 dark:text-primary-300 flex-shrink-0" />
+                      <p className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest leading-tight">
                         {translate('Warning: Reset token not found. Please request a new link.')}
                       </p>
                     </div>

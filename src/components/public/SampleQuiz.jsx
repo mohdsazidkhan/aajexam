@@ -52,16 +52,16 @@ const SignupGate = ({ score, total }) => {
 
   return (
     <div className="text-center">
-      <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg mb-3 rotate-[-4deg]" style={{ borderRadius: 14 }}>
+      <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg mb-3 rotate-[-4deg]" style={{ borderRadius: 14 }}>
         <span className="text-2xl font-black">{score}/{total}</span>
       </div>
       <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
         {score >= 4 ? translate('Great score! Imagine a full mock test.') : translate('Good start! Let\'s fix the gaps.')}
       </h3>
       <ul className="text-sm font-bold text-slate-600 dark:text-slate-400 space-y-1.5 mb-5 max-w-sm mx-auto text-left">
-        <li className="flex items-center gap-2"><Lock className="w-4 h-4 text-primary-600 shrink-0" />{translate('Step-by-step explanations for every question')}</li>
-        <li className="flex items-center gap-2"><Lock className="w-4 h-4 text-primary-600 shrink-0" />{translate('Thousands of PYQs & full-length mock tests')}</li>
-        <li className="flex items-center gap-2"><Lock className="w-4 h-4 text-primary-600 shrink-0" />{translate('Weak-topic analysis to track your progress')}</li>
+        <li className="flex items-center gap-2"><Lock className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />{translate('Step-by-step explanations for every question')}</li>
+        <li className="flex items-center gap-2"><Lock className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />{translate('Thousands of PYQs & full-length mock tests')}</li>
+        <li className="flex items-center gap-2"><Lock className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />{translate('Weak-topic analysis to track your progress')}</li>
       </ul>
       <button
         onClick={() => { trackPrompt('sample', 'click'); googleSignup(); }}
@@ -146,7 +146,7 @@ export default function SampleQuiz() {
         <div className="pointer-events-none absolute -top-16 -right-10 w-56 h-56 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
         {phase === 'idle' || phase === 'loading' ? (
           <div className="text-center">
-            <div className="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg flex items-center justify-center rotate-[-4deg]" style={{ borderRadius: 14 }}>
+            <div className="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg flex items-center justify-center rotate-[-4deg]" style={{ borderRadius: 14 }}>
               <Sparkles className="w-7 h-7" />
             </div>
             <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">

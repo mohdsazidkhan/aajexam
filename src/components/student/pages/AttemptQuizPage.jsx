@@ -19,8 +19,8 @@ const fmtSec = (sec) => {
 
 // Score-based feedback shown above the result card
 const getScoreMessage = (pct) => {
-  if (pct >= 90) return { text: 'Outstanding! 🏆', cls: 'text-primary-600' };
-  if (pct >= 75) return { text: 'Great Job! 🎉', cls: 'text-primary-600' };
+  if (pct >= 90) return { text: 'Outstanding! 🏆', cls: 'text-primary-600 dark:text-primary-300' };
+  if (pct >= 75) return { text: 'Great Job! 🎉', cls: 'text-primary-600 dark:text-primary-300' };
   if (pct >= 50) return { text: 'Good Effort! 👍', cls: 'text-blue-600 dark:text-blue-400' };
   if (pct >= 35) return { text: 'Keep Practicing! 💪', cls: 'text-amber-600 dark:text-amber-400' };
   return { text: 'Needs Improvement 📚', cls: 'text-red-600 dark:text-red-400' };
@@ -47,7 +47,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
       <div className="text-center py-4 mb-4">
         <div className="relative overflow-hidden bg-background-surface shadow-md p-6 border border-slate-200 dark:border-slate-800" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-          <span className="w-14 h-14 flex items-center justify-center mx-auto mb-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 16 }}><Trophy className="w-7 h-7" /></span>
+          <span className="w-14 h-14 flex items-center justify-center mx-auto mb-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 16 }}><Trophy className="w-7 h-7" /></span>
           <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-1">{translate('No Leaderboard Yet')}</h3>
           <p className="text-sm text-slate-500 dark:text-slate-400">{translate('Be the first to complete this quiz!')}</p>
         </div>
@@ -58,7 +58,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
   return (
     <div className="mt-6">
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 12 }}>
+        <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 12 }}>
           <Trophy className="w-5 h-5" />
         </div>
         <h3 className="text-lg font-black uppercase tracking-tight text-slate-800 dark:text-white">{translate('Leaderboard')}</h3>
@@ -359,7 +359,7 @@ const AttemptQuizPage = () => {
         <div className="relative overflow-hidden bg-background-surface p-6 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-700" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
           <div className="text-center">
-            <div className="w-14 h-14 flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 16 }}>
+            <div className="w-14 h-14 flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 16 }}>
               <AlertTriangle className="w-7 h-7" />
             </div>
             <h2 className="text-lg font-bold text-slate-800 dark:text-white mb-3">{translate('Exit Quiz?')}</h2>
@@ -373,7 +373,7 @@ const AttemptQuizPage = () => {
               <button onClick={() => handleExitConfirm(false)} style={{ borderRadius: 12 }} className="flex-1 px-4 py-2.5 bg-background-surface border border-slate-300 dark:border-slate-600 hover:border-primary-500 text-slate-800 dark:text-white font-black uppercase text-sm transition-all">
                 {translate('Continue Quiz')}
               </button>
-              <button onClick={() => handleExitConfirm(true)} style={{ borderRadius: 12 }} className="flex-1 px-4 py-2.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-lg hover:brightness-105 font-black uppercase text-sm transition-all">
+              <button onClick={() => handleExitConfirm(true)} style={{ borderRadius: 12 }} className="flex-1 px-4 py-2.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-lg hover:brightness-105 font-black uppercase text-sm transition-all">
                 {translate('Exit & Submit')}
               </button>
             </div>
@@ -393,7 +393,7 @@ const AttemptQuizPage = () => {
         <div className="text-center">
           <XCircle className="w-12 h-12 text-black dark:text-white mx-auto mb-3" />
           <p className="text-slate-700 dark:text-slate-300 font-semibold">{translate('No questions available for this quiz.')}</p>
-          <button onClick={() => router.push('/')} className="mt-4 text-primary-600 hover:underline text-sm">{translate('Go Home')}</button>
+          <button onClick={() => router.push('/')} className="mt-4 text-primary-600 dark:text-primary-300 hover:underline text-sm">{translate('Go Home')}</button>
         </div>
       </div>
     );
@@ -462,7 +462,7 @@ const AttemptQuizPage = () => {
             <div className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl p-5 xl:p-8" style={{ borderRadius: 16 }}>
               <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} /><div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} /><div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
               <div className="flex justify-center mb-4">
-                <div className="w-20 h-20 flex items-center justify-center animate-pulse bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg]" style={{ borderRadius: 22 }}>
+                <div className="w-20 h-20 flex items-center justify-center animate-pulse bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg]" style={{ borderRadius: 22 }}>
                   <Trophy className="w-10 h-10" />
                 </div>
               </div>
@@ -500,7 +500,7 @@ const AttemptQuizPage = () => {
               </div>
 
               {result.rank && (
-                <div className="bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow px-4 py-2 mb-3 inline-flex items-center gap-2" style={{ borderRadius: 999 }}>
+                <div className="bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow px-4 py-2 mb-3 inline-flex items-center gap-2" style={{ borderRadius: 999 }}>
                   <Crown className="w-4 h-4" />
                   <span className="font-semibold text-sm">{translate('Rank #{rank} · Top {percentile}%', { rank: result.rank, percentile: Math.round(result.percentile || 0) })}</span>
                 </div>
@@ -512,7 +512,7 @@ const AttemptQuizPage = () => {
           <div className="relative overflow-hidden bg-background-surface shadow-md p-4 xl:p-8 border border-slate-200 dark:border-slate-800 mb-6" style={{ borderRadius: 16 }}>
             <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 12 }}>
+              <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 12 }}>
                 <Brain className="w-5 h-5" />
               </div>
               <h2 className="text-lg font-black uppercase tracking-tight text-slate-800 dark:text-white">{translate('Quiz Review')}</h2>
@@ -570,7 +570,7 @@ const AttemptQuizPage = () => {
                           <div key={optIdx} style={{ borderRadius: 10 }} className={`flex items-center gap-2.5 px-3 py-2.5 border text-sm ${optClass}`}>
                           <span style={{ borderRadius: 8 }} className={`w-6 h-6 shrink-0 flex items-center justify-center text-[11px] font-black ${isCorrectOpt ? 'bg-primary-500 text-white' : isSelected && !isCorrect ? 'bg-red-500 text-white' : 'bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-200'}`}>{String.fromCharCode(65 + optIdx)}</span>
                           <span className="flex-1 min-w-0 break-words font-medium text-slate-700 dark:text-slate-200">{opt.text}</span>
-                          {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-600 shrink-0" />}
+                          {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />}
                           {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0" />}
                         </div>
                         );
@@ -605,7 +605,7 @@ const AttemptQuizPage = () => {
               <button
                 onClick={handleChallenge}
                 disabled={isGeneratingChallenge}
-                style={{ borderRadius: 14 }} className="w-full px-6 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black font-black text-sm sm:text-lg uppercase tracking-wide sm:tracking-wider shadow-lg transition-all hover:brightness-105 hover:-translate-y-0.5 flex items-center justify-center gap-2 sm:gap-3 text-center disabled:opacity-70 disabled:cursor-not-allowed"
+                style={{ borderRadius: 14 }} className="w-full px-6 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] font-black text-sm sm:text-lg uppercase tracking-wide sm:tracking-wider shadow-lg transition-all hover:brightness-105 hover:-translate-y-0.5 flex items-center justify-center gap-2 sm:gap-3 text-center disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isGeneratingChallenge ? (
                   <div className="w-6 h-6 border-2 border-primary-950/30 border-t-primary-950 rounded-full animate-spin" />
@@ -641,7 +641,7 @@ const AttemptQuizPage = () => {
           <div className="flex items-center mb-2">
             {/* Left: Logo + Title */}
             <div className="flex items-center gap-2 flex-1 min-w-0">
-              <div className="w-8 h-8 flex items-center justify-center shrink-0 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+              <div className="w-8 h-8 flex items-center justify-center shrink-0 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
                 <BrainCircuit className="w-4 h-4" />
               </div>
               <div className="min-w-0">
@@ -662,7 +662,7 @@ const AttemptQuizPage = () => {
                     setCurrentQuestionIndex(idx);
                   }}
                   className={`w-7 h-7 rounded-lg text-[10px] font-bold transition-all ${idx === currentQuestionIndex
-                      ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow scale-110'
+                      ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow scale-110'
                       : answers[idx] !== null
                         ? 'bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-200 border border-primary-300'
                         : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
@@ -725,7 +725,7 @@ const AttemptQuizPage = () => {
                   setCurrentQuestionIndex(idx);
                 }}
                 className={`w-7 h-7 shrink-0 rounded-lg text-[10px] font-bold transition-all ${idx === currentQuestionIndex
-                    ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow scale-110'
+                    ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow scale-110'
                     : answers[idx] !== null
                       ? 'bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-200 border border-primary-300'
                       : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
@@ -741,7 +741,7 @@ const AttemptQuizPage = () => {
         <div className="relative overflow-hidden bg-background-surface shadow-md p-4 xl:p-8 border border-slate-200 dark:border-slate-800 mb-3" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
           <div className="flex items-start gap-3 mb-5">
-            <div className="w-9 h-9 flex items-center justify-center text-sm font-black shrink-0 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+            <div className="w-9 h-9 flex items-center justify-center text-sm font-black shrink-0 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
               {currentQuestionIndex + 1}
             </div>
             <p className="text-[15px] sm:text-base xl:text-lg font-semibold text-slate-800 dark:text-white leading-relaxed break-words min-w-0">
@@ -775,7 +775,7 @@ const AttemptQuizPage = () => {
                       : 'border-slate-200 dark:border-slate-700 bg-background-surface hover:border-primary-400 hover:-translate-y-0.5'
                     }`}
                 >
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all ${isSelected ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow' : 'bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all ${isSelected ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow' : 'bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
                     }`}>
                     {String.fromCharCode(65 + optIdx)}
                   </div>
@@ -802,14 +802,14 @@ const AttemptQuizPage = () => {
               <button
                 onClick={handleSubmit}
                 disabled={submitting}
-                style={{ borderRadius: 12 }} className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 font-black uppercase text-sm bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-lg hover:brightness-105 transition-all disabled:opacity-50"
+                style={{ borderRadius: 12 }} className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 font-black uppercase text-sm bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-lg hover:brightness-105 transition-all disabled:opacity-50"
               >
                 {submitting ? translate('Submitting...') : translate('Submit Quiz')}
               </button>
             ) : (
               <button
                 onClick={handleNextQuestion}
-                style={{ borderRadius: 12 }} className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 font-black uppercase text-sm bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-lg hover:brightness-105 transition-all"
+                style={{ borderRadius: 12 }} className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 font-black uppercase text-sm bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-lg hover:brightness-105 transition-all"
               >
                 {translate('Next')} <ArrowRight className="w-4 h-4" />
               </button>

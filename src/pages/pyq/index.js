@@ -147,8 +147,8 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                 <div className="space-y-3">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
-                                            <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600">{test.pyqYear || translate('PYQ')}</span>
-                                            {test.isLastYear && <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600">{translate('LATEST')}</span>}
+                                            <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600 dark:text-primary-300">{test.pyqYear || translate('PYQ')}</span>
+                                            {test.isLastYear && <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600 dark:text-primary-300">{translate('LATEST')}</span>}
                                         </div>
                                         {test.pyqShift && <span className="text-[10px] font-bold text-slate-400">{test.pyqShift}</span>}
                                     </div>
@@ -166,9 +166,9 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                                 {!hasAccess && <Lock className="w-3 h-3 text-slate-400" />}
                                             </div>
                                         ) : (
-                                            <span className="text-[10px] font-black text-primary-600 uppercase tracking-wider">{translate('Free Access')}</span>
+                                            <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-wider">{translate('Free Access')}</span>
                                         )}
-                                        <div className="flex items-center gap-1 text-[10px] font-black text-primary-600">
+                                        <div className="flex items-center gap-1 text-[10px] font-black text-primary-600 dark:text-primary-300">
                                             {hasAccess ? translate('Practice Now') : translate('Unlock with PRO')} <ChevronRight className="w-3 h-3" />
                                         </div>
                                     </div>
@@ -278,7 +278,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                             {/* Progress Bar UI */}
                                             <div className="space-y-1.5 mt-auto">
                                                 <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-widest">
-                                                    <span className={completed > 0 ? 'text-primary-600' : 'text-slate-400'}>
+                                                    <span className={completed > 0 ? 'text-primary-600 dark:text-primary-300' : 'text-slate-400'}>
                                                         {completed > 0 ? translate('In Progress') : translate('Start Now')}
                                                     </span>
                                                     <span className="text-slate-500">{completed}/{total}</span>
@@ -300,7 +300,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                     {/* Long-form intro */}
                     <section className="px-0 py-1 xl:py-2">
                         <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center">
-                            <FaBookOpen className="text-primary-600 mr-3" /> Why Solve PYQs?
+                            <FaBookOpen className="text-primary-600 dark:text-primary-300 mr-3" /> Why Solve PYQs?
                         </h2>
                         <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-sm xl:text-base whitespace-pre-line">
                             {intro}
@@ -350,7 +350,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                 {/* Body */}
                                 <div className="p-6 space-y-5">
                                     <p className="text-sm font-bold text-slate-600 dark:text-slate-400">
-                                        {rich('This paper is part of the <0>AajExam PRO</0> plan. Upgrade to attempt all older PYQ shifts with full analytics.', [(c) => <span className="text-primary-600 font-black">{c}</span>])}
+                                        {rich('This paper is part of the <0>AajExam PRO</0> plan. Upgrade to attempt all older PYQ shifts with full analytics.', [(c) => <span className="text-primary-600 dark:text-primary-300 font-black">{c}</span>])}
                                     </p>
 
                                     {/* What you unlock */}

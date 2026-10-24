@@ -169,8 +169,8 @@ const AdminGovtExamCategories = () => {
     {
       key: 'jurisdiction', header: 'JURISDICTION', render: (_, category) => (
         <div className={`px-4 py-1 rounded-full text-[8px] font-black inline-flex items-center gap-2 border ${category.type === "Central"
-          ? "bg-primary-500/10 text-primary-600 border-primary-500/20 shadow-sm"
-          : "bg-primary-500/10 text-primary-600 border-primary-500/20 shadow-sm"}`}>
+          ? "bg-primary-500/10 text-primary-600 dark:text-primary-300 border-primary-500/20 shadow-sm"
+          : "bg-primary-500/10 text-primary-600 dark:text-primary-300 border-primary-500/20 shadow-sm"}`}>
           {category.type === "Central" ? <Globe className="w-3 h-3" /> : <Map className="w-3 h-3" />}
           {category.type?.toUpperCase()}
         </div>
@@ -320,7 +320,7 @@ const AdminGovtExamCategories = () => {
                       <div className="flex-1 text-center xl:text-left space-y-1 xl:space-y-2">
                         <div className="flex flex-col xl:flex-row items-center gap-1.5 xl:gap-3">
                           <h3 className="text-sm xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{category.name}</h3>
-                          <div className={`px-2.5 py-0.5 xl:px-4 xl:py-1 rounded-full text-[7px] xl:text-[8px] font-black uppercase tracking-widest border ${category.type === 'Central' ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 border-primary-100 dark:border-primary-600' : 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 border-primary-100 dark:border-primary-600'}`}>
+                          <div className={`px-2.5 py-0.5 xl:px-4 xl:py-1 rounded-full text-[7px] xl:text-[8px] font-black uppercase tracking-widest border ${category.type === 'Central' ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-300 border-primary-100 dark:border-primary-600' : 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 border-primary-100 dark:border-primary-600'}`}>
                             {category.type?.toUpperCase()}
                           </div>
                         </div>
@@ -361,7 +361,7 @@ const AdminGovtExamCategories = () => {
                       </div>
 
                       <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 xl:mb-2">{category.name}</h3>
-                      <div className={`px-2.5 py-0.5 xl:px-4 xl:py-1 rounded-full text-[7px] xl:text-[8px] font-black uppercase tracking-widest border mb-2 xl:mb-4 ${category.type === 'Central' ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>
+                      <div className={`px-2.5 py-0.5 xl:px-4 xl:py-1 rounded-full text-[7px] xl:text-[8px] font-black uppercase tracking-widest border mb-2 xl:mb-4 ${category.type === 'Central' ? 'bg-primary-500/10 text-primary-600 dark:text-primary-300 border-primary-500/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>
                         {category.type?.toUpperCase()}
                       </div>
 
@@ -403,7 +403,7 @@ const AdminGovtExamCategories = () => {
               >
                 <div className="px-4 py-2.5 border-b-2 border-slate-50 dark:border-white/5 flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-2xl">
+                    <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-2xl">
                       <Settings className="w-5 h-5" />
                     </div>
                     <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">

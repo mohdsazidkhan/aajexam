@@ -114,12 +114,12 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
   const FlagPills = ({ blog }) => (
     <>
       {blog.isFeatured && (
-        <span className="w-7 h-7 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg" style={{ borderRadius: 8 }}>
+        <span className="w-7 h-7 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg" style={{ borderRadius: 8 }}>
           <Star className="w-4 h-4 fill-current" />
         </span>
       )}
       {blog.isPinned && (
-        <span className="w-7 h-7 flex items-center justify-center bg-white/90 text-primary-700 shadow-lg" style={{ borderRadius: 8 }}>
+        <span className="w-7 h-7 flex items-center justify-center bg-white/90 text-primary-700 dark:text-primary-300 shadow-lg" style={{ borderRadius: 8 }}>
           <Pin className="w-4 h-4 fill-current" />
         </span>
       )}
@@ -135,7 +135,7 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
         <span className="flex items-center gap-1"><Heart className="w-3.5 h-3.5" /> {blog.likes || 0}</span>
         <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {readLabel}</span>
       </div>
-      <span className="shrink-0 px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-[11px] font-black uppercase tracking-wider shadow group-hover:brightness-105" style={{ borderRadius: 999 }}>
+      <span className="shrink-0 px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-[11px] font-black uppercase tracking-wider shadow group-hover:brightness-105" style={{ borderRadius: 999 }}>
         {translate('Read More')}
       </span>
     </div>
@@ -149,7 +149,7 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             <div className="absolute top-3 left-3 flex items-center gap-1.5"><FlagPills blog={blog} /></div>
             {blog.exam && (
-              <span className="absolute bottom-3 left-3 max-w-[85%] truncate px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-[11px] font-black shadow" style={{ borderRadius: 999 }}>
+              <span className="absolute bottom-3 left-3 max-w-[85%] truncate px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-[11px] font-black shadow" style={{ borderRadius: 999 }}>
                 {blog.exam.name}
               </span>
             )}
@@ -184,7 +184,7 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-primary-700 dark:text-primary-300 text-[11px] font-black uppercase tracking-wider">{formatDate(blog.publishedAt || blog.createdAt)}</span>
                 {blog.exam && (
-                  <span className="ml-auto px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-[11px] font-black shadow" style={{ borderRadius: 999 }}>
+                  <span className="ml-auto px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-[11px] font-black shadow" style={{ borderRadius: 999 }}>
                     {blog.exam.name}
                   </span>
                 )}
@@ -222,7 +222,7 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
             </form>
           }
           actions={
-            <div className="flex flex-wrap items-center justify-end gap-2">
+            <div className="flex flex-wrap xl:flex-nowrap items-center justify-end gap-2">
               {/* View Toggle */}
               <div className="flex items-center gap-1">
                 <button onClick={() => setViewMode('grid')}
@@ -237,7 +237,7 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
 
               {/* Exam Filter */}
               <select name="exam" value={filters.exam} onChange={handleFilterChange}
-                className="px-3 py-1.5 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-bold focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black text-slate-900 dark:text-white">
+                className="w-auto max-w-[10rem] shrink min-w-0 px-3 py-1.5 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-bold focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black text-slate-900 dark:text-white">
                 <option value="">{hasTargets ? translate('My target exams') : translate('All Exams')}</option>
                 {hasTargets && <option value="all">{translate('All Exams')}</option>}
                 {exams.map(exam => (
@@ -246,9 +246,9 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
               </select>
 
               {/* Featured Toggle */}
-              <label className="flex items-center gap-2 cursor-pointer px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg">
+              <label className="flex shrink-0 items-center gap-2 cursor-pointer px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg">
                 <input type="checkbox" name="featured" checked={filters.featured} onChange={handleFilterChange}
-                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" />
+                  className="h-4 w-4 text-primary-600 dark:text-primary-300 focus:ring-primary-500 border-gray-300 rounded" />
                 <span className="text-xs font-bold text-slate-700 dark:text-slate-200">{translate('Featured')}</span>
               </label>
             </div>

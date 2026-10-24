@@ -149,7 +149,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       {/* --- Pattern Quest Card --- */}
       <Card className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10 overflow-hidden relative">
         <div className="relative z-10 space-y-3">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
             <Zap className="w-4 h-4" />
             {translate('Practice Tests')}
           </div>
@@ -205,7 +205,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
                       <div className="flex-1 text-center sm:text-left space-y-1">
                         <div className="flex items-center justify-center sm:justify-start gap-2">
                           <h3 className="text-xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase line-clamp-1">{translateData(test.title)}</h3>
-                          {isLocked ? <ProBadge size="xs" /> : <Unlock className="w-4 h-4 text-primary-600" />}
+                          {isLocked ? <ProBadge size="xs" /> : <Unlock className="w-4 h-4 text-primary-600 dark:text-primary-300" />}
                         </div>
                         <p className="text-xs font-bold text-gray-400 uppercase">
                           {translate('{questions} Questions • {marks} Marks', { questions: test.questionCount || 0, marks: test.totalMarks || 100 })}

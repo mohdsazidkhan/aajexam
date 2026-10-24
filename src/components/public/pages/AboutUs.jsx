@@ -83,7 +83,7 @@ const AboutUs = () => {
             <PageHero
                icon={Sparkles}
                eyebrow={translate('About Us')}
-               title={rich('About <0>Us</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+               title={rich('About <0>Us</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
                stats={stats.map((st) => ({ label: translate(st.label), value: st.value, icon: st.icon }))}
             />
 
@@ -99,7 +99,7 @@ const AboutUs = () => {
                      <div className="space-y-2 xl:space-y-4">
                         {['All About Your Knowledge', 'Proven Study Methods', 'Top Students Get Rewarded'].map((pill, i) => (
                            <div key={i} className="flex items-center gap-3">
-                              <div className="w-5 h-5 bg-primary-600 rounded-full flex items-center justify-center text-[10px] font-black text-slate-900">✓</div>
+                              <div className="w-5 h-5 bg-primary-600 rounded-full flex items-center justify-center text-[10px] font-black text-white">✓</div>
                               <span className="text-sm font-black uppercase tracking-widest text-slate-700 dark:text-slate-300">{pill}</span>
                            </div>
                         ))}
@@ -149,7 +149,7 @@ const AboutUs = () => {
                   <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
                      <div className="xl:col-span-4 text-center xl:text-left space-y-6">
                         <div className="w-20 h-20 bg-white dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto xl:mx-0 shadow-sm">
-                           <Building2 className="w-10 h-10 text-primary-600" />
+                           <Building2 className="w-10 h-10 text-primary-600 dark:text-primary-300" />
                         </div>
                         <div className="space-y-2">
                            <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Officially Registered')}</h3>

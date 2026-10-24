@@ -114,7 +114,7 @@ export default function FollowingListPage() {
                   <div className="flex-1">
                     <h3 className="text-md xl:text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{user.name}</h3>
                     {user.username && (
-                      <p className="text-xs font-black tracking-widest text-primary-600 mt-1">@{user.username}</p>
+                      <p className="text-xs font-black tracking-widest text-primary-600 dark:text-primary-300 mt-1">@{user.username}</p>
                     )}
                   </div>
 

@@ -496,7 +496,7 @@ const ProfilePage = () => {
                 icon={Wallet}
                 title={translate('Payout details')}
                 subtitle={translate('Add your bank details to receive Referral Rewards')}
-                right={bankDetails ? <span className="px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-[10px] font-black uppercase tracking-widest">{translate('Linked')}</span> : null}
+                right={bankDetails ? <span className="px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-[10px] font-black uppercase tracking-widest">{translate('Linked')}</span> : null}
               >
                 {bankDetails ? (
                   <div className="flex flex-col lg:flex-row lg:items-center gap-5">
@@ -565,7 +565,7 @@ const ProfilePage = () => {
                         <span className="w-9 h-9 flex items-center justify-center bg-primary-500/10 text-primary-600 dark:text-primary-300 shrink-0" style={{ borderRadius: 10 }}><item.icon className="w-4 h-4" /></span>
                         <span className="text-sm font-bold text-content-primary truncate">{translate(item.label)}</span>
                       </span>
-                      <ArrowRight className="w-4 h-4 text-primary-600 shrink-0" />
+                      <ArrowRight className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />
                     </button>
                   ))}
                 </div>

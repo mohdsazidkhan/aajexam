@@ -177,7 +177,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
 
               <div className="flex items-center gap-2 flex-wrap mb-3">
                 {blog.isFeatured && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-xs font-black uppercase tracking-wider shadow" style={{ borderRadius: 999 }}>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-xs font-black uppercase tracking-wider shadow" style={{ borderRadius: 999 }}>
                     <Star className="w-3.5 h-3.5 fill-current" /> {translate('Featured')}
                   </span>
                 )}
@@ -199,7 +199,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
 
               <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-dashed border-slate-300 dark:border-white/25">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
                     <span className="font-black text-sm">{blog.author?.name?.charAt(0) || 'A'}</span>
                   </div>
                   <div>
@@ -259,7 +259,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
               <div className="flex flex-wrap items-center gap-3">
                 <button onClick={handleLike} disabled={liked}
                   className={`flex items-center gap-2 px-4 py-2 font-bold text-sm transition-colors ${liked
-                    ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black'
+                    ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000]'
                     : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-primary-500/10'}`}
                   style={{ borderRadius: 10 }}>
                   <Heart className={`w-4 h-4 ${liked ? 'fill-current' : ''}`} />
@@ -273,7 +273,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                   </button>
                 ) : (
                   <div className="flex items-center gap-3">
-                    <a href={`https://wa.me/?text=${encodedText}%0A${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-primary-600 text-xl"><FaWhatsapp /></a>
+                    <a href={`https://wa.me/?text=${encodedText}%0A${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-300 text-xl"><FaWhatsapp /></a>
                     <a href={`https://t.me/share/url?text=${encodeURIComponent(`${shareText}\n\n${pageUrl}`)}`} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white text-xl"><FaTelegramPlane /></a>
                     <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white text-xl"><FaFacebook /></a>
                     <a href={`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white text-xl"><FaTwitter /></a>
@@ -286,7 +286,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                 <div className="flex items-center gap-2 pt-3 border-t border-dashed border-primary-300 dark:border-white/20">
                   <span className="text-sm text-gray-500 dark:text-gray-400">{translate('Exam:')}</span>
                   <Link href={blog.exam.slug ? `/govt-exams/exam/${blog.exam.slug}` : '/govt-exams'}
-                    className="bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-sm px-3 py-1 font-black shadow hover:brightness-105" style={{ borderRadius: 999 }}>
+                    className="bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-sm px-3 py-1 font-black shadow hover:brightness-105" style={{ borderRadius: 999 }}>
                     {blog.exam.name}
                   </Link>
                 </div>
@@ -334,7 +334,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
               <section key={g.key} className={`${panel} p-4 xl:p-5`} style={{ borderRadius: 16 }}>
                 {topLine}
                 <div className="flex items-center gap-2.5 mb-3">
-                  <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+                  <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
                     <g.icon className="w-4 h-4" />
                   </span>
                   <h3 className="text-base font-black text-gray-900 dark:text-white uppercase tracking-tight">{g.title}</h3>

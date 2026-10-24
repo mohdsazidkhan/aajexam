@@ -44,12 +44,12 @@ const CookieConsent = () => {
                     </div>
                     <div className="flex-1">
                         <h3 className="text-sm xl:text-md font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tighter">
-                            {rich('We use <0>cookies</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+                            {rich('We use <0>cookies</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
                         </h3>
                         <p className="text-[10px] xl:text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide leading-tight">
                             {translate('Cookies help us remember your login and personalise your experience.')}{' '}
                             {translate('See our')} {' '}
-                            <Link href="/privacy" className="text-primary-600 hover:underline transition-colors font-black">
+                            <Link href="/privacy" className="text-primary-600 dark:text-primary-300 hover:underline transition-colors font-black">
                                 {translate('Privacy Policy')}
                             </Link>
                         </p>

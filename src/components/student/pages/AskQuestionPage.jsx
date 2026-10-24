@@ -169,7 +169,7 @@ const AskQuestionPage = () => {
     return (
       <div className="min-h-screen bg-background-primary flex items-center justify-center px-4">
         <Card className="text-center max-w-md w-full" radius="2xl">
-          <CheckCircle className="w-16 h-16 text-primary-600 mx-auto mb-4" />
+          <CheckCircle className="w-16 h-16 text-primary-600 dark:text-primary-300 mx-auto mb-4" />
           <h2 className="text-xl font-black text-content-primary uppercase mb-2">{translate('Question Posted!')}</h2>
           <p className="text-sm text-content-muted">{translate('Redirecting to community questions...')}</p>
         </Card>
@@ -267,7 +267,7 @@ const AskQuestionPage = () => {
                 <button
                   type="button"
                   onClick={addOption}
-                  className="flex items-center gap-1 text-xs font-bold text-primary-600 hover:text-primary-600 transition-colors"
+                  className="flex items-center gap-1 text-xs font-bold text-primary-600 dark:text-primary-300 hover:text-primary-600 transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" /> Add
                 </button>
@@ -289,7 +289,7 @@ const AskQuestionPage = () => {
                     onClick={() => handleOptionChange(i, 'isCorrect', !opt.isCorrect)}
                     className={`p-2 rounded-lg xl:rounded-xl border-2 text-xs font-bold transition-colors ${
                       opt.isCorrect
-                        ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-600'
+                        ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-300'
                         : 'border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-400'
                     }`}
                     title={translate('Mark as correct answer')}

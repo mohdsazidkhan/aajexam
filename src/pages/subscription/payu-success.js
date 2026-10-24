@@ -142,7 +142,7 @@ const PayuSuccess = () => {
         <Seo title="Verifying Payment - AajExam" description="We are checking your payment status." noIndex={true} />
         <div className="min-h-screen flex items-center justify-center p-6">
           <div className="max-w-md w-full text-center relative overflow-hidden bg-background-surface p-6 xl:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
-            <div className="w-20 h-20 rounded-[2rem] bg-primary-500/10 text-primary-600 flex items-center justify-center mx-auto">
+            <div className="w-20 h-20 rounded-[2rem] bg-primary-500/10 text-primary-600 dark:text-primary-300 flex items-center justify-center mx-auto">
               <LoaderCircle className="w-10 h-10 animate-spin" />
             </div>
             <div className="space-y-2">

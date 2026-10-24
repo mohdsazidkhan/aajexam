@@ -146,8 +146,8 @@ const ResponsiveTable = ({
                         whileTap={{ scale: 0.9 }}
                         onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
                         className={`p-1.5 rounded-lg transition-all duration-300 shadow-sm ${action.variant === 'danger' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-100 ' :
-                          action.variant === 'success' ? 'text-primary-600 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100' :
-                            'text-primary-600 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100'
+                          action.variant === 'success' ? 'text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100' :
+                            'text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100'
                           }`}
                         title={action.label}
                       >
@@ -198,8 +198,8 @@ const ResponsiveTable = ({
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
                     className={`p-3.5 xl:p-3 rounded-lg xl:rounded-xl shadow-sm transition-all duration-300 ${action.variant === 'danger' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-slate-100 ' :
-                      action.variant === 'success' ? 'bg-primary-50 text-primary-600 dark:bg-primary-950/40 hover:bg-primary-100' :
-                        'bg-primary-50 text-primary-600 dark:bg-primary-950/40 hover:bg-primary-100'
+                      action.variant === 'success' ? 'bg-primary-50 text-primary-600 dark:text-primary-300 dark:bg-primary-950/40 hover:bg-primary-100' :
+                        'bg-primary-50 text-primary-600 dark:text-primary-300 dark:bg-primary-950/40 hover:bg-primary-100'
                       }`}
                   >
                     {action.icon}
@@ -241,8 +241,8 @@ const ResponsiveTable = ({
                   {row.name || row[columns[0]?.key] || translate('Unknown Object')}
                 </h3>
                 <div className="flex items-center gap-1.5 mt-1">
-                  <Activity className="w-3 h-3 text-primary-600" />
-                  <span className="text-[9px] font-black text-primary-600 uppercase tracking-widest">{row.status || translate('Active')}</span>
+                  <Activity className="w-3 h-3 text-primary-600 dark:text-primary-300" />
+                  <span className="text-[9px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{row.status || translate('Active')}</span>
                 </div>
               </div>
             </div>

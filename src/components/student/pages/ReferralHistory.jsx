@@ -195,7 +195,7 @@ export default function ReferralHistory() {
                      <p className="text-[9px] xl:text-xs font-black text-slate-600 dark:text-white/75 uppercase tracking-widest leading-none mb-1">{translate('Your Referral Code')}</p>
                      <div className="flex items-center gap-2 xl:gap-3">
                         <p className="flex-1 text-sm xl:text-lg font-bold font-mono tracking-wider truncate text-primary-700 dark:text-primary-200">{user.referralCode}</p>
-                        <button type="button" className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }} onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                        <button type="button" className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }} onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                            <Copy className="w-3.5 h-3.5 xl:w-4 xl:h-4" /> COPY LINK
                         </button>
                      </div>
@@ -216,7 +216,7 @@ export default function ReferralHistory() {
                      <div key={i} className="group relative overflow-hidden p-3 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all" style={{ borderRadius: 12 }}>
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                         <div className="flex justify-between items-start mb-1.5">
-                           <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+                           <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
                               <s.icon className="w-4 h-4" />
                            </div>
                         </div>
@@ -235,7 +235,7 @@ export default function ReferralHistory() {
                         <div className="space-y-2">
                            {(user.walletBalance || 0) >= MIN_PAYOUT ? (
                               <div className="flex items-start gap-2">
-                                 <CircleCheck className="w-4 h-4 text-primary-600 shrink-0 mt-0.5" />
+                                 <CircleCheck className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0 mt-0.5" />
                                  <p className="text-sm font-bold text-content-secondary">
                                     {bankDetail
                                        ? `You're eligible to withdraw to your ${bankDetail.bankName} account`
@@ -247,7 +247,7 @@ export default function ReferralHistory() {
                                  <div className="flex items-start gap-2">
                                     <Clock className="w-4 h-4 shrink-0 mt-0.5" />
                                     <p className="text-sm font-bold text-content-secondary xl:whitespace-nowrap">
-                                       {rich('Minimum withdrawal is <0></0> — earn <1></1> more to unlock it', [() => <span className="font-black text-primary-600">₹{MIN_PAYOUT.toLocaleString()}</span>, () => <span className="font-black text-primary-600">₹{(MIN_PAYOUT - (user.walletBalance || 0)).toLocaleString()}</span>])}
+                                       {rich('Minimum withdrawal is <0></0> — earn <1></1> more to unlock it', [() => <span className="font-black text-primary-600 dark:text-primary-300">₹{MIN_PAYOUT.toLocaleString()}</span>, () => <span className="font-black text-primary-600 dark:text-primary-300">₹{(MIN_PAYOUT - (user.walletBalance || 0)).toLocaleString()}</span>])}
                                     </p>
                                  </div>
                                  <div className="w-full xl:w-56 xl:shrink-0 h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -276,7 +276,7 @@ export default function ReferralHistory() {
                            <p className="text-xs font-bold text-content-secondary">
                               {bankDetail.bankName} •••• {bankDetail.accountNumber?.slice(-4)} ({bankDetail.accountHolderName})
                            </p>
-                           <button onClick={() => setShowBankForm(true)} className="text-xs font-black text-primary-600 uppercase tracking-widest hover:underline">
+                           <button onClick={() => setShowBankForm(true)} className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest hover:underline">
                               {translate('Edit Bank Details')}
                            </button>
                         </div>
@@ -357,7 +357,7 @@ export default function ReferralHistory() {
                <div className="space-y-3">
                   <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 xl:gap-8">
                      <div className="space-y-2">
-                        <h2 className="flex items-center gap-2.5 text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
+                        <h2 className="flex items-center gap-2.5 text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
                      </div>
 
                      <div className="w-full xl:w-auto xl:min-w-[320px] space-y-2 xl:space-y-4">
@@ -373,7 +373,7 @@ export default function ReferralHistory() {
                                        <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none">{translate(b.label)}</p>
                                        <p className="text-xl font-black font-outfit text-content-primary uppercase">₹{amount.toLocaleString()}</p>
                                     </div>
-                                    <div className="text-[10px] font-black px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow" style={{ borderRadius: 999 }}>
+                                    <div className="text-[10px] font-black px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow" style={{ borderRadius: 999 }}>
                                        {translate('{count} FRIENDS', { count })}
                                     </div>
                                  </div>
@@ -389,7 +389,7 @@ export default function ReferralHistory() {
                <div className="space-y-2 xl:space-y-3">
                   <div className="flex items-center justify-between">
                      <div className="space-y-1 xl:space-y-2">
-                        <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
+                        <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
                      </div>
                   </div>
 
@@ -425,7 +425,7 @@ export default function ReferralHistory() {
                                           <motion.tr key={tx._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition-colors">
                                              <td className="px-4 py-3">
                                                 <div className="flex items-center gap-3">
-                                                   <div className="w-8 h-8 flex items-center justify-center font-black text-sm bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+                                                   <div className="w-8 h-8 flex items-center justify-center font-black text-sm bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
                                                       {(tx.invitee?.name || 'S').charAt(0).toUpperCase()}
                                                    </div>
                                                    <div>
@@ -440,7 +440,7 @@ export default function ReferralHistory() {
                                                 </span>
                                              </td>
                                              <td className="px-4 py-3">
-                                                <p className="text-sm font-black text-primary-600 uppercase">+₹{tx.amount}</p>
+                                                <p className="text-sm font-black text-primary-600 dark:text-primary-300 uppercase">+₹{tx.amount}</p>
                                              </td>
                                              <td className="px-4 py-3 text-right">
                                                 <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">{translate('Balance')}</p>
@@ -460,7 +460,7 @@ export default function ReferralHistory() {
                                     <button
                                        key={i}
                                        onClick={() => setPage(i + 1)}
-                                       style={{ borderRadius: 10 }} className={`w-10 h-10 text-xs font-black transition-all ${page === i + 1 ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow' : 'bg-background-surface text-content-secondary border border-slate-200 dark:border-slate-700 hover:border-primary-500'}`}
+                                       style={{ borderRadius: 10 }} className={`w-10 h-10 text-xs font-black transition-all ${page === i + 1 ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow' : 'bg-background-surface text-content-secondary border border-slate-200 dark:border-slate-700 hover:border-primary-500'}`}
                                     >
                                        {i + 1}
                                     </button>

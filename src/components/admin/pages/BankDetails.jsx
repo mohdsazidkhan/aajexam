@@ -108,9 +108,9 @@ export default function AdminBankDetails() {
   const getSubscriptionBadge = (status) => {
     const configs = {
       free: "text-slate-500 bg-slate-500/10 border-slate-500/20",
-      basic: "text-primary-600 bg-primary-500/10 border-primary-500/20",
+      basic: "text-primary-600 dark:text-primary-300 bg-primary-500/10 border-primary-500/20",
       premium: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
-      pro: "text-primary-600 bg-primary-500/10 border-primary-500/20",
+      pro: "text-primary-600 dark:text-primary-300 bg-primary-500/10 border-primary-500/20",
     };
 
     return (
@@ -125,7 +125,7 @@ export default function AdminBankDetails() {
       key: 'user', header: 'USER', render: (_, detail) => (
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-primary-600 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
-            <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-600">
+            <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-600 dark:text-primary-300">
               {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function AdminBankDetails() {
       key: 'account', header: 'ACCOUNT DETAILS', render: (_, detail) => (
         <div className="space-y-1">
           <div className="flex items-center text-xs font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-            <User className="w-3.5 h-3.5 mr-2 text-primary-600" />
+            <User className="w-3.5 h-3.5 mr-2 text-primary-600 dark:text-primary-300" />
             {detail.accountHolderName}
           </div>
           <div className="flex items-center text-[10px] font-bold text-slate-400 tabular-nums">
@@ -159,7 +159,7 @@ export default function AdminBankDetails() {
       key: 'bank', header: 'BANK INFORMATION', render: (_, detail) => (
         <div className="space-y-1">
           <div className="flex items-center text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">
-            <University className="w-3.5 h-3.5 mr-2 text-primary-600" />
+            <University className="w-3.5 h-3.5 mr-2 text-primary-600 dark:text-primary-300" />
             {detail.bankName}
           </div>
           <div className="flex items-center text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">
@@ -250,7 +250,7 @@ export default function AdminBankDetails() {
 
           <div className="flex items-center justify-between text-[9px] font-bold text-slate-400">
             <span>Added {formatDate(detail.createdAt)}</span>
-            <span className="text-primary-600">#{detail._id?.slice(-8).toUpperCase()}</span>
+            <span className="text-primary-600 dark:text-primary-300">#{detail._id?.slice(-8).toUpperCase()}</span>
           </div>
         </div>
       ))}
@@ -275,7 +275,7 @@ export default function AdminBankDetails() {
 
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-3 xl:mx-4">
             <div className="px-3 py-2 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 flex gap-2 items-center">
-              <CreditCard className="w-3.5 h-3.5 text-primary-600 shrink-0" />
+              <CreditCard className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300 shrink-0" />
               <div className="min-w-0">
                 <div className="text-xs font-black text-slate-900 dark:text-white truncate">{detail.accountHolderName}</div>
                 <div className="text-[10px] text-slate-400 tabular-nums">{detail.accountNumber}</div>
@@ -283,7 +283,7 @@ export default function AdminBankDetails() {
             </div>
 
             <div className="px-3 py-2 bg-primary-500/5 rounded-lg border border-primary-500/10 flex gap-2 items-center">
-              <University className="w-3.5 h-3.5 text-primary-600 shrink-0" />
+              <University className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300 shrink-0" />
               <div className="min-w-0">
                 <div className="text-xs font-black text-slate-900 dark:text-white truncate">{detail.bankName}</div>
                 <div className="text-[10px] text-slate-400 tabular-nums">{detail.ifscCode}</div>
@@ -370,7 +370,7 @@ export default function AdminBankDetails() {
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         ) : error ? (
           <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-12 text-center">
-            <Zap className="w-12 h-12 text-primary-600 mx-auto mb-4" />
+            <Zap className="w-12 h-12 text-primary-600 dark:text-primary-300 mx-auto mb-4" />
             <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase mb-2">Error Loading Bank Details</h3>
             <p className="text-sm text-slate-500 dark:text-slate-400">{error}</p>
           </div>

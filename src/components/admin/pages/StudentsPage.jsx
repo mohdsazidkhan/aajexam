@@ -293,10 +293,10 @@ const StudentsPage = () => {
       render: (_, student) => (
         <button
           onClick={(e) => { e.stopPropagation(); openCityEditor(student); }}
-          className="flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700 dark:hover:text-primary-400 transition-colors"
+          className="flex items-center gap-1.5 text-sm font-semibold text-primary-600 dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-400 transition-colors"
           title="Set city"
         >
-          <MapPin className="w-3.5 h-3.5 text-primary-500" />
+          <MapPin className="w-3.5 h-3.5 text-primary-500 dark:text-primary-300" />
           {student.city || 'Add city'}
         </button>
       )
@@ -416,7 +416,7 @@ const StudentsPage = () => {
           e.stopPropagation();
           openCityEditor(student);
         }}
-        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        className="text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
         title={student.city ? `City: ${student.city}` : 'Set city'}
       >
         <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -428,7 +428,7 @@ const StudentsPage = () => {
           e.stopPropagation();
           router.push(`/admin/user-details/${student._id}`);
         }}
-        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        className="text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
         title="View student details"
       >
         <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -440,7 +440,7 @@ const StudentsPage = () => {
           e.stopPropagation();
           router.push(`/admin/students/${student._id}`);
         }}
-        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        className="text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
         title="Edit student"
       >
         <Edit3 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -452,7 +452,7 @@ const StudentsPage = () => {
           e.stopPropagation();
           handlePromoteToAdmin(student);
         }}
-        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        className="text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
         title="Promote to admin"
       >
         <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -602,7 +602,7 @@ const StudentsPage = () => {
                             </div>
                             <div className="flex items-center gap-2">
                               <Wallet className="w-4 h-4 text-primary-500/50" />
-                              <span className="text-[10px] font-black text-primary-600 tabular-nums uppercase tracking-widest">₹{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
+                              <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 tabular-nums uppercase tracking-widest">₹{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
                             </div>
                             <div className="flex items-center gap-2">
                               <Crown className="w-4 h-4 text-black/50 dark:text-white/50" />
@@ -653,11 +653,11 @@ const StudentsPage = () => {
                         <div className="grid grid-cols-2 gap-3 w-full mb-4 xl:mb-4">
                           <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Level</div>
-                            <div className="text-sm font-black text-primary-600 tabular-nums tracking-tighter">{0}</div>
+                            <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums tracking-tighter">{0}</div>
                           </div>
                           <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Balance</div>
-                            <div className="text-sm font-black text-primary-600 tabular-nums tracking-tighter">₹{student.walletBalance || 0}</div>
+                            <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums tracking-tighter">₹{student.walletBalance || 0}</div>
                           </div>
                         </div>
                         <div className="w-full p-3 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 mb-4 flex items-center gap-2">
@@ -709,15 +709,15 @@ const StudentsPage = () => {
               >
                 <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5 shrink-0">
                   <div className="flex items-center gap-3 xl:gap-3">
-                    <div className="p-4 bg-primary-500/10 text-primary-600 rounded-lg xl:rounded-[1.5rem] shadow-sm">
+                    <div className="p-4 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-lg xl:rounded-[1.5rem] shadow-sm">
                       <Zap className="w-8 h-8 fill-current" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-[10px] font-black text-primary-600 uppercase tracking-[0.4em]">Subscription</span>
+                        <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-[0.4em]">Subscription</span>
                       </div>
                       <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
-                        CREATE <span className="text-primary-600">SUBSCRIPTION</span>
+                        CREATE <span className="text-primary-600 dark:text-primary-300">SUBSCRIPTION</span>
                       </h2>
                     </div>
                   </div>
@@ -834,11 +834,11 @@ const StudentsPage = () => {
               >
                 <div className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <div className="flex items-center gap-3">
-                    <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-xl shadow-sm">
+                    <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl shadow-sm">
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-[10px] font-black text-primary-600 uppercase tracking-[0.3em] mb-1">City</div>
+                      <div className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-[0.3em] mb-1">City</div>
                       <h2 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
                         {cityEditStudent.name || cityEditStudent.email}
                       </h2>

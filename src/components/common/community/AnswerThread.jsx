@@ -96,7 +96,7 @@ function AnswerItem({
         <div className="flex flex-col items-center gap-0.5 shrink-0">
           <button aria-label={translate('Like')}
             onClick={() => handleVote('up')}
-            className={`p-1 rounded hover:bg-primary-100 dark:hover:bg-primary-900/30 transition ${myVote === 'up' ? 'text-primary-600' : 'text-slate-400'}`}
+            className={`p-1 rounded hover:bg-primary-100 dark:hover:bg-primary-900/30 transition ${myVote === 'up' ? 'text-primary-600 dark:text-primary-300' : 'text-slate-400'}`}
           >
             <ThumbsUp className="w-4 h-4" />
           </button>
@@ -111,12 +111,12 @@ function AnswerItem({
 
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-1.5 text-xs mb-1">
-            <div className="w-6 h-6 rounded-full bg-primary-400 text-white text-[10px] font-bold flex items-center justify-center">
+            <div className="w-6 h-6 rounded-full bg-primary-600 dark:bg-primary-800 text-white text-[10px] font-bold flex items-center justify-center">
               {(item.author?.name || '?').charAt(0).toUpperCase()}
             </div>
             <span className="font-bold text-slate-800 dark:text-slate-200">{item.author?.name || translate('User')}</span>
             {item.author?.username && (
-              <Link href={`/u/${item.author.username}`} className="text-[11px] font-semibold text-primary-600 hover:underline">
+              <Link href={`/u/${item.author.username}`} className="text-[11px] font-semibold text-primary-600 dark:text-primary-300 hover:underline">
                 @{item.author.username}
               </Link>
             )}
@@ -146,7 +146,7 @@ function AnswerItem({
             {canAccept && !isReply && (
               <button
                 onClick={() => onAccept(item._id)}
-                className={`flex items-center gap-1 transition ${item.isAcceptedAnswer ? 'text-primary-600 font-bold' : 'text-slate-400 hover:text-primary-600'}`}
+                className={`flex items-center gap-1 transition ${item.isAcceptedAnswer ? 'text-primary-600 dark:text-primary-300 font-bold' : 'text-slate-400 hover:text-primary-600'}`}
               >
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 {item.isAcceptedAnswer ? translate('Accepted') : translate('Accept')}
@@ -317,7 +317,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
       ) : (
         <div className="mb-4 p-3 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/40 text-center">
           <p className="text-sm text-slate-500">
-            <Link href="/login" className="text-primary-600 font-bold hover:underline">{translate('Login')}</Link> to post an answer
+            <Link href="/login" className="text-primary-600 dark:text-primary-300 font-bold hover:underline">{translate('Login')}</Link> to post an answer
           </p>
         </div>
       )}

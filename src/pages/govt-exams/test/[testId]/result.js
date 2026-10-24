@@ -191,7 +191,7 @@ const TestResult = ({ resolvedId } = {}) => {
                   {translate('All India Rank')} <span className="text-primary-700 dark:text-primary-200">#{result.rank}</span> {translate('of {total}', { total: lbStats.totalParticipants.toLocaleString('en-IN') })}
                 </span>
                 <span className="hidden sm:inline h-5 w-px bg-primary-300 dark:bg-white/30" />
-                <span className="text-xs xl:text-sm font-black uppercase tracking-widest px-3 py-1 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow">
+                <span className="text-xs xl:text-sm font-black uppercase tracking-widest px-3 py-1 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow">
                   {translate('{band} · Beat {pct}% candidates', { band: translate(percentileBand), pct: beatPct })}
                 </span>
               </motion.div>
@@ -238,7 +238,7 @@ const TestResult = ({ resolvedId } = {}) => {
           }
         ].map((item, idx) => (
           <Card key={idx} className="flex flex-col items-center text-center gap-1.5 hover:-translate-y-0.5 hover:shadow-xl transition-all">
-            <div className="w-14 h-14 shrink-0 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow" style={{ borderRadius: 16 }}>
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow" style={{ borderRadius: 16 }}>
               <item.icon className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
             <span className="text-xl xl:text-2xl font-black font-outfit">{item.value}</span>
@@ -257,7 +257,7 @@ const TestResult = ({ resolvedId } = {}) => {
               onClick={() => setActiveTab(tab)}
               className={`
                  px-8 py-3 rounded-full font-black uppercase text-sm transition-all
-                 ${activeTab === tab ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow' : 'text-gray-400 hover:text-gray-600'}
+                 ${activeTab === tab ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow' : 'text-gray-400 hover:text-gray-600'}
                `}
             >
               {translate(tab)}
@@ -326,7 +326,7 @@ const TestResult = ({ resolvedId } = {}) => {
                             </div>
                           </td>
                           <td className="px-6 py-4 text-center font-black">{fmtNum(result.score)}</td>
-                          <td className="px-6 py-4 text-right font-bold text-primary-600">#{result.rank}</td>
+                          <td className="px-6 py-4 text-right font-bold text-primary-600 dark:text-primary-300">#{result.rank}</td>
                         </tr>
                       )}
                     </tbody>
@@ -342,7 +342,7 @@ const TestResult = ({ resolvedId } = {}) => {
                     <Card key={idx}>
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-black text-xs uppercase tracking-wider">{name}</span>
-                        <span className="font-black text-primary-600">{translate('{score} pts', { score: fmtNum(stats.score) })}</span>
+                        <span className="font-black text-primary-600 dark:text-primary-300">{translate('{score} pts', { score: fmtNum(stats.score) })}</span>
                       </div>
                       <div className="flex gap-1 h-3 rounded-full overflow-hidden bg-gray-100 dark:bg-slate-700">
                         <div className="bg-primary-600 h-full" style={{ width: `${(stats.correct / (stats.correct + stats.wrong || 1)) * 100}%` }} />
@@ -379,7 +379,7 @@ const TestResult = ({ resolvedId } = {}) => {
                         </span>
                         <h3 className="text-lg font-bold leading-tight whitespace-pre-wrap">{q.questionText}</h3>
                       </div>
-                      {isCorrect ? <CircleCheck className="text-primary-600 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-red-600 dark:text-red-400 w-8 h-8" />}
+                      {isCorrect ? <CircleCheck className="text-primary-600 dark:text-primary-300 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-red-600 dark:text-red-400 w-8 h-8" />}
                     </div>
 
                     <div className="p-3 xl:p-6 space-y-2 xl:space-y-4">
@@ -413,7 +413,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
                       {(q.explanation || q.explanationImage) && (
                         <div className="p-4 bg-primary-100/50 dark:bg-primary-900/10 rounded-2xl border-l-4 border-primary-600">
-                          <p className="text-xs font-black text-primary-600 uppercase mb-1">{translate('Explanation')}</p>
+                          <p className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase mb-1">{translate('Explanation')}</p>
                           {q.explanation && <p className="text-sm font-medium leading-relaxed">{q.explanation}</p>}
                           {q.explanationImage && (
                             <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-h-72 mt-2 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />

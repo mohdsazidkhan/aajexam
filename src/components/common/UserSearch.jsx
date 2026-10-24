@@ -89,7 +89,7 @@ const UserSearch = () => {
                   @{user.username}
                 </p>
                 {user.bio && (
-                  <p className="user-result-bio m-0 text-[10px] font-black text-primary-600 uppercase tracking-wider overflow-hidden text-ellipsis whitespace-nowrap">
+                  <p className="user-result-bio m-0 text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-wider overflow-hidden text-ellipsis whitespace-nowrap">
                     {user.bio}
                   </p>
                 )}

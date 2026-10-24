@@ -69,7 +69,7 @@ const CircleProgress = ({ value = 0, size = 80, strokeWidth = 8, color = '#6366f
 const StatMini = ({ icon: Icon, label, value }) => (
    <div className="relative overflow-hidden flex items-center gap-2.5 p-2.5 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all min-w-0" style={{ borderRadius: 12 }}>
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
-      <div className="ml-1 w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+      <div className="ml-1 w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
          <Icon className="w-4 h-4" />
       </div>
       <div className="min-w-0">
@@ -82,7 +82,7 @@ const StatMini = ({ icon: Icon, label, value }) => (
 // --- Helper: Section Header ---
 const SectionHeader = ({ icon: Icon, title, subtitle }) => (
    <div className="flex items-center gap-2.5 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15">
-      {Icon && <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></div>}
+      {Icon && <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></div>}
       <div>
          <h2 className="text-base xl:text-lg font-black font-outfit uppercase tracking-tight">{title}</h2>
          {subtitle && <p className="text-xs text-content-secondary font-bold">{subtitle}</p>}
@@ -237,7 +237,7 @@ const MyAnalyticsPage = () => {
             <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1.5 max-w-full p-1.5 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md" style={{ borderRadius: 14 }}>
                {TABS.map(tab => (
                   <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                     style={{ borderRadius: 999 }} className={`flex-shrink-0 whitespace-nowrap flex items-center gap-1.5 px-4 py-2 font-black text-[11px] xl:text-xs uppercase tracking-wide transition-all ${activeTab === tab.key ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow' : 'text-content-secondary hover:text-primary-700 dark:hover:text-primary-200 hover:bg-primary-50 dark:hover:bg-white/10'}`}>
+                     style={{ borderRadius: 999 }} className={`flex-shrink-0 whitespace-nowrap flex items-center gap-1.5 px-4 py-2 font-black text-[11px] xl:text-xs uppercase tracking-wide transition-all ${activeTab === tab.key ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow' : 'text-content-secondary hover:text-primary-700 dark:hover:text-primary-200 hover:bg-primary-50 dark:hover:bg-white/10'}`}>
                      <tab.icon className="w-3.5 h-3.5" />
                      {translate(tab.label)}
                   </button>
@@ -259,9 +259,9 @@ const MyAnalyticsPage = () => {
                               { icon: BookOpen, value: quiz?.subjectWise?.length || 0, label: 'Subjects' },
                               { icon: Target, value: quiz?.topicWise?.length || 0, label: 'Topics' },
                               { icon: Play, value: reel?.totalViewed || 0, label: 'Reels Viewed', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
-                              { icon: FileText, value: data?.myReels?.totalPosted || 0, label: 'Reels Posted', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600' },
-                              { icon: Users, value: followersCount || 0, label: 'Followers', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600' },
-                              { icon: Target, value: followingCount || 0, label: 'Following', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600' },
+                              { icon: FileText, value: data?.myReels?.totalPosted || 0, label: 'Reels Posted', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600 dark:text-primary-300' },
+                              { icon: Users, value: followersCount || 0, label: 'Followers', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600 dark:text-primary-300' },
+                              { icon: Target, value: followingCount || 0, label: 'Following', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600 dark:text-primary-300' },
                               { icon: Wallet, value: wallet?.balance || 0, label: 'Wallet Balance', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
                               { icon: UserPlus, value: referral?.count || 0, label: 'Referrals', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
                            ].map((tile) => (
@@ -277,7 +277,7 @@ const MyAnalyticsPage = () => {
                         {/* Overall Quiz Stats */}
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                            <StatMini icon={Zap} label={translate('Total Quizzes')} value={quiz?.totalAttempts || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
-                           <StatMini icon={Target} label={translate('Avg Accuracy')} value={`${quiz?.avgAccuracy || 0}%`} color="text-primary-600" bg="bg-primary-50" />
+                           <StatMini icon={Target} label={translate('Avg Accuracy')} value={`${quiz?.avgAccuracy || 0}%`} color="text-primary-600 dark:text-primary-300" bg="bg-primary-50" />
                            <StatMini icon={Trophy} label={translate('Best Score')} value={`${quiz?.bestScore || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Clock} label={translate('Total Time')} value={`${Math.round((quiz?.totalTime || 0) / 60)}m`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                         </div>
@@ -287,8 +287,8 @@ const MyAnalyticsPage = () => {
                            <div className="grid grid-cols-3 gap-2 text-center">
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-0.5">
-                                    <CheckCircle className="w-4 h-4 text-primary-600" />
-                                    <span className="text-xl font-black font-outfit text-primary-600">{quiz?.totalCorrect || 0}</span>
+                                    <CheckCircle className="w-4 h-4 text-primary-600 dark:text-primary-300" />
+                                    <span className="text-xl font-black font-outfit text-primary-600 dark:text-primary-300">{quiz?.totalCorrect || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Correct')}</p>
                               </div>
@@ -320,7 +320,7 @@ const MyAnalyticsPage = () => {
                            <div className="space-y-2 xl:space-y-3">
                               <div className="flex items-center justify-between gap-2">
                                  <SectionHeader icon={Zap} title={translate('Quiz History')} />
-                                 <Link href="/student/quiz-history" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
+                                 <Link href="/student/quiz-history" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
                               </div>
                               <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {quizAttempts.map((a, idx) => (
@@ -366,7 +366,7 @@ const MyAnalyticsPage = () => {
                      <>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                            <StatMini icon={GraduationCap} label={translate('Total Exams')} value={exam?.totalAttempts || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
-                           <StatMini icon={Target} label={translate('Avg Accuracy')} value={`${exam?.avgAccuracy || 0}%`} color="text-primary-600" bg="bg-primary-50" />
+                           <StatMini icon={Target} label={translate('Avg Accuracy')} value={`${exam?.avgAccuracy || 0}%`} color="text-primary-600 dark:text-primary-300" bg="bg-primary-50" />
                            <StatMini icon={Trophy} label={translate('Best Accuracy')} value={`${exam?.bestAccuracy || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                         </div>
 
@@ -374,8 +374,8 @@ const MyAnalyticsPage = () => {
                            <div className="grid grid-cols-2 gap-2 text-center">
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-0.5">
-                                    <CheckCircle className="w-4 h-4 text-primary-600" />
-                                    <span className="text-xl font-black font-outfit text-primary-600">{exam?.totalCorrect || 0}</span>
+                                    <CheckCircle className="w-4 h-4 text-primary-600 dark:text-primary-300" />
+                                    <span className="text-xl font-black font-outfit text-primary-600 dark:text-primary-300">{exam?.totalCorrect || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Correct')}</p>
                               </div>
@@ -400,7 +400,7 @@ const MyAnalyticsPage = () => {
                            <div className="space-y-2 xl:space-y-3">
                               <div className="flex items-center justify-between gap-2">
                                  <SectionHeader icon={GraduationCap} title={translate('Exam History')} />
-                                 <Link href="/student/exam-history" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
+                                 <Link href="/student/exam-history" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
                               </div>
                               <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {examAttempts.map((a, idx) => (
@@ -452,7 +452,7 @@ const MyAnalyticsPage = () => {
                                                 <div className="flex flex-wrap justify-between items-center gap-x-3 gap-y-1">
                                                    <span className="font-black text-base">{translateData(s.name)}</span>
                                                    <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs font-bold text-content-secondary">
-                                                      <span className="text-primary-600">{translate('{count} correct', { count: s.totalCorrect })}</span>
+                                                      <span className="text-primary-600 dark:text-primary-300">{translate('{count} correct', { count: s.totalCorrect })}</span>
                                                       <span className="text-black dark:text-white">{translate('{count} wrong', { count: s.totalWrong })}</span>
                                                       <span>{translate('{count} attempts', { count: s.attempts })}</span>
                                                    </div>
@@ -493,16 +493,16 @@ const MyAnalyticsPage = () => {
                                              <p className="text-[10px] font-bold text-content-secondary">{translateData(tp.subjectName)} &bull; {translate('{count} attempts', { count: tp.attempts })}</p>
                                           </div>
                                           <div className="flex items-center gap-3">
-                                             <span className="text-primary-600 text-xs font-bold">{tp.totalCorrect}  </span>
+                                             <span className="text-primary-600 dark:text-primary-300 text-xs font-bold">{tp.totalCorrect}  </span>
                                              <span className="text-black dark:text-white text-xs font-bold">{tp.totalWrong}  </span>
-                                             <span className="font-black text-sm text-primary-600">{tp.avgAccuracy}%</span>
+                                             <span className="font-black text-sm text-primary-600 dark:text-primary-300">{tp.avgAccuracy}%</span>
                                           </div>
                                        </div>
                                     </Card>
                                  ))}
                                  {quiz.topicWise.length > 6 && (
                                     <button onClick={() => setShowAllTopics(!showAllTopics)}
-                                       className="xl:col-span-3 flex items-center justify-center gap-2 mx-auto text-primary-600 font-black text-sm py-2">
+                                       className="xl:col-span-3 flex items-center justify-center gap-2 mx-auto text-primary-600 dark:text-primary-300 font-black text-sm py-2">
                                        {showAllTopics ? <><ChevronUp className="w-4 h-4" /> {translate('Show Less')}</> : <><ChevronDown className="w-4 h-4" /> {translate('Show All {count} Topics', { count: quiz.topicWise.length })}</>}
                                     </button>
                                  )}
@@ -525,7 +525,7 @@ const MyAnalyticsPage = () => {
                      <>
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                            <StatMini icon={Eye} label={translate('Reels Viewed')} value={reel?.totalViewed || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
-                           <StatMini icon={CheckCircle} label={translate('Questions Answered')} value={reel?.totalAnswered || 0} color="text-primary-600" bg="bg-primary-50" />
+                           <StatMini icon={CheckCircle} label={translate('Questions Answered')} value={reel?.totalAnswered || 0} color="text-primary-600 dark:text-primary-300" bg="bg-primary-50" />
                            <StatMini icon={Target} label={translate('Reel Accuracy')} value={`${reel?.accuracy || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Clock} label={translate('Time Spent')} value={`${Math.round((reel?.totalTimeSpent || 0) / 60)}m`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                         </div>
@@ -545,7 +545,7 @@ const MyAnalyticsPage = () => {
                                  <p className="text-[10px] font-bold text-content-secondary uppercase">{translate('Saved')}</p>
                               </div>
                               <div>
-                                 <Share2 className="w-5 h-5 text-primary-600 mx-auto mb-1" />
+                                 <Share2 className="w-5 h-5 text-primary-600 dark:text-primary-300 mx-auto mb-1" />
                                  <p className="text-xl font-black font-outfit">{reel?.totalShared || 0}</p>
                                  <p className="text-[10px] font-bold text-content-secondary uppercase">{translate('Shared')}</p>
                               </div>
@@ -586,20 +586,20 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'my-reels' && (
                      <>
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                           <StatMini icon={FileText} label={translate('Reels Posted')} value={data?.myReels?.totalPosted || 0} color="text-primary-600" bg="bg-primary-50" />
+                           <StatMini icon={FileText} label={translate('Reels Posted')} value={data?.myReels?.totalPosted || 0} color="text-primary-600 dark:text-primary-300" bg="bg-primary-50" />
                            <StatMini icon={Eye} label={translate('Views')} value={data?.myReels?.totalViews || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Heart} label={translate('Liked')} value={data?.myReels?.totalLikes || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Bookmark} label={translate('Saved')} value={data?.myReels?.totalBookmarks || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
-                           <StatMini icon={Share2} label={translate('Shared')} value={data?.myReels?.totalShares || 0} color="text-primary-600" bg="bg-primary-50" />
+                           <StatMini icon={Share2} label={translate('Shared')} value={data?.myReels?.totalShares || 0} color="text-primary-600 dark:text-primary-300" bg="bg-primary-50" />
                            <StatMini icon={CheckCircle} label={translate('Questions Answered')} value={data?.myReels?.totalAnswered || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
-                           <StatMini icon={Target} label={translate('Correct')} value={data?.myReels?.totalCorrect || 0} color="text-primary-600" bg="bg-primary-50" />
+                           <StatMini icon={Target} label={translate('Correct')} value={data?.myReels?.totalCorrect || 0} color="text-primary-600 dark:text-primary-300" bg="bg-primary-50" />
                         </div>
 
                         <Card radius="2xl" className="border-slate-200 dark:border-slate-800">
                            <p className="font-black text-xs uppercase text-content-secondary mb-2">{translate('Status')}</p>
                            <div className="grid grid-cols-4 gap-2 text-center">
                               {[
-                                 { label: 'Published', value: data?.myReels?.published || 0, tone: 'text-primary-600' },
+                                 { label: 'Published', value: data?.myReels?.published || 0, tone: 'text-primary-600 dark:text-primary-300' },
                                  { label: 'Pending', value: data?.myReels?.pending || 0, tone: 'text-black dark:text-white' },
                                  { label: 'Rejected', value: data?.myReels?.rejected || 0, tone: 'text-black dark:text-white' },
                                  { label: 'Draft', value: data?.myReels?.draft || 0, tone: 'text-gray-500' },
@@ -623,7 +623,7 @@ const MyAnalyticsPage = () => {
                            <div className="space-y-2 xl:space-y-3">
                               <div className="flex items-center justify-between gap-2">
                                  <SectionHeader icon={FileText} title={translate('My Reels')} />
-                                 <Link href="/student/my-reels" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
+                                 <Link href="/student/my-reels" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
                               </div>
                               <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {myReelsList.map((r, idx) => (
@@ -667,15 +667,15 @@ const MyAnalyticsPage = () => {
                      <>
                         <div className="grid grid-cols-2 xl:grid-cols-4 gap-2">
                            <Card padded={false} radius="xl" className="col-span-2 xl:col-span-1 bg-gradient-to-br from-primary-600 to-primary-800 text-white border-none shadow-lg flex items-center gap-2.5 p-2.5">
-                              <div className="w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Wallet className="w-4 h-4" /></div>
+                              <div className="w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Wallet className="w-4 h-4" /></div>
                               <div className="min-w-0">
                                  <p className="text-xl font-black font-outfit leading-tight">{wallet?.balance || 0}</p>
                                  <p className="text-[9px] font-black opacity-70 uppercase leading-tight">{translate('Wallet Balance')}</p>
                               </div>
                            </Card>
-                           <StatMini icon={TrendingUp} label={translate('Total Earned')} value={wallet?.totalEarnings || 0} color="text-primary-600" bg="bg-primary-50" />
+                           <StatMini icon={TrendingUp} label={translate('Total Earned')} value={wallet?.totalEarnings || 0} color="text-primary-600 dark:text-primary-300" bg="bg-primary-50" />
                            <StatMini icon={TrendingDown} label={translate('Total Spent')} value={wallet?.totalExpenses || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
-                           <StatMini icon={Coins} label={translate('Total Referral Rewards')} value={referral?.totalRewards || 0} color="text-primary-600" bg="bg-primary-50" />
+                           <StatMini icon={Coins} label={translate('Total Referral Rewards')} value={referral?.totalRewards || 0} color="text-primary-600 dark:text-primary-300" bg="bg-primary-50" />
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -687,7 +687,7 @@ const MyAnalyticsPage = () => {
                                  <p className="font-black text-base font-mono tracking-wider leading-tight truncate">{referral?.code || '---'}</p>
                               </div>
                               <button onClick={copyReferralCode} aria-label={translate('Copy')}
-                                 className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow hover:brightness-105 rounded-lg shrink-0 transition-all">
+                                 className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow hover:brightness-105 rounded-lg shrink-0 transition-all">
                                  {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                               </button>
                            </Card>

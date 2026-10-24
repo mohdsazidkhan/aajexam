@@ -106,7 +106,7 @@ const FinancialAnalytics = () => {
         { label: 'Successful Payments', val: data?.paymentStats?.reduce((sum, p) => sum + p.count, 0) || 0, icon: CreditCard }
       ].map((stat) => (
         <div key={stat.label} className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg shrink-0"><stat.icon className="w-4 h-4" /></div>
+          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0"><stat.icon className="w-4 h-4" /></div>
           <div className="min-w-0">
             <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.val}</div>
             <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
@@ -213,7 +213,7 @@ const FinancialAnalytics = () => {
       header: 'Total Revenue',
       render: (_, p) => (
         <div className="text-right">
-          <div className="text-2xl font-black text-primary-600 tabular-nums italic tracking-tighter">₹{p.totalRevenue?.toLocaleString('en-IN') || 0}</div>
+          <div className="text-2xl font-black text-primary-600 dark:text-primary-300 tabular-nums italic tracking-tighter">₹{p.totalRevenue?.toLocaleString('en-IN') || 0}</div>
           <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Total Revenue</div>
         </div>
       )
@@ -263,7 +263,7 @@ const FinancialAnalytics = () => {
                   <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm relative">
                     <div className="flex items-center justify-between mb-4 xl:mb-4">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Subscription Tiers</h3>
-                       <PieChart className="w-5 h-5 text-primary-600 opacity-30" />
+                       <PieChart className="w-5 h-5 text-primary-600 dark:text-primary-300 opacity-30" />
                     </div>
                     <div className="h-80">
                       <Pie data={{ labels: planLabels, datasets: [{ data: planCounts, backgroundColor: ['#6366F1','#8B5CF6','#10B981','#F59E0B','#EF4444'], borderWidth: 0 }] }} options={pieOptions} />
@@ -273,7 +273,7 @@ const FinancialAnalytics = () => {
                   <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm relative">
                     <div className="flex items-center justify-between mb-4 xl:mb-4">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Revenue Over Time</h3>
-                       <BarChart3 className="w-5 h-5 text-primary-600 opacity-30" />
+                       <BarChart3 className="w-5 h-5 text-primary-600 dark:text-primary-300 opacity-30" />
                     </div>
                     <div className="h-80">
                        <Line data={{ labels: revenueTrendLabels, datasets: [{ label: 'Revenue', data: revenueTrendData, borderColor: '#58cc02', backgroundColor: 'rgba(88,204,2,0.1)', fill: true, tension: 0.4 }] }} options={chartOptions} />
@@ -285,7 +285,7 @@ const FinancialAnalytics = () => {
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm overflow-hidden">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                       <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-2xl"><Activity className="w-6 h-6" /></div>
+                       <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-2xl"><Activity className="w-6 h-6" /></div>
                        <div>
                         <h3 className="text-[14px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] leading-none mb-1">Plan Performance Breakdown</h3>
                         <span className="text-[9px] font-black text-slate-400 tracking-widest uppercase italic">Revenue breakdown by subscription plan</span>

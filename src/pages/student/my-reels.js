@@ -43,7 +43,7 @@ const TYPE_CONFIG = {
 };
 
 const STATUS_CONFIG = {
-   published: { label: 'Published', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20' },
+   published: { label: 'Published', icon: CheckCircle, color: 'text-primary-600 dark:text-primary-300', bg: 'bg-primary-50 dark:bg-primary-900/20' },
    pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
    rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
    draft: { label: 'Draft', icon: Clock, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20' },

@@ -149,7 +149,7 @@ const ExamHistoryPage = () => {
                                           </div>
                                           <div className="space-y-1">
                                              <span className="text-[8px] font-black text-gray-400">{translate('Rank')}</span>
-                                             <p className="text-sm font-black text-primary-600">#{attempt.rank || 'N/A'}</p>
+                                             <p className="text-sm font-black text-primary-600 dark:text-primary-300">#{attempt.rank || 'N/A'}</p>
                                           </div>
                                        </div>
 

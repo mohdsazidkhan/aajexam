@@ -117,7 +117,7 @@ const AdminMostActiveUsers = () => {
         <button
             onClick={() => openDetail(u)}
             title="View quiz & exam attempts"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 text-[10px] font-black uppercase tracking-widest hover:bg-primary-100 dark:hover:bg-primary-950/50 transition-all"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300 text-[10px] font-black uppercase tracking-widest hover:bg-primary-100 dark:hover:bg-primary-950/50 transition-all"
         >
             <Eye className="w-3.5 h-3.5" /> Details
         </button>
@@ -152,13 +152,13 @@ const AdminMostActiveUsers = () => {
     const columns = [
         {
             key: 'rank', header: '#', align: 'center', render: (_, u) => (
-                <span className="text-sm font-black text-primary-600 tabular-nums">{u.rank}</span>
+                <span className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{u.rank}</span>
             )
         },
         {
             key: 'user', header: 'User', render: (_, u) => (
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm uppercase">
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm uppercase">
                         {u.name?.[0]?.toUpperCase() || 'U'}
                     </div>
                     <div>
@@ -170,18 +170,18 @@ const AdminMostActiveUsers = () => {
         },
         {
             key: 'quizzes', header: 'Quizzes', align: 'center', render: (_, u) => (
-                <div className="text-sm font-black text-primary-600 tabular-nums">{u.quizzes}</div>
+                <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{u.quizzes}</div>
             )
         },
         {
             key: 'exams', header: 'Exams', align: 'center', render: (_, u) => (
-                <div className="text-sm font-black text-primary-600 tabular-nums">{u.exams}</div>
+                <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{u.exams}</div>
             )
         },
         {
             key: 'totalActivities', header: 'Total', align: 'center', render: (_, u) => (
                 <div>
-                    <div className="text-sm font-black text-primary-600 tabular-nums">{u.totalActivities}</div>
+                    <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{u.totalActivities}</div>
                     <div className="text-[9px] font-bold text-slate-400 uppercase">Activities</div>
                 </div>
             )
@@ -194,7 +194,7 @@ const AdminMostActiveUsers = () => {
         {
             key: 'streak', header: 'Streak', align: 'center', render: (_, u) => (
                 <div>
-                    <div className="text-sm font-black text-primary-600 tabular-nums">{u.currentStreak}</div>
+                    <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{u.currentStreak}</div>
                     <div className="text-[9px] font-bold text-slate-400 uppercase">Best {u.longestStreak}</div>
                 </div>
             )
@@ -255,7 +255,7 @@ const AdminMostActiveUsers = () => {
         <button
             onClick={exportToCSV}
             disabled={users.length === 0}
-            className="w-full flex items-center justify-center gap-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm shrink-0 disabled:opacity-30"
+            className="w-full flex items-center justify-center gap-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300 px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm shrink-0 disabled:opacity-30"
         >
             <Download className="w-4 h-4" /> Export to CSV
         </button>
@@ -351,7 +351,7 @@ const AdminMostActiveUsers = () => {
                                                 { label: 'Time Spent', value: formatDuration(a.timeSpent) }
                                             ].map((c) => (
                                                 <div key={c.label} className="px-2.5 py-1 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 text-center min-w-[72px]">
-                                                    <div className="text-xs font-black text-primary-600 tabular-nums">{c.value}</div>
+                                                    <div className="text-xs font-black text-primary-600 dark:text-primary-300 tabular-nums">{c.value}</div>
                                                     <div className="text-[9px] font-bold text-slate-400 uppercase">{c.label}</div>
                                                 </div>
                                             ))}
@@ -377,7 +377,7 @@ const AdminMostActiveUsers = () => {
                             { label: "Time Spent", value: formatDuration(summary.totalTimeSpent), icon: Clock }
                         ].map((stat) => (
                             <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-                                <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+                                <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
                                 <div className="min-w-0">
                                     <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">{stat.value}</div>
                                     <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
@@ -411,11 +411,11 @@ const AdminMostActiveUsers = () => {
                                             {pagedUsers.map((u) => (
                                                 <div key={u.userId} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                     <div className="flex items-start justify-between gap-2">
-                                                        <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-xl flex items-center justify-center font-black text-sm">
+                                                        <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl flex items-center justify-center font-black text-sm">
                                                             {u.name?.[0]?.toUpperCase() || 'U'}
                                                             <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{u.rank}</span>
                                                         </div>
-                                                        {u.rank <= 3 && <Trophy className="w-4 h-4 text-primary-600" />}
+                                                        {u.rank <= 3 && <Trophy className="w-4 h-4 text-primary-600 dark:text-primary-300" />}
                                                     </div>
                                                     <div>
                                                         <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{u.name || 'Unknown'}</h3>
@@ -428,7 +428,7 @@ const AdminMostActiveUsers = () => {
                                                             { label: 'Total', value: u.totalActivities }
                                                         ].map((s) => (
                                                             <div key={s.label} className="p-2 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5">
-                                                                <div className="text-sm font-black text-primary-600 tabular-nums">{s.value}</div>
+                                                                <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{s.value}</div>
                                                                 <div className="text-[9px] font-bold text-slate-400 uppercase">{s.label}</div>
                                                             </div>
                                                         ))}
@@ -448,14 +448,14 @@ const AdminMostActiveUsers = () => {
                                         <div className="space-y-3">
                                             {pagedUsers.map((u) => (
                                                 <div key={u.userId} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                                                    <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-xl flex items-center justify-center shrink-0 font-black text-sm">
+                                                    <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl flex items-center justify-center shrink-0 font-black text-sm">
                                                         {u.name?.[0]?.toUpperCase() || 'U'}
                                                         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{u.rank}</span>
                                                     </div>
                                                     <div className="flex-1 min-w-0 space-y-1">
                                                         <div className="flex flex-wrap items-center gap-2">
                                                             <h3 className="text-sm font-bold text-slate-900 dark:text-white">{u.name || 'Unknown'}</h3>
-                                                            {u.rank <= 3 && <Trophy className="w-4 h-4 text-primary-600" />}
+                                                            {u.rank <= 3 && <Trophy className="w-4 h-4 text-primary-600 dark:text-primary-300" />}
                                                         </div>
                                                         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-slate-400">
                                                             <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5" /> {u.email}</span>
@@ -472,7 +472,7 @@ const AdminMostActiveUsers = () => {
                                                             { label: 'Time', value: formatDuration(u.totalTimeSpent) }
                                                         ].map((s) => (
                                                             <div key={s.label} className="px-3 py-1.5 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 text-center min-w-[72px]">
-                                                                <div className="text-sm font-black text-primary-600 tabular-nums">{s.value}</div>
+                                                                <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{s.value}</div>
                                                                 <div className="text-[9px] font-bold text-slate-400 uppercase">{s.label}</div>
                                                             </div>
                                                         ))}

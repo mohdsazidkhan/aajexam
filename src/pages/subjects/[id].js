@@ -108,7 +108,7 @@ export default function SubjectDetail({
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Quizzes')}</div>
               </div>
               <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 text-center border-2 border-slate-100 dark:border-slate-800">
-                <div className="text-xl font-black text-primary-600">{translate('FREE')}</div>
+                <div className="text-xl font-black text-primary-600 dark:text-primary-300">{translate('FREE')}</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Access')}</div>
               </div>
             </div>

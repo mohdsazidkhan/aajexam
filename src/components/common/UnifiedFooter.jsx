@@ -70,7 +70,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           <div className="xl:col-span-1 space-y-8">
             <div className="space-y-2 xl:space-y-4">
               <h2 className="text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-content-primary">
-                AAJ<span className="text-primary-600 text-glow-primary">{translate('EXAM')}</span>
+                AAJ<span className="text-primary-600 dark:text-primary-300 text-glow-primary">{translate('EXAM')}</span>
               </h2>
               <div className="h-1 w-12 bg-primary-600 rounded-full" />
             </div>
@@ -98,7 +98,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="space-y-8">
-            <h3 className="text-xs font-black text-primary-600 uppercase tracking-[0.25em] flex items-center gap-3">
+            <h3 className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase tracking-[0.25em] flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
               {translate('Explore')}
             </h3>
@@ -117,7 +117,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="space-y-8">
-            <h3 className="text-xs font-black text-primary-600 uppercase tracking-[0.25em] flex items-center gap-3">
+            <h3 className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase tracking-[0.25em] flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
               {translate('Legal')}
             </h3>
@@ -165,7 +165,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   aria-label={translate('Contact us on WhatsApp')}
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 bg-primary-500/10 text-primary-600 rounded-2xl flex items-center justify-center group-hover/item:bg-primary-600 group-hover/item:text-white transition-all shadow-sm">
+                  <div className="w-11 h-11 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-2xl flex items-center justify-center group-hover/item:bg-primary-600 group-hover/item:text-white transition-all shadow-sm">
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">
@@ -182,7 +182,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Zap className="w-3 h-3 text-black dark:text-white" />
-                  <span className="text-[11px] font-black text-primary-600 tracking-[0.08em]">{translate('Stable')}</span>
+                  <span className="text-[11px] font-black text-primary-600 dark:text-primary-300 tracking-[0.08em]">{translate('Stable')}</span>
                 </div>
               </div>
             </div>

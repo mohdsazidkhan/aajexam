@@ -122,7 +122,7 @@ const DailyChallengePage = () => {
         ])}
       />
       <div className="text-center space-y-2 xl:space-y-4">
-        <div className="w-20 h-20 flex items-center justify-center mx-auto bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 20 }}><Target className="w-10 h-10" /></div>
+        <div className="w-20 h-20 flex items-center justify-center mx-auto bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 20 }}><Target className="w-10 h-10" /></div>
         <h2 className="text-2xl font-black text-slate-400">{translate('No Challenge Today')}</h2>
         <p className="text-sm text-slate-400">{translate('Come back tomorrow for a new challenge!')}</p>
       </div>
@@ -166,7 +166,7 @@ const DailyChallengePage = () => {
             />
           )}
           <div className="flex items-center justify-center gap-2 px-14">
-            <span className="w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><Target className="w-5 h-5" /></span>
+            <span className="w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><Target className="w-5 h-5" /></span>
             <h1 className="text-xl sm:text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white break-words min-w-0">{challenge.title}</h1>
           </div>
           <p className="text-sm text-slate-600 dark:text-white/75 font-bold">{translate('{questions} Questions | {minutes} Minutes', { questions: challenge.questions.length, minutes: challenge.duration })}</p>
@@ -175,12 +175,12 @@ const DailyChallengePage = () => {
         {/* Not started yet */}
         {!started && !attempted && (
           <Card className="text-center space-y-6">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center mx-auto bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 24 }}>
+            <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center mx-auto bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 24 }}>
               <Zap className="w-10 h-10 sm:w-12 sm:h-12" />
             </div>
             <h2 className="text-xl font-black">{translate('Ready for Today\'s Challenge?')}</h2>
             <p className="text-sm text-slate-500">{translate('Complete it to maintain your streak!')}</p>
-            <button onClick={() => setStarted(true)} style={{ borderRadius: 12 }} className="w-full sm:w-auto px-8 py-3.5 sm:py-3 font-black uppercase tracking-wide text-sm bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-lg hover:brightness-105 hover:-translate-y-0.5 transition-all">
+            <button onClick={() => setStarted(true)} style={{ borderRadius: 12 }} className="w-full sm:w-auto px-8 py-3.5 sm:py-3 font-black uppercase tracking-wide text-sm bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-lg hover:brightness-105 hover:-translate-y-0.5 transition-all">
               {translate('Start Challenge')} <ArrowRight className="w-4 h-4 inline ml-2" />
             </button>
           </Card>
@@ -190,7 +190,7 @@ const DailyChallengePage = () => {
         {started && !attempted && (
           <div className="space-y-2 xl:space-y-4">
             <div className="flex justify-between items-center">
-              <span className="text-xs font-black px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-lg" style={{ borderRadius: 999 }}>Q {currentQ + 1}/{challenge.questions.length}</span>
+              <span className="text-xs font-black px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-lg" style={{ borderRadius: 999 }}>Q {currentQ + 1}/{challenge.questions.length}</span>
               <div className="flex items-center gap-2">
                 <LanguageToggle
                   language={language}
@@ -219,8 +219,8 @@ const DailyChallengePage = () => {
             <div className="flex justify-between items-center gap-3 sticky bottom-0 -mx-1 px-1 py-2 bg-background-page/95 backdrop-blur sm:static sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
               <button disabled={currentQ === 0} onClick={() => setCurrentQ(currentQ - 1)} className="px-4 py-3 sm:py-2.5 text-sm font-bold text-slate-500 disabled:opacity-30 disabled:cursor-not-allowed">{translate('Previous')}</button>
               {currentQ < challenge.questions.length - 1
-                ? <button onClick={() => setCurrentQ(currentQ + 1)} style={{ borderRadius: 12 }} className="px-8 sm:px-6 py-3 sm:py-2.5 text-sm font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-lg hover:brightness-105 hover:-translate-y-0.5 transition-all">{translate('Next')}</button>
-                : <button onClick={handleSubmit} disabled={submitting} style={{ borderRadius: 12 }} className="px-8 sm:px-6 py-3 sm:py-2.5 text-sm font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-lg hover:brightness-105 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed">{submitting ? translate('Submitting...') : translate('Submit')}</button>
+                ? <button onClick={() => setCurrentQ(currentQ + 1)} style={{ borderRadius: 12 }} className="px-8 sm:px-6 py-3 sm:py-2.5 text-sm font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-lg hover:brightness-105 hover:-translate-y-0.5 transition-all">{translate('Next')}</button>
+                : <button onClick={handleSubmit} disabled={submitting} style={{ borderRadius: 12 }} className="px-8 sm:px-6 py-3 sm:py-2.5 text-sm font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-lg hover:brightness-105 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed">{submitting ? translate('Submitting...') : translate('Submit')}</button>
               }
             </div>
           </div>
@@ -253,7 +253,7 @@ const DailyChallengePage = () => {
             {challenge?.questions?.length > 0 && (
               <Card className="space-y-2 xl:space-y-4">
                 <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2">
-                  <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Target className="w-4 h-4" /></span> Question Review & Discussion
+                  <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Target className="w-4 h-4" /></span> Question Review & Discussion
                 </h3>
                 <div className="space-y-2 xl:space-y-4">
                   {challenge.questions.map((q, idx) => {
@@ -276,7 +276,7 @@ const DailyChallengePage = () => {
                             if (isSel && !isCorrect) cls = 'bg-red-50 dark:bg-red-900/30 border-red-400 dark:border-red-600';
                             return (
                               <div key={oi} className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg border text-xs ${cls}`}>
-                                {isRight && <CheckCircle className="w-3.5 h-3.5 text-primary-600 shrink-0" />}
+                                {isRight && <CheckCircle className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300 shrink-0" />}
                                 {isSel && !isCorrect && <XCircle className="w-3.5 h-3.5 text-red-600 dark:text-red-400 shrink-0" />}
                                 {!isRight && !isSel && <div className="w-3.5 h-3.5 shrink-0" />}
                                 <span className="text-slate-700 dark:text-slate-300 break-words min-w-0">{getHindi(q.question)?.optionTexts?.[oi] || opt.text || opt}</span>
@@ -308,7 +308,7 @@ const DailyChallengePage = () => {
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
                 <Card className="space-y-3 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
-                  <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Trophy className="w-4 h-4" /></span> {translate('Today\'s Leaderboard')}</h3>
+                  <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Trophy className="w-4 h-4" /></span> {translate('Today\'s Leaderboard')}</h3>
                   <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>
                     {leaderboard.slice(0, 10).map((entry, i) => (
                       <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} style={{ borderRadius: 10 }} className="flex items-center gap-3 px-3 py-2 bg-primary-50/60 dark:bg-white/5 border border-transparent hover:border-primary-200 dark:hover:border-white/15 transition-colors">

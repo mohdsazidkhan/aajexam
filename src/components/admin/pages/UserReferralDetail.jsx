@@ -136,7 +136,7 @@ export default function UserReferralDetail() {
             key: 'invitee', header: 'REFERRED USER', render: (_, tx) => (
                 tx.invitee ? (
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm">
+                        <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm">
                             {tx.invitee.name?.[0].toUpperCase() || 'U'}
                         </div>
                         <div>
@@ -158,7 +158,7 @@ export default function UserReferralDetail() {
         },
         {
             key: 'amount', header: 'AMOUNT', render: (_, tx) => (
-                <div className="text-sm font-black text-primary-600 tabular-nums italic">+₹{tx.amount}</div>
+                <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums italic">+₹{tx.amount}</div>
             )
         },
         {
@@ -216,7 +216,7 @@ export default function UserReferralDetail() {
                                 <div>
                                     <div className="text-[10px] font-black uppercase tracking-widest leading-none mb-1">{user?.name}</div>
                                     <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest italic">{user?.email}</div>
-                                    <div className="text-[8px] font-black text-primary-600 uppercase tracking-[0.2em] mt-2">Referral Code: {user?.referralCode}</div>
+                                    <div className="text-[8px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-[0.2em] mt-2">Referral Code: {user?.referralCode}</div>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +226,7 @@ export default function UserReferralDetail() {
                                 onClick={() => router.push('/admin/referral-history')}
                                 className="px-4 xl:px-4 py-2.5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-transform flex items-center gap-2"
                             >
-                                <ArrowLeft className="w-4 h-4 text-primary-600" /> Back to History
+                                <ArrowLeft className="w-4 h-4 text-primary-600 dark:text-primary-300" /> Back to History
                             </button>
                         </div>
                     </div>
@@ -265,7 +265,7 @@ export default function UserReferralDetail() {
                             </div>
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">{tier.label}</div>
                             <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none mb-2">₹{tier.amount.toLocaleString()}</div>
-                            <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest opacity-60 italic">{tier.count} rewards</div>
+                            <div className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest opacity-60 italic">{tier.count} rewards</div>
                         </div>
                     ))}
                 </div>
@@ -273,7 +273,7 @@ export default function UserReferralDetail() {
                 {/* Table Controller */}
                 <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 xl:p-10 mb-4 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-4 shrink-0">
                     <div className="flex items-center gap-3">
-                        <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl">
+                        <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl">
                             <Zap className="w-5 h-5" />
                         </div>
                         <div>

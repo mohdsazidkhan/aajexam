@@ -160,7 +160,7 @@ const AdminReferralAnalytics = () => {
         {
             key: 'user', header: 'User', render: (_, user) => (
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:bg-primary-700 transition-all uppercase">
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:bg-primary-700 transition-all uppercase">
                         {user.name?.[0]?.toUpperCase()}
                     </div>
                     <div>
@@ -172,7 +172,7 @@ const AdminReferralAnalytics = () => {
         },
         {
             key: 'referralCode', header: 'Referral Code', render: (_, user) => (
-                <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-[9px] font-black text-primary-600 italic">
+                <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-[9px] font-black text-primary-600 dark:text-primary-300 italic">
                     <Hash className="w-3 h-3" /> {user.referralCode}
                 </div>
             )
@@ -180,7 +180,7 @@ const AdminReferralAnalytics = () => {
         {
             key: 'totalReferrals', header: 'Total Referrals', align: 'center', render: (_, user) => (
                 <div>
-                    <div className="text-sm font-black text-primary-600 tabular-nums">{user.totalReferrals}</div>
+                    <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.totalReferrals}</div>
                     <div className="text-[9px] font-bold text-slate-400 uppercase">All Time</div>
                 </div>
             )
@@ -188,7 +188,7 @@ const AdminReferralAnalytics = () => {
         {
             key: 'monthlyReferrals', header: 'Monthly Growth', align: 'center', render: (_, user) => (
                 <div>
-                    <div className="text-sm font-black text-primary-600 tabular-nums">{user.monthlyReferrals}</div>
+                    <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.monthlyReferrals}</div>
                     <div className="text-[9px] font-bold text-slate-400 uppercase">{selectedMonth === 'all' ? 'All Months' : months[parseInt(selectedMonth) - 1]}</div>
                 </div>
             )
@@ -261,7 +261,7 @@ const AdminReferralAnalytics = () => {
         <button
             onClick={exportToCSV}
             disabled={analytics.length === 0}
-            className="w-full flex items-center justify-center gap-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm shrink-0 disabled:opacity-30"
+            className="w-full flex items-center justify-center gap-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300 px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm shrink-0 disabled:opacity-30"
         >
             <Download className="w-4 h-4" /> Export to CSV
         </button>
@@ -319,7 +319,7 @@ const AdminReferralAnalytics = () => {
                             { label: "This Month", value: summary.monthlyReferralsSum, icon: Zap }
                         ].map((stat) => (
                             <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-                                <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+                                <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
                                 <div className="min-w-0">
                                     <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">{stat.value}</div>
                                     <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
@@ -356,11 +356,11 @@ const AdminReferralAnalytics = () => {
                                         {analytics.map((user, i) => (
                                             <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                 <div className="flex items-start justify-between gap-2">
-                                                    <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-xl flex items-center justify-center font-black text-sm">
+                                                    <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl flex items-center justify-center font-black text-sm">
                                                         {user.name?.[0]?.toUpperCase() || 'U'}
                                                         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{i + 1 + (pagination.page - 1) * pagination.limit}</span>
                                                     </div>
-                                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 text-[10px] font-black"><Hash className="w-3 h-3" />{user.referralCode}</span>
+                                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300 text-[10px] font-black"><Hash className="w-3 h-3" />{user.referralCode}</span>
                                                 </div>
                                                 <div>
                                                     <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{user.name || 'Unknown'}</h3>
@@ -368,11 +368,11 @@ const AdminReferralAnalytics = () => {
                                                 </div>
                                                 <div className="grid grid-cols-2 gap-2 text-center">
                                                     <div className="p-2 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5">
-                                                        <div className="text-sm font-black text-primary-600 tabular-nums">{user.totalReferrals}</div>
+                                                        <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.totalReferrals}</div>
                                                         <div className="text-[9px] font-bold text-slate-400 uppercase">Total</div>
                                                     </div>
                                                     <div className="p-2 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5">
-                                                        <div className="text-sm font-black text-primary-600 tabular-nums">{user.monthlyReferrals}</div>
+                                                        <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.monthlyReferrals}</div>
                                                         <div className="text-[9px] font-bold text-slate-400 uppercase">Monthly</div>
                                                     </div>
                                                 </div>
@@ -387,14 +387,14 @@ const AdminReferralAnalytics = () => {
                                     <div className="h-full overflow-auto space-y-3">
                                         {analytics.map((user, i) => (
                                             <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                                                <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-xl flex items-center justify-center shrink-0 font-black text-sm">
+                                                <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl flex items-center justify-center shrink-0 font-black text-sm">
                                                     {user.name?.[0]?.toUpperCase() || 'U'}
                                                     <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{i + 1 + (pagination.page - 1) * pagination.limit}</span>
                                                 </div>
                                                 <div className="flex-1 min-w-0 space-y-1">
                                                     <div className="flex flex-wrap items-center gap-2">
                                                         <h3 className="text-sm font-bold text-slate-900 dark:text-white">{user.name || 'Unknown'}</h3>
-                                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 text-[10px] font-black"><Hash className="w-3 h-3" />{user.referralCode}</span>
+                                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300 text-[10px] font-black"><Hash className="w-3 h-3" />{user.referralCode}</span>
                                                     </div>
                                                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-slate-400">
                                                         <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5" /> {user.email}</span>
@@ -403,11 +403,11 @@ const AdminReferralAnalytics = () => {
                                                 </div>
                                                 <div className="flex gap-2 shrink-0">
                                                     <div className="px-3 py-1.5 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 text-center min-w-[90px]">
-                                                        <div className="text-sm font-black text-primary-600 tabular-nums">{user.totalReferrals}</div>
+                                                        <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.totalReferrals}</div>
                                                         <div className="text-[9px] font-bold text-slate-400 uppercase">Total</div>
                                                     </div>
                                                     <div className="px-3 py-1.5 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 text-center min-w-[90px]">
-                                                        <div className="text-sm font-black text-primary-600 tabular-nums">{user.monthlyReferrals}</div>
+                                                        <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.monthlyReferrals}</div>
                                                         <div className="text-[9px] font-bold text-slate-400 uppercase">Monthly</div>
                                                     </div>
                                                 </div>

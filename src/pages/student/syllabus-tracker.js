@@ -59,7 +59,7 @@ const SubjectAccordion = ({ subject }) => {
         className="w-full flex items-center justify-between p-4 sm:p-5 bg-background-surface hover:bg-primary-50/60 dark:hover:bg-white/5 transition-colors"
       >
         <div className="flex items-center gap-4">
-          <div style={{ borderRadius: 14 }} className={`w-12 h-12 flex items-center justify-center flex-shrink-0 ${isAllDone ? 'bg-gradient-to-br from-primary-600 to-primary-800 text-white shadow rotate-[-4deg]' : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]'}`}>
+          <div style={{ borderRadius: 14 }} className={`w-12 h-12 flex items-center justify-center flex-shrink-0 ${isAllDone ? 'bg-gradient-to-br from-primary-600 to-primary-800 text-white shadow rotate-[-4deg]' : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]'}`}>
             <BookOpen className="w-6 h-6" />
           </div>
           <div className="text-left">
@@ -74,7 +74,7 @@ const SubjectAccordion = ({ subject }) => {
           <div className="hidden sm:flex items-center justify-center relative w-10 h-10">
             <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
               <path className="text-slate-200 dark:text-slate-700" strokeWidth="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-              <path className={`${isAllDone ? 'text-primary-600' : 'text-primary-500'}`} strokeWidth="3" strokeDasharray={`${subject.totalTopics ? (subject.completedTopics / subject.totalTopics) * 100 : 0}, 100`} stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path className={`${isAllDone ? 'text-primary-600 dark:text-primary-300' : 'text-primary-500'}`} strokeWidth="3" strokeDasharray={`${subject.totalTopics ? (subject.completedTopics / subject.totalTopics) * 100 : 0}, 100`} stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
             </svg>
           </div>
           {isOpen ? <ChevronUp className="w-5 h-5 text-content-muted" /> : <ChevronDown className="w-5 h-5 text-content-muted" />}
@@ -93,7 +93,7 @@ const SubjectAccordion = ({ subject }) => {
                     <div key={topic._id} className="flex items-center justify-between p-3 border border-transparent hover:border-primary-200 dark:hover:border-white/15 hover:bg-white dark:hover:bg-slate-800 transition-colors" style={{ borderRadius: 10 }}>
                       <div className="flex items-center gap-3">
                         {topic.isCompleted ? (
-                          <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-primary-600 dark:text-primary-300 flex-shrink-0" />
                         ) : (
                           <Circle className="w-5 h-5 text-slate-300 dark:text-slate-600 flex-shrink-0" />
                         )}
@@ -104,7 +104,7 @@ const SubjectAccordion = ({ subject }) => {
 
                       {!topic.isCompleted && (
                         <Link href={`/quizzes?topic=${topic.slug}`}>
-                          <button className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow text-[10px] font-black uppercase hover:brightness-105 transition-all">
+                          <button className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow text-[10px] font-black uppercase hover:brightness-105 transition-all">
                             <PlayCircle className="w-3 h-3" /> Practice
                           </button>
                         </Link>
@@ -224,7 +224,7 @@ const SyllabusTrackerPage = () => {
                 <div className="relative w-32 h-32 flex-shrink-0">
                   <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                     <path className="text-slate-100 dark:text-slate-800" strokeWidth="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <path className="text-primary-500" strokeWidth="3.5" strokeDasharray={`${trackerData.overallProgress}, 100`} stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path className="text-primary-500 dark:text-primary-300" strokeWidth="3.5" strokeDasharray={`${trackerData.overallProgress}, 100`} stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-3xl font-black font-outfit text-primary-700 dark:text-primary-200">{trackerData.overallProgress}%</span>
@@ -233,10 +233,10 @@ const SyllabusTrackerPage = () => {
                 <div className="text-center md:text-left flex-1">
                   <h2 className="text-xl sm:text-2xl font-black text-content-primary mb-1">{translate('Overall Progress')}</h2>
                   <p className="text-sm font-bold text-content-muted">
-                    {rich('You have mastered <0></0> out of <1></1> topics for this exam.', [() => <strong className="text-primary-600">{trackerData.completedTopics}</strong>, () => <strong>{trackerData.totalTopics}</strong>])}
+                    {rich('You have mastered <0></0> out of <1></1> topics for this exam.', [() => <strong className="text-primary-600 dark:text-primary-300">{trackerData.completedTopics}</strong>, () => <strong>{trackerData.totalTopics}</strong>])}
                   </p>
                   {trackerData.overallProgress === 100 && (
-                    <div className="mt-3 inline-flex items-center gap-1.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow px-3 py-1.5 rounded-lg text-xs font-black uppercase">
+                    <div className="mt-3 inline-flex items-center gap-1.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow px-3 py-1.5 rounded-lg text-xs font-black uppercase">
                       <CheckCircle2 className="w-4 h-4" /> Syllabus Completed!
                     </div>
                   )}
@@ -245,7 +245,7 @@ const SyllabusTrackerPage = () => {
 
               {/* Accordions */}
               <div>
-                <h3 className="flex items-center gap-2.5 text-sm font-black text-content-primary uppercase mb-3 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span>{translate('Subjects')}</h3>
+                <h3 className="flex items-center gap-2.5 text-sm font-black text-content-primary uppercase mb-3 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span>{translate('Subjects')}</h3>
                 {trackerData.syllabus.length === 0 ? (
                   <div className="text-center py-10 bg-background-surface border-2 border-dashed border-primary-300 dark:border-slate-700" style={{ borderRadius: 16 }}>
                     <p className="text-sm font-bold text-content-muted">{translate('No syllabus data found for this exam.')}</p>

@@ -16,7 +16,7 @@ import useDebounce from '../../../hooks/useDebounce';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const statusColor = (s) => {
-  if (s === 'active') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600';
+  if (s === 'active') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-300';
   if (s === 'pending') return 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ';
   if (s === 'suspended') return 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ';
   return 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ';
@@ -110,7 +110,7 @@ const AdminMentors = () => {
           {m.status === 'active' && !m.isVerified && (
             <button onClick={() => verify(m._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Verify"><Shield className="w-3.5 h-3.5 text-black dark:text-white" /></button>
           )}
-          <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-600" /></Link>
+          <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" /></Link>
         </div>
       )
     }
@@ -234,7 +234,7 @@ const AdminMentors = () => {
                       {m.status === 'active' && !m.isVerified && (
                         <button onClick={() => verify(m._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Verify"><Shield className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                       )}
-                      <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-600" /></Link>
+                      <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" /></Link>
                     </div>
                   </div>
                 </Card>
@@ -264,7 +264,7 @@ const AdminMentors = () => {
                     {m.status === 'active' && !m.isVerified && (
                       <button onClick={() => verify(m._id)} className="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" title="Verify"><Shield className="w-4 h-4 text-black dark:text-white" /></button>
                     )}
-                    <Link href={`/admin/mentors/${m._id}`} className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors" title="View full details"><Eye className="w-4 h-4 text-primary-600" /></Link>
+                    <Link href={`/admin/mentors/${m._id}`} className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors" title="View full details"><Eye className="w-4 h-4 text-primary-600 dark:text-primary-300" /></Link>
                   </div>
                 </Card>
               ))}

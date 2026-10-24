@@ -52,7 +52,7 @@ const ForgotPasswordPage = () => {
 
           <Card className="w-full max-w-md p-5 xl:p-10 border-2 shadow-sm relative z-10 space-y-8">
             <div className="text-center space-y-2">
-              <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
                 <ShieldQuestion className="w-8 h-8" />
               </div>
               <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight">Forgot Password</h1>
@@ -61,7 +61,7 @@ const ForgotPasswordPage = () => {
             <AnimatePresence mode="wait">
               {success ? (
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="py-10 text-center space-y-6">
-                  <div className="w-20 h-20 bg-primary-500/10 text-primary-600 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-20 h-20 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-full flex items-center justify-center mx-auto">
                     <CircleCheck className="w-10 h-10" />
                   </div>
                   <div className="space-y-2">
@@ -96,7 +96,7 @@ const ForgotPasswordPage = () => {
                   </Button>
 
                   <div className="text-center pt-2">
-                    <Link href="/login" className="text-xs font-black text-primary-600 flex items-center justify-center gap-2 hover:translate-x-[-4px] transition-transform">
+                    <Link href="/login" className="text-xs font-black text-primary-600 dark:text-primary-300 flex items-center justify-center gap-2 hover:translate-x-[-4px] transition-transform">
                       <ArrowLeft className="w-4 h-4" /> BACK TO LOGIN
                     </Link>
                   </div>

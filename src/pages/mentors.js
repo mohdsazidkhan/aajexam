@@ -77,7 +77,7 @@ const MentorsPage = () => {
               </div>
             }
             actions={
-              <button onClick={() => router.push('/mentor/apply')} className="px-4 h-10 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow rounded-xl text-xs font-black shrink-0 hover:brightness-105 transition-all">{translate('Become Mentor')}</button>
+              <button onClick={() => router.push('/mentor/apply')} className="px-4 h-10 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow rounded-xl text-xs font-black shrink-0 hover:brightness-105 transition-all">{translate('Become Mentor')}</button>
             }
           />
 
@@ -87,12 +87,12 @@ const MentorsPage = () => {
                 onClick={() => router.push(`/mentor/${mentor._id}`)}>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center text-primary-600 font-black text-sm">
+                    <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 font-black text-sm">
                       {mentor.user?.name?.charAt(0) || 'M'}
                     </div>
                     <div className="flex-1">
                       <h2 className="text-sm font-black text-slate-900 dark:text-white">{mentor.user?.name || translate('Mentor')}</h2>
-                      {mentor.isVerified && <span className="text-[9px] font-bold text-primary-600 flex items-center gap-1"><Shield className="w-3 h-3" /> {translate('Verified')}</span>}
+                      {mentor.isVerified && <span className="text-[9px] font-bold text-primary-600 dark:text-primary-300 flex items-center gap-1"><Shield className="w-3 h-3" /> {translate('Verified')}</span>}
                     </div>
                     <div className="flex items-center gap-1">
                       <Star className="w-3 h-3 text-black dark:text-white fill-black dark:fill-white" />
@@ -103,7 +103,7 @@ const MentorsPage = () => {
                   {mentor.examsCleared?.length > 0 && (
                     <div className="flex flex-wrap gap-1">
                       {mentor.examsCleared.map((exam, j) => (
-                        <span key={j} className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 rounded text-[9px] font-bold text-primary-600">
+                        <span key={j} className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 rounded text-[9px] font-bold text-primary-600 dark:text-primary-300">
                           <Award className="w-3 h-3 inline mr-0.5" />{exam.examName} {exam.year}
                         </span>
                       ))}
@@ -120,7 +120,7 @@ const MentorsPage = () => {
 
                   <div className="flex items-center justify-between text-[10px] text-slate-400 font-bold pt-1">
                     <span><MessageCircle className="w-3 h-3 inline" /> {translate('{count} helped', { count: mentor.helpedStudents || 0 })}</span>
-                    <span className="text-primary-600 flex items-center gap-1">View Profile <ChevronRight className="w-3 h-3" /></span>
+                    <span className="text-primary-600 dark:text-primary-300 flex items-center gap-1">View Profile <ChevronRight className="w-3 h-3" /></span>
                   </div>
                 </div>
               </Card>

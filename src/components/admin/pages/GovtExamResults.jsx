@@ -299,7 +299,7 @@ const AdminGovtExamResults = () => {
       key: 'score', header: 'Score', render: (_, a) => (
         <>
           <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{a.score || 0} / {a.practiceTest?.totalMarks || a.totalMarks || 0}</div>
-          <div className="text-[9px] font-black text-primary-600 uppercase tracking-widest leading-none mt-1">{a.practiceTest?.title || 'Test'}</div>
+          <div className="text-[9px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest leading-none mt-1">{a.practiceTest?.title || 'Test'}</div>
         </>
       )
     },
@@ -549,7 +549,7 @@ const AdminGovtExamResults = () => {
                     <div className="flex items-center gap-2 xl:gap-3">
                       <div className="w-10 h-10 xl:w-11 xl:h-11 bg-primary-600 text-white rounded-xl flex items-center justify-center shadow-sm shrink-0"><Award className="w-5 h-5" /></div>
                       <div>
-                        <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">Attempt <span className="text-primary-600">Details</span></h2>
+                        <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">Attempt <span className="text-primary-600 dark:text-primary-300">Details</span></h2>
                         <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1.5 leading-none italic">{selectedAttempt.user?.name} // {selectedAttempt.practiceTest?.title}</p>
                       </div>
                     </div>
@@ -565,7 +565,7 @@ const AdminGovtExamResults = () => {
                         { label: 'Rank', val: `#${selectedAttempt.rank || '-'}`, icon: Trophy, color: 'primary' }
                       ].map((s, i) => (
                         <div key={i} className="flex items-center gap-2.5 px-3 py-2 bg-slate-50 dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10">
-                          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black rounded-lg shrink-0"><s.icon className="w-4 h-4" /></div>
+                          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] rounded-lg shrink-0"><s.icon className="w-4 h-4" /></div>
                           <div className="min-w-0">
                             <div className="text-base font-black text-slate-900 dark:text-white uppercase italic leading-tight truncate">{s.val}</div>
                             <div className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-tight">{s.label}</div>
@@ -576,7 +576,7 @@ const AdminGovtExamResults = () => {
 
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <Binary className="w-4 h-4 text-primary-600" />
+                        <Binary className="w-4 h-4 text-primary-600 dark:text-primary-300" />
                         <h3 className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Questions & Answers</h3>
                       </div>
                       <div className="space-y-2">
@@ -610,7 +610,7 @@ const AdminGovtExamResults = () => {
                                     const isSelectedOpt = oi === ans.selectedIndex;
                                     return (
                                       <div key={oi} className={`px-2.5 py-1.5 rounded-lg text-[11px] font-bold flex items-center gap-2 border ${
-                                        isCorrectOpt ? 'bg-primary-500/10 border-primary-500/30 text-primary-600'
+                                        isCorrectOpt ? 'bg-primary-500/10 border-primary-500/30 text-primary-600 dark:text-primary-300'
                                           : isSelectedOpt ? 'bg-red-500/10 border-red-500/30 text-red-600 dark:text-red-400'
                                           : 'bg-slate-50 dark:bg-white/5 border-transparent text-slate-500 dark:text-slate-400'
                                       }`}>

@@ -99,7 +99,7 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
     {
       key: 'user', header: 'Student', render: (_, req) => (
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-full flex items-center justify-center font-black text-xs uppercase">{req.userId?.name?.[0] || 'U'}</div>
+          <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-full flex items-center justify-center font-black text-xs uppercase">{req.userId?.name?.[0] || 'U'}</div>
           <div>
             <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight leading-none mb-1">{req.userId?.name || 'N/A'}</div>
             <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">{req.userId?.email || 'N/A'}</div>
@@ -110,7 +110,7 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
     {
       key: 'amount', header: 'Amount', render: (_, req) => (
         <div className="flex flex-col">
-          <span className="text-lg font-black text-primary-600 italic tracking-tighter leading-none">{formatCurrency(req.amount)}</span>
+          <span className="text-lg font-black text-primary-600 dark:text-primary-300 italic tracking-tighter leading-none">{formatCurrency(req.amount)}</span>
           <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1 capitalize">{req.requestType} wallet</span>
         </div>
       )
@@ -120,7 +120,7 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
         <div className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest space-y-1">
           {req.upi ? (
             <div className="flex items-center gap-2 p-2 bg-primary-500/5 rounded-lg border border-primary-500/10">
-              <Smartphone className="w-3 h-3 text-primary-600" />
+              <Smartphone className="w-3 h-3 text-primary-600 dark:text-primary-300" />
               <span className="font-mono text-[10px]">{req.upi}</span>
             </div>
           ) : req.bankDetail ? (
@@ -137,9 +137,9 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
       key: 'status', header: 'Status', render: (_, req) => (
         <div className="space-y-3">
           <div className={`px-4 py-1 rounded-lg xl:rounded-xl text-[9px] font-black uppercase inline-flex items-center gap-2 border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
-              req.status === 'approved' ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' :
+              req.status === 'approved' ? 'bg-primary-500/10 text-primary-600 dark:text-primary-300 border-primary-500/20' :
                 req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
-                  'bg-primary-500/10 text-primary-600 border-primary-500/20'
+                  'bg-primary-500/10 text-primary-600 dark:text-primary-300 border-primary-500/20'
             }`}>
             {req.status === 'pending' && <Clock className="w-3 h-3" />}
             {req.status === 'approved' && <CheckCircle2 className="w-3 h-3" />}
@@ -251,7 +251,7 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
                   {items.map((req, idx) => (
                     <motion.div key={req._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }} className="bg-white dark:bg-white/5 rounded-lg xl:rounded-xl border-2 border-slate-100 dark:border-white/10 p-3 xl:p-4 shadow-sm flex flex-col sm:flex-row sm:items-center gap-3 hover:border-primary-500/20 transition-all">
                       <div className="flex items-center gap-3 flex-1 min-w-0">
-                        <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-full flex items-center justify-center font-black text-xs uppercase shrink-0">
+                        <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-full flex items-center justify-center font-black text-xs uppercase shrink-0">
                           {req.userId?.name?.[0] || 'U'}
                           <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{req._sno}</span>
                         </div>
@@ -262,28 +262,28 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
                       </div>
 
                       <div className="flex flex-col shrink-0">
-                        <span className="text-lg font-black text-primary-600 italic tracking-tighter leading-none">{formatCurrency(req.amount)}</span>
+                        <span className="text-lg font-black text-primary-600 dark:text-primary-300 italic tracking-tighter leading-none">{formatCurrency(req.amount)}</span>
                         <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1 capitalize">{req.requestType} wallet</span>
                       </div>
 
                       <div className="shrink-0">
                         {req.upi ? (
                           <div className="flex items-center gap-2 text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                            <Smartphone className="w-3 h-3 text-primary-600" />
+                            <Smartphone className="w-3 h-3 text-primary-600 dark:text-primary-300" />
                             <span className="font-mono text-[10px]">{req.upi}</span>
                           </div>
                         ) : req.bankDetail ? (
                           <div className="flex items-center gap-2 text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                            <Landmark className="w-3 h-3 text-primary-600" />
+                            <Landmark className="w-3 h-3 text-primary-600 dark:text-primary-300" />
                             <span className="font-mono text-[10px]">{req.bankDetail.accountNumber}</span>
                           </div>
                         ) : <span className="text-[9px] italic opacity-50">No payment details</span>}
                       </div>
 
                       <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase inline-flex items-center gap-2 border-2 shrink-0 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
-                          req.status === 'approved' ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' :
+                          req.status === 'approved' ? 'bg-primary-500/10 text-primary-600 dark:text-primary-300 border-primary-500/20' :
                             req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
-                              'bg-primary-500/10 text-primary-600 border-primary-500/20'
+                              'bg-primary-500/10 text-primary-600 dark:text-primary-300 border-primary-500/20'
                         }`}>
                         {req.status === 'pending' && <Clock className="w-3 h-3" />}
                         {req.status === 'approved' && <CheckCircle2 className="w-3 h-3" />}
@@ -324,10 +324,10 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
 
                       <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-4 mb-4 xl:mb-4 border-2 border-slate-100 dark:border-white/5">
                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Withdrawal Amount</div>
-                        <div className="text-3xl font-black text-primary-600 italic tracking-tighter leading-none mb-4">{formatCurrency(req.amount)}</div>
+                        <div className="text-3xl font-black text-primary-600 dark:text-primary-300 italic tracking-tighter leading-none mb-4">{formatCurrency(req.amount)}</div>
                         <div className="pt-4 border-t-2 border-slate-100 dark:border-white/5">
                           {req.upi ? (
-                            <div className="flex items-center gap-3"><Smartphone className="w-4 h-4 text-primary-600" /><span className="text-xs font-black font-mono text-slate-600 dark:text-slate-300">{req.upi}</span></div>
+                            <div className="flex items-center gap-3"><Smartphone className="w-4 h-4 text-primary-600 dark:text-primary-300" /><span className="text-xs font-black font-mono text-slate-600 dark:text-slate-300">{req.upi}</span></div>
                           ) : req.bankDetail ? (
                             <div className="space-y-1">
                               <div className="flex items-center gap-3 text-[10px] font-black text-black dark:text-white"><Landmark className="w-4 h-4" /> {req.bankDetail.bankName}</div>

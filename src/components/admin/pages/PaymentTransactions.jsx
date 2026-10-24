@@ -239,7 +239,7 @@ const AdminPaymentTransactions = () => {
 
   const getStatusColor = (status) => {
     switch (status?.toLowerCase()) {
-      case 'completed': case 'success': return 'bg-primary-500/10 text-primary-600 border-primary-500/20';
+      case 'completed': case 'success': return 'bg-primary-500/10 text-primary-600 dark:text-primary-300 border-primary-500/20';
       case 'failed': case 'failure': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
       case 'pending': case 'created': case 'authorized': return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20';
       case 'refunded': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
@@ -270,7 +270,7 @@ const AdminPaymentTransactions = () => {
 
   const SortIcon = ({ field }) => {
     if (sortField !== field) return <ArrowUpDown className="w-3.5 h-3.5 text-slate-400" />;
-    return sortOrder === 'asc' ? <ArrowUp className="w-3.5 h-3.5 text-primary-600" /> : <ArrowDown className="w-3.5 h-3.5 text-primary-600" />;
+    return sortOrder === 'asc' ? <ArrowUp className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" /> : <ArrowDown className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" />;
   };
 
   const transactionColumns = [
@@ -300,7 +300,7 @@ const AdminPaymentTransactions = () => {
     },
     {
       key: 'planId', header: 'Plan', render: (_, t) => (
-        <span className="px-3 py-1 bg-primary-500/10 text-primary-600 rounded-lg text-[10px] font-black uppercase border border-primary-500/20">{t.planId || 'N/A'}</span>
+        <span className="px-3 py-1 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-lg text-[10px] font-black uppercase border border-primary-500/20">{t.planId || 'N/A'}</span>
       )
     },
     {
@@ -477,7 +477,7 @@ const AdminPaymentTransactions = () => {
             { label: 'Paying Users', val: summary.activeUsers || 0, icon: Users }
           ].map((stat) => (
             <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-              <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+              <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
               <div className="min-w-0">
                 <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.isCurrency ? formatCurrency(stat.val) : stat.val.toLocaleString()}</div>
                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
@@ -531,7 +531,7 @@ const AdminPaymentTransactions = () => {
                         </div>
                         <div className="flex items-center gap-2 shrink-0">
                           <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{formatCurrency(t.amount)}</div>
-                          <div className="px-2 py-1 bg-primary-500/10 rounded-lg text-primary-600 font-black text-[10px] uppercase">{t.planId || 'N/A'}</div>
+                          <div className="px-2 py-1 bg-primary-500/10 rounded-lg text-primary-600 dark:text-primary-300 font-black text-[10px] uppercase">{t.planId || 'N/A'}</div>
                         </div>
                       </div>
                       <div className="pt-2 border-t border-slate-100 dark:border-slate-700 flex items-start justify-between gap-2">
@@ -570,7 +570,7 @@ const AdminPaymentTransactions = () => {
                       <div className="flex flex-wrap items-center gap-3 shrink-0">
                         <div className="text-right">
                           <div className="text-[9px] font-bold text-slate-400 uppercase">Plan</div>
-                          <div className="text-xs font-black text-primary-600 uppercase">{t.planId || 'N/A'}</div>
+                          <div className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase">{t.planId || 'N/A'}</div>
                         </div>
                         <div className="text-right min-w-[90px]">
                           <div className="text-[9px] font-bold text-slate-400 uppercase">Amount</div>

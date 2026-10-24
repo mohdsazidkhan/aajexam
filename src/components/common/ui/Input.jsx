@@ -111,7 +111,7 @@ const Input = ({
 
         <div className="flex items-center gap-2 pr-1">
           {error && <CircleAlert className="w-5 h-5 text-black dark:text-white animate-pulse" />}
-          {!error && value && isFocused && <CircleCheck className="w-5 h-5 text-primary-600" />}
+          {!error && value && isFocused && <CircleCheck className="w-5 h-5 text-primary-600 dark:text-primary-300" />}
 
           {RightIcon && (
             <button

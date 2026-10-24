@@ -96,7 +96,7 @@ const LoginPage = () => {
           <div className="pointer-events-none absolute -bottom-28 right-10 w-96 h-96 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="space-y-4 xl:space-y-8 relative z-10">
             <motion.div animate={{ rotate: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-              <div className="p-5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-xl w-fit rotate-[-4deg]" style={{ borderRadius: 18 }}>
+              <div className="p-5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-xl w-fit rotate-[-4deg]" style={{ borderRadius: 18 }}>
                 <Trophy className="w-12 h-12" />
               </div>
             </motion.div>
@@ -175,7 +175,7 @@ const LoginPage = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between items-end px-1">
                     <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em]">{translate('Password')}</label>
-                    <Link href="/forgot-password" className="text-xs font-black text-primary-600 hover:underline">
+                    <Link href="/forgot-password" className="text-xs font-black text-primary-600 dark:text-primary-300 hover:underline">
                       {translate('Forgot password?')}
                     </Link>
                   </div>
@@ -209,7 +209,7 @@ const LoginPage = () => {
             <div className="text-center">
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 {translate("Don't have an account?")}{' '}
-                <Link href="/register" className="text-primary-600 hover:underline font-black">
+                <Link href="/register" className="text-primary-600 dark:text-primary-300 hover:underline font-black">
                   {translate('REGISTER')}
                 </Link>
               </p>

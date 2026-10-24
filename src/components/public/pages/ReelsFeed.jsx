@@ -148,7 +148,7 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
               className={`w-full flex items-center gap-2 p-2 sm:p-3 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 transition-all text-left ${optionStyle}`}
             >
               <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 ${answered && i === result?.correctAnswerIndex
-                ? 'border-primary-400 bg-primary-400 text-primary-600'
+                ? 'border-primary-400 bg-primary-400 text-primary-600 dark:text-primary-300'
                 : answered && i === selected && !result?.isCorrect
                   ?'border-primary-600 bg-primary-600 text-white'
                   : i === selected ? 'border-white bg-white text-slate-900' : 'border-white/30 text-white/60'}`}>
@@ -368,7 +368,7 @@ const ActionBar = ({ reel, onLike, onBookmark, onShare, onExplanation, showExpla
   return (
     <>
       <motion.button whileTap={{ scale: 1.2 }} onClick={handleLike} aria-label={liked ? translate('Unlike') : translate('Like')} className="flex flex-col items-center gap-0.5 p-2">
-        <Heart className={`w-7 h-7 transition-all ${liked ? 'fill-primary-600 text-primary-600' : 'text-white'}`} />
+        <Heart className={`w-7 h-7 transition-all ${liked ? 'fill-primary-600 text-primary-600 dark:text-primary-300' : 'text-white'}`} />
         <span className="text-[11px] font-semibold text-white">{likeCount || ''}</span>
       </motion.button>
 
@@ -1190,7 +1190,7 @@ const ReelsFeed = () => {
                         {currentReel.answeredCount > 0 && (
                           <div className="flex items-center gap-3 pt-2 border-t border-white/5">
                             <span className="text-[11px] text-white/40">👥 {translate('{count} attempted', { count: currentReel.answeredCount })}</span>
-                            <span className="text-[11px] text-primary-600 font-bold">{translate('{value}% correct', { value: Math.round((currentReel.correctCount / currentReel.answeredCount) * 100) })}</span>
+                            <span className="text-[11px] text-primary-600 dark:text-primary-300 font-bold">{translate('{value}% correct', { value: Math.round((currentReel.correctCount / currentReel.answeredCount) * 100) })}</span>
                           </div>
                         )}
                         {!currentReel.explanation && !currentReel.shortcutTrick && (

@@ -35,7 +35,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
             <div className="min-h-screen flex items-center justify-center px-4">
                 <div className="text-center">
                     <h1 className="text-2xl font-black text-slate-800 dark:text-white mb-4">{translate('PYQ Paper Not Found')}</h1>
-                    <Link href="/pyq" className="text-primary-600 hover:text-primary-600 font-bold">{translate('← Browse all PYQs')}</Link>
+                    <Link href="/pyq" className="text-primary-600 dark:text-primary-300 hover:text-primary-600 font-bold">{translate('← Browse all PYQs')}</Link>
                 </div>
             </div>
         );
@@ -139,17 +139,17 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                         <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6 mb-8">
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaListOl className="text-xl text-primary-600 mx-auto mb-2" />
+                                <FaListOl className="text-xl text-primary-600 dark:text-primary-300 mx-auto mb-2" />
                                 <div className="text-xl font-black text-slate-900 dark:text-white">{paper.questionCount || 0}</div>
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Questions')}</div>
                             </div>
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaTrophy className="text-xl text-primary-600 mx-auto mb-2" />
+                                <FaTrophy className="text-xl text-primary-600 dark:text-primary-300 mx-auto mb-2" />
                                 <div className="text-xl font-black text-slate-900 dark:text-white">{paper.totalMarks}</div>
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Total Marks')}</div>
                             </div>
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaClock className="text-xl text-primary-600 mx-auto mb-2" />
+                                <FaClock className="text-xl text-primary-600 dark:text-primary-300 mx-auto mb-2" />
                                 <div className="text-xl font-black text-slate-900 dark:text-white">{paper.duration}</div>
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Minutes')}</div>
                             </div>
@@ -172,7 +172,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     {/* About this paper — long-form intro for SEO */}
                     <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
                         <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
-                            <FaBookOpen className="text-primary-600 mr-3" /> About This Paper
+                            <FaBookOpen className="text-primary-600 dark:text-primary-300 mr-3" /> About This Paper
                         </h2>
                         <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                             {intro}
@@ -244,7 +244,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                                             /* eslint-disable-next-line @next/next/no-img-element */
                                                             <img src={q.optionImages[oi]} alt={`Option ${String.fromCharCode(65 + oi)}`} loading="lazy" className="max-w-full mt-2 rounded border border-slate-200 dark:border-slate-700" />
                                                         )}
-                                                        {isCorrect && <FaCheckCircle className="inline ml-2 text-primary-600" />}
+                                                        {isCorrect && <FaCheckCircle className="inline ml-2 text-primary-600 dark:text-primary-300" />}
                                                     </li>
                                                 );
                                             })}
@@ -364,7 +364,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                 ))}
                             </div>
                             <div className="mt-6 text-center">
-                                <Link href={`/pyq/${exam.slug}`} className="inline-flex items-center text-sm font-black text-primary-600 hover:text-primary-600 uppercase tracking-widest">
+                                <Link href={`/pyq/${exam.slug}`} className="inline-flex items-center text-sm font-black text-primary-600 dark:text-primary-300 hover:text-primary-600 uppercase tracking-widest">
                                     {translate('View all {name} PYQs', { name: translateData(examName) })} <FaArrowRight className="ml-2" />
                                 </Link>
                             </div>

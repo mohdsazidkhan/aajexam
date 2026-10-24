@@ -101,7 +101,7 @@ const NoteDetailPage = ({ note }) => {
           <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="space-y-2">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 uppercase">{note.noteType?.replace('_', ' ')}</span>
+              <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 dark:text-primary-300 uppercase">{note.noteType?.replace('_', ' ')}</span>
               {note.subject?.name && <span className="text-[10px] font-bold text-slate-500 dark:text-white/60">{note.subject.name}</span>}
               {note.topic?.name && <span className="text-[10px] font-bold text-slate-500 dark:text-white/60">/ {note.topic.name}</span>}
             </div>

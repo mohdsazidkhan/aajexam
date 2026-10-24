@@ -248,7 +248,7 @@ const AdminDailyChallenge = () => {
             <Card className="shrink-0 mb-4">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                  Generating: <span className="text-primary-600">{bulkProgress.currentDate}</span>
+                  Generating: <span className="text-primary-600 dark:text-primary-300">{bulkProgress.currentDate}</span>
                 </span>
                 <span className="text-xs font-black text-slate-900 dark:text-white">
                   {Math.round((bulkProgress.current / bulkProgress.total) * 100)}%
@@ -259,7 +259,7 @@ const AdminDailyChallenge = () => {
               </div>
               <div className="flex gap-3 text-[10px] font-bold">
                 <span className="text-slate-500">Total: {bulkProgress.total}</span>
-                <span className="text-primary-600">Success: {bulkProgress.success}</span>
+                <span className="text-primary-600 dark:text-primary-300">Success: {bulkProgress.success}</span>
                 <span className="text-black dark:text-white">Skipped: {bulkProgress.skipped}</span>
                 <span className="text-black dark:text-white">Failed: {bulkProgress.failed}</span>
               </div>

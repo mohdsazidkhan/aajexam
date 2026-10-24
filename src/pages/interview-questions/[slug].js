@@ -101,7 +101,7 @@ const InterviewQuestionDetailPage = ({ question }) => {
           <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="flex items-center gap-2 flex-wrap">
-            {question.category?.type && <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 uppercase">{translate('{type} job', { type: question.category.type })}</span>}
+            {question.category?.type && <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 dark:text-primary-300 uppercase">{translate('{type} job', { type: question.category.type })}</span>}
             {question.category?.name && <span className="text-[10px] font-bold text-slate-500 dark:text-white/60">{translate('{name} Interview Questions', { name: question.category.name })}</span>}
           </div>
           <h1 className="text-xl xl:text-2xl font-black text-slate-900 dark:text-white">{displayQuestion}</h1>
@@ -112,7 +112,7 @@ const InterviewQuestionDetailPage = ({ question }) => {
 
         <Card>
           <div className="flex items-center gap-2 mb-2">
-            <MessageCircleQuestion className="w-4 h-4 text-primary-600" />
+            <MessageCircleQuestion className="w-4 h-4 text-primary-600 dark:text-primary-300" />
             <h2 className="text-xs font-black uppercase text-slate-500 dark:text-slate-400">{translate('Sample Answer')}</h2>
           </div>
           <div className="prose prose-sm dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: displayAnswer }} />
@@ -121,7 +121,7 @@ const InterviewQuestionDetailPage = ({ question }) => {
         {displayTips && (
           <Card className="border-2 border-primary-600/20 dark:border-primary-900/30">
             <div className="flex items-center gap-2 mb-2">
-              <Lightbulb className="w-4 h-4 text-primary-600" />
+              <Lightbulb className="w-4 h-4 text-primary-600 dark:text-primary-300" />
               <h2 className="text-xs font-black uppercase text-slate-500 dark:text-slate-400">{translate('Tips & Expert Advice')}</h2>
             </div>
             <div className="prose prose-sm dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: displayTips }} />

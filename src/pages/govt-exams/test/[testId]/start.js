@@ -306,20 +306,20 @@ const TestStart = ({ resolvedId } = {}) => {
             onClick={() => setShowSidebar(v => !v)}
             title={showSidebar ? translate('Hide questions') : translate('Show questions')}
             aria-label={translate('Toggle questions panel')}
-            className={`hidden xl:flex shrink-0 p-3 rounded-xl shadow-sm border-2 transition-all active:scale-95 ${showSidebar ? "bg-primary-500/10 text-primary-600 border-primary-500/30" : "bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 border-slate-200 dark:border-slate-800"}`}
+            className={`hidden xl:flex shrink-0 p-3 rounded-xl shadow-sm border-2 transition-all active:scale-95 ${showSidebar ? "bg-primary-500/10 text-primary-600 dark:text-primary-300 border-primary-500/30" : "bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 border-slate-200 dark:border-slate-800"}`}
           >
             <LayoutGrid className="w-6 h-6" />
           </button>
           <p className="hidden xl:block shrink-0 text-xs 2xl:text-[13px] font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap">
             <span className="font-black uppercase tracking-widest">{translate('Status:')}</span>{" "}
             {translate('Questions:')} <span className="text-slate-900 dark:text-white">{questions.length}</span>,{" "}
-            {translate('Answered:')} <span className="text-primary-600">{answeredCount}</span>,{" "}
+            {translate('Answered:')} <span className="text-primary-600 dark:text-primary-300">{answeredCount}</span>,{" "}
             {translate('Not Answered:')} <span className="text-slate-900 dark:text-white">{questions.length - answeredCount}</span>,{" "}
             {translate('Mark For Review:')} <span className="text-slate-900 dark:text-white">{marked.size}</span>
           </p>
           <div className="flex-1 min-w-0 md:hidden xl:hidden">
             <p className="break-words text-[11px] font-black text-slate-500 uppercase tracking-wide leading-tight">{translateData(test?.title)}</p>
-            <p className="text-xs font-black text-primary-600 leading-tight">Q {currentQIndex + 1} / {questions.length}</p>
+            <p className="text-xs font-black text-primary-600 dark:text-primary-300 leading-tight">Q {currentQIndex + 1} / {questions.length}</p>
           </div>
           
           {/* Center: Test Progress (Minimalist) */}
@@ -398,7 +398,7 @@ const TestStart = ({ resolvedId } = {}) => {
                       <span className="text-[10px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest truncate">
                         {secName}
                       </span>
-                      <span className="text-[10px] font-black text-primary-600 shrink-0">
+                      <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 shrink-0">
                         {answeredInSec}/{group.length}
                       </span>
                     </div>
@@ -416,7 +416,7 @@ const TestStart = ({ resolvedId } = {}) => {
                               h-10 rounded-lg xl:rounded-xl font-black text-xs transition-all border-b-2
                               ${isCurrent ? 'bg-primary-600 text-white border-primary-600 -translate-y-1' :
                                 isMarked ?'bg-primary-600 text-white border-primary-600':
-                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-600' :
+                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 border-primary-200 dark:border-primary-600' :
                                     'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}
                             `}
                           >
@@ -446,7 +446,7 @@ const TestStart = ({ resolvedId } = {}) => {
               className="mx-auto space-y-2 xl:space-y-4"
             >
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
-                <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-xs font-black text-primary-600 uppercase shrink-0">
+                <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-xs font-black text-primary-600 dark:text-primary-300 uppercase shrink-0">
                   <Target className="w-3 h-3" />
                   Q {currentQIndex + 1}
                 </div>
@@ -593,7 +593,7 @@ const TestStart = ({ resolvedId } = {}) => {
             <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-[2rem] sm:rounded-t-[3rem] px-5 sm:px-8 pt-4 sm:pt-6 flex flex-col overflow-hidden z-50 max-h-[80vh]" style={{ maxHeight: '80dvh' }}>
               <div className="w-12 h-1.5 shrink-0 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-4 sm:mb-6" />
               <h3 className="shrink-0 text-lg sm:text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Questions')}</h3>
-              <p className="shrink-0 text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 pb-3 sm:pb-4 border-b border-slate-100 dark:border-slate-800 whitespace-nowrap overflow-x-auto [scrollbar-width:none]">Questions: <span className="text-slate-900 dark:text-white">{questions.length}</span>, Answered: <span className="text-primary-600">{answeredCount}</span>, Not Answered: <span className="text-slate-900 dark:text-white">{questions.length - answeredCount}</span>, Mark For Review: <span className="text-slate-900 dark:text-white">{marked.size}</span></p>
+              <p className="shrink-0 text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 pb-3 sm:pb-4 border-b border-slate-100 dark:border-slate-800 whitespace-nowrap overflow-x-auto [scrollbar-width:none]">Questions: <span className="text-slate-900 dark:text-white">{questions.length}</span>, Answered: <span className="text-primary-600 dark:text-primary-300">{answeredCount}</span>, Not Answered: <span className="text-slate-900 dark:text-white">{questions.length - answeredCount}</span>, Mark For Review: <span className="text-slate-900 dark:text-white">{marked.size}</span></p>
               <div className="space-y-5 flex-1 min-h-0 overflow-y-auto overscroll-contain pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
                 {sectionNames.map((secName) => {
                   const group = sectionGroups[secName];
@@ -604,7 +604,7 @@ const TestStart = ({ resolvedId } = {}) => {
                         <span className="text-xs font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest truncate">
                           {secName}
                         </span>
-                        <span className="text-[11px] font-black text-primary-600 shrink-0">
+                        <span className="text-[11px] font-black text-primary-600 dark:text-primary-300 shrink-0">
                           {answeredInSec}/{group.length}
                         </span>
                       </div>
@@ -620,7 +620,7 @@ const TestStart = ({ resolvedId } = {}) => {
                               onClick={() => { setCurrentQIndex(idx); setShowPalette(false); }}
                               className={`h-11 sm:h-14 rounded-xl sm:rounded-2xl font-black border-b-2 ${isCurrent ? 'bg-primary-600 text-white border-primary-600' :
                                 isMarked ?'bg-primary-600 text-white border-primary-600':
-                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-600' :
+                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 border-primary-200 dark:border-primary-600' :
                                     'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}`}
                             >
                               {idx + 1}
@@ -643,12 +643,12 @@ const TestStart = ({ resolvedId } = {}) => {
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-900/80 backdrop-blur-md" onClick={() => setShowSubmitModal(false)} />
             <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-white dark:bg-slate-800 rounded-3xl sm:rounded-[2.5rem] p-5 sm:p-10 max-w-md w-full max-h-[85vh] overflow-y-auto shadow-sm border-2 border-primary-500/20">
-              <div className="w-14 h-14 sm:w-20 sm:h-20 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+              <div className="w-14 h-14 sm:w-20 sm:h-20 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
                 <CircleAlert className="w-7 h-7 sm:w-10 sm:h-10" />
               </div>
               <h2 className="text-xl xl:text-2xl font-black font-outfit text-center uppercase mb-2">{translate('Ready to finish?')}</h2>
               <p className="text-center text-slate-500 mb-5 sm:mb-8 font-bold leading-relaxed text-sm sm:text-base px-1 sm:px-4">
-                You&apos;ve answered <span className="text-primary-600">{answeredCount}</span> out of <span className="font-black">{questions.length}</span> questions. Once you submit, you can&apos;t go back!
+                You&apos;ve answered <span className="text-primary-600 dark:text-primary-300">{answeredCount}</span> out of <span className="font-black">{questions.length}</span> questions. Once you submit, you can&apos;t go back!
               </p>
               <div className="space-y-3">
                 <Button variant="primary" fullWidth size="lg" className="py-4 sm:py-6 text-lg sm:text-xl" onClick={handleAutoSubmit} disabled={submitting}>

@@ -83,7 +83,7 @@ const PrivacyPolicy = () => {
                      <section id="intro" className="group">
                         <div className="bg-white dark:bg-slate-800 p-4 md:p-6 xl:p-8 rounded-[2rem] xl:rounded-[4rem] shadow-sm border-none relative overflow-hidden mt-4">
                            <div className="flex items-center gap-4 mb-5">
-                              <div className="w-12 h-12 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                              <div className="w-12 h-12 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <Info className="w-6 h-6" />
                               </div>
                               <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">Introduction</h2>
@@ -97,7 +97,7 @@ const PrivacyPolicy = () => {
                      {/* Information Collection */}
                      <section id="collect" className="space-y-5">
                         <div className="flex items-center gap-4 px-4">
-                           <div className="w-12 h-12 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                           <div className="w-12 h-12 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                               <Database className="w-6 h-6" />
                            </div>
                            <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">Information We Collect</h2>
@@ -132,7 +132,7 @@ const PrivacyPolicy = () => {
                         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-4 relative z-10">
-                           <div className="w-12 h-12 bg-primary-500/20 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
+                           <div className="w-12 h-12 bg-primary-500/20 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
                               <Eye className="w-6 h-6" />
                            </div>
                            <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">How We Use Information</h2>
@@ -151,7 +151,7 @@ const PrivacyPolicy = () => {
                            ))}
 
                            <div className="ml-0 xl:ml-8 p-4 xl:p-6 bg-primary-600/10 dark:bg-white/5 rounded-[1rem] xl:rounded-[3rem] border-l-4 border-primary-600 space-y-6">
-                              <div className="flex items-center gap-4 text-primary-600">
+                              <div className="flex items-center gap-4 text-primary-600 dark:text-primary-300">
                                  <Zap className="w-6 h-6" />
                                  <h3 className="text-sm font-black uppercase tracking-widest">Referral Rewards</h3>
                               </div>
@@ -189,8 +189,8 @@ const PrivacyPolicy = () => {
                                     <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Showing personalized advertisements</li>
                                  </ul>
                                  <div className="pt-6 border-t-2 border-slate-200 dark:border-slate-800 flex flex-wrap gap-4">
-                                    <a href="https://www.google.com/settings/ads" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-600 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Opt-out Google Ads</a>
-                                    <a href="http://www.aboutads.info/choices/" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-600 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Ad Choices</a>
+                                    <a href="https://www.google.com/settings/ads" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-600 dark:text-primary-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Opt-out Google Ads</a>
+                                    <a href="http://www.aboutads.info/choices/" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-600 dark:text-primary-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Ad Choices</a>
                                  </div>
                               </div>
                            </div>
@@ -221,7 +221,7 @@ const PrivacyPolicy = () => {
                      <section id="contact" className="group">
                         <div className="bg-white dark:bg-slate-800 p-4 md:p-6 xl:p-8 rounded-[2.5rem] xl:rounded-[4rem] shadow-sm space-y-5 border-none relative overflow-hidden">
                            <div className="flex items-center gap-4">
-                              <div className="w-12 h-12 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                              <div className="w-12 h-12 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <Mail className="w-6 h-6" />
                               </div>
                               <div className="space-y-1">
@@ -231,7 +231,7 @@ const PrivacyPolicy = () => {
                            </div>
                            <div className="p-4 xl:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 xl:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
-                              <p className="text-xl xl:text-2xl font-black text-primary-600 tracking-tight">{config.CONTACT.EMAIL}</p>
+                              <p className="text-xl xl:text-2xl font-black text-primary-600 dark:text-primary-300 tracking-tight">{config.CONTACT.EMAIL}</p>
                            </div>
                            <button
                               onClick={() => router.push('/student/dashboard')}

@@ -36,7 +36,7 @@ const CurrentAffairsMonth = ({ year, month, total, groups, prevKey, nextKey, ind
         <p className="text-sm xl:text-base font-semibold text-slate-600 dark:text-slate-500 dark:text-white/60">
           {total} important updates from {label}, grouped by category, for SSC, UPSC, Banking, Railway and State PSC exams.
         </p>
-        <nav className="flex gap-3 text-sm font-bold text-primary-600" aria-label="Other months">
+        <nav className="flex gap-3 text-sm font-bold text-primary-600 dark:text-primary-300" aria-label="Other months">
           {prevKey && <Link href={`/current-affairs/month/${prevKey}`} className="hover:underline">← Previous month</Link>}
           {nextKey && <Link href={`/current-affairs/month/${nextKey}`} className="hover:underline">Next month →</Link>}
         </nav>

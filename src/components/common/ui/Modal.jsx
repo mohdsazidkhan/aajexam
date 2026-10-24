@@ -123,7 +123,7 @@ const Modal = ({
               <div className={`flex items-center justify-between ${headerClassName} border-b-2 border-slate-100 dark:border-slate-700/50`}>
                 <div className="flex items-center gap-6">
                   {Icon && (
-                    <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-[1.5rem] flex items-center justify-center border-2 border-primary-500/20">
+                    <div className="w-16 h-16 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-[1.5rem] flex items-center justify-center border-2 border-primary-500/20">
                       <Icon className="w-8 h-8" />
                     </div>
                   )}

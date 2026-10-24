@@ -66,7 +66,7 @@ const AdminProfilePage = () => {
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="flex items-center gap-4 min-w-0">
-            <div className="w-16 h-16 xl:w-20 xl:h-20 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] text-3xl font-black uppercase shadow-lg" style={{ borderRadius: 22 }}>
+            <div className="w-16 h-16 xl:w-20 xl:h-20 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] text-3xl font-black uppercase shadow-lg" style={{ borderRadius: 22 }}>
               {user?.name?.charAt(0) || 'A'}
             </div>
             <div className="min-w-0 space-y-1.5">
@@ -75,7 +75,7 @@ const AdminProfilePage = () => {
                 {user?.name || 'Admin'}
               </h1>
               <div className="flex flex-wrap items-center gap-1.5">
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 text-black text-[10px] font-black uppercase tracking-wider shadow">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 text-[#000] text-[10px] font-black uppercase tracking-wider shadow">
                   <ShieldCheck className="w-3.5 h-3.5" /> Admin
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 text-[11px] font-bold text-slate-700 dark:text-white/80 min-w-0">
@@ -101,7 +101,7 @@ const AdminProfilePage = () => {
       <section className="relative overflow-hidden bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md">
         <div className="relative flex items-center gap-3 px-4 py-2.5 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
-          <span className="relative w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Lock className="w-4 h-4" /></span>
+          <span className="relative w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Lock className="w-4 h-4" /></span>
           <div className="relative min-w-0">
             <h2 className="text-sm font-black uppercase tracking-[0.14em] leading-tight">Change password</h2>
             <p className="text-[11px] font-bold text-primary-800/70 dark:text-white/70 leading-tight">Use a strong password to keep your account safe.</p>

@@ -379,7 +379,7 @@ const AdminReelEdit = () => {
                           placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} required />
                       </div>
                     ))}
-                    <p className="text-xs text-primary-600">Correct: {String.fromCharCode(65 + correctAnswerIndex)}</p>
+                    <p className="text-xs text-primary-600 dark:text-primary-300">Correct: {String.fromCharCode(65 + correctAnswerIndex)}</p>
                   </div>
                   <div>
                     <label className={labelClass}>Explanation</label>

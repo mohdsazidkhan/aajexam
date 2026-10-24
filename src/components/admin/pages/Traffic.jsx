@@ -56,7 +56,7 @@ const Stat = ({ label, value, sub, Icon, tone, cur, prev, inverse, onClick }) =>
       <Icon className="pointer-events-none absolute -right-2 -bottom-2 w-14 h-14 text-primary-600/10 dark:text-white/10 rotate-12" />
       <div className="flex items-start justify-between gap-2">
         <div className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-600 dark:text-white/75 leading-tight">{label}</div>
-        <span className="shrink-0 w-7 h-7 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
+        <span className="shrink-0 w-7 h-7 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
       </div>
       <div className="mt-1 flex items-baseline justify-between gap-2">
         <div className="text-2xl font-black font-outfit tabular-nums leading-none text-primary-700 dark:text-primary-200">{value}</div>
@@ -256,7 +256,7 @@ export default function Traffic() {
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="order-1 flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300">
-            <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Activity className="w-4 h-4" /></span> Traffic          </div>
+            <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Activity className="w-4 h-4" /></span> Traffic          </div>
           <div className="order-3 md:order-2 w-full md:w-auto flex gap-1 p-1 bg-background-surface border border-slate-200 dark:border-slate-700 shadow-sm max-w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="tablist">
             {SEGMENTS.map((s) => (
               <button

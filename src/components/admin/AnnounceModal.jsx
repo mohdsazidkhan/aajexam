@@ -98,7 +98,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
           >
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg xl:text-2xl font-black uppercase italic tracking-tighter flex items-center gap-2">
-                <Megaphone className="w-5 h-5 text-primary-600" /> Announce
+                <Megaphone className="w-5 h-5 text-primary-600 dark:text-primary-300" /> Announce
               </h3>
               <button aria-label="Close" onClick={handleClose} className="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors">
                 <XIcon className="w-4 h-4" />

@@ -140,7 +140,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
       <div className="flex items-center gap-1.5 flex-wrap">
         {entry.username && <p className="text-[10px] font-bold text-content-muted/80 truncate">@{entry.username}</p>}
         {entry.city && (
-          <span className="text-[10px] font-bold text-primary-600 truncate flex items-center gap-0.5">
+          <span className="text-[10px] font-bold text-primary-600 dark:text-primary-300 truncate flex items-center gap-0.5">
             <MapPin className="w-2.5 h-2.5" />{entry.city}
           </span>
         )}
@@ -369,7 +369,7 @@ const AllIndiaRankPage = () => {
                     {/* PRO badge — gold, animated sparkle */}
                     <motion.div
                       initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                      className="inline-flex items-center gap-1.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-[0_2px_12px_rgba(251,191,36,0.4)]"
+                      className="inline-flex items-center gap-1.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-[0_2px_12px_rgba(251,191,36,0.4)]"
                     >
                       <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}>
                         <Sparkles className="w-3.5 h-3.5" />

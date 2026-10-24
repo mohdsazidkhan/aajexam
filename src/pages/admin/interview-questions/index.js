@@ -247,7 +247,7 @@ const AdminInterviewQuestions = () => {
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowForm(false); setEditId(null); }} className="absolute inset-0 bg-black/50" />
                 <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
                   <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-slate-700/50 flex items-center justify-between shrink-0">
-                    <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><div>
+                    <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><div>
                       <h2 className="text-base font-bold text-slate-900 dark:text-white">{editId ? 'Edit Question' : 'Add New Question'}</h2>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Fill in the details below</p>
                     </div></div>
@@ -269,7 +269,7 @@ const AdminInterviewQuestions = () => {
                     </div>
 
                     <div className="pt-2 border-t-2 border-slate-100 dark:border-slate-700/50">
-                      <p className="text-[11px] font-black text-primary-600 uppercase tracking-wide mb-2">English</p>
+                      <p className="text-[11px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-wide mb-2">English</p>
                       <div className="space-y-2 xl:space-y-3">
                         <div>
                           <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Question <span className="text-black dark:text-white">*</span></label>
@@ -299,7 +299,7 @@ const AdminInterviewQuestions = () => {
                     </div>
 
                     <div className="pt-2 border-t-2 border-slate-100 dark:border-slate-700/50">
-                      <p className="text-[11px] font-black text-primary-600 uppercase tracking-wide mb-2">Hindi (optional)</p>
+                      <p className="text-[11px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-wide mb-2">Hindi (optional)</p>
                       <div className="space-y-2 xl:space-y-3">
                         <div>
                           <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Question (Hindi)</label>

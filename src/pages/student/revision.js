@@ -156,7 +156,7 @@ const RevisionPage = () => {
                       const isCorrect = i === currentItem.questionSnapshot?.correctAnswerIndex;
                       return (
                         <div key={i} className={`px-4 py-3 rounded-lg xl:rounded-xl text-sm font-bold border-2 ${isCorrect ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/20' : 'border-slate-100 dark:border-slate-800'}`}>
-                          <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(currentItem.questionRef)?.optionTexts?.[i] || opt} {isCorrect && <CheckCircle className="w-4 h-4 inline text-primary-600 ml-2" />}
+                          <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(currentItem.questionRef)?.optionTexts?.[i] || opt} {isCorrect && <CheckCircle className="w-4 h-4 inline text-primary-600 dark:text-primary-300 ml-2" />}
                         </div>
                       );
                     })}
@@ -177,7 +177,7 @@ const RevisionPage = () => {
             </Card>
           ) : (
             <Card radius="2xl" className="text-center space-y-2 xl:space-y-3">
-              <Zap className="w-12 h-12 text-primary-600 mx-auto" />
+              <Zap className="w-12 h-12 text-primary-600 dark:text-primary-300 mx-auto" />
               <h2 className="text-xl font-black text-slate-900 dark:text-white">{activeTab === 'all' ? translate('All Caught Up!') : translate('No items here')}</h2>
               <p className="text-sm text-slate-400 leading-relaxed">
                 {activeTab === 'all'

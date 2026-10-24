@@ -120,7 +120,7 @@ const SubjectListPage = ({ initialSubjects = [] } = {}) => {
               <button key={f.id} onClick={() => setActiveFilter(f.id)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-full font-black uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   activeFilter === f.id
-                    ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black border-primary-500'
+                    ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] border-primary-500'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {translate(f.label)}
@@ -161,7 +161,7 @@ const SubjectListPage = ({ initialSubjects = [] } = {}) => {
 
                 {/* Stat chips */}
                 <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
-                  <div className={`flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50 ${sub.quizCount === undefined ? 'hidden' : ''}`}>
+                  <div className={`flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50 ${sub.quizCount === undefined ? 'hidden' : ''}`}>
                     <BrainCircuit className="w-3 h-3" />
                     {translate('{count} Quizzes', { count: sub.quizCount || 0 })}
                   </div>

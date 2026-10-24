@@ -166,7 +166,7 @@ const SettingsPage = () => {
                     : 'text-content-secondary hover:text-primary-600 hover:bg-slate-100 dark:hover:bg-slate-700/50'
                     }`}
                 >
-                  <tab.icon className={`w-3.5 h-3.5 ${activeTab === tab.id ? 'text-white' : 'text-primary-600'}`} />
+                  <tab.icon className={`w-3.5 h-3.5 ${activeTab === tab.id ? 'text-white' : 'text-primary-600 dark:text-primary-300'}`} />
                   {translate(tab.label)}
                 </button>
               ))}
@@ -342,7 +342,7 @@ const SettingsPage = () => {
                             onChange={(event) => setProfile({ ...profile, isPublicProfile: event.target.checked })}
                           />
                           <span className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
-                            <Globe className="w-4 h-4 text-primary-600" />
+                            <Globe className="w-4 h-4 text-primary-600 dark:text-primary-300" />
                             Make my profile public (visible at /u/{profile.username || 'username'})
                           </span>
                         </label>
@@ -418,7 +418,7 @@ const SettingsPage = () => {
                   <div>
                     <Card className="rounded-2xl p-3 border-2 border-dashed border-slate-200 dark:border-slate-800 space-y-1">
                       <div className="flex items-center gap-2">
-                        <CreditCard className="w-5 h-5 text-primary-600" />
+                        <CreditCard className="w-5 h-5 text-primary-600 dark:text-primary-300" />
                         <h3 className="font-outfit font-black tracking-tight text-base">{translate('Secure handling')}</h3>
                       </div>
                       <p className="text-xs font-medium text-slate-600 dark:text-slate-400 leading-relaxed">

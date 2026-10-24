@@ -118,7 +118,7 @@ const PublicNavbar = () => {
               <div className="absolute -inset-2 bg-primary-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative flex flex-col leading-none">
                 <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                  AAJ<span className="text-primary-600 text-glow-primary">{translate('EXAM')}</span>
+                  AAJ<span className="text-primary-600 dark:text-primary-300 text-glow-primary">{translate('EXAM')}</span>
                 </span>
                 <span className="hidden sm:block text-[9px] xl:text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
                   {translate('Prepare Your Exam Today')}

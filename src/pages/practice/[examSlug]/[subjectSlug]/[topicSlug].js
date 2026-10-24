@@ -115,7 +115,7 @@ export default function TopicPractice({
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Practice sets')}</div>
               </div>
               <div className="bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 p-3">
-                <div className="text-lg font-black text-primary-600">{translate('FREE')}</div>
+                <div className="text-lg font-black text-primary-600 dark:text-primary-300">{translate('FREE')}</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Access')}</div>
               </div>
             </div>

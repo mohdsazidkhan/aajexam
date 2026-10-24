@@ -122,7 +122,7 @@ const MyChallengesPage = () => {
                                           className="p-2 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 hover:text-black dark:hover:text-white hover:border-slate-200 dark:border-slate-800 transition-colors shadow-sm"
                                           title={translate('Copy Invite Link')}
                                        >
-                                          {copiedId === challenge.code ? <CheckCircle className="w-4 h-4 text-primary-600" /> : <Copy className="w-4 h-4" />}
+                                          {copiedId === challenge.code ? <CheckCircle className="w-4 h-4 text-primary-600 dark:text-primary-300" /> : <Copy className="w-4 h-4" />}
                                        </button>
                                     </div>
 

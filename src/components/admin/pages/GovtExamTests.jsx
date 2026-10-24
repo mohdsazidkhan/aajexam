@@ -442,8 +442,8 @@ const AdminGovtExamTests = () => {
                                     <div>
                                        <h3 className="text-xs xl:text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-0.5 xl:mb-1">{test.title}</h3>
                                        <div className="flex items-center gap-2 xl:gap-3 text-[9px] xl:text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                                          <span className="flex items-center gap-1"><Timer className="w-3 h-3 text-primary-600" /> {test.duration} Min</span>
-                                          <span className="flex items-center gap-1"><Database className="w-3 h-3 text-primary-600" /> {test.questions?.length || 0} Questions</span>
+                                          <span className="flex items-center gap-1"><Timer className="w-3 h-3 text-primary-600 dark:text-primary-300" /> {test.duration} Min</span>
+                                          <span className="flex items-center gap-1"><Database className="w-3 h-3 text-primary-600 dark:text-primary-300" /> {test.questions?.length || 0} Questions</span>
                                        </div>
                                     </div>
                                  </div>
@@ -473,7 +473,7 @@ const AdminGovtExamTests = () => {
                            <div className="flex items-center gap-3">
                               <div className="p-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl shadow-sm"><Settings className="w-5 h-5" /></div>
                               <div>
-                                 <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{editingTest ? 'Edit' : 'Add'} <span className="text-primary-600">Test</span></h2>
+                                 <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{editingTest ? 'Edit' : 'Add'} <span className="text-primary-600 dark:text-primary-300">Test</span></h2>
                                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{editingTest ? `Editing: ${editingTest.title}` : 'Create a new practice test'}</p>
                               </div>
                            </div>
@@ -490,7 +490,7 @@ const AdminGovtExamTests = () => {
                               <div className="w-full max-w-4xl mx-auto flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-6 space-y-3">
                                  <div className="p-3 xl:p-5 bg-primary-500/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-primary-500/20">
                                     <div className="flex items-center gap-3 mb-4">
-                                       <div className="p-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm text-primary-600"><Download className="w-6 h-6" /></div>
+                                       <div className="p-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm text-primary-600 dark:text-primary-300"><Download className="w-6 h-6" /></div>
                                        <div>
                                           <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">Bulk JSON Upload</h3>
                                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Paste your questions JSON below to import in bulk</p>
@@ -533,7 +533,7 @@ const AdminGovtExamTests = () => {
                                        <div className="shrink-0 px-4 xl:px-5 pt-3 pb-2 space-y-2">
                                           <div className="flex items-center justify-between">
                                              <h3 className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] border-l-4 border-primary-600 pl-3">Questions ({formData.questions.length})</h3>
-                                             <span className="text-[10px] font-black text-primary-600 tabular-nums">{formData.questions.length} / 100</span>
+                                             <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 tabular-nums">{formData.questions.length} / 100</span>
                                           </div>
                                           <input type="text" value={qSearch} onChange={(e) => setQSearch(e.target.value)} placeholder="Search questions..." className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all" />
                                           {(() => {
@@ -558,7 +558,7 @@ const AdminGovtExamTests = () => {
                                              const active = editingQIndex === i;
                                              return (
                                                 <div key={i} onClick={() => handleEditQuestion(i)} className={`group flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${active ? 'border-primary-500 bg-primary-50 dark:bg-primary-500/10 ring-2 ring-primary-500/20' : 'border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 hover:border-primary-300 hover:shadow-sm'}`}>
-                                                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-black text-xs ${active ? 'bg-gradient-to-br from-primary-600 to-primary-800 text-white' : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow'}`}>{i + 1}</div>
+                                                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-black text-xs ${active ? 'bg-gradient-to-br from-primary-600 to-primary-800 text-white' : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow'}`}>{i + 1}</div>
                                                    <div className="flex-1 min-w-0">
                                                       <p className="text-xs font-bold text-slate-700 dark:text-slate-200 line-clamp-2 leading-snug">{q.questionText}</p>
                                                       <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
@@ -580,7 +580,7 @@ const AdminGovtExamTests = () => {
                                     <div className="min-h-0 overflow-y-auto custom-scrollbar px-4 xl:px-5 py-3 space-y-3">
                                        <div className="flex items-center justify-between gap-2">
                                           <h3 className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] flex items-center gap-2">
-                                             <Activity className="w-4 h-4 text-primary-600" /> {editingQIndex !== null ? `Edit Question ${editingQIndex + 1}` : 'Add a Question'}
+                                             <Activity className="w-4 h-4 text-primary-600 dark:text-primary-300" /> {editingQIndex !== null ? `Edit Question ${editingQIndex + 1}` : 'Add a Question'}
                                           </h3>
                                           {editingQIndex !== null && (
                                              <button type="button" onClick={handleCancelEditQuestion} className="px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/20">Cancel edit</button>

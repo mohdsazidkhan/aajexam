@@ -15,7 +15,7 @@ const Panel = ({ icon: Icon, title, children, className = '' }) => (
   <section className={`relative overflow-hidden bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md ${className}`}>
     <div className="relative flex items-center gap-2.5 px-4 py-2.5 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
       <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
-      <span className="relative w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></span>
+      <span className="relative w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></span>
       <h2 className="relative text-xs font-black uppercase tracking-[0.14em]">{title}</h2>
     </div>
     <div className="p-4">{children}</div>
@@ -73,13 +73,13 @@ const AdminMentorDetail = () => {
 
             <div className="flex items-start justify-between flex-wrap gap-3">
               <div className="flex items-start gap-3 min-w-0">
-                <div className="w-14 h-14 xl:w-16 xl:h-16 shrink-0 flex items-center justify-center text-2xl font-black bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg]" style={{ borderRadius: 18 }}>
+                <div className="w-14 h-14 xl:w-16 xl:h-16 shrink-0 flex items-center justify-center text-2xl font-black bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg]" style={{ borderRadius: 18 }}>
                   {(mentor.user?.name || 'M').charAt(0).toUpperCase()}
                 </div>
                 <div className="min-w-0">
                   <h1 className="flex items-center gap-2 text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">
                     <span className="truncate">{mentor.user?.name || 'Unknown'}</span>
-                    {mentor.isVerified && <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 text-black text-[9px] font-black uppercase tracking-wider"><Shield className="w-3 h-3" /> Verified</span>}
+                    {mentor.isVerified && <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 text-[#000] text-[9px] font-black uppercase tracking-wider"><Shield className="w-3 h-3" /> Verified</span>}
                   </h1>
                   <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
                     {mentor.user?.email && <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 text-[10px] font-bold text-slate-700 dark:text-white/80"><Mail className="w-3 h-3" /> {mentor.user.email}</span>}
@@ -120,7 +120,7 @@ const AdminMentorDetail = () => {
               ].map((st) => (
                 <div key={st.label} className="relative overflow-hidden flex items-center gap-3 px-3 py-2.5 bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 transition-colors" style={{ borderRadius: 12 }}>
                   <st.icon className="absolute -right-2 -bottom-2 w-12 h-12 text-primary-600/10 dark:text-white/10" />
-                  <span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><st.icon className="w-4 h-4" /></span>
+                  <span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><st.icon className="w-4 h-4" /></span>
                   <div className="min-w-0">
                     <p className="text-xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{st.value}</p>
                     <p className="mt-1 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 leading-tight">{st.label}</p>

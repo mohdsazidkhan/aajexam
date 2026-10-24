@@ -86,7 +86,7 @@ const PaymentHistoryPage = () => {
 
    const getStatusConfig = (status) => {
       switch (status) {
-         case 'success': return { label: translate('Success'), icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20', border: 'border-primary-200 dark:border-primary-600' };
+         case 'success': return { label: translate('Success'), icon: CheckCircle, color: 'text-primary-600 dark:text-primary-300', bg: 'bg-primary-50 dark:bg-primary-900/20', border: 'border-primary-200 dark:border-primary-600' };
          case 'pending': return { label: translate('Pending'), icon: AlertCircle, color: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800' };
          case 'failed': return { label: translate('Failed'), icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
          case 'refunded': return { label: translate('Refunded'), icon: RefreshCw, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
@@ -304,7 +304,7 @@ const PaymentHistoryPage = () => {
                                           {/* Top Row: Icon + Status */}
                                           <div className="flex justify-between items-center gap-2">
                                              <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl shrink-0">
-                                                <CreditCard className="w-6 h-6 text-primary-600" />
+                                                <CreditCard className="w-6 h-6 text-primary-600 dark:text-primary-300" />
                                              </div>
                                              <div className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-black uppercase ${statusConfig.bg} ${statusConfig.color}`}>
                                                 <StatusIcon className="w-3 h-3" />

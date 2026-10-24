@@ -93,7 +93,7 @@ const HowItWorks = () => {
             <PageHero
                icon={Rocket}
                eyebrow={translate('How It Works')}
-               title={rich('How It <0>Works</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+               title={rich('How It <0>Works</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
             />
 
             {/* --- Step-by-Step Path --- */}
@@ -136,7 +136,7 @@ const HowItWorks = () => {
                                  {step.details.map((d, di) => (
                                     <div key={di} className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 space-y-1">
                                        <div className="flex items-center gap-2">
-                                          <d.icon className={`w-3 h-3 ${di === 1 ? 'text-primary-600' : 'text-primary-600'}`} />
+                                          <d.icon className={`w-3 h-3 ${di === 1 ? 'text-primary-600 dark:text-primary-300' : 'text-primary-600'}`} />
                                           <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">{translate(d.label)}</p>
                                        </div>
                                        <p className="text-xs font-black text-slate-900 dark:text-white uppercase">{translate(d.val)}</p>
@@ -149,7 +149,7 @@ const HowItWorks = () => {
                            {step.metrics && (
                               <div className="flex flex-wrap gap-2 pt-2">
                                  {step.metrics.map((m, mi) => (
-                                    <span key={mi} className="px-3 py-1 bg-primary-500/5 text-primary-600 text-[10px] font-black uppercase tracking-widest rounded-full border border-primary-500/10">
+                                    <span key={mi} className="px-3 py-1 bg-primary-500/5 text-primary-600 dark:text-primary-300 text-[10px] font-black uppercase tracking-widest rounded-full border border-primary-500/10">
                                        {m}
                                     </span>
                                  ))}
@@ -167,7 +167,7 @@ const HowItWorks = () => {
             <section>
                <Card className="border-none bg-primary-50 dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm relative overflow-hidden text-center xl:text-left">
                   <div className="relative z-10 flex flex-col xl:flex-row items-center gap-8">
-                     <div className="w-20 h-20 bg-primary-500/20 text-primary-600 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
+                     <div className="w-20 h-20 bg-primary-500/20 text-primary-600 dark:text-primary-300 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
                         <Lightbulb className="w-10 h-10" />
                      </div>
                      <div className="space-y-2">

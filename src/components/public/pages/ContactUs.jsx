@@ -88,7 +88,7 @@ const ContactUs = ({ contactInfo = {
                <PageHero
                   icon={MessageSquare}
                   eyebrow={translate('Contact Support')}
-                  title={rich('Contact <0>Support</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+                  title={rich('Contact <0>Support</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
                />
 
                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-10 items-start">
@@ -119,7 +119,7 @@ const ContactUs = ({ contactInfo = {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                         <div className="relative z-10 space-y-6">
                            <div className="space-y-1">
-                              <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-600">{translate('Follow Us')}</h2>
+                              <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-600 dark:text-primary-300">{translate('Follow Us')}</h2>
                               <p className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{translate('Find Us on Social Media')}</p>
                            </div>
                            <div className="flex flex-wrap gap-4">
@@ -200,7 +200,7 @@ const ContactUs = ({ contactInfo = {
 
                            <AnimatePresence>
                               {status === 'success' && (
-                                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-primary-500/25 text-primary-600 rounded-2xl border-2 border-primary-500/20 flex items-center gap-3">
+                                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-primary-500/25 text-primary-600 dark:text-primary-300 rounded-2xl border-2 border-primary-500/20 flex items-center gap-3">
                                     <CircleCheck className="w-5 h-5" />
                                     <span className="text-xs font-black uppercase tracking-widest">{translate('Message Sent Successfully!')}</span>
                                  </motion.div>

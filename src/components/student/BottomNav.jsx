@@ -130,7 +130,7 @@ const StudentBottomNav = () => {
           return (
             <Link key={item.path} href={item.path} className="flex-1 min-w-0 flex justify-center" aria-current={isActive ? 'page' : undefined}>
               <div className={`w-full flex flex-col items-center justify-center gap-0.5 transition-all ${
-                isActive ? 'bg-gradient-to-t from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black' : 'text-slate-400 dark:text-slate-500'
+                isActive ? 'bg-gradient-to-t from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000]' : 'text-slate-400 dark:text-slate-500'
               }`}>
                 <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />
                 <span className={`text-[11px] ${isActive ? 'font-bold' : 'font-medium'}`}>{translate(item.name)}</span>

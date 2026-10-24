@@ -190,7 +190,7 @@ export default function AboutAuthor() {
                         <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
 
                         <div className="flex items-center gap-3 mb-5 xl:mb-6">
-                            <div className="w-11 h-11 xl:w-12 xl:h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+                            <div className="w-11 h-11 xl:w-12 xl:h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
                                 <FaEnvelope className="text-lg xl:text-xl" />
                             </div>
                             <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('Connect with Sazid')}</h2>

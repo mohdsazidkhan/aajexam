@@ -135,7 +135,7 @@ const RegisterPageInner = () => {
   };
 
   const passwordStrengthLabel = passwordStrength < 40 ? translate('Weak') : passwordStrength < 80 ? translate('Good') : translate('Strong');
-  const passwordStrengthColor = passwordStrength < 40 ? 'text-black dark:text-white' : passwordStrength < 80 ? 'text-black dark:text-white' : 'text-primary-600';
+  const passwordStrengthColor = passwordStrength < 40 ? 'text-black dark:text-white' : passwordStrength < 80 ? 'text-black dark:text-white' : 'text-primary-600 dark:text-primary-300';
   const passwordBarColor = passwordStrength < 40 ? 'red-500' : passwordStrength < 80 ? 'amber-500' : 'primary-500';
 
   return (
@@ -149,7 +149,7 @@ const RegisterPageInner = () => {
           <div className="space-y-4 xl:space-y-8 relative z-10">
             <div className="space-y-2 xl:space-y-4">
               {freePromoActive && (
-                <span className="inline-block text-xs font-black uppercase tracking-widest text-black bg-gradient-to-r from-primary-300 to-primary-400 shadow px-3 py-1.5 rounded-full">
+                <span className="inline-block text-xs font-black uppercase tracking-widest text-[#000] bg-gradient-to-r from-primary-300 to-primary-400 shadow px-3 py-1.5 rounded-full">
                   {translate('🎁 Register now — Get PRO Free till 31 Dec 2026')}
                 </span>
               )}
@@ -328,7 +328,7 @@ const RegisterPageInner = () => {
             <div className="text-center">
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 {translate('Already have an account?')}{' '}
-                <Link href="/login" className="text-primary-600 hover:underline font-black">
+                <Link href="/login" className="text-primary-600 dark:text-primary-300 hover:underline font-black">
                   {translate('LOGIN')}
                 </Link>
               </p>

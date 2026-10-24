@@ -203,7 +203,7 @@ const CommunityQuestionsPage = () => {
         ) : error ? (
           <Card className="text-center py-2 xl:py-4">
             <p className="text-content-muted text-sm">{error}</p>
-            <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-600 text-sm font-bold hover:underline">
+            <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-600 dark:text-primary-300 text-sm font-bold hover:underline">
               {translate('Try Again')}
             </button>
           </Card>
@@ -249,7 +249,7 @@ const CommunityQuestionsPage = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-1 rounded-lg bg-primary-50 dark:bg-primary-500/10 text-primary-600 text-[10px] font-bold uppercase">
+                    <span className="px-2 py-1 rounded-lg bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-300 text-[10px] font-bold uppercase">
                       {q.exam?.name || q.exam?.code || translate('Exam')}
                     </span>
                   </div>
@@ -290,7 +290,7 @@ const CommunityQuestionsPage = () => {
                   <span className="text-xs font-bold text-primary-600 dark:text-primary-300 uppercase tracking-wider">
                     {translate('Attempt & See Explanation')}
                   </span>
-                  <ArrowRight className="w-4 h-4 text-primary-600 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-primary-600 dark:text-primary-300 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
 
                 {/* Actions */}

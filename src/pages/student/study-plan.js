@@ -149,7 +149,7 @@ const StudyPlanPage = () => {
                   {durationPreview && (
                     durationPreview.invalid
                       ? <p className="text-[10px] font-bold text-black dark:text-white mt-1">{translate('This date has already passed')}</p>
-                      : <p className="text-[10px] font-bold text-primary-600 mt-1">
+                      : <p className="text-[10px] font-bold text-primary-600 dark:text-primary-300 mt-1">
                         <Calendar className="w-3 h-3 inline mr-0.5" />
                         {fmtDate(new Date())} → {fmtDate(form.examDate)} = <b>{translate('{count} days', { count: durationPreview.days })}</b>
                         {' '}({durationPreview.weeks} hafte{durationPreview.extra ? ` + ${durationPreview.extra} din` : ''})
@@ -193,7 +193,7 @@ const StudyPlanPage = () => {
                 </div>
                 <div className="flex gap-1">
                   <button onClick={() => togglePlanStatus(plan._id, plan.status)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
-                    {plan.status === 'active' ? <Pause className="w-4 h-4 text-slate-400" /> : <Play className="w-4 h-4 text-primary-600" />}
+                    {plan.status === 'active' ? <Pause className="w-4 h-4 text-slate-400" /> : <Play className="w-4 h-4 text-primary-600 dark:text-primary-300" />}
                   </button>
                   <button aria-label={translate('Delete')} onClick={() => deletePlan(plan._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                 </div>
@@ -205,14 +205,14 @@ const StudyPlanPage = () => {
                 <span>{translate('{value}% complete', { value: plan.completionPercentage || 0 })}</span>
                 <span>{translate('Exam: {date}', { date: new Date(plan.examDate).toLocaleDateString('en-IN') })}</span>
               </div>
-              <button onClick={() => setActivePlan(plan)} className="text-[10px] font-black text-primary-600 hover:underline">{translate('View Full Plan')}</button>
+              <button onClick={() => setActivePlan(plan)} className="text-[10px] font-black text-primary-600 dark:text-primary-300 hover:underline">{translate('View Full Plan')}</button>
             </Card>
           ))}
 
           {/* Active Plan Detail */}
           {activePlan && (
             <div className="space-y-5">
-              <button onClick={() => setActivePlan(null)} className="text-sm font-bold text-primary-600 hover:underline">{translate('Back to Plans')}</button>
+              <button onClick={() => setActivePlan(null)} className="text-sm font-bold text-primary-600 dark:text-primary-300 hover:underline">{translate('Back to Plans')}</button>
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <div>
                   <h2 className="text-lg font-black text-slate-900 dark:text-white">{translateData(activePlan.exam?.name)}</h2>
@@ -222,10 +222,10 @@ const StudyPlanPage = () => {
                   </p>
                 </div>
                 <div className="inline-flex rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-800 p-1">
-                  <button onClick={() => setViewMode('weekly')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'weekly' ? 'bg-white dark:bg-slate-700 text-primary-600 shadow-sm' : 'text-slate-500'}`}>
+                  <button onClick={() => setViewMode('weekly')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'weekly' ? 'bg-white dark:bg-slate-700 text-primary-600 dark:text-primary-300 shadow-sm' : 'text-slate-500'}`}>
                     <LayoutGrid className="w-3 h-3" /> Weekly
                   </button>
-                  <button onClick={() => setViewMode('calendar')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'calendar' ? 'bg-white dark:bg-slate-700 text-primary-600 shadow-sm' : 'text-slate-500'}`}>
+                  <button onClick={() => setViewMode('calendar')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'calendar' ? 'bg-white dark:bg-slate-700 text-primary-600 dark:text-primary-300 shadow-sm' : 'text-slate-500'}`}>
                     <Calendar className="w-3 h-3" /> Calendar
                   </button>
                 </div>
@@ -236,7 +236,7 @@ const StudyPlanPage = () => {
                   <div className="flex items-center justify-between flex-wrap gap-2">
                     <h3 className="text-xs font-black text-slate-500 uppercase tracking-wider">{translate('Week {n}', { n: week.week })}</h3>
                     {week.startDate && (
-                      <span className="text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/20 px-2 py-0.5 rounded-full">
+                      <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20 px-2 py-0.5 rounded-full">
                         {fmtShort(week.startDate)} → {fmtShort(week.endDate)}
                       </span>
                     )}
@@ -263,7 +263,7 @@ const StudyPlanPage = () => {
                 (activePlan.dailyTasks?.length > 0 ? activePlan.dailyTasks : []).map((d, di) => (
                   <Card key={di} className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-primary-600" />
+                      <Calendar className="w-4 h-4 text-primary-600 dark:text-primary-300" />
                       <h3 className="text-xs font-black text-slate-900 dark:text-white">{dayName(d.date)}, {fmtDate(d.date)}</h3>
                     </div>
                     {d.tasks?.map((task, ti) => (

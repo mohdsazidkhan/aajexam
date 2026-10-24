@@ -44,7 +44,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
 
       <div className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 text-sm text-slate-600 dark:text-slate-400">
         <div className="flex items-start gap-3">
-          <ShieldCheck className="w-5 h-5 shrink-0 text-primary-600 mt-0.5" />
+          <ShieldCheck className="w-5 h-5 shrink-0 text-primary-600 dark:text-primary-300 mt-0.5" />
           <p className="font-medium">
             {translate('A secure PayU window will open in a new tab. Keep this page open until your payment is completed.')}
           </p>
@@ -53,7 +53,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
 
       {paymentData?.txnid && (
         <div className="p-5 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm">
-          <div className="flex items-center gap-3 text-primary-600">
+          <div className="flex items-center gap-3 text-primary-600 dark:text-primary-300">
             <div className="w-10 h-10 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center text-white shadow-sm">
               <CheckCircle2 className="w-5 h-5" />
             </div>

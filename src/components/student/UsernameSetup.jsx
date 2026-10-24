@@ -107,7 +107,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           placeholder={translate('username')}
           maxLength={20}
           className={`username-input flex-1 border-none outline-none text-base font-black bg-transparent text-slate-900 dark:text-white placeholder:text-slate-300 ${username && username !== currentUsername
-            ? (available === true ? 'text-primary-600' : available === false ? 'text-primary-600' : '')
+            ? (available === true ? 'text-primary-600 dark:text-primary-300' : available === false ? 'text-primary-600 dark:text-primary-300' : '')
             : ''
             }`}
         />
@@ -115,10 +115,10 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           <span className="checking-spinner w-6 h-6 border-2 border-slate-200 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin ml-3"></span>
         )}
         {available === true && username !== currentUsername && (
-          <span className="status-icon success ml-3 text-xl xl:text-2xl font-black text-primary-600">✓</span>
+          <span className="status-icon success ml-3 text-xl xl:text-2xl font-black text-primary-600 dark:text-primary-300">✓</span>
         )}
         {available === false && (
-          <span className="status-icon error ml-3 text-xl xl:text-2xl font-black text-primary-600">✗</span>
+          <span className="status-icon error ml-3 text-xl xl:text-2xl font-black text-primary-600 dark:text-primary-300">✗</span>
         )}
       </div>
 

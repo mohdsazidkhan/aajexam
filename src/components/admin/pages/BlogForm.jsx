@@ -297,12 +297,12 @@ const AdminBlogForm = () => {
               </div>
               <div className="flex items-center">
                 <input type="checkbox" name="isFeatured" checked={formData.isFeatured} onChange={handleChange}
-                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-slate-300 rounded" />
+                  className="h-4 w-4 text-primary-600 dark:text-primary-300 focus:ring-primary-500 border-slate-300 rounded" />
                 <label className="ml-2 text-sm text-gray-700 dark:text-gray-300 font-medium">Featured Blog</label>
               </div>
               <div className="flex items-center">
                 <input type="checkbox" name="isPinned" checked={formData.isPinned} onChange={handleChange}
-                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-slate-300 rounded" />
+                  className="h-4 w-4 text-primary-600 dark:text-primary-300 focus:ring-primary-500 border-slate-300 rounded" />
                 <label className="ml-2 text-sm text-gray-700 dark:text-gray-300 font-medium">Pinned Blog</label>
               </div>
             </div>

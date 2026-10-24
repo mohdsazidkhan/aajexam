@@ -249,7 +249,7 @@ const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
         <div className="shrink-0 relative isolate overflow-hidden flex items-center justify-between gap-3 px-4 py-3 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-b border-slate-200 dark:border-transparent">
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
           <div className="min-w-0 flex items-center gap-3">
-            <span className="w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><Tag className="w-5 h-5" /></span>
+            <span className="w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><Tag className="w-5 h-5" /></span>
             <span className="text-2xl font-black font-outfit tracking-[0.2em] text-primary-700 dark:text-primary-200 truncate">{c.code}</span>
           </div>
           <div className="shrink-0 flex items-center gap-2">
@@ -505,7 +505,7 @@ const CouponsPage = () => {
   const statusBadge = (c) => { const st = statusOf(c); return <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${st.cls}`}>{st.label}</span>; };
 
   const tableColumns = [
-    { key: 'code', header: 'CODE', render: (_, c) => <span className="font-black tracking-widest text-primary-600 text-sm">{c.code}</span> },
+    { key: 'code', header: 'CODE', render: (_, c) => <span className="font-black tracking-widest text-primary-600 dark:text-primary-300 text-sm">{c.code}</span> },
     { key: 'discount', header: 'DISCOUNT', render: (_, c) => discountText(c) },
     { key: 'status', header: 'STATUS', render: (_, c) => statusBadge(c) },
     { key: 'displayDate', header: 'DISPLAY DATE', render: (_, c) => displayText(c) },
@@ -575,7 +575,7 @@ const CouponsPage = () => {
                   <div key={c._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                     {/* Code + offer */}
                     <div className="xl:w-52 shrink-0">
-                      <div className="text-xl font-black tracking-widest text-primary-600">{c.code}</div>
+                      <div className="text-xl font-black tracking-widest text-primary-600 dark:text-primary-300">{c.code}</div>
                       <div className="text-2xl font-black text-slate-900 dark:text-white leading-tight">{offerLabel(c)}</div>
                       {c.discountType === 'percentage' && c.maxDiscount > 0 && (
                         <div className="text-[11px] font-medium text-slate-400">max ₹{c.maxDiscount}</div>
@@ -598,7 +598,7 @@ const CouponsPage = () => {
                     {/* Status + actions */}
                     <div className="flex xl:flex-col items-center xl:items-end justify-between gap-3 shrink-0">
                       <div className="flex items-center gap-2">
-                        {c.showInModal && <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-primary-50 dark:bg-primary-950/30 text-primary-600">In pop-up</span>}
+                        {c.showInModal && <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300">In pop-up</span>}
                         {statusBadge(c)}
                       </div>
                       {renderActions(c)}
@@ -614,7 +614,7 @@ const CouponsPage = () => {
                   <div key={c._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
-                        <div className="text-xl font-black tracking-widest text-primary-600 truncate">{c.code}</div>
+                        <div className="text-xl font-black tracking-widest text-primary-600 dark:text-primary-300 truncate">{c.code}</div>
                         <div className="text-3xl font-black text-slate-900 dark:text-white leading-tight">{offerLabel(c)}</div>
                         {c.discountType === 'percentage' && c.maxDiscount > 0 && (
                           <div className="text-[11px] font-medium text-slate-400">max ₹{c.maxDiscount}</div>
@@ -638,7 +638,7 @@ const CouponsPage = () => {
 
                     <div className="pt-3 mt-auto border-t border-slate-100 dark:border-slate-700 flex items-center justify-between gap-2">
                       {c.showInModal
-                        ? <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-primary-50 dark:bg-primary-950/30 text-primary-600">In pop-up</span>
+                        ? <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300">In pop-up</span>
                         : <span className="text-[10px] font-bold text-slate-400">Not in pop-up</span>}
                       {renderActions(c)}
                     </div>

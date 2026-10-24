@@ -143,21 +143,21 @@ const AdminRevisionPage = () => {
     !statsLoading && stats && (
       <>
         <div className="flex items-center gap-1.5 px-2 py-1.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shrink-0">
-          <div className="p-1 bg-primary-500/10 text-primary-600 rounded-md shrink-0"><Clock className="w-3 h-3" /></div>
+          <div className="p-1 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-md shrink-0"><Clock className="w-3 h-3" /></div>
           <div className="min-w-0">
             <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tight whitespace-nowrap">{stats.dueToday ?? 0}</div>
             <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">Due Today</div>
           </div>
         </div>
         <div className="flex items-center gap-1.5 px-2 py-1.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shrink-0">
-          <div className="p-1 bg-primary-500/10 text-primary-600 rounded-md shrink-0"><ShieldCheck className="w-3 h-3" /></div>
+          <div className="p-1 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-md shrink-0"><ShieldCheck className="w-3 h-3" /></div>
           <div className="min-w-0">
             <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tight whitespace-nowrap">{stats.totalItems ?? 0}</div>
             <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">Total Active</div>
           </div>
         </div>
         <div className="flex items-center gap-1.5 px-2 py-1.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shrink-0">
-          <div className="p-1 bg-primary-500/10 text-primary-600 rounded-md shrink-0"><CheckCircle className="w-3 h-3" /></div>
+          <div className="p-1 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-md shrink-0"><CheckCircle className="w-3 h-3" /></div>
           <div className="min-w-0">
             <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tight whitespace-nowrap">{stats.mastered ?? 0}</div>
             <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">Mastered</div>

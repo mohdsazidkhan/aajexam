@@ -27,7 +27,7 @@ import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const statusColor = (s) => {
-  if (s === 'approved') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600';
+  if (s === 'approved') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-300';
   if (s === 'pending') return 'bg-amber-50 dark:bg-amber-500/10 text-amber-600';
   return 'bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400';
 };
@@ -116,7 +116,7 @@ export default function CommunityModeration() {
   const renderActions = (item, isBusy) => (
     <div className="flex items-center gap-1.5 shrink-0">
       {item.status !== 'approved' && (
-        <button disabled={isBusy} onClick={() => updateStatus(item._id, 'approved')} title="Approve" className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg hover:bg-primary-600 hover:text-white transition-all disabled:opacity-50">
+        <button disabled={isBusy} onClick={() => updateStatus(item._id, 'approved')} title="Approve" className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg hover:bg-primary-600 hover:text-white transition-all disabled:opacity-50">
           <Check className="w-4 h-4" />
         </button>
       )}
@@ -292,7 +292,7 @@ export default function CommunityModeration() {
                       {item.options?.length > 0 && (
                         <div className="flex flex-wrap gap-1.5">
                           {item.options.map((o, idx) => (
-                            <span key={idx} className={`px-2 py-0.5 rounded-lg text-[10px] font-bold ${o.isCorrect ? 'bg-primary-50 dark:bg-primary-500/10 text-primary-600' : 'bg-slate-100 text-slate-500'}`}>{o.text}</span>
+                            <span key={idx} className={`px-2 py-0.5 rounded-lg text-[10px] font-bold ${o.isCorrect ? 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-300' : 'bg-slate-100 text-slate-500'}`}>{o.text}</span>
                           ))}
                         </div>
                       )}

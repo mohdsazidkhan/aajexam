@@ -37,7 +37,7 @@ const AdminMobileFilterDrawer = () => {
           >
             <div className="flex items-center justify-between px-4 h-12 border-b-2 border-slate-100 dark:border-slate-800 shrink-0">
               <div className="flex items-center gap-2 min-w-0">
-                <Filter className="w-4 h-4 text-primary-600 shrink-0" />
+                <Filter className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />
                 <span className="text-sm font-black text-slate-900 dark:text-white truncate">
                   {header.title}
                   {header.count !== null && header.count !== undefined && (

@@ -87,6 +87,15 @@ html, body {
   color: var(--text-primary);
 }
 
+/* Black labels on the light accent fills (pills, tiles, active tabs) stay black in dark mode:
+   the generic rule above would make them pale on pale. */
+.dark .text-black[class*="from-primary-200"],
+.dark .text-black[class*="from-primary-300"],
+.dark .text-black[class*="bg-primary-200"],
+.dark .text-black[class*="bg-primary-300"] {
+  color: #000;
+}
+
 .dark .text-slate-700,
 .dark .text-gray-700 {
   color: var(--text-secondary);

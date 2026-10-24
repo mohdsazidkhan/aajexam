@@ -176,7 +176,7 @@ const ReelCreate = () => {
         <div className="min-h-screen flex items-center justify-center bg-background-page px-4">
           <div className="text-center">
             <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">{translate('Login required to create reels')}</p>
-            <Link href="/login"className="px-6 py-2.5 rounded-lg xl:rounded-xl bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow text-sm font-black uppercase">{translate('Login')}</Link>
+            <Link href="/login"className="px-6 py-2.5 rounded-lg xl:rounded-xl bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow text-sm font-black uppercase">{translate('Login')}</Link>
           </div>
         </div>
       </MobileAppWrapper>
@@ -215,7 +215,7 @@ const ReelCreate = () => {
                   <motion.button key={rt.value} onClick={() => setType(rt.value)}
                     style={{ borderRadius: 14 }} className={`relative overflow-hidden p-2.5 xl:p-5 border text-left shadow-md hover:shadow-xl hover:-translate-y-1 transition-all ${rt.color}`}>
                     <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-                    <span className="w-11 h-11 mb-3 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><rt.icon className="w-6 h-6" /></span>
+                    <span className="w-11 h-11 mb-3 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><rt.icon className="w-6 h-6" /></span>
                     <h2 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm">{translate(rt.label)}</h2>
                     <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-medium">{translate(rt.desc)}</p>
                   </motion.button>
@@ -226,10 +226,10 @@ const ReelCreate = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="flex items-center justify-between bg-background-surface p-3 border border-slate-200 dark:border-slate-800 shadow-md" style={{ borderRadius: 14 }}>
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 text-[10px] font-black bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow uppercase tracking-widest" style={{ borderRadius: 999 }}>{type === 'current_affairs' ? 'CA' : type}</span>
+                  <span className="px-3 py-1 text-[10px] font-black bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow uppercase tracking-widest" style={{ borderRadius: 999 }}>{type === 'current_affairs' ? 'CA' : type}</span>
                   <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">{translate('New Reel')}</p>
                 </div>
-                <button type="button" onClick={() => setType('')} className="text-[10px] font-black text-primary-600 hover:text-primary-600 uppercase tracking-widest bg-primary-50 dark:bg-primary-950/30 px-3 py-1 rounded-lg">{translate('Change Type')}</button>
+                <button type="button" onClick={() => setType('')} className="text-[10px] font-black text-primary-600 dark:text-primary-300 hover:text-primary-600 uppercase tracking-widest bg-primary-50 dark:bg-primary-950/30 px-3 py-1 rounded-lg">{translate('Change Type')}</button>
               </div>
 
               {/* Common */}
@@ -272,7 +272,7 @@ const ReelCreate = () => {
                     {options.map((o, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <button type="button" onClick={() => setCorrectAnswerIndex(i)}
-                          className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-400 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow' : 'border-slate-300 text-slate-400'}`}>
+                          className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-400 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow' : 'border-slate-300 text-slate-400'}`}>
                           {String.fromCharCode(65 + i)}
                         </button>
                         <input value={o} onChange={e => { const n = [...options]; n[i] = e.target.value; setOptions(n); }} placeholder={translate('Option {letter}', { letter: String.fromCharCode(65 + i) })} className={`flex-1 ${inputClass}`} required />
@@ -380,7 +380,7 @@ const ReelCreate = () => {
                       {/* Play/Pause */}
                       <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
                         className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${audioPlaying === a.value
-                          ?'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
+                          ?'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
                         {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                       </button>
                       {/* Info */}

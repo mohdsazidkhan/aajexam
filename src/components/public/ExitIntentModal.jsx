@@ -132,11 +132,11 @@ const ExitIntentModalInner = ({ onClose }) => {
           <p className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 mb-3 max-w-xs mx-auto">
             {promoActive
               ? translate('Sign up in 10 seconds and unlock full PRO access. No card, no payment.')
-              : rich('Sign up in 10 seconds to unlock a <0>Free Premium Mock Test</0> and personalized progress tracking.', [(c) => <span className="text-primary-600 font-black">{c}</span>])}
+              : rich('Sign up in 10 seconds to unlock a <0>Free Premium Mock Test</0> and personalized progress tracking.', [(c) => <span className="text-primary-600 dark:text-primary-300 font-black">{c}</span>])}
           </p>
 
           <div className="mb-3 flex items-center justify-center gap-2 rounded-2xl bg-primary-50 dark:bg-primary-900/20 border border-primary-500/30 px-3 py-2.5">
-            <CheckCircle2 className="w-5 h-5 text-primary-600 shrink-0" />
+            <CheckCircle2 className="w-5 h-5 text-primary-600 dark:text-primary-300 shrink-0" />
             <p className="text-sm sm:text-base font-black text-slate-900 dark:text-white leading-snug">
               {translate('Everything in Unlimited FREE')}
             </p>
@@ -168,7 +168,7 @@ const ExitIntentModalInner = ({ onClose }) => {
           {/* Not ready for Google yet: keep the visitor with an email + mobile number instead of losing them */}
           <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-800">
             {emailDone ? (
-              <p className="text-xs font-bold text-primary-600">{translate('Thanks! We will contact you before the free PRO offer ends.')}</p>
+              <p className="text-xs font-bold text-primary-600 dark:text-primary-300">{translate('Thanks! We will contact you before the free PRO offer ends.')}</p>
             ) : !showLead ? (
               <button
                 type="button"

@@ -41,7 +41,7 @@ const TYPE_CONFIG = {
 };
 
 const DIFFICULTY_STYLES = {
-   easy: 'text-primary-600 bg-primary-50 dark:bg-primary-900/20',
+   easy: 'text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20',
    medium: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800',
    hard: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800',
 };
@@ -155,7 +155,7 @@ const BookmarksPage = () => {
                                        </div>
                                        <button
                                           onClick={(e) => { e.stopPropagation(); handleUnbookmark(reel._id); }}
-                                          className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors"
+                                          className="p-1.5 text-primary-600 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors"
                                           title={translate('Remove bookmark')}
                                        >
                                           <BookmarkCheck className="w-5 h-5" />

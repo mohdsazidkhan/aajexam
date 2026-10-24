@@ -28,7 +28,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
             <div className="min-h-screen flex items-center justify-center px-4">
                 <div className="text-center">
                     <h1 className="text-2xl font-black text-slate-800 dark:text-white mb-4">{translate('Exam Not Found')}</h1>
-                    <Link href="/pyq" className="text-primary-600 hover:text-primary-600 font-bold">{translate('← Browse all PYQs')}</Link>
+                    <Link href="/pyq" className="text-primary-600 dark:text-primary-300 hover:text-primary-600 font-bold">{translate('← Browse all PYQs')}</Link>
                 </div>
             </div>
         );
@@ -109,10 +109,10 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
             <div className="relative">
                         <div className="flex items-center mb-6 gap-4 flex-wrap">
                             <div className="w-14 h-14 xl:w-16 xl:h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-800 flex-shrink-0">
-                                <FaGraduationCap className="text-2xl xl:text-3xl text-primary-600" />
+                                <FaGraduationCap className="text-2xl xl:text-3xl text-primary-600 dark:text-primary-300" />
                             </div>
                             <div>
-                                <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest mb-1">{translate('Previous Year Papers')}</span>
+                                <span className="block text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest mb-1">{translate('Previous Year Papers')}</span>
                                 <h1 className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
                                     {translate('{name} Previous Year Papers', { name: translateData(examName) })}
                                 </h1>
@@ -124,7 +124,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
                         <div className="grid grid-cols-3 gap-4 xl:gap-6">
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaListOl className="text-xl text-primary-600 mx-auto mb-2" />
+                                <FaListOl className="text-xl text-primary-600 dark:text-primary-300 mx-auto mb-2" />
                                 <div className="text-2xl font-black text-slate-900 dark:text-white">{totalPapers}</div>
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Total Papers')}</div>
                             </div>
@@ -134,7 +134,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Years Covered')}</div>
                             </div>
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaTrophy className="text-xl text-primary-600 mx-auto mb-2" />
+                                <FaTrophy className="text-xl text-primary-600 dark:text-primary-300 mx-auto mb-2" />
                                 <div className="text-2xl font-black text-slate-900 dark:text-white">{translate('FREE')}</div>
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('To Attempt')}</div>
                             </div>
@@ -145,7 +145,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                     {/* Long-form intro */}
                     <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
                         <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
-                            <FaBookOpen className="text-primary-600 mr-3" /> {translate('About {name} PYQs', { name: translateData(examName) })}
+                            <FaBookOpen className="text-primary-600 dark:text-primary-300 mr-3" /> {translate('About {name} PYQs', { name: translateData(examName) })}
                         </h2>
                         <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                             {intro}
@@ -192,7 +192,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                                             {!hasAccess && <Lock className="w-3 h-3 text-slate-400" />}
                                                         </div>
                                                     ) : (
-                                                        <span className="text-[9px] font-black text-primary-600 uppercase tracking-wider">{translate('Free Access')}</span>
+                                                        <span className="text-[9px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-wider">{translate('Free Access')}</span>
                                                     )}
                                                 </div>
                                                 <h3 className="text-sm xl:text-base font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-3 line-clamp-2">{translateData(p.title)}</h3>
@@ -250,7 +250,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                 {/* Body */}
                                 <div className="p-6 space-y-5">
                                     <p className="text-sm font-bold text-slate-600 dark:text-slate-400">
-                                        {rich('This paper is part of the <0>AajExam PRO</0> plan. Upgrade to attempt all older PYQ shifts with full analytics.', [(c) => <span className="text-primary-600 font-black">{c}</span>])}
+                                        {rich('This paper is part of the <0>AajExam PRO</0> plan. Upgrade to attempt all older PYQ shifts with full analytics.', [(c) => <span className="text-primary-600 dark:text-primary-300 font-black">{c}</span>])}
                                     </p>
 
                                     {/* What you unlock */}
@@ -321,7 +321,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                 ))}
                             </div>
                             <div className="mt-6 text-center">
-                                <Link href="/pyq" className="inline-flex items-center text-sm font-black text-primary-600 hover:text-primary-600 uppercase tracking-widest">
+                                <Link href="/pyq" className="inline-flex items-center text-sm font-black text-primary-600 dark:text-primary-300 hover:text-primary-600 uppercase tracking-widest">
                                     {translate('Browse all PYQs')} <FaArrowRight className="ml-2" />
                                 </Link>
                             </div>

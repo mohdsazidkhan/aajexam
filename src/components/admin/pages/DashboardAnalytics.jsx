@@ -158,7 +158,7 @@ const DashboardAnalytics = () => {
       key: 'user',
       header: (
         <div className="flex items-center gap-2">
-          <User className="w-4 h-4 text-primary-600" />
+          <User className="w-4 h-4 text-primary-600 dark:text-primary-300" />
           User
         </div>
       ),
@@ -174,7 +174,7 @@ const DashboardAnalytics = () => {
       key: 'quiz',
       header: (
         <div className="flex items-center gap-2">
-          <BookOpen className="w-4 h-4 text-primary-600" />
+          <BookOpen className="w-4 h-4 text-primary-600 dark:text-primary-300" />
           Quiz / Exam
         </div>
       ),
@@ -193,7 +193,7 @@ const DashboardAnalytics = () => {
       key: 'score',
       header: (
         <div className="flex items-center gap-2">
-          <Trophy className="w-4 h-4 text-primary-600" />
+          <Trophy className="w-4 h-4 text-primary-600 dark:text-primary-300" />
           Score
         </div>
       ),
@@ -217,7 +217,7 @@ const DashboardAnalytics = () => {
       key: 'attemptedAt',
       header: (
         <div className="flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-primary-600" />
+          <Calendar className="w-4 h-4 text-primary-600 dark:text-primary-300" />
           Attempt Date
         </div>
       ),
@@ -271,7 +271,7 @@ const DashboardAnalytics = () => {
           <div key={i} className="bg-white dark:bg-slate-900/40 backdrop-blur-xl border border-slate-100 dark:border-white/5 rounded-2xl p-4 hover:shadow-sm transition-all duration-200 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center">
-                <User className="w-5 h-5 text-primary-600" />
+                <User className="w-5 h-5 text-primary-600 dark:text-primary-300" />
               </div>
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
@@ -284,7 +284,7 @@ const DashboardAnalytics = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 bg-primary-500/10 rounded-md flex items-center justify-center">
-                  <BookOpen className="w-3.5 h-3.5 text-primary-600" />
+                  <BookOpen className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" />
                 </div>
                 <span className="text-sm text-gray-700 dark:text-gray-300 font-medium limit-text-1">
                   {a.quiz?.title || 'Unknown Quiz'}
@@ -302,7 +302,7 @@ const DashboardAnalytics = () => {
 
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 bg-primary-500/10 rounded-md flex items-center justify-center">
-                  <Calendar className="w-3.5 h-3.5 text-primary-600" />
+                  <Calendar className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" />
                 </div>
                 <span className="text-xs text-gray-600 dark:text-gray-400">
                   Attempted: {(() => {
@@ -338,7 +338,7 @@ const DashboardAnalytics = () => {
             <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
-                  <User className="w-5 h-5 text-primary-600" />
+                  <User className="w-5 h-5 text-primary-600 dark:text-primary-300" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">
@@ -351,7 +351,7 @@ const DashboardAnalytics = () => {
               <div className="flex flex-col xl:flex-row items-start xl:items-center gap-3">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
-                    <BookOpen className="w-3.5 h-3.5 text-primary-600" />
+                    <BookOpen className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" />
                   </div>
                   <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
                     {a.quiz?.title || 'Unknown Quiz'}
@@ -362,7 +362,7 @@ const DashboardAnalytics = () => {
                   <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
                     <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />
                   </div>
-                  <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600' :
+                  <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600 dark:text-primary-300' :
                     a.score >= 60 ? 'text-primary-600 dark:text-primary-400' :
                       a.score >= 40 ? 'text-primary-600 dark:text-primary-400' :
                         'text-primary-600 dark:text-white'
@@ -373,7 +373,7 @@ const DashboardAnalytics = () => {
 
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
-                    <Calendar className="w-3.5 h-3.5 text-primary-600" />
+                    <Calendar className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" />
                   </div>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     Attempted: {(() => {
@@ -416,7 +416,7 @@ const DashboardAnalytics = () => {
           key={i}
           className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
         >
-          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg shrink-0">
+          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0">
             <stat.icon className="w-4 h-4" />
           </div>
           <div className="min-w-0">

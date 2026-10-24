@@ -89,7 +89,7 @@ const WelcomePromoModalInner = ({ onClose }) => {
 
           <div className="relative z-10">
             <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm border-2 border-white dark:border-slate-800">
-              <Gift className="w-6 h-6 text-primary-600" />
+              <Gift className="w-6 h-6 text-primary-600 dark:text-primary-300" />
             </div>
 
             <h2 className="text-lg xl:text-xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-1">
@@ -98,14 +98,14 @@ const WelcomePromoModalInner = ({ onClose }) => {
             <p className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-2 max-w-sm mx-auto">
               {translate('Already registered? You already have PRO for free, just log in. New here? Sign up and get PRO free instantly.')}
             </p>
-            <p className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-primary-600 mb-4">
+            <p className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-primary-600 dark:text-primary-300 mb-4">
               {translate('FREE till 31 Dec 2026')}
             </p>
 
             <div className="space-y-1.5 mb-4 text-left max-w-sm mx-auto">
               {PROMO_FEATURES.map((feature) => (
                 <div key={feature} className="flex items-center gap-2.5 text-xs font-bold text-slate-700 dark:text-slate-300">
-                  <div className="w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-300 shrink-0">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                   </div>
                   {translate(feature)}

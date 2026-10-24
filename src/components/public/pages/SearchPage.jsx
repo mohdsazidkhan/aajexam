@@ -58,8 +58,8 @@ const TABS = [
 
 const SECTION_META = {
    exam: { label: 'Exams', icon: ShieldCheck, color: 'text-black dark:text-white' },
-   test: { label: 'Practice Tests', icon: FileText, color: 'text-primary-600' },
-   quiz: { label: 'Quizzes', icon: BrainCircuit, color: 'text-primary-600' },
+   test: { label: 'Practice Tests', icon: FileText, color: 'text-primary-600 dark:text-primary-300' },
+   quiz: { label: 'Quizzes', icon: BrainCircuit, color: 'text-primary-600 dark:text-primary-300' },
    reel: { label: 'Reels', icon: Play, color: 'text-slate-500 dark:text-slate-400' },
    subject: { label: 'Subjects', icon: BookMarked, color: 'text-black dark:text-white' },
    topic: { label: 'Topics', icon: Layers, color: 'text-black dark:text-white' },
@@ -351,7 +351,7 @@ const SearchPage = () => {
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{translateData(item.title)}</p>
                      <p className="text-xs text-slate-400">{translate('{duration} min · {marks} marks', { duration: item.duration, marks: item.totalMarks })}</p>
                   </div>
-                  <span className="text-[10px] font-bold text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg shrink-0">{translate('START')}</span>
+                  <span className="text-[10px] font-bold text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg shrink-0">{translate('START')}</span>
                </div>
             );
          case 'exam':
@@ -378,7 +378,7 @@ const SearchPage = () => {
                      </p>
                   </div>
                   <div className="flex flex-col items-end gap-0.5 shrink-0">
-                     <span className="text-[10px] font-bold text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg">{translate('START')}</span>
+                     <span className="text-[10px] font-bold text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg">{translate('START')}</span>
                      {item.totalAttempts > 0 && (
                         <span className="text-[9px] text-slate-400">{translate('{count} played', { count: formatCount(item.totalAttempts) })}</span>
                      )}
@@ -516,7 +516,7 @@ const SearchPage = () => {
                      </button>
                   )}
                   <div className="flex-1 relative">
-                     <span className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 xl:w-8 xl:h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Search className="w-4 h-4" /></span>
+                     <span className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 xl:w-8 xl:h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Search className="w-4 h-4" /></span>
                      <input
                         ref={inputRef}
                         type="text"
@@ -569,7 +569,7 @@ const SearchPage = () => {
                         style={{ borderRadius: 999 }}
                         className={`flex-shrink-0 whitespace-nowrap flex items-center justify-center gap-1.5 px-4 py-2 text-[11px] xl:text-xs font-black uppercase tracking-wider transition-all border ${
                            activeTab === tab.key
-                              ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black border-transparent shadow-md'
+                              ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] border-transparent shadow-md'
                               : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-primary-400 hover:text-primary-700 dark:hover:text-primary-300'
                         }`}
                      >
@@ -606,7 +606,7 @@ const SearchPage = () => {
                                           <Icon className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                                           <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{translate(meta.label)}</h3>
                                        </div>
-                                       <button onClick={() => handleTabChange('reel')} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all">{translate('See all')}</button>
+                                       <button onClick={() => handleTabChange('reel')} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow hover:brightness-105 transition-all">{translate('See all')}</button>
                                     </div>
                                     <div className="flex overflow-x-auto no-scrollbar gap-1.5 pb-1">
                                        {section.items.map(reel => renderReelCard(reel, 'small'))}
@@ -623,7 +623,7 @@ const SearchPage = () => {
                                        <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{translate(meta.label)}</h3>
                                     </div>
                                     {section.hasMore && (
-                                       <button onClick={() => handleTabChange(key)} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow hover:brightness-105 transition-all">{translate('See all')}</button>
+                                       <button onClick={() => handleTabChange(key)} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow hover:brightness-105 transition-all">{translate('See all')}</button>
                                     )}
                                  </div>
                                  <div className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-1">
@@ -661,7 +661,7 @@ const SearchPage = () => {
                               </div>
                               {currentTabData.hasMore && (
                                  <div className="flex justify-center py-4">
-                                    <button onClick={loadMore} disabled={loadingMore} className="text-xs font-bold text-primary-600 flex items-center gap-1.5 disabled:opacity-50">
+                                    <button onClick={loadMore} disabled={loadingMore} className="text-xs font-bold text-primary-600 dark:text-primary-300 flex items-center gap-1.5 disabled:opacity-50">
                                        {loadingMore && <LoaderIcon className="w-3.5 h-3.5 animate-spin" />} {translate('Load more')}
                                     </button>
                                  </div>

@@ -202,7 +202,7 @@ const AdminReels = () => {
       key: 'actions', header: 'Actions', align: 'right', render: (_, item) => (
         <div className="flex items-center justify-end gap-1.5">
           {(item.status === 'pending' || item.status === 'rejected') && (
-            <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow hover:bg-primary-700 hover:text-white transition-all" title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
+            <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow hover:bg-primary-700 hover:text-white transition-all" title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
           )}
           <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" title="Edit"><Edit3 className="w-3.5 h-3.5" /></Link>
           <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
@@ -375,7 +375,7 @@ const AdminReels = () => {
                             </div>
                             <div className="flex items-center gap-1">
                               {(item.status === 'pending' || item.status === 'rejected') && (
-                                <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow " title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
+                                <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow " title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
                               )}
                               <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500" title="Edit"><Edit3 className="w-3.5 h-3.5" /></Link>
                               <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-black dark:text-white" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
@@ -410,7 +410,7 @@ const AdminReels = () => {
                           </span>
                           <div className="flex items-center gap-1.5 shrink-0">
                             {(item.status === 'pending' || item.status === 'rejected') && (
-                              <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow " title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
+                              <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow " title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
                             )}
                             <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500" title="Edit"><Edit3 className="w-3.5 h-3.5" /></Link>
                             <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-black dark:text-white" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>

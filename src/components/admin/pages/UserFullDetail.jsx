@@ -227,7 +227,7 @@ export default function UserFullDetail() {
     return shell(
       <div className="text-center py-20">
         <div className="p-4 rounded-xl bg-rose-500/10 text-rose-600 text-sm font-bold inline-block">{error || 'User not found'}</div>
-        <div className="mt-4"><Link href="/admin/students" className="text-primary-600 font-bold text-sm">← Back to students</Link></div>
+        <div className="mt-4"><Link href="/admin/students" className="text-primary-600 dark:text-primary-300 font-bold text-sm">← Back to students</Link></div>
       </div>
     );
   }
@@ -246,12 +246,12 @@ export default function UserFullDetail() {
         </Link>
         {p._id ? (
           <div className="inline-flex p-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-            <span className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow">Details</span>
+            <span className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow">Details</span>
             <Link href={`/admin/students/${p._id}`} className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/10">Edit</Link>
           </div>
         ) : null}
         {p.username ? (
-          <Link href={`/u/${p.username}`} target="_blank" className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-600">
+          <Link href={`/u/${p.username}`} target="_blank" className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-600 dark:text-primary-300">
             Public profile <ExternalLink className="w-3.5 h-3.5" />
           </Link>
         ) : null}

@@ -85,14 +85,14 @@ const AdminUserWallets = () => {
       render: (_, row) => (
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-primary-600 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
-            <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-600">
+            <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-600 dark:text-primary-300">
               {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
             </div>
           </div>
           <div className="flex flex-col">
             <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{row.user?.name || row.name || 'Unknown'}</span>
             <div className="flex items-center gap-2 mt-1">
-              <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-600 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
+              <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-600 dark:text-primary-300 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
               {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-black dark:text-white" />}
             </div>
           </div>
@@ -114,7 +114,7 @@ const AdminUserWallets = () => {
       header: 'Balance',
       align: 'right',
       render: (_, row) => (
-        <div className="text-sm font-black text-primary-600 tabular-nums italic tracking-tighter text-right">
+        <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums italic tracking-tighter text-right">
           {formatAmount(row.amount || row.walletBalance)}
         </div>
       )
@@ -139,8 +139,8 @@ const AdminUserWallets = () => {
             <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{row.questionCounts?.total || 0}</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-[8px] font-black text-primary-600 uppercase">APPROVED</span>
-            <span className="text-xs font-black text-primary-600 tabular-nums">{row.questionCounts?.approved || 0}</span>
+            <span className="text-[8px] font-black text-primary-600 dark:text-primary-300 uppercase">APPROVED</span>
+            <span className="text-xs font-black text-primary-600 dark:text-primary-300 tabular-nums">{row.questionCounts?.approved || 0}</span>
           </div>
         </div>
       )
@@ -307,7 +307,7 @@ const AdminUserWallets = () => {
                       </div>
                       <div className="text-right">
                         <span className="text-[9px] font-bold text-slate-400 uppercase block">Balance</span>
-                        <div className="text-sm font-black text-primary-600 tabular-nums">{formatAmount(row.amount || row.walletBalance)}</div>
+                        <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{formatAmount(row.amount || row.walletBalance)}</div>
                       </div>
                     </div>
                   </div>
@@ -328,7 +328,7 @@ const AdminUserWallets = () => {
                       <div className="min-w-0">
                         <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate">{row.user?.name || row.name || 'Unknown'}</h4>
                         <div className="flex items-center gap-1.5">
-                          <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-600 text-[9px] font-black">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
+                          <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-600 dark:text-primary-300 text-[9px] font-black">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
                           {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-black dark:text-white" />}
                         </div>
                       </div>
@@ -336,7 +336,7 @@ const AdminUserWallets = () => {
                     <div className="text-[10px] text-slate-400">Joined {formatDate(row.createdAt)}</div>
                     <div className="p-2.5 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 flex items-center justify-between">
                       <span className="text-[9px] font-bold text-slate-400 uppercase">Balance</span>
-                      <span className="text-sm font-black text-primary-600 tabular-nums">{formatAmount(row.amount || row.walletBalance)}</span>
+                      <span className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{formatAmount(row.amount || row.walletBalance)}</span>
                     </div>
                   </div>
                 ))}

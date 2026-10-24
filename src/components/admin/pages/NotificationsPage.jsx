@@ -334,7 +334,7 @@ const AdminNotificationsPage = () => {
                                  {getIconByType(n.type)}
                               </div>
                               <div>
-                                 <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest leading-none mb-1">{n.type?.toUpperCase()}</div>
+                                 <div className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest leading-none mb-1">{n.type?.toUpperCase()}</div>
                                  <div className="text-[10px] font-bold text-slate-800 dark:text-slate-300 uppercase tracking-widest italic">{formatDate(n.createdAt)} &middot; {formatTime(n.createdAt)}</div>
                               </div>
                            </div>
@@ -343,7 +343,7 @@ const AdminNotificationsPage = () => {
                            </div>
                         </div>
 
-                        <h3 className="flex items-center justify-between gap-2 text-lg font-black uppercase italic tracking-tighter leading-tight mb-3 transition-colors text-primary-600">
+                        <h3 className="flex items-center justify-between gap-2 text-lg font-black uppercase italic tracking-tighter leading-tight mb-3 transition-colors text-primary-600 dark:text-primary-300">
                            {n.title}
                            <span className="w-2.5 h-2.5 bg-primary-600 rounded-full animate-ping shrink-0" />
                         </h3>
@@ -357,7 +357,7 @@ const AdminNotificationsPage = () => {
                                <span className="text-[10px] font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest">{n.userId.name}</span>
                              )}
                              {n.userId?.username && (
-                               <span className="text-[10px] font-black text-primary-600 tracking-widest">@{n.userId.username}</span>
+                               <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 tracking-widest">@{n.userId.username}</span>
                              )}
                              {n.userId?.email && (
                                <span className="text-[9px] font-bold text-slate-400 lowercase tracking-normal truncate">{n.userId.email}</span>
@@ -374,7 +374,7 @@ const AdminNotificationsPage = () => {
                                <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/10 text-[9px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest">{n.extra.categoryName}</span>
                              )}
                              {n.extra.testTitle && (
-                               <span className="px-2.5 py-1 rounded-lg bg-primary-500/10 text-[9px] font-black text-primary-600 uppercase tracking-widest truncate max-w-full">{n.extra.testTitle}</span>
+                               <span className="px-2.5 py-1 rounded-lg bg-primary-500/10 text-[9px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest truncate max-w-full">{n.extra.testTitle}</span>
                              )}
                           </div>
                         )}
@@ -382,7 +382,7 @@ const AdminNotificationsPage = () => {
                         {n.type === 'quiz_attempt' && n.extra && (n.extra.quizTitle || n.extra.subCategoryName || n.extra.categoryName) && (
                           <div className="mt-3 flex flex-wrap gap-1.5">
                              {n.extra.quizTitle && (
-                               <span className="px-2.5 py-1 rounded-lg bg-primary-500/10 text-[9px] font-black text-primary-600 uppercase tracking-widest truncate max-w-full">{n.extra.quizTitle}</span>
+                               <span className="px-2.5 py-1 rounded-lg bg-primary-500/10 text-[9px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest truncate max-w-full">{n.extra.quizTitle}</span>
                              )}
                              {n.extra.subCategoryName && (
                                <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/10 text-[9px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest">{n.extra.subCategoryName}</span>

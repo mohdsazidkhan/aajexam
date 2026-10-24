@@ -169,7 +169,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
               <button key={f.id} onClick={() => setActiveFilter(f.id)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-full font-black uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   activeFilter === f.id
-                    ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 !text-black border-primary-600'
+                    ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] border-primary-600'
                     : 'bg-white dark:bg-slate-700 text-slate-700 dark:text-white border-slate-300 dark:border-slate-500'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {translate(f.label)}
@@ -217,7 +217,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
 
                 {/* Counts */}
                 <div className="flex items-center flex-wrap gap-2">
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <FileText className="w-3 h-3" />
                     {translate('{count} Tests', { count: exam.practiceTestCount || 0 })}
                   </div>
@@ -225,7 +225,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                     <History className="w-3 h-3" />
                     {translate('{count} PYQs', { count: exam.pyqCount || 0 })}
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <BrainCircuit className="w-3 h-3" />
                     {translate('{count} Quizzes', { count: exam.quizCount || 0 })}
                   </div>

@@ -61,8 +61,8 @@ const StudentNavbar = () => {
   const rawPlan = (user.subscriptionStatus || 'FREE').toUpperCase();
   const isExpired = rawPlan === 'PRO' && user.subscriptionExpiry && new Date(user.subscriptionExpiry) <= new Date();
   const plan = isExpired ? 'EXPIRED' : rawPlan;
-  const planBadgeClassWeb = `absolute top-2 right-1 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow'}`;
-  const planBadgeClassMobile = `absolute top-1 -right-[45px] px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow'}`;
+  const planBadgeClassWeb = `absolute top-2 right-1 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow'}`;
+  const planBadgeClassMobile = `absolute top-1 -right-[45px] px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow'}`;
 
   return (
     <>
@@ -78,7 +78,7 @@ const StudentNavbar = () => {
               aria-expanded={isSidebarOpen}
               className={`hidden xl:flex w-10 h-10 rounded-2xl items-center justify-center transition-all active:scale-95 ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-md hover:scale-105'
+                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-md hover:scale-105'
                 }`}
             >
               {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -88,7 +88,7 @@ const StudentNavbar = () => {
             <Link href="/student/dashboard" className="relative hidden xl:flex items-start gap-1">
               <span className="flex flex-col leading-none">
                 <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                  AAJ<span className="text-primary-600">{translate('EXAM')}</span>
+                  AAJ<span className="text-primary-600 dark:text-primary-300">{translate('EXAM')}</span>
                 </span>
                 <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
                   {translate('Prepare Your Exam Today')}
@@ -100,7 +100,7 @@ const StudentNavbar = () => {
             {/* Logo — mobile, smaller, left-aligned */}
             <Link href="/student/dashboard" className="relative xl:hidden flex items-center gap-1.5 shrink-0">
               <span className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                AAJ<span className="text-primary-600">{translate('EXAM')}</span>
+                AAJ<span className="text-primary-600 dark:text-primary-300">{translate('EXAM')}</span>
               </span>
               <span className={planBadgeClassMobile}>{plan}</span>
             </Link>
@@ -109,7 +109,7 @@ const StudentNavbar = () => {
           {/* Center — logged-in user's name on desktop */}
           <div className="hidden xl:block absolute left-1/2 -translate-x-1/2">
             <span className="uppercase text-lg font-black text-slate-700 dark:text-slate-300 truncate max-w-xs">
-              {translate('Welcome back,')} <span className="text-primary-600">{user.name}</span>
+              {translate('Welcome back,')} <span className="text-primary-600 dark:text-primary-300">{user.name}</span>
             </span>
           </div>
 
@@ -123,7 +123,7 @@ const StudentNavbar = () => {
             >
               <Bell className="w-4 h-4 xl:w-5 xl:h-5" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black text-[9px] font-black flex items-center justify-center shadow">
+                <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] text-[9px] font-black flex items-center justify-center shadow">
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>
               )}
@@ -169,7 +169,7 @@ const StudentNavbar = () => {
               aria-expanded={isSidebarOpen}
               className={`xl:hidden flex w-9 h-9 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-md'
+                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-md'
                 }`}
             >
               {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -205,7 +205,7 @@ const StudentNavbar = () => {
                   <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-slate-800 transition-all">
                     <item.icon className="w-4 h-4 text-primary-600 dark:text-primary-300" /> {item.label}
                     {item.showBalance && (
-                      <span className="ml-auto text-sm font-black text-primary-600 flex items-center gap-0.5">
+                      <span className="ml-auto text-sm font-black text-primary-600 dark:text-primary-300 flex items-center gap-0.5">
                         <IndianRupee className="w-3 h-3" />{user.walletBalance || 0}
                       </span>
                     )}

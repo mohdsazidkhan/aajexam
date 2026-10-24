@@ -184,7 +184,7 @@ const AdminGovtExams = () => {
       key: 'actions', header: 'Actions', align: 'right', render: (_, exam) => (
         <div className="flex justify-end gap-3">
           <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`}>
-            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl border border-primary-500/20">
+            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl border border-primary-500/20">
               <Zap className="w-4 h-4" />
             </motion.button>
           </Link>
@@ -319,7 +319,7 @@ const AdminGovtExams = () => {
                       <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0A0F1E]">{serialNumber}</span>
                     </div>
                     <div className="min-w-0 pr-16 xl:pr-0">
-                      <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest mb-1">{exam.code}</div>
+                      <div className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest mb-1">{exam.code}</div>
                       <h3 className="text-base xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight">{exam.name}</h3>
                     </div>
                   </div>
@@ -357,7 +357,7 @@ const AdminGovtExams = () => {
                     <div>
                       <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{exam.name}</h3>
                       <div className="flex items-center gap-3">
-                        <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest">{exam.category?.name}</div>
+                        <div className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{exam.category?.name}</div>
                         <div className="flex items-center gap-2">
                           <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ?'bg-primary-600 animate-pulse':'bg-primary-600'}`} />
                           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{exam.isActive ? 'Active' : 'Offline'}</span>
@@ -394,7 +394,7 @@ const AdminGovtExams = () => {
                   <Settings className="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingExam ? 'Edit' : 'Add'} <span className="text-primary-600">Exam</span></h2>
+                  <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingExam ? 'Edit' : 'Add'} <span className="text-primary-600 dark:text-primary-300">Exam</span></h2>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingExam ? `Editing: ${editingExam.name}` : 'Create a new exam'}</p>
                 </div>
               </div>
@@ -430,13 +430,13 @@ const AdminGovtExams = () => {
                 </div>
                 <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-3xl flex items-center justify-between border-2 border-slate-100 dark:border-white/5">
                   <div className="flex items-center gap-3">
-                    <div className={`p-3 rounded-lg xl:rounded-xl ${formData.isActive ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow ' : 'bg-slate-200'}`}><Zap className="w-5 h-5" /></div>
+                    <div className={`p-3 rounded-lg xl:rounded-xl ${formData.isActive ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow ' : 'bg-slate-200'}`}><Zap className="w-5 h-5" /></div>
                     <div>
                       <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Active Status</p>
                       <p className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">{formData.isActive ? 'Published & Active' : 'Hidden from Students'}</p>
                     </div>
                   </div>
-                  <input type="checkbox" checked={formData.isActive} onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })} className="w-6 h-6 rounded-lg text-primary-600 border-2 border-slate-300 cursor-pointer" />
+                  <input type="checkbox" checked={formData.isActive} onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })} className="w-6 h-6 rounded-lg text-primary-600 dark:text-primary-300 border-2 border-slate-300 cursor-pointer" />
                 </div>
               </div>
               </div>

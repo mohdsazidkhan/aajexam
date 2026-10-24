@@ -227,7 +227,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {/* Exam Hero */}
       <Card className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10 overflow-hidden relative">
         <div className="relative z-10 space-y-3">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
           </div>
           <h1 className="text-xl md:text-2xl xl:text-4xl font-black uppercase tracking-tight">{translate('{name} Preparation', { name: translateData(examName) })}</h1>
@@ -266,7 +266,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {aboutText && (
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <FileText className="w-5 h-5 text-primary-600" />
+            <FileText className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('About {name}', { name: translateData(examName) })}
           </h2>
           <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-sm xl:text-base whitespace-pre-line">
@@ -279,7 +279,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {facts && (
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight flex items-center gap-3">
-            <Info className="w-5 h-5 text-primary-600" />
+            <Info className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('{name} Exam Information', { name: translateData(examName) })}
           </h2>
           <p className="text-[11px] font-bold text-black dark:text-white mb-4 uppercase tracking-wide">
@@ -310,7 +310,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {patterns.length > 0 && (
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <Clock className="w-5 h-5 text-primary-600" />
+            <Clock className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('{name} Exam Pattern', { name: translateData(examName) })}
           </h2>
           <div className="space-y-6">
@@ -356,13 +356,13 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {examNews.length > 0 && (
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <Newspaper className="w-5 h-5 text-primary-600" />
+            <Newspaper className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('{name} Latest Updates', { name: translateData(examName) })}
           </h2>
           <ul className="space-y-4">
             {examNews.map((n) => (
               <li key={n.slug} className="space-y-1">
-                <Link href={`/exam-news/${n.slug}`} className="text-sm font-black text-primary-600 hover:underline">{n.title}</Link>
+                <Link href={`/exam-news/${n.slug}`} className="text-sm font-black text-primary-600 dark:text-primary-300 hover:underline">{n.title}</Link>
                 <p className="text-[11px] font-bold text-content-muted uppercase">{n.type.replace('_', ' ')} · {new Date(n.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}</p>
                 {n.importantDates?.length > 0 && (
                   <ul className="text-xs font-medium text-content-primary flex flex-wrap gap-x-4 gap-y-1">
@@ -381,7 +381,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {pyqYears.length > 0 && exam?.slug && (
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <History className="w-5 h-5 text-primary-600" />
+            <History className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('{name} Previous Year Papers', { name: translateData(examName) })}
           </h2>
           <div className="overflow-x-auto">
@@ -400,7 +400,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               </tbody>
             </table>
           </div>
-          <Link href={`/pyq/${exam.slug}`} className="inline-block mt-3 text-sm font-black text-primary-600 hover:underline">
+          <Link href={`/pyq/${exam.slug}`} className="inline-block mt-3 text-sm font-black text-primary-600 dark:text-primary-300 hover:underline">
             {translate('View all {name} PYQ papers →', { name: translateData(examName) })}
           </Link>
         </Card>
@@ -410,7 +410,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {subjectAreas.length > 0 && (
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <ListChecks className="w-5 h-5 text-primary-600" />
+            <ListChecks className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('{name} Syllabus & Subjects', { name: translateData(examName) })}
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
@@ -420,12 +420,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 {subject.slug ? (
                   <button
                     onClick={() => router.push(subject.hasSeries ? `/practice/${exam.slug}/${subject.slug}` : `/subjects/${subject.slug}`)}
-                    className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
+                    className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
                   >
                     {translate('Practice {name} Questions →', { name: translateData(subject.name) })}
                   </button>
                 ) : (
-                  <button onClick={() => setActiveTab('quizzes')} className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap">
+                  <button onClick={() => setActiveTab('quizzes')} className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap">
                     {translate('Practice Questions →')}
                   </button>
                 )}
@@ -435,7 +435,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 <span className="text-sm font-bold text-content-primary">{subject}</span>
                 <button
                   onClick={() => setActiveTab('quizzes')}
-                  className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
+                  className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
                 >
                   {translate('Practice {name} Questions →', { name: subject })}
                 </button>
@@ -494,7 +494,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                       </p>
                     </div>
                   </div>
-                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
+                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
                     {translate('Practice {name} →', { name: translateData(subject.name) })}
                   </span>
                 </Card>
@@ -530,7 +530,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     </div>
                   </div>
                   <p className="text-xs font-bold text-content-muted">{topic.quizCount} {topic.quizCount === 1 ? translate('set') : translate('sets')} · {topic.questionCount} {translate('Qs')}</p>
-                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
+                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
                     {translate('Practice {name} →', { name: translateData(topic.name) })}
                   </span>
                 </Card>
@@ -578,7 +578,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                           </p>
                         )}
                         {isCompleted && test.userAttempt && (
-                          <p className="text-xs font-bold text-primary-600">
+                          <p className="text-xs font-bold text-primary-600 dark:text-primary-300">
                             {translate('Score: {score} · Accuracy: {accuracy}%', { score: fmtNum(test.userAttempt.score), accuracy: Math.round(test.userAttempt.accuracy || 0) })}
                           </p>
                         )}
@@ -586,7 +586,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                       <div className="flex gap-2">
                         {isCompleted && (
                           <button onClick={() => router.push(`/govt-exams/test/${test.slug}/result?attempt=${test.userAttempt._id}`)}
-                            className="flex-1 text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
+                            className="flex-1 text-[10px] font-black text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
                             {translate('Results')}
                           </button>
                         )}
@@ -633,7 +633,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     <p className="text-xs font-bold text-content-muted">{translate('{duration} min · {marks} marks', { duration: quiz.duration, marks: quiz.totalMarks })}</p>
                     <div className="flex items-center gap-2 mt-auto">
                         <span className={`text-[10px] font-black px-2 py-1 rounded-lg capitalize ${diffColor}`}>{quiz.difficulty}</span>
-                        <span className="flex-1 text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">{translate('Start')}</span>
+                        <span className="flex-1 text-center text-[10px] font-black text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">{translate('Start')}</span>
                       </div>
                   </Card>
                 </motion.div>
@@ -650,7 +650,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {/* How to Prepare */}
       <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-          <GraduationCap className="w-5 h-5 text-primary-600" />
+          <GraduationCap className="w-5 h-5 text-primary-600 dark:text-primary-300" />
           {translate('How to Prepare for {name}', { name: translateData(examName) })}
         </h2>
         <ol className="space-y-2 text-sm font-medium text-content-primary list-decimal list-inside">
@@ -668,7 +668,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {/* Related Searches */}
       <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-          <Search className="w-5 h-5 text-primary-600" />
+          <Search className="w-5 h-5 text-primary-600 dark:text-primary-300" />
           {translate('Related Searches')}
         </h2>
         <p className="text-sm font-medium text-content-muted leading-relaxed">
@@ -686,7 +686,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {/* FAQ — rendered visibly to match the FAQ structured data above */}
       <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-          <HelpCircle className="w-5 h-5 text-primary-600" />
+          <HelpCircle className="w-5 h-5 text-primary-600 dark:text-primary-300" />
           {translate('Frequently Asked Questions')}
         </h2>
         <div className="space-y-2 xl:space-y-4">

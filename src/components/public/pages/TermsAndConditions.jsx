@@ -79,7 +79,7 @@ const TermsAndConditions = () => {
                      <section id="acceptance" className="group">
                         <div className="bg-white dark:bg-slate-800 p-4 md:p-6 xl:p-8 rounded-[2rem] xl:rounded-[4rem] shadow-sm border-none relative overflow-hidden mt-4">
                            <div className="flex items-center gap-4 mb-5">
-                              <div className="w-12 h-12 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                              <div className="w-12 h-12 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <CircleCheck className="w-6 h-6" />
                               </div>
                               <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">Acceptance of Terms</h2>
@@ -98,7 +98,7 @@ const TermsAndConditions = () => {
                      {/* User Eligibility */}
                      <section id="eligibility" className="bg-white dark:bg-slate-800 p-4 xl:p-8 rounded-[2rem] xl:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 space-y-6 xl:space-y-8">
                         <div className="flex items-center gap-4 relative z-10">
-                           <div className="w-12 h-12 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                           <div className="w-12 h-12 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                               <UserCheck className="w-6 h-6" />
                            </div>
                            <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">User Eligibility</h2>
@@ -128,7 +128,7 @@ const TermsAndConditions = () => {
                         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-4 relative z-10">
-                           <div className="w-12 h-12 bg-primary-500/20 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
+                           <div className="w-12 h-12 bg-primary-500/20 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
                               <Users className="w-6 h-6" />
                            </div>
                            <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">Subscription Plans</h2>
@@ -136,13 +136,13 @@ const TermsAndConditions = () => {
 
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 relative z-10">
                            <div className="p-4 xl:p-5 bg-primary-600/10 dark:bg-white/5 rounded-[2.5rem] border-2 border-primary-300 dark:border-white/10 space-y-2 xl:space-y-4">
-                              <h3 className="text-primary-600 font-black uppercase tracking-widest text-xs">Free Plan</h3>
+                              <h3 className="text-primary-600 dark:text-primary-300 font-black uppercase tracking-widest text-xs">Free Plan</h3>
                               <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Unlimited topic-wise practice, 2 subject tests/day, first full mock test free, and latest-year PYQs for every exam.</p>
                            </div>
                            <div className="p-4 xl:p-5 bg-primary-500/10 rounded-[2.5rem] border-2 border-primary-500/20 space-y-2 xl:space-y-4 shadow-sm group hover:scale-[1.02] transition-transform">
                               <div className="flex justify-between items-center">
                                  <h4 className="text-slate-900 dark:text-white font-black uppercase tracking-widest text-xs">Pro Plan</h4>
-                                 <Zap className="w-4 h-4 text-primary-600" />
+                                 <Zap className="w-4 h-4 text-primary-600 dark:text-primary-300" />
                               </div>
                               <p className="text-sm font-medium text-slate-600 dark:text-slate-300">Unlimited subject tests & mock exams, every PYQ for every exam and year, AI Study Planner, Exam Readiness Score, and an ad-free experience.</p>
                            </div>
@@ -150,7 +150,7 @@ const TermsAndConditions = () => {
 
                         <div className="p-4 xl:p-6 bg-primary-600/10 dark:bg-white/5 rounded-[3.5rem] border-l-4 border-primary-600 relative z-10">
                            <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">
-                              <strong className="text-primary-600">PAYMENT TERMS:</strong> All subscription fees are processed securely and are non-refundable. If your account is banned for breaking rules, you will not receive a refund.
+                              <strong className="text-primary-600 dark:text-primary-300">PAYMENT TERMS:</strong> All subscription fees are processed securely and are non-refundable. If your account is banned for breaking rules, you will not receive a refund.
                            </p>
                         </div>
                      </section>
@@ -234,7 +234,7 @@ const TermsAndConditions = () => {
                      <section id="contact" className="group">
                         <div className="bg-white dark:bg-slate-800 p-4 md:p-6 xl:p-8 rounded-[2.5rem] xl:rounded-[4rem] shadow-sm space-y-5 border-none relative overflow-hidden">
                            <div className="flex items-center gap-4">
-                              <div className="w-12 h-12 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                              <div className="w-12 h-12 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <Mail className="w-6 h-6" />
                               </div>
                               <div className="space-y-1">
@@ -244,7 +244,7 @@ const TermsAndConditions = () => {
                            </div>
                            <div className="p-4 xl:p-4 xl:p-5 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 xl:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
-                              <p className="text-xl xl:text-2xl font-black text-primary-600 tracking-tight">{config.CONTACT.EMAIL}</p>
+                              <p className="text-xl xl:text-2xl font-black text-primary-600 dark:text-primary-300 tracking-tight">{config.CONTACT.EMAIL}</p>
                            </div>
                            <button
                               onClick={() => router.push('/student/dashboard')}

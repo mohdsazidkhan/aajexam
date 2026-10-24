@@ -176,7 +176,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
     {
       key: 'actions', header: 'ACTIONS', align: 'center', render: (_, e) => (
         <div className="flex justify-center gap-1">
-          <button onClick={() => setSelected(e)} title="View details" className="p-1.5 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow hover:bg-primary-600 hover:text-white transition"><Eye className="w-4 h-4" /></button>
+          <button onClick={() => setSelected(e)} title="View details" className="p-1.5 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow hover:bg-primary-600 hover:text-white transition"><Eye className="w-4 h-4" /></button>
           {e.status !== 'resolved'
             ? <button onClick={() => setItemStatus(e, 'resolved')} title="Mark resolved" className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-600 hover:bg-emerald-600 hover:text-white transition"><CheckCircle2 className="w-4 h-4" /></button>
             : <button onClick={() => setItemStatus(e, 'open')} title="Reopen" className="p-1.5 rounded-lg bg-amber-500/10 text-amber-600 hover:bg-amber-600 hover:text-white transition"><RotateCcw className="w-4 h-4" /></button>}
@@ -224,7 +224,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
 
   const stat = (label, value, Icon) => (
     <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 px-2.5 py-2 flex items-center gap-2.5 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all min-w-0">
-      <span className="w-7 h-7 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
+      <span className="w-7 h-7 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
       <div className="min-w-0">
         <div className="text-base font-black tabular-nums text-slate-900 dark:text-white leading-none">{value ?? 0}</div>
         <div className="text-[8px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1 leading-tight">{label}</div>

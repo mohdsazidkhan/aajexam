@@ -80,13 +80,13 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
       <div className="min-h-screen flex items-center justify-center bg-background-page">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">{translate('Quiz Not Found')}</h1>
-          <Link href="/search" className="text-primary-600 hover:text-primary-600">{translate('← Back to Search')}</Link>
+          <Link href="/search" className="text-primary-600 dark:text-primary-300 hover:text-primary-600">{translate('← Back to Search')}</Link>
         </div>
       </div>
     );
   }
 
-  const difficultyColor = quiz.difficulty === 'easy' ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/30' :
+  const difficultyColor = quiz.difficulty === 'easy' ? 'text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30' :
     quiz.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800' :
       'text-black dark:text-white bg-slate-100 dark:bg-slate-800';
 
@@ -96,7 +96,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Breadcrumb */}
         <div className="mb-6 flex items-center gap-2 text-sm">
-          <button onClick={() => router.back()} className="flex items-center gap-1 text-primary-600 hover:underline">
+          <button onClick={() => router.back()} className="flex items-center gap-1 text-primary-600 dark:text-primary-300 hover:underline">
             <ArrowLeft className="w-4 h-4" /> Back
           </button>
           {quiz.applicableExams?.length > 0 && (
@@ -125,7 +125,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
           <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="flex items-center mb-4">
-            <div className="w-8 xl:w-12 h-8 xl:h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg] flex items-center justify-center mr-4 shrink-0" style={{ borderRadius: 12 }}>
+            <div className="w-8 xl:w-12 h-8 xl:h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] flex items-center justify-center mr-4 shrink-0" style={{ borderRadius: 12 }}>
               <BrainCircuit className="w-5 xl:w-6 h-5 xl:h-6" />
             </div>
             <h1 className="text-xl xl:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
@@ -155,7 +155,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
               <div className="text-xs text-slate-500">{translate('Difficulty')}</div>
             </div>
             <div className="bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl p-3 text-center">
-              <Trophy className="w-6 h-6 text-primary-600 mx-auto mb-1" />
+              <Trophy className="w-6 h-6 text-primary-600 dark:text-primary-300 mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.totalMarks}</div>
               <div className="text-xs text-slate-500">{translate('Total Marks')}</div>
             </div>
@@ -200,16 +200,16 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
         {quiz.totalAttempts > 0 && (
           <div className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
-              <Users className="w-5 h-5 text-primary-600" />
+              <Users className="w-5 h-5 text-primary-600 dark:text-primary-300" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">{translate('Quiz Statistics')}</h2>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary-600">{quiz.totalAttempts}</div>
+                <div className="text-2xl font-bold text-primary-600 dark:text-primary-300">{quiz.totalAttempts}</div>
                 <div className="text-xs text-slate-500">{translate('Total Attempts')}</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary-600">{Math.round(quiz.avgScore)}%</div>
+                <div className="text-2xl font-bold text-primary-600 dark:text-primary-300">{Math.round(quiz.avgScore)}%</div>
                 <div className="text-xs text-slate-500">{translate('Average Score')}</div>
               </div>
             </div>

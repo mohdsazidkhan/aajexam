@@ -73,7 +73,7 @@ export default function HalalDisclaimer() {
                                     ].map((item, idx) => (
                                         <div key={idx} className="relative pl-8 border-l-4 border-primary-500/20">
                                             <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-2">
-                                                <FaCheckCircle className="text-primary-600 text-lg flex-shrink-0" />
+                                                <FaCheckCircle className="text-primary-600 dark:text-primary-300 text-lg flex-shrink-0" />
                                                 {item.title}
                                             </h3>
                                             {item.evidence && (
@@ -95,7 +95,7 @@ export default function HalalDisclaimer() {
                                 <div className="space-y-6">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">
                                         For Shariah-related inquiries:<br />
-                                        <strong className="text-primary-600 text-sm">{config.CONTACT.EMAIL}</strong>
+                                        <strong className="text-primary-600 dark:text-primary-300 text-sm">{config.CONTACT.EMAIL}</strong>
                                     </p>
                                     <button
                                         onClick={() => (window.location.href = '/')}

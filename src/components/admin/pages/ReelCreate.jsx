@@ -358,7 +358,7 @@ const AdminReelCreate = () => {
                           />
                         </div>
                       ))}
-                      <p className="text-xs text-primary-600">Click letter to mark correct answer. Currently: {String.fromCharCode(65 + correctAnswerIndex)}</p>
+                      <p className="text-xs text-primary-600 dark:text-primary-300">Click letter to mark correct answer. Currently: {String.fromCharCode(65 + correctAnswerIndex)}</p>
                     </div>
                     <div>
                       <label className={labelClass}>Explanation</label>

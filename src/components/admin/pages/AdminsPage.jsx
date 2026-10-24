@@ -127,7 +127,7 @@ export default function AdminsPage() {
                       <div className="flex-1 min-w-0">
                         <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate flex items-center gap-2">
                           {a.name || 'Unnamed'}
-                          {isSelf && <span className="text-[10px] font-black text-primary-600 uppercase">You</span>}
+                          {isSelf && <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase">You</span>}
                         </h3>
                         <div className="flex items-center gap-3 text-[11px] font-bold text-slate-400 flex-wrap">
                           <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5" /> {a.email}</span>

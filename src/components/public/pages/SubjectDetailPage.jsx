@@ -13,7 +13,7 @@ import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../../lib
 import useTranslate from '../../../hooks/useTranslate';
 
 const diffChip = (d) => {
-  if (d === 'easy') return 'text-primary-600 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50';
+  if (d === 'easy') return 'text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50';
   return 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800 dark:border-white/50';
 };
 

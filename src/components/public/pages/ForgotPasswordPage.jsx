@@ -65,12 +65,12 @@ const ForgotPasswordPage = () => {
               <motion.div
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
-                className="w-20 h-20 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10"
+                className="w-20 h-20 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10"
               >
                 <Key className="w-10 h-10" />
               </motion.div>
               <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">
-                {rich('Reset <0>Password</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+                {rich('Reset <0>Password</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
               </h2>
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em] px-4">{translate('Enter your email and we will send you a link to reset your password.')}</p>
             </div>
@@ -83,11 +83,11 @@ const ForgotPasswordPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 text-center space-y-6"
                 >
-                  <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-full flex items-center justify-center mx-auto">
                     <CircleCheck className="w-8 h-8" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-black font-outfit uppercase text-primary-600">{translate('Email sent')}</h3>
+                    <h3 className="text-xl font-black font-outfit uppercase text-primary-600 dark:text-primary-300">{translate('Email sent')}</h3>
                     <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em] leading-relaxed">
                       {translate('We have sent a reset link to your email. Please check your inbox.')}
                     </p>

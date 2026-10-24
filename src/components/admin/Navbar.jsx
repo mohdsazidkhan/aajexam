@@ -73,7 +73,7 @@ const AdminNavbar = () => {
               className={`hidden xl:flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 shrink-0 ${
                 isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-md hover:scale-105'
+                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-md hover:scale-105'
               }`}
             >
               {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -82,14 +82,14 @@ const AdminNavbar = () => {
             {/* Logo — desktop */}
             <Link href="/admin/dashboard" className="hidden xl:flex items-center shrink-0">
               <span className="text-2xl xl:text-3xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white ">
-                AAJ<span className="text-primary-600">EXAM</span>
+                AAJ<span className="text-primary-600 dark:text-primary-300">EXAM</span>
               </span>
             </Link>
 
             {/* Logo — mobile, smaller, left-aligned */}
             <Link href="/admin/dashboard" className="xl:hidden flex items-center shrink-0">
               <span className="text-base font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                AAJ<span className="text-primary-600">EXAM</span>
+                AAJ<span className="text-primary-600 dark:text-primary-300">EXAM</span>
               </span>
             </Link>
 
@@ -156,7 +156,7 @@ const AdminNavbar = () => {
               className={`xl:hidden flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${
                 isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-md'
+                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-md'
               }`}
             >
               {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -185,7 +185,7 @@ const AdminNavbar = () => {
 
               {/* Admin badge — mobile */}
               <div className="xl:hidden flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl bg-primary-50 dark:bg-primary-900/10 mb-1">
-                <ShieldCheck className="w-4 h-4 text-primary-600" />
+                <ShieldCheck className="w-4 h-4 text-primary-600 dark:text-primary-300" />
                 <span className="text-sm font-bold text-primary-600 dark:text-primary-400">Admin Panel</span>
               </div>
 

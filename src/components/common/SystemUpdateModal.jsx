@@ -38,7 +38,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-6">
               <div className="w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center shadow-sm transform -rotate-6">
-                <FaGraduationCap className="text-3xl text-primary-600" />
+                <FaGraduationCap className="text-3xl text-primary-600 dark:text-primary-300" />
               </div>
               <div>
                 <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter">{translate('AajExam — Exam Focused!')}</h2>
@@ -77,28 +77,28 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
                 <span className="text-xl">📝</span>
                 <div>
                   <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">{translate('Real Exam Patterns')}</p>
-                  <p className="text-xs text-primary-600">{translate('SSC, UPSC, Banking, Railway & more')}</p>
+                  <p className="text-xs text-primary-600 dark:text-primary-300">{translate('SSC, UPSC, Banking, Railway & more')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">📊</span>
                 <div>
                   <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">{translate('Full-Length Mock Tests')}</p>
-                  <p className="text-xs text-primary-600">{translate('With section-wise analysis')}</p>
+                  <p className="text-xs text-primary-600 dark:text-primary-300">{translate('With section-wise analysis')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">🏆</span>
                 <div>
                   <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">{translate('Test Leaderboards')}</p>
-                  <p className="text-xs text-primary-600">{translate('Compare your rank with others')}</p>
+                  <p className="text-xs text-primary-600 dark:text-primary-300">{translate('Compare your rank with others')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">📈</span>
                 <div>
                   <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">{translate('Detailed Analytics')}</p>
-                  <p className="text-xs text-primary-600">{translate('Track accuracy, speed & progress')}</p>
+                  <p className="text-xs text-primary-600 dark:text-primary-300">{translate('Track accuracy, speed & progress')}</p>
                 </div>
               </div>
             </div>

@@ -30,7 +30,7 @@ const SubscriptionGuard = ({
       <Lock className="pointer-events-none absolute right-6 top-4 w-28 h-28 xl:w-40 xl:h-40 text-primary-600/10 dark:text-white/5 rotate-12 -z-10" />
 
       <div className="relative max-w-xl mx-auto">
-        <div className="w-16 h-16 xl:w-20 xl:h-20 mx-auto mb-4 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-xl rotate-[-4deg]" style={{ borderRadius: 20 }}>
+        <div className="w-16 h-16 xl:w-20 xl:h-20 mx-auto mb-4 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-xl rotate-[-4deg]" style={{ borderRadius: 20 }}>
           <Lock className="w-8 h-8 xl:w-10 xl:h-10" />
         </div>
         <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
@@ -53,7 +53,7 @@ const SubscriptionGuard = ({
               <Link
                 href="/student/subscription"
                 style={{ borderRadius: 14 }}
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black font-black uppercase tracking-wide text-sm shadow-lg hover:brightness-105 hover:-translate-y-0.5 transition-all"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] font-black uppercase tracking-wide text-sm shadow-lg hover:brightness-105 hover:-translate-y-0.5 transition-all"
               >
                 <Crown className="w-5 h-5" />
                 {translate('Upgrade to PRO')}

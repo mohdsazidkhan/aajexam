@@ -159,7 +159,7 @@ const ExamDetails = ({ exam }) => (
         <div className="flex flex-col border-t sm:border-t-0 sm:border-l border-slate-200 dark:border-white/10 pt-2 sm:pt-0 sm:pl-3">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Question Bank</span>
-            <a href="/admin/quiz/questions" className="text-[10px] text-primary-600 hover:underline font-bold flex items-center gap-0.5">Manage <ChevronRight className="w-2.5 h-2.5" /></a>
+            <a href="/admin/quiz/questions" className="text-[10px] text-primary-600 dark:text-primary-300 hover:underline font-bold flex items-center gap-0.5">Manage <ChevronRight className="w-2.5 h-2.5" /></a>
           </div>
           <span className="text-sm font-bold text-black dark:text-white mt-0.5">{formatNumber(exam.counts.qBankQuestions)} Qs</span>
           <span className="text-[10px] text-slate-500">Standalone Quiz Bank</span>
@@ -401,7 +401,7 @@ const ExamOverviewPage = () => {
                             {exam.category?.name || '-'}
                           </td>
                           <td className="p-4 text-center font-semibold text-black dark:text-white">{exam.counts.patterns}</td>
-                          <td className="p-4 text-center font-semibold text-primary-600">{exam.counts.subjects}</td>
+                          <td className="p-4 text-center font-semibold text-primary-600 dark:text-primary-300">{exam.counts.subjects}</td>
                           <td className="p-4 text-center font-semibold text-black dark:text-white">{exam.counts.topics}</td>
                           <td className="p-4 text-center font-semibold text-black dark:text-white">{exam.counts.quizzes}</td>
                           <td className="p-4 text-center font-semibold text-black dark:text-white">{exam.counts.pyqs}</td>
@@ -429,7 +429,7 @@ const ExamOverviewPage = () => {
                           <td className="p-4 text-center">
                             <button aria-label="Show"
                               onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)}
-                              className="p-2 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors tooltip"
+                              className="p-2 text-primary-600 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors tooltip"
                               data-tip="Manage Patterns"
                             >
                               <Eye className="w-4 h-4" />
@@ -469,7 +469,7 @@ const ExamOverviewPage = () => {
                   <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30">
                     <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
                       <div className="flex items-center gap-3">
-                        <div className="relative w-10 h-10 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow flex items-center justify-center shrink-0">
+                        <div className="relative w-10 h-10 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
                           <GraduationCap className="w-5 h-5" />
                           <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-900">{serialNumber}</span>
                         </div>
@@ -493,7 +493,7 @@ const ExamOverviewPage = () => {
                         </div>
                         <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Sub</div>
-                          <div className="text-sm font-bold text-primary-600">{exam.counts.subjects}</div>
+                          <div className="text-sm font-bold text-primary-600 dark:text-primary-300">{exam.counts.subjects}</div>
                         </div>
                         <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Top</div>
@@ -519,7 +519,7 @@ const ExamOverviewPage = () => {
                           {isExpanded ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
                           {isExpanded ? 'Hide' : 'Details'}
                         </button>
-                        <button onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)} className="px-3 py-1.5 text-xs font-bold bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/40 text-primary-600 rounded-lg transition-colors flex items-center gap-1">
+                        <button onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)} className="px-3 py-1.5 text-xs font-bold bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/40 text-primary-600 dark:text-primary-300 rounded-lg transition-colors flex items-center gap-1">
                           <Eye className="w-3 h-3" /> Manage
                         </button>
                       </div>
@@ -570,7 +570,7 @@ const ExamOverviewPage = () => {
                         </div>
                         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Subjects</div>
-                          <div className="text-lg font-bold text-primary-600 leading-none">{exam.counts.subjects}</div>
+                          <div className="text-lg font-bold text-primary-600 dark:text-primary-300 leading-none">{exam.counts.subjects}</div>
                         </div>
                         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Topics</div>
@@ -604,7 +604,7 @@ const ExamOverviewPage = () => {
                           {isExpanded ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
                           {isExpanded ? 'Hide' : 'Details'}
                         </button>
-                        <button onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)} className="flex-1 py-2 text-xs font-bold bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/40 text-primary-600 rounded-lg transition-colors flex items-center justify-center gap-1">
+                        <button onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)} className="flex-1 py-2 text-xs font-bold bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/40 text-primary-600 dark:text-primary-300 rounded-lg transition-colors flex items-center justify-center gap-1">
                           <Eye className="w-3 h-3" /> Manage
                         </button>
                       </div>

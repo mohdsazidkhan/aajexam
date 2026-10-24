@@ -71,7 +71,7 @@ export default function GovtExamsPreparation({ initialData }) {
                     <div className="mb-4 xl:mb-6">
                         <PageHero
                             icon={FaQuestionCircle}
-                            title={rich('Government Exams <0>Preparation</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+                            title={rich('Government Exams <0>Preparation</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
                             subtitle={translate('{count} Exams Available', { count: pagination.totalExams || 0 })}
                         />
                     </div>
@@ -92,7 +92,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                                 <div className="flex items-center justify-start gap-4 mb-2 xl:mb-4">
                                                 <div className="w-10 xl:w-16 h-10 xl:h-16 bg-primary-50 dark:bg-primary-900/20 rounded-2xl flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-800 overflow-hidden">
                                                     
-                                                    <FaGraduationCap className="text-primary-600 text-2xl" />
+                                                    <FaGraduationCap className="text-primary-600 dark:text-primary-300 text-2xl" />
                                                 
                                                 </div>
                                                 <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">

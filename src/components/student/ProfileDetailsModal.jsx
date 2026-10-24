@@ -199,7 +199,7 @@ const ProfileDetailsModal = () => {
           </button>
 
           <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm border-2 border-white dark:border-slate-800">
-            <UserRound className="w-6 h-6 text-primary-600" />
+            <UserRound className="w-6 h-6 text-primary-600 dark:text-primary-300" />
           </div>
           <h2 className="text-lg font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-1 text-center">
             {translate('Tell us about yourself')}

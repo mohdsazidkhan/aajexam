@@ -190,7 +190,7 @@ const EmailCampaignsListPage = () => {
     },
     { key: 'status', header: 'Status', render: (_, c) => <StatusBadge status={c.status} /> },
     { key: 'progress', header: 'Progress', render: (_, c) => <Progress c={c} /> },
-    { key: 'sentCount', header: 'Sent', render: (_, c) => <span className="text-primary-600 font-semibold">{c.sentCount || 0}</span> },
+    { key: 'sentCount', header: 'Sent', render: (_, c) => <span className="text-primary-600 dark:text-primary-300 font-semibold">{c.sentCount || 0}</span> },
     { key: 'failedCount', header: 'Failed', render: (_, c) => <span className="text-black dark:text-white font-semibold">{c.failedCount || 0}</span> },
     { key: 'createdAt', header: 'Created', render: (_, c) => <span className="text-slate-500 text-xs whitespace-nowrap">{fmtDate(c.createdAt)}</span> },
     {
@@ -363,7 +363,7 @@ const EmailCampaignsListPage = () => {
                   <div className="mt-auto space-y-3">
                     <Progress c={c} />
                     <div className="grid grid-cols-3 gap-1 text-center">
-                      <div><div className="text-primary-600 font-bold text-sm">{c.sentCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Sent</div></div>
+                      <div><div className="text-primary-600 dark:text-primary-300 font-bold text-sm">{c.sentCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Sent</div></div>
                       <div><div className="text-black dark:text-white font-bold text-sm">{c.failedCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Failed</div></div>
                       <div><div className="text-black dark:text-white font-bold text-sm">{c.totalTargeted || 0}</div><div className="text-[9px] text-slate-500 uppercase">Total</div></div>
                     </div>

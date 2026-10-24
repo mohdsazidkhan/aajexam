@@ -71,12 +71,12 @@ const ReelsSaved = () => {
         <div className="max-w-2xl mx-auto p-4">
           {loading ? <CardGridSkeleton count={6} variant="media" /> : reels.length === 0 ? (
             <div className="text-center py-20 px-6">
-              <div className="w-20 h-20 flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 24 }}>
+              <div className="w-20 h-20 flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 24 }}>
                 <Bookmark className="w-10 h-10" />
               </div>
               <p className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('No saved reels yet')}</p>
               <p className="text-sm text-slate-400 dark:text-slate-500 mt-2 max-w-[200px] mx-auto">{translate('Bookmark interesting reels to revisit them anytime')}</p>
-              <Link href="/reels" style={{ borderRadius: 14 }} className="inline-block mt-8 px-8 py-3 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-sm font-black uppercase tracking-widest hover:brightness-105 transition-all shadow-lg active:scale-95">
+              <Link href="/reels" style={{ borderRadius: 14 }} className="inline-block mt-8 px-8 py-3 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-sm font-black uppercase tracking-widest hover:brightness-105 transition-all shadow-lg active:scale-95">
                 {translate('Browse Reels')}
               </Link>
             </div>
@@ -94,7 +94,7 @@ const ReelsSaved = () => {
                   >
                     <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                     <div className="flex items-start gap-4">
-                      <div style={{ borderRadius: 14 }} className="w-12 h-12 flex items-center justify-center shrink-0 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]">
+                      <div style={{ borderRadius: 14 }} className="w-12 h-12 flex items-center justify-center shrink-0 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]">
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
                       <div className="flex-1 min-w-0">

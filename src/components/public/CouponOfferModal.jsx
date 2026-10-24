@@ -138,7 +138,7 @@ const CouponOfferModal = () => {
           className="relative w-full max-w-md xl:max-w-lg max-h-[92vh] overflow-y-auto bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-primary-500/20"
         >
           {/* Hero */}
-          <div className="relative overflow-hidden bg-gradient-to-br from-primary-500 via-primary-600 to-primary-800 px-6 pt-8 pb-10 xl:pt-10 xl:pb-12 text-center text-white">
+          <div className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-600 to-primary-800 px-6 pt-8 pb-10 xl:pt-10 xl:pb-12 text-center text-white">
             {/* Soft glow instead of shapes: the site forces every rounded element to a flat 8px radius, so circles render as squares. */}
             <div
               className="pointer-events-none absolute inset-0"
@@ -166,7 +166,7 @@ const CouponOfferModal = () => {
                 </p>
               </div>
             ) : (
-              <button type="button" onClick={copy} className="w-full flex items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-primary-500/60 bg-primary-500/5 hover:bg-primary-500/10 px-4 py-3.5 text-2xl xl:text-3xl font-black font-outfit tracking-[0.25em] text-primary-600 transition">
+              <button type="button" onClick={copy} className="w-full flex items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-primary-500/60 bg-primary-500/5 hover:bg-primary-500/10 px-4 py-3.5 text-2xl xl:text-3xl font-black font-outfit tracking-[0.25em] text-primary-600 dark:text-primary-300 transition">
                 <Tag className="w-5 h-5" /> {coupon.code} <Copy className="w-4 h-4" />
               </button>
             )}

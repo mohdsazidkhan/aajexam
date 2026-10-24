@@ -57,7 +57,7 @@ const StyledSelect = ({
         onClick={() => !disabled && setIsOpen((prev) => !prev)}
         className={`flex items-center gap-2 px-3 xl:px-4 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black shadow-sm transition-all ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer focus-within:border-primary-700'}`}
       >
-        {Icon && <Icon className="w-4 h-4 text-primary-600 shrink-0" />}
+        {Icon && <Icon className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />}
         <span className={`flex-1 truncate text-[10px] font-black uppercase tracking-widest ${selected ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
           {selected ? selected.label : placeholder}
         </span>

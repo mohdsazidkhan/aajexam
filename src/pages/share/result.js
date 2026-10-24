@@ -65,7 +65,7 @@ export default function SharedResult({ stats }) {
               </div>
 
               <div className="relative z-10 space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow text-xs font-black uppercase tracking-widest" style={{ borderRadius: 999 }}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow text-xs font-black uppercase tracking-widest" style={{ borderRadius: 999 }}>
                   <Crown className="w-4 h-4" />
                   {translate(band)}
                 </div>
@@ -107,7 +107,7 @@ export default function SharedResult({ stats }) {
               { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: '' },
             ].map((item, idx) => (
               <Card key={idx} className="flex flex-col items-center text-center gap-2">
-                <div className="w-12 h-12 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow" style={{ borderRadius: 14 }}>
+                <div className="w-12 h-12 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow" style={{ borderRadius: 14 }}>
                   <item.icon className="w-6 h-6" />
                 </div>
                 <span className="text-xl xl:text-2xl font-black font-outfit">{item.value}</span>

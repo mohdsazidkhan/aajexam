@@ -222,7 +222,7 @@ const AdminPYQ = () => {
                   return (
                     <Card key={t._id || i} className="flex flex-col gap-3">
                       <div className="flex items-start justify-between gap-2">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow flex items-center justify-center shrink-0"><FileText className="w-5 h-5" /></div>
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0"><FileText className="w-5 h-5" /></div>
                         <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>{isFree ? 'FREE' : 'PRO'}</span>
                       </div>
                       <div>
@@ -234,7 +234,7 @@ const AdminPYQ = () => {
                         <p className="text-[10px] text-slate-400 mt-1">{t.examPattern?.exam?.name ? `${t.examPattern.exam.name} · ` : ''}{t.questions?.length || 0} questions · {t.duration} min</p>
                       </div>
                       <div className="flex gap-2 mt-auto pt-2 border-t border-slate-100 dark:border-slate-700">
-                        <button onClick={() => router.push(`/admin/pyq/edit/${t._id}`)} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Pencil className="w-3.5 h-3.5" /> Edit</button>
+                        <button onClick={() => router.push(`/admin/pyq/edit/${t._id}`)} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-primary-600 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Pencil className="w-3.5 h-3.5" /> Edit</button>
                         <button onClick={() => handleDelete(t._id)} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-3.5 h-3.5" /> Delete</button>
                       </div>
                     </Card>

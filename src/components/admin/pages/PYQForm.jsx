@@ -315,7 +315,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
 
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" checked={form.isFree} onChange={e => setForm({ ...form, isFree: e.target.checked })}
-                                className="w-5 h-5 rounded text-primary-600 border-slate-300" />
+                                className="w-5 h-5 rounded text-primary-600 dark:text-primary-300 border-slate-300" />
                             <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Free for all students</span>
                             <span className="text-xs text-slate-400">({form.isFree ? 'anyone can attempt' : 'pro only'})</span>
                         </label>
@@ -334,7 +334,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                             {form.questions.map((q, qi) => (
                                 <div key={qi} className="p-4 border-2 border-slate-100 dark:border-slate-800 rounded-lg xl:rounded-xl space-y-3">
                                     <div className="flex items-center justify-between">
-                                        <span className="text-xs font-black text-primary-600">Q{qi + 1}</span>
+                                        <span className="text-xs font-black text-primary-600 dark:text-primary-300">Q{qi + 1}</span>
                                         {form.questions.length > 1 && (
                                             <button aria-label="Delete" type="button" onClick={() => removeQuestion(qi)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                                         )}
@@ -399,7 +399,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                             );
                                         })}
                                         {q.options.length < 6 && (
-                                            <button type="button" onClick={() => addOption(qi)} className="text-[10px] font-bold text-primary-600 hover:underline">+ Add option</button>
+                                            <button type="button" onClick={() => addOption(qi)} className="text-[10px] font-bold text-primary-600 dark:text-primary-300 hover:underline">+ Add option</button>
                                         )}
                                     </div>
 

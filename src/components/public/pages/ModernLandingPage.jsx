@@ -157,7 +157,7 @@ const ModernLandingPage = () => {
                <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_0.9fr] items-center gap-6 xl:gap-10 py-5 xl:py-10">
                   {/* Copy */}
                   <div className="space-y-5 xl:space-y-7 text-center xl:text-left">
-                     <div className="inline-flex uppercase items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-[10px] xl:text-xs font-black tracking-[0.15em] shadow-[0_4px_20px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
+                     <div className="inline-flex uppercase items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-[10px] xl:text-xs font-black tracking-[0.15em] shadow-[0_4px_20px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
                         <Sparkles className="w-4 h-4" />
                         {translate('Trusted by students across India')}
                      </div>
@@ -226,7 +226,7 @@ const ModernLandingPage = () => {
                         aria-hidden="true"
                         animate={{ y: [0, -8, 0] }}
                         transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut', delay: d }}
-                        className={`hidden sm:flex absolute z-20 w-11 h-11 items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-lg ring-2 ring-white dark:ring-slate-900 ${cls}`}
+                        className={`hidden sm:flex absolute z-20 w-11 h-11 items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-lg ring-2 ring-white dark:ring-slate-900 ${cls}`}
                         style={{ borderRadius: 14 }}
                      >
                         <Icon className="w-5 h-5" />
@@ -257,12 +257,12 @@ const ModernLandingPage = () => {
                         <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.25em]">
                            <Trophy className="w-4 h-4 text-primary-300" /> AajExam · {translate('Student profile')}
                         </span>
-                        <span className="px-2.5 py-0.5 text-[10px] font-black uppercase tracking-widest bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black">{translate('FREE')}</span>
+                        <span className="px-2.5 py-0.5 text-[10px] font-black uppercase tracking-widest bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000]">{translate('FREE')}</span>
                      </div>
 
                      <div className="relative p-4 xl:p-5 space-y-4">
                         <div className="flex items-center gap-3">
-                           <div className="w-14 h-16 bg-white/90 text-primary-700 flex items-center justify-center shadow-lg rotate-[-3deg]" style={{ borderRadius: 6 }}>
+                           <div className="w-14 h-16 bg-white/90 text-primary-700 dark:text-primary-300 flex items-center justify-center shadow-lg rotate-[-3deg]" style={{ borderRadius: 6 }}>
                               <Users className="w-7 h-7" />
                            </div>
                            <div className="min-w-0">
@@ -419,7 +419,7 @@ const ModernLandingPage = () => {
             </div>
             <div className="container mx-auto px-3 xl:px-0 relative z-10">
                <div className="text-center space-y-2 xl:space-y-3 mb-5 xl:mb-6">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-[0_4px_20px_rgba(251,191,36,0.35)] rounded-full text-xs font-black tracking-[0.1em] uppercase">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-[0_4px_20px_rgba(251,191,36,0.35)] rounded-full text-xs font-black tracking-[0.1em] uppercase">
                      <span className="w-2 h-2 rounded-full bg-amber-950 animate-pulse" />
                      {translate('Last Year PYQ — Always Free')}
                   </div>
@@ -446,7 +446,7 @@ const ModernLandingPage = () => {
                         <div className="h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
 
                         <div className="flex-1 p-3 xl:p-4 flex flex-col items-center text-center gap-2.5">
-                           <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
+                           <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
                               <BookOpen className="w-4 h-4" />
                            </span>
                            <span className="text-sm xl:text-base font-black text-slate-900 dark:text-white leading-tight">{exam.name}</span>
@@ -467,7 +467,7 @@ const ModernLandingPage = () => {
                         <div className="relative border-t-2 border-dashed border-primary-500/30 bg-primary-600/5 py-2 text-center">
                            <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
                            <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
-                           <span className="inline-block px-2.5 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black text-[10px] font-black uppercase tracking-wider shadow" style={{ borderRadius: 999 }}>{translate('Latest Free')}</span>
+                           <span className="inline-block px-2.5 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-[10px] font-black uppercase tracking-wider shadow" style={{ borderRadius: 999 }}>{translate('Latest Free')}</span>
                         </div>
                      </motion.div>
                   )) : null}
@@ -490,7 +490,7 @@ const ModernLandingPage = () => {
                      whileTap={{ scale: 0.97 }}
                      data-cta="landing_pyq_start"
                      onClick={() => router.push('/register')}
-                     className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black hover:brightness-105 font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-sm"
+                     className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] hover:brightness-105 font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-sm"
                   >
                      {translate('Start Free PYQ Practice →')}
                   </motion.button>
@@ -533,7 +533,7 @@ const ModernLandingPage = () => {
 
                   <Card className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] xl:rounded-[4rem] shadow-sm">
                      <div className="space-y-2 xl:space-y-4">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg] w-fit rounded-2xl">
+                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] w-fit rounded-2xl">
                            <Flame className="w-8 h-8 xl:w-10 xl:h-10" />
                         </div>
                         <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('Practice every day')}</h3>
@@ -554,7 +554,7 @@ const ModernLandingPage = () => {
 
                   <Card className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] xl:rounded-[4rem] shadow-sm">
                      <div className="space-y-2 xl:space-y-4">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg] w-fit rounded-2xl">
+                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] w-fit rounded-2xl">
                            <Zap className="w-8 h-8 xl:w-10 xl:h-10" />
                         </div>
                         <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('See your test results')}</h3>
@@ -575,7 +575,7 @@ const ModernLandingPage = () => {
 
                   <Card className="xl:col-span-8 p-4 xl:p-8 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-sm flex flex-col xl:flex-row items-center gap-6 xl:gap-10 overflow-hidden group rounded-[2rem] xl:rounded-[4rem]">
                      <div className="flex-1 space-y-2 xl:space-y-4 relative z-10 text-center xl:text-left">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg] w-fit rounded-2xl mx-auto xl:mx-0">
+                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] w-fit rounded-2xl mx-auto xl:mx-0">
                            <Medal className="w-10 h-10 xl:w-12 xl:h-12" />
                         </div>
                         <h3 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">{translate('Refer & Earn')}</h3>
@@ -600,7 +600,7 @@ const ModernLandingPage = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="text-3xl xl:text-6xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-[0.8] mb-8 xl:mb-12"
                      >
-                        {translate('Study with')} <br /><span className="text-primary-600">{translate('Confidence.')}</span>
+                        {translate('Study with')} <br /><span className="text-primary-600 dark:text-primary-300">{translate('Confidence.')}</span>
                      </motion.h2>
 
                      <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-5">
@@ -612,7 +612,7 @@ const ModernLandingPage = () => {
                            <div key={index} className="relative flex flex-col overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all group" style={{ borderRadius: 16 }}>
                               <div className="h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                               <div className="flex flex-col items-center p-4 xl:p-6">
-                                 <div className="w-14 h-14 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black flex items-center justify-center mb-3 shadow-lg rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 14 }}>
+                                 <div className="w-14 h-14 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] flex items-center justify-center mb-3 shadow-lg rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 14 }}>
                                     <item.icon className="w-8 h-8" />
                                  </div>
                                  <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-2">{translate(item.title)}</h3>
@@ -648,7 +648,7 @@ const ModernLandingPage = () => {
                      <button
                         data-cta="landing_final_cta"
                         onClick={() => router.push('/register')}
-                        className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black font-outfit font-black uppercase tracking-[0.1em] text-sm shadow-xl hover:brightness-105 active:scale-95 transition-all"
+                        className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] font-outfit font-black uppercase tracking-[0.1em] text-sm shadow-xl hover:brightness-105 active:scale-95 transition-all"
                      >
                         {translate('Join Now For Free')} <ArrowRight className="w-5 h-5" />
                      </button>

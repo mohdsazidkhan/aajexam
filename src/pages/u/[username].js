@@ -153,7 +153,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 <div className="flex-1 min-w-0 pt-1">
                   <h1 className="text-base sm:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-tight">{profile.name}</h1>
                   {profile.username && (
-                    <p className="text-xs sm:text-sm font-bold text-primary-600">
+                    <p className="text-xs sm:text-sm font-bold text-primary-600 dark:text-primary-300">
                       @{profile.username}
                     </p>
                   )}
@@ -282,13 +282,13 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               </h2>
               <div className="grid grid-cols-3 gap-3 sm:gap-4">
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-primary-600">
+                  <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-primary-600 dark:text-primary-300">
                     {profile.performanceMetrics?.examStats?.mockTestsAttempted || 0}
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">{translate('Tests')}</span>
                 </div>
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-primary-600">
+                  <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-primary-600 dark:text-primary-300">
                     {profile.performanceMetrics?.examStats?.overallReadiness || 0}%
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">{translate('Readiness')}</span>
@@ -361,7 +361,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 <button
                   onClick={() => fetchReels(reelsPage + 1)}
                   disabled={reelsLoading}
-                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-600 bg-slate-50 dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
+                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-600 dark:text-primary-300 bg-slate-50 dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
                 >
                   {reelsLoading ? translate('Loading...') : translate('Load More Reels')}
                 </button>

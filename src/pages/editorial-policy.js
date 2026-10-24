@@ -148,19 +148,19 @@ export default function EditorialPolicy() {
                             </p>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-600 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-600 dark:text-primary-300 mt-1 flex-shrink-0" />
                                     <span><strong>No Plagiarism:</strong> All content is original or properly attributed. We do not copy questions from other sources without proper licensing.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-600 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-600 dark:text-primary-300 mt-1 flex-shrink-0" />
                                     <span><strong>Transparency:</strong> We clearly disclose our content creation process, review mechanisms, and update schedules.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-600 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-600 dark:text-primary-300 mt-1 flex-shrink-0" />
                                     <span><strong>No Misleading Claims:</strong> We do not make false promises about exam success or guaranteed results. Our platform provides practice and preparation tools, but success depends on individual effort.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-600 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-600 dark:text-primary-300 mt-1 flex-shrink-0" />
                                     <span><strong>Respect for Intellectual Property:</strong> We respect copyright laws and obtain proper permissions for any third-party content used on our platform.</span>
                                 </li>
                             </ul>

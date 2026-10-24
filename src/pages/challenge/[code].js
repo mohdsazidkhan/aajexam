@@ -77,7 +77,7 @@ export default function ChallengePage() {
                     <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
                     
                     <div className="relative z-10 flex flex-col items-center">
-                        <div className="w-20 h-20 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow flex items-center justify-center mb-4 rotate-[-4deg]" style={{ borderRadius: 22 }}>
+                        <div className="w-20 h-20 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center mb-4 rotate-[-4deg]" style={{ borderRadius: 22 }}>
                             <Swords className="w-10 h-10" />
                         </div>
                         
@@ -96,7 +96,7 @@ export default function ChallengePage() {
                         {!challenge.hasPlayed ? (
                             <button 
                                 onClick={handleAcceptChallenge}
-                                style={{ borderRadius: 14 }} className="w-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black hover:brightness-105 font-black text-xl py-4 shadow-lg transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2"
+                                style={{ borderRadius: 14 }} className="w-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] hover:brightness-105 font-black text-xl py-4 shadow-lg transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2"
                             >
                                 <Play className="w-6 h-6 fill-current" /> ACCEPT CHALLENGE
                             </button>
@@ -113,7 +113,7 @@ export default function ChallengePage() {
                     <div className="relative overflow-hidden bg-background-surface p-6 shadow-md border border-slate-200 dark:border-slate-700" style={{ borderRadius: 16 }}>
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow p-2.5" style={{ borderRadius: 12 }}>
+                            <div className="bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow p-2.5" style={{ borderRadius: 12 }}>
                                 <Users className="w-5 h-5" />
                             </div>
                             <h2 className="text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">{translate('Challenge Leaderboard')}</h2>

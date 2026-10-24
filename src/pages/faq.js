@@ -222,11 +222,11 @@ const FAQ = () => {
                                             className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 xl:p-6 border border-white/20 hover:shadow-sm transition-all duration-300"
                                         >
                                             <h3 className="text-lg xl:text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-start gap-3">
-                                                <span className="text-primary-600 flex-shrink-0">{translate('Q:')}</span>
+                                                <span className="text-primary-600 dark:text-primary-300 flex-shrink-0">{translate('Q:')}</span>
                                                 <span>{translate(faq.q)}</span>
                                             </h3>
                                             <p className="text-md xl:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-8">
-                                                <span className="text-primary-600 font-semibold">{translate('A:')}</span> {translate(faq.a)}
+                                                <span className="text-primary-600 dark:text-primary-300 font-semibold">{translate('A:')}</span> {translate(faq.a)}
                                             </p>
                                         </div>
                                     ))}

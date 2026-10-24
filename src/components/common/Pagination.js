@@ -44,7 +44,7 @@ const Pagination = ({
       <span>{translate('Page {page} of {total}', { page: currentPage, total: Math.max(1, totalPages) })}</span>
       {hasTotals && (
         <span>
-          {rich('Result: <0></0> of <1></1>', [() => <span className="text-slate-900 dark:text-white px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md mx-1 font-bold">{startItem} — {endItem}</span>, () => <span className="text-primary-600 font-black">{totalItems}</span>])}
+          {rich('Result: <0></0> of <1></1>', [() => <span className="text-slate-900 dark:text-white px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md mx-1 font-bold">{startItem} — {endItem}</span>, () => <span className="text-primary-600 dark:text-primary-300 font-black">{totalItems}</span>])}
         </span>
       )}
     </div>

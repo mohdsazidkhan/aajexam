@@ -88,12 +88,12 @@ const NotificationsPage = () => {
       case 'quiz_attempt':
       case 'exam_attempt':
       case 'daily_challenge':
-        return <Target className="w-5 h-5 text-primary-600" />;
+        return <Target className="w-5 h-5 text-primary-600 dark:text-primary-300" />;
       case 'referral_registration':
       case 'mentor':
-        return <Trophy className="w-5 h-5 text-primary-600" />;
+        return <Trophy className="w-5 h-5 text-primary-600 dark:text-primary-300" />;
       case 'streak':
-        return <Zap className="w-5 h-5 text-primary-600" />;
+        return <Zap className="w-5 h-5 text-primary-600 dark:text-primary-300" />;
       case 'subscription':
         return <CircleAlert className="w-5 h-5 text-black dark:text-white" />;
       default: return <Info className="w-5 h-5 text-black dark:text-white" />;
@@ -167,7 +167,7 @@ const NotificationsPage = () => {
                     </div>
 
                     <div className="flex items-center gap-1 shrink-0">
-                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Mark as read')}><Eye className="w-4 h-4" /></button>}
+                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 dark:text-primary-300 hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Mark as read')}><Eye className="w-4 h-4" /></button>}
                       <button onClick={() => deleteOne(n.id)} className="p-2 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Delete notification')}><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </motion.div>

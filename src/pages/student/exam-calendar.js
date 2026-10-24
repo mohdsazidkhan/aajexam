@@ -18,7 +18,7 @@ import useRequireLogin from '../../hooks/useRequireLogin';
 // ─── Type Config (matches exam-news.js style) ──────────────────────────────────
 const typeConfig = {
   notification: { icon: Bell, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Notification', border:'border-slate-200 dark:border-slate-800'},
-  admit_card:   { icon: CreditCard, color: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600', dot: 'bg-primary-600', label: 'Admit Card', border: 'border-primary-200 dark:border-primary-800/50' },
+  admit_card:   { icon: CreditCard, color: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300', dot: 'bg-primary-600', label: 'Admit Card', border: 'border-primary-200 dark:border-primary-800/50' },
   result: { icon: BarChart2, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Result', border:'border-slate-200 dark:border-slate-800'},
   answer_key: { icon: Key, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Answer Key', border:'border-slate-200 dark:border-slate-800'},
   vacancy: { icon: Users, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Vacancy', border:'border-slate-200 dark:border-slate-800'},
@@ -81,7 +81,7 @@ const EventCard = ({ event, compact = false }) => {
         style={{ borderRadius: 14 }} className="relative overflow-hidden flex items-start gap-3 p-3.5 pl-4 border border-slate-200 dark:border-slate-800 bg-background-surface shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all group cursor-pointer"
       >
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
-        <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+        <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
           <Icon className="w-4 h-4" />
         </div>
         <div className="flex-1 min-w-0">
@@ -94,7 +94,7 @@ const EventCard = ({ event, compact = false }) => {
           <div className="flex items-center gap-1 mt-1.5">
             <Clock className="w-3 h-3 text-content-muted" />
             <span className="text-[10px] font-bold text-content-muted">{dateStr}</span>
-            <span className="ml-1 text-[9px] font-black uppercase px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black" style={{ borderRadius: 999 }}>
+            <span className="ml-1 text-[9px] font-black uppercase px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000]" style={{ borderRadius: 999 }}>
               {translate(cfg.label)}
             </span>
           </div>
@@ -122,9 +122,9 @@ const DayPanel = ({ date, events, onClose }) => {
         <Card padded={false} className="overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
             <div className="flex items-center gap-2">
-              <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><CalendarDays className="w-4 h-4" /></span>
+              <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><CalendarDays className="w-4 h-4" /></span>
               <span className="text-sm font-black">{dateLabel}</span>
-              <span className="text-[10px] font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] px-2 py-0.5 rounded-full">
                 {events.length} event{events.length > 1 ? 's' : ''}
               </span>
             </div>
@@ -266,7 +266,7 @@ const ExamCalendarPage = () => {
             {(month !== now.getMonth() + 1 || year !== now.getFullYear()) && (
               <button
                 onClick={goToday}
-                className="text-[10px] font-black text-primary-600 hover:text-primary-600 uppercase tracking-wide mt-0.5"
+                className="text-[10px] font-black text-primary-600 dark:text-primary-300 hover:text-primary-600 uppercase tracking-wide mt-0.5"
               >
                 {translate('Back to Today')}
               </button>
@@ -348,11 +348,11 @@ const ExamCalendarPage = () => {
               onClick={() => setShowUpcoming(v => !v)}
             >
               <div className="flex items-center gap-2">
-                <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span>
+                <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span>
                 <h2 className="text-base sm:text-lg font-black text-content-primary uppercase tracking-tight">
                   {translate('Upcoming (Next 30 Days)')}
                 </h2>
-                <span className="text-[10px] font-black bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-black bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] px-2 py-0.5 rounded-full">
                   {upcoming.length}
                 </span>
               </div>
@@ -393,7 +393,7 @@ const ExamCalendarPage = () => {
             <h3 className="text-lg font-black text-content-muted uppercase">{translate('No events this month')}</h3>
             <p className="text-sm text-content-muted font-bold">{translate('Check back later or navigate to another month.')}</p>
             <Link href="/exam-news">
-              <button className="px-6 py-2.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-lg hover:brightness-105 rounded-full font-black text-xs uppercase mt-2 transition-all">
+              <button className="px-6 py-2.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-lg hover:brightness-105 rounded-full font-black text-xs uppercase mt-2 transition-all">
                 {translate('View Exam News')}
               </button>
             </Link>

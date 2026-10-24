@@ -84,7 +84,7 @@ export default function Disclaimer() {
                                 <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">Contact Us</h2>
                                 <p className="text-slate-500 dark:text-slate-400 font-bold mb-8">
                                     If you have any questions regarding this disclaimer, please contact us at:<br />
-                                    <strong className="text-primary-600 block mt-2 text-xl">{config.CONTACT.EMAIL}</strong>
+                                    <strong className="text-primary-600 dark:text-primary-300 block mt-2 text-xl">{config.CONTACT.EMAIL}</strong>
                                 </p>
                                 <button
                                     onClick={() => (window.location.href = '/')}

@@ -365,7 +365,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
           <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
             <div>
               <h2 className="text-xl font-black font-outfit uppercase tracking-tight flex items-center gap-2.5">
-                <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
+                <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
               </h2>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                 The platform logo &amp; footer are added automatically.
@@ -451,7 +451,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                 <div className="border-t border-slate-100 dark:border-white/10 pt-4">
                   <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200 mb-1">
                     Send Test Email
-                    {campaign.testSentAt && <span className="ml-2 text-[10px] text-primary-600">✓ sent to {campaign.testSentTo}</span>}
+                    {campaign.testSentAt && <span className="ml-2 text-[10px] text-primary-600 dark:text-primary-300">✓ sent to {campaign.testSentTo}</span>}
                   </label>
                   <div className="flex gap-2">
                     <input type="email" placeholder="admin@example.com" value={testEmail} onChange={(e) => setTestEmail(e.target.value)} className={inputClass} />
@@ -522,7 +522,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
                       <div className="grid grid-cols-3 gap-2 mt-3 text-center text-sm">
                         <div className="p-2 rounded-lg bg-white dark:bg-white/5">
-                          <div className="text-primary-600 font-bold">{campaign.sentCount}</div>
+                          <div className="text-primary-600 dark:text-primary-300 font-bold">{campaign.sentCount}</div>
                           <div className="text-[10px] text-slate-500 uppercase">Sent</div>
                         </div>
                         <div className="p-2 rounded-lg bg-white dark:bg-white/5">
@@ -577,7 +577,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                         <>
                           <div className="flex items-center justify-between mb-2">
                             <p className="text-xs text-slate-600 dark:text-slate-300">
-                              Sent to <strong className="text-primary-600">{recipients.counts.sent}</strong>
+                              Sent to <strong className="text-primary-600 dark:text-primary-300">{recipients.counts.sent}</strong>
                               {recipients.counts.failed > 0 && (<> · failed <strong className="text-black dark:text-white">{recipients.counts.failed}</strong></>)}
                             </p>
                             <button onClick={() => loadRecipients(recipPage)} disabled={loadingRecipients} className="text-[10px] text-black dark:text-white hover:underline disabled:opacity-50">Refresh</button>

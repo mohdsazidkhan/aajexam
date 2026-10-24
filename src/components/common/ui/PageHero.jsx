@@ -36,7 +36,7 @@ const PageHero = ({ icon: Icon, eyebrow, title, subtitle, badge, actions, center
       <div className={`flex flex-col gap-4 xl:items-center ${center ? 'xl:grid xl:grid-cols-[1fr_minmax(0,22rem)_1fr]' : 'xl:flex-row xl:justify-between'}`}>
         <div className="flex items-center gap-3 xl:gap-4 min-w-0">
           {Icon && (
-            <div className="shrink-0 w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
+            <div className="shrink-0 w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
               <Icon className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
           )}
@@ -45,7 +45,7 @@ const PageHero = ({ icon: Icon, eyebrow, title, subtitle, badge, actions, center
             <div className="flex flex-wrap items-center gap-2">
               <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight leading-tight">{title}</h1>
               {badge && (
-                <span className="px-2 py-0.5 text-[9px] xl:text-[10px] font-black uppercase tracking-widest bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-[0_2px_12px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
+                <span className="px-2 py-0.5 text-[9px] xl:text-[10px] font-black uppercase tracking-widest bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-[0_2px_12px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
                   {badge}
                 </span>
               )}

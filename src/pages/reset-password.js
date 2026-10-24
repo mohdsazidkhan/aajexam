@@ -62,11 +62,11 @@ const ResetPasswordPage = () => {
         <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden py-4 xl:py-8">
           {/* --- Background Decorative Icons --- */}
           <div className="absolute top-20 right-20 opacity-5 rotate-12 hidden xl:block"><ShieldCheck className="w-64 h-64" /></div>
-          <div className="absolute bottom-20 left-20 opacity-5 -rotate-12 hidden xl:block"><Rocket className="w-64 h-64 text-primary-600" /></div>
+          <div className="absolute bottom-20 left-20 opacity-5 -rotate-12 hidden xl:block"><Rocket className="w-64 h-64 text-primary-600 dark:text-primary-300" /></div>
 
           <Card className="w-full max-w-md p-5 xl:p-10 border-2 shadow-sm relative z-10 space-y-8">
             <div className="text-center space-y-2">
-              <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
                 <Lock className="w-8 h-8" />
               </div>
               <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight">Reset Password</h1>
@@ -75,7 +75,7 @@ const ResetPasswordPage = () => {
             <AnimatePresence mode="wait">
               {success ? (
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="py-10 text-center space-y-6">
-                  <div className="w-20 h-20 bg-primary-500/10 text-primary-600 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-20 h-20 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-full flex items-center justify-center mx-auto">
                     <ShieldCheck className="w-10 h-10" />
                   </div>
                   <div className="space-y-2">
@@ -111,7 +111,7 @@ const ResetPasswordPage = () => {
                   </Button>
 
                   <div className="text-center pt-2">
-                    <Link href="/login" className="text-xs font-black text-primary-600 flex items-center justify-center gap-2 hover:translate-x-[-4px] transition-transform">
+                    <Link href="/login" className="text-xs font-black text-primary-600 dark:text-primary-300 flex items-center justify-center gap-2 hover:translate-x-[-4px] transition-transform">
                       <ArrowLeft className="w-4 h-4" /> BACK TO LOGIN
                     </Link>
                   </div>

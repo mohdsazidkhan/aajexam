@@ -82,12 +82,12 @@ export default function CommunityQuestionDetailPage() {
         <Card className="space-y-2 xl:space-y-4">
           {/* Author + exam */}
           <div className="flex items-center gap-2 text-xs">
-            <div className="w-7 h-7 rounded-full bg-primary-400 text-white text-xs font-bold flex items-center justify-center">
+            <div className="w-7 h-7 rounded-full bg-primary-600 dark:bg-primary-800 text-white text-xs font-bold flex items-center justify-center">
               {(question.author?.name || '?').charAt(0).toUpperCase()}
             </div>
             <span className="font-bold text-slate-800 dark:text-slate-200">{question.author?.name || translate('User')}</span>
             {question.author?.username && (
-              <Link href={`/u/${question.author.username}`} className="text-primary-600 font-semibold hover:underline">
+              <Link href={`/u/${question.author.username}`} className="text-primary-600 dark:text-primary-300 font-semibold hover:underline">
                 @{question.author.username}
               </Link>
             )}
@@ -136,7 +136,7 @@ export default function CommunityQuestionDetailPage() {
                       {String.fromCharCode(65 + i)}
                     </div>
                     <span className="flex-1 text-slate-800 dark:text-slate-200">{opt.text}</span>
-                    {attempted && isRight && <CheckCircle2 className="w-4 h-4 text-primary-600 shrink-0" />}
+                    {attempted && isRight && <CheckCircle2 className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />}
                     {attempted && isSel && !isRight && <XCircle className="w-4 h-4 text-black dark:text-white shrink-0" />}
                   </button>
                 );

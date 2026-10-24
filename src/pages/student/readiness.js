@@ -116,7 +116,7 @@ const ReadinessPage = () => {
                 <p className={`text-6xl font-black text-${readinessColor(readiness.readiness)}-500`}>{readiness.readiness}%</p>
                 <p className="text-sm font-bold text-slate-500">{translate('Exam Readiness Score')}</p>
                 <div className="flex items-center justify-center gap-1 mt-2">
-                  {readiness.trend > 0 ? <TrendingUp className="w-4 h-4 text-primary-600" /> : <TrendingDown className="w-4 h-4 text-black dark:text-white" />}
+                  {readiness.trend > 0 ? <TrendingUp className="w-4 h-4 text-primary-600 dark:text-primary-300" /> : <TrendingDown className="w-4 h-4 text-black dark:text-white" />}
                   <span className={`text-xs font-bold ${readiness.trend > 0 ? 'text-primary-600' : 'text-black dark:text-white'}`}>{translate('{value}% trend', { value: `${readiness.trend > 0 ? '+' : ''}${readiness.trend}` })}</span>
                 </div>
                 <p className="text-xs text-slate-500 mt-3">{readiness.recommendation}</p>
@@ -146,11 +146,11 @@ const ReadinessPage = () => {
               {/* Strong Subjects */}
               {readiness.strongSubjects?.length > 0 && (
                 <Card className="space-y-3">
-                  <h3 className="text-sm font-black text-primary-600 flex items-center gap-1"><CheckCircle className="w-4 h-4" /> {translate('Strong Subjects (Above 70%)')}</h3>
+                  <h3 className="text-sm font-black text-primary-600 dark:text-primary-300 flex items-center gap-1"><CheckCircle className="w-4 h-4" /> {translate('Strong Subjects (Above 70%)')}</h3>
                   {readiness.strongSubjects.map((s, i) => (
                     <div key={i} className="flex items-center justify-between px-3 py-3 bg-primary-50 dark:bg-primary-900/10 rounded-lg">
                       <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{s.subject}</span>
-                      <span className="text-xs font-black text-primary-600">{s.accuracy}%</span>
+                      <span className="text-xs font-black text-primary-600 dark:text-primary-300">{s.accuracy}%</span>
                     </div>
                   ))}
                 </Card>

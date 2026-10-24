@@ -226,7 +226,7 @@ const AdminGovtExamPatterns = () => {
     {
       key: 'duration', header: 'Duration', render: (_, p) => (
         <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
-          <Clock className="w-4 h-4 text-primary-600" /> {p.duration} Min
+          <Clock className="w-4 h-4 text-primary-600 dark:text-primary-300" /> {p.duration} Min
         </div>
       )
     },
@@ -238,7 +238,7 @@ const AdminGovtExamPatterns = () => {
     {
       key: 'sections', header: 'Sections', render: (_, p) => (
         <div className="text-center">
-          <span className="px-3 py-1 bg-primary-500/10 text-primary-600 rounded-lg text-[10px] font-black border border-primary-500/20">{p.sections?.length || 0} Sections</span>
+          <span className="px-3 py-1 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-lg text-[10px] font-black border border-primary-500/20">{p.sections?.length || 0} Sections</span>
         </div>
       )
     },
@@ -246,7 +246,7 @@ const AdminGovtExamPatterns = () => {
       key: 'actions', header: 'Actions', align: 'right', render: (_, p) => (
         <div className="flex justify-end gap-3">
           <Link href={`/admin/govt-exams/tests?patternId=${p._id}`}>
-            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl border border-primary-500/20"><Settings className="w-4 h-4" /></motion.button>
+            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl border border-primary-500/20"><Settings className="w-4 h-4" /></motion.button>
           </Link>
           <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(p)} className="p-3 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-xl"><Edit3 className="w-4 h-4" /></motion.button>
           <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(p._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg xl:rounded-xl border border-black/20 dark:border-white/20"><Trash2 className="w-4 h-4" /></motion.button>
@@ -359,9 +359,9 @@ const AdminGovtExamPatterns = () => {
               {patterns.map((p, idx) => (
                 <motion.div key={p._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm relative font-outfit">
                   <span className="absolute top-3 left-3 xl:top-6 xl:left-6 w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] xl:text-[10px] font-black flex items-center justify-center shadow-sm z-10">{idx + 1}</span>
-                  <div className="absolute top-3 right-3 xl:top-6 xl:right-6 p-2 xl:p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-xl xl:rounded-2xl border border-primary-500/20"><Boxes className="w-4 h-4 xl:w-5 xl:h-5" /></div>
+                  <div className="absolute top-3 right-3 xl:top-6 xl:right-6 p-2 xl:p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl xl:rounded-2xl border border-primary-500/20"><Boxes className="w-4 h-4 xl:w-5 xl:h-5" /></div>
                   <div className="mb-2 xl:mb-4">
-                    <div className="text-[9px] xl:text-[10px] font-black text-primary-600 uppercase tracking-widest mb-0.5 xl:mb-1">Exam Pattern</div>
+                    <div className="text-[9px] xl:text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest mb-0.5 xl:mb-1">Exam Pattern</div>
                     <h3 className="text-base xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter max-w-[220px]">{p.title}</h3>
                   </div>
                   <div className="grid grid-cols-2 gap-2 xl:gap-3 mb-2 xl:mb-4">
@@ -428,7 +428,7 @@ const AdminGovtExamPatterns = () => {
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl shadow-sm"><Binary className="w-5 h-5" /></div>
                 <div>
-                  <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingPattern ? 'Edit' : 'Add'} <span className="text-primary-600">Pattern</span></h2>
+                  <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingPattern ? 'Edit' : 'Add'} <span className="text-primary-600 dark:text-primary-300">Pattern</span></h2>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingPattern ? `Editing: ${editingPattern.title}` : 'Create a new exam pattern'}</p>
                 </div>
               </div>
@@ -453,8 +453,8 @@ const AdminGovtExamPatterns = () => {
                   </div>
                   <div className="pt-8 border-t-2 border-slate-100 dark:border-white/5 space-y-2 xl:space-y-3">
                     <div className="p-4 bg-primary-500/5 rounded-3xl border-2 border-primary-500/10 flex justify-between items-center font-outfit">
-                      <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest">Total Marks</span>
-                      <span className="text-2xl font-black text-primary-600 italic tracking-tighter">{calculateTotalMarks()} PTS</span>
+                      <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">Total Marks</span>
+                      <span className="text-2xl font-black text-primary-600 dark:text-primary-300 italic tracking-tighter">{calculateTotalMarks()} PTS</span>
                     </div>
                     <button type="submit" className="w-full py-3 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-[2rem] font-black text-[10px] uppercase tracking-widest shadow-sm flex items-center justify-center gap-3">
                       <CheckCircle2 className="w-5 h-5" /> {editingPattern ? 'Update Pattern' : 'Create Pattern'}
@@ -465,7 +465,7 @@ const AdminGovtExamPatterns = () => {
               <div className="w-full shrink-0 p-3 xl:p-5 bg-slate-50/30 dark:bg-black/20">
                 <div className="max-w-2xl mx-auto space-y-10">
                   <div className="space-y-2 xl:space-y-3">
-                    <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-600" /> Sections ({formData.sections.length})</h3>
+                    <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-600 dark:text-primary-300" /> Sections ({formData.sections.length})</h3>
                     {formData.sections.map((sec, i) => (
                       <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="p-4 bg-white dark:bg-white/5 rounded-lg xl:rounded-[2rem] border-2 border-slate-100 flex items-center justify-between group">
                         <div className="flex items-center gap-3 xl:gap-3">

@@ -87,7 +87,7 @@ export default function ReferralDashboard() {
       header: 'USER',
       render: (_, u) => (
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm transition-all uppercase">
+          <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm transition-all uppercase">
             {u.name?.[0]?.toUpperCase() || 'U'}
           </div>
           <div>
@@ -101,7 +101,7 @@ export default function ReferralDashboard() {
       key: 'referralCode',
       header: 'REFERRAL CODE',
       render: (_, u) => (
-        <div className="px-4 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[9px] font-black text-primary-600 italic inline-flex items-center gap-2 tabular-nums">
+        <div className="px-4 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[9px] font-black text-primary-600 dark:text-primary-300 italic inline-flex items-center gap-2 tabular-nums">
           <Zap className="w-3 h-3" /> {u.referralCode || 'N/A'}
         </div>
       )
@@ -118,7 +118,7 @@ export default function ReferralDashboard() {
       header: 'WALLET BALANCE',
       render: (_, u) => (
         <div>
-          <div className="text-xl font-black italic tracking-tighter text-primary-600 tabular-nums">₹{u.walletBalance || 0}</div>
+          <div className="text-xl font-black italic tracking-tighter text-primary-600 dark:text-primary-300 tabular-nums">₹{u.walletBalance || 0}</div>
           <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Wallet Balance</div>
         </div>
       )
@@ -133,7 +133,7 @@ export default function ReferralDashboard() {
               {u.referralRewards.slice(0, 2).map((reward, idx) => (
                 <div key={idx} className="flex items-center gap-3 px-3 py-1 bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-lg shadow-sm">
                   <div className="w-2 h-2 rounded-full bg-primary-600 animate-pulse" />
-                  <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{getRewardTypeLabel(reward.type)}: <span className="text-primary-600">₹{reward.amount}</span></span>
+                  <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{getRewardTypeLabel(reward.type)}: <span className="text-primary-600 dark:text-primary-300">₹{reward.amount}</span></span>
                 </div>
               ))}
               {u.referralRewards.length > 2 && (

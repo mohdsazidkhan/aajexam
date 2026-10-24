@@ -126,7 +126,7 @@ const PaymentTransactions = () => {
     switch (status) {
       case 'paid':
       case 'success':
-        return <FaCheckCircle className="text-primary-600" />;
+        return <FaCheckCircle className="text-primary-600 dark:text-primary-300" />;
       case 'failed':
       case 'failure':
         return <FaTimesCircle className="text-black dark:text-white" />;
@@ -135,7 +135,7 @@ const PaymentTransactions = () => {
       case 'pending':
         return <FaClock className="text-amber-600 dark:text-amber-400" />;
       case 'refunded':
-        return <FaExclamationTriangle className="text-primary-600" />;
+        return <FaExclamationTriangle className="text-primary-600 dark:text-primary-300" />;
       default:
         return <FaExclamationTriangle className="text-slate-700 dark:text-gray-400" />;
     }
@@ -163,9 +163,9 @@ const PaymentTransactions = () => {
   const getSourceIcon = (source) => {
     switch (source) {
       case 'payment_order':
-        return <FaCreditCard className="text-primary-600" />;
+        return <FaCreditCard className="text-primary-600 dark:text-primary-300" />;
       default:
-        return <FaCreditCard className="text-primary-600" />;
+        return <FaCreditCard className="text-primary-600 dark:text-primary-300" />;
     }
   };
 
@@ -179,7 +179,7 @@ const PaymentTransactions = () => {
   };
 
   const getTypeColor = (type, source) => {
-    if (type === 'credit') return 'text-primary-600';
+    if (type === 'credit') return 'text-primary-600 dark:text-primary-300';
     if (type === 'debit') return 'text-primary-600 dark:text-white';
     if (source === 'payment_order') return 'text-primary-600 dark:text-primary-400';
     return 'text-gray-600 dark:text-gray-400';
@@ -221,7 +221,7 @@ const PaymentTransactions = () => {
           <div className="flex items-center w-full sm:w-auto">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="w-full sm:w-auto bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black hover:brightness-105 px-3 py-2 xl:px-4 xl:py-2 rounded-lg xl:rounded-xl transition-all active:translate-y-0.5 flex items-center justify-center space-x-2 xl:space-x-3 shadow-md"
+              className="w-full sm:w-auto bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] hover:brightness-105 px-3 py-2 xl:px-4 xl:py-2 rounded-lg xl:rounded-xl transition-all active:translate-y-0.5 flex items-center justify-center space-x-2 xl:space-x-3 shadow-md"
             >
               <FaFilter className="text-xs xl:text-sm" />
               <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest">{translate('Filters')}</span>
@@ -242,7 +242,7 @@ const PaymentTransactions = () => {
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
                   <FaRupeeSign className="text-xs xl:text-lg" />
                 </div>
               </div>
@@ -255,7 +255,7 @@ const PaymentTransactions = () => {
                     {summary.totalTransactions || 0}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
                   <FaReceipt className="text-xs xl:text-lg" />
                 </div>
               </div>
@@ -268,7 +268,7 @@ const PaymentTransactions = () => {
                     {summary.paymentOrders?.completed || 0}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
                   <FaCheckCircle className="text-xs xl:text-lg" />
                 </div>
               </div>
@@ -426,7 +426,7 @@ const PaymentTransactions = () => {
                       {/* Payment Details */}
                       <div className="bg-white dark:bg-slate-800 p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
                         <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-2 xl:mb-3 flex items-center gap-2 xl:gap-3">
-                          <FaCreditCard className="text-primary-600" />
+                          <FaCreditCard className="text-primary-600 dark:text-primary-300" />
                           {translate('Payment Details')}
                         </h3>
                         <div className="space-y-2 xl:space-y-4">
@@ -448,7 +448,7 @@ const PaymentTransactions = () => {
                       {/* Info Details */}
                       <div className="bg-white dark:bg-slate-800 p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
                         <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-2 xl:mb-3 flex items-center gap-2 xl:gap-3">
-                          <FaReceipt className="text-primary-600" />
+                          <FaReceipt className="text-primary-600 dark:text-primary-300" />
                           {translate('Transaction Details')}
                         </h3>
                         <div className="space-y-2 xl:space-y-4">
