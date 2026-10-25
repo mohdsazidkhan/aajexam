@@ -2070,6 +2070,10 @@ const ML = {
   'Login to bookmark': 'ബുക്ക്‌മാർക്ക് ചെയ്യാൻ ലോഗിൻ ചെയ്യുക',
   'Saved to bookmarks': 'ബുക്ക്‌മാർക്കുകളിൽ സേവ് ചെയ്തു',
   'Tap the bookmark icon on any item to save it here.': 'ഏതെങ്കിലും ഇനത്തിലെ ബുക്ക്‌മാർക്ക് ഐക്കൺ ടാപ്പ് ചെയ്ത് ഇവിടെ സേവ് ചെയ്യുക.',
+  'My Bookmarks': 'എന്റെ ബുക്ക്‌മാർക്കുകൾ',
+  'My Followers': 'എന്റെ ഫോളോവേഴ്സ്',
+  'My Followings': 'എന്റെ ഫോളോയിംഗ്',
+  'My Referrals': 'എന്റെ റഫറലുകൾ',
 };
 
 export default ML;

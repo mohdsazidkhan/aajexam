@@ -2070,6 +2070,10 @@ const KS = {
   'Login to bookmark': 'بُک مارک کرنہ خاطرٕ لاگ اِن کرو',
   'Saved to bookmarks': 'بُک مارکس منز محفوظ گیوو',
   'Tap the bookmark icon on any item to save it here.': 'کانہہ آئٹم پیٹھ بُک مارک آئیکن دبٲوتھ یتھ محفوظ کرو۔',
+  'My Bookmarks': 'میون بُک مارک',
+  'My Followers': 'میون فالوورز',
+  'My Followings': 'میون فالوئنگ',
+  'My Referrals': 'میون ریفرل',
 };
 
 export default KS;

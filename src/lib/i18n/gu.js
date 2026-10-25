@@ -2070,6 +2070,10 @@ const GU = {
   'Login to bookmark': 'બુકમાર્ક કરવા લૉગિન કરો',
   'Saved to bookmarks': 'બુકમાર્કમાં સાચવ્યું',
   'Tap the bookmark icon on any item to save it here.': 'કોઈપણ આઇટમ પર બુકમાર્ક આઇકન દબાવી તેને અહીં સાચવો.',
+  'My Bookmarks': 'મારા બુકમાર્ક',
+  'My Followers': 'મારા ફોલોઅર્સ',
+  'My Followings': 'મારા ફોલોઇંગ',
+  'My Referrals': 'મારા રેફરલ',
 };
 
 export default GU;

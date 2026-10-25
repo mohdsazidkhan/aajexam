@@ -2044,6 +2044,10 @@ const MANIPURI = {
   'Login to bookmark': 'ꯕꯨꯛꯃꯥꯔꯛ ꯇꯧꯅꯕꯥ ꯂꯣꯒꯤꯟ ꯇꯧꯕꯤꯌꯨ',
   'Saved to bookmarks': 'ꯕꯨꯛꯃꯥꯔꯛꯇꯥ ꯁꯦꯚ ꯇꯧꯈ꯭ꯔꯦ',
   'Tap the bookmark icon on any item to save it here.': 'ꯑꯃꯨꯛꯇꯥ ꯕꯨꯛꯃꯥꯔꯛ ꯑꯥꯏꯀꯣꯟ ꯇꯥꯞ ꯇꯧꯗꯨꯅꯥ ꯃꯐꯝ ꯑꯁꯤꯗꯥ ꯁꯦꯚ ꯇꯧꯕꯤꯌꯨ꯫',
+  'My Bookmarks': 'ꯑꯩꯒꯤ ꯕꯨꯛꯃꯥꯔꯛ',
+  'My Followers': 'ꯑꯩꯒꯤ ꯐꯣꯂꯣꯋꯥꯔ',
+  'My Followings': 'ꯑꯩꯒꯤ ꯐꯣꯂꯣꯏꯡ',
+  'My Referrals': 'ꯑꯩꯒꯤ ꯔꯦꯐꯔꯦꯜ',
 };
 
 export default MANIPURI;

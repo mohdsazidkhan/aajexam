@@ -2070,6 +2070,10 @@ const AS = {
   'Login to bookmark': 'বুকমাৰ্ক কৰিবলৈ লগইন কৰক',
   'Saved to bookmarks': 'বুকমাৰ্কত সংৰক্ষণ কৰা হ’ল',
   'Tap the bookmark icon on any item to save it here.': 'যিকোনো বস্তুত বুকমাৰ্ক আইকন টিপি ইয়াত সংৰক্ষণ কৰক।',
+  'My Bookmarks': 'মোৰ বুকমাৰ্ক',
+  'My Followers': 'মোৰ ফলোৱাৰ',
+  'My Followings': 'মোৰ ফলোইং',
+  'My Referrals': 'মোৰ ৰেফাৰেল',
 };
 
 export default AS;

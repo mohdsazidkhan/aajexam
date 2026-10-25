@@ -2070,6 +2070,10 @@ const OR_ = {
   'Login to bookmark': 'ବୁକ୍‌ମାର୍କ କରିବାକୁ ଲଗଇନ୍ କରନ୍ତୁ',
   'Saved to bookmarks': 'ବୁକ୍‌ମାର୍କରେ ସେଭ୍ ହୋଇଛି',
   'Tap the bookmark icon on any item to save it here.': 'ଯେକୌଣସି ଆଇଟମ୍‌ରେ ବୁକ୍‌ମାର୍କ ଆଇକନ୍ ଟାପ୍ କରି ଏଠାରେ ସେଭ୍ କରନ୍ତୁ।',
+  'My Bookmarks': 'ମୋ ବୁକ୍‌ମାର୍କ',
+  'My Followers': 'ମୋ ଫଲୋଅର୍',
+  'My Followings': 'ମୋ ଫଲୋଇଂ',
+  'My Referrals': 'ମୋ ରେଫରାଲ୍',
 };
 
 export default OR_;

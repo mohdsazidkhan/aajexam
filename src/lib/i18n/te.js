@@ -2070,6 +2070,10 @@ const TE = {
   'Login to bookmark': 'బుక్‌మార్క్ చేయడానికి లాగిన్ చేయండి',
   'Saved to bookmarks': 'బుక్‌మార్క్‌లలో సేవ్ చేయబడింది',
   'Tap the bookmark icon on any item to save it here.': 'ఏదైనా అంశంపై బుక్‌మార్క్ ఐకాన్‌ను నొక్కి ఇక్కడ సేవ్ చేయండి.',
+  'My Bookmarks': 'నా బుక్‌మార్క్‌లు',
+  'My Followers': 'నా ఫాలోవర్లు',
+  'My Followings': 'నా ఫాలోయింగ్',
+  'My Referrals': 'నా రెఫరల్స్',
 };
 
 export default TE;

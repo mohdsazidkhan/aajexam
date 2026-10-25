@@ -2070,6 +2070,10 @@ const MAI = {
   'Login to bookmark': 'बुकमार्क करबाक लेल लॉगिन करू',
   'Saved to bookmarks': 'बुकमार्क मे सेव भ गेल',
   'Tap the bookmark icon on any item to save it here.': 'कोनो आइटम पर बुकमार्क आइकन दबा कए एतए सेव करू।',
+  'My Bookmarks': 'हमर बुकमार्क',
+  'My Followers': 'हमर फॉलोअर',
+  'My Followings': 'हमर फॉलोइंग',
+  'My Referrals': 'हमर रेफरल',
 };
 
 export default MAI;

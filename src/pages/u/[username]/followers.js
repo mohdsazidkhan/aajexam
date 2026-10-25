@@ -69,7 +69,7 @@ export default function FollowersListPage() {
 
   return (
     <MobileAppWrapper title={`Followers - @${username}`}>
-      <div className="container mx-auto min-h-screen font-outfit">
+      <div className="container mx-auto min-h-screen font-outfit pt-3 xl:pt-5">
         <Head>
           <title>Followers - @{username} - AajExam Platform</title>
           <meta name="description" content={`View @${username}'s followers on AajExam. See who follows this user and explore their profiles.`} />
@@ -92,12 +92,12 @@ export default function FollowersListPage() {
               <p className="text-sm xl:text-lg font-black text-slate-400 uppercase tracking-tight">{translate('No followers yet')}</p>
             </div>
           ) : (
-            <div className="space-y-2 xl:space-y-4">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-4">
               {followers.map((user) => (
                 <div
                   key={user._id}
                   onClick={() => handleUserClick(user.username)}
-                  className="flex items-center gap-3 xl:gap-6 p-3 xl:p-6 bg-white dark:bg-slate-900 rounded-[1rem] xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700 transition-all cursor-pointer group shadow-sm active:translate-y-1 active:border-b-2"
+                  className="flex items-center min-w-0 gap-3 xl:gap-4 p-3 xl:p-4 bg-white dark:bg-slate-900 rounded-[1rem] xl:rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700 transition-all cursor-pointer group shadow-sm active:translate-y-1 active:border-b-2"
                 >
                   {user.profilePicture ? (
                     <img
@@ -111,14 +111,14 @@ export default function FollowersListPage() {
                     </div>
                   )}
 
-                  <div className="flex-1">
-                    <h3 className="text-md xl:text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{user.name}</h3>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="truncate text-md xl:text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{user.name}</h3>
                     {user.username && (
                       <p className="text-xs font-black tracking-widest text-primary-600 dark:text-primary-300 mt-1">@{user.username}</p>
                     )}
                   </div>
 
-                  <div className="text-right hidden sm:block">
+                  <div className="text-right hidden sm:block xl:hidden">
                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">
                       {translate('{count} followers', { count: user.followersCount || 0 })}
                     </p>

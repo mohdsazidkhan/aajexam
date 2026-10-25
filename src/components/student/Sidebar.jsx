@@ -86,14 +86,18 @@ const StudentSidebar = () => {
   }, [authenticated, isMounted]);
 
   const isActiveRoute = (path) => {
-    const pathname = stripStudent(router?.pathname);
+    // /u/[username]/... routes carry the username, so compare the real URL path, not the route pattern.
+    const isUserRoute = (router?.pathname || '').startsWith('/u/');
+    const pathname = isUserRoute
+      ? (router?.asPath || '').split(/[?#]/)[0].replace(/\/$/, '').toLowerCase()
+      : stripStudent(router?.pathname);
     if (!pathname) return false;
-    path = stripStudent(path);
+    path = isUserRoute ? String(path).toLowerCase() : stripStudent(path);
     if (path === '/dashboard') return pathname === '/dashboard' || pathname === '/';
     if (pathname === path) return true;
     if (!pathname.startsWith(path + '/')) return false;
     // Sibling-aware: if any other sidebar path is a longer prefix of pathname, this parent is NOT active
-    const allPaths = sidebarSections.flatMap(s => s.items.map(i => stripStudent(i.path)));
+    const allPaths = sidebarSections.flatMap(s => s.items.map(i => (isUserRoute ? String(i.path).toLowerCase() : stripStudent(i.path))));
     const longerMatch = allPaths.some(p => p !== path && p.length > path.length && (pathname === p || pathname.startsWith(p + '/')));
     return !longerMatch;
   };
@@ -111,17 +115,12 @@ const StudentSidebar = () => {
         { path: '/features', icon: Sparkles, label: 'Features' },
         { path: '/search', icon: Search, label: 'Search' },
         { path: '/reels', icon: PlayCircle, label: 'Reels' },
-        { path: '/reels/create', icon: PlusCircle, label: 'Create Reel' },
-        { path: '/student/my-reels', icon: PlayCircle, label: 'My Reels' },
-        { path: '/student/bookmarks', icon: Bookmark, label: 'Bookmarks' },
         { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
         { path: '/quizzes', icon: BrainCircuit, label: 'Quizzes' },
         { path: '/subjects', icon: BookMarked, label: 'Subjects' },
         { path: '/topics', icon: Layers, label: 'Topics' },
         { path: '/blog', icon: PenSquare, label: 'Blog' },
         { path: '/community-questions', icon: MessageSquarePlus, label: 'Q&A' },
-        { path: '/community-questions/ask', icon: PlusCircle, label: 'Create Q&A' },
-        { path: '/student/my-questions', icon: MessageSquarePlus, label: 'My Q&A' },
       ]
     },
     {
@@ -159,17 +158,22 @@ const StudentSidebar = () => {
         { path: '/student/payment-history', icon: CreditCard, label: 'Payment History' },
         { path: '/student/quiz-history', icon: BrainCircuit, label: 'Quiz History', isPro: true },
         { path: '/student/my-challenges', icon: Swords, label: 'My Challenges', isPro: true },
-        { path: '/student/referral-history', icon: Globe, label: 'Referrals' },
+        { path: '/reels/create', icon: PlusCircle, label: 'Create Reel' },
+        { path: '/community-questions/ask', icon: PlusCircle, label: 'Create Q&A' },
+        { path: '/student/my-reels', icon: PlayCircle, label: 'My Reels' },
+        { path: '/student/my-questions', icon: MessageSquarePlus, label: 'My Q&A' },
+        { path: '/student/bookmarks', icon: Bookmark, label: 'My Bookmarks' },
+        { path: '/student/referral-history', icon: Globe, label: 'My Referrals' },
       ]
     },
     {
       title: 'ACCOUNT',
       items: [
-        { path: '/student/profile', icon: User, label: 'Profile' },
+        { path: '/student/profile', icon: User, label: 'My Profile' },
         ...(user?.username ? [
+          { path: `/u/${user.username}/followers`, icon: Users, label: 'My Followers' },
+          { path: `/u/${user.username}/following`, icon: UserCheck, label: 'My Followings' },
           { path: `/u/${user.username}`, icon: Eye, label: 'Public profile' },
-          { path: `/u/${user.username}/followers`, icon: Users, label: 'Followers' },
-          { path: `/u/${user.username}/following`, icon: UserCheck, label: 'Following' },
         ] : []),
         { path: '/student/subscription', icon: ShieldCheck, label: 'Subscription' },
         { path: '/student/settings', icon: Settings, label: 'Settings' },

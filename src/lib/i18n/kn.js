@@ -2070,6 +2070,10 @@ const KN = {
   'Login to bookmark': 'ಬುಕ್‌ಮಾರ್ಕ್ ಮಾಡಲು ಲಾಗಿನ್ ಮಾಡಿ',
   'Saved to bookmarks': 'ಬುಕ್‌ಮಾರ್ಕ್‌ಗಳಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ',
   'Tap the bookmark icon on any item to save it here.': 'ಯಾವುದೇ ಐಟಂನ ಬುಕ್‌ಮಾರ್ಕ್ ಐಕಾನ್ ಒತ್ತಿ ಇಲ್ಲಿ ಉಳಿಸಿ.',
+  'My Bookmarks': 'ನನ್ನ ಬುಕ್‌ಮಾರ್ಕ್‌ಗಳು',
+  'My Followers': 'ನನ್ನ ಫಾಲೋವರ್‌ಗಳು',
+  'My Followings': 'ನನ್ನ ಫಾಲೋಯಿಂಗ್',
+  'My Referrals': 'ನನ್ನ ರೆಫರಲ್‌ಗಳು',
 };
 
 export default KN;

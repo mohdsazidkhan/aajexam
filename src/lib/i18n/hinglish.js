@@ -2079,6 +2079,10 @@ const HINGLISH = {
   'Login to bookmark': 'Bookmark karne ke liye login karein',
   'Saved to bookmarks': 'Bookmark me save ho gaya',
   'Tap the bookmark icon on any item to save it here.': 'Kisi bhi item par bookmark icon dabakar use yahan save karein.',
+  'My Bookmarks': 'My Bookmarks',
+  'My Followers': 'My Followers',
+  'My Followings': 'My Followings',
+  'My Referrals': 'My Referrals',
 };
 
 export default HINGLISH;

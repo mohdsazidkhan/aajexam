@@ -34,7 +34,7 @@ import useTranslate from '../../hooks/useTranslate';
 const PAGE_TITLES = [
   ['/student/dashboard', 'Dashboard'], ['/student/notifications', 'Notifications'], ['/features', 'Features'],
   ['/search', 'Search'], ['/reels/create', 'Create Reel'], ['/reels', 'Reels'], ['/student/my-reels', 'My Reels'],
-  ['/student/bookmarks', 'Bookmarks'], ['/govt-exams', 'Govt. Exams'], ['/quizzes', 'Quizzes'], ['/quiz', 'Quizzes'],
+  ['/student/bookmarks', 'My Bookmarks'], ['/govt-exams', 'Govt. Exams'], ['/quizzes', 'Quizzes'], ['/quiz', 'Quizzes'],
   ['/subjects', 'Subjects'], ['/topics', 'Topics'], ['/blog', 'Blog'],
   ['/community-questions/ask', 'Create Q&A'], ['/community-questions', 'Questions and Answers'],
   ['/student/my-questions', 'My Q&A'], ['/daily-challenge', 'Daily Challenge'], ['/student/streak', 'Streak'],
@@ -45,9 +45,9 @@ const PAGE_TITLES = [
   ['/student/state-rank', 'State Rank'], ['/student/city-rank', 'City Rank'], ['/student/my-analytics', 'Performance'],
   ['/student/readiness', 'Exam Readiness'], ['/student/exam-history', 'Exam History'],
   ['/student/payment-history', 'Payment History'], ['/student/quiz-history', 'Quiz History'],
-  ['/student/my-challenges', 'My Challenges'], ['/student/referral-history', 'Referrals'],
-  ['/u/[username]/followers', 'Followers'], ['/u/[username]/following', 'Following'], ['/u/[username]', 'Public profile'],
-  ['/student/profile', 'Profile'], ['/student/subscription', 'Subscription'], ['/student/settings', 'Settings'],
+  ['/student/my-challenges', 'My Challenges'], ['/student/referral-history', 'My Referrals'],
+  ['/u/[username]/followers', 'My Followers'], ['/u/[username]/following', 'My Followings'], ['/u/[username]', 'Public profile'],
+  ['/student/profile', 'My Profile'], ['/student/subscription', 'Subscription'], ['/student/settings', 'Settings'],
 ];
 
 const pageTitleFor = (pathname) => {

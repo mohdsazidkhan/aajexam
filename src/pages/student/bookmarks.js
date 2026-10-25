@@ -160,21 +160,21 @@ const BookmarksPage = () => {
    const activeDef = TABS.find((t) => t.id === activeTab);
 
    if (!counts || (loading && items.length === 0 && !activeTab)) return (
-      <MobileAppWrapper title={translate('Bookmarks')}>
+      <MobileAppWrapper title={translate('My Bookmarks')}>
          <div className="py-2 xl:py-4"><CardsPageSkeleton count={6} /></div>
       </MobileAppWrapper>
    );
 
    return (
-      <MobileAppWrapper title={translate('Bookmarks')}>
+      <MobileAppWrapper title={translate('My Bookmarks')}>
          <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="Bookmarks - AajExam" noIndex={true} />
 
             <div className="container mx-auto py-2 xl:py-4 space-y-3 xl:space-y-4 mt-0">
                <PageHero
                   icon={Bookmark}
-                  eyebrow={translate('Bookmarks')}
-                  title={translate('Bookmarks')}
+                  eyebrow={translate('My Bookmarks')}
+                  title={translate('My Bookmarks')}
                   actions={
                      <div className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-4 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
                         <p className="text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{total}</p>

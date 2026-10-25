@@ -2070,6 +2070,10 @@ const BN = {
   'Login to bookmark': 'বুকমার্ক করতে লগইন করুন',
   'Saved to bookmarks': 'বুকমার্কে সংরক্ষিত হয়েছে',
   'Tap the bookmark icon on any item to save it here.': 'যেকোনো আইটেমে বুকমার্ক আইকনে ট্যাপ করে এখানে সংরক্ষণ করুন।',
+  'My Bookmarks': 'আমার বুকমার্ক',
+  'My Followers': 'আমার ফলোয়ার',
+  'My Followings': 'আমার ফলোইং',
+  'My Referrals': 'আমার রেফারেল',
 };
 
 export default BN;

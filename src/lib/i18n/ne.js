@@ -2070,6 +2070,10 @@ const NE = {
   'Login to bookmark': 'बुकमार्क गर्न लगइन गर्नुहोस्',
   'Saved to bookmarks': 'बुकमार्कमा सुरक्षित गरियो',
   'Tap the bookmark icon on any item to save it here.': 'कुनै पनि आइटममा बुकमार्क आइकन थिचेर यहाँ सुरक्षित गर्नुहोस्।',
+  'My Bookmarks': 'मेरा बुकमार्क',
+  'My Followers': 'मेरा फलोअर',
+  'My Followings': 'मेरो फलोइङ',
+  'My Referrals': 'मेरा रेफरल',
 };
 
 export default NE;

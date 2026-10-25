@@ -364,7 +364,7 @@ const ProfilePage = () => {
                     {translate('Subscription')}
                   </Button>
                   <Button variant="secondary" size="sm" icon={Users} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/referral-history')}>
-                    {translate('Referrals')}
+                    {translate('My Referrals')}
                   </Button>
                   <Button variant="secondary" size="sm" icon={CreditCard} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/payment-history')}>
                     {translate('Payment History')}

@@ -2091,6 +2091,10 @@ const HI = {
   'Login to bookmark': 'बुकमार्क करने के लिए लॉगिन करें',
   'Saved to bookmarks': 'बुकमार्क में सेव किया गया',
   'Tap the bookmark icon on any item to save it here.': 'किसी भी आइटम पर बुकमार्क आइकन दबाकर उसे यहाँ सेव करें।',
+  'My Bookmarks': 'मेरे बुकमार्क',
+  'My Followers': 'मेरे फ़ॉलोअर',
+  'My Followings': 'मेरे फ़ॉलोइंग',
+  'My Referrals': 'मेरे रेफ़रल',
 };
 
 export default HI;

@@ -5,6 +5,7 @@ import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { PlayCircle, Eye, FileText, Lightbulb, Zap, Newspaper, BarChart3, Trophy, Award, MapPin, Target, MessageSquare, HelpCircle, ArrowRight, Users, UserCheck, TrendingUp, Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import API from '../../lib/api';
+import { isAuthenticated } from '../../lib/utils/authUtils';
 import { PublicProfileSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import dbConnect from '../../lib/db';
 import User from '../../models/User';
@@ -76,6 +77,8 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   const [error, setError] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
   const [isOwnProfile, setIsOwnProfile] = useState(false);
+  const [authed, setAuthed] = useState(false); // Follow is for signed-in visitors only
+  useEffect(() => { setAuthed(isAuthenticated()); }, []);
   useEffect(() => {
     if (!username) return;
     fetchProfile();
@@ -85,6 +88,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   const fetchProfile = async () => {
     try {
       setLoading(true);
+      setIsOwnProfile(false); // never carry the owner buttons over from the previously viewed profile
       const res = await API.request(`/api/users/profile/${encodeURIComponent(username)}`);
       if (res?.success) {
         setProfile({ ...res.user, ...res.stats });
@@ -202,6 +206,24 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
     { label: 'Views', value: profile.profileViews || 0, icon: Eye },
   ];
 
+  const strip = [
+    ...stats,
+    ...(showStats ? [
+      { label: 'Tests', value: exam?.mockTestsAttempted || 0, icon: FileText },
+      { label: 'Quizzes', value: profile.quizzesAttempted || 0, icon: HelpCircle },
+      { label: 'Readiness', value: exam?.overallReadiness || 0, icon: TrendingUp, pct: true },
+      { label: 'Average', value: exam?.averageMockScore || 0, icon: BarChart3, pct: true },
+    ] : []),
+  ];
+
+  const ranks = [
+    { label: 'Exam AIR', data: profile.examAIR, empty: 'No exams yet' },
+    { label: 'Quiz AIR', data: profile.quizAIR, empty: 'No quizzes yet' },
+    { label: 'State Rank', data: profile.stateRank, empty: 'No exams yet', notSet: true },
+    { label: 'City Rank', data: profile.cityRank, empty: 'No exams yet', notSet: true },
+  ];
+  const rankNote = (r) => (r.notSet && !r.data ? translate('Not added') : r.data?.rank ? translate('of {total}', { total: r.data.total }) : translate(r.empty));
+
   const typeConfig = {
     question: { icon: FileText, label: 'Question' },
     fact: { icon: Lightbulb, label: 'Fact' },
@@ -232,7 +254,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           <div className="pointer-events-none absolute -bottom-40 right-0 w-[30rem] h-[30rem] bg-primary-300/10 dark:bg-primary-600/25 blur-3xl motion-safe:animate-pulse" style={{ borderRadius: '50%', animationDelay: '1.2s' }} />
           <span className="pointer-events-none absolute right-6 -bottom-10 select-none text-[220px] font-black leading-none text-slate-900/[0.04] dark:text-white/[0.06]">{initial}</span>
 
-          <div className="relative z-10 p-3 sm:p-4 xl:p-5">
+          <div className="relative z-10 p-3 sm:p-3.5 xl:p-4 xl:grid xl:grid-cols-[minmax(0,1fr)_auto] xl:items-center xl:gap-5">
             {/* Identity */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
               {/* Passport-style photo — same as the profile page */}
@@ -297,8 +319,12 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                         <Target className="w-3.5 h-3.5" />Preparing for {profile.primaryTargetExam}
                       </span>
                     )}
-                  {!isOwnProfile && (
+                </div>
+                {/* Buttons always start on their own row (two per row on phones) */}
+                <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 empty:hidden">
+                  {!isOwnProfile && authed && (
                     <FollowButton
+                      className="col-span-2 sm:col-span-1 w-full sm:w-auto"
                       userId={profile.id}
                       initialFollowing={isFollowing}
                       onFollowChange={handleFollowChange}
@@ -307,21 +333,21 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   {isOwnProfile && (
                     <>
                       <button
-                        className="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white ring-1 ring-white/30 font-black uppercase tracking-wider text-[10px] shadow-lg active:translate-y-0.5 transition-all"
+                        className="w-full sm:w-auto px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white ring-1 ring-white/30 font-black uppercase tracking-wider text-[10px] shadow-lg active:translate-y-0.5 transition-all"
                         style={{ borderRadius: 12 }}
                         onClick={() => router.push('/student/settings')}
                       >
                         {translate('Settings')}
                       </button>
                       <button
-                        className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-800 ring-1 ring-slate-300 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/30 font-black uppercase tracking-wider text-[10px] active:translate-y-0.5 transition-all"
+                        className="w-full sm:w-auto px-4 py-2 bg-white hover:bg-slate-50 text-slate-800 ring-1 ring-slate-300 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/30 font-black uppercase tracking-wider text-[10px] active:translate-y-0.5 transition-all"
                         style={{ borderRadius: 12 }}
                         onClick={() => router.push('/student/profile')}
                       >
                         {translate('View Profile')}
                       </button>
                       <button
-                        className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-800 ring-1 ring-slate-300 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/30 font-black uppercase tracking-wider text-[10px] active:translate-y-0.5 transition-all"
+                        className="col-span-2 sm:col-span-1 w-full sm:w-auto px-4 py-2 bg-white hover:bg-slate-50 text-slate-800 ring-1 ring-slate-300 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/30 font-black uppercase tracking-wider text-[10px] active:translate-y-0.5 transition-all"
                         style={{ borderRadius: 12 }}
                         onClick={() => router.push('/student/leaderboard')}
                       >
@@ -331,44 +357,77 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   )}
                 </div>
                 {showStats && (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 max-w-3xl text-left">
-                    {[
-                      { label: 'Exam AIR', data: profile.examAIR, empty: 'No exams yet' },
-                      { label: 'Quiz AIR', data: profile.quizAIR, empty: 'No quizzes yet' },
-                      { label: 'State Rank', data: profile.stateRank, empty: 'No exams yet', notSet: true },
-                      { label: 'City Rank', data: profile.cityRank, empty: 'No exams yet', notSet: true },
-                    ].map((r) => (
-                      <div key={r.label} className="min-w-0 px-3 py-2 bg-white ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 backdrop-blur" style={{ borderRadius: 12 }}>
-                        <p className="text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70 truncate">{translate(r.label)}</p>
+                  <div className="grid grid-cols-2 sm:flex sm:flex-wrap xl:hidden gap-1.5 text-left">
+                    {ranks.map((r) => (
+                      <div key={r.label} className="min-w-0 flex items-baseline gap-x-2 gap-y-0 flex-wrap px-3 py-1.5 bg-white ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 12 }}>
+                        <span className="text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70">{translate(r.label)}</span>
                         {r.data?.rank
-                          ? <CountUp value={r.data.rank} prefix="#" className="block text-2xl font-black leading-none tracking-tight text-primary-700 dark:text-primary-100" />
-                          : <span className="block text-2xl font-black leading-none">—</span>}
-                        <p className="mt-1 text-[9px] font-bold uppercase tracking-wider text-slate-500 dark:text-white/70 truncate">
+                          ? <CountUp value={r.data.rank} prefix="#" className="text-lg font-black leading-none tracking-tight text-primary-700 dark:text-primary-100" />
+                          : <span className="text-lg font-black leading-none">—</span>}
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500 dark:text-white/70">
                           {r.notSet && !r.data ? translate('Not added') : r.data?.rank ? translate('of {total}', { total: r.data.total }) : translate(r.empty)}
-                        </p>
+                        </span>
                       </div>
                     ))}
                   </div>
                 )}
               </div>
             </div>
+
+            {/* Desktop: the counters sit at the right end of the top section */}
+            <div className="hidden xl:flex flex-col gap-1.5 shrink-0">
+            <div className="grid grid-cols-4 gap-1.5">
+              {strip.map((s) => {
+                const body = (
+                  <div className="flex w-full items-center gap-2 px-2.5 py-2 text-left">
+                    <span className="flex shrink-0 items-center justify-center w-6 h-6 bg-primary-500/10 text-primary-700 dark:bg-white/15 dark:text-white" style={{ borderRadius: 8 }}>
+                      <s.icon className="w-3 h-3" />
+                    </span>
+                    <div className="min-w-0">
+                      <CountUp value={s.value} suffix={s.pct ? '%' : ''} className="block text-base font-black leading-none" />
+                      <span className="block mt-0.5 text-[8px] font-black uppercase tracking-wider text-slate-500 dark:text-white/70 truncate">{translate(s.label)}</span>
+                    </div>
+                  </div>
+                );
+                const cls = 'min-w-[104px] bg-white ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20';
+                return s.href ? (
+                  <button key={s.label} type="button" className={`${cls} hover:bg-slate-50 dark:hover:bg-white/15 transition-colors`} style={{ borderRadius: 12 }} onClick={() => router.push(s.href)}>{body}</button>
+                ) : (
+                  <div key={s.label} className={cls} style={{ borderRadius: 12 }}>{body}</div>
+                );
+              })}
+            </div>
+            {showStats && (
+              <div className="grid grid-cols-4 gap-1.5">
+                {ranks.map((r) => (
+                  <div key={r.label} className="min-w-[104px] px-2.5 py-2 text-left bg-white ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 12 }}>
+                    <span className="block text-[8px] font-black uppercase tracking-wider text-slate-500 dark:text-white/70 truncate">{translate(r.label)}</span>
+                    {r.data?.rank
+                      ? <CountUp value={r.data.rank} prefix="#" className="block mt-0.5 text-base font-black leading-none text-primary-700 dark:text-primary-100" />
+                      : <span className="block mt-0.5 text-base font-black leading-none">—</span>}
+                    <span className="block mt-0.5 text-[8px] font-bold uppercase tracking-wider text-slate-500 dark:text-white/70 truncate">{rankNote(r)}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+            </div>
           </div>
 
-          {/* Glass stat strip */}
-          <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-slate-200 dark:border-white/15 bg-slate-50/80 dark:bg-black/15">
-            {stats.map((s, i) => {
+          {/* Stat strip: social counters + exam numbers in one compact band */}
+          <div className="relative z-10 grid grid-cols-4 sm:grid-cols-8 xl:hidden border-t border-slate-200 dark:border-white/15 bg-slate-50/80 dark:bg-black/15">
+            {strip.map((s, i) => {
               const body = (
-                <div className="flex w-full items-center justify-start gap-2.5 px-3 py-2">
-                  <span className="flex items-center justify-center w-7 h-7 bg-white text-primary-700 ring-1 ring-slate-200 dark:bg-white/15 dark:text-white dark:ring-white/20" style={{ borderRadius: 9 }}>
-                    <s.icon className="w-3.5 h-3.5" />
+                <div className="flex w-full flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-start gap-0.5 sm:gap-2 px-1.5 sm:px-2.5 py-1.5 sm:py-2">
+                  <span className="hidden sm:flex shrink-0 items-center justify-center w-6 h-6 bg-white text-primary-700 ring-1 ring-slate-200 dark:bg-white/15 dark:text-white dark:ring-white/20" style={{ borderRadius: 8 }}>
+                    <s.icon className="w-3 h-3" />
                   </span>
-                  <div className="text-left">
-                    <CountUp value={s.value} className="block text-base sm:text-lg font-black leading-none" />
-                    <span className="block mt-0.5 text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70">{translate(s.label)}</span>
+                  <div className="min-w-0 text-center sm:text-left">
+                    <CountUp value={s.value} suffix={s.pct ? '%' : ''} className="block text-sm sm:text-base font-black leading-none" />
+                    <span className="block mt-0.5 text-[8px] font-black uppercase tracking-wider text-slate-500 dark:text-white/70 truncate">{translate(s.label)}</span>
                   </div>
                 </div>
               );
-              const cls = `${LINE_CLS} ${i % 2 === 1 ? 'border-l' : ''} ${i > 1 ? 'border-t sm:border-t-0' : ''} ${i > 0 ? 'sm:border-l' : ''}`;
+              const cls = `${LINE_CLS} ${i % 4 !== 0 ? 'border-l' : (i > 0 ? 'sm:border-l' : '')} ${i >= 4 ? 'border-t sm:border-t-0' : ''}`;
               return s.href ? (
                 <button key={s.label} type="button" className={`${cls} hover:bg-slate-100 dark:hover:bg-white/10 transition-colors`} onClick={() => router.push(s.href)}>{body}</button>
               ) : (
@@ -376,33 +435,6 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               );
             })}
           </div>
-
-          {/* Exam statistics strip */}
-          {showStats && (
-            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-slate-200 dark:border-white/15 bg-slate-100/80 dark:bg-black/25">
-              {[
-                { label: 'Tests', value: exam?.mockTestsAttempted || 0, icon: FileText },
-                { label: 'Quizzes', value: profile.quizzesAttempted || 0, icon: HelpCircle },
-                { label: 'Readiness', value: exam?.overallReadiness || 0, icon: TrendingUp, pct: true },
-                { label: 'Average', value: exam?.averageMockScore || 0, icon: BarChart3, pct: true },
-              ].map((e, i) => (
-                <div key={e.label} className={`flex w-full items-center justify-start gap-2.5 px-3 py-2 ${LINE_CLS} ${i % 2 === 1 ? 'border-l' : ''} ${i > 1 ? 'border-t sm:border-t-0' : ''} ${i > 0 ? 'sm:border-l' : ''}`}>
-                  <span className="flex items-center justify-center w-7 h-7 bg-white text-primary-700 ring-1 ring-slate-200 dark:bg-white/15 dark:text-white dark:ring-white/20" style={{ borderRadius: 9 }}>
-                    <e.icon className="w-3.5 h-3.5" />
-                  </span>
-                  <div className="text-left min-w-0">
-                    <CountUp value={e.value} suffix={e.pct ? '%' : ''} className="block text-base sm:text-lg font-black leading-none" />
-                    <span className="block mt-0.5 text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70">{translate(e.label)}</span>
-                    {e.pct && (
-                      <span className="block mt-1 h-1 w-16 bg-slate-200 dark:bg-white/20 overflow-hidden" style={{ borderRadius: 999 }}>
-                        <span className="block h-full bg-primary-600 dark:bg-white" style={{ width: `${Math.min(100, Math.max(0, e.value))}%`, borderRadius: 999 }} />
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
         </section>
 
         {/* ══════════ BENTO ══════════ */}

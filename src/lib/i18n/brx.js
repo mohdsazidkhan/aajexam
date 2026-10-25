@@ -2044,6 +2044,10 @@ const BODO = {
   'Login to bookmark': 'बुकमार्क खालामनो लगइन खालाम',
   'Saved to bookmarks': 'बुकमार्कआव सेभ जादों',
   'Tap the bookmark icon on any item to save it here.': 'मोनसेबो आइटेमआव बुकमार्क आइकन थिनाय एबादि सेभ खालाम।',
+  'My Bookmarks': 'आंनि बुकमार्क',
+  'My Followers': 'आंनि फलोवार',
+  'My Followings': 'आंनि फलोइङ',
+  'My Referrals': 'आंनि रेफारेल',
 };
 
 export default BODO;

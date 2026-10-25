@@ -2070,6 +2070,10 @@ const KOK = {
   'Login to bookmark': 'बुकमार्क करपाक लॉगिन करात',
   'Saved to bookmarks': 'बुकमार्कांत सेव केलें',
   'Tap the bookmark icon on any item to save it here.': 'खंयच्याय आयटमार बुकमार्क आयकॉन दाबून हांगा सेव करात.',
+  'My Bookmarks': 'म्हजे बुकमार्क',
+  'My Followers': 'म्हजे फॉलोअर',
+  'My Followings': 'म्हजे फॉलोइंग',
+  'My Referrals': 'म्हजे रेफरल',
 };
 
 export default KOK;

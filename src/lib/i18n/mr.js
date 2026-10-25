@@ -2070,6 +2070,10 @@ const MR = {
   'Login to bookmark': 'बुकमार्क करण्यासाठी लॉगिन करा',
   'Saved to bookmarks': 'बुकमार्कमध्ये जतन केले',
   'Tap the bookmark icon on any item to save it here.': 'कोणत्याही आयटमवर बुकमार्क आयकॉन दाबून ते येथे जतन करा.',
+  'My Bookmarks': 'माझे बुकमार्क',
+  'My Followers': 'माझे फॉलोअर्स',
+  'My Followings': 'माझे फॉलोइंग',
+  'My Referrals': 'माझे रेफरल',
 };
 
 export default MR;

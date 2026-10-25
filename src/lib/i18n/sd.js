@@ -2070,6 +2070,10 @@ const SD = {
   'Login to bookmark': 'بُڪ مارڪ ڪرڻ لاءِ لاگ اِن ڪريو',
   'Saved to bookmarks': 'بُڪ مارڪ ۾ محفوظ ٿيو',
   'Tap the bookmark icon on any item to save it here.': 'ڪنهن به شيءِ تي بُڪ مارڪ آئڪن دٻائي هتي محفوظ ڪريو.',
+  'My Bookmarks': 'منهنجا بُڪ مارڪ',
+  'My Followers': 'منهنجا فالوورز',
+  'My Followings': 'منهنجا فالوئنگ',
+  'My Referrals': 'منهنجا ريفرل',
 };
 
 export default SD;

@@ -2070,6 +2070,10 @@ const TA = {
   'Login to bookmark': 'புக்மார்க் செய்ய உள்நுழையவும்',
   'Saved to bookmarks': 'புக்மார்க்கில் சேமிக்கப்பட்டது',
   'Tap the bookmark icon on any item to save it here.': 'எந்த உருப்படியிலும் புக்மார்க் ஐகானைத் தட்டி இங்கே சேமிக்கவும்.',
+  'My Bookmarks': 'எனது புக்மார்க்குகள்',
+  'My Followers': 'எனது பின்தொடர்பவர்கள்',
+  'My Followings': 'நான் பின்தொடர்பவர்கள்',
+  'My Referrals': 'எனது பரிந்துரைகள்',
 };
 
 export default TA;

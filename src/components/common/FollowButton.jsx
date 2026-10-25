@@ -3,7 +3,7 @@ import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import axios from 'axios';
 import useTranslate from '../../hooks/useTranslate';
 
-const FollowButton = ({ userId, initialFollowing = false, onFollowChange }) => {
+const FollowButton = ({ userId, initialFollowing = false, onFollowChange, className = '' }) => {
   const { translate } = useTranslate();
   const [isFollowing, setIsFollowing] = useState(initialFollowing);
   const [loading, setLoading] = useState(false);
@@ -56,6 +56,7 @@ const FollowButton = ({ userId, initialFollowing = false, onFollowChange }) => {
           : 'bg-primary-600 hover:bg-primary-600 text-white border-2 border-b-2 border-primary-600 active:translate-y-0.5 active:border-b-2'
         }
         disabled:opacity-60 disabled:cursor-not-allowed
+        ${className}
       `}
       onClick={handleFollowToggle}
       disabled={loading}
