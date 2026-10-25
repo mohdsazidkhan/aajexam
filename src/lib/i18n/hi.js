@@ -2081,6 +2081,8 @@ const HI = {
   'Add your state in Settings to see your State Rank.': 'अपनी राज्य रैंक देखने के लिए सेटिंग्स में अपना राज्य जोड़ें।',
   'Add your city in Settings to see your City Rank.': 'अपनी शहर रैंक देखने के लिए सेटिंग्स में अपना शहर जोड़ें।',
   'View Profile': 'प्रोफ़ाइल देखें',
+  'Quiz performance': 'क्विज़ प्रदर्शन',
+  'View Rank': 'रैंक देखें',
 };
 
 export default HI;

@@ -2060,6 +2060,8 @@ const NE = {
   'Add your state in Settings to see your State Rank.': 'आफ्नो राज्य र्‍याङ्क हेर्न सेटिङमा आफ्नो राज्य थप्नुहोस्।',
   'Add your city in Settings to see your City Rank.': 'आफ्नो शहर र्‍याङ्क हेर्न सेटिङमा आफ्नो शहर थप्नुहोस्।',
   'View Profile': 'प्रोफाइल हेर्नुहोस्',
+  'Quiz performance': 'क्विज प्रदर्शन',
+  'View Rank': 'र्‍याङ्क हेर्नुहोस्',
 };
 
 export default NE;

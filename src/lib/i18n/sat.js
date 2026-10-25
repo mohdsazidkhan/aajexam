@@ -2034,6 +2034,8 @@ const SAT = {
   'Add your state in Settings to see your State Rank.': 'ᱟᱢᱟᱜ ᱨᱟᱡᱽ ᱨᱮᱱᱠ ᱧᱮᱞᱚᱜ ᱥᱮᱴᱤᱝᱥ ᱨᱮ ᱟᱢᱟᱜ ᱨᱟᱡᱽ ᱥᱮᱞᱮᱫ ᱢᱮ᱾',
   'Add your city in Settings to see your City Rank.': 'ᱟᱢᱟᱜ ᱥᱦᱚᱨ ᱨᱮᱱᱠ ᱧᱮᱞᱚᱜ ᱥᱮᱴᱤᱝᱥ ᱨᱮ ᱟᱢᱟᱜ ᱥᱦᱚᱨ ᱥᱮᱞᱮᱫ ᱢᱮ᱾',
   'View Profile': 'ᱯᱨᱚᱯᱷᱟᱭᱤᱞ ᱧᱮᱞ ᱢᱮ',
+  'Quiz performance': 'ᱠᱩᱤᱡ ᱠᱟᱹᱢᱤ',
+  'View Rank': 'ᱨᱮᱱᱠ ᱧᱮᱞ ᱢᱮ',
 };
 
 export default SAT;

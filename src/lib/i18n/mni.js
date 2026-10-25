@@ -2034,6 +2034,8 @@ const MANIPURI = {
   'Add your state in Settings to see your State Rank.': 'ꯅꯍꯥꯛꯀꯤ ꯂꯩꯕꯥꯛ ꯔꯦꯟꯛ ꯌꯦꯡꯅꯕꯥ ꯁꯦꯇꯤꯡꯁꯇꯥ ꯅꯍꯥꯛꯀꯤ ꯂꯩꯕꯥꯛ ꯍꯥꯄꯆꯤꯅꯕꯤꯌꯨ꯫',
   'Add your city in Settings to see your City Rank.': 'ꯅꯍꯥꯛꯀꯤ ꯁꯍꯔ ꯔꯦꯟꯛ ꯌꯦꯡꯅꯕꯥ ꯁꯦꯇꯤꯡꯁꯇꯥ ꯅꯍꯥꯛꯀꯤ ꯁꯍꯔ ꯍꯥꯄꯆꯤꯅꯕꯤꯌꯨ꯫',
   'View Profile': 'ꯄ꯭ꯔꯣꯐꯥꯏꯜ ꯌꯦꯡꯕꯤꯌꯨ',
+  'Quiz performance': 'ꯀꯨꯏꯖ ꯄꯨꯟꯁꯤ ꯊꯧꯑꯣꯡ',
+  'View Rank': 'ꯔꯦꯟꯛ ꯌꯦꯡꯕꯤꯌꯨ',
 };
 
 export default MANIPURI;

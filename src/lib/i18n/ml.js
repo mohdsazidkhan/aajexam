@@ -2060,6 +2060,8 @@ const ML = {
   'Add your state in Settings to see your State Rank.': 'നിങ്ങളുടെ സംസ്ഥാന റാങ്ക് കാണാൻ ക്രമീകരണങ്ങളിൽ നിങ്ങളുടെ സംസ്ഥാനം ചേർക്കുക.',
   'Add your city in Settings to see your City Rank.': 'നിങ്ങളുടെ നഗര റാങ്ക് കാണാൻ ക്രമീകരണങ്ങളിൽ നിങ്ങളുടെ നഗരം ചേർക്കുക.',
   'View Profile': 'പ്രൊഫൈൽ കാണുക',
+  'Quiz performance': 'ക്വിസ് പ്രകടനം',
+  'View Rank': 'റാങ്ക് കാണുക',
 };
 
 export default ML;

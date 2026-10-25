@@ -2060,6 +2060,8 @@ const TA = {
   'Add your state in Settings to see your State Rank.': 'உங்கள் மாநில தரவரிசையைப் பார்க்க அமைப்புகளில் உங்கள் மாநிலத்தைச் சேர்க்கவும்.',
   'Add your city in Settings to see your City Rank.': 'உங்கள் நகர தரவரிசையைப் பார்க்க அமைப்புகளில் உங்கள் நகரத்தைச் சேர்க்கவும்.',
   'View Profile': 'சுயவிவரத்தைப் பார்',
+  'Quiz performance': 'வினாடி வினா செயல்திறன்',
+  'View Rank': 'தரவரிசையைப் பார்',
 };
 
 export default TA;

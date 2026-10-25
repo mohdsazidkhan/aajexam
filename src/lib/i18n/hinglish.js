@@ -2069,6 +2069,8 @@ const HINGLISH = {
   'Add your state in Settings to see your State Rank.': 'Apni State Rank dekhne ke liye Settings me apna state add karein.',
   'Add your city in Settings to see your City Rank.': 'Apni City Rank dekhne ke liye Settings me apni city add karein.',
   'View Profile': 'Profile dekhein',
+  'Quiz performance': 'Quiz performance',
+  'View Rank': 'Rank dekhein',
 };
 
 export default HINGLISH;

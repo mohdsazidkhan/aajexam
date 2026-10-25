@@ -2034,6 +2034,8 @@ const BODO = {
   'Add your state in Settings to see your State Rank.': 'नोंथांनि राज्य रैंक नुनो सेटिंसआव नोंथांनि राज्य हरनाय।',
   'Add your city in Settings to see your City Rank.': 'नोंथांनि सहर रैंक नुनो सेटिंसआव नोंथांनि सहर हरनाय।',
   'View Profile': 'प्रोफाइल नुनो',
+  'Quiz performance': 'क्विज फारफर्मेन्स',
+  'View Rank': 'रैंक नुनो',
 };
 
 export default BODO;

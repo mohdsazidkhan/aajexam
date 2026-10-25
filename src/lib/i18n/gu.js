@@ -2060,6 +2060,8 @@ const GU = {
   'Add your state in Settings to see your State Rank.': 'તમારો રાજ્ય રેન્ક જોવા સેટિંગ્સમાં તમારું રાજ્ય ઉમેરો.',
   'Add your city in Settings to see your City Rank.': 'તમારો શહેર રેન્ક જોવા સેટિંગ્સમાં તમારું શહેર ઉમેરો.',
   'View Profile': 'પ્રોફાઇલ જુઓ',
+  'Quiz performance': 'ક્વિઝ પ્રદર્શન',
+  'View Rank': 'રેન્ક જુઓ',
 };
 
 export default GU;

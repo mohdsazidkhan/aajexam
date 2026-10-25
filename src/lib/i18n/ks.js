@@ -2060,6 +2060,8 @@ const KS = {
   'Add your state in Settings to see your State Rank.': 'پننہ ریاستی رینک ݴکھنہ خاطرٕ سیٹنگز منز پننہ ریاست شامل کرو۔',
   'Add your city in Settings to see your City Rank.': 'پننہ شہرُک رینک ݴکھنہ خاطرٕ سیٹنگز منز پننہ شہر شامل کرو۔',
   'View Profile': 'پروفائل ݴیکھو',
+  'Quiz performance': 'کوئز کارکردگی',
+  'View Rank': 'رینک ݴیکھو',
 };
 
 export default KS;

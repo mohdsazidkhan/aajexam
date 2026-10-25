@@ -2060,6 +2060,8 @@ const MAI = {
   'Add your state in Settings to see your State Rank.': 'अपन राज्य रैंक देखबाक लेल सेटिंग्स मे अपन राज्य जोड़ू।',
   'Add your city in Settings to see your City Rank.': 'अपन शहर रैंक देखबाक लेल सेटिंग्स मे अपन शहर जोड़ू।',
   'View Profile': 'प्रोफाइल देखू',
+  'Quiz performance': 'क्विज प्रदर्शन',
+  'View Rank': 'रैंक देखू',
 };
 
 export default MAI;

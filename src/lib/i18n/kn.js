@@ -2060,6 +2060,8 @@ const KN = {
   'Add your state in Settings to see your State Rank.': 'ನಿಮ್ಮ ರಾಜ್ಯ ರ್ಯಾಂಕ್ ನೋಡಲು ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನಿಮ್ಮ ರಾಜ್ಯವನ್ನು ಸೇರಿಸಿ.',
   'Add your city in Settings to see your City Rank.': 'ನಿಮ್ಮ ನಗರ ರ್ಯಾಂಕ್ ನೋಡಲು ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನಿಮ್ಮ ನಗರವನ್ನು ಸೇರಿಸಿ.',
   'View Profile': 'ಪ್ರೊಫೈಲ್ ನೋಡಿ',
+  'Quiz performance': 'ಕ್ವಿಜ್ ಕಾರ್ಯಕ್ಷಮತೆ',
+  'View Rank': 'ರ್ಯಾಂಕ್ ನೋಡಿ',
 };
 
 export default KN;

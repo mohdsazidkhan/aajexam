@@ -2060,6 +2060,8 @@ const OR_ = {
   'Add your state in Settings to see your State Rank.': 'ଆପଣଙ୍କ ରାଜ୍ୟ ର‍୍ୟାଙ୍କ ଦେଖିବାକୁ ସେଟିଂସରେ ଆପଣଙ୍କ ରାଜ୍ୟ ଯୋଗ କରନ୍ତୁ।',
   'Add your city in Settings to see your City Rank.': 'ଆପଣଙ୍କ ସହର ର‍୍ୟାଙ୍କ ଦେଖିବାକୁ ସେଟିଂସରେ ଆପଣଙ୍କ ସହର ଯୋଗ କରନ୍ତୁ।',
   'View Profile': 'ପ୍ରୋଫାଇଲ୍ ଦେଖନ୍ତୁ',
+  'Quiz performance': 'କ୍ୱିଜ୍ ପ୍ରଦର୍ଶନ',
+  'View Rank': 'ର‍୍ୟାଙ୍କ ଦେଖନ୍ତୁ',
 };
 
 export default OR_;

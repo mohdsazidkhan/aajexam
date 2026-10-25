@@ -2060,6 +2060,8 @@ const SA = {
   'Add your state in Settings to see your State Rank.': 'स्वराज्य-क्रमाङ्कं द्रष्टुं सेटिङ्स् मध्ये स्वराज्यं योजयत।',
   'Add your city in Settings to see your City Rank.': 'स्वनगर-क्रमाङ्कं द्रष्टुं सेटिङ्स् मध्ये स्वनगरं योजयत।',
   'View Profile': 'प्रोफाइलं पश्यत',
+  'Quiz performance': 'प्रश्नोत्तरी-प्रदर्शनम्',
+  'View Rank': 'क्रमाङ्कं पश्यत',
 };
 
 export default SA;

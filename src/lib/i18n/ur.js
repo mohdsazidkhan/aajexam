@@ -2060,6 +2060,8 @@ const UrduDict = {
   'Add your state in Settings to see your State Rank.': 'اپنی ریاستی رینک دیکھنے کے لیے سیٹنگز میں اپنی ریاست شامل کریں۔',
   'Add your city in Settings to see your City Rank.': 'اپنی شہر رینک دیکھنے کے لیے سیٹنگز میں اپنا شہر شامل کریں۔',
   'View Profile': 'پروفائل دیکھیں',
+  'Quiz performance': 'کوئز کارکردگی',
+  'View Rank': 'رینک دیکھیں',
 };
 
 export default UrduDict;

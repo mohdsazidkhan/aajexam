@@ -2060,6 +2060,8 @@ const PA = {
   'Add your state in Settings to see your State Rank.': 'ਆਪਣਾ ਰਾਜ ਰੈਂਕ ਵੇਖਣ ਲਈ ਸੈਟਿੰਗਜ਼ ਵਿੱਚ ਆਪਣਾ ਰਾਜ ਜੋੜੋ।',
   'Add your city in Settings to see your City Rank.': 'ਆਪਣਾ ਸ਼ਹਿਰ ਰੈਂਕ ਵੇਖਣ ਲਈ ਸੈਟਿੰਗਜ਼ ਵਿੱਚ ਆਪਣਾ ਸ਼ਹਿਰ ਜੋੜੋ।',
   'View Profile': 'ਪ੍ਰੋਫਾਈਲ ਵੇਖੋ',
+  'Quiz performance': 'ਕੁਇਜ਼ ਪ੍ਰਦਰਸ਼ਨ',
+  'View Rank': 'ਰੈਂਕ ਵੇਖੋ',
 };
 
 export default PA;

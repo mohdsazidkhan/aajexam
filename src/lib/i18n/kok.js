@@ -2060,6 +2060,8 @@ const KOK = {
   'Add your state in Settings to see your State Rank.': 'तुमचो राज्य रँक पळोवपाक सेटिंग्स मदीं तुमचें राज्य जोडात.',
   'Add your city in Settings to see your City Rank.': 'तुमचो शार रँक पळोवपाक सेटिंग्स मदीं तुमचें शार जोडात.',
   'View Profile': 'प्रोफायल पळयात',
+  'Quiz performance': 'क्विझ कामगिरी',
+  'View Rank': 'रँक पळयात',
 };
 
 export default KOK;

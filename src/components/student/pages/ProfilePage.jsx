@@ -9,6 +9,7 @@ import {
   ArrowRight,
   Award,
   BookOpen,
+  Bookmark,
   Building2,
   CheckCircle2,
   Clock,
@@ -16,12 +17,15 @@ import {
   Eye,
   Facebook,
   Flame,
+  History,
   Instagram,
   LogOut,
   Mail,
   MapPin,
   Copy,
+  BrainCircuit,
   Phone,
+  Swords,
   Settings,
   ShieldCheck,
   Sparkles,
@@ -89,6 +93,7 @@ const ProfilePage = () => {
   const [bankDetails, setBankDetails] = useState(null);
   const [streak, setStreak] = useState(null);
   const [quizzesAttempted, setQuizzesAttempted] = useState(0);
+  const [quizStats, setQuizStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeSubTab, setActiveSubTab] = useState('profile'); // 'profile', 'bank', 'settings'
 
@@ -117,9 +122,12 @@ const ProfilePage = () => {
       }
 
       try {
-        const quizAttemptsRes = await API.getMyQuizAttempts({ status: 'Completed', limit: 1 });
-        if (quizAttemptsRes?.success) setQuizzesAttempted(quizAttemptsRes.pagination?.total || 0);
+        const analyticsRes = await API.getAnalytics();
+        const quiz = analyticsRes?.success ? analyticsRes.data?.quiz : null;
+        setQuizStats(quiz || null);
+        setQuizzesAttempted(quiz?.totalAttempts || 0);
       } catch {
+        setQuizStats(null);
         setQuizzesAttempted(0);
       }
     } catch (error) {
@@ -143,6 +151,14 @@ const ProfilePage = () => {
   const socialLinks = useMemo(
     () => Object.entries(student?.socialLinks || {}).filter(([key, url]) => SOCIAL_ICONS[key] && url),
     [student?.socialLinks]
+  );
+
+  const quizSubjectAccuracy = useMemo(
+    () => (quizStats?.subjectWise || [])
+      .filter((x) => x?.name && typeof x.avgAccuracy === 'number')
+      .sort((a, b) => b.avgAccuracy - a.avgAccuracy)
+      .slice(0, 5),
+    [quizStats]
   );
 
   const subjectAccuracy = useMemo(() => {
@@ -273,6 +289,18 @@ const ProfilePage = () => {
                       <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 dark:text-white/60">{translate('Username')}</p>
                       <p className="text-sm xl:text-base font-black tracking-wide text-primary-700 dark:text-primary-200 truncate">@{student?.username || 'guest'}</p>
                     </div>
+                    <button
+                      type="button"
+                      onClick={copyReferralCode}
+                      title={translate('Copy')}
+                      className="group min-w-0 text-left active:scale-95 transition-transform"
+                    >
+                      <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 dark:text-white/60">{translate('Referral code')}</p>
+                      <p className="flex items-center gap-1.5 text-sm xl:text-base font-black font-mono tracking-[0.2em] text-primary-700 dark:text-primary-200">
+                        {student?.referralCode || 'AAJEXAM'}
+                        <Copy className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100" />
+                      </p>
+                    </button>
                   </div>
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                     <h1 className="text-2xl xl:text-4xl font-black font-outfit tracking-tight leading-none break-words">
@@ -318,32 +346,34 @@ const ProfilePage = () => {
 
               {/* Footer: actions, socials and barcode */}
               <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-dashed border-slate-300 dark:border-white/25">
-                <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2 w-full sm:w-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 w-full">
                   {student?.username && (
-                    <Button variant="secondary" size="sm" icon={Eye} className="w-full sm:w-auto justify-center rounded-xl text-xs font-black" onClick={() => router.push(`/u/${student.username}`)}>
+                    <Button variant="secondary" size="sm" icon={Eye} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push(`/u/${student.username}`)}>
                       {translate('Public profile')}
                     </Button>
                   )}
-                  <Button variant="primary" size="sm" icon={Settings} className="w-full sm:w-auto justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/settings')}>
+                  <Button variant="secondary" size="sm" icon={Settings} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/settings')}>
                     {translate('Settings')}
                   </Button>
-                  <Button variant="secondary" size="sm" icon={Trophy} className="w-full sm:w-auto justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/leaderboard')}>
-                    {translate('View leaderboard')}
+                  <Button variant="secondary" size="sm" icon={Trophy} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/leaderboard')}>
+                    {translate('Leaderboard')}
+                  </Button>
+                  <Button variant="secondary" size="sm" icon={ShieldCheck} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/subscription')}>
+                    {translate('Subscription')}
+                  </Button>
+                  <Button variant="secondary" size="sm" icon={Users} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/referral-history')}>
+                    {translate('Referrals')}
+                  </Button>
+                  <Button variant="secondary" size="sm" icon={CreditCard} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/payment-history')}>
+                    {translate('Payment History')}
+                  </Button>
+                  <Button variant="secondary" size="sm" icon={Bookmark} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/bookmarks')}>
+                    {translate('Bookmarks')}
+                  </Button>
+                  <Button variant="secondary" size="sm" icon={Swords} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/my-challenges')}>
+                    {translate('My Challenges')}
                   </Button>
                 </div>
-                <button
-                  type="button"
-                  onClick={copyReferralCode}
-                  title={translate('Copy')}
-                  className="group w-full sm:w-auto sm:ml-auto flex flex-col items-center sm:items-end gap-1 px-3 py-2 bg-white/80 ring-1 ring-primary-200 hover:ring-primary-400 dark:bg-white/10 dark:ring-white/20 dark:hover:ring-white/50 transition-all active:scale-95"
-                  style={{ borderRadius: 10 }}
-                >
-                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('Referral code')}</span>
-                  <span className="flex items-center gap-2 text-lg xl:text-xl font-black font-mono tracking-[0.25em] text-primary-700 dark:text-primary-200">
-                    {student?.referralCode || 'AAJEXAM'}
-                    <Copy className="w-4 h-4 opacity-70 group-hover:opacity-100" />
-                  </span>
-                </button>
               </div>
             </div>
 
@@ -358,9 +388,19 @@ const ProfilePage = () => {
                 {statTiles.map(renderStatTile)}
               </div>
 
-              <div className="flex items-center gap-2">
-                <Trophy className="w-4 h-4 text-primary-600 dark:text-primary-300" />
-                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-700 dark:text-white/80">{translate('All India Rank')}</p>
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 min-w-0">
+                  <Trophy className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-700 dark:text-white/80 truncate">{translate('All India Rank')}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => router.push('/student/all-india-rank')}
+                  className="inline-flex items-center gap-1 shrink-0 text-[10px] font-black uppercase tracking-wider text-primary-700 dark:text-primary-300 hover:underline"
+                >
+                  {translate('View Rank')}
+                  <ArrowRight className="w-3 h-3" />
+                </button>
               </div>
 
               <div className="grid grid-cols-2 gap-1.5">
@@ -452,49 +492,105 @@ const ProfilePage = () => {
                 </TicketCard>
               )}
 
-              {/* Exam performance (report card) */}
-              <TicketCard
-                icon={TrendingUp}
-                title={translate('Exam performance')}
-                subtitle={translate('Preparing for {exam}.', { exam: student?.primaryTargetExam || translate('All Exams') })}
-                right={
-                  <div
-                    className="flex flex-col items-center justify-center w-14 h-14 xl:w-16 xl:h-16 border-[3px] border-double border-primary-700 text-primary-800 dark:border-white/80 dark:text-white"
-                    style={{ borderRadius: 12, transform: 'rotate(-8deg)' }}
-                    title={translate('Grade')}
-                  >
-                    <span className="text-xl xl:text-2xl font-black font-outfit leading-none">{gradeFor(student?.performanceMetrics?.examStats?.overallReadiness || 0)}</span>
-                    <span className="text-[7px] xl:text-[8px] font-black uppercase tracking-[0.2em] mt-0.5">{translate('Grade')}</span>
-                  </div>
-                }
-              >
-                <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-4">
-                  {[
-                    { label: 'Overall readiness', value: `${student?.performanceMetrics?.examStats?.overallReadiness || 0}%` },
-                    { label: 'Quizzes attempted', value: quizzesAttempted },
-                    { label: 'Tests attempted', value: student?.performanceMetrics?.examStats?.mockTestsAttempted || 0 },
-                    { label: 'Avg score', value: `${student?.performanceMetrics?.examStats?.averageMockScore || 0}%` },
-                  ].map((item) => (
-                    <div key={item.label} className="border-2 border-dashed border-slate-200 dark:border-slate-700 bg-background-surface-secondary p-4 text-center" style={{ borderRadius: 12 }}>
-                      <p className="text-2xl xl:text-3xl font-black font-outfit tracking-tight text-primary-600 dark:text-primary-300">{item.value}</p>
-                      <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider text-content-secondary mt-1">{translate(item.label)}</p>
+              {/* Exam performance + Quiz performance: one row on desktop, two rows on phones */}
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6 items-stretch">
+                {/* Exam performance (report card) */}
+                <TicketCard
+                  className="h-full"
+                  icon={TrendingUp}
+                  title={translate('Exam performance')}
+                  subtitle={translate('Preparing for {exam}.', { exam: student?.primaryTargetExam || translate('All Exams') })}
+                  right={
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <Button variant="secondary" size="sm" icon={History} className="rounded-xl text-[10px] font-black" onClick={() => router.push('/student/exam-history')}>
+                        {translate('Exam History')}
+                      </Button>
+                      <div
+                        className="flex flex-col items-center justify-center w-14 h-14 xl:w-16 xl:h-16 border-[3px] border-double border-primary-700 text-primary-800 dark:border-white/80 dark:text-white"
+                        style={{ borderRadius: 12, transform: 'rotate(-8deg)' }}
+                        title={translate('Grade')}
+                      >
+                        <span className="text-xl xl:text-2xl font-black font-outfit leading-none">{gradeFor(student?.performanceMetrics?.examStats?.overallReadiness || 0)}</span>
+                        <span className="text-[7px] xl:text-[8px] font-black uppercase tracking-[0.2em] mt-0.5">{translate('Grade')}</span>
+                      </div>
                     </div>
-                  ))}
-                </div>
+                  }
+                >
+                  <div className="grid grid-cols-3 gap-2 xl:gap-3">
+                    {[
+                      { label: 'Overall readiness', value: `${student?.performanceMetrics?.examStats?.overallReadiness || 0}%` },
+                      { label: 'Tests attempted', value: student?.performanceMetrics?.examStats?.mockTestsAttempted || 0 },
+                      { label: 'Avg score', value: `${student?.performanceMetrics?.examStats?.averageMockScore || 0}%` },
+                    ].map((item) => (
+                      <div key={item.label} className="border-2 border-dashed border-slate-200 dark:border-slate-700 bg-background-surface-secondary p-3 text-center" style={{ borderRadius: 12 }}>
+                        <p className="text-2xl xl:text-3xl font-black font-outfit tracking-tight text-primary-600 dark:text-primary-300">{item.value}</p>
+                        <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider text-content-secondary mt-1">{translate(item.label)}</p>
+                      </div>
+                    ))}
+                  </div>
 
-                {subjectAccuracy.length > 0 && (
-                  <div className="space-y-2 xl:space-y-4 mt-5">
-                    <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-content-secondary">
-                      <BookOpen className="w-4 h-4" /> Subject-wise accuracy
-                    </p>
-                    <div className="space-y-2 xl:space-y-4">
-                      {subjectAccuracy.map(([subject, score]) => (
-                        <ProgressBar key={subject} progress={score} variant="primary" height="sm" label={subject} />
-                      ))}
+                  {subjectAccuracy.length > 0 && (
+                    <div className="space-y-2 xl:space-y-4 mt-5">
+                      <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-content-secondary">
+                        <BookOpen className="w-4 h-4" /> Subject-wise accuracy
+                      </p>
+                      <div className="space-y-2 xl:space-y-4">
+                        {subjectAccuracy.map(([subject, score]) => (
+                          <ProgressBar key={subject} progress={score} variant="primary" height="sm" label={subject} />
+                        ))}
+                      </div>
                     </div>
+                  )}
+                </TicketCard>
+
+                <TicketCard
+                  className="h-full"
+                  icon={BrainCircuit}
+                  title={translate('Quiz performance')}
+                  right={
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <Button variant="secondary" size="sm" icon={History} className="rounded-xl text-[10px] font-black" onClick={() => router.push('/student/quiz-history')}>
+                        {translate('Quiz History')}
+                      </Button>
+                      <div
+                        className="flex flex-col items-center justify-center w-14 h-14 xl:w-16 xl:h-16 border-[3px] border-double border-primary-700 text-primary-800 dark:border-white/80 dark:text-white"
+                        style={{ borderRadius: 12, transform: 'rotate(-8deg)' }}
+                        title={translate('Grade')}
+                      >
+                        <span className="text-xl xl:text-2xl font-black font-outfit leading-none">{gradeFor(quizStats?.avgAccuracy || 0)}</span>
+                        <span className="text-[7px] xl:text-[8px] font-black uppercase tracking-[0.2em] mt-0.5">{translate('Grade')}</span>
+                      </div>
+                    </div>
+                  }
+                >
+                  <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-3">
+                    {[
+                      { label: 'Quizzes attempted', value: quizzesAttempted },
+                      { label: 'Avg Accuracy', value: `${quizStats?.avgAccuracy || 0}%` },
+                      { label: 'Avg score', value: `${quizStats?.avgScore || 0}%` },
+                      { label: 'Best Score', value: `${quizStats?.bestScore || 0}%` },
+                    ].map((item) => (
+                      <div key={item.label} className="border-2 border-dashed border-slate-200 dark:border-slate-700 bg-background-surface-secondary p-3 text-center" style={{ borderRadius: 12 }}>
+                        <p className="text-2xl xl:text-3xl font-black font-outfit tracking-tight text-primary-600 dark:text-primary-300">{item.value}</p>
+                        <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider text-content-secondary mt-1">{translate(item.label)}</p>
+                      </div>
+                    ))}
                   </div>
-                )}
-              </TicketCard>
+
+                  {quizSubjectAccuracy.length > 0 && (
+                    <div className="space-y-2 xl:space-y-4 mt-5">
+                      <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-content-secondary">
+                        <BookOpen className="w-4 h-4" /> Subject-wise accuracy
+                      </p>
+                      <div className="space-y-2 xl:space-y-4">
+                        {quizSubjectAccuracy.map((x) => (
+                          <ProgressBar key={x.subjectId || x.name} progress={x.avgAccuracy} variant="primary" height="sm" label={x.name} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </TicketCard>
+              </div>
 
               <ReferralBanner user={student} />
             </motion.div>

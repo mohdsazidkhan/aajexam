@@ -2060,6 +2060,8 @@ const AS = {
   'Add your state in Settings to see your State Rank.': 'আপোনাৰ ৰাজ্য ৰেংক চাবলৈ ছেটিংছত আপোনাৰ ৰাজ্য যোগ কৰক।',
   'Add your city in Settings to see your City Rank.': 'আপোনাৰ নগৰ ৰেংক চাবলৈ ছেটিংছত আপোনাৰ নগৰ যোগ কৰক।',
   'View Profile': 'প্ৰফাইল চাওক',
+  'Quiz performance': 'কুইজ পৰিৱেশন',
+  'View Rank': 'ৰেংক চাওক',
 };
 
 export default AS;

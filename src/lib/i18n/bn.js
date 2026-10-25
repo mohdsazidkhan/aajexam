@@ -2060,6 +2060,8 @@ const BN = {
   'Add your state in Settings to see your State Rank.': 'আপনার রাজ্য র‍্যাংক দেখতে সেটিংসে আপনার রাজ্য যোগ করুন।',
   'Add your city in Settings to see your City Rank.': 'আপনার শহর র‍্যাংক দেখতে সেটিংসে আপনার শহর যোগ করুন।',
   'View Profile': 'প্রোফাইল দেখুন',
+  'Quiz performance': 'কুইজ পারফরম্যান্স',
+  'View Rank': 'র‍্যাংক দেখুন',
 };
 
 export default BN;

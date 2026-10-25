@@ -412,8 +412,8 @@ export const ProfilePageSkeleton = () => (
       {[0, 1, 2].map((i) => <Sh key={i} className="h-9 w-28 rounded-lg shrink-0" />)}
     </div>
 
-    {/* First tab: ticket cards */}
-    <div className="space-y-4 xl:space-y-6">
+    {/* First tab: exam + quiz performance cards, side by side on desktop */}
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
       {[0, 1].map((i) => (
         <div key={i} className={`${CARD} p-4 space-y-3`}>
           <div className="flex items-center gap-2">

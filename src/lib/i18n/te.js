@@ -2060,6 +2060,8 @@ const TE = {
   'Add your state in Settings to see your State Rank.': 'మీ రాష్ట్ర ర్యాంక్ చూడటానికి సెట్టింగ్స్‌లో మీ రాష్ట్రాన్ని జోడించండి.',
   'Add your city in Settings to see your City Rank.': 'మీ నగర ర్యాంక్ చూడటానికి సెట్టింగ్స్‌లో మీ నగరాన్ని జోడించండి.',
   'View Profile': 'ప్రొఫైల్ చూడండి',
+  'Quiz performance': 'క్విజ్ పనితీరు',
+  'View Rank': 'ర్యాంక్ చూడండి',
 };
 
 export default TE;

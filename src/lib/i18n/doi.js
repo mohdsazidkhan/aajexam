@@ -2060,6 +2060,8 @@ const DogriDict = {
   'Add your state in Settings to see your State Rank.': 'अपनी राज्य रैंक दिक्खने आस्तै सेटिंग्स च अपना राज्य जोड़ो।',
   'Add your city in Settings to see your City Rank.': 'अपनी शैहर रैंक दिक्खने आस्तै सेटिंग्स च अपना शैहर जोड़ो।',
   'View Profile': 'प्रोफाइल दिक्खो',
+  'Quiz performance': 'क्विज़ प्रदर्शन',
+  'View Rank': 'रैंक दिक्खो',
 };
 
 export default DogriDict;

@@ -2060,6 +2060,8 @@ const SD = {
   'Add your state in Settings to see your State Rank.': 'پنهنجو رياستي رئنڪ ڏسڻ لاءِ سيٽنگز ۾ پنهنجي رياست شامل ڪريو.',
   'Add your city in Settings to see your City Rank.': 'پنهنجو شهر رئنڪ ڏسڻ لاءِ سيٽنگز ۾ پنهنجو شهر شامل ڪريو.',
   'View Profile': 'پروفائيل ڏسو',
+  'Quiz performance': 'ڪوئز ڪارڪردگي',
+  'View Rank': 'رئنڪ ڏسو',
 };
 
 export default SD;

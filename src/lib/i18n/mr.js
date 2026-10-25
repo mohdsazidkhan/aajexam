@@ -2060,6 +2060,8 @@ const MR = {
   'Add your state in Settings to see your State Rank.': 'तुमचा राज्य रँक पाहण्यासाठी सेटिंग्जमध्ये तुमचे राज्य जोडा.',
   'Add your city in Settings to see your City Rank.': 'तुमचा शहर रँक पाहण्यासाठी सेटिंग्जमध्ये तुमचे शहर जोडा.',
   'View Profile': 'प्रोफाइल पहा',
+  'Quiz performance': 'क्विझ कामगिरी',
+  'View Rank': 'रँक पहा',
 };
 
 export default MR;

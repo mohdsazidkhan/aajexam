@@ -15,7 +15,8 @@ import {
   PlayCircle,
   Heart,
   Bell,
-  Gift
+  Gift,
+  ShieldCheck
 } from 'lucide-react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 
@@ -198,6 +199,7 @@ const StudentNavbar = () => {
 
               {[
                 { label: translate('Profile'), icon: User, path: '/student/profile' },
+                { label: translate('Subscription'), icon: ShieldCheck, path: '/student/subscription' },
                 { label: translate('Referral Rewards'), icon: Gift, path: '/student/referral-history', showBalance: true },
                 { label: translate('Settings'), icon: Settings, path: '/student/settings' },
               ].map(item => (

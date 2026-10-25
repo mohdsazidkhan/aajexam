@@ -325,7 +325,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                         style={{ borderRadius: 12 }}
                         onClick={() => router.push('/student/leaderboard')}
                       >
-                        {translate('View leaderboard')}
+                        {translate('Leaderboard')}
                       </button>
                     </>
                   )}

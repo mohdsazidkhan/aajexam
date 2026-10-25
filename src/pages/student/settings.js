@@ -156,12 +156,12 @@ const SettingsPage = () => {
             eyebrow={translate('Settings')}
             title={translate('Settings')}
           >
-            <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-background-surface-secondary dark:bg-slate-800/50 rounded-xl w-fit max-w-[70%] border border-slate-200 dark:border-slate-800/50 shadow-sm relative z-20 flex-shrink-0">
+            <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-background-surface-secondary dark:bg-slate-800/50 rounded-xl w-full sm:w-fit sm:max-w-[70%] border border-slate-200 dark:border-slate-800/50 shadow-sm relative z-20 flex-shrink-0">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-3 xl:px-4 py-2 rounded-lg text-[10px] uppercase font-black tracking-wider transition-all duration-300 whitespace-nowrap flex-shrink-0 ${activeTab === tab.id
+                  className={`flex flex-1 sm:flex-none items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 xl:px-4 py-2 rounded-lg text-[10px] uppercase font-black tracking-wider transition-all duration-300 whitespace-nowrap min-w-0 ${activeTab === tab.id
                     ? 'bg-primary-600 text-white shadow-sm'
                     : 'text-content-secondary hover:text-primary-600 hover:bg-slate-100 dark:hover:bg-slate-700/50'
                     }`}
