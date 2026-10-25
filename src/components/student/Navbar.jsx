@@ -16,7 +16,8 @@ import {
   Heart,
   Bell,
   Gift,
-  ShieldCheck
+  ShieldCheck,
+  ChevronRight
 } from 'lucide-react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 
@@ -38,10 +39,30 @@ const StudentNavbar = () => {
   const isSidebarOpen = useSelector((state) => state.sidebar?.isOpen ?? false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [extra, setExtra] = useState(null);
 
   useEffect(() => {
     if (isClient) dispatch(initializeDarkMode());
   }, [isClient, dispatch]);
+
+  // Sessions saved before login returned the photo have no profilePicture in localStorage:
+  // fetch it once and merge it in so the avatar and the menu header show the photo.
+  useEffect(() => {
+    if (!isClient || !user || user.profilePicture) return;
+    let cancelled = false;
+    API.getProfile()
+      .then((res) => {
+        const u = res?.user || res?.data || res;
+        if (cancelled || !u?.profilePicture) return;
+        try {
+          const stored = JSON.parse(localStorage.getItem('userInfo') || '{}');
+          localStorage.setItem('userInfo', JSON.stringify({ ...stored, profilePicture: u.profilePicture, username: stored.username || u.username }));
+          window.dispatchEvent(new Event('authStateChanged'));
+        } catch { /* storage unavailable */ }
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [isClient, user]);
 
   useEffect(() => {
     if (!isClient || !user) return;
@@ -52,9 +73,30 @@ const StudentNavbar = () => {
     return () => { cancelled = true; };
   }, [isClient, user, router.pathname]);
 
+  // Login does not return the profile picture; fetch it (and the username) once and remember it.
+  const needsIdentity = !!user && (!user.profilePicture || !user.username);
+  useEffect(() => {
+    if (!isClient || !needsIdentity) return;
+    let cancelled = false;
+    API.request('/api/auth/me')
+      .then((res) => {
+        if (cancelled || !res?.success) return;
+        setExtra({ profilePicture: res.user.profilePicture, username: res.user.username });
+        try {
+          const stored = JSON.parse(localStorage.getItem('userInfo') || 'null');
+          if (stored) localStorage.setItem('userInfo', JSON.stringify({ ...stored, profilePicture: res.user.profilePicture, username: res.user.username }));
+        } catch { /* storage unavailable */ }
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [isClient, needsIdentity]);
+
   const handleLogout = () => secureLogout(router);
 
   if (!isClient || !user) return null;
+
+  const profilePicture = user.profilePicture || extra?.profilePicture || null;
+  const username = user.username || extra?.username || null;
 
   // subscriptionStatus isn't downgraded server-side when the subscription
   // lapses (known backend gap) — check expiry here too so the badge doesn't
@@ -144,9 +186,9 @@ const StudentNavbar = () => {
             >
               <div className="relative w-8 h-8 xl:w-10 xl:h-10">
                 <div className="w-full h-full rounded-full overflow-hidden p-[2px]">
-                  {user.profilePicture ? (
+                  {profilePicture ? (
                     <Image
-                      src={user.profilePicture}
+                      src={profilePicture}
                       alt={user.name || 'Profile'}
                       width={36}
                       height={36}
@@ -189,40 +231,75 @@ const StudentNavbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               role="menu"
-              className="fixed top-12 xl:top-16 right-3 xl:right-8 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-2xl z-[170] overflow-hidden"
+              className="fixed top-12 xl:top-16 right-3 xl:right-8 w-72 max-w-[calc(100vw-1.5rem)] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl z-[170] overflow-hidden"
+              style={{ borderRadius: 20 }}
             >
-              {/* User info */}
-              <div className="px-3 py-2.5 mb-1 rounded-lg xl:rounded-xl bg-gradient-to-r from-slate-100 via-slate-50 to-white dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 ring-1 ring-slate-200 dark:ring-white/10">
-
-                <p className="text-[12px] font-bold text-slate-900 dark:text-white/80 truncate">{user.email}</p>
+              {/* Identity header: photo, name, username, email, plan */}
+              <div className="relative overflow-hidden px-4 pt-4 pb-3 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-b border-slate-200 dark:border-white/10">
+                <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '14px 14px' }} />
+                <div className="pointer-events-none absolute -top-12 -right-10 w-36 h-36 bg-primary-300/25 dark:bg-primary-500/20 blur-2xl" style={{ borderRadius: '50%' }} />
+                <span className={`absolute top-3 right-3 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest ${isExpired ? 'bg-red-500 text-white' : rawPlan === 'PRO' ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow' : 'bg-slate-200 text-slate-700 ring-1 ring-slate-300 dark:bg-white/15 dark:text-white dark:ring-white/30'}`} style={{ borderRadius: 999 }}>
+                  {isExpired ? 'EXPIRED' : rawPlan === 'PRO' ? 'PRO' : translate('FREE')}
+                </span>
+                <div className="relative flex items-center gap-3">
+                  <div className="shrink-0 p-[3px] bg-gradient-to-tr from-primary-300 via-primary-500 to-primary-700 shadow-md" style={{ borderRadius: 16 }}>
+                    {profilePicture ? (
+                      <Image
+                        src={profilePicture}
+                        alt={user.name || 'Profile'}
+                        width={56}
+                        height={56}
+                        className="w-14 h-14 object-cover border-2 border-white dark:border-slate-900"
+                        style={{ borderRadius: 13 }}
+                      />
+                    ) : (
+                      <div className="w-14 h-14 flex items-center justify-center bg-primary-600 text-white text-xl font-black uppercase border-2 border-white dark:border-slate-900" style={{ borderRadius: 13 }}>
+                        {user.name?.charAt(0)}
+                      </div>
+                    )}
+                  </div>
+                  <div className="min-w-0 flex-1 pr-10">
+                    <p className="text-base font-black text-slate-900 dark:text-white leading-tight truncate">{user.name}</p>
+                    {username && <p className="text-xs font-bold text-primary-700 dark:text-primary-300 truncate">@{username}</p>}
+                    <p className="mt-0.5 text-[11px] font-medium text-slate-500 dark:text-white/60 truncate">{user.email}</p>
+                  </div>
+                </div>
               </div>
 
-              {[
-                { label: translate('Profile'), icon: User, path: '/student/profile' },
-                { label: translate('Subscription'), icon: ShieldCheck, path: '/student/subscription' },
-                { label: translate('Referral Rewards'), icon: Gift, path: '/student/referral-history', showBalance: true },
-                { label: translate('Settings'), icon: Settings, path: '/student/settings' },
-              ].map(item => (
-                <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
-                  <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-slate-800 transition-all">
-                    <item.icon className="w-4 h-4 text-primary-600 dark:text-primary-300" /> {item.label}
-                    {item.showBalance && (
-                      <span className="ml-auto text-sm font-black text-primary-600 dark:text-primary-300 flex items-center gap-0.5">
-                        <IndianRupee className="w-3 h-3" />{user.walletBalance || 0}
+              <div className="p-2">
+                {[
+                  { label: translate('Profile'), icon: User, path: '/student/profile' },
+                  { label: translate('Subscription'), icon: ShieldCheck, path: '/student/subscription' },
+                  { label: translate('Referral Rewards'), icon: Gift, path: '/student/referral-history', showBalance: true },
+                  { label: translate('Settings'), icon: Settings, path: '/student/settings' },
+                ].map(item => (
+                  <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
+                    <button className="group w-full flex items-center gap-3 px-2 py-2 text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-primary-500/10 transition-colors" style={{ borderRadius: 12 }}>
+                      <span className="w-8 h-8 shrink-0 flex items-center justify-center bg-primary-500/10 text-primary-700 dark:text-primary-300 group-hover:bg-primary-600 group-hover:text-white transition-colors" style={{ borderRadius: 10 }}>
+                        <item.icon className="w-4 h-4" />
                       </span>
-                    )}
-                  </button>
-                </Link>
-              ))}
+                      <span className="flex-1 text-left truncate">{item.label}</span>
+                      {item.showBalance ? (
+                        <span className="px-2 py-0.5 bg-primary-500/10 text-sm font-black text-primary-700 dark:text-primary-300 flex items-center gap-0.5" style={{ borderRadius: 999 }}>
+                          <IndianRupee className="w-3 h-3" />{user.walletBalance || 0}
+                        </span>
+                      ) : (
+                        <ChevronRight className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all" />
+                      )}
+                    </button>
+                  </Link>
+                ))}
 
-              <div className="my-1 border-t border-slate-100 dark:border-slate-800 mx-2" />
+                <div className="my-2 border-t border-dashed border-slate-200 dark:border-slate-800 mx-1" />
 
-              <button
-                onClick={handleLogout}
-                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold bg-red-500 hover:bg-red-600 text-white transition-all"
-              >
-                <LogOut className="w-4 h-4" /> {translate('Log out')}
-              </button>
+                <button
+                  onClick={handleLogout}
+                  className="w-full flex items-center justify-center gap-2.5 px-3 py-2.5 text-sm font-black uppercase tracking-wider bg-red-500 hover:bg-red-600 text-white transition-all"
+                  style={{ borderRadius: 12 }}
+                >
+                  <LogOut className="w-4 h-4" /> {translate('Log out')}
+                </button>
+              </div>
             </motion.div>
           </>
         )}

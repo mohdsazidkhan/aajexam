@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import API from '../../lib/api';
 import { getAuthToken } from '../../lib/utils/authUtils';
 import {
-  LayoutDashboard,
+  Home,
   Users,
   Plus,
   X,
@@ -58,7 +58,7 @@ const AdminBottomNav = () => {
   }, []);
 
   const navItems = [
-    { name: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard },
+    { name: 'Home', path: '/admin/dashboard', icon: Home },
     { name: 'Exams', path: '/admin/govt-exams/exams', icon: BookOpen },
     { name: 'Quizzes', path: '/admin/quiz/quizzes', icon: BrainCircuit },
     { name: 'CREATE', path: null, icon: Plus },
@@ -175,17 +175,18 @@ const AdminBottomNav = () => {
           const isActive = currentPath === item.path || currentPath.startsWith(item.path + '/');
           return (
             <Link key={item.path} href={item.path} className="flex-1 min-w-0 flex justify-center" aria-label={item.name} title={item.name} aria-current={isActive ? 'page' : undefined}>
-              <div className={`w-full flex items-center justify-center transition-all ${
+              <div className={`w-full flex flex-col items-center justify-center gap-0.5 transition-all ${
                 isActive ? 'bg-gradient-to-t from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000]' : 'text-slate-400 dark:text-slate-500'
               }`}>
                 <span className="relative inline-flex">
-                  <item.icon className="w-6 h-6" strokeWidth={isActive ? 2.5 : 1.8} />
+                  <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />
                   {item.name === 'Notify' && notifCount > 0 && (
                     <span className="absolute -top-1 -right-1.5 min-w-[1.1rem] h-[1.1rem] px-1 bg-red-500 text-white text-[10px] font-black rounded-full flex items-center justify-center">
                       {notifCount > 99 ? '99+' : notifCount}
                     </span>
                   )}
                 </span>
+                <span className={`text-[11px] ${isActive ? 'font-bold' : 'font-medium'}`}>{item.name}</span>
               </div>
             </Link>
           );

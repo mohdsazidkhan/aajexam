@@ -11,8 +11,8 @@ const TicketCard = ({ icon: Icon, title, subtitle, right, children, className = 
           <Icon className="w-4 h-4" />
         </span>
         <div className="min-w-0">
-          <h2 className="text-sm xl:text-base font-black uppercase tracking-[0.14em] truncate">{title}</h2>
-          {subtitle && <p className="text-[10px] xl:text-xs font-bold text-primary-800/70 dark:text-white/70 truncate">{subtitle}</p>}
+          <h2 className="text-sm xl:text-base font-black uppercase tracking-[0.08em] sm:tracking-[0.14em] leading-tight break-words sm:truncate">{title}</h2>
+          {subtitle && <p className="text-[10px] xl:text-xs font-bold text-primary-800/70 dark:text-white/70 leading-tight break-words sm:truncate">{subtitle}</p>}
         </div>
       </div>
       {right && <div className="relative shrink-0">{right}</div>}

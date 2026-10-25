@@ -319,9 +319,11 @@ const ProfilePage = () => {
                       </div>
                     )}
                   </div>
-                  {student?.bio && <p className="text-xs xl:text-sm font-medium text-slate-700 dark:text-white/80 leading-relaxed">{student.bio}</p>}
+                  {student?.bio && <p className="hidden sm:block text-xs xl:text-sm font-medium text-slate-700 dark:text-white/80 leading-relaxed">{student.bio}</p>}
                 </div>
               </div>
+              {/* Phones: bio gets its own full-width row under the photo */}
+              {student?.bio && <p className="sm:hidden text-xs font-medium text-slate-700 dark:text-white/80 leading-relaxed">{student.bio}</p>}
 
               {/* Account details */}
               <div className="space-y-2">
@@ -346,31 +348,31 @@ const ProfilePage = () => {
 
               {/* Footer: actions, socials and barcode */}
               <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-dashed border-slate-300 dark:border-white/25">
-                <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 w-full">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full">
                   {student?.username && (
-                    <Button variant="secondary" size="sm" icon={Eye} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push(`/u/${student.username}`)}>
+                    <Button variant="secondary" size="sm" icon={Eye} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push(`/u/${student.username}`)}>
                       {translate('Public profile')}
                     </Button>
                   )}
-                  <Button variant="secondary" size="sm" icon={Settings} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/settings')}>
+                  <Button variant="secondary" size="sm" icon={Settings} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/settings')}>
                     {translate('Settings')}
                   </Button>
-                  <Button variant="secondary" size="sm" icon={Trophy} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/leaderboard')}>
+                  <Button variant="secondary" size="sm" icon={Trophy} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/leaderboard')}>
                     {translate('Leaderboard')}
                   </Button>
-                  <Button variant="secondary" size="sm" icon={ShieldCheck} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/subscription')}>
+                  <Button variant="secondary" size="sm" icon={ShieldCheck} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/subscription')}>
                     {translate('Subscription')}
                   </Button>
-                  <Button variant="secondary" size="sm" icon={Users} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/referral-history')}>
+                  <Button variant="secondary" size="sm" icon={Users} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/referral-history')}>
                     {translate('Referrals')}
                   </Button>
-                  <Button variant="secondary" size="sm" icon={CreditCard} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/payment-history')}>
+                  <Button variant="secondary" size="sm" icon={CreditCard} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/payment-history')}>
                     {translate('Payment History')}
                   </Button>
-                  <Button variant="secondary" size="sm" icon={Bookmark} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/bookmarks')}>
+                  <Button variant="secondary" size="sm" icon={Bookmark} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/bookmarks')}>
                     {translate('Bookmarks')}
                   </Button>
-                  <Button variant="secondary" size="sm" icon={Swords} className="w-full justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/my-challenges')}>
+                  <Button variant="secondary" size="sm" icon={Swords} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/my-challenges')}>
                     {translate('My Challenges')}
                   </Button>
                 </div>
@@ -502,16 +504,21 @@ const ProfilePage = () => {
                   subtitle={translate('Preparing for {exam}.', { exam: student?.primaryTargetExam || translate('All Exams') })}
                   right={
                     <div className="flex items-center gap-2 sm:gap-3">
-                      <Button variant="secondary" size="sm" icon={History} className="rounded-xl text-[10px] font-black" onClick={() => router.push('/student/exam-history')}>
+                      <button
+                        type="button"
+                        onClick={() => router.push('/student/exam-history')}
+                        className="inline-flex items-center gap-1.5 p-2 sm:px-3 bg-white border-2 border-slate-200 text-black hover:bg-slate-50 dark:bg-slate-800 dark:border-slate-800 dark:text-white dark:hover:bg-slate-700 rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.08em] transition-colors"
+                      >
+                        <History className="w-3.5 h-3.5 shrink-0" />
                         <span className="sr-only sm:not-sr-only">{translate('Exam History')}</span>
-                      </Button>
+                      </button>
                       <div
-                        className="flex flex-col items-center justify-center w-14 h-14 xl:w-16 xl:h-16 border-[3px] border-double border-primary-700 text-primary-800 dark:border-white/80 dark:text-white"
+                        className="flex flex-col items-center justify-center w-10 h-10 sm:w-14 sm:h-14 xl:w-16 xl:h-16 border-[3px] border-double border-primary-700 text-primary-800 dark:border-white/80 dark:text-white"
                         style={{ borderRadius: 12, transform: 'rotate(-8deg)' }}
                         title={translate('Grade')}
                       >
-                        <span className="text-xl xl:text-2xl font-black font-outfit leading-none">{gradeFor(student?.performanceMetrics?.examStats?.overallReadiness || 0)}</span>
-                        <span className="text-[7px] xl:text-[8px] font-black uppercase tracking-[0.2em] mt-0.5">{translate('Grade')}</span>
+                        <span className="text-base sm:text-xl xl:text-2xl font-black font-outfit leading-none">{gradeFor(student?.performanceMetrics?.examStats?.overallReadiness || 0)}</span>
+                        <span className="text-[5px] sm:text-[7px] xl:text-[8px] font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] mt-0.5">{translate('Grade')}</span>
                       </div>
                     </div>
                   }
@@ -547,18 +554,24 @@ const ProfilePage = () => {
                   className="h-full"
                   icon={BrainCircuit}
                   title={translate('Quiz performance')}
+                  subtitle={translate('Preparing for {exam}.', { exam: student?.primaryTargetExam || translate('All Exams') })}
                   right={
                     <div className="flex items-center gap-2 sm:gap-3">
-                      <Button variant="secondary" size="sm" icon={History} className="rounded-xl text-[10px] font-black" onClick={() => router.push('/student/quiz-history')}>
+                      <button
+                        type="button"
+                        onClick={() => router.push('/student/quiz-history')}
+                        className="inline-flex items-center gap-1.5 p-2 sm:px-3 bg-white border-2 border-slate-200 text-black hover:bg-slate-50 dark:bg-slate-800 dark:border-slate-800 dark:text-white dark:hover:bg-slate-700 rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.08em] transition-colors"
+                      >
+                        <History className="w-3.5 h-3.5 shrink-0" />
                         <span className="sr-only sm:not-sr-only">{translate('Quiz History')}</span>
-                      </Button>
+                      </button>
                       <div
-                        className="flex flex-col items-center justify-center w-14 h-14 xl:w-16 xl:h-16 border-[3px] border-double border-primary-700 text-primary-800 dark:border-white/80 dark:text-white"
+                        className="flex flex-col items-center justify-center w-10 h-10 sm:w-14 sm:h-14 xl:w-16 xl:h-16 border-[3px] border-double border-primary-700 text-primary-800 dark:border-white/80 dark:text-white"
                         style={{ borderRadius: 12, transform: 'rotate(-8deg)' }}
                         title={translate('Grade')}
                       >
-                        <span className="text-xl xl:text-2xl font-black font-outfit leading-none">{gradeFor(quizStats?.avgAccuracy || 0)}</span>
-                        <span className="text-[7px] xl:text-[8px] font-black uppercase tracking-[0.2em] mt-0.5">{translate('Grade')}</span>
+                        <span className="text-base sm:text-xl xl:text-2xl font-black font-outfit leading-none">{gradeFor(quizStats?.avgAccuracy || 0)}</span>
+                        <span className="text-[5px] sm:text-[7px] xl:text-[8px] font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] mt-0.5">{translate('Grade')}</span>
                       </div>
                     </div>
                   }

@@ -108,6 +108,7 @@ export async function POST(req) {
                 name: user.name,
                 email: user.email,
                 username: user.username,
+                profilePicture: user.profilePicture || null,
                 phone: user.phone,
                 city: user.city,
                 role: user.role,
