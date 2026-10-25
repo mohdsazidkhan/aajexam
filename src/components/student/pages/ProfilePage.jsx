@@ -258,7 +258,7 @@ const ProfilePage = () => {
                 ))}
               </div>
             </div>
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1">
               {isPro && student?.subscriptionExpiry && (
                 <p className="flex items-baseline gap-1.5 whitespace-nowrap">
                   <span className="text-[8px] xl:text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('Current Plan')}</span>
@@ -445,7 +445,7 @@ const ProfilePage = () => {
         </section>
 
         {/* Sub-tab navigation — green segmented bar */}
-        <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-white ring-1 ring-primary-200 dark:ring-0 dark:bg-gradient-to-r dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 shadow-md relative z-20 w-fit max-w-full" style={{ borderRadius: 12 }}>
+        <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-white ring-1 ring-primary-200 dark:ring-0 dark:bg-gradient-to-r dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 shadow-md relative z-20 w-full sm:w-fit max-w-full" style={{ borderRadius: 12 }}>
           {[
             { id: 'profile', label: 'My Profile', icon: Award },
             { id: 'bank', label: 'Bank Details', icon: Wallet },
@@ -454,7 +454,7 @@ const ProfilePage = () => {
             <button
               key={tab.id}
               onClick={() => setActiveSubTab(tab.id)}
-              className={`flex items-center gap-2 px-5 py-2.5 font-black uppercase text-[10px] xl:text-[11px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-600 text-white dark:bg-white dark:text-primary-700 shadow' : 'text-slate-600 hover:bg-primary-50 dark:text-white/90 dark:hover:bg-white/15'}`}
+              className={`flex flex-1 sm:flex-none items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-5 py-2.5 font-black uppercase text-[10px] xl:text-[11px] tracking-wider transition-all whitespace-nowrap min-w-0 ${activeSubTab === tab.id ? 'bg-primary-600 text-white dark:bg-white dark:text-primary-700 shadow' : 'text-slate-600 hover:bg-primary-50 dark:text-white/90 dark:hover:bg-white/15'}`}
             >
               <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white dark:text-primary-600' : 'text-primary-600 dark:text-primary-300'}`} />
               {translate(tab.label)}
@@ -503,7 +503,7 @@ const ProfilePage = () => {
                   right={
                     <div className="flex items-center gap-2 sm:gap-3">
                       <Button variant="secondary" size="sm" icon={History} className="rounded-xl text-[10px] font-black" onClick={() => router.push('/student/exam-history')}>
-                        {translate('Exam History')}
+                        <span className="sr-only sm:not-sr-only">{translate('Exam History')}</span>
                       </Button>
                       <div
                         className="flex flex-col items-center justify-center w-14 h-14 xl:w-16 xl:h-16 border-[3px] border-double border-primary-700 text-primary-800 dark:border-white/80 dark:text-white"
@@ -550,7 +550,7 @@ const ProfilePage = () => {
                   right={
                     <div className="flex items-center gap-2 sm:gap-3">
                       <Button variant="secondary" size="sm" icon={History} className="rounded-xl text-[10px] font-black" onClick={() => router.push('/student/quiz-history')}>
-                        {translate('Quiz History')}
+                        <span className="sr-only sm:not-sr-only">{translate('Quiz History')}</span>
                       </Button>
                       <div
                         className="flex flex-col items-center justify-center w-14 h-14 xl:w-16 xl:h-16 border-[3px] border-double border-primary-700 text-primary-800 dark:border-white/80 dark:text-white"
