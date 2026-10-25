@@ -2074,6 +2074,7 @@ const KN = {
   'My Followers': 'ನನ್ನ ಫಾಲೋವರ್‌ಗಳು',
   'My Followings': 'ನನ್ನ ಫಾಲೋಯಿಂಗ್',
   'My Referrals': 'ನನ್ನ ರೆಫರಲ್‌ಗಳು',
+  'Previous Year Question Papers': 'ಹಿಂದಿನ ವರ್ಷಗಳ ಪ್ರಶ್ನೆ ಪತ್ರಿಕೆಗಳು',
 };
 
 export default KN;

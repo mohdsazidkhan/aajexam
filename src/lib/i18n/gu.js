@@ -2074,6 +2074,7 @@ const GU = {
   'My Followers': 'મારા ફોલોઅર્સ',
   'My Followings': 'મારા ફોલોઇંગ',
   'My Referrals': 'મારા રેફરલ',
+  'Previous Year Question Papers': 'ગયા વર્ષોના પ્રશ્નપત્રો',
 };
 
 export default GU;

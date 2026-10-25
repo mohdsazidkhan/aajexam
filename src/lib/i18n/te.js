@@ -2074,6 +2074,7 @@ const TE = {
   'My Followers': 'నా ఫాలోవర్లు',
   'My Followings': 'నా ఫాలోయింగ్',
   'My Referrals': 'నా రెఫరల్స్',
+  'Previous Year Question Papers': 'గత సంవత్సరాల ప్రశ్నపత్రాలు',
 };
 
 export default TE;

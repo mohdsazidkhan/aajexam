@@ -2048,6 +2048,7 @@ const SAT = {
   'My Followers': 'ᱤᱧᱟᱜ ᱯᱷᱚᱞᱚᱣᱟᱨ',
   'My Followings': 'ᱤᱧᱟᱜ ᱯᱷᱚᱞᱚᱤᱝ',
   'My Referrals': 'ᱤᱧᱟᱜ ᱨᱮᱯᱷᱟᱨᱟᱞ',
+  'Previous Year Question Papers': 'ᱪᱟᱞᱟᱜ ᱥᱮᱨᱮᱥ ᱨᱮᱭᱟᱜ ᱥᱚᱨᱮᱥ ᱯᱮᱯᱟᱨ',
 };
 
 export default SAT;

@@ -2074,6 +2074,7 @@ const MAI = {
   'My Followers': 'हमर फॉलोअर',
   'My Followings': 'हमर फॉलोइंग',
   'My Referrals': 'हमर रेफरल',
+  'Previous Year Question Papers': 'पछिला बरखक प्रश्नपत्र',
 };
 
 export default MAI;

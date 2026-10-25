@@ -2074,6 +2074,7 @@ const NE = {
   'My Followers': 'मेरा फलोअर',
   'My Followings': 'मेरो फलोइङ',
   'My Referrals': 'मेरा रेफरल',
+  'Previous Year Question Papers': 'अघिल्ला वर्षका प्रश्नपत्र',
 };
 
 export default NE;

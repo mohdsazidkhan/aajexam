@@ -2074,6 +2074,7 @@ const UrduDict = {
   'My Followers': 'میرے فالوورز',
   'My Followings': 'میرے فالوئنگ',
   'My Referrals': 'میرے ریفرلز',
+  'Previous Year Question Papers': 'گزشتہ سالوں کے سوالیہ پرچے',
 };
 
 export default UrduDict;

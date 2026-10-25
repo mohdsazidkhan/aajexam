@@ -2083,6 +2083,7 @@ const HINGLISH = {
   'My Followers': 'My Followers',
   'My Followings': 'My Followings',
   'My Referrals': 'My Referrals',
+  'Previous Year Question Papers': 'Previous Year Question Papers',
 };
 
 export default HINGLISH;

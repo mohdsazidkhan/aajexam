@@ -2074,6 +2074,7 @@ const PA = {
   'My Followers': 'ਮੇਰੇ ਫਾਲੋਅਰ',
   'My Followings': 'ਮੇਰੇ ਫਾਲੋਇੰਗ',
   'My Referrals': 'ਮੇਰੇ ਰੈਫਰਲ',
+  'Previous Year Question Papers': 'ਪਿਛਲੇ ਸਾਲਾਂ ਦੇ ਪ੍ਰਸ਼ਨ ਪੱਤਰ',
 };
 
 export default PA;

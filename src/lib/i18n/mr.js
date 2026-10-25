@@ -2074,6 +2074,7 @@ const MR = {
   'My Followers': 'माझे फॉलोअर्स',
   'My Followings': 'माझे फॉलोइंग',
   'My Referrals': 'माझे रेफरल',
+  'Previous Year Question Papers': 'मागील वर्षांचे प्रश्नपत्रिका',
 };
 
 export default MR;

@@ -2048,6 +2048,7 @@ const MANIPURI = {
   'My Followers': 'ꯑꯩꯒꯤ ꯐꯣꯂꯣꯋꯥꯔ',
   'My Followings': 'ꯑꯩꯒꯤ ꯐꯣꯂꯣꯏꯡ',
   'My Referrals': 'ꯑꯩꯒꯤ ꯔꯦꯐꯔꯦꯜ',
+  'Previous Year Question Papers': 'ꯅꯨꯃꯤꯠ ꯍꯥꯟꯅꯕꯥ ꯆꯍꯤꯒꯤ ꯋꯥꯍꯪ ꯄꯦꯄꯔ',
 };
 
 export default MANIPURI;

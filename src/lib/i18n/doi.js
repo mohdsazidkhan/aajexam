@@ -2074,6 +2074,7 @@ const DogriDict = {
   'My Followers': 'मेरे फॉलोअर',
   'My Followings': 'मेरे फॉलोइंग',
   'My Referrals': 'मेरे रेफरल',
+  'Previous Year Question Papers': 'पिछले सालें दे प्रश्नपत्तर',
 };
 
 export default DogriDict;

@@ -2095,6 +2095,7 @@ const HI = {
   'My Followers': 'मेरे फ़ॉलोअर',
   'My Followings': 'मेरे फ़ॉलोइंग',
   'My Referrals': 'मेरे रेफ़रल',
+  'Previous Year Question Papers': 'पिछले वर्ष के प्रश्न पत्र',
 };
 
 export default HI;

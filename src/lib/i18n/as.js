@@ -2074,6 +2074,7 @@ const AS = {
   'My Followers': 'মোৰ ফলোৱাৰ',
   'My Followings': 'মোৰ ফলোইং',
   'My Referrals': 'মোৰ ৰেফাৰেল',
+  'Previous Year Question Papers': 'যোৱা বছৰৰ প্ৰশ্নপত্ৰ',
 };
 
 export default AS;

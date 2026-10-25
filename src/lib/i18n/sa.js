@@ -2074,6 +2074,7 @@ const SA = {
   'My Followers': 'मम अनुयायिनः',
   'My Followings': 'मम अनुसृताः',
   'My Referrals': 'मम निर्देशाः',
+  'Previous Year Question Papers': 'पूर्ववर्षीयाः प्रश्नपत्राणि',
 };
 
 export default SA;

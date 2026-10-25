@@ -2074,6 +2074,7 @@ const BN = {
   'My Followers': 'আমার ফলোয়ার',
   'My Followings': 'আমার ফলোইং',
   'My Referrals': 'আমার রেফারেল',
+  'Previous Year Question Papers': 'গত বছরের প্রশ্নপত্র',
 };
 
 export default BN;

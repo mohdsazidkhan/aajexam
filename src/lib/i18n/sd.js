@@ -2074,6 +2074,7 @@ const SD = {
   'My Followers': 'منهنجا فالوورز',
   'My Followings': 'منهنجا فالوئنگ',
   'My Referrals': 'منهنجا ريفرل',
+  'Previous Year Question Papers': 'گذريل سالن جا سوالنامہ',
 };
 
 export default SD;

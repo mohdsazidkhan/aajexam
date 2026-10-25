@@ -213,8 +213,8 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                 <div className="py-2 xl:py-4 space-y-3 xl:space-y-5 relative">
                     <PageHero
                         icon={FileText}
-                        eyebrow={translate('Previous Year Papers')}
-                        title={translate('Previous Year Papers')}
+                        eyebrow={translate('Previous Year Question Papers')}
+                        title={translate('Previous Year Question Papers')}
                         actions={
                             <div className="flex flex-wrap items-center gap-2 xl:justify-end">
                                 {[

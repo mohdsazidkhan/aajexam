@@ -2074,6 +2074,7 @@ const OR_ = {
   'My Followers': 'ମୋ ଫଲୋଅର୍',
   'My Followings': 'ମୋ ଫଲୋଇଂ',
   'My Referrals': 'ମୋ ରେଫରାଲ୍',
+  'Previous Year Question Papers': 'ପୂର୍ବ ବର୍ଷର ପ୍ରଶ୍ନପତ୍ର',
 };
 
 export default OR_;

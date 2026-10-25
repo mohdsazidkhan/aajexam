@@ -2074,6 +2074,7 @@ const TA = {
   'My Followers': 'எனது பின்தொடர்பவர்கள்',
   'My Followings': 'நான் பின்தொடர்பவர்கள்',
   'My Referrals': 'எனது பரிந்துரைகள்',
+  'Previous Year Question Papers': 'முந்தைய ஆண்டு வினாத்தாள்கள்',
 };
 
 export default TA;

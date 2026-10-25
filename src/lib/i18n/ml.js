@@ -2074,6 +2074,7 @@ const ML = {
   'My Followers': 'എന്റെ ഫോളോവേഴ്സ്',
   'My Followings': 'എന്റെ ഫോളോയിംഗ്',
   'My Referrals': 'എന്റെ റഫറലുകൾ',
+  'Previous Year Question Papers': 'മുൻ വർഷത്തെ ചോദ്യപേപ്പറുകൾ',
 };
 
 export default ML;

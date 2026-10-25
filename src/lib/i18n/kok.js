@@ -2074,6 +2074,7 @@ const KOK = {
   'My Followers': 'म्हजे फॉलोअर',
   'My Followings': 'म्हजे फॉलोइंग',
   'My Referrals': 'म्हजे रेफरल',
+  'Previous Year Question Papers': 'फाटले वर्सांचे प्रस्नपत्र',
 };
 
 export default KOK;

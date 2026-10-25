@@ -2048,6 +2048,7 @@ const BODO = {
   'My Followers': 'आंनि फलोवार',
   'My Followings': 'आंनि फलोइङ',
   'My Referrals': 'आंनि रेफारेल',
+  'Previous Year Question Papers': 'सिगांग बोसोरनि सोंनाय फेपार',
 };
 
 export default BODO;

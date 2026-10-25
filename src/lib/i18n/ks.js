@@ -2074,6 +2074,7 @@ const KS = {
   'My Followers': 'میون فالوورز',
   'My Followings': 'میون فالوئنگ',
   'My Referrals': 'میون ریفرل',
+  'Previous Year Question Papers': 'گزشتہ سالن ہند سوالیہ پرچہ',
 };
 
 export default KS;
