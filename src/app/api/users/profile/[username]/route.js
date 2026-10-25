@@ -6,6 +6,7 @@ import QuizAttempt from '@/models/QuizAttempt';
 import { protect } from '@/middleware/auth';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 import { getExamAIR, getQuizAIR } from '@/lib/utils/rankUtils';
+import { regionRanksFor } from '@/lib/utils/regionRank';
 
 export const dynamic = 'force-dynamic';
 
@@ -37,6 +38,8 @@ export async function GET(req, { params }) {
             isFollowing = await Follow.exists({ follower: auth.user.id, following: user._id, status: 'active' });
         }
 
+        const regionRanks = user.isPublicProfile || isOwnProfile ? await regionRanksFor(user) : {};
+
         return successResponse({
             user: {
                 id: user._id,
@@ -52,6 +55,7 @@ export async function GET(req, { params }) {
                 followingCount,
                 reelsCount,
                 profileViews: user.profileViews || 0,
+                socialLinks: user.isPublicProfile || isOwnProfile ? (user.socialLinks || {}) : {},
                 isPro: user.subscriptionStatus === 'PRO' && user.status === 'active' && new Date(user.subscriptionExpiry) > new Date(),
                 isPublicProfile: user.isPublicProfile,
                 createdAt: user.createdAt,
@@ -59,7 +63,7 @@ export async function GET(req, { params }) {
             },
             isFollowing: !!isFollowing,
             isOwnProfile,
-            stats: { examAIR, quizAIR, quizzesAttempted }
+            stats: { examAIR, quizAIR, quizzesAttempted, ...regionRanks }
         });
     } catch (error) {
         return errorResponse(error);

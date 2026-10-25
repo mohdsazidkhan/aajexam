@@ -117,3 +117,17 @@ export async function rankPlace({ field, value, limit = 10, userId = null }) {
         me: meId ? ranked.find((r) => String(r.userId) === meId) || null : null,
     };
 }
+
+// The caller's own position in their state and in their city (same ordering as the region pages).
+// Each entry is { place, rank, total }; rank is null when they have no completed exam yet, and the
+// entry is null when the state / city is not set.
+export async function regionRanksFor(user) {
+    const out = { stateRank: null, cityRank: null };
+    await Promise.all([['state', 'stateRank'], ['city', 'cityRank']].map(async ([field, key]) => {
+        const value = String(user?.[field] || '').trim();
+        if (!value) return;
+        const r = await rankPlace({ field, value, limit: 1, userId: user._id });
+        out[key] = { place: r.place, rank: r.me?.rank || null, total: r.totalUsers };
+    }));
+    return out;
+}

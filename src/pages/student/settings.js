@@ -254,11 +254,11 @@ const SettingsPage = () => {
                             </select>
                           </div>
 
-                          <div className="space-y-1">
+                          <div className="space-y-1 min-w-0">
                             <label className="text-xs font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Date of birth')}</label>
                             <input
                               type="date"
-                              className={FIELD_CLASSNAME}
+                              className={`${FIELD_CLASSNAME} min-w-0 max-w-full appearance-none`}
                               min={dobBounds.min}
                               max={dobBounds.max}
                               value={profile.dateOfBirth || ''}

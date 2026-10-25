@@ -176,7 +176,7 @@ const ProfilePage = () => {
     <div key={item.label} className="relative overflow-hidden flex flex-col justify-center bg-white/80 hover:bg-white ring-1 ring-primary-200 dark:bg-white/10 dark:hover:bg-white/15 dark:ring-white/20 px-2.5 py-1.5 transition-colors" style={{ borderRadius: 10 }}>
       <item.icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-primary-600/10 dark:text-white/10" />
       <p className="relative text-base xl:text-xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200 truncate">{item.value}</p>
-      <p className="relative mt-1 text-[8px] xl:text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 leading-tight truncate">{translate(item.label)}</p>
+      <p className="relative mt-1 text-[8px] xl:text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 leading-tight break-words">{translate(item.label)}</p>
     </div>
   );
 
@@ -222,11 +222,11 @@ const ProfilePage = () => {
           <div className="pointer-events-none absolute -bottom-28 right-24 w-80 h-80 bg-primary-300/15 blur-3xl" style={{ borderRadius: '50%' }} />
 
           {/* Ticket header strip */}
-          <div className="relative flex items-center justify-between gap-3 px-4 xl:px-6 py-2 bg-primary-600/10 dark:bg-black/25 border-b border-primary-200 dark:border-white/15">
+          <div className="relative flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 sm:px-4 xl:px-6 py-2 bg-primary-600/10 dark:bg-black/25 border-b border-primary-200 dark:border-white/15">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 min-w-0">
               <div className="flex items-center gap-2 min-w-0">
                 <Award className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />
-                <span className="text-[10px] xl:text-xs font-black uppercase tracking-[0.25em] truncate">AajExam · {translate('Student profile')}</span>
+                <span className="text-[10px] xl:text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.25em] truncate">AajExam · {translate('Student profile')}</span>
               </div>
               {/* Badges */}
               <div className="flex flex-wrap items-center gap-1.5">
@@ -244,10 +244,10 @@ const ProfilePage = () => {
             </div>
             <div className="flex items-center gap-3 shrink-0">
               {isPro && student?.subscriptionExpiry && (
-                <div className="text-right leading-tight">
-                  <p className="text-[8px] xl:text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('Current Plan')}</p>
-                  <p className="text-[10px] xl:text-xs font-bold">{translate('till {date}', { date: new Date(student.subscriptionExpiry).toLocaleDateString() })}</p>
-                </div>
+                <p className="flex items-baseline gap-1.5 whitespace-nowrap">
+                  <span className="text-[8px] xl:text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('Current Plan')}</span>
+                  <span className="text-[10px] xl:text-xs font-bold">{translate('till {date}', { date: new Date(student.subscriptionExpiry).toLocaleDateString() })}</span>
+                </p>
               )}
               <span
                 className={`shrink-0 px-2.5 py-0.5 text-[10px] xl:text-xs font-black uppercase tracking-widest ${isPro ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-[0_2px_12px_rgba(251,191,36,0.45)]' : 'bg-slate-200 text-slate-700 ring-1 ring-slate-300 dark:bg-white/15 dark:text-white dark:ring-white/30'}`}
@@ -301,9 +301,9 @@ const ProfilePage = () => {
                   <ShieldCheck className="w-4 h-4 text-primary-600 dark:text-primary-300" />
                   <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-700 dark:text-white/80">{translate('Account details')}</p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 xl:grid-cols-3 grid-flow-dense gap-2">
                   {accountDetails.map((item) => (
-                    <div key={item.label} className="flex items-center gap-2 px-2 py-1.5 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 10 }}>
+                    <div key={item.label} className={`flex items-center gap-2 px-2 py-1.5 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 min-w-0 ${['Email', 'City'].includes(item.label) ? 'col-span-2 xl:col-span-1' : ''}`} style={{ borderRadius: 10 }}>
                       <div className="w-7 h-7 flex items-center justify-center bg-primary-500/10 text-primary-600 dark:text-primary-300 flex-shrink-0" style={{ borderRadius: 8 }}>
                         <item.icon className="w-4 h-4" />
                       </div>
@@ -318,16 +318,16 @@ const ProfilePage = () => {
 
               {/* Footer: actions, socials and barcode */}
               <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-dashed border-slate-300 dark:border-white/25">
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2 w-full sm:w-auto">
                   {student?.username && (
-                    <Button variant="secondary" size="sm" icon={Eye} className="rounded-xl text-xs font-black" onClick={() => router.push(`/u/${student.username}`)}>
+                    <Button variant="secondary" size="sm" icon={Eye} className="w-full sm:w-auto justify-center rounded-xl text-xs font-black" onClick={() => router.push(`/u/${student.username}`)}>
                       {translate('Public profile')}
                     </Button>
                   )}
-                  <Button variant="primary" size="sm" icon={Settings} className="rounded-xl text-xs font-black" onClick={() => router.push('/student/settings')}>
+                  <Button variant="primary" size="sm" icon={Settings} className="w-full sm:w-auto justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/settings')}>
                     {translate('Settings')}
                   </Button>
-                  <Button variant="secondary" size="sm" icon={Trophy} className="rounded-xl text-xs font-black" onClick={() => router.push('/student/leaderboard')}>
+                  <Button variant="secondary" size="sm" icon={Trophy} className="w-full sm:w-auto justify-center rounded-xl text-xs font-black" onClick={() => router.push('/student/leaderboard')}>
                     {translate('View leaderboard')}
                   </Button>
                 </div>
@@ -335,7 +335,7 @@ const ProfilePage = () => {
                   type="button"
                   onClick={copyReferralCode}
                   title={translate('Copy')}
-                  className="group ml-auto flex flex-col items-end gap-1 px-3 py-2 bg-white/80 ring-1 ring-primary-200 hover:ring-primary-400 dark:bg-white/10 dark:ring-white/20 dark:hover:ring-white/50 transition-all active:scale-95"
+                  className="group w-full sm:w-auto sm:ml-auto flex flex-col items-center sm:items-end gap-1 px-3 py-2 bg-white/80 ring-1 ring-primary-200 hover:ring-primary-400 dark:bg-white/10 dark:ring-white/20 dark:hover:ring-white/50 transition-all active:scale-95"
                   style={{ borderRadius: 10 }}
                 >
                   <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('Referral code')}</span>
@@ -366,7 +366,7 @@ const ProfilePage = () => {
               <div className="grid grid-cols-2 gap-1.5">
                 <div className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
                   <p className="text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-white/70 leading-none">{translate('Exam AIR')}</p>
-                  <div className="flex items-baseline justify-between gap-2">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-2">
                     <p className="text-2xl font-black font-outfit leading-tight text-primary-700 dark:text-primary-200">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
                     <p className="text-[10px] font-bold text-slate-600 dark:text-white/70 text-right leading-tight">
                       {student?.examAIR ? translate('of {total}', { total: student.examAIR.total }) : translate('No exams yet')}
@@ -376,7 +376,7 @@ const ProfilePage = () => {
                 </div>
                 <div className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
                   <p className="text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-white/70 leading-none">{translate('Quiz AIR')}</p>
-                  <div className="flex items-baseline justify-between gap-2">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-2">
                     <p className="text-2xl font-black font-outfit leading-tight">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
                     <p className="text-[10px] font-bold text-slate-600 dark:text-white/70 text-right leading-tight">
                       {student?.quizAIR ? translate('of {total}', { total: student.quizAIR.total }) : translate('No quizzes yet')}
@@ -384,6 +384,21 @@ const ProfilePage = () => {
                     </p>
                   </div>
                 </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-1.5">
+                {[{ label: 'State Rank', data: student?.stateRank }, { label: 'City Rank', data: student?.cityRank }].map(({ label, data }) => (
+                  <div key={label} className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2 min-w-0" style={{ borderRadius: 10 }}>
+                    <p className="text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-white/70 leading-none">{translate(label)}</p>
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-2">
+                      <p className="text-2xl font-black font-outfit leading-tight text-primary-700 dark:text-primary-200">{data?.rank ? `#${data.rank}` : '—'}</p>
+                      <p className="text-[10px] font-bold text-slate-600 dark:text-white/70 text-right leading-tight">
+                        {!data ? translate('Not added') : data.rank ? translate('of {total}', { total: data.total }) : translate('No exams yet')}
+                      </p>
+                    </div>
+                    {data?.place && <p className="text-[9px] font-bold text-slate-500 dark:text-white/60 truncate">{data.place}</p>}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

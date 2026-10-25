@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import Link from '@/components/common/AppLink';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import {
-  Home,
+  LayoutDashboard,
   BookOpen,
   Search,
   User,
@@ -36,7 +36,7 @@ const StudentBottomNav = () => {
   const [showCreate, setShowCreate] = useState(false);
 
   const navItems = [
-    { name: 'Dashboard', path: '/student/dashboard', icon: Home },
+    { name: 'Dashboard', path: '/student/dashboard', icon: LayoutDashboard },
     { name: 'Blogs', path: '/blog', icon: Newspaper },
     { name: 'Exams', path: '/govt-exams', icon: BookOpen },
     { name: 'CREATE', path: null, icon: Plus },
@@ -115,6 +115,7 @@ const StudentBottomNav = () => {
               <button
                 key="create"
                 aria-label={showCreate ? translate('Close create menu') : translate('Create new reel')}
+                title={showCreate ? translate('Close create menu') : translate('Create new reel')}
                 onClick={() => setShowCreate((prev) => !prev)}
                 className="flex-1 min-w-0 flex items-center justify-center -translate-y-5"
               >
@@ -128,12 +129,11 @@ const StudentBottomNav = () => {
           const itemPath = stripStudent(item.path);
           const isActive = currentPath === itemPath || currentPath.startsWith(itemPath + '/');
           return (
-            <Link key={item.path} href={item.path} className="flex-1 min-w-0 flex justify-center" aria-current={isActive ? 'page' : undefined}>
-              <div className={`w-full flex flex-col items-center justify-center gap-0.5 transition-all ${
+            <Link key={item.path} href={item.path} className="flex-1 min-w-0 flex justify-center" aria-label={translate(item.name)} title={translate(item.name)} aria-current={isActive ? 'page' : undefined}>
+              <div className={`w-full flex items-center justify-center transition-all ${
                 isActive ? 'bg-gradient-to-t from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000]' : 'text-slate-400 dark:text-slate-500'
               }`}>
-                <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />
-                <span className={`text-[11px] ${isActive ? 'font-bold' : 'font-medium'}`}>{translate(item.name)}</span>
+                <item.icon className="w-6 h-6" strokeWidth={isActive ? 2.5 : 1.8} />
               </div>
             </Link>
           );

@@ -225,11 +225,11 @@ const ProfileDetailsModal = () => {
                   {GENDERS.map((o) => <option key={o.value} value={o.value}>{translate(o.label)}</option>)}
                 </select>
               </div>
-              <div className="space-y-1">
+              <div className="space-y-1 min-w-0">
                 <label className={label}>{translate('Date of birth')}</label>
                 <input
                   type="date"
-                  className={FIELD_CLASSNAME}
+                  className={`${FIELD_CLASSNAME} min-w-0 max-w-full min-h-[2.75rem] appearance-none`}
                   min={dobBounds.min}
                   max={dobBounds.max}
                   value={form.dateOfBirth}

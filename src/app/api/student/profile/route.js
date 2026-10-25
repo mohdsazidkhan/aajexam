@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { regionRanksFor } from '@/lib/utils/regionRank';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import BankDetail from '@/models/BankDetail';
@@ -38,6 +39,8 @@ export async function GET(req) {
         ]);
         if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
+        const regionRanks = await regionRanksFor(user);
+
         // Get profile completion details
         const profileCompletion = user.getProfileCompletionDetails();
 
@@ -55,7 +58,8 @@ export async function GET(req) {
                 lockedBalance: !isPro ? walletBalance : 0,
                 isPro,
                 examAIR,
-                quizAIR
+                quizAIR,
+                ...regionRanks
             }
         });
 

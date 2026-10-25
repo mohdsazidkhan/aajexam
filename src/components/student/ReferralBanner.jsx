@@ -62,7 +62,7 @@ const ReferralBanner = ({ user }) => {
 
   return (
     <section
-      className="relative overflow-hidden mb-8 font-outfit text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-primary-600 dark:via-primary-700 dark:to-primary-900"
+      className="relative overflow-hidden mb-8 font-outfit text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950"
       style={{ borderRadius: 16 }}
     >
       {/* Decoration */}

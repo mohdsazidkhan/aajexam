@@ -119,9 +119,9 @@ export const ProfileSkeleton = () => (
 export const PublicProfileSkeleton = () => (
   <div className="font-outfit w-full pt-3 xl:pt-5 space-y-2 xl:space-y-3">
     <div className="overflow-hidden bg-background-surface ring-1 ring-primary-200 dark:ring-white/10 shadow-2xl" style={{ borderRadius: 32 }}>
-      <div className="grid grid-cols-1 xl:grid-cols-[1fr_auto] gap-3 xl:gap-6 p-3 sm:p-4 xl:p-5">
+      <div className="p-3 sm:p-4 xl:p-5">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4">
-          <Sh className="w-20 h-20 sm:w-24 sm:h-24 rounded-full shrink-0" />
+          <Sh className="w-16 h-20 sm:w-20 sm:h-24 xl:w-24 xl:h-28 rounded-md shrink-0" />
           <div className="flex-1 w-full min-w-0 space-y-1.5 flex flex-col items-center sm:items-start">
             <Sh className="h-7 xl:h-8 w-48 rounded-lg" />
             <div className="flex gap-1.5">
@@ -136,9 +136,11 @@ export const PublicProfileSkeleton = () => (
               <Sh className="h-8 w-28 rounded-xl" />
               <Sh className="h-8 w-32 rounded-xl" />
             </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full max-w-3xl pt-1">
+              {[0, 1, 2, 3].map((i) => <Sh key={i} className="h-14 rounded-xl" />)}
+            </div>
           </div>
         </div>
-        <Sh className="w-full xl:w-60 h-36 rounded-3xl self-start" />
       </div>
       {[0, 1].map((row) => (
         <div key={row} className="grid grid-cols-2 sm:grid-cols-4 border-t border-primary-200 dark:border-white/15">

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from '@/components/common/AppLink';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
-import { PlayCircle, Eye, FileText, Lightbulb, Zap, Newspaper, BarChart3, Trophy, Award, MapPin, Target, MessageSquare, HelpCircle, Users, UserCheck, TrendingUp } from 'lucide-react';
+import { PlayCircle, Eye, FileText, Lightbulb, Zap, Newspaper, BarChart3, Trophy, Award, MapPin, Target, MessageSquare, HelpCircle, ArrowRight, Users, UserCheck, TrendingUp, Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import API from '../../lib/api';
 import { PublicProfileSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
@@ -35,8 +35,16 @@ const CountUp = ({ value, prefix = '', suffix = '', className = '' }) => {
   return <span className={className}>{prefix}{n.toLocaleString()}{suffix}</span>;
 };
 
+// "View All" link at the end of a section heading (own profile only).
+const ViewAll = ({ href, label }) => (
+  <Link href={href} className="inline-flex items-center gap-1 shrink-0 text-[10px] font-black uppercase tracking-wider text-primary-700 dark:text-primary-300 hover:underline">
+    {label}
+    <ArrowRight className="w-3 h-3" />
+  </Link>
+);
+
 // Section card: eyebrow heading with a fading rule, over a soft glowing surface.
-const Section = ({ icon: Icon, title, meta, className = '', children }) => (
+const Section = ({ icon: Icon, title, meta, action, className = '', children }) => (
   <section
     className={`group/section relative overflow-hidden bg-background-surface p-3 sm:p-4 ring-1 ring-primary-500/15 shadow-sm transition-shadow hover:shadow-[0_0_48px_-18px] hover:shadow-primary-500/50 ${className}`}
     style={{ borderRadius: 22 }}
@@ -49,12 +57,15 @@ const Section = ({ icon: Icon, title, meta, className = '', children }) => (
       {title}
       {meta !== undefined && <span className="px-2 py-0.5 bg-primary-500/10 text-primary-700 dark:text-primary-300 text-[10px] tracking-normal" style={{ borderRadius: 999 }}>{meta}</span>}
       <span className="flex-1 h-px bg-gradient-to-r from-primary-500/40 to-transparent" />
+      {action}
     </h2>
     <div className="relative">{children}</div>
   </section>
 );
 
-const LINE_CLS = 'border-primary-200 dark:border-white/15';
+const SOCIAL_ICONS = { instagram: Instagram, facebook: Facebook, x: Twitter, youtube: Youtube };
+
+const LINE_CLS = 'border-slate-200 dark:border-white/15';
 
 const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   const { translate } = useTranslate();
@@ -127,7 +138,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   const fetchCommunityQuestions = useCallback(async (page = 1) => {
     try {
       setCqLoading(true);
-      const res = await API.request(`/api/users/profile/${encodeURIComponent(username)}/community-questions?page=${page}&limit=5`);
+      const res = await API.request(`/api/users/profile/${encodeURIComponent(username)}/community-questions?page=${page}&limit=6`);
       if (res?.success) {
         setCQuestions(prev => page === 1 ? res.questions : [...prev, ...res.questions]);
         setCqTotal(res.pagination.total);
@@ -181,6 +192,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   const compact = (n) => (n >= 1000 ? `${(n / 1000).toFixed(1)}K` : n || 0);
   const exam = profile.performanceMetrics?.examStats;
   const showStats = profile.isPublicProfile || isOwnProfile;
+  const socialLinks = Object.entries(profile.socialLinks || {}).filter(([key, url]) => SOCIAL_ICONS[key] && /^https?:\/\//i.test(url || ''));
   const initial = profile.name?.charAt(0)?.toUpperCase() || 'U';
 
   const stats = [
@@ -212,39 +224,53 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
         {/* ══════════ HERO — aurora, spinning-ring avatar, rank card, glass stats ══════════ */}
         <section
-          className="relative overflow-hidden text-slate-900 dark:text-white shadow-2xl ring-1 ring-primary-200 dark:ring-white/10 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950"
+          className="relative overflow-hidden text-slate-900 dark:text-white shadow-2xl ring-1 ring-slate-200 dark:ring-white/10 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950"
           style={{ borderRadius: 32 }}
         >
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '20px 20px' }} />
-          <div className="pointer-events-none absolute -top-32 -left-24 w-[26rem] h-[26rem] bg-primary-300/40 dark:bg-primary-500/25 blur-3xl motion-safe:animate-pulse" style={{ borderRadius: '50%' }} />
-          <div className="pointer-events-none absolute -bottom-40 right-0 w-[30rem] h-[30rem] bg-primary-300/30 dark:bg-primary-600/25 blur-3xl motion-safe:animate-pulse" style={{ borderRadius: '50%', animationDelay: '1.2s' }} />
-          <span className="pointer-events-none absolute right-6 -bottom-10 select-none text-[220px] font-black leading-none text-primary-600/[0.07] dark:text-white/[0.06]">{initial}</span>
+          <div className="pointer-events-none absolute -top-32 -left-24 w-[26rem] h-[26rem] bg-primary-300/15 dark:bg-primary-500/25 blur-3xl motion-safe:animate-pulse" style={{ borderRadius: '50%' }} />
+          <div className="pointer-events-none absolute -bottom-40 right-0 w-[30rem] h-[30rem] bg-primary-300/10 dark:bg-primary-600/25 blur-3xl motion-safe:animate-pulse" style={{ borderRadius: '50%', animationDelay: '1.2s' }} />
+          <span className="pointer-events-none absolute right-6 -bottom-10 select-none text-[220px] font-black leading-none text-slate-900/[0.04] dark:text-white/[0.06]">{initial}</span>
 
-          <div className="relative z-10 grid grid-cols-1 xl:grid-cols-[1fr_auto] gap-3 xl:gap-6 p-3 sm:p-4 xl:p-5">
+          <div className="relative z-10 p-3 sm:p-4 xl:p-5">
             {/* Identity */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
-              <div className="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary-300 via-primary-500 to-primary-700 motion-safe:animate-spin" style={{ borderRadius: '50%', animationDuration: '7s' }} />
-                <div className="absolute inset-[4px] bg-white dark:bg-slate-900" style={{ borderRadius: '50%' }} />
+              {/* Passport-style photo — same as the profile page */}
+              <div className="shrink-0 bg-white p-1 shadow-lg rotate-[-2deg]" style={{ borderRadius: 6 }}>
                 {profile.profilePicture ? (
                   <Image
                     src={profile.profilePicture}
                     alt={profile.name}
-                    width={96}
-                    height={96}
-                    className="absolute inset-[8px] w-[calc(100%-16px)] h-[calc(100%-16px)] object-cover bg-slate-200 dark:bg-slate-700"
-                    style={{ borderRadius: '50%' }}
+                    width={112}
+                    height={112}
+                    className="w-16 h-20 sm:w-20 sm:h-24 xl:w-24 xl:h-28 rounded-lg xl:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm object-cover bg-slate-200 dark:bg-slate-700 flex-shrink-0"
                   />
                 ) : (
-                  <div className="absolute inset-[8px] flex items-center justify-center bg-primary-600 text-white text-4xl font-black" style={{ borderRadius: '50%' }}>{initial}</div>
+                  <div className="w-16 h-20 sm:w-20 sm:h-24 xl:w-24 xl:h-28 rounded-lg xl:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 text-3xl xl:text-4xl font-black flex-shrink-0">
+                    {initial}
+                  </div>
                 )}
               </div>
 
               <div className="min-w-0 flex-1 space-y-1.5">
-                <h1 className="text-xl sm:text-2xl xl:text-3xl font-black uppercase tracking-tight leading-none break-words bg-gradient-to-r from-slate-900 via-slate-900 to-primary-600 dark:from-white dark:via-white dark:to-primary-200 bg-clip-text text-transparent">{profile.name}</h1>
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1.5">
+                  <h1 className="text-xl sm:text-2xl xl:text-3xl font-black uppercase tracking-tight leading-none break-words bg-gradient-to-r from-slate-900 via-slate-900 to-primary-600 dark:from-white dark:via-white dark:to-primary-200 bg-clip-text text-transparent">{profile.name}</h1>
+                  {socialLinks.length > 0 && (
+                    <div className="flex items-center gap-1.5">
+                      {socialLinks.map(([key, url]) => {
+                        const Icon = SOCIAL_ICONS[key];
+                        return (
+                          <a key={key} href={url} target="_blank" rel="noopener noreferrer nofollow" aria-label={key} className="p-1.5 bg-white hover:bg-slate-50 text-slate-700 ring-1 ring-slate-200 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/20 transition-colors" style={{ borderRadius: 10 }}>
+                            <Icon className="w-4 h-4" />
+                          </a>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5">
                   {profile.username && (
-                    <p className="px-2.5 py-0.5 bg-primary-500/10 text-primary-700 ring-1 ring-primary-500/25 dark:bg-white/15 dark:text-primary-100 dark:ring-white/20 text-xs font-bold" style={{ borderRadius: 999 }}>@{profile.username}</p>
+                    <p className="px-2.5 py-0.5 bg-slate-100 text-primary-700 ring-1 ring-slate-200 dark:bg-white/15 dark:text-primary-100 dark:ring-white/20 text-xs font-bold" style={{ borderRadius: 999 }}>@{profile.username}</p>
                   )}
                   {profile.isPro ? (
                     <ProBadge size="sm" />
@@ -252,7 +278,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                     <span className="px-2.5 py-0.5 bg-slate-200 text-slate-700 ring-1 ring-slate-300 dark:bg-white/15 dark:text-white dark:ring-white/30 text-[10px] font-black uppercase tracking-widest" style={{ borderRadius: 999 }}>{translate('FREE')}</span>
                   )}
                   {(profile.badges || []).map((badge, index) => (
-                    <span key={index} className="inline-flex items-center gap-1 pl-1 pr-2.5 py-0.5 bg-gradient-to-r from-primary-500/20 to-primary-500/5 ring-1 ring-primary-500/30 text-primary-800 dark:from-white/25 dark:to-white/10 dark:ring-white/30 dark:text-white text-[10px] font-black uppercase tracking-wider shadow-[0_0_18px_-6px] shadow-primary-500/50" style={{ borderRadius: 999 }}>
+                    <span key={index} className="inline-flex items-center gap-1 pl-1 pr-2.5 py-0.5 bg-gradient-to-r from-slate-100 to-slate-50 ring-1 ring-slate-200 text-slate-800 dark:from-white/25 dark:to-white/10 dark:ring-white/30 dark:text-white text-[10px] font-black uppercase tracking-wider shadow-[0_0_18px_-6px] shadow-primary-500/50" style={{ borderRadius: 999 }}>
                       <span className="flex items-center justify-center w-4 h-4 bg-primary-600 text-white dark:bg-white dark:text-primary-700" style={{ borderRadius: '50%' }}><Award className="w-2.5 h-2.5" /></span>
                       {badge}
                     </span>
@@ -262,12 +288,12 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
                     {profile.city && (
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-primary-500/10 text-primary-800 ring-1 ring-primary-500/25 dark:bg-white/15 dark:text-white dark:ring-white/20 text-[10px] font-bold" style={{ borderRadius: 999 }}>
+                      <span className="inline-flex max-w-full items-center gap-1.5 px-2.5 py-1 bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-white/15 dark:text-white dark:ring-white/20 text-[10px] font-bold" style={{ borderRadius: 999 }}>
                         <MapPin className="w-3.5 h-3.5" />{profile.city}{profile.state && `, ${profile.state}`}
                       </span>
                     )}
                     {profile.primaryTargetExam && profile.primaryTargetExam !== 'All Exams' && (
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-primary-600 text-white dark:bg-white dark:text-primary-800 text-[10px] font-black shadow-md" style={{ borderRadius: 999 }}>
+                      <span className="inline-flex max-w-full items-center gap-1.5 px-2.5 py-1 bg-primary-600 text-white dark:bg-white dark:text-primary-800 text-[10px] font-black shadow-md" style={{ borderRadius: 999 }}>
                         <Target className="w-3.5 h-3.5" />Preparing for {profile.primaryTargetExam}
                       </span>
                     )}
@@ -288,14 +314,14 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                         {translate('Settings')}
                       </button>
                       <button
-                        className="px-4 py-2 bg-primary-500/10 hover:bg-primary-500/20 text-primary-800 ring-1 ring-primary-500/30 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/30 font-black uppercase tracking-wider text-[10px] active:translate-y-0.5 transition-all"
+                        className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-800 ring-1 ring-slate-300 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/30 font-black uppercase tracking-wider text-[10px] active:translate-y-0.5 transition-all"
                         style={{ borderRadius: 12 }}
                         onClick={() => router.push('/student/profile')}
                       >
                         {translate('View Profile')}
                       </button>
                       <button
-                        className="px-4 py-2 bg-primary-500/10 hover:bg-primary-500/20 text-primary-800 ring-1 ring-primary-500/30 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/30 font-black uppercase tracking-wider text-[10px] active:translate-y-0.5 transition-all"
+                        className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-800 ring-1 ring-slate-300 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/30 font-black uppercase tracking-wider text-[10px] active:translate-y-0.5 transition-all"
                         style={{ borderRadius: 12 }}
                         onClick={() => router.push('/student/leaderboard')}
                       >
@@ -304,44 +330,36 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                     </>
                   )}
                 </div>
+                {showStats && (
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 max-w-3xl text-left">
+                    {[
+                      { label: 'Exam AIR', data: profile.examAIR, empty: 'No exams yet' },
+                      { label: 'Quiz AIR', data: profile.quizAIR, empty: 'No quizzes yet' },
+                      { label: 'State Rank', data: profile.stateRank, empty: 'No exams yet', notSet: true },
+                      { label: 'City Rank', data: profile.cityRank, empty: 'No exams yet', notSet: true },
+                    ].map((r) => (
+                      <div key={r.label} className="min-w-0 px-3 py-2 bg-white ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 backdrop-blur" style={{ borderRadius: 12 }}>
+                        <p className="text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70 truncate">{translate(r.label)}</p>
+                        {r.data?.rank
+                          ? <CountUp value={r.data.rank} prefix="#" className="block text-2xl font-black leading-none tracking-tight text-primary-700 dark:text-primary-100" />
+                          : <span className="block text-2xl font-black leading-none">—</span>}
+                        <p className="mt-1 text-[9px] font-bold uppercase tracking-wider text-slate-500 dark:text-white/70 truncate">
+                          {r.notSet && !r.data ? translate('Not added') : r.data?.rank ? translate('of {total}', { total: r.data.total }) : translate(r.empty)}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
-
-            {/* Rank card */}
-            {showStats && (
-              <div className="relative overflow-hidden self-start w-full xl:w-60 p-3 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/25 backdrop-blur-md shadow-xl" style={{ borderRadius: 24 }}>
-                <Trophy className="pointer-events-none absolute -right-4 -bottom-4 w-28 h-28 text-primary-600/10 dark:text-white/10 -rotate-12" />
-                <p className="relative flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-primary-700 dark:text-primary-100">
-                  <Trophy className="w-3.5 h-3.5" />{translate('All India Rank')}
-                </p>
-                <div className="relative mt-1 flex items-end justify-between gap-3">
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70">{translate('Exam AIR')}</p>
-                    {profile.examAIR
-                      ? <CountUp value={profile.examAIR.rank} prefix="#" className="block text-3xl font-black leading-none tracking-tight" />
-                      : <span className="block text-3xl font-black leading-none">—</span>}
-                  </div>
-                  <p className="pb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-white/70 text-right">{profile.examAIR ? translate('of {total}', { total: profile.examAIR.total }) : translate('No exams yet')}</p>
-                </div>
-                <div className="relative mt-2 pt-2 border-t border-slate-200 dark:border-white/20 flex items-end justify-between gap-3">
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70">{translate('Quiz AIR')}</p>
-                    {profile.quizAIR
-                      ? <CountUp value={profile.quizAIR.rank} prefix="#" className="block text-3xl font-black leading-none tracking-tight text-primary-700 dark:text-primary-100" />
-                      : <span className="block text-3xl font-black leading-none">—</span>}
-                  </div>
-                  <p className="pb-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-white/70 text-right">{profile.quizAIR ? translate('of {total}', { total: profile.quizAIR.total }) : translate('No quizzes yet')}</p>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Glass stat strip */}
-          <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-primary-200 dark:border-white/15 bg-primary-500/5 dark:bg-black/15">
+          <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-slate-200 dark:border-white/15 bg-slate-50/80 dark:bg-black/15">
             {stats.map((s, i) => {
               const body = (
-                <div className="flex items-center justify-center sm:justify-start gap-2.5 px-3 py-2">
-                  <span className="flex items-center justify-center w-7 h-7 bg-primary-500/10 text-primary-700 ring-1 ring-primary-500/20 dark:bg-white/15 dark:text-white dark:ring-white/20" style={{ borderRadius: 9 }}>
+                <div className="flex w-full items-center justify-start gap-2.5 px-3 py-2">
+                  <span className="flex items-center justify-center w-7 h-7 bg-white text-primary-700 ring-1 ring-slate-200 dark:bg-white/15 dark:text-white dark:ring-white/20" style={{ borderRadius: 9 }}>
                     <s.icon className="w-3.5 h-3.5" />
                   </span>
                   <div className="text-left">
@@ -352,7 +370,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               );
               const cls = `${LINE_CLS} ${i % 2 === 1 ? 'border-l' : ''} ${i > 1 ? 'border-t sm:border-t-0' : ''} ${i > 0 ? 'sm:border-l' : ''}`;
               return s.href ? (
-                <button key={s.label} type="button" className={`${cls} hover:bg-primary-500/10 dark:hover:bg-white/10 transition-colors`} onClick={() => router.push(s.href)}>{body}</button>
+                <button key={s.label} type="button" className={`${cls} hover:bg-slate-100 dark:hover:bg-white/10 transition-colors`} onClick={() => router.push(s.href)}>{body}</button>
               ) : (
                 <div key={s.label} className={cls}>{body}</div>
               );
@@ -361,22 +379,22 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
           {/* Exam statistics strip */}
           {showStats && (
-            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-primary-200 dark:border-white/15 bg-primary-500/10 dark:bg-black/25">
+            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-slate-200 dark:border-white/15 bg-slate-100/80 dark:bg-black/25">
               {[
                 { label: 'Tests', value: exam?.mockTestsAttempted || 0, icon: FileText },
                 { label: 'Quizzes', value: profile.quizzesAttempted || 0, icon: HelpCircle },
                 { label: 'Readiness', value: exam?.overallReadiness || 0, icon: TrendingUp, pct: true },
                 { label: 'Average', value: exam?.averageMockScore || 0, icon: BarChart3, pct: true },
               ].map((e, i) => (
-                <div key={e.label} className={`flex items-center justify-center sm:justify-start gap-2.5 px-3 py-2 ${LINE_CLS} ${i % 2 === 1 ? 'border-l' : ''} ${i > 1 ? 'border-t sm:border-t-0' : ''} ${i > 0 ? 'sm:border-l' : ''}`}>
-                  <span className="flex items-center justify-center w-7 h-7 bg-primary-500/10 text-primary-700 ring-1 ring-primary-500/20 dark:bg-white/15 dark:text-white dark:ring-white/20" style={{ borderRadius: 9 }}>
+                <div key={e.label} className={`flex w-full items-center justify-start gap-2.5 px-3 py-2 ${LINE_CLS} ${i % 2 === 1 ? 'border-l' : ''} ${i > 1 ? 'border-t sm:border-t-0' : ''} ${i > 0 ? 'sm:border-l' : ''}`}>
+                  <span className="flex items-center justify-center w-7 h-7 bg-white text-primary-700 ring-1 ring-slate-200 dark:bg-white/15 dark:text-white dark:ring-white/20" style={{ borderRadius: 9 }}>
                     <e.icon className="w-3.5 h-3.5" />
                   </span>
                   <div className="text-left min-w-0">
                     <CountUp value={e.value} suffix={e.pct ? '%' : ''} className="block text-base sm:text-lg font-black leading-none" />
                     <span className="block mt-0.5 text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70">{translate(e.label)}</span>
                     {e.pct && (
-                      <span className="block mt-1 h-1 w-16 bg-primary-500/20 dark:bg-white/20 overflow-hidden" style={{ borderRadius: 999 }}>
+                      <span className="block mt-1 h-1 w-16 bg-slate-200 dark:bg-white/20 overflow-hidden" style={{ borderRadius: 999 }}>
                         <span className="block h-full bg-primary-600 dark:bg-white" style={{ width: `${Math.min(100, Math.max(0, e.value))}%`, borderRadius: 999 }} />
                       </span>
                     )}
@@ -391,10 +409,10 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-2 xl:gap-3 mt-2 xl:mt-3 pb-6 items-start">
           {/* Community questions */}
           {cQuestions.length > 0 && (
-            <Section icon={HelpCircle} title={translate('Community Questions')} meta={cqTotal} className="xl:col-span-12">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+            <Section icon={HelpCircle} title={translate('Community Questions')} meta={cqTotal} action={isOwnProfile && <ViewAll href="/student/my-questions" label={translate('View All')} />} className="xl:col-span-12">
+              <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1 no-scrollbar md:grid md:grid-cols-2 xl:grid-cols-3 md:overflow-visible md:pb-0 md:mx-0 md:px-0">
                 {cQuestions.map((q) => (
-                  <Link href={`/community-questions/${q._id}`} key={q._id}>
+                  <Link href={`/community-questions/${q._id}`} key={q._id} className="snap-start shrink-0 w-[80%] sm:w-[55%] md:w-auto md:shrink">
                     <div className="group relative h-full p-4 pl-5 bg-primary-500/5 ring-1 ring-primary-500/15 hover:ring-primary-500/45 hover:-translate-y-0.5 hover:shadow-lg transition-all overflow-hidden" style={{ borderRadius: 18 }}>
                       <span className="absolute left-0 inset-y-0 w-1.5 bg-gradient-to-b from-primary-400 to-primary-700" />
                       <p className="text-sm font-bold text-content-primary leading-snug line-clamp-2 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors">{q.question}</p>
@@ -422,7 +440,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
           {/* Reels — swipeable carousel */}
           {reels.length > 0 && (
-            <Section icon={PlayCircle} title={translate('Reels')} meta={reelsTotal} className="xl:col-span-12">
+            <Section icon={PlayCircle} title={translate('Reels')} meta={reelsTotal} action={isOwnProfile && <ViewAll href="/student/my-reels" label={translate('View All')} />} className="xl:col-span-12">
               <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1 no-scrollbar">
                 {reels.map((reel) => {
                   const config = typeConfig[reel.type] || typeConfig.question;
