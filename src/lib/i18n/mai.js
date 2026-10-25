@@ -2062,6 +2062,9 @@ const MAI = {
   'View Profile': 'प्रोफाइल देखू',
   'Quiz performance': 'क्विज प्रदर्शन',
   'View Rank': 'रैंक देखू',
+  'Hours': 'घंटा',
+  'Min': 'मिनट',
+  'Sec': 'सेकंड',
 };
 
 export default MAI;

@@ -2062,6 +2062,9 @@ const OR_ = {
   'View Profile': 'ପ୍ରୋଫାଇଲ୍ ଦେଖନ୍ତୁ',
   'Quiz performance': 'କ୍ୱିଜ୍ ପ୍ରଦର୍ଶନ',
   'View Rank': 'ର‍୍ୟାଙ୍କ ଦେଖନ୍ତୁ',
+  'Hours': 'ଘଣ୍ଟା',
+  'Min': 'ମିନିଟ୍',
+  'Sec': 'ସେକେଣ୍ଡ',
 };
 
 export default OR_;

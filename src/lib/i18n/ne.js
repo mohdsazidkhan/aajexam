@@ -2062,6 +2062,9 @@ const NE = {
   'View Profile': 'प्रोफाइल हेर्नुहोस्',
   'Quiz performance': 'क्विज प्रदर्शन',
   'View Rank': 'र्‍याङ्क हेर्नुहोस्',
+  'Hours': 'घण्टा',
+  'Min': 'मिनेट',
+  'Sec': 'सेकेन्ड',
 };
 
 export default NE;

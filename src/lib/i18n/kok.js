@@ -2062,6 +2062,9 @@ const KOK = {
   'View Profile': 'प्रोफायल पळयात',
   'Quiz performance': 'क्विझ कामगिरी',
   'View Rank': 'रँक पळयात',
+  'Hours': 'वरां',
+  'Min': 'मिनटां',
+  'Sec': 'सेकंद',
 };
 
 export default KOK;

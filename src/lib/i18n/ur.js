@@ -2062,6 +2062,9 @@ const UrduDict = {
   'View Profile': 'پروفائل دیکھیں',
   'Quiz performance': 'کوئز کارکردگی',
   'View Rank': 'رینک دیکھیں',
+  'Hours': 'گھنٹے',
+  'Min': 'منٹ',
+  'Sec': 'سیکنڈ',
 };
 
 export default UrduDict;

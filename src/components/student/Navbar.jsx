@@ -30,6 +30,33 @@ import Image from "next/image";
 import ThemeColorMenuButton from '../common/ThemeColorMenuButton';
 import useTranslate from '../../hooks/useTranslate';
 
+// Desktop navbar title: label of the active page (same wording as the sidebar entries).
+const PAGE_TITLES = [
+  ['/student/dashboard', 'Dashboard'], ['/student/notifications', 'Notifications'], ['/features', 'Features'],
+  ['/search', 'Search'], ['/reels/create', 'Create Reel'], ['/reels', 'Reels'], ['/student/my-reels', 'My Reels'],
+  ['/student/bookmarks', 'Bookmarks'], ['/govt-exams', 'Govt. Exams'], ['/quizzes', 'Quizzes'], ['/quiz', 'Quizzes'],
+  ['/subjects', 'Subjects'], ['/topics', 'Topics'], ['/blog', 'Blog'],
+  ['/community-questions/ask', 'Create Q&A'], ['/community-questions', 'Community Q&A'],
+  ['/student/my-questions', 'My Q&A'], ['/daily-challenge', 'Daily Challenge'], ['/student/streak', 'Streak'],
+  ['/current-affairs', 'Current Affairs'], ['/exam-news', 'Exam News'], ['/student/exam-calendar', 'Exam Calendar'],
+  ['/pyq', "PYQ's"], ['/student/syllabus-tracker', 'Syllabus Tracker'], ['/student/revision', 'Revision Queue'],
+  ['/student/study-plan', 'Study Planner'], ['/notes', 'Notes & Formulas'], ['/interview-questions', 'Interview Questions'],
+  ['/mentors', 'Mentors'], ['/student/leaderboard', 'Leaderboard'], ['/student/all-india-rank', 'All India Rank'],
+  ['/student/state-rank', 'State Rank'], ['/student/city-rank', 'City Rank'], ['/student/my-analytics', 'Performance'],
+  ['/student/readiness', 'Exam Readiness'], ['/student/exam-history', 'Exam History'],
+  ['/student/payment-history', 'Payment History'], ['/student/quiz-history', 'Quiz History'],
+  ['/student/my-challenges', 'My Challenges'], ['/student/referral-history', 'Referrals'],
+  ['/student/profile', 'Profile'], ['/student/subscription', 'Subscription'], ['/student/settings', 'Settings'],
+];
+
+const pageTitleFor = (pathname) => {
+  const path = pathname || '';
+  const hit = PAGE_TITLES.filter(([p]) => path === p || path.startsWith(p + '/')).sort((a, b) => b[0].length - a[0].length)[0];
+  if (hit) return hit[1];
+  const seg = path.split('/').filter((x) => x && x !== 'student' && !x.startsWith('['))[0];
+  return seg ? seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) : '';
+};
+
 const StudentNavbar = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -104,13 +131,14 @@ const StudentNavbar = () => {
   const rawPlan = (user.subscriptionStatus || 'FREE').toUpperCase();
   const isExpired = rawPlan === 'PRO' && user.subscriptionExpiry && new Date(user.subscriptionExpiry) <= new Date();
   const plan = isExpired ? 'EXPIRED' : rawPlan;
+  const pageTitle = pageTitleFor(router.pathname);
   const planBadgeClassWeb = `absolute top-2 right-1 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow'}`;
   const planBadgeClassMobile = `absolute top-1 -right-[45px] px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow'}`;
 
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-[150] h-12 xl:h-16 bg-white dark:bg-black border-b-2 border-slate-100 dark:border-slate-800 flex items-center">
-        <div className="w-full mx-auto px-2 xl:px-4 flex items-center justify-between">
+        <div className="relative w-full mx-auto px-2 xl:px-4 flex items-center justify-between">
 
           {/* Left */}
           <div className="flex items-center gap-2 min-w-0">
@@ -148,6 +176,13 @@ const StudentNavbar = () => {
               <span className={planBadgeClassMobile}>{plan}</span>
             </Link>
           </div>
+
+          {/* Active page title — desktop: starts where the sidebar ends (240px) so it lines up with the page content */}
+          {pageTitle && (
+            <p className="hidden xl:block absolute left-[256px] top-1/2 -translate-y-1/2 max-w-[13rem] 2xl:max-w-[22rem] truncate pl-3 border-l-4 border-primary-600 dark:border-primary-300 leading-tight text-lg font-black uppercase tracking-tight text-slate-900 dark:text-white">
+              {translate(pageTitle)}
+            </p>
+          )}
 
           {/* Center — logged-in user's name on desktop */}
           <div className="hidden xl:block absolute left-1/2 -translate-x-1/2">

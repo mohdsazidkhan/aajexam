@@ -2062,6 +2062,9 @@ const PA = {
   'View Profile': 'ਪ੍ਰੋਫਾਈਲ ਵੇਖੋ',
   'Quiz performance': 'ਕੁਇਜ਼ ਪ੍ਰਦਰਸ਼ਨ',
   'View Rank': 'ਰੈਂਕ ਵੇਖੋ',
+  'Hours': 'ਘੰਟੇ',
+  'Min': 'ਮਿੰਟ',
+  'Sec': 'ਸਕਿੰਟ',
 };
 
 export default PA;

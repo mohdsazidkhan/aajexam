@@ -2062,6 +2062,9 @@ const KN = {
   'View Profile': 'ಪ್ರೊಫೈಲ್ ನೋಡಿ',
   'Quiz performance': 'ಕ್ವಿಜ್ ಕಾರ್ಯಕ್ಷಮತೆ',
   'View Rank': 'ರ್ಯಾಂಕ್ ನೋಡಿ',
+  'Hours': 'ಗಂಟೆ',
+  'Min': 'ನಿಮಿಷ',
+  'Sec': 'ಸೆಕೆಂಡ್',
 };
 
 export default KN;

@@ -2062,6 +2062,9 @@ const AS = {
   'View Profile': 'প্ৰফাইল চাওক',
   'Quiz performance': 'কুইজ পৰিৱেশন',
   'View Rank': 'ৰেংক চাওক',
+  'Hours': 'ঘণ্টা',
+  'Min': 'মিনিট',
+  'Sec': 'ছেকেণ্ড',
 };
 
 export default AS;

@@ -73,6 +73,12 @@ const AppLayout = ({ children }) => {
     return () => window.removeEventListener('resize', check);
   }, []);
 
+  // Phones and tablets: the sidebar is an overlay, so it always starts closed and closes on every
+  // route change (it used to stay open after navigating from the menu, bottom nav or a link).
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) dispatch(closeSidebar());
+  }, [router.pathname, dispatch]);
+
   const isReelsPage = routePath === '/reels';
   const isSearchPage = routePath === '/search';
   const shouldShiftContent = showAppNav && isSidebarOpen && isDesktop;

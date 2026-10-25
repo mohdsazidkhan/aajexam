@@ -24,6 +24,13 @@ const SubscriptionPage = () => {
   const [subscription, setSubscription] = useState(null);
   const [loading, setLoading] = useState(true);
   const [buyingPlan, setBuyingPlan] = useState(null);
+  const [now, setNow] = useState(() => Date.now());
+
+  // One tick per second drives the live expiry countdown.
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
   const [userInfo, setUserInfo] = useState(null);
   const [couponInput, setCouponInput] = useState('');
   const [couponLoading, setCouponLoading] = useState(false);
@@ -120,9 +127,15 @@ const SubscriptionPage = () => {
   const planName = (subscription?.planName || '').toUpperCase();
   const isFreePlan = planName === 'FREE';
   const isActive = subscription?.status === 'active';
-  const daysLeft = subscription?.expiryDate && isActive
-    ? Math.max(0, Math.ceil((new Date(subscription.expiryDate).getTime() - Date.now()) / 86400000))
+  const remainingMs = subscription?.expiryDate && isActive
+    ? Math.max(0, new Date(subscription.expiryDate).getTime() - now)
     : null;
+  const countdown = remainingMs === null ? null : {
+    days: Math.floor(remainingMs / 86400000),
+    hours: Math.floor((remainingMs % 86400000) / 3600000),
+    minutes: Math.floor((remainingMs % 3600000) / 60000),
+    seconds: Math.floor((remainingMs % 60000) / 1000),
+  };
 
   // Perforation notches are painted in the page background so they read as cut-outs.
   // Radii are inline because styles/index.css forces every [class*="rounded"] to 8px !important.
@@ -195,10 +208,27 @@ const SubscriptionPage = () => {
                 <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
                 <span className="xl:hidden absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
                 <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
-                {daysLeft !== null ? (
-                  <div>
-                    <div className="text-5xl xl:text-6xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{daysLeft}</div>
-                    <div className="mt-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-white/75">{translate('Days left')}</div>
+                {countdown !== null ? (
+                  <div className="w-full">
+                    {freePromoActive && (
+                      <p className="mb-3 text-lg xl:text-xl font-black font-outfit uppercase leading-tight tracking-tight text-primary-700 dark:text-primary-200">
+                        {translate('PRO FREE till 31 Dec 2026')}
+                      </p>
+                    )}
+                    <div className="grid grid-cols-4 gap-1.5 xl:gap-1 text-center">
+                      {[
+                        { v: countdown.days, l: 'Days', big: true },
+                        { v: countdown.hours, l: 'Hours' },
+                        { v: countdown.minutes, l: 'Min' },
+                        { v: countdown.seconds, l: 'Sec' },
+                      ].map((u) => (
+                        <div key={u.l} className="min-w-0 px-1 py-2 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 10 }}>
+                          <div className="text-xl xl:text-2xl font-black font-outfit leading-none tabular-nums text-primary-700 dark:text-primary-200">{String(u.v).padStart(2, '0')}</div>
+                          <div className="mt-1 text-[8px] font-black uppercase tracking-wider text-slate-600 dark:text-white/75 truncate">{translate(u.l)}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-white/75">{translate('Days left')}</div>
                   </div>
                 ) : (
                   <div className="text-3xl xl:text-4xl font-black font-outfit leading-none uppercase text-slate-700 dark:text-white/90">{planName || 'FREE'}</div>

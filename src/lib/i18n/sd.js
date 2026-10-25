@@ -2062,6 +2062,9 @@ const SD = {
   'View Profile': 'پروفائيل ڏسو',
   'Quiz performance': 'ڪوئز ڪارڪردگي',
   'View Rank': 'رئنڪ ڏسو',
+  'Hours': 'ڪلاڪ',
+  'Min': 'منٽ',
+  'Sec': 'سيڪنڊ',
 };
 
 export default SD;

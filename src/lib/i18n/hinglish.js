@@ -2071,6 +2071,9 @@ const HINGLISH = {
   'View Profile': 'Profile dekhein',
   'Quiz performance': 'Quiz performance',
   'View Rank': 'Rank dekhein',
+  'Hours': 'Ghante',
+  'Min': 'Min',
+  'Sec': 'Sec',
 };
 
 export default HINGLISH;

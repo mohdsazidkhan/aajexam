@@ -2062,6 +2062,9 @@ const TE = {
   'View Profile': 'ప్రొఫైల్ చూడండి',
   'Quiz performance': 'క్విజ్ పనితీరు',
   'View Rank': 'ర్యాంక్ చూడండి',
+  'Hours': 'గంటలు',
+  'Min': 'నిమి',
+  'Sec': 'సెక',
 };
 
 export default TE;

@@ -2083,6 +2083,9 @@ const HI = {
   'View Profile': 'प्रोफ़ाइल देखें',
   'Quiz performance': 'क्विज़ प्रदर्शन',
   'View Rank': 'रैंक देखें',
+  'Hours': 'घंटे',
+  'Min': 'मिनट',
+  'Sec': 'सेकंड',
 };
 
 export default HI;

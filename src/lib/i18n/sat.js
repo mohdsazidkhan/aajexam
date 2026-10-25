@@ -2036,6 +2036,9 @@ const SAT = {
   'View Profile': 'ᱯᱨᱚᱯᱷᱟᱭᱤᱞ ᱧᱮᱞ ᱢᱮ',
   'Quiz performance': 'ᱠᱩᱤᱡ ᱠᱟᱹᱢᱤ',
   'View Rank': 'ᱨᱮᱱᱠ ᱧᱮᱞ ᱢᱮ',
+  'Hours': 'ᱜᱷᱚᱱᱴᱟ',
+  'Min': 'ᱢᱤᱱᱤᱴ',
+  'Sec': 'ᱥᱮᱠᱮᱱᱰ',
 };
 
 export default SAT;

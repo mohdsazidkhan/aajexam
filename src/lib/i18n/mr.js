@@ -2062,6 +2062,9 @@ const MR = {
   'View Profile': 'प्रोफाइल पहा',
   'Quiz performance': 'क्विझ कामगिरी',
   'View Rank': 'रँक पहा',
+  'Hours': 'तास',
+  'Min': 'मिनिटे',
+  'Sec': 'सेकंद',
 };
 
 export default MR;

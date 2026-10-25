@@ -2062,6 +2062,9 @@ const BN = {
   'View Profile': 'প্রোফাইল দেখুন',
   'Quiz performance': 'কুইজ পারফরম্যান্স',
   'View Rank': 'র‍্যাংক দেখুন',
+  'Hours': 'ঘণ্টা',
+  'Min': 'মিনিট',
+  'Sec': 'সেকেন্ড',
 };
 
 export default BN;

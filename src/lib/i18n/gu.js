@@ -2062,6 +2062,9 @@ const GU = {
   'View Profile': 'પ્રોફાઇલ જુઓ',
   'Quiz performance': 'ક્વિઝ પ્રદર્શન',
   'View Rank': 'રેન્ક જુઓ',
+  'Hours': 'કલાક',
+  'Min': 'મિનિટ',
+  'Sec': 'સેકન્ડ',
 };
 
 export default GU;

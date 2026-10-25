@@ -2036,6 +2036,9 @@ const BODO = {
   'View Profile': 'प्रोफाइल नुनो',
   'Quiz performance': 'क्विज फारफर्मेन्स',
   'View Rank': 'रैंक नुनो',
+  'Hours': 'घन्टा',
+  'Min': 'मिनिट',
+  'Sec': 'सेकेन्ड',
 };
 
 export default BODO;

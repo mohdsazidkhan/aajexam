@@ -2062,6 +2062,9 @@ const DogriDict = {
   'View Profile': 'प्रोफाइल दिक्खो',
   'Quiz performance': 'क्विज़ प्रदर्शन',
   'View Rank': 'रैंक दिक्खो',
+  'Hours': 'घैंटे',
+  'Min': 'मिंट',
+  'Sec': 'सकिंट',
 };
 
 export default DogriDict;

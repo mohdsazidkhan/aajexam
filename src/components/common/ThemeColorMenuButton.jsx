@@ -265,7 +265,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               exit={{ y: '100%' }}
               transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
               role="menu"
-              className="fixed inset-x-0 bottom-0 z-[170] w-full h-[75vh] bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-lg flex flex-col"
+              className="fixed inset-x-0 bottom-0 z-[170] w-full h-[75vh] xl:h-[90vh] bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-lg flex flex-col"
             >
               <div className="flex-shrink-0 p-4 pb-2">
                 <div className="flex items-center gap-1 mb-3 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 overflow-x-auto no-scrollbar" style={{ borderRadius: 14 }}>

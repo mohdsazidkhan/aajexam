@@ -2062,6 +2062,9 @@ const KS = {
   'View Profile': 'پروفائل ݴیکھو',
   'Quiz performance': 'کوئز کارکردگی',
   'View Rank': 'رینک ݴیکھو',
+  'Hours': 'گھنٹہ',
+  'Min': 'منٹ',
+  'Sec': 'سیکنڈ',
 };
 
 export default KS;

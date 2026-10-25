@@ -2062,6 +2062,9 @@ const SA = {
   'View Profile': 'प्रोफाइलं पश्यत',
   'Quiz performance': 'प्रश्नोत्तरी-प्रदर्शनम्',
   'View Rank': 'क्रमाङ्कं पश्यत',
+  'Hours': 'होराः',
+  'Min': 'निमेषाः',
+  'Sec': 'क्षणाः',
 };
 
 export default SA;

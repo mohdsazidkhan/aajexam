@@ -2036,6 +2036,9 @@ const MANIPURI = {
   'View Profile': 'ꯄ꯭ꯔꯣꯐꯥꯏꯜ ꯌꯦꯡꯕꯤꯌꯨ',
   'Quiz performance': 'ꯀꯨꯏꯖ ꯄꯨꯟꯁꯤ ꯊꯧꯑꯣꯡ',
   'View Rank': 'ꯔꯦꯟꯛ ꯌꯦꯡꯕꯤꯌꯨ',
+  'Hours': 'ꯑꯣꯏꯔꯤ',
+  'Min': 'ꯃꯤꯅꯤꯠ',
+  'Sec': 'ꯁꯦꯀꯟꯗ',
 };
 
 export default MANIPURI;

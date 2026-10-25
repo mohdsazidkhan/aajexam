@@ -2062,6 +2062,9 @@ const ML = {
   'View Profile': 'പ്രൊഫൈൽ കാണുക',
   'Quiz performance': 'ക്വിസ് പ്രകടനം',
   'View Rank': 'റാങ്ക് കാണുക',
+  'Hours': 'മണിക്കൂർ',
+  'Min': 'മിനിറ്റ്',
+  'Sec': 'സെക്കൻഡ്',
 };
 
 export default ML;

@@ -2062,6 +2062,9 @@ const TA = {
   'View Profile': 'சுயவிவரத்தைப் பார்',
   'Quiz performance': 'வினாடி வினா செயல்திறன்',
   'View Rank': 'தரவரிசையைப் பார்',
+  'Hours': 'மணி',
+  'Min': 'நிமி',
+  'Sec': 'விநா',
 };
 
 export default TA;
