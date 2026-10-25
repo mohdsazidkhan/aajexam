@@ -117,7 +117,7 @@ const StudentSidebar = () => {
         { path: '/subjects', icon: BookMarked, label: 'Subjects' },
         { path: '/topics', icon: Layers, label: 'Topics' },
         { path: '/blog', icon: PenSquare, label: 'Blog' },
-        { path: '/community-questions', icon: MessageSquarePlus, label: 'Community Q&A' },
+        { path: '/community-questions', icon: MessageSquarePlus, label: 'Q&A' },
         { path: '/community-questions/ask', icon: PlusCircle, label: 'Create Q&A' },
         { path: '/student/my-questions', icon: MessageSquarePlus, label: 'My Q&A' },
       ]

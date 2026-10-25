@@ -2086,6 +2086,8 @@ const HI = {
   'Hours': 'घंटे',
   'Min': 'मिनट',
   'Sec': 'सेकंड',
+  'Q&A': 'प्रश्नोत्तर',
+  'Questions and Answers': 'प्रश्न और उत्तर',
 };
 
 export default HI;

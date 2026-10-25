@@ -2065,6 +2065,8 @@ const TE = {
   'Hours': 'గంటలు',
   'Min': 'నిమి',
   'Sec': 'సెక',
+  'Q&A': 'ప్రశ్నోత్తరాలు',
+  'Questions and Answers': 'ప్రశ్నలు మరియు సమాధానాలు',
 };
 
 export default TE;

@@ -158,8 +158,8 @@ const CommunityQuestionsPage = () => {
       <div className="mx-auto py-2 xl:py-4">
         <PageHero
           icon={MessageSquare}
-          eyebrow={translate('Community Questions')}
-          title={translate('Community Questions')}
+          eyebrow={translate('Questions and Answers')}
+          title={translate('Questions and Answers')}
           actions={
             <div className="w-full xl:w-auto flex flex-col sm:flex-row sm:items-center gap-2">
               <select

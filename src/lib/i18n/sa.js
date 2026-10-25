@@ -2065,6 +2065,8 @@ const SA = {
   'Hours': 'होराः',
   'Min': 'निमेषाः',
   'Sec': 'क्षणाः',
+  'Q&A': 'प्रश्नोत्तरम्',
+  'Questions and Answers': 'प्रश्नाः उत्तराणि च',
 };
 
 export default SA;

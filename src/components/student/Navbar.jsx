@@ -36,7 +36,7 @@ const PAGE_TITLES = [
   ['/search', 'Search'], ['/reels/create', 'Create Reel'], ['/reels', 'Reels'], ['/student/my-reels', 'My Reels'],
   ['/student/bookmarks', 'Bookmarks'], ['/govt-exams', 'Govt. Exams'], ['/quizzes', 'Quizzes'], ['/quiz', 'Quizzes'],
   ['/subjects', 'Subjects'], ['/topics', 'Topics'], ['/blog', 'Blog'],
-  ['/community-questions/ask', 'Create Q&A'], ['/community-questions', 'Community Q&A'],
+  ['/community-questions/ask', 'Create Q&A'], ['/community-questions', 'Q&A'],
   ['/student/my-questions', 'My Q&A'], ['/daily-challenge', 'Daily Challenge'], ['/student/streak', 'Streak'],
   ['/current-affairs', 'Current Affairs'], ['/exam-news', 'Exam News'], ['/student/exam-calendar', 'Exam Calendar'],
   ['/pyq', "PYQ's"], ['/student/syllabus-tracker', 'Syllabus Tracker'], ['/student/revision', 'Revision Queue'],

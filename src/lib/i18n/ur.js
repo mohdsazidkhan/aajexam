@@ -2065,6 +2065,8 @@ const UrduDict = {
   'Hours': 'گھنٹے',
   'Min': 'منٹ',
   'Sec': 'سیکنڈ',
+  'Q&A': 'سوال و جواب',
+  'Questions and Answers': 'سوالات اور جوابات',
 };
 
 export default UrduDict;

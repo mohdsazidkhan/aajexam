@@ -2065,6 +2065,8 @@ const SD = {
   'Hours': 'ڪلاڪ',
   'Min': 'منٽ',
   'Sec': 'سيڪنڊ',
+  'Q&A': 'سوال ۽ جواب',
+  'Questions and Answers': 'سوال ۽ جواب',
 };
 
 export default SD;

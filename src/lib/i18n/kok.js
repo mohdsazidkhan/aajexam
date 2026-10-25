@@ -2065,6 +2065,8 @@ const KOK = {
   'Hours': 'वरां',
   'Min': 'मिनटां',
   'Sec': 'सेकंद',
+  'Q&A': 'प्रस्नोत्तर',
+  'Questions and Answers': 'प्रस्न आनी जाप',
 };
 
 export default KOK;

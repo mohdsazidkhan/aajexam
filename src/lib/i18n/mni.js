@@ -2039,6 +2039,8 @@ const MANIPURI = {
   'Hours': 'ꯑꯣꯏꯔꯤ',
   'Min': 'ꯃꯤꯅꯤꯠ',
   'Sec': 'ꯁꯦꯀꯟꯗ',
+  'Q&A': 'ꯋꯥꯍꯪ-ꯄꯥꯎꯈꯨꯝ',
+  'Questions and Answers': 'ꯋꯥꯍꯪꯁꯤꯡ ꯑꯃꯁꯨꯡ ꯄꯥꯎꯈꯨꯝꯁꯤꯡ',
 };
 
 export default MANIPURI;

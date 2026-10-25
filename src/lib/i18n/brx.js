@@ -2039,6 +2039,8 @@ const BODO = {
   'Hours': 'घन्टा',
   'Min': 'मिनिट',
   'Sec': 'सेकेन्ड',
+  'Q&A': 'सोंनाय-फिननाय',
+  'Questions and Answers': 'सोंनाय आरो फिननाय',
 };
 
 export default BODO;

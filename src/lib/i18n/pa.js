@@ -2065,6 +2065,8 @@ const PA = {
   'Hours': 'ਘੰਟੇ',
   'Min': 'ਮਿੰਟ',
   'Sec': 'ਸਕਿੰਟ',
+  'Q&A': 'ਸਵਾਲ-ਜਵਾਬ',
+  'Questions and Answers': 'ਸਵਾਲ ਅਤੇ ਜਵਾਬ',
 };
 
 export default PA;

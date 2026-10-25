@@ -2039,6 +2039,8 @@ const SAT = {
   'Hours': 'ᱜᱷᱚᱱᱴᱟ',
   'Min': 'ᱢᱤᱱᱤᱴ',
   'Sec': 'ᱥᱮᱠᱮᱱᱰ',
+  'Q&A': 'ᱥᱚᱨᱮᱥ-ᱛᱮᱞᱟ',
+  'Questions and Answers': 'ᱥᱚᱨᱮᱥ ᱟᱨ ᱛᱮᱞᱟ',
 };
 
 export default SAT;

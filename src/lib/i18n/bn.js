@@ -2065,6 +2065,8 @@ const BN = {
   'Hours': 'ঘণ্টা',
   'Min': 'মিনিট',
   'Sec': 'সেকেন্ড',
+  'Q&A': 'প্রশ্নোত্তর',
+  'Questions and Answers': 'প্রশ্ন ও উত্তর',
 };
 
 export default BN;

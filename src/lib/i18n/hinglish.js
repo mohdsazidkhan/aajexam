@@ -2074,6 +2074,8 @@ const HINGLISH = {
   'Hours': 'Ghante',
   'Min': 'Min',
   'Sec': 'Sec',
+  'Q&A': 'Q&A',
+  'Questions and Answers': 'Questions aur Answers',
 };
 
 export default HINGLISH;

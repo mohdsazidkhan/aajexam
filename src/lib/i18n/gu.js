@@ -2065,6 +2065,8 @@ const GU = {
   'Hours': 'કલાક',
   'Min': 'મિનિટ',
   'Sec': 'સેકન્ડ',
+  'Q&A': 'પ્રશ્નોત્તરી',
+  'Questions and Answers': 'પ્રશ્નો અને જવાબો',
 };
 
 export default GU;

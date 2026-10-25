@@ -106,7 +106,7 @@ const FEATURE_GROUPS = [
     color: 'primary',
     items: [
       { label: 'Educational Reels', free: true, pro: true },
-      { label: 'Community Q&A', free: true, pro: true },
+      { label: 'Q&A', free: true, pro: true },
       { label: 'Multiplayer Challenges (1v1)', free: false, pro: true },
     ],
   },

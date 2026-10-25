@@ -2065,6 +2065,8 @@ const ML = {
   'Hours': 'മണിക്കൂർ',
   'Min': 'മിനിറ്റ്',
   'Sec': 'സെക്കൻഡ്',
+  'Q&A': 'ചോദ്യോത്തരം',
+  'Questions and Answers': 'ചോദ്യങ്ങളും ഉത്തരങ്ങളും',
 };
 
 export default ML;

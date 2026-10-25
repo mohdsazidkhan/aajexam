@@ -2065,6 +2065,8 @@ const KN = {
   'Hours': 'ಗಂಟೆ',
   'Min': 'ನಿಮಿಷ',
   'Sec': 'ಸೆಕೆಂಡ್',
+  'Q&A': 'ಪ್ರಶ್ನೋತ್ತರ',
+  'Questions and Answers': 'ಪ್ರಶ್ನೆಗಳು ಮತ್ತು ಉತ್ತರಗಳು',
 };
 
 export default KN;

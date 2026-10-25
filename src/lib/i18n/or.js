@@ -2065,6 +2065,8 @@ const OR_ = {
   'Hours': 'ଘଣ୍ଟା',
   'Min': 'ମିନିଟ୍',
   'Sec': 'ସେକେଣ୍ଡ',
+  'Q&A': 'ପ୍ରଶ୍ନୋତ୍ତର',
+  'Questions and Answers': 'ପ୍ରଶ୍ନ ଏବଂ ଉତ୍ତର',
 };
 
 export default OR_;

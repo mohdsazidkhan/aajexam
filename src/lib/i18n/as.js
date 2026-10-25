@@ -2065,6 +2065,8 @@ const AS = {
   'Hours': 'ঘণ্টা',
   'Min': 'মিনিট',
   'Sec': 'ছেকেণ্ড',
+  'Q&A': 'প্ৰশ্নোত্তৰ',
+  'Questions and Answers': 'প্ৰশ্ন আৰু উত্তৰ',
 };
 
 export default AS;

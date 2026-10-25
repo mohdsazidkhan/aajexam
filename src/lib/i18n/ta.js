@@ -2065,6 +2065,8 @@ const TA = {
   'Hours': 'மணி',
   'Min': 'நிமி',
   'Sec': 'விநா',
+  'Q&A': 'கேள்வி-பதில்',
+  'Questions and Answers': 'கேள்விகளும் பதில்களும்',
 };
 
 export default TA;

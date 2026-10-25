@@ -2065,6 +2065,8 @@ const NE = {
   'Hours': 'घण्टा',
   'Min': 'मिनेट',
   'Sec': 'सेकेन्ड',
+  'Q&A': 'प्रश्नोत्तर',
+  'Questions and Answers': 'प्रश्न र उत्तर',
 };
 
 export default NE;

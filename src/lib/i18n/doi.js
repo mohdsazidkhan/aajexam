@@ -2065,6 +2065,8 @@ const DogriDict = {
   'Hours': 'घैंटे',
   'Min': 'मिंट',
   'Sec': 'सकिंट',
+  'Q&A': 'सवाल-जवाब',
+  'Questions and Answers': 'सवाल ते जवाब',
 };
 
 export default DogriDict;

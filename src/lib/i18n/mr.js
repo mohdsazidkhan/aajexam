@@ -2065,6 +2065,8 @@ const MR = {
   'Hours': 'तास',
   'Min': 'मिनिटे',
   'Sec': 'सेकंद',
+  'Q&A': 'प्रश्नोत्तरे',
+  'Questions and Answers': 'प्रश्न आणि उत्तरे',
 };
 
 export default MR;

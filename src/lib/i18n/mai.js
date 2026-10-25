@@ -2065,6 +2065,8 @@ const MAI = {
   'Hours': 'घंटा',
   'Min': 'मिनट',
   'Sec': 'सेकंड',
+  'Q&A': 'प्रश्नोत्तर',
+  'Questions and Answers': 'प्रश्न आ उत्तर',
 };
 
 export default MAI;

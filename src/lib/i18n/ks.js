@@ -2065,6 +2065,8 @@ const KS = {
   'Hours': 'گھنٹہ',
   'Min': 'منٹ',
   'Sec': 'سیکنڈ',
+  'Q&A': 'سوال تہٕ جواب',
+  'Questions and Answers': 'سوال تہٕ جواب',
 };
 
 export default KS;

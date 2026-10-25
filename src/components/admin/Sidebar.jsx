@@ -141,7 +141,7 @@ const Sidebar = () => {
       title: 'COMMUNITY',
       items: [
         { path: '/admin/mentors', icon: Users, label: 'Mentors', key: 'mentors', isPro: true },
-        { path: '/admin/community', icon: MessageCircle, label: 'Community Q&A', key: 'community' },
+        { path: '/admin/community', icon: MessageCircle, label: 'Q&A', key: 'community' },
         { path: '/admin/reels', icon: Zap, label: 'Reels', key: 'reels' },
         { path: '/admin/reels/create', icon: Flame, label: 'Create Reel', key: 'reels-create' },
         { path: '/admin/reels/analytics', icon: BarChart3, label: 'Reel Analytics', key: 'reels-analytics' },

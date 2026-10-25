@@ -216,7 +216,7 @@ export default function CommunityModeration() {
   );
 
   useAdminMobileHeader({
-    title: 'Community Q&A',
+    title: 'Q&A',
     count: pagination.total || 0,
     filters: (
       <>
