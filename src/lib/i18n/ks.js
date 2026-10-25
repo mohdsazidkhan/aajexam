@@ -2067,6 +2067,9 @@ const KS = {
   'Sec': 'سیکنڈ',
   'Q&A': 'سوال تہٕ جواب',
   'Questions and Answers': 'سوال تہٕ جواب',
+  'Login to bookmark': 'بُک مارک کرنہ خاطرٕ لاگ اِن کرو',
+  'Saved to bookmarks': 'بُک مارکس منز محفوظ گیوو',
+  'Tap the bookmark icon on any item to save it here.': 'کانہہ آئٹم پیٹھ بُک مارک آئیکن دبٲوتھ یتھ محفوظ کرو۔',
 };
 
 export default KS;

@@ -2041,6 +2041,9 @@ const BODO = {
   'Sec': 'सेकेन्ड',
   'Q&A': 'सोंनाय-फिननाय',
   'Questions and Answers': 'सोंनाय आरो फिननाय',
+  'Login to bookmark': 'बुकमार्क खालामनो लगइन खालाम',
+  'Saved to bookmarks': 'बुकमार्कआव सेभ जादों',
+  'Tap the bookmark icon on any item to save it here.': 'मोनसेबो आइटेमआव बुकमार्क आइकन थिनाय एबादि सेभ खालाम।',
 };
 
 export default BODO;

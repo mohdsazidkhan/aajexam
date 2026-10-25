@@ -2067,6 +2067,9 @@ const NE = {
   'Sec': 'सेकेन्ड',
   'Q&A': 'प्रश्नोत्तर',
   'Questions and Answers': 'प्रश्न र उत्तर',
+  'Login to bookmark': 'बुकमार्क गर्न लगइन गर्नुहोस्',
+  'Saved to bookmarks': 'बुकमार्कमा सुरक्षित गरियो',
+  'Tap the bookmark icon on any item to save it here.': 'कुनै पनि आइटममा बुकमार्क आइकन थिचेर यहाँ सुरक्षित गर्नुहोस्।',
 };
 
 export default NE;

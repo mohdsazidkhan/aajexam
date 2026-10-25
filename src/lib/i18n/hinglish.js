@@ -2076,6 +2076,9 @@ const HINGLISH = {
   'Sec': 'Sec',
   'Q&A': 'Q&A',
   'Questions and Answers': 'Questions aur Answers',
+  'Login to bookmark': 'Bookmark karne ke liye login karein',
+  'Saved to bookmarks': 'Bookmark me save ho gaya',
+  'Tap the bookmark icon on any item to save it here.': 'Kisi bhi item par bookmark icon dabakar use yahan save karein.',
 };
 
 export default HINGLISH;

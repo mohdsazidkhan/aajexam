@@ -2067,6 +2067,9 @@ const ML = {
   'Sec': 'സെക്കൻഡ്',
   'Q&A': 'ചോദ്യോത്തരം',
   'Questions and Answers': 'ചോദ്യങ്ങളും ഉത്തരങ്ങളും',
+  'Login to bookmark': 'ബുക്ക്‌മാർക്ക് ചെയ്യാൻ ലോഗിൻ ചെയ്യുക',
+  'Saved to bookmarks': 'ബുക്ക്‌മാർക്കുകളിൽ സേവ് ചെയ്തു',
+  'Tap the bookmark icon on any item to save it here.': 'ഏതെങ്കിലും ഇനത്തിലെ ബുക്ക്‌മാർക്ക് ഐക്കൺ ടാപ്പ് ചെയ്ത് ഇവിടെ സേവ് ചെയ്യുക.',
 };
 
 export default ML;

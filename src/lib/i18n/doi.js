@@ -2067,6 +2067,9 @@ const DogriDict = {
   'Sec': 'सकिंट',
   'Q&A': 'सवाल-जवाब',
   'Questions and Answers': 'सवाल ते जवाब',
+  'Login to bookmark': 'बुकमार्क करने आस्तै लॉगिन करो',
+  'Saved to bookmarks': 'बुकमार्क च सेव होई गेया',
+  'Tap the bookmark icon on any item to save it here.': 'कुसै बी आइटम उप्पर बुकमार्क आइकन दबाइयै ऐत्थे सेव करो।',
 };
 
 export default DogriDict;

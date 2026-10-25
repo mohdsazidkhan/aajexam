@@ -2067,6 +2067,9 @@ const MR = {
   'Sec': 'सेकंद',
   'Q&A': 'प्रश्नोत्तरे',
   'Questions and Answers': 'प्रश्न आणि उत्तरे',
+  'Login to bookmark': 'बुकमार्क करण्यासाठी लॉगिन करा',
+  'Saved to bookmarks': 'बुकमार्कमध्ये जतन केले',
+  'Tap the bookmark icon on any item to save it here.': 'कोणत्याही आयटमवर बुकमार्क आयकॉन दाबून ते येथे जतन करा.',
 };
 
 export default MR;

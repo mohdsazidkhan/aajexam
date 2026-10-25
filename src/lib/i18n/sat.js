@@ -2041,6 +2041,9 @@ const SAT = {
   'Sec': 'ᱥᱮᱠᱮᱱᱰ',
   'Q&A': 'ᱥᱚᱨᱮᱥ-ᱛᱮᱞᱟ',
   'Questions and Answers': 'ᱥᱚᱨᱮᱥ ᱟᱨ ᱛᱮᱞᱟ',
+  'Login to bookmark': 'ᱵᱩᱠᱢᱟᱨᱠ ᱞᱟᱹᱜᱤᱫ ᱞᱚᱜᱤᱱ ᱢᱮ',
+  'Saved to bookmarks': 'ᱵᱩᱠᱢᱟᱨᱠ ᱨᱮ ᱥᱮᱣ ᱦᱩᱭ ᱮᱱᱟ',
+  'Tap the bookmark icon on any item to save it here.': 'ᱪᱮᱫᱟᱜ ᱨᱮᱭᱟᱜ ᱵᱩᱠᱢᱟᱨᱠ ᱟᱭᱠᱚᱱ ᱛᱮ ᱴᱮᱯ ᱠᱟᱛᱮ ᱱᱚᱸᱰᱮ ᱥᱮᱣ ᱢᱮ᱾',
 };
 
 export default SAT;

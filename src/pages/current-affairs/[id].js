@@ -1,5 +1,6 @@
 'use client';
 import BackButton from '@/components/common/ui/BackButton';
+import BookmarkButton from '../../components/common/BookmarkButton';
 import React, { useState, useEffect } from 'react';
 import { Newspaper, ArrowLeft, Tag, Eye, Calendar } from 'lucide-react';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -81,7 +82,12 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
             <span className="text-[10px] text-slate-500 dark:text-white/60 flex items-center gap-1"><Calendar className="w-3 h-3" />{new Date(affair.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
             <span className="text-[10px] text-slate-500 dark:text-white/60 flex items-center gap-1"><Eye className="w-3 h-3" />{affair.views}</span>
           </div>
-          <h1 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white">{affair.title}</h1>
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              <h1 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white">{affair.title}</h1>
+            </div>
+            <BookmarkButton type="affair" id={affair._id || affair.slug} variant="pill" className="shrink-0" />
+          </div>
         </div>
 
         <Card className="">

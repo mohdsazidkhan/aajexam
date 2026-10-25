@@ -2067,6 +2067,9 @@ const UrduDict = {
   'Sec': 'سیکنڈ',
   'Q&A': 'سوال و جواب',
   'Questions and Answers': 'سوالات اور جوابات',
+  'Login to bookmark': 'بُک مارک کرنے کے لیے لاگ اِن کریں',
+  'Saved to bookmarks': 'بُک مارک میں محفوظ ہو گیا',
+  'Tap the bookmark icon on any item to save it here.': 'کسی بھی آئٹم پر بُک مارک آئیکن دبا کر اسے یہاں محفوظ کریں۔',
 };
 
 export default UrduDict;

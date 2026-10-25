@@ -2067,6 +2067,9 @@ const PA = {
   'Sec': 'ਸਕਿੰਟ',
   'Q&A': 'ਸਵਾਲ-ਜਵਾਬ',
   'Questions and Answers': 'ਸਵਾਲ ਅਤੇ ਜਵਾਬ',
+  'Login to bookmark': 'ਬੁੱਕਮਾਰਕ ਕਰਨ ਲਈ ਲਾਗਇਨ ਕਰੋ',
+  'Saved to bookmarks': 'ਬੁੱਕਮਾਰਕ ਵਿੱਚ ਸੇਵ ਹੋ ਗਿਆ',
+  'Tap the bookmark icon on any item to save it here.': 'ਕਿਸੇ ਵੀ ਆਈਟਮ ਦੇ ਬੁੱਕਮਾਰਕ ਆਈਕਨ ਨੂੰ ਦਬਾ ਕੇ ਇੱਥੇ ਸੇਵ ਕਰੋ।',
 };
 
 export default PA;

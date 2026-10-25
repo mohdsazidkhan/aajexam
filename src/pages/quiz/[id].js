@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import BookmarkButton from '../../components/common/BookmarkButton';
 import Link from '@/components/common/AppLink';
 import Seo from '../../components/common/Seo';
 import QuestionList from '../../components/common/seo/QuestionList';
@@ -129,9 +130,14 @@ export default function QuizPreview({
               {topicName && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{translateData(topicName)}</span>}
               {quiz?.difficulty && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest">{quiz.difficulty}</span>}
             </div>
-            <h1 className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
-              {quizTitle}
-            </h1>
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0 flex-1">
+                <h1 className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
+                  {quizTitle}
+                </h1>
+              </div>
+              <BookmarkButton type="quiz" id={quiz?._id || quiz?.slug} variant="pill" className="shrink-0" />
+            </div>
             <p className="text-md xl:text-lg font-bold text-slate-600 dark:text-white/80 leading-relaxed max-w-3xl mb-5">
               {quiz?.description ? quiz.description.slice(0, 220) : `Free practice quiz on ${quizTitle} with detailed solutions for government exam preparation.`}
             </p>

@@ -41,7 +41,9 @@ import {
   Map as MapIcon,
   Building2,
   MessageCircleQuestion,
-  Bell
+  Bell,
+  Eye,
+  UserCheck
 } from 'lucide-react';
 import { m as motion } from 'framer-motion';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';
@@ -164,6 +166,11 @@ const StudentSidebar = () => {
       title: 'ACCOUNT',
       items: [
         { path: '/student/profile', icon: User, label: 'Profile' },
+        ...(user?.username ? [
+          { path: `/u/${user.username}`, icon: Eye, label: 'Public profile' },
+          { path: `/u/${user.username}/followers`, icon: Users, label: 'Followers' },
+          { path: `/u/${user.username}/following`, icon: UserCheck, label: 'Following' },
+        ] : []),
         { path: '/student/subscription', icon: ShieldCheck, label: 'Subscription' },
         { path: '/student/settings', icon: Settings, label: 'Settings' },
       ]

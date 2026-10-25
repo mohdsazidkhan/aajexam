@@ -2067,6 +2067,9 @@ const BN = {
   'Sec': 'সেকেন্ড',
   'Q&A': 'প্রশ্নোত্তর',
   'Questions and Answers': 'প্রশ্ন ও উত্তর',
+  'Login to bookmark': 'বুকমার্ক করতে লগইন করুন',
+  'Saved to bookmarks': 'বুকমার্কে সংরক্ষিত হয়েছে',
+  'Tap the bookmark icon on any item to save it here.': 'যেকোনো আইটেমে বুকমার্ক আইকনে ট্যাপ করে এখানে সংরক্ষণ করুন।',
 };
 
 export default BN;

@@ -2088,6 +2088,9 @@ const HI = {
   'Sec': 'सेकंड',
   'Q&A': 'प्रश्नोत्तर',
   'Questions and Answers': 'प्रश्न और उत्तर',
+  'Login to bookmark': 'बुकमार्क करने के लिए लॉगिन करें',
+  'Saved to bookmarks': 'बुकमार्क में सेव किया गया',
+  'Tap the bookmark icon on any item to save it here.': 'किसी भी आइटम पर बुकमार्क आइकन दबाकर उसे यहाँ सेव करें।',
 };
 
 export default HI;

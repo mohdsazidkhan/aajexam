@@ -36,7 +36,7 @@ const PAGE_TITLES = [
   ['/search', 'Search'], ['/reels/create', 'Create Reel'], ['/reels', 'Reels'], ['/student/my-reels', 'My Reels'],
   ['/student/bookmarks', 'Bookmarks'], ['/govt-exams', 'Govt. Exams'], ['/quizzes', 'Quizzes'], ['/quiz', 'Quizzes'],
   ['/subjects', 'Subjects'], ['/topics', 'Topics'], ['/blog', 'Blog'],
-  ['/community-questions/ask', 'Create Q&A'], ['/community-questions', 'Q&A'],
+  ['/community-questions/ask', 'Create Q&A'], ['/community-questions', 'Questions and Answers'],
   ['/student/my-questions', 'My Q&A'], ['/daily-challenge', 'Daily Challenge'], ['/student/streak', 'Streak'],
   ['/current-affairs', 'Current Affairs'], ['/exam-news', 'Exam News'], ['/student/exam-calendar', 'Exam Calendar'],
   ['/pyq', "PYQ's"], ['/student/syllabus-tracker', 'Syllabus Tracker'], ['/student/revision', 'Revision Queue'],
@@ -46,6 +46,7 @@ const PAGE_TITLES = [
   ['/student/readiness', 'Exam Readiness'], ['/student/exam-history', 'Exam History'],
   ['/student/payment-history', 'Payment History'], ['/student/quiz-history', 'Quiz History'],
   ['/student/my-challenges', 'My Challenges'], ['/student/referral-history', 'Referrals'],
+  ['/u/[username]/followers', 'Followers'], ['/u/[username]/following', 'Following'], ['/u/[username]', 'Public profile'],
   ['/student/profile', 'Profile'], ['/student/subscription', 'Subscription'], ['/student/settings', 'Settings'],
 ];
 

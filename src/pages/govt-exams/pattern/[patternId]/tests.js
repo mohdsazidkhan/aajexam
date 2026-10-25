@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import BookmarkButton from '../../../../components/common/BookmarkButton';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import Seo from '../../../../components/common/Seo';
 import { generateBreadcrumbSchema } from '../../../../utils/schema';
@@ -212,7 +213,8 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
                         </p>
                       </div>
 
-                      <div className="flex gap-2">
+                      <div className="flex items-center gap-2">
+                        <BookmarkButton type="test" id={test._id} />
                         {isCompleted && (
                           <Button variant="secondary" size="sm" onClick={() => handleViewResult(test)} className="!rounded-full px-4">
                             {translate('RESULTS')} <Eye className="w-4 h-4 ml-1" />

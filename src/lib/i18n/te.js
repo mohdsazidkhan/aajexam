@@ -2067,6 +2067,9 @@ const TE = {
   'Sec': 'సెక',
   'Q&A': 'ప్రశ్నోత్తరాలు',
   'Questions and Answers': 'ప్రశ్నలు మరియు సమాధానాలు',
+  'Login to bookmark': 'బుక్‌మార్క్ చేయడానికి లాగిన్ చేయండి',
+  'Saved to bookmarks': 'బుక్‌మార్క్‌లలో సేవ్ చేయబడింది',
+  'Tap the bookmark icon on any item to save it here.': 'ఏదైనా అంశంపై బుక్‌మార్క్ ఐకాన్‌ను నొక్కి ఇక్కడ సేవ్ చేయండి.',
 };
 
 export default TE;

@@ -1,5 +1,6 @@
 'use client';
 import BackButton from '@/components/common/ui/BackButton';
+import BookmarkButton from '../../components/common/BookmarkButton';
 import React, { useState, useEffect } from 'react';
 import { Megaphone, Calendar, ExternalLink, Eye, ArrowLeft } from 'lucide-react';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -82,7 +83,12 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
             {news.exam?.name && <span className="text-[10px] font-bold text-slate-500 dark:text-white/60">{news.exam.name}</span>}
             <span className="text-[10px] text-slate-500 dark:text-white/60"><Eye className="w-3 h-3 inline" /> {news.views}</span>
           </div>
-          <h1 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white">{news.title}</h1>
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              <h1 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white">{news.title}</h1>
+            </div>
+            <BookmarkButton type="news" id={news._id || news.slug} variant="pill" className="shrink-0" />
+          </div>
         </div>
 
         {news.importantDates?.length > 0 && (

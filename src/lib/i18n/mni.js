@@ -2041,6 +2041,9 @@ const MANIPURI = {
   'Sec': 'ꯁꯦꯀꯟꯗ',
   'Q&A': 'ꯋꯥꯍꯪ-ꯄꯥꯎꯈꯨꯝ',
   'Questions and Answers': 'ꯋꯥꯍꯪꯁꯤꯡ ꯑꯃꯁꯨꯡ ꯄꯥꯎꯈꯨꯝꯁꯤꯡ',
+  'Login to bookmark': 'ꯕꯨꯛꯃꯥꯔꯛ ꯇꯧꯅꯕꯥ ꯂꯣꯒꯤꯟ ꯇꯧꯕꯤꯌꯨ',
+  'Saved to bookmarks': 'ꯕꯨꯛꯃꯥꯔꯛꯇꯥ ꯁꯦꯚ ꯇꯧꯈ꯭ꯔꯦ',
+  'Tap the bookmark icon on any item to save it here.': 'ꯑꯃꯨꯛꯇꯥ ꯕꯨꯛꯃꯥꯔꯛ ꯑꯥꯏꯀꯣꯟ ꯇꯥꯞ ꯇꯧꯗꯨꯅꯥ ꯃꯐꯝ ꯑꯁꯤꯗꯥ ꯁꯦꯚ ꯇꯧꯕꯤꯌꯨ꯫',
 };
 
 export default MANIPURI;

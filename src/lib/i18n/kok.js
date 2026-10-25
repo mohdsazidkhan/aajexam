@@ -2067,6 +2067,9 @@ const KOK = {
   'Sec': 'सेकंद',
   'Q&A': 'प्रस्नोत्तर',
   'Questions and Answers': 'प्रस्न आनी जाप',
+  'Login to bookmark': 'बुकमार्क करपाक लॉगिन करात',
+  'Saved to bookmarks': 'बुकमार्कांत सेव केलें',
+  'Tap the bookmark icon on any item to save it here.': 'खंयच्याय आयटमार बुकमार्क आयकॉन दाबून हांगा सेव करात.',
 };
 
 export default KOK;

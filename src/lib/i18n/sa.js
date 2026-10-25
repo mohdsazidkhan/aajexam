@@ -2067,6 +2067,9 @@ const SA = {
   'Sec': 'क्षणाः',
   'Q&A': 'प्रश्नोत्तरम्',
   'Questions and Answers': 'प्रश्नाः उत्तराणि च',
+  'Login to bookmark': 'पुस्तकचिह्नाय प्रवेशं कुरुत',
+  'Saved to bookmarks': 'पुस्तकचिह्ने रक्षितम्',
+  'Tap the bookmark icon on any item to save it here.': 'कस्मिंश्चित् विषये पुस्तकचिह्नं स्पृश्य अत्र रक्षत।',
 };
 
 export default SA;

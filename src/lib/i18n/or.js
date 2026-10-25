@@ -2067,6 +2067,9 @@ const OR_ = {
   'Sec': 'ସେକେଣ୍ଡ',
   'Q&A': 'ପ୍ରଶ୍ନୋତ୍ତର',
   'Questions and Answers': 'ପ୍ରଶ୍ନ ଏବଂ ଉତ୍ତର',
+  'Login to bookmark': 'ବୁକ୍‌ମାର୍କ କରିବାକୁ ଲଗଇନ୍ କରନ୍ତୁ',
+  'Saved to bookmarks': 'ବୁକ୍‌ମାର୍କରେ ସେଭ୍ ହୋଇଛି',
+  'Tap the bookmark icon on any item to save it here.': 'ଯେକୌଣସି ଆଇଟମ୍‌ରେ ବୁକ୍‌ମାର୍କ ଆଇକନ୍ ଟାପ୍ କରି ଏଠାରେ ସେଭ୍ କରନ୍ତୁ।',
 };
 
 export default OR_;

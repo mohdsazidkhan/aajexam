@@ -2067,6 +2067,9 @@ const MAI = {
   'Sec': 'सेकंड',
   'Q&A': 'प्रश्नोत्तर',
   'Questions and Answers': 'प्रश्न आ उत्तर',
+  'Login to bookmark': 'बुकमार्क करबाक लेल लॉगिन करू',
+  'Saved to bookmarks': 'बुकमार्क मे सेव भ गेल',
+  'Tap the bookmark icon on any item to save it here.': 'कोनो आइटम पर बुकमार्क आइकन दबा कए एतए सेव करू।',
 };
 
 export default MAI;

@@ -2067,6 +2067,9 @@ const GU = {
   'Sec': 'સેકન્ડ',
   'Q&A': 'પ્રશ્નોત્તરી',
   'Questions and Answers': 'પ્રશ્નો અને જવાબો',
+  'Login to bookmark': 'બુકમાર્ક કરવા લૉગિન કરો',
+  'Saved to bookmarks': 'બુકમાર્કમાં સાચવ્યું',
+  'Tap the bookmark icon on any item to save it here.': 'કોઈપણ આઇટમ પર બુકમાર્ક આઇકન દબાવી તેને અહીં સાચવો.',
 };
 
 export default GU;

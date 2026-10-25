@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import BookmarkButton from '../../common/BookmarkButton';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import Link from '@/components/common/AppLink';
 import { toast } from 'react-hot-toast';
@@ -103,9 +104,14 @@ export default function CommunityQuestionDetailPage() {
           </div>
 
           {/* Question body */}
-          <h1 className="pb-4 text-lg xl:text-xl font-bold text-slate-900 dark:text-white leading-relaxed">
-            {question.question}
-          </h1>
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              <h1 className="pb-4 text-lg xl:text-xl font-bold text-slate-900 dark:text-white leading-relaxed">
+                {question.question}
+              </h1>
+            </div>
+            <BookmarkButton type="community" id={question._id} variant="pill" className="shrink-0" />
+          </div>
 
           {question.image && (
             <img src={question.image} alt="" className="max-h-80 rounded-lg border border-slate-200 dark:border-slate-700 object-contain bg-white" />

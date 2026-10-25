@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import BookmarkButton from '../../components/common/BookmarkButton';
 import Link from '@/components/common/AppLink';
 import Seo from '../../components/common/Seo';
 import {
@@ -98,9 +99,14 @@ export default function TopicDetail({
             <div className="pointer-events-none absolute -bottom-28 right-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
             <div className="relative">
             <span className="block text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest mb-2">{subjectName ? translate('Topic · {name}', { name: translateData(subjectName) }) : translate('Topic')}</span>
-            <h1 className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
-              {translateData(topicName)}
-            </h1>
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0 flex-1">
+                <h1 className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
+                  {translateData(topicName)}
+                </h1>
+              </div>
+              <BookmarkButton type="topic" id={topic?._id || topic?.slug} variant="pill" className="shrink-0" />
+            </div>
             <p className="text-md xl:text-lg font-bold text-slate-600 dark:text-white/80 leading-relaxed max-w-3xl">
               {topic?.description ? topic.description.slice(0, 220) : `Free ${topicName} practice MCQs and study notes for government competitive exams.`}
             </p>

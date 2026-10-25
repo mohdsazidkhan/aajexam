@@ -2067,6 +2067,9 @@ const KN = {
   'Sec': 'ಸೆಕೆಂಡ್',
   'Q&A': 'ಪ್ರಶ್ನೋತ್ತರ',
   'Questions and Answers': 'ಪ್ರಶ್ನೆಗಳು ಮತ್ತು ಉತ್ತರಗಳು',
+  'Login to bookmark': 'ಬುಕ್‌ಮಾರ್ಕ್ ಮಾಡಲು ಲಾಗಿನ್ ಮಾಡಿ',
+  'Saved to bookmarks': 'ಬುಕ್‌ಮಾರ್ಕ್‌ಗಳಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ',
+  'Tap the bookmark icon on any item to save it here.': 'ಯಾವುದೇ ಐಟಂನ ಬುಕ್‌ಮಾರ್ಕ್ ಐಕಾನ್ ಒತ್ತಿ ಇಲ್ಲಿ ಉಳಿಸಿ.',
 };
 
 export default KN;

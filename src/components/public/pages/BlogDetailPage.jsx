@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import BookmarkButton from '../../common/BookmarkButton';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import Link from '@/components/common/AppLink';
 import API from '../../../lib/api';
@@ -189,9 +190,14 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                 <span className="text-primary-700 dark:text-primary-300 text-xs font-black uppercase tracking-wider">{formatDate(blog.publishedAt || blog.createdAt)}</span>
               </div>
 
-              <h1 className="text-xl md:text-2xl xl:text-4xl font-black text-gray-900 dark:text-gray-100 mb-3 leading-tight">
-                {blog.title}
-              </h1>
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <h1 className="text-xl md:text-2xl xl:text-4xl font-black text-gray-900 dark:text-gray-100 mb-3 leading-tight">
+                    {blog.title}
+                  </h1>
+                </div>
+                <BookmarkButton type="blog" id={blog._id} variant="pill" className="shrink-0" />
+              </div>
 
               {blog.excerpt && (
                 <p className="text-base xl:text-lg text-slate-600 dark:text-white/80 mb-5 leading-relaxed">{blog.excerpt}</p>
