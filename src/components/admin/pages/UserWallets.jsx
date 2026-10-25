@@ -46,7 +46,7 @@ const AdminUserWallets = () => {
         setTotal(res.pagination?.total || 0);
       }
     } catch (e) {
-      console.error('Failed to load wallets', e);
+      console.error('Failed to load Referral Rewards', e);
     } finally {
       setLoading(false);
     }
@@ -237,7 +237,7 @@ const AdminUserWallets = () => {
   );
 
   useAdminMobileHeader({
-    title: 'Wallets',
+    title: 'Referral Rewards',
     count: total,
     filters: (
       <>
@@ -260,8 +260,8 @@ const AdminUserWallets = () => {
         ) : items.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-96 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
             <Wallet className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4" />
-            <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2">No Wallet Records Found</h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md text-center">There are no student wallets matching your search. Try adjusting your filters or check back later.</p>
+            <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2">No Referral Rewards Records Found</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md text-center">There are no student Referral Rewards matching your search. Try adjusting your filters or check back later.</p>
           </div>
         ) : (
           <div className="flex-1 min-h-0 overflow-auto flex flex-col">

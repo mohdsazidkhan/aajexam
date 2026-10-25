@@ -156,7 +156,7 @@ const PrivacyPolicy = () => {
                                  <h3 className="text-sm font-black uppercase tracking-widest">Referral Rewards</h3>
                               </div>
                               <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">
-                                 Users who invite friends to AajExam receive a cash reward each time an invited friend upgrades to a paid PRO subscription for the first time. Rewards are credited to your wallet and can be withdrawn to your bank account.
+                                 Users who invite friends to AajExam receive a cash reward each time an invited friend upgrades to a paid PRO subscription for the first time. Rewards are credited to your Referral Rewards balance and can be withdrawn to your bank account.
                               </p>
                            </div>
                         </div>

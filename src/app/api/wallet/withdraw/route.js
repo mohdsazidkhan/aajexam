@@ -43,7 +43,7 @@ export async function POST(req) {
         if ((user.walletBalance || 0) < amount) {
             return NextResponse.json({
                 success: false,
-                message: 'Insufficient wallet balance'
+                message: 'Insufficient Referral Rewards balance'
             }, { status: 400 });
         }
 

@@ -309,7 +309,7 @@ export default function UserFullDetail() {
         <Stat label="Reels viewed" value={s.reels.viewed} sub={`${s.reels.answered} answered · ${s.reels.correct} correct`} />
         <Stat label="Current streak" value={data.streak?.currentStreak ?? 0} sub={`best ${data.streak?.longestStreak ?? 0} · ${data.streak?.totalActiveDays ?? 0} active days`} />
         <Stat label="Paid" value={inr(s.paid.total)} sub={`${s.paid.orders} orders`} />
-        <Stat label="Wallet" value={inr(p.walletBalance)} />
+        <Stat label="Referral Rewards" value={inr(p.walletBalance)} />
         <Stat label="Referrals" value={s.referrals} sub={`code ${p.referralCode || '—'}`} />
         <Stat label="Community" value={s.communityQuestions + s.communityAnswers} sub={`${s.communityQuestions} Q · ${s.communityAnswers} A`} />
         <Stat label="Followers" value={p.followersCount || 0} sub={`${p.followingCount || 0} following`} />
@@ -395,7 +395,7 @@ export default function UserFullDetail() {
             <Field label="Referral code" value={p.referralCode} />
             <Field label="Referred by (code)" value={p.referredBy} />
             <Field label="People referred" value={s.referrals} />
-            <Field label="Wallet balance" value={inr(p.walletBalance)} />
+            <Field label="Referral Rewards" value={inr(p.walletBalance)} />
           </Card>
         </div>
       )}
@@ -505,10 +505,10 @@ export default function UserFullDetail() {
               ]}
             />
           </Card>
-          <Card title="Wallet transactions">
+          <Card title="Referral Rewards transactions">
             <Table
               rows={data.walletTxns}
-              empty="No wallet transactions"
+              empty="No Referral Rewards transactions"
               cols={[
                 { h: 'Type', r: (r) => <Pill tone={r.type === 'credit' ? 'green' : 'rose'}>{r.type}</Pill> },
                 { h: 'Description', r: (r) => r.description },

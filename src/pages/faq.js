@@ -81,7 +81,7 @@ const FAQ = () => {
             questions: [
                 {
                     q: 'How do I earn rewards on AajExam?',
-                    a: 'AajExam runs a Refer & Earn program. Share your unique referral code with friends. When a friend signs up and upgrades to a paid PRO subscription for the first time, a cash reward is credited to your wallet.'
+                    a: 'AajExam runs a Refer & Earn program. Share your unique referral code with friends. When a friend signs up and upgrades to a paid PRO subscription for the first time, a cash reward is credited to your Referral Rewards.'
                 },
                 {
                     q: 'Where do I find my referral code?',
@@ -89,7 +89,7 @@ const FAQ = () => {
                 },
                 {
                     q: 'When do I receive my referral reward?',
-                    a: 'Rewards are credited automatically to your in-app wallet as soon as your referred friend completes their first PRO payment. You can withdraw the balance to your bank account after adding your bank details.'
+                    a: 'Rewards are credited automatically to your Referral Rewards balance as soon as your referred friend completes their first PRO payment. You can withdraw the balance to your bank account after adding your bank details.'
                 },
                 {
                     q: 'Are there any limits or anti-fraud rules?',

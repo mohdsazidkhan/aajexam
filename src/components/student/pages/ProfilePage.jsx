@@ -20,6 +20,7 @@ import {
   LogOut,
   Mail,
   MapPin,
+  Copy,
   Phone,
   Settings,
   ShieldCheck,
@@ -72,20 +73,6 @@ const Avatar = ({ student, sizeClass }) => (
 );
 
 // Decorative barcode derived from a string (the referral code), like the strip on an admit card.
-const Barcode = ({ value }) => {
-  const bars = Array.from(String(value || 'AAJEXAM').toUpperCase()).flatMap((ch) => {
-    const c = ch.charCodeAt(0);
-    return [1 + (c % 3), 1 + ((c >> 2) % 2)];
-  });
-  return (
-    <div className="flex items-stretch h-7" aria-hidden="true">
-      {bars.map((w, i) => (
-        <span key={i} className={i % 2 === 0 ? 'bg-slate-800 dark:bg-white/85' : 'bg-transparent'} style={{ width: w * 2 }} />
-      ))}
-    </div>
-  );
-};
-
 const gradeFor = (readiness) => {
   if (readiness >= 90) return 'A+';
   if (readiness >= 80) return 'A';
@@ -173,9 +160,24 @@ const ProfilePage = () => {
       { label: 'Following', value: student?.followingCount || 0, icon: UserCheck },
       { label: 'Profile views', value: student?.profileViews || 0, icon: Eye },
       { label: 'Referrals', value: student?.referralCount || 0, icon: Sparkles },
-      { label: 'Wallet balance', value: formatCurrency(student?.walletBalance || 0), icon: Wallet },
+      { label: 'Referral Rewards', value: formatCurrency(student?.walletBalance || 0), icon: Wallet },
     ],
     [streak, student]
+  );
+
+  const copyReferralCode = () => {
+    const code = student?.referralCode;
+    if (!code) return;
+    navigator.clipboard.writeText(code);
+    toast.success(translate('Code copied to clipboard!'), { position: 'top-center', duration: 2000 });
+  };
+
+  const renderStatTile = (item) => (
+    <div key={item.label} className="relative overflow-hidden flex flex-col justify-center bg-white/80 hover:bg-white ring-1 ring-primary-200 dark:bg-white/10 dark:hover:bg-white/15 dark:ring-white/20 px-2.5 py-1.5 transition-colors" style={{ borderRadius: 10 }}>
+      <item.icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-primary-600/10 dark:text-white/10" />
+      <p className="relative text-base xl:text-xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200 truncate">{item.value}</p>
+      <p className="relative mt-1 text-[8px] xl:text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 leading-tight truncate">{translate(item.label)}</p>
+    </div>
   );
 
   const accountDetails = [
@@ -221,74 +223,101 @@ const ProfilePage = () => {
 
           {/* Ticket header strip */}
           <div className="relative flex items-center justify-between gap-3 px-4 xl:px-6 py-2 bg-primary-600/10 dark:bg-black/25 border-b border-primary-200 dark:border-white/15">
-            <div className="flex items-center gap-2 min-w-0">
-              <Award className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />
-              <span className="text-[10px] xl:text-xs font-black uppercase tracking-[0.25em] truncate">AajExam · {translate('Student profile')}</span>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 min-w-0">
+              <div className="flex items-center gap-2 min-w-0">
+                <Award className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />
+                <span className="text-[10px] xl:text-xs font-black uppercase tracking-[0.25em] truncate">AajExam · {translate('Student profile')}</span>
+              </div>
+              {/* Badges */}
+              <div className="flex flex-wrap items-center gap-1.5">
+                {(student?.badges?.length ? student.badges : ['Student']).map((badge, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center gap-1 px-2 py-0.5 bg-white/80 text-primary-800 ring-1 ring-primary-300 dark:bg-white/15 dark:text-white dark:ring-white/30 text-[9px] xl:text-[10px] font-black uppercase tracking-wider"
+                    style={{ borderRadius: 999 }}
+                  >
+                    <Award className="w-3 h-3" />
+                    {badge}
+                  </span>
+                ))}
+              </div>
             </div>
-            <span
-              className={`shrink-0 px-2.5 py-0.5 text-[10px] xl:text-xs font-black uppercase tracking-widest ${isPro ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-[0_2px_12px_rgba(251,191,36,0.45)]' : 'bg-slate-200 text-slate-700 ring-1 ring-slate-300 dark:bg-white/15 dark:text-white dark:ring-white/30'}`}
-            >
-              {isPro ? 'PRO' : translate('FREE')}
-            </span>
+            <div className="flex items-center gap-3 shrink-0">
+              {isPro && student?.subscriptionExpiry && (
+                <div className="text-right leading-tight">
+                  <p className="text-[8px] xl:text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('Current Plan')}</p>
+                  <p className="text-[10px] xl:text-xs font-bold">{translate('till {date}', { date: new Date(student.subscriptionExpiry).toLocaleDateString() })}</p>
+                </div>
+              )}
+              <span
+                className={`shrink-0 px-2.5 py-0.5 text-[10px] xl:text-xs font-black uppercase tracking-widest ${isPro ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow-[0_2px_12px_rgba(251,191,36,0.45)]' : 'bg-slate-200 text-slate-700 ring-1 ring-slate-300 dark:bg-white/15 dark:text-white dark:ring-white/30'}`}
+              >
+                {isPro ? 'PRO' : translate('FREE')}
+              </span>
+            </div>
           </div>
 
-          <div className="relative grid grid-cols-1 xl:grid-cols-[1fr_290px]">
+          <div className="relative grid grid-cols-1 xl:grid-cols-[1fr_380px]">
             {/* Main ticket body */}
-            <div className="p-4 xl:p-6 space-y-4">
+            <div className="p-3 xl:p-4 space-y-3">
               <div className="flex items-start gap-4 xl:gap-6">
                 {/* Passport-style photo */}
                 <div className="shrink-0 bg-white p-1 shadow-lg rotate-[-2deg]" style={{ borderRadius: 6 }}>
-                  <Avatar student={student} sizeClass="w-20 h-24 sm:w-24 sm:h-28 xl:w-28 xl:h-32 text-3xl xl:text-5xl" />
+                  <Avatar student={student} sizeClass="w-16 h-20 sm:w-20 sm:h-24 xl:w-24 xl:h-28 text-3xl xl:text-4xl" />
                 </div>
 
                 <div className="flex-1 min-w-0 space-y-2.5">
-                  <div>
-                    <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 dark:text-white/60">{translate('Username')}</p>
-                    <p className="text-sm xl:text-base font-black tracking-wide text-primary-700 dark:text-primary-200 truncate">@{student?.username || 'guest'}</p>
+                  {/* Username, target exams, registered on, city and plan share one row */}
+                  <div className="flex flex-wrap items-start gap-x-6 gap-y-2">
+                    <div className="min-w-0">
+                      <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 dark:text-white/60">{translate('Username')}</p>
+                      <p className="text-sm xl:text-base font-black tracking-wide text-primary-700 dark:text-primary-200 truncate">@{student?.username || 'guest'}</p>
+                    </div>
                   </div>
-                  <h1 className="text-2xl xl:text-4xl font-black font-outfit tracking-tight leading-none break-words">
-                    {student?.name || translate('Student')}
-                  </h1>
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-2 pt-1 max-w-md">
-                    <div className="min-w-0">
-                      <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('Target exams')}</p>
-                      <p className="text-xs xl:text-sm font-bold truncate">{student?.primaryTargetExam || translate('All Exams')}</p>
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('Registered on')}</p>
-                      <p className="text-xs xl:text-sm font-bold truncate">{student?.createdAt ? new Date(student.createdAt).toLocaleDateString() : translate('Unknown')}</p>
-                    </div>
-                    {student?.city && (
-                      <div className="min-w-0">
-                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('City')}</p>
-                        <p className="text-xs xl:text-sm font-bold truncate flex items-center gap-1"><MapPin className="w-3 h-3 shrink-0" />{student.city}{student.state && `, ${student.state}`}</p>
-                      </div>
-                    )}
-                    {isPro && student?.subscriptionExpiry && (
-                      <div className="min-w-0">
-                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('Current Plan')}</p>
-                        <p className="text-xs xl:text-sm font-bold truncate">{translate('till {date}', { date: new Date(student.subscriptionExpiry).toLocaleDateString() })}</p>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <h1 className="text-2xl xl:text-4xl font-black font-outfit tracking-tight leading-none break-words">
+                      {student?.name || translate('Student')}
+                    </h1>
+                    {socialLinks.length > 0 && (
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        {socialLinks.map(([key, url]) => {
+                          const { icon: Icon } = SOCIAL_ICONS[key];
+                          return (
+                            <a key={key} href={url} target="_blank" rel="noopener noreferrer" aria-label={key} className="p-2 bg-white hover:bg-primary-50 ring-1 ring-primary-200 text-primary-700 dark:bg-white/15 dark:hover:bg-white/25 dark:ring-white/25 dark:text-white transition-colors">
+                              <Icon className="w-4 h-4" />
+                            </a>
+                          );
+                        })}
                       </div>
                     )}
                   </div>
+                  {student?.bio && <p className="text-xs xl:text-sm font-medium text-slate-700 dark:text-white/80 leading-relaxed">{student.bio}</p>}
                 </div>
               </div>
 
-              {student?.bio && <p className="text-xs xl:text-sm font-medium text-slate-700 dark:text-white/80 leading-relaxed">{student.bio}</p>}
-
-              {/* Scorecard strip: the profile counters live on the ticket itself */}
-              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                {statTiles.map((item) => (
-                  <div key={item.label} className="relative overflow-hidden bg-white/80 hover:bg-white ring-1 ring-primary-200 dark:bg-white/10 dark:hover:bg-white/15 dark:ring-white/20 px-2.5 py-2.5 transition-colors" style={{ borderRadius: 10 }}>
-                    <item.icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-primary-600/10 dark:text-white/10" />
-                    <p className="relative text-base xl:text-xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200 truncate">{item.value}</p>
-                    <p className="relative mt-1 text-[8px] xl:text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 leading-tight truncate">{translate(item.label)}</p>
-                  </div>
-                ))}
+              {/* Account details */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-primary-600 dark:text-primary-300" />
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-700 dark:text-white/80">{translate('Account details')}</p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
+                  {accountDetails.map((item) => (
+                    <div key={item.label} className="flex items-center gap-2 px-2 py-1.5 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 10 }}>
+                      <div className="w-7 h-7 flex items-center justify-center bg-primary-500/10 text-primary-600 dark:text-primary-300 flex-shrink-0" style={{ borderRadius: 8 }}>
+                        <item.icon className="w-4 h-4" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[8px] xl:text-[9px] font-black uppercase tracking-[0.18em] text-slate-600 dark:text-white/70">{translate(item.label)}</p>
+                        <p className="text-xs xl:text-sm font-bold truncate">{item.value}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Footer: actions, socials and barcode */}
-              <div className="flex flex-wrap items-end justify-between gap-3 pt-3 border-t border-dashed border-slate-300 dark:border-white/25">
+              <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-dashed border-slate-300 dark:border-white/25">
                 <div className="flex flex-wrap items-center gap-2">
                   {student?.username && (
                     <Button variant="secondary" size="sm" icon={Eye} className="rounded-xl text-xs font-black" onClick={() => router.push(`/u/${student.username}`)}>
@@ -298,38 +327,47 @@ const ProfilePage = () => {
                   <Button variant="primary" size="sm" icon={Settings} className="rounded-xl text-xs font-black" onClick={() => router.push('/student/settings')}>
                     {translate('Settings')}
                   </Button>
-                  {socialLinks.map(([key, url]) => {
-                    const { icon: Icon } = SOCIAL_ICONS[key];
-                    return (
-                      <a key={key} href={url} target="_blank" rel="noopener noreferrer" aria-label={key} className="p-2 bg-white hover:bg-primary-50 ring-1 ring-primary-200 text-primary-700 dark:bg-white/15 dark:hover:bg-white/25 dark:ring-white/25 dark:text-white transition-colors">
-                        <Icon className="w-4 h-4" />
-                      </a>
-                    );
-                  })}
+                  <Button variant="secondary" size="sm" icon={Trophy} className="rounded-xl text-xs font-black" onClick={() => router.push('/student/leaderboard')}>
+                    {translate('View leaderboard')}
+                  </Button>
                 </div>
-                <div className="hidden sm:block text-right">
-                  <Barcode value={student?.referralCode || student?.username} />
-                  <p className="mt-1 text-[9px] font-mono tracking-[0.3em] text-slate-500 dark:text-white/60">{student?.referralCode || 'AAJEXAM'}</p>
-                </div>
+                <button
+                  type="button"
+                  onClick={copyReferralCode}
+                  title={translate('Copy')}
+                  className="group ml-auto flex flex-col items-end gap-1 px-3 py-2 bg-white/80 ring-1 ring-primary-200 hover:ring-primary-400 dark:bg-white/10 dark:ring-white/20 dark:hover:ring-white/50 transition-all active:scale-95"
+                  style={{ borderRadius: 10 }}
+                >
+                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('Referral code')}</span>
+                  <span className="flex items-center gap-2 text-lg xl:text-xl font-black font-mono tracking-[0.25em] text-primary-700 dark:text-primary-200">
+                    {student?.referralCode || 'AAJEXAM'}
+                    <Copy className="w-4 h-4 opacity-70 group-hover:opacity-100" />
+                  </span>
+                </button>
               </div>
             </div>
 
             {/* Perforated rank stub */}
-            <div className="relative p-4 xl:p-6 bg-primary-600/5 dark:bg-black/20 border-t border-dashed border-primary-300 dark:border-white/35 xl:border-t-0 xl:border-l space-y-3">
+            <div className="relative p-3 xl:p-4 bg-primary-600/5 dark:bg-black/20 border-t border-dashed border-primary-300 dark:border-white/35 xl:border-t-0 xl:border-l flex flex-col gap-2.5">
               <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
               <span className="xl:hidden absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
               <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
+
+              {/* Profile counters: streak, followers, following, views, referrals, referral rewards */}
+              <div className="grid grid-cols-2 auto-rows-fr gap-1.5 pb-2.5 border-b border-dashed border-primary-300 dark:border-white/35 flex-1">
+                {statTiles.map(renderStatTile)}
+              </div>
 
               <div className="flex items-center gap-2">
                 <Trophy className="w-4 h-4 text-primary-600 dark:text-primary-300" />
                 <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-700 dark:text-white/80">{translate('All India Rank')}</p>
               </div>
 
-              <div className="grid grid-cols-2 xl:grid-cols-1 gap-2">
+              <div className="grid grid-cols-2 gap-1.5">
                 <div className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
                   <p className="text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-white/70 leading-none">{translate('Exam AIR')}</p>
                   <div className="flex items-baseline justify-between gap-2">
-                    <p className="text-3xl font-black font-outfit leading-tight text-primary-700 dark:text-primary-200">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
+                    <p className="text-2xl font-black font-outfit leading-tight text-primary-700 dark:text-primary-200">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
                     <p className="text-[10px] font-bold text-slate-600 dark:text-white/70 text-right leading-tight">
                       {student?.examAIR ? translate('of {total}', { total: student.examAIR.total }) : translate('No exams yet')}
                       {student?.examAIR && <><br />{translate('{time} spent', { time: formatTimeSpent(student.examAIR.totalTimeSpent, 'exam') })}</>}
@@ -339,7 +377,7 @@ const ProfilePage = () => {
                 <div className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
                   <p className="text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-white/70 leading-none">{translate('Quiz AIR')}</p>
                   <div className="flex items-baseline justify-between gap-2">
-                    <p className="text-3xl font-black font-outfit leading-tight">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
+                    <p className="text-2xl font-black font-outfit leading-tight">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
                     <p className="text-[10px] font-bold text-slate-600 dark:text-white/70 text-right leading-tight">
                       {student?.quizAIR ? translate('of {total}', { total: student.quizAIR.total }) : translate('No quizzes yet')}
                       {student?.quizAIR && <><br />{translate('{time} spent', { time: formatTimeSpent(student.quizAIR.totalTimeSpent, 'quiz') })}</>}
@@ -347,10 +385,6 @@ const ProfilePage = () => {
                   </div>
                 </div>
               </div>
-
-              <Button variant="secondary" size="sm" icon={ArrowRight} iconPosition="right" className="w-full rounded-xl text-xs font-black" onClick={() => router.push('/student/leaderboard')}>
-                {translate('View leaderboard')}
-              </Button>
             </div>
           </div>
         </section>
@@ -445,39 +479,6 @@ const ProfilePage = () => {
                     </div>
                   </div>
                 )}
-              </TicketCard>
-
-              {/* Badges */}
-              <TicketCard icon={Award} title={translate('Badges')} subtitle={translate('Earned through activity and achievements.')}>
-                <div className="flex flex-wrap gap-3">
-                  {(student?.badges?.length ? student.badges : ['Student']).map((badge, index) => (
-                    <span
-                      key={index}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-amber-50 dark:bg-amber-500/10 text-amber-800 dark:text-primary-200 text-xs font-black uppercase tracking-wider border-2 border-dashed border-primary-400/70"
-                      style={{ borderRadius: 10, transform: `rotate(${index % 2 === 0 ? -2 : 2}deg)` }}
-                    >
-                      <Award className="w-3.5 h-3.5" />
-                      {badge}
-                    </span>
-                  ))}
-                </div>
-              </TicketCard>
-
-              {/* Account details — admit-card style form fields */}
-              <TicketCard icon={ShieldCheck} title={translate('Account details')}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
-                  {accountDetails.map((item) => (
-                    <div key={item.label} className="flex items-center gap-3 p-3 bg-background-surface-secondary border-b-2 border-dashed border-primary-500/40" style={{ borderRadius: 10 }}>
-                      <div className="w-9 h-9 flex items-center justify-center bg-primary-500/10 text-primary-600 dark:text-primary-300 flex-shrink-0" style={{ borderRadius: 10 }}>
-                        <item.icon className="w-4 h-4" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-content-secondary">{translate(item.label)}</p>
-                        <p className="text-sm font-bold text-content-primary truncate">{item.value}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </TicketCard>
 
               <ReferralBanner user={student} />

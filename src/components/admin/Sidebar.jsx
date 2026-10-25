@@ -43,6 +43,8 @@ import {
   ClipboardList,
   Trophy,
   Award,
+  Map as MapIcon,
+  Building2,
   MessageCircleQuestion,
   FolderTree,
   Landmark,
@@ -129,6 +131,8 @@ const Sidebar = () => {
         { path: '/admin/streak', icon: Flame, label: 'Streaks', key: 'streak' },
         { path: '/admin/leaderboard', icon: Trophy, label: 'Leaderboard', key: 'leaderboard', isPro: true },
         { path: '/admin/all-india-rank', icon: Award, label: 'All India Rank', key: 'all-india-rank', isPro: true },
+        { path: '/admin/state-rank', icon: MapIcon, label: 'State Rank', key: 'state-rank', isPro: true },
+        { path: '/admin/city-rank', icon: Building2, label: 'City Rank', key: 'city-rank', isPro: true },
         { path: '/admin/revision', icon: RotateCcw, label: 'Revision Queue', key: 'revision', isPro: true },
         { path: '/admin/study-plan', icon: CalendarDays, label: 'Study Plans', key: 'study-plan', isPro: true },
       ]
@@ -168,7 +172,7 @@ const Sidebar = () => {
     {
       title: 'FINANCE',
       items: [
-        { path: '/admin/user-wallets', icon: Wallet, label: 'Wallets', key: 'user-wallets' },
+        { path: '/admin/user-wallets', icon: Wallet, label: 'Referral Rewards', key: 'user-wallets' },
         { path: '/admin/withdraw-requests', icon: Banknote, label: 'Payouts', key: 'withdraw-requests' },
         { path: '/admin/payment-transactions', icon: CreditCard, label: 'Transactions', key: 'transactions' },
         { path: '/admin/subscriptions', icon: ShieldCheck, label: 'Plans', key: 'subscriptions' },

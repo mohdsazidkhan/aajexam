@@ -270,7 +270,7 @@ const StudentsPage = () => {
     },
     {
       key: 'walletBalance',
-      header: 'Wallet Balance',
+      header: 'Referral Rewards',
       render: (_, student) => (
         <div className="text-sm font-semibold text-primary-600 dark:text-primary-400">
           {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(student.walletBalance || 0)}

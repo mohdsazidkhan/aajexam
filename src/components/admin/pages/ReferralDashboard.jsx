@@ -115,11 +115,11 @@ export default function ReferralDashboard() {
     },
     {
       key: 'walletBalance',
-      header: 'WALLET BALANCE',
+      header: 'REFERRAL REWARDS',
       render: (_, u) => (
         <div>
           <div className="text-xl font-black italic tracking-tighter text-primary-600 dark:text-primary-300 tabular-nums">₹{u.walletBalance || 0}</div>
-          <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Wallet Balance</div>
+          <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Referral Rewards</div>
         </div>
       )
     },

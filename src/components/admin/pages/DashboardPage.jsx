@@ -147,7 +147,7 @@ const DashboardPage = () => {
         { title: 'Withdraw Requests', count: stats.withdrawRequests || 0, link: '/admin/withdraw-requests', icon: Wallet, subtitle: 'Pending review' },
         { title: 'Paid Out', count: formatINR(stats.withdrawPaid), link: '/admin/withdraw-requests', icon: History, subtitle: 'Lifetime payouts' },
         { title: 'Bank Details', count: stats.bankDetails || 0, link: '/admin/bank-details', icon: Building, subtitle: 'Student accounts' },
-        { title: 'Wallet Balance', count: formatINR(stats.walletBalance), link: '/admin/user-wallets', icon: PiggyBank, subtitle: 'Across all wallets' },
+        { title: 'Referral Rewards', count: formatINR(stats.walletBalance), link: '/admin/user-wallets', icon: PiggyBank, subtitle: 'Across all students' },
         { title: 'Total Expenses', count: formatINR(stats.totalExpenses), link: '/admin/expenses', icon: Receipt, subtitle: 'Recorded expenses' },
       ],
     },

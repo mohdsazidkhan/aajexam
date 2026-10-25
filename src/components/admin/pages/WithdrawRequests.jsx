@@ -111,7 +111,7 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
       key: 'amount', header: 'Amount', render: (_, req) => (
         <div className="flex flex-col">
           <span className="text-lg font-black text-primary-600 dark:text-primary-300 italic tracking-tighter leading-none">{formatCurrency(req.amount)}</span>
-          <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1 capitalize">{req.requestType} wallet</span>
+          <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1 capitalize">{req.requestType} rewards</span>
         </div>
       )
     },
@@ -263,7 +263,7 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
 
                       <div className="flex flex-col shrink-0">
                         <span className="text-lg font-black text-primary-600 dark:text-primary-300 italic tracking-tighter leading-none">{formatCurrency(req.amount)}</span>
-                        <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1 capitalize">{req.requestType} wallet</span>
+                        <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1 capitalize">{req.requestType} rewards</span>
                       </div>
 
                       <div className="shrink-0">
@@ -316,7 +316,7 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
                           <div className="w-12 h-12 bg-primary-600 text-white rounded-2xl flex items-center justify-center font-black italic shadow-sm text-xs">{req.userId?.name?.[0] || 'U'}</div>
                           <div>
                             <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{req.userId?.name || 'N/A'}</h3>
-                            <div className="text-[9px] font-black text-slate-400 tracking-widest uppercase">{req.requestType} wallet</div>
+                            <div className="text-[9px] font-black text-slate-400 tracking-widest uppercase">{req.requestType} rewards</div>
                           </div>
                         </div>
                         <div className={`px-3 py-1 rounded-lg xl:rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>

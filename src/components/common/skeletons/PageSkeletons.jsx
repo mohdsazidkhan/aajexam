@@ -343,26 +343,89 @@ export const SubscriptionPageSkeleton = () => (
   </div>
 );
 
-// Profile: header card, rank strip, 6 stat tiles, tab content.
+// Profile: mirrors the "student admit card" hero (header strip, photo + details, account tiles,
+// footer actions | stat tiles + rank stub), the segmented tab bar and the first tab's cards.
 export const ProfilePageSkeleton = () => (
-  <div className="space-y-3 xl:space-y-4 font-outfit">
-    <div className={`${CARD} p-4 xl:p-6 flex flex-col xl:flex-row items-center gap-4`}>
-      <Sh className="w-20 h-20 xl:w-28 xl:h-28 rounded-full shrink-0" />
-      <div className="flex-1 w-full space-y-2 flex flex-col items-center xl:items-start">
-        <Sh className="h-6 w-48 rounded-lg" />
-        <Sh className="h-3 w-32 rounded-md" />
-        <div className="flex gap-2"><Sh className="h-8 w-24 rounded-xl" /><Sh className="h-8 w-24 rounded-xl" /></div>
+  <div className="container mx-auto space-y-2 xl:space-y-4 mt-4 font-outfit">
+    <div className="overflow-hidden bg-background-surface ring-1 ring-primary-200 dark:ring-white/10 shadow-xl" style={{ borderRadius: 16 }}>
+      {/* Header strip */}
+      <div className="flex items-center justify-between gap-3 px-4 xl:px-6 py-2 bg-primary-600/10 dark:bg-black/25 border-b border-primary-200 dark:border-white/15">
+        <div className="flex items-center gap-2">
+          <Sh className="h-4 w-4 rounded-full" />
+          <Sh className="h-3 w-40 rounded-md" />
+          <Sh className="h-4 w-16 rounded-full" />
+        </div>
+        <Sh className="h-5 w-12 rounded-md" />
+      </div>
+
+      <div className="grid grid-cols-1 xl:grid-cols-[1fr_380px]">
+        {/* Ticket body */}
+        <div className="p-4 xl:p-6 space-y-4">
+          <div className="flex items-start gap-4 xl:gap-6">
+            <Sh className="w-20 h-24 sm:w-24 sm:h-28 xl:w-28 xl:h-32 rounded-md shrink-0" />
+            <div className="flex-1 min-w-0 space-y-2.5">
+              <Sh className="h-3 w-24 rounded-md" />
+              <Sh className="h-8 xl:h-10 w-2/3 max-w-xs rounded-lg" />
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 max-w-md">
+                {[0, 1, 2, 3].map((i) => <Sh key={i} className="h-8 rounded-md" />)}
+              </div>
+            </div>
+          </div>
+          <Sh className="h-4 w-full max-w-2xl rounded-md" />
+
+          {/* Account details */}
+          <div className="space-y-2">
+            <Sh className="h-3 w-32 rounded-md" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
+              {Array.from({ length: 6 }).map((_, i) => <Sh key={i} className="h-12 rounded-lg" />)}
+            </div>
+          </div>
+
+          {/* Footer: actions + barcode */}
+          <div className="flex flex-wrap items-end justify-between gap-3 pt-3 border-t border-dashed border-slate-300 dark:border-white/25">
+            <div className="flex flex-wrap items-center gap-2">
+              <Sh className="h-9 w-32 rounded-xl" />
+              <Sh className="h-9 w-28 rounded-xl" />
+              {[0, 1, 2, 3].map((i) => <Sh key={i} className="h-9 w-9 rounded-md" />)}
+            </div>
+            <Sh className="hidden sm:block h-10 w-28 rounded-md" />
+          </div>
+        </div>
+
+        {/* Stub: stat tiles + AIR */}
+        <div className="p-4 xl:p-6 bg-primary-600/5 dark:bg-black/20 border-t border-dashed border-primary-300 dark:border-white/35 xl:border-t-0 xl:border-l space-y-3">
+          <div className="grid grid-cols-2 gap-2 pb-3 border-b border-dashed border-primary-300 dark:border-white/35">
+            {Array.from({ length: 6 }).map((_, i) => <Sh key={i} className="h-12 rounded-lg" />)}
+          </div>
+          <Sh className="h-3 w-32 rounded-md" />
+          <div className="grid grid-cols-2 xl:grid-cols-1 gap-2">
+            <Sh className="h-16 rounded-lg" />
+            <Sh className="h-16 rounded-lg" />
+          </div>
+          <Sh className="h-9 w-full rounded-xl" />
+        </div>
       </div>
     </div>
-    <div className={`${CARD} p-3 flex flex-col xl:flex-row gap-3`}>
-      <Sh className="h-8 w-40 rounded-lg" />
-      <div className="grid grid-cols-2 gap-2 flex-1"><Sh className="h-14 rounded-xl" /><Sh className="h-14 rounded-xl" /></div>
+
+    {/* Segmented tab bar */}
+    <div className="flex gap-1 p-1 w-fit max-w-full bg-background-surface ring-1 ring-primary-200 dark:ring-white/10 shadow-md" style={{ borderRadius: 12 }}>
+      {[0, 1, 2].map((i) => <Sh key={i} className="h-9 w-28 rounded-lg shrink-0" />)}
     </div>
-    <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
-      {Array.from({ length: 6 }).map((_, i) => <Sh key={i} className="h-24 rounded-2xl" />)}
+
+    {/* First tab: ticket cards */}
+    <div className="space-y-4 xl:space-y-6">
+      {[0, 1].map((i) => (
+        <div key={i} className={`${CARD} p-4 space-y-3`}>
+          <div className="flex items-center gap-2">
+            <Sh className="h-8 w-8 rounded-lg" />
+            <Sh className="h-4 w-40 rounded-md" />
+          </div>
+          <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
+            {Array.from({ length: 4 }).map((_, j) => <Sh key={j} className="h-16 rounded-xl" />)}
+          </div>
+        </div>
+      ))}
     </div>
-    <TabsRowSkeleton count={4} />
-    <RowsSkeleton rows={3} />
   </div>
 );
 

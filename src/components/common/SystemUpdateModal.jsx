@@ -110,7 +110,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
               <FaShieldAlt className="mr-3" /> Your Data is Safe
             </h3>
             <p className="text-sm font-medium opacity-90 leading-relaxed">
-              {translate('Your account, subscription, and wallet balance are completely safe. All your exam preparation data has been preserved on this platform.')}
+              {translate('Your account, subscription, and referral rewards are completely safe. All your exam preparation data has been preserved on this platform.')}
             </p>
           </div>
 

@@ -2,15 +2,59 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from '@/components/common/AppLink';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
-import { PlayCircle, Eye, Heart, FileText, Lightbulb, Zap, Newspaper, BarChart3 } from 'lucide-react';
+import { PlayCircle, Eye, FileText, Lightbulb, Zap, Newspaper, BarChart3, Trophy, Award, MapPin, Target, MessageSquare, HelpCircle, Users, UserCheck, TrendingUp } from 'lucide-react';
+import { useSelector } from 'react-redux';
 import API from '../../lib/api';
-import { ProfileSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
+import { PublicProfileSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import dbConnect from '../../lib/db';
 import User from '../../models/User';
+import { ProBadge } from '../../components/common/ui';
 import FollowButton from '../../components/common/FollowButton';
 import MobileAppWrapper from '../../components/common/MobileAppWrapper';
 import Seo from '../../components/common/Seo';
 import useTranslate from '../../hooks/useTranslate';
+
+// Number that counts up from 0 on mount (instant in lite mode).
+const CountUp = ({ value, prefix = '', suffix = '', className = '' }) => {
+  const liteMode = useSelector((s) => s.display?.liteMode);
+  const target = Number(value) || 0;
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    if (liteMode || target === 0) { setN(target); return undefined; }
+    let raf;
+    let start;
+    const tick = (t) => {
+      if (!start) start = t;
+      const p = Math.min(1, (t - start) / 900);
+      setN(Math.round(target * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, liteMode]);
+  return <span className={className}>{prefix}{n.toLocaleString()}{suffix}</span>;
+};
+
+// Section card: eyebrow heading with a fading rule, over a soft glowing surface.
+const Section = ({ icon: Icon, title, meta, className = '', children }) => (
+  <section
+    className={`group/section relative overflow-hidden bg-background-surface p-3 sm:p-4 ring-1 ring-primary-500/15 shadow-sm transition-shadow hover:shadow-[0_0_48px_-18px] hover:shadow-primary-500/50 ${className}`}
+    style={{ borderRadius: 22 }}
+  >
+    <div className="pointer-events-none absolute -top-16 -right-16 w-44 h-44 bg-primary-500/10 blur-3xl" style={{ borderRadius: '50%' }} />
+    <h2 className="relative flex items-center gap-2 mb-2.5 text-xs font-black uppercase tracking-[0.16em] text-content-primary">
+      <span className="flex items-center justify-center w-7 h-7 bg-gradient-to-br from-primary-500 to-primary-700 text-white shadow-md" style={{ borderRadius: 9 }}>
+        <Icon className="w-3.5 h-3.5" />
+      </span>
+      {title}
+      {meta !== undefined && <span className="px-2 py-0.5 bg-primary-500/10 text-primary-700 dark:text-primary-300 text-[10px] tracking-normal" style={{ borderRadius: 999 }}>{meta}</span>}
+      <span className="flex-1 h-px bg-gradient-to-r from-primary-500/40 to-transparent" />
+    </h2>
+    <div className="relative">{children}</div>
+  </section>
+);
+
+const LINE_CLS = 'border-primary-200 dark:border-white/15';
 
 const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   const { translate } = useTranslate();
@@ -73,6 +117,34 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
     if (username) fetchReels(1);
   }, [username, fetchReels]);
 
+  // Community questions this user asked (approved only)
+  const [cQuestions, setCQuestions] = useState([]);
+  const [cqPage, setCqPage] = useState(1);
+  const [cqTotal, setCqTotal] = useState(0);
+  const [cqLoading, setCqLoading] = useState(false);
+  const [hasMoreCq, setHasMoreCq] = useState(false);
+
+  const fetchCommunityQuestions = useCallback(async (page = 1) => {
+    try {
+      setCqLoading(true);
+      const res = await API.request(`/api/users/profile/${encodeURIComponent(username)}/community-questions?page=${page}&limit=5`);
+      if (res?.success) {
+        setCQuestions(prev => page === 1 ? res.questions : [...prev, ...res.questions]);
+        setCqTotal(res.pagination.total);
+        setHasMoreCq(page < res.pagination.totalPages);
+        setCqPage(page);
+      }
+    } catch (e) {
+      console.error('Failed to load community questions:', e);
+    } finally {
+      setCqLoading(false);
+    }
+  }, [username]);
+
+  useEffect(() => {
+    if (username) fetchCommunityQuestions(1);
+  }, [username, fetchCommunityQuestions]);
+
   const handleFollowChange = (newFollowStatus) => {
     setIsFollowing(newFollowStatus);
     if (profile) {
@@ -85,7 +157,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
   if (loading) return (
     <div className="min-h-screen bg-background-page pb-20 font-outfit">
-      <div className="py-4 xl:py-8"><ProfileSkeleton /></div>
+      <PublicProfileSkeleton />
     </div>
   );
 
@@ -106,9 +178,29 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
   if (!profile) return null;
 
+  const compact = (n) => (n >= 1000 ? `${(n / 1000).toFixed(1)}K` : n || 0);
+  const exam = profile.performanceMetrics?.examStats;
+  const showStats = profile.isPublicProfile || isOwnProfile;
+  const initial = profile.name?.charAt(0)?.toUpperCase() || 'U';
+
+  const stats = [
+    { label: 'Followers', value: profile.followersCount || 0, icon: Users, href: `/u/${encodeURIComponent(profile.username)}/followers` },
+    { label: 'Following', value: profile.followingCount || 0, icon: UserCheck, href: `/u/${encodeURIComponent(profile.username)}/following` },
+    { label: 'Reels', value: profile.reelsCount || 0, icon: PlayCircle },
+    { label: 'Views', value: profile.profileViews || 0, icon: Eye },
+  ];
+
+  const typeConfig = {
+    question: { icon: FileText, label: 'Question' },
+    fact: { icon: Lightbulb, label: 'Fact' },
+    tip: { icon: Zap, label: 'Tip' },
+    current_affairs: { icon: Newspaper, label: 'Current Affairs' },
+    poll: { icon: BarChart3, label: 'Poll' },
+  };
+
   return (
     <MobileAppWrapper title={profile.name || translate('Profile')}>
-      <div className="max-w-full mx-auto min-h-screen font-outfit">
+      <div className="max-w-full mx-auto min-h-screen font-outfit pt-3 xl:pt-5">
         <Seo
           title={seo?.title || 'Profile - AajExam'}
           description={seo?.description}
@@ -118,265 +210,263 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           type="profile"
         />
 
-        {/* Profile Header */}
-        <div className="mb-6">
-          {/* Banner */}
-          <div className="h-32 sm:h-40 xl:h-48 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 relative overflow-hidden shadow-xl ring-1 ring-white/10" style={{ borderRadius: 16 }}>
-            <div className="pointer-events-none absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-            <div className="pointer-events-none absolute -top-16 -left-10 w-64 h-64 bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-            <div className="pointer-events-none absolute -bottom-24 right-10 w-72 h-72 bg-primary-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
-          </div>
+        {/* ══════════ HERO — aurora, spinning-ring avatar, rank card, glass stats ══════════ */}
+        <section
+          className="relative overflow-hidden text-slate-900 dark:text-white shadow-2xl ring-1 ring-primary-200 dark:ring-white/10 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950"
+          style={{ borderRadius: 32 }}
+        >
+          <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+          <div className="pointer-events-none absolute -top-32 -left-24 w-[26rem] h-[26rem] bg-primary-300/40 dark:bg-primary-500/25 blur-3xl motion-safe:animate-pulse" style={{ borderRadius: '50%' }} />
+          <div className="pointer-events-none absolute -bottom-40 right-0 w-[30rem] h-[30rem] bg-primary-300/30 dark:bg-primary-600/25 blur-3xl motion-safe:animate-pulse" style={{ borderRadius: '50%', animationDelay: '1.2s' }} />
+          <span className="pointer-events-none absolute right-6 -bottom-10 select-none text-[220px] font-black leading-none text-primary-600/[0.07] dark:text-white/[0.06]">{initial}</span>
 
-          {/* Profile Card - overlaps banner */}
-          <div className="-mt-16 sm:-mt-20 relative z-10">
-            <div className="relative bg-background-surface border border-slate-200 dark:border-slate-800 shadow-xl p-4 sm:p-5 xl:p-6 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500" style={{ borderRadius: 16 }}>
-              {/* Avatar + Info + Action */}
-              <div className="flex items-start gap-3 sm:gap-4">
-                {/* Avatar */}
-                <div className="flex-shrink-0 -mt-12 sm:-mt-14">
-                  {profile.profilePicture ? (
-                      <Image
-                        src={profile.profilePicture}
-                        alt={profile.name}
-                        width={112}
-                        height={112}
-                        className="w-20 h-20 sm:w-24 sm:h-24 xl:w-28 xl:h-28 rounded-lg xl:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm object-cover bg-slate-200 dark:bg-slate-700"
-                      />
-                    ) : (
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 xl:w-28 xl:h-28 rounded-lg xl:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 text-3xl sm:text-4xl xl:text-5xl font-black">
-                      {profile.name?.charAt(0)?.toUpperCase() || 'U'}
-                    </div>
-                  )}
-                </div>
-
-                {/* Name + Username */}
-                <div className="flex-1 min-w-0 pt-1">
-                  <h1 className="text-base sm:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-tight">{profile.name}</h1>
-                  {profile.username && (
-                    <p className="text-xs sm:text-sm font-bold text-primary-600 dark:text-primary-300">
-                      @{profile.username}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              {/* Action Button */}
-              <div className="mt-3">
-                {!isOwnProfile && (
-                  <FollowButton
-                    userId={profile.id}
-                    initialFollowing={isFollowing}
-                    onFollowChange={handleFollowChange}
+          <div className="relative z-10 grid grid-cols-1 xl:grid-cols-[1fr_auto] gap-3 xl:gap-6 p-3 sm:p-4 xl:p-5">
+            {/* Identity */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
+              <div className="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24">
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary-300 via-primary-500 to-primary-700 motion-safe:animate-spin" style={{ borderRadius: '50%', animationDuration: '7s' }} />
+                <div className="absolute inset-[4px] bg-white dark:bg-slate-900" style={{ borderRadius: '50%' }} />
+                {profile.profilePicture ? (
+                  <Image
+                    src={profile.profilePicture}
+                    alt={profile.name}
+                    width={96}
+                    height={96}
+                    className="absolute inset-[8px] w-[calc(100%-16px)] h-[calc(100%-16px)] object-cover bg-slate-200 dark:bg-slate-700"
+                    style={{ borderRadius: '50%' }}
                   />
-                )}
-                {isOwnProfile && (
-                  <button
-                    className="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-wider text-[11px] rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 transition-all"
-                    onClick={() => router.push('/student/settings')}
-                  >
-                    {translate('Edit Profile')}
-                  </button>
+                ) : (
+                  <div className="absolute inset-[8px] flex items-center justify-center bg-primary-600 text-white text-4xl font-black" style={{ borderRadius: '50%' }}>{initial}</div>
                 )}
               </div>
 
-              {/* Bio */}
-              {profile.bio && (
-                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed mt-3">{profile.bio}</p>
-              )}
-
-              {/* City + Target exam */}
-              {(profile.city || profile.primaryTargetExam) && (
-                <div className="flex flex-wrap items-center gap-2 mt-3">
-                  {profile.city && (
-                    <span className="px-3 py-1.5 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] sm:text-xs font-bold border border-slate-100 dark:border-slate-700">
-                      📍 {profile.city}{profile.state && `, ${profile.state}`}
-                    </span>
+              <div className="min-w-0 flex-1 space-y-1.5">
+                <h1 className="text-xl sm:text-2xl xl:text-3xl font-black uppercase tracking-tight leading-none break-words bg-gradient-to-r from-slate-900 via-slate-900 to-primary-600 dark:from-white dark:via-white dark:to-primary-200 bg-clip-text text-transparent">{profile.name}</h1>
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5">
+                  {profile.username && (
+                    <p className="px-2.5 py-0.5 bg-primary-500/10 text-primary-700 ring-1 ring-primary-500/25 dark:bg-white/15 dark:text-primary-100 dark:ring-white/20 text-xs font-bold" style={{ borderRadius: 999 }}>@{profile.username}</p>
                   )}
-                  {profile.primaryTargetExam && profile.primaryTargetExam !== 'All Exams' && (
-                    <span className="px-3 py-1.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-lg text-[10px] sm:text-xs font-bold border border-primary-100 dark:border-primary-900/40">
-                      🎯 Preparing for {profile.primaryTargetExam}
-                    </span>
+                  {profile.isPro ? (
+                    <ProBadge size="sm" />
+                  ) : (
+                    <span className="px-2.5 py-0.5 bg-slate-200 text-slate-700 ring-1 ring-slate-300 dark:bg-white/15 dark:text-white dark:ring-white/30 text-[10px] font-black uppercase tracking-widest" style={{ borderRadius: 999 }}>{translate('FREE')}</span>
                   )}
+                  {(profile.badges || []).map((badge, index) => (
+                    <span key={index} className="inline-flex items-center gap-1 pl-1 pr-2.5 py-0.5 bg-gradient-to-r from-primary-500/20 to-primary-500/5 ring-1 ring-primary-500/30 text-primary-800 dark:from-white/25 dark:to-white/10 dark:ring-white/30 dark:text-white text-[10px] font-black uppercase tracking-wider shadow-[0_0_18px_-6px] shadow-primary-500/50" style={{ borderRadius: 999 }}>
+                      <span className="flex items-center justify-center w-4 h-4 bg-primary-600 text-white dark:bg-white dark:text-primary-700" style={{ borderRadius: '50%' }}><Award className="w-2.5 h-2.5" /></span>
+                      {badge}
+                    </span>
+                  ))}
                 </div>
-              )}
+                {profile.bio && <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-white/80 leading-snug max-w-2xl line-clamp-2">{profile.bio}</p>}
 
-              {/* Stats Row */}
-              <div className="flex gap-5 sm:gap-8 mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-                <div
-                  className="cursor-pointer group"
-                  onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/followers`)}
-                >
-                  <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followersCount || 0}</span>
-                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">{translate('Followers')}</span>
-                </div>
-                <div
-                  className="cursor-pointer group"
-                  onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/following`)}
-                >
-                  <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followingCount || 0}</span>
-                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">{translate('Following')}</span>
-                </div>
-                <div>
-                  <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white">{profile.reelsCount || 0}</span>
-                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">{translate('Reels')}</span>
-                </div>
-                <div>
-                  <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white">{profile.profileViews || 0}</span>
-                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">{translate('Views')}</span>
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                    {profile.city && (
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-primary-500/10 text-primary-800 ring-1 ring-primary-500/25 dark:bg-white/15 dark:text-white dark:ring-white/20 text-[10px] font-bold" style={{ borderRadius: 999 }}>
+                        <MapPin className="w-3.5 h-3.5" />{profile.city}{profile.state && `, ${profile.state}`}
+                      </span>
+                    )}
+                    {profile.primaryTargetExam && profile.primaryTargetExam !== 'All Exams' && (
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-primary-600 text-white dark:bg-white dark:text-primary-800 text-[10px] font-black shadow-md" style={{ borderRadius: 999 }}>
+                        <Target className="w-3.5 h-3.5" />Preparing for {profile.primaryTargetExam}
+                      </span>
+                    )}
+                  {!isOwnProfile && (
+                    <FollowButton
+                      userId={profile.id}
+                      initialFollowing={isFollowing}
+                      onFollowChange={handleFollowChange}
+                    />
+                  )}
+                  {isOwnProfile && (
+                    <>
+                      <button
+                        className="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white ring-1 ring-white/30 font-black uppercase tracking-wider text-[10px] shadow-lg active:translate-y-0.5 transition-all"
+                        style={{ borderRadius: 12 }}
+                        onClick={() => router.push('/student/settings')}
+                      >
+                        {translate('Settings')}
+                      </button>
+                      <button
+                        className="px-4 py-2 bg-primary-500/10 hover:bg-primary-500/20 text-primary-800 ring-1 ring-primary-500/30 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/30 font-black uppercase tracking-wider text-[10px] active:translate-y-0.5 transition-all"
+                        style={{ borderRadius: 12 }}
+                        onClick={() => router.push('/student/profile')}
+                      >
+                        {translate('View Profile')}
+                      </button>
+                      <button
+                        className="px-4 py-2 bg-primary-500/10 hover:bg-primary-500/20 text-primary-800 ring-1 ring-primary-500/30 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/30 font-black uppercase tracking-wider text-[10px] active:translate-y-0.5 transition-all"
+                        style={{ borderRadius: 12 }}
+                        onClick={() => router.push('/student/leaderboard')}
+                      >
+                        {translate('View leaderboard')}
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Content Sections */}
-        <div className="space-y-2 xl:space-y-4 pb-8">
-          {/* All India Rank */}
-          {(profile.isPublicProfile || isOwnProfile) && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
-              <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
-                {translate('All India Rank')}
-              </h2>
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-primary-600 rounded-lg xl:rounded-xl sm:rounded-2xl text-white">
-                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">{translate('Exam AIR')}</span>
-                  <span className="text-xl sm:text-2xl xl:text-3xl font-black tracking-tight">{profile.examAIR ? `#${profile.examAIR.rank}` : '—'}</span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1 text-center">{profile.examAIR ? translate('of {total}', { total: profile.examAIR.total }) : translate('No exams yet')}</span>
+            {/* Rank card */}
+            {showStats && (
+              <div className="relative overflow-hidden self-start w-full xl:w-60 p-3 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/25 backdrop-blur-md shadow-xl" style={{ borderRadius: 24 }}>
+                <Trophy className="pointer-events-none absolute -right-4 -bottom-4 w-28 h-28 text-primary-600/10 dark:text-white/10 -rotate-12" />
+                <p className="relative flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-primary-700 dark:text-primary-100">
+                  <Trophy className="w-3.5 h-3.5" />{translate('All India Rank')}
+                </p>
+                <div className="relative mt-1 flex items-end justify-between gap-3">
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70">{translate('Exam AIR')}</p>
+                    {profile.examAIR
+                      ? <CountUp value={profile.examAIR.rank} prefix="#" className="block text-3xl font-black leading-none tracking-tight" />
+                      : <span className="block text-3xl font-black leading-none">—</span>}
+                  </div>
+                  <p className="pb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-white/70 text-right">{profile.examAIR ? translate('of {total}', { total: profile.examAIR.total }) : translate('No exams yet')}</p>
                 </div>
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-1">{translate('Quiz AIR')}</span>
-                  <span className="text-xl sm:text-2xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white">{profile.quizAIR ? `#${profile.quizAIR.rank}` : '—'}</span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 text-center">{profile.quizAIR ? translate('of {total}', { total: profile.quizAIR.total }) : translate('No quizzes yet')}</span>
+                <div className="relative mt-2 pt-2 border-t border-slate-200 dark:border-white/20 flex items-end justify-between gap-3">
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70">{translate('Quiz AIR')}</p>
+                    {profile.quizAIR
+                      ? <CountUp value={profile.quizAIR.rank} prefix="#" className="block text-3xl font-black leading-none tracking-tight text-primary-700 dark:text-primary-100" />
+                      : <span className="block text-3xl font-black leading-none">—</span>}
+                  </div>
+                  <p className="pb-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-white/70 text-right">{profile.quizAIR ? translate('of {total}', { total: profile.quizAIR.total }) : translate('No quizzes yet')}</p>
                 </div>
               </div>
+            )}
+          </div>
+
+          {/* Glass stat strip */}
+          <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-primary-200 dark:border-white/15 bg-primary-500/5 dark:bg-black/15">
+            {stats.map((s, i) => {
+              const body = (
+                <div className="flex items-center justify-center sm:justify-start gap-2.5 px-3 py-2">
+                  <span className="flex items-center justify-center w-7 h-7 bg-primary-500/10 text-primary-700 ring-1 ring-primary-500/20 dark:bg-white/15 dark:text-white dark:ring-white/20" style={{ borderRadius: 9 }}>
+                    <s.icon className="w-3.5 h-3.5" />
+                  </span>
+                  <div className="text-left">
+                    <CountUp value={s.value} className="block text-base sm:text-lg font-black leading-none" />
+                    <span className="block mt-0.5 text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70">{translate(s.label)}</span>
+                  </div>
+                </div>
+              );
+              const cls = `${LINE_CLS} ${i % 2 === 1 ? 'border-l' : ''} ${i > 1 ? 'border-t sm:border-t-0' : ''} ${i > 0 ? 'sm:border-l' : ''}`;
+              return s.href ? (
+                <button key={s.label} type="button" className={`${cls} hover:bg-primary-500/10 dark:hover:bg-white/10 transition-colors`} onClick={() => router.push(s.href)}>{body}</button>
+              ) : (
+                <div key={s.label} className={cls}>{body}</div>
+              );
+            })}
+          </div>
+
+          {/* Exam statistics strip */}
+          {showStats && (
+            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-primary-200 dark:border-white/15 bg-primary-500/10 dark:bg-black/25">
+              {[
+                { label: 'Tests', value: exam?.mockTestsAttempted || 0, icon: FileText },
+                { label: 'Quizzes', value: profile.quizzesAttempted || 0, icon: HelpCircle },
+                { label: 'Readiness', value: exam?.overallReadiness || 0, icon: TrendingUp, pct: true },
+                { label: 'Average', value: exam?.averageMockScore || 0, icon: BarChart3, pct: true },
+              ].map((e, i) => (
+                <div key={e.label} className={`flex items-center justify-center sm:justify-start gap-2.5 px-3 py-2 ${LINE_CLS} ${i % 2 === 1 ? 'border-l' : ''} ${i > 1 ? 'border-t sm:border-t-0' : ''} ${i > 0 ? 'sm:border-l' : ''}`}>
+                  <span className="flex items-center justify-center w-7 h-7 bg-primary-500/10 text-primary-700 ring-1 ring-primary-500/20 dark:bg-white/15 dark:text-white dark:ring-white/20" style={{ borderRadius: 9 }}>
+                    <e.icon className="w-3.5 h-3.5" />
+                  </span>
+                  <div className="text-left min-w-0">
+                    <CountUp value={e.value} suffix={e.pct ? '%' : ''} className="block text-base sm:text-lg font-black leading-none" />
+                    <span className="block mt-0.5 text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-white/70">{translate(e.label)}</span>
+                    {e.pct && (
+                      <span className="block mt-1 h-1 w-16 bg-primary-500/20 dark:bg-white/20 overflow-hidden" style={{ borderRadius: 999 }}>
+                        <span className="block h-full bg-primary-600 dark:bg-white" style={{ width: `${Math.min(100, Math.max(0, e.value))}%`, borderRadius: 999 }} />
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           )}
+        </section>
 
-          {/* Badges Section */}
-          {profile.badges && profile.badges.length > 0 && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
-              <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
-                {translate('Badges')}
-              </h2>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {profile.badges.map((badge, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-2 sm:px-4 sm:py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg xl:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-wider border border-slate-100 dark:border-slate-700"
-                  >
-                    {badge}
-                  </span>
+        {/* ══════════ BENTO ══════════ */}
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-2 xl:gap-3 mt-2 xl:mt-3 pb-6 items-start">
+          {/* Community questions */}
+          {cQuestions.length > 0 && (
+            <Section icon={HelpCircle} title={translate('Community Questions')} meta={cqTotal} className="xl:col-span-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                {cQuestions.map((q) => (
+                  <Link href={`/community-questions/${q._id}`} key={q._id}>
+                    <div className="group relative h-full p-4 pl-5 bg-primary-500/5 ring-1 ring-primary-500/15 hover:ring-primary-500/45 hover:-translate-y-0.5 hover:shadow-lg transition-all overflow-hidden" style={{ borderRadius: 18 }}>
+                      <span className="absolute left-0 inset-y-0 w-1.5 bg-gradient-to-b from-primary-400 to-primary-700" />
+                      <p className="text-sm font-bold text-content-primary leading-snug line-clamp-2 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors">{q.question}</p>
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mt-3 text-[10px] sm:text-[11px] font-bold text-content-muted">
+                        {q.exam?.name && <span className="px-2.5 py-0.5 bg-primary-600 text-white" style={{ borderRadius: 999 }}>{q.exam.name}</span>}
+                        <span className="inline-flex items-center gap-1"><MessageSquare className="w-3 h-3" />{translate('{count} answers', { count: q.answerCount || 0 })}</span>
+                        <span className="inline-flex items-center gap-1"><Eye className="w-3 h-3" />{compact(q.views)}</span>
+                      </div>
+                    </div>
+                  </Link>
                 ))}
               </div>
-            </div>
+              {hasMoreCq && (
+                <button
+                  onClick={() => fetchCommunityQuestions(cqPage + 1)}
+                  disabled={cqLoading}
+                  className="w-full mt-3 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-700 dark:text-primary-300 bg-primary-500/10 hover:bg-primary-500/20 ring-1 ring-primary-500/25 transition-all disabled:opacity-50"
+                  style={{ borderRadius: 14 }}
+                >
+                  {cqLoading ? translate('Loading...') : translate('Load More')}
+                </button>
+              )}
+            </Section>
           )}
 
-          {/* Quiz Statistics Section */}
-          {(profile.isPublicProfile || isOwnProfile) && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
-              <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
-                {translate('Exam Statistics')}
-              </h2>
-              <div className="grid grid-cols-3 gap-3 sm:gap-4">
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-primary-600 dark:text-primary-300">
-                    {profile.performanceMetrics?.examStats?.mockTestsAttempted || 0}
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">{translate('Tests')}</span>
-                </div>
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-primary-600 dark:text-primary-300">
-                    {profile.performanceMetrics?.examStats?.overallReadiness || 0}%
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">{translate('Readiness')}</span>
-                </div>
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-black dark:text-white">
-                    {profile.performanceMetrics?.examStats?.averageMockScore || 0}%
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">{translate('Average')}</span>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Reels Grid — Instagram style */}
+          {/* Reels — swipeable carousel */}
           {reels.length > 0 && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
-              <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
-                <PlayCircle className="w-5 h-5" />
-                {translate('Reels')}
-                <span className="text-xs font-bold text-slate-400 dark:text-slate-500 ml-1">{reelsTotal}</span>
-              </h2>
-              <div className="grid grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-1.5 sm:gap-2">
+            <Section icon={PlayCircle} title={translate('Reels')} meta={reelsTotal} className="xl:col-span-12">
+              <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1 no-scrollbar">
                 {reels.map((reel) => {
-                  const typeConfig = {
-                    question: { icon: FileText, gradient: 'bg-primary-600', label: 'Question' },
-                    fact: { icon: Lightbulb, gradient: 'bg-primary-600', label: 'Fact' },
-                    tip: { icon: Zap, gradient: 'bg-primary-600', label: 'Tip' },
-                    current_affairs: { icon: Newspaper, gradient: 'bg-primary-600', label: 'Current Affairs' },
-                    poll: { icon: BarChart3, gradient: 'bg-primary-600', label: 'Poll' },
-                  };
                   const config = typeConfig[reel.type] || typeConfig.question;
                   const Icon = config.icon;
                   const displayTitle = reel.type === 'question' ? reel.questionText : reel.type === 'poll' ? reel.pollQuestion : reel.title;
-
                   return (
-                    <Link href="/reels" key={reel._id}>
-                      <div className={`relative aspect-[3/4] rounded-lg xl:rounded-xl sm:rounded-2xl overflow-hidden ${config.gradient} group cursor-pointer`}>
-                        {/* Content preview */}
-                        <div className="absolute inset-0 p-2.5 sm:p-3 pb-8 sm:pb-9 flex flex-col justify-between">
-                          {/* Type badge */}
-                          <div className="flex items-center gap-1">
-                            <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/80" />
-                            <span className="text-[8px] sm:text-[9px] font-black text-white/70 uppercase tracking-wider">{translate(config.label)}</span>
-                          </div>
-                          {/* Title */}
-                          <p className="text-[10px] sm:text-xs font-bold text-white leading-tight line-clamp-3">
-                            {displayTitle || translate('Untitled')}
-                          </p>
+                    <Link href="/reels" key={reel._id} className="snap-start shrink-0">
+                      <div className="relative w-36 sm:w-44 aspect-[3/4] overflow-hidden bg-gradient-to-br from-primary-500 via-primary-700 to-primary-900 group shadow-md hover:shadow-xl hover:-translate-y-1 transition-all" style={{ borderRadius: 22 }}>
+                        <div className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 bg-white/20 blur-2xl" style={{ borderRadius: '50%' }} />
+                        <Icon className="pointer-events-none absolute -right-3 -bottom-3 w-24 h-24 text-white/10 -rotate-12" />
+                        <div className="absolute inset-0 p-3.5 pb-10 flex flex-col justify-between">
+                          <span className="inline-flex w-fit items-center gap-1 px-2 py-0.5 bg-white/20 backdrop-blur" style={{ borderRadius: 999 }}>
+                            <Icon className="w-3 h-3 text-white" />
+                            <span className="text-[8px] sm:text-[9px] font-black text-white uppercase tracking-wider">{translate(config.label)}</span>
+                          </span>
+                          <p className="text-xs sm:text-[13px] font-bold text-white leading-snug line-clamp-5">{displayTitle || translate('Untitled')}</p>
                         </div>
-                        {/* Bottom overlay with views */}
-                        <div className="absolute bottom-0 left-0 right-0 bg-black/60 px-2.5 pb-2 pt-6">
-                          <div className="flex items-center gap-1">
-                            <Eye className="w-3 h-3 text-white/90" />
-                            <span className="text-[10px] sm:text-[11px] font-bold text-white/90">
-                              {reel.viewsCount >= 1000 ? `${(reel.viewsCount / 1000).toFixed(1)}K` : reel.viewsCount || 0}
-                            </span>
-                          </div>
+                        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent px-3.5 pb-2.5 pt-7">
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-white/90"><Eye className="w-3 h-3" />{compact(reel.viewsCount)}</span>
                         </div>
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all" />
                       </div>
                     </Link>
                   );
                 })}
+                {hasMoreReels && (
+                  <button
+                    onClick={() => fetchReels(reelsPage + 1)}
+                    disabled={reelsLoading}
+                    className="snap-start shrink-0 w-36 sm:w-44 aspect-[3/4] flex items-center justify-center text-center px-3 text-[11px] font-black uppercase tracking-wider text-primary-700 dark:text-primary-300 bg-primary-500/10 hover:bg-primary-500/20 ring-1 ring-primary-500/25 transition-all disabled:opacity-50"
+                    style={{ borderRadius: 22 }}
+                  >
+                    {reelsLoading ? translate('Loading...') : translate('Load More Reels')}
+                  </button>
+                )}
               </div>
-              {/* Load more */}
-              {hasMoreReels && (
-                <button
-                  onClick={() => fetchReels(reelsPage + 1)}
-                  disabled={reelsLoading}
-                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-600 dark:text-primary-300 bg-slate-50 dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
-                >
-                  {reelsLoading ? translate('Loading...') : translate('Load More Reels')}
-                </button>
-              )}
-            </div>
+            </Section>
           )}
 
-          {/* Private Profile Message */}
+          {/* Private profile */}
           {!profile.isPublicProfile && !isOwnProfile && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-8 sm:p-10 border-2 border-slate-200 dark:border-slate-800 shadow-sm text-center">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-slate-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
-                🔒
-              </div>
-              <p className="text-sm sm:text-base font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('This profile is private')}</p>
-              <p className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">{translate('Only the user can view their full stats.')}</p>
+            <div className="xl:col-span-12 bg-background-surface p-8 sm:p-10 ring-1 ring-primary-500/15 shadow-sm text-center" style={{ borderRadius: 26 }}>
+              <div className="w-16 h-16 bg-primary-500/10 flex items-center justify-center mx-auto mb-4 text-2xl" style={{ borderRadius: '50%' }}>🔒</div>
+              <p className="text-sm sm:text-base font-black text-content-primary uppercase tracking-tight">{translate('This profile is private')}</p>
+              <p className="text-xs sm:text-sm font-medium text-content-muted mt-1">{translate('Only the user can view their full stats.')}</p>
             </div>
           )}
         </div>

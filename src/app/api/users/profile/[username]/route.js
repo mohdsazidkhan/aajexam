@@ -2,6 +2,7 @@ import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import Follow from '@/models/Follow';
 import Reel from '@/models/Reel';
+import QuizAttempt from '@/models/QuizAttempt';
 import { protect } from '@/middleware/auth';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 import { getExamAIR, getQuizAIR } from '@/lib/utils/rankUtils';
@@ -21,12 +22,13 @@ export async function GET(req, { params }) {
             await User.findByIdAndUpdate(user._id, { $inc: { profileViews: 1 }, lastProfileView: new Date() });
         }
 
-        const [followersCount, followingCount, reelsCount, examAIR, quizAIR] = await Promise.all([
+        const [followersCount, followingCount, reelsCount, examAIR, quizAIR, quizzesAttempted] = await Promise.all([
             Follow.countDocuments({ following: user._id, status: 'active' }),
             Follow.countDocuments({ follower: user._id, status: 'active' }),
             Reel.countDocuments({ createdBy: user._id, status: 'published' }),
             getExamAIR(user._id),
-            getQuizAIR(user._id)
+            getQuizAIR(user._id),
+            QuizAttempt.countDocuments({ user: user._id, status: 'Completed' })
         ]);
 
         let isFollowing = false;
@@ -50,13 +52,14 @@ export async function GET(req, { params }) {
                 followingCount,
                 reelsCount,
                 profileViews: user.profileViews || 0,
+                isPro: user.subscriptionStatus === 'PRO' && user.status === 'active' && new Date(user.subscriptionExpiry) > new Date(),
                 isPublicProfile: user.isPublicProfile,
                 createdAt: user.createdAt,
                 performanceMetrics: user.performanceMetrics
             },
             isFollowing: !!isFollowing,
             isOwnProfile,
-            stats: { examAIR, quizAIR }
+            stats: { examAIR, quizAIR, quizzesAttempted }
         });
     } catch (error) {
         return errorResponse(error);

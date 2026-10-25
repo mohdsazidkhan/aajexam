@@ -114,6 +114,64 @@ export const ProfileSkeleton = () => (
   </div>
 );
 
+// Public profile (/u/[username]): mirrors the hero card (avatar + identity | rank card, two stat
+// strips) and the sections underneath (community questions, reels carousel).
+export const PublicProfileSkeleton = () => (
+  <div className="font-outfit w-full pt-3 xl:pt-5 space-y-2 xl:space-y-3">
+    <div className="overflow-hidden bg-background-surface ring-1 ring-primary-200 dark:ring-white/10 shadow-2xl" style={{ borderRadius: 32 }}>
+      <div className="grid grid-cols-1 xl:grid-cols-[1fr_auto] gap-3 xl:gap-6 p-3 sm:p-4 xl:p-5">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4">
+          <Sh className="w-20 h-20 sm:w-24 sm:h-24 rounded-full shrink-0" />
+          <div className="flex-1 w-full min-w-0 space-y-1.5 flex flex-col items-center sm:items-start">
+            <Sh className="h-7 xl:h-8 w-48 rounded-lg" />
+            <div className="flex gap-1.5">
+              <Sh className="h-5 w-28 rounded-full" />
+              <Sh className="h-5 w-12 rounded-full" />
+              <Sh className="h-5 w-20 rounded-full" />
+            </div>
+            <Sh className="h-3 w-full max-w-lg rounded-md" />
+            <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+              <Sh className="h-6 w-32 rounded-full" />
+              <Sh className="h-8 w-24 rounded-xl" />
+              <Sh className="h-8 w-28 rounded-xl" />
+              <Sh className="h-8 w-32 rounded-xl" />
+            </div>
+          </div>
+        </div>
+        <Sh className="w-full xl:w-60 h-36 rounded-3xl self-start" />
+      </div>
+      {[0, 1].map((row) => (
+        <div key={row} className="grid grid-cols-2 sm:grid-cols-4 border-t border-primary-200 dark:border-white/15">
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} className="flex items-center gap-2.5 px-3 py-2">
+              <Sh className="h-7 w-7 rounded-lg shrink-0" />
+              <div className="space-y-1">
+                <Sh className="h-4 w-10 rounded-md" />
+                <Sh className="h-2.5 w-16 rounded-md" />
+              </div>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+
+    <div className="bg-background-surface ring-1 ring-primary-500/15 p-3 sm:p-4 space-y-2.5" style={{ borderRadius: 22 }}>
+      <div className="flex items-center gap-2"><Sh className="h-7 w-7 rounded-lg" /><Sh className="h-3 w-40 rounded-md" /></div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <Sh className="h-20 rounded-2xl" />
+        <Sh className="h-20 rounded-2xl" />
+      </div>
+    </div>
+
+    <div className="bg-background-surface ring-1 ring-primary-500/15 p-3 sm:p-4 space-y-2.5" style={{ borderRadius: 22 }}>
+      <div className="flex items-center gap-2"><Sh className="h-7 w-7 rounded-lg" /><Sh className="h-3 w-24 rounded-md" /></div>
+      <div className="flex gap-3 overflow-hidden">
+        {[0, 1, 2, 3, 4].map((i) => <Sh key={i} className="w-36 sm:w-44 aspect-[3/4] rounded-[22px] shrink-0" />)}
+      </div>
+    </div>
+  </div>
+);
+
 export const SubscriptionSkeleton = () => (
   <div className="space-y-6 xl:space-y-10 font-outfit w-full">
     <div className="text-center space-y-2 xl:space-y-4 max-w-2xl mx-auto">

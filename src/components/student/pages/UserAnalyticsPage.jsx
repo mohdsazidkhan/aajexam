@@ -98,7 +98,7 @@ const TABS = [
    { key: 'topics', label: 'Topics', icon: Target },
    { key: 'reels', label: 'Reels', icon: Play },
    { key: 'my-reels', label: 'My Reels', icon: FileText },
-   { key: 'wallet', label: 'Wallet', icon: Wallet },
+   { key: 'wallet', label: 'Referral Rewards', icon: Wallet },
 ];
 
 const MyAnalyticsPage = () => {
@@ -229,7 +229,7 @@ const MyAnalyticsPage = () => {
                stats={[
                   { icon: Target, value: `${overallAccuracy.toFixed(0)}%`, label: translate('Quiz Accuracy') },
                   { icon: Zap, value: totalActivity, label: translate('Total Activity') },
-                  { icon: Wallet, value: wallet?.balance || 0, label: translate('Wallet') },
+                  { icon: Wallet, value: wallet?.balance || 0, label: translate('Referral Rewards') },
                ]}
             />
 
@@ -262,7 +262,7 @@ const MyAnalyticsPage = () => {
                               { icon: FileText, value: data?.myReels?.totalPosted || 0, label: 'Reels Posted', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600 dark:text-primary-300' },
                               { icon: Users, value: followersCount || 0, label: 'Followers', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600 dark:text-primary-300' },
                               { icon: Target, value: followingCount || 0, label: 'Following', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600 dark:text-primary-300' },
-                              { icon: Wallet, value: wallet?.balance || 0, label: 'Wallet Balance', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
+                              { icon: Wallet, value: wallet?.balance || 0, label: 'Referral Rewards', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
                               { icon: UserPlus, value: referral?.count || 0, label: 'Referrals', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
                            ].map((tile) => (
                               <StatMini key={tile.label} icon={tile.icon} value={tile.value} label={translate(tile.label)} />
@@ -670,7 +670,7 @@ const MyAnalyticsPage = () => {
                               <div className="w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Wallet className="w-4 h-4" /></div>
                               <div className="min-w-0">
                                  <p className="text-xl font-black font-outfit leading-tight">{wallet?.balance || 0}</p>
-                                 <p className="text-[9px] font-black opacity-70 uppercase leading-tight">{translate('Wallet Balance')}</p>
+                                 <p className="text-[9px] font-black opacity-70 uppercase leading-tight">{translate('Referral Rewards')}</p>
                               </div>
                            </Card>
                            <StatMini icon={TrendingUp} label={translate('Total Earned')} value={wallet?.totalEarnings || 0} color="text-primary-600 dark:text-primary-300" bg="bg-primary-50" />

@@ -12,7 +12,7 @@ export async function POST(req) {
         // Rewards are now handled directly through wallet transactions.
         return NextResponse.json({
             success: false,
-            message: 'Reward claiming via this endpoint is no longer available. Rewards are credited directly to your wallet.'
+            message: 'Reward claiming via this endpoint is no longer available. Rewards are credited directly to your Referral Rewards.'
         }, { status: 400 });
     } catch (error) {
         console.error('Claim Reward Error:', error);

@@ -600,6 +600,16 @@ class ApiService {
     return this.request(`/api/admin/air?${queryString}`);
   }
 
+  async getAdminStateRank(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/api/admin/state-rank?${queryString}`);
+  }
+
+  async getAdminCityRank(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/api/admin/city-rank?${queryString}`);
+  }
+
   // Students
   async getAdminStudents(params = {}) {
     const queryString = new URLSearchParams(params).toString();
