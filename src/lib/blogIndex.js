@@ -32,8 +32,9 @@ export async function buildBlogIndex(examIds = []) {
 
   const groups = Array.from(byExam.values()).sort((a, b) => b.items.length - a.items.length);
 
-  // First page of the default (featured) list, so the interactive list is server-rendered too.
-  const featuredQuery = { status: 'published', isFeatured: true, ...(examIds.length ? { exam: { $in: examIds } } : {}) };
+  // First page of the default list (every article; the "Featured" filter is off until the visitor ticks it),
+  // so the interactive list is server-rendered too.
+  const featuredQuery = { status: 'published', ...(examIds.length ? { exam: { $in: examIds } } : {}) };
   const [cards, initialTotal] = await Promise.all([
     Blog.find(featuredQuery)
       .select('slug title excerpt featuredImage publishedAt createdAt readingTime views likes isFeatured isPinned exam')

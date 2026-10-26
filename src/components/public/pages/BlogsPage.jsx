@@ -26,7 +26,7 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
   const [filters, setFilters] = useState({
     search: '',
     exam: '',
-    featured: true,
+    featured: false,
   });
   const [searchInput, setSearchInput] = useState('');
   const [pagination, setPagination] = useState(initialBlogs.length ? { total: initialTotal } : {});
