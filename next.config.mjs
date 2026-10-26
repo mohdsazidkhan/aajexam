@@ -38,6 +38,9 @@ const PUBLIC_CACHED_API_PATHS = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // NEXT_DIST_DIR lets a measurement build run beside `next dev` without clobbering its .next folder.
+  distDir: process.env.NEXT_DIST_DIR || '.next',
+
   // Page generation timeout
   staticPageGenerationTimeout: 1000,
 
