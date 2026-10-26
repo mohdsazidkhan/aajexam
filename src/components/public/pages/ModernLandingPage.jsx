@@ -596,8 +596,8 @@ const ModernLandingPage = () => {
                <div className="flex flex-col gap-5 xl:gap-8">
                   <div className="space-y-5 xl:space-y-8 text-center w-full">
                      <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ y: 20 }}
+                        whileInView={{ y: 0 }}
                         className="text-3xl xl:text-6xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-[0.8] mb-8 xl:mb-12"
                      >
                         {translate('Study with')} <br /><span className="text-primary-600 dark:text-primary-300">{translate('Confidence.')}</span>
