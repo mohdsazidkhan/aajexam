@@ -53,7 +53,7 @@ const typeFilters = [
   ...Object.entries(typeConfig).map(([id, c]) => ({ id, label: c.label, icon: c.icon }))
 ];
 
-const ExamNewsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
+const ExamNewsPage = ({ initialItems = [], initialTotalPages = 1, initialTotal } = {}) => {
   const { translate } = useTranslate();
   const [news, setNews] = useState(initialItems);
   const [loading, setLoading] = useState(initialItems.length === 0);
@@ -62,6 +62,8 @@ const ExamNewsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const [totalPages, setTotalPages] = useState(initialTotalPages);
+  // total across all pages (the header used to show only the items on the current page)
+  const [total, setTotal] = useState(initialTotal ?? initialItems.length);
   const router = useRouter();
   const targetVersion = useTargetExamsVersion();
 
@@ -75,7 +77,7 @@ const ExamNewsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
         const { examIds } = API.withTargetExams({});
         if (examIds) params.set('examIds', examIds);
         const res = await API.request(`/api/exam-news?${params}`);
-        if (res?.success) { setNews(res.data || []); setTotalPages(res.pagination?.totalPages || 1); }
+        if (res?.success) { setNews(res.data || []); setTotalPages(res.pagination?.totalPages || 1); setTotal(res.pagination?.total ?? (res.data || []).length); }
       } catch (e) { } finally { setLoading(false); }
     };
     fetchData();
@@ -95,7 +97,7 @@ const ExamNewsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
         icon={Megaphone}
         eyebrow={translate('Exam News')}
         title={translate('Exam News')}
-        subtitle={translate('{count} News Available', { count: news.length })}
+        subtitle={translate('{count} News Available', { count: total })}
         center={
           <div className="w-full">
             <div className="relative">
@@ -205,7 +207,7 @@ export async function getServerSideProps({ res }) {
       ExamNews.countDocuments(query),
     ]);
     if (res) res.setHeader('Cache-Control', 'public, s-maxage=600, stale-while-revalidate=3600');
-    return { props: { initialItems: JSON.parse(JSON.stringify(news)), initialTotalPages: Math.ceil(total / PUBLIC_DEFAULT_PAGE_SIZE) || 1 } };
+    return { props: { initialItems: JSON.parse(JSON.stringify(news)), initialTotalPages: Math.ceil(total / PUBLIC_DEFAULT_PAGE_SIZE) || 1, initialTotal: total } };
   } catch (e) {
     console.error('exam news hub ssr error', e);
     return { props: { initialItems: [], initialTotalPages: 1 } };
