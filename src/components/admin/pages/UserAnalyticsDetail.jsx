@@ -206,7 +206,7 @@ const AdminUserAnalyticsDetail = () => {
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-5 gap-3 xl:gap-3">
                                     <MetricCard i={0} color="emerald" icon={ArrowUp} label="Total Earnings" value={`₹${totalEarnings.toLocaleString('en-IN')}`} sub="All-time earnings" />
-                                    <MetricCard i={1} color="rose" icon={ArrowDown} label="Total Payouts" value={`₹${totalExpenses.toLocaleString('en-IN')}`} sub="Withdrawals" />
+                                    <MetricCard i={1} color="rose" icon={ArrowDown} label="Total Withdraw" value={`₹${totalExpenses.toLocaleString('en-IN')}`} sub="Withdrawals" />
                                     <MetricCard i={2} color={netEarnings >= 0 ? "emerald" : "rose"} icon={Wallet} label="Net Balance" value={`₹${Math.abs(netEarnings).toLocaleString('en-IN')}`} sub={netEarnings >= 0 ? "Positive balance" : "Negative balance"} />
                                     <MetricCard i={3} color="amber" icon={Book} label="Blog Rewards" value={`₹${blogEarnings.toLocaleString('en-IN')}`} sub="From blog posts" />
                                     <MetricCard i={4} color="cyan" icon={Zap} label="Quiz Rewards" value={`₹${quizEarnings.toLocaleString('en-IN')}`} sub="From quiz scores" />

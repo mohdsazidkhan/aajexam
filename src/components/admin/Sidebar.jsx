@@ -173,9 +173,9 @@ const Sidebar = () => {
       title: 'FINANCE',
       items: [
         { path: '/admin/user-wallets', icon: Wallet, label: 'Referral Rewards', key: 'user-wallets' },
-        { path: '/admin/withdraw-requests', icon: Banknote, label: 'Payouts', key: 'withdraw-requests' },
+        { path: '/admin/withdraw-requests', icon: Banknote, label: 'Withdraw Requests', key: 'withdraw-requests' },
         { path: '/admin/payment-transactions', icon: CreditCard, label: 'Transactions', key: 'transactions' },
-        { path: '/admin/subscriptions', icon: ShieldCheck, label: 'Plans', key: 'subscriptions' },
+        { path: '/admin/subscriptions', icon: ShieldCheck, label: 'Subscriptions', key: 'subscriptions' },
         { path: '/admin/bank-details', icon: FileText, label: 'Bank Details', key: 'bank-details' },
         { path: '/admin/expenses', icon: History, label: 'Expenses', key: 'platform-expenses' },
       ]

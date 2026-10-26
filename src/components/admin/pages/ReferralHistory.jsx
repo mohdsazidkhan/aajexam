@@ -258,7 +258,7 @@ export default function ReferralHistory({ tabs = null }) {
   );
 
   useAdminMobileHeader({
-    title: 'Payouts',
+    title: 'Withdraw Requests',
     count: pagination.totalItems || 0,
     filters: (
       <>

@@ -12,7 +12,7 @@ const TABS = [
   { id: 'rewards', label: 'Referral rewards', href: '/admin/withdraw-requests?tab=rewards' },
 ];
 
-// One "Payouts" page: the withdrawal requests students make and the referral rewards log that feeds their wallet.
+// One "Withdraw Requests" page: the withdrawal requests students make and the referral rewards log that feeds their wallet.
 export default function PayoutsPage() {
   const router = useRouter();
   const active = router.query?.tab === 'rewards' ? 'rewards' : 'requests';

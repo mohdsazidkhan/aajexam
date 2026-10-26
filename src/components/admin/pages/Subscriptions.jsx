@@ -588,7 +588,7 @@ const AdminSubscriptions = () => {
   );
 
   useAdminMobileHeader({
-    title: 'Plans',
+    title: 'Subscriptions',
     count: pagination.total || 0,
     filters: (
       <>

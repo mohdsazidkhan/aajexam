@@ -1,4 +1,4 @@
-// Merged into the Payouts page (Referral rewards tab); old links and bookmarks keep working.
+// Merged into the Withdraw Requests page (Referral rewards tab); old links and bookmarks keep working.
 export default function ReferralHistoryRedirect() {
   return null;
 }

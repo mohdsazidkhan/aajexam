@@ -206,7 +206,7 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
   );
 
   useAdminMobileHeader({
-    title: 'Payouts',
+    title: 'Withdraw Requests',
     count: total,
     filters: (
       <>
