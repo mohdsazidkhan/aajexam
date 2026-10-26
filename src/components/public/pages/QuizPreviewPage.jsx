@@ -120,7 +120,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
         </div>
 
         {/* Quiz Header Card */}
-        <div className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-5 xl:p-8 mb-6" style={{ borderRadius: 16 }}>
+        <header className="z-auto relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-5 xl:p-8 mb-6" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
           <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
@@ -194,11 +194,11 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
               </>
             )}
           </button>
-        </div>
+        </header>
 
         {/* Quiz Stats */}
         {quiz.totalAttempts > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
+          <section className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
               <Users className="w-5 h-5 text-primary-600 dark:text-primary-300" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">{translate('Quiz Statistics')}</h2>
@@ -213,12 +213,12 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
                 <div className="text-xs text-slate-500">{translate('Average Score')}</div>
               </div>
             </div>
-          </div>
+          </section>
         )}
 
         {/* Tags */}
         {quiz.tags?.length > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
+          <section className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-3">
               <Tag className="w-5 h-5 text-slate-500" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">{translate('Tags')}</h2>
@@ -230,12 +230,12 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
                 </span>
               ))}
             </div>
-          </div>
+          </section>
         )}
 
         {/* Leaderboard */}
         {leaderboard.length > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm border border-slate-100 dark:border-slate-700">
+          <section className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
               <Trophy className="w-5 h-5 text-black dark:text-white" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">{translate('Leaderboard')}</h2>
@@ -258,7 +258,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
                 </div>
               ))}
             </div>
-          </div>
+          </section>
         )}
       </div>
     </div>

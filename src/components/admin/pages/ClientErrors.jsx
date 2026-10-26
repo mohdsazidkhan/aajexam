@@ -264,11 +264,11 @@ export default function ClientErrors({ kind = 'mobile' }) {
 
         <div className={`flex-1 min-h-0 ${viewMode === 'table' && items.length > 0 ? 'overflow-hidden flex flex-col' : 'overflow-auto'}`}>
           {items.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-16 text-center bg-white/50 dark:bg-white/5 rounded-2xl border-2 border-dashed border-slate-100 dark:border-white/5">
+            <section className="flex flex-col items-center justify-center py-16 text-center bg-white/50 dark:bg-white/5 rounded-2xl border-2 border-dashed border-slate-100 dark:border-white/5">
               <Bug className="w-14 h-14 text-slate-300 dark:text-slate-600 mb-4" />
               <h3 className="text-xl font-black uppercase tracking-tight mb-1">No errors found</h3>
               <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.25em]">Nothing reported for these filters. That is good news.</p>
-            </div>
+            </section>
           ) : viewMode === 'table' ? (
             <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col flex-1 min-h-0 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
               <ResponsiveTable data={items} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />

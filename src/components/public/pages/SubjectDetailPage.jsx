@@ -50,14 +50,14 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
         <div className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-5 xl:p-6 mb-5" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '18px 18px' }} />
           <div className="pointer-events-none absolute -bottom-24 right-6 w-72 h-72 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="relative">
+          <header className="z-auto relative">
           <BookMarked className="w-8 h-8 mb-2 text-slate-600 dark:text-primary-300" />
           <h1 className="text-xl xl:text-3xl font-black uppercase">{translateData(subject.name)}</h1>
           {subject.description && <p className="text-sm opacity-80 mt-1">{subject.description}</p>}
           <div className="flex gap-3 mt-3">
             <span className="text-xs font-bold bg-white/80 dark:bg-white/15 ring-1 ring-slate-200 dark:ring-white/25 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{translate('{count} Quizzes', { count: quizzes.length })}</span>
           </div>
-          </div>
+          </header>
         </div>
 
         {/* Quizzes */}
@@ -69,17 +69,17 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
               {pageItems.map((quiz, idx) => (
                 <motion.div key={quiz._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
                   <Link href={`/quiz/${quiz.slug}`} className="block">
-                    <Card hoverable
+                    <Card as="section" hoverable
                       className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
                           <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
                             {(currentPage - 1) * pageSize + idx + 1}
                           </div>
-                          <div>
+                          <section>
                             <h2 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(quiz.title)}</h2>
                             {quiz.topic?.name && <p className="text-[10px] font-bold text-content-muted uppercase">{translateData(quiz.topic.name)}</p>}
-                          </div>
+                          </section>
                         </div>
                         <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-primary-600 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                       </div>

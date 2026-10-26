@@ -116,7 +116,7 @@ const HowItWorks = () => {
 
                      {/* Content Card */}
                      <div className="w-full xl:w-[45%]">
-                        <Card className="space-y-6 group border-2 hover:border-primary-500/30 transition-all duration-300">
+                        <Card as="section" className="space-y-6 group border-2 hover:border-primary-500/30 transition-all duration-300">
                            <div className="flex items-center justify-between">
                               <div className={`p-4 bg-${step.color}-500/10 text-${step.color}-500 rounded-2xl group-hover:scale-110 transition-transform shadow-sm`}>
                                  <step.icon className="w-6 h-6" />
@@ -125,10 +125,10 @@ const HowItWorks = () => {
                                  {translate(step.badge)}
                               </span>
                            </div>
-                           <div className="space-y-3">
+                           <section className="space-y-3">
                               <h2 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate(step.title)}</h2>
                               <p className="text-sm font-bold text-slate-700 dark:text-slate-400 leading-relaxed uppercase tracking-wide">{translate(step.desc)}</p>
-                           </div>
+                           </section>
 
                            {/* Tier Details (for step 2) */}
                            {step.details && (
@@ -165,7 +165,7 @@ const HowItWorks = () => {
 
             {/* --- Skill-Based Callout --- */}
             <section>
-               <Card className="border-none bg-primary-50 dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm relative overflow-hidden text-center xl:text-left">
+               <Card as="section" className="border-none bg-primary-50 dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm relative overflow-hidden text-center xl:text-left">
                   <div className="relative z-10 flex flex-col xl:flex-row items-center gap-8">
                      <div className="w-20 h-20 bg-primary-500/20 text-primary-600 dark:text-primary-300 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
                         <Lightbulb className="w-10 h-10" />
@@ -182,7 +182,7 @@ const HowItWorks = () => {
             {/* --- Features Grid --- */}
             <section className="grid grid-cols-1 xl:grid-cols-3 gap-8">
                {features.map((f, i) => (
-                  <Card key={i} className="group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
+                  <Card as="article" key={i} className="group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
                      <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit shadow-sm`}>
                         <f.icon className="w-6 h-6" />
                      </div>
@@ -196,11 +196,11 @@ const HowItWorks = () => {
 
             {/* --- CTA --- */}
             <section className="pb-10 xl:pb-14">
-               <Card className="p-6 xl:p-12 text-center bg-primary-50 dark:bg-slate-900 border-none ring-1 ring-primary-200 dark:ring-slate-800 text-slate-900 dark:text-white shadow-xl relative overflow-hidden">
+               <Card as="section" className="p-6 xl:p-12 text-center bg-primary-50 dark:bg-slate-900 border-none ring-1 ring-primary-200 dark:ring-slate-800 text-slate-900 dark:text-white shadow-xl relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-primary-300/20 dark:bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
-                  <div className="relative z-10 space-y-10">
+                  <section className="relative z-10 space-y-10">
                      <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter">{rich('Get Started <0>Today</0>', [(c) => <span className="text-primary-600 dark:text-primary-400">{c}</span>])}</h2>
                      <p className="text-base xl:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">{translate('Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.')}</p>
                      <Button
@@ -209,7 +209,7 @@ const HowItWorks = () => {
                      >
                         {translate('START NOW')}
                      </Button>
-                  </div>
+                  </section>
                </Card>
             </section>
 

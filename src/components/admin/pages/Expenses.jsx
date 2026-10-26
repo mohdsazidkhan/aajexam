@@ -364,18 +364,18 @@ const AdminExpenses = () => {
                                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
                                 className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-slate-900 xl:rounded-l-2xl shadow-2xl overflow-hidden flex flex-col border-l-2 border-slate-100 dark:border-white/10"
                             >
-                                <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
+                                <section className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
                                     <div className="flex items-center gap-2.5">
                                         <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl"><Receipt className="w-5 h-5" /></div>
-                                        <div>
+                                        <section>
                                             <h2 className="text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{isEditing ? 'Edit Expense' : 'Add Expense'}</h2>
                                             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mt-1">Enter the expense details below</p>
-                                        </div>
+                                        </section>
                                     </div>
                                     <button aria-label="Close" onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg text-red-600 dark:text-red-400 transition-colors shrink-0">
                                         <X className="w-5 h-5" />
                                     </button>
-                                </div>
+                                </section>
 
                                 <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
 <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-5 space-y-3">

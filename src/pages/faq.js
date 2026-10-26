@@ -217,7 +217,7 @@ const FAQ = () => {
 
                                 <div className="space-y-2 xl:space-y-4">
                                     {category.questions.map((faq, qIndex) => (
-                                        <div
+                                        <article
                                             key={qIndex}
                                             className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 xl:p-6 border border-white/20 hover:shadow-sm transition-all duration-300"
                                         >
@@ -228,7 +228,7 @@ const FAQ = () => {
                                             <p className="text-md xl:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-8">
                                                 <span className="text-primary-600 dark:text-primary-300 font-semibold">{translate('A:')}</span> {translate(faq.a)}
                                             </p>
-                                        </div>
+                                        </article>
                                     ))}
                                 </div>
                             </div>
@@ -237,7 +237,7 @@ const FAQ = () => {
 
                     {/* Contact Section */}
                     <div className="text-center mt-12">
-                        <div className="bg-primary-100 dark:bg-primary-600 rounded-3xl p-4 xl:p-8">
+                        <section className="bg-primary-100 dark:bg-primary-600 rounded-3xl p-4 xl:p-8">
                             <h2 className="text-2xl xl:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                                 Still Have Questions?
                             </h2>
@@ -250,16 +250,16 @@ const FAQ = () => {
                             >
                                 {translate('Contact Support')}
                             </button>
-                        </div>
+                        </section>
                     </div>
 
                     {/* Author Bio */}
                     <AuthorBio />
 
                     {/* Last Updated */}
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                    <footer className="text-sm text-gray-500 dark:text-gray-400 mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center">
                         {translate('Last Updated: March 19, 2026')}
-                    </p>
+                    </footer>
 
                 </div>
             </div>

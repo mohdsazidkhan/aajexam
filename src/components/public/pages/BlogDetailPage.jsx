@@ -169,7 +169,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
 
         <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_340px] gap-5 xl:gap-6 items-start">
           {/* ───────────── Main column ───────────── */}
-          <main className="min-w-0 space-y-4 xl:space-y-5">
+          <div className="min-w-0 space-y-4 xl:space-y-5">
             {/* Header */}
             <header className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-4 xl:p-6" style={{ borderRadius: 16 }}>
               <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
@@ -255,7 +255,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                 </div>
               </div>
             )}
-          </main>
+          </div>
 
           {/* ───────────── Sidebar ───────────── */}
           <aside className="space-y-4 xl:space-y-5">

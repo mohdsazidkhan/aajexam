@@ -76,7 +76,7 @@ export default function ChallengePage() {
                     <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
                     <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
                     
-                    <div className="relative z-10 flex flex-col items-center">
+                    <header className="relative z-10 flex flex-col items-center">
                         <div className="w-20 h-20 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center mb-4 rotate-[-4deg]" style={{ borderRadius: 22 }}>
                             <Swords className="w-10 h-10" />
                         </div>
@@ -105,12 +105,12 @@ export default function ChallengePage() {
                                 <Trophy className="w-5 h-5" /> You have completed this challenge!
                             </div>
                         )}
-                    </div>
+                    </header>
                 </div>
 
                 {/* Private Leaderboard */}
                 {challenge.hasPlayed && (
-                    <div className="relative overflow-hidden bg-background-surface p-6 shadow-md border border-slate-200 dark:border-slate-700" style={{ borderRadius: 16 }}>
+                    <section className="relative overflow-hidden bg-background-surface p-6 shadow-md border border-slate-200 dark:border-slate-700" style={{ borderRadius: 16 }}>
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                         <div className="flex items-center gap-3 mb-6">
                             <div className="bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow p-2.5" style={{ borderRadius: 12 }}>
@@ -121,7 +121,7 @@ export default function ChallengePage() {
 
                         <div className="space-y-3">
                             {leaderboard.map((entry, index) => (
-                                <div key={index} className={`flex items-center gap-4 p-4 rounded-2xl transition-all ${
+                                <section key={index} className={`flex items-center gap-4 p-4 rounded-2xl transition-all ${
                                     index === 0 ? 'bg-primary-50 dark:bg-primary-400/10 border border-primary-300 dark:border-primary-400/40' :
                                     'bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700 border border-transparent'
                                 }`}>
@@ -145,10 +145,10 @@ export default function ChallengePage() {
                                         </p>
                                         <p className="text-xs text-slate-400 font-medium">{Math.round(entry.totalTime)}s</p>
                                     </div>
-                                </div>
+                                </section>
                             ))}
                         </div>
-                    </div>
+                    </section>
                 )}
             </div>
         </div>

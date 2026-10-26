@@ -23,7 +23,7 @@ const SubscriptionGuard = ({
   const statusInfo = getSubscriptionStatusTextWithTheme();
   
   return (
-    <div className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl text-center px-5 py-8 xl:py-12" style={{ borderRadius: 16 }}>
+    <section className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl text-center px-5 py-8 xl:py-12" style={{ borderRadius: 16 }}>
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
       <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
       <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
@@ -64,7 +64,7 @@ const SubscriptionGuard = ({
           <p className="text-sm font-semibold text-slate-700 dark:text-white/70">Already have a subscription? <Link href="/student/subscription" className="font-black text-primary-700 dark:text-primary-200 hover:underline">{translate('Check your status')}</Link></p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

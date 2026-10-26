@@ -707,7 +707,7 @@ const StudentsPage = () => {
                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
                 className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-sans"
               >
-                <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5 shrink-0">
+                <section className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5 shrink-0">
                   <div className="flex items-center gap-3 xl:gap-3">
                     <div className="p-4 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-lg xl:rounded-[1.5rem] shadow-sm">
                       <Zap className="w-8 h-8 fill-current" />
@@ -729,7 +729,7 @@ const StudentsPage = () => {
                   >
                     <X className="w-6 h-6" />
                   </motion.button>
-                </div>
+                </section>
 
                 <div className="flex-1 p-4 xl:p-10 overflow-y-auto">
                   <form onSubmit={handleCreateSubscription} className="space-y-2 xl:space-y-3 xl:space-y-4">
@@ -832,7 +832,7 @@ const StudentsPage = () => {
                 transition={{ type: 'tween', duration: 0.2 }}
                 className="relative w-full max-w-md bg-white dark:bg-[#0A0F1E] rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden"
               >
-                <div className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+                <section className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <div className="flex items-center gap-3">
                     <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl shadow-sm">
                       <MapPin className="w-5 h-5" />
@@ -852,7 +852,7 @@ const StudentsPage = () => {
                   >
                     <X className="w-5 h-5" />
                   </motion.button>
-                </div>
+                </section>
 
                 <div className="p-4 space-y-3">
                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 italic">Set City</label>

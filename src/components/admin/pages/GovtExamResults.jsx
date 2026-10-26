@@ -453,11 +453,11 @@ const AdminGovtExamResults = () => {
             {loading ? (
               <AdminTableSkeleton showHeader={false} showFilters={false} />
             ) : attempts.length === 0 ? (
-              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
+              <section className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
                 <PieChart className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
                 <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">No Results Found</h3>
                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">No student attempts yet. Use the filters above to narrow down results by category, exam, or test.</p>
-              </div>
+              </section>
             ) : (
               <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="h-auto flex flex-col">
                 {viewMode === 'table' && (
@@ -545,16 +545,16 @@ const AdminGovtExamResults = () => {
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowDetails(false)} className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-xl" />
                 <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0D1225] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
 
-                  <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
+                  <section className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
                     <div className="flex items-center gap-2 xl:gap-3">
                       <div className="w-10 h-10 xl:w-11 xl:h-11 bg-primary-600 text-white rounded-xl flex items-center justify-center shadow-sm shrink-0"><Award className="w-5 h-5" /></div>
-                      <div>
+                      <section>
                         <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">Attempt <span className="text-primary-600 dark:text-primary-300">Details</span></h2>
                         <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1.5 leading-none italic">{selectedAttempt.user?.name} // {selectedAttempt.practiceTest?.title}</p>
-                      </div>
+                      </section>
                     </div>
                     <button aria-label="Close" onClick={() => setShowDetails(false)} className="p-2.5 bg-red-500/10 hover:bg-red-500/20 rounded-xl text-red-600 dark:text-red-400 transition-colors shadow-sm shrink-0"><X className="w-5 h-5" /></button>
-                  </div>
+                  </section>
 
                   <div className="flex-1 overflow-y-auto p-3 custom-scrollbar space-y-2.5">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2">

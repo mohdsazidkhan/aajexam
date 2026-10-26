@@ -64,7 +64,7 @@ const ResetPasswordPage = () => {
           <div className="absolute top-20 right-20 opacity-5 rotate-12 hidden xl:block"><ShieldCheck className="w-64 h-64" /></div>
           <div className="absolute bottom-20 left-20 opacity-5 -rotate-12 hidden xl:block"><Rocket className="w-64 h-64 text-primary-600 dark:text-primary-300" /></div>
 
-          <Card className="w-full max-w-md p-5 xl:p-10 border-2 shadow-sm relative z-10 space-y-8">
+          <Card as="section" className="w-full max-w-md p-5 xl:p-10 border-2 shadow-sm relative z-10 space-y-8">
             <div className="text-center space-y-2">
               <div className="w-16 h-16 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
                 <Lock className="w-8 h-8" />
@@ -78,10 +78,10 @@ const ResetPasswordPage = () => {
                   <div className="w-20 h-20 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-full flex items-center justify-center mx-auto">
                     <ShieldCheck className="w-10 h-10" />
                   </div>
-                  <div className="space-y-2">
+                  <section className="space-y-2">
                     <h2 className="text-xl font-black uppercase">Success!</h2>
                     <p className="text-sm font-bold text-gray-500">Your security credentials have been updated. Redirecting you to the login gateway...</p>
-                  </div>
+                  </section>
                 </motion.div>
               ) : (
                 <motion.form

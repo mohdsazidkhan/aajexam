@@ -184,11 +184,11 @@ const SettingsPage = () => {
               {activeTab === 'profile' && (
                 <div className="grid grid-cols-1 gap-3">
                   <div>
-                    <div className="p-3 xl:p-5 space-y-3 xl:space-y-4 rounded-2xl border-none shadow-sm bg-background-surface">
+                    <section className="p-3 xl:p-5 space-y-3 xl:space-y-4 rounded-2xl border-none shadow-sm bg-background-surface">
                       <div className="flex items-center justify-between gap-4">
-                        <div className="space-y-1">
+                        <section className="space-y-1">
                           <h2 className="text-lg xl:text-xl font-black font-outfit tracking-tight leading-none text-content-primary">{translate('Your Profile')}</h2>
-                        </div>
+                        </section>
                         <div className="p-2 bg-primary-600 text-white rounded-xl shadow-sm">
                           <User className="w-5 h-5" />
                         </div>
@@ -353,11 +353,11 @@ const SettingsPage = () => {
                           </Button>
                         </div>
                       </form>
-                    </div>
+                    </section>
                   </div>
 
                   <div>
-                    <Card className="bg-slate-900 border-none text-white rounded-2xl p-3 space-y-1">
+                    <Card as="section" className="bg-slate-900 border-none text-white rounded-2xl p-3 space-y-1">
                       <div className="flex items-center gap-3">
                         <Info className="w-5 h-5 text-primary-400" />
                         <h3 className="font-outfit font-black tracking-tight text-base">{translate('Why this matters')}</h3>
@@ -373,11 +373,11 @@ const SettingsPage = () => {
               {activeTab === 'bank' && (
                 <div className="grid grid-cols-1 gap-3">
                   <div>
-                    <div className="p-3 xl:p-5 space-y-3 xl:space-y-4 rounded-2xl border-none shadow-sm bg-background-surface">
+                    <section className="p-3 xl:p-5 space-y-3 xl:space-y-4 rounded-2xl border-none shadow-sm bg-background-surface">
                       <div className="flex items-center justify-between gap-4">
-                        <div className="space-y-1">
+                        <section className="space-y-1">
                           <h2 className="text-lg xl:text-xl font-black font-outfit tracking-tight leading-none text-content-primary">{translate('Bank Details')}</h2>
-                        </div>
+                        </section>
                         <div className="p-2 bg-primary-600 text-white rounded-xl shadow-sm">
                           <Building2 className="w-5 h-5" />
                         </div>
@@ -412,11 +412,11 @@ const SettingsPage = () => {
                           </Button>
                         </div>
                       </form>
-                    </div>
+                    </section>
                   </div>
 
                   <div>
-                    <Card className="rounded-2xl p-3 border-2 border-dashed border-slate-200 dark:border-slate-800 space-y-1">
+                    <Card as="section" className="rounded-2xl p-3 border-2 border-dashed border-slate-200 dark:border-slate-800 space-y-1">
                       <div className="flex items-center gap-2">
                         <CreditCard className="w-5 h-5 text-primary-600 dark:text-primary-300" />
                         <h3 className="font-outfit font-black tracking-tight text-base">{translate('Secure handling')}</h3>
@@ -431,11 +431,11 @@ const SettingsPage = () => {
 
               {activeTab === 'security' && (
                 <div>
-                  <div className="p-3 xl:p-5 space-y-3 xl:space-y-4 rounded-2xl border-none shadow-sm bg-background-surface">
+                  <section className="p-3 xl:p-5 space-y-3 xl:space-y-4 rounded-2xl border-none shadow-sm bg-background-surface">
                     <div className="flex items-center justify-between gap-4 relative z-10">
-                      <div className="space-y-1">
+                      <section className="space-y-1">
                         <h2 className="text-lg xl:text-xl font-black font-outfit tracking-tight leading-none text-content-primary">{translate('Change password')}</h2>
-                      </div>
+                      </section>
                       <div className="p-2 bg-primary-600 text-white rounded-xl shadow-sm">
                         <ShieldCheck className="w-5 h-5" />
                       </div>
@@ -475,7 +475,7 @@ const SettingsPage = () => {
                         </Button>
                       </div>
                     </form>
-                  </div>
+                  </section>
                 </div>
               )}
             </motion.div>

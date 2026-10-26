@@ -259,7 +259,7 @@ const ExamCalendarPage = () => {
             <span className="hidden sm:inline">{translate('Prev')}</span>
           </button>
 
-          <div className="flex-1 text-center">
+          <section className="flex-1 text-center">
             <h2 className="text-lg sm:text-xl xl:text-2xl font-black font-outfit uppercase text-primary-700 dark:text-primary-200 tracking-tight">
               {translate(MONTHS[month - 1])} {year}
             </h2>
@@ -271,7 +271,7 @@ const ExamCalendarPage = () => {
                 {translate('Back to Today')}
               </button>
             )}
-          </div>
+          </section>
 
           <button
             onClick={nextMonth}

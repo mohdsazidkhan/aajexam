@@ -277,7 +277,7 @@ const AdminDailyChallenge = () => {
         ) : viewMode === 'grid' ? (
           <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
             {challenges.map((c, i) => (
-              <Card key={c._id || i} className="flex flex-col gap-2">
+              <Card as="article" key={c._id || i} className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-3 h-3 text-slate-400 shrink-0" />
                   <span className="text-[10px] font-bold text-slate-500 truncate">{new Date(c.date).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}</span>
@@ -294,7 +294,7 @@ const AdminDailyChallenge = () => {
         ) : (
           <div className="h-full overflow-auto space-y-2">
             {challenges.map((c, i) => (
-              <Card key={c._id || i} className="flex items-center gap-3">
+              <Card as="article" key={c._id || i} className="flex items-center gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <Calendar className="w-3 h-3 text-slate-400" />

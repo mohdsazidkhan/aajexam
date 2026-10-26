@@ -179,7 +179,7 @@ const MyQuestionsPage = () => {
                                  </div>
 
                                  {/* Footer: Stats + Date */}
-                                 <div className="flex items-center justify-between text-[9px] font-black text-gray-400 pt-3 mt-3 border-t-2 border-slate-50 dark:border-slate-800">
+                                 <footer className="flex items-center justify-between text-[9px] font-black text-gray-400 pt-3 mt-3 border-t-2 border-slate-50 dark:border-slate-800">
                                     <div className="flex items-center gap-3">
                                        <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{q.views || 0}</span>
                                        <span className="flex items-center gap-1"><Heart className="w-3 h-3" />{q.likes || 0}</span>
@@ -188,7 +188,7 @@ const MyQuestionsPage = () => {
                                        <Calendar className="w-3 h-3" />
                                        {new Date(q.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}
                                     </div>
-                                 </div>
+                                 </footer>
                               </Card>
                            </motion.div>
                         );

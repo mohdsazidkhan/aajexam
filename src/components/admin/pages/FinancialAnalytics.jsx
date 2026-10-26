@@ -250,11 +250,11 @@ const FinancialAnalytics = () => {
                  <AdminDashboardSkeleton />
                </div>
             ) : error ? (
-              <div className="text-center py-32 bg-black/5 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-black/10 dark:border-white/10">
+              <section className="text-center py-32 bg-black/5 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-black/10 dark:border-white/10">
                 <Zap className="w-16 h-16 text-black dark:text-white mx-auto mb-4" />
                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Something went wrong</h3>
                 <p className="text-black dark:text-white text-[10px] font-black uppercase tracking-widest">{error}</p>
-              </div>
+              </section>
             ) : (
               <div className="space-y-2 xl:space-y-3 xl:space-y-12">
 

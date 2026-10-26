@@ -96,7 +96,7 @@ export default function FlashcardDeck() {
                 <div className="absolute inset-0 bg-black/20" />
 
                 {/* Top UI / Progress Bar */}
-                <div className="absolute top-0 left-0 right-0 z-20 p-4 pt-6 sm:pt-4 bg-black/60">
+                <header className="absolute top-0 left-0 right-0 z-20 p-4 pt-6 sm:pt-4 bg-black/60">
                     {/* Segmented Progress */}
                     <div className="flex gap-1 mb-4">
                         {deck.cards.map((_, idx) => (
@@ -126,7 +126,7 @@ export default function FlashcardDeck() {
                             <Share2 className="w-5 h-5" />
                         </button>
                     </div>
-                </div>
+                </header>
 
                 {/* Tap Zones for Navigation */}
                 <div className="absolute inset-0 z-10 flex">

@@ -129,17 +129,17 @@ const NotificationsPage = () => {
           }
         />
 
-        <Card className="overflow-hidden">
+        <Card as="section" className="overflow-hidden">
           <AnimatePresence mode="popLayout">
             {notifications.length === 0 ? (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-4 xl:py-8 text-center space-y-3 xl:space-y-6">
                 <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
                   <Inbox className="w-10 h-10 text-gray-400" />
                 </div>
-                <div className="space-y-2">
+                <section className="space-y-2">
                   <h2 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Inbox Empty')}</h2>
                   <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{translate('You\'re all caught up with your academic updates!')}</p>
-                </div>
+                </section>
               </motion.div>
             ) : (
               <div className="divide-y-2 divide-slate-50 dark:divide-slate-800">

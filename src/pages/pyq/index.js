@@ -114,14 +114,14 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
     // Filtered results go straight under the filters; unfiltered, they stay below the exam grid.
     const papersSection = (
         <section className="px-0 py-1 xl:py-2">
-            <div className="flex items-center justify-between mb-3 gap-4 flex-wrap">
+            <section className="flex items-center justify-between mb-3 gap-4 flex-wrap">
                 <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
                     {filterExam || filterYear ? translate('Filtered Papers') : translate('Latest PYQ Papers')}
                 </h2>
                 <span className="text-xs font-black text-slate-500 uppercase tracking-widest">
                     {translate('{shown} of {total} shown', { shown: tests.length, total: totalPYQs })}
                 </span>
-            </div>
+            </section>
 
             {tests.length === 0 ? (
                 <div className="text-center py-12">
@@ -136,7 +136,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                         const examSlug = test.examSlug;
                         const linkHref = examSlug && test.slug ? `/pyq/${examSlug}/${test.slug}` : `/govt-exams/test/${test.slug || test._id}/start`;
                         return (
-                            <Card
+                            <Card as="section"
                                 key={test._id || i}
                                 className="p-4 hover:shadow-sm transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700"
                                 onClick={() => {

@@ -178,7 +178,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen text-center px-4 font-outfit">
+      <section className="flex flex-col items-center justify-center min-h-screen text-center px-4 font-outfit">
         <h2 className="text-lg xl:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">{translate('Profile Not Found')}</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
@@ -187,7 +187,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         >
           {translate('Go Back')}
         </button>
-      </div>
+      </section>
     );
   }
 

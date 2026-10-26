@@ -95,7 +95,7 @@ const ContactUs = ({ contactInfo = {
 
                   {/* --- Contact Details --- */}
                   <div className="xl:col-span-6 space-y-8">
-                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                     <address className="not-italic grid grid-cols-1 xl:grid-cols-2 gap-6">
                         {[
                            { label: 'Email Support', val: contactInfo.email, icon: Mail, color: 'primary' },
                            { label: 'Phone Number', val: contactInfo.phone, icon: Phone, color: 'primary' },
@@ -112,16 +112,16 @@ const ContactUs = ({ contactInfo = {
                               </div>
                            </Card>
                         ))}
-                     </div>
+                     </address>
 
                      {/* Social Links */}
-                     <Card className="space-y-6 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 overflow-hidden relative rounded-[3rem] shadow-sm">
+                     <Card as="section" className="space-y-6 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 overflow-hidden relative rounded-[3rem] shadow-sm">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                         <div className="relative z-10 space-y-6">
-                           <div className="space-y-1">
+                           <section className="space-y-1">
                               <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-600 dark:text-primary-300">{translate('Follow Us')}</h2>
                               <p className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{translate('Find Us on Social Media')}</p>
-                           </div>
+                           </section>
                            <div className="flex flex-wrap gap-4">
                               {socialLinks.map((s, i) => (
                                  <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={translate('Follow us on {name}', { name: s.name })} className="w-11 h-11 bg-white dark:bg-slate-800 hover:bg-primary-700 hover:text-white dark:hover:text-white flex items-center justify-center rounded-lg xl:rounded-xl transition-all border-2 border-slate-200 dark:border-slate-700 shadow-sm text-slate-600 dark:text-slate-400 group/link">
@@ -134,7 +134,7 @@ const ContactUs = ({ contactInfo = {
                      </Card>
 
                      {/* Support Info */}
-                     <Card className="border-none bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 overflow-hidden group relative">
+                     <Card as="section" className="border-none bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 overflow-hidden group relative">
                         <div className="flex items-center gap-5 relative z-10">
                            <div className="w-14 h-14 bg-white/80 dark:bg-white/20 rounded-2xl backdrop-blur-md border-2 border-slate-200 dark:border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 shadow-sm">
                               <Headset className="w-8 h-8" />
@@ -150,13 +150,13 @@ const ContactUs = ({ contactInfo = {
 
                   {/* --- Contact Form --- */}
                   <div className="xl:col-span-6">
-                     <Card className="space-y-8 border-2 border-slate-200/80 dark:border-slate-800 shadow-sm rounded-[3rem] xl:rounded-[4.5rem] bg-white dark:bg-slate-900/60 backdrop-blur-xl relative overflow-hidden">
+                     <Card as="section" className="space-y-8 border-2 border-slate-200/80 dark:border-slate-800 shadow-sm rounded-[3rem] xl:rounded-[4.5rem] bg-white dark:bg-slate-900/60 backdrop-blur-xl relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[80px] -ml-32 -mt-32" />
 
-                        <div className="space-y-6 relative z-10">
+                        <section className="space-y-6 relative z-10">
                            <h2 className="text-2xl xl:text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{translate('Send a Message')}</h2>
                            <p className="text-xs xl:text-sm font-medium text-slate-500 dark:text-slate-400">{translate('We usually reply within 24 hours. Write to us anytime.')}</p>
-                        </div>
+                        </section>
 
                         <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
                            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
@@ -238,7 +238,7 @@ const ContactUs = ({ contactInfo = {
                      { title: 'Always Available', desc: 'You can contact us any time. We are here to help.', icon: ShieldCheck, color: 'primary' },
                      { title: 'Helpful Team', desc: 'Our team knows the platform well and can solve your problem quickly.', icon: GraduationCap, color: 'primary' }
                   ].map((f, i) => (
-                     <Card key={i} className="text-center space-y-5 border-2 border-slate-200/60 dark:border-slate-800 rounded-[2.5rem] /40 hover:shadow-sm transition-all group relative overflow-hidden">
+                     <Card as="article" key={i} className="text-center space-y-5 border-2 border-slate-200/60 dark:border-slate-800 rounded-[2.5rem] /40 hover:shadow-sm transition-all group relative overflow-hidden">
                         <div className={`p-4 bg-${f.color === 'primary' ? 'primary' : f.color}-500/25 text-${f.color === 'primary' ? 'primary' : f.color}-500 rounded-2xl w-fit mx-auto border-2 border-transparent group-hover:border-current transition-all shadow-sm`}>
                            <f.icon className="w-6 h-6" />
                         </div>

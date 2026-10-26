@@ -147,7 +147,7 @@ const TestResult = ({ resolvedId } = {}) => {
           relative overflow-hidden text-center py-8 px-5 xl:py-12 xl:px-8 border-none shadow-sm
           ${isGreat ? 'bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10' : 'bg-background-surface'}
         `}>
-          <div className="relative z-10 space-y-6">
+          <header className="relative z-10 space-y-6">
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -196,7 +196,7 @@ const TestResult = ({ resolvedId } = {}) => {
                 </span>
               </motion.div>
             )}
-          </div>
+          </header>
 
           {/* Animated Background Elements */}
           <div className="absolute top-0 right-0 p-8 opacity-5">
@@ -237,7 +237,7 @@ const TestResult = ({ resolvedId } = {}) => {
             color: ''
           }
         ].map((item, idx) => (
-          <Card key={idx} className="flex flex-col items-center text-center gap-1.5 hover:-translate-y-0.5 hover:shadow-xl transition-all">
+          <Card as="article" key={idx} className="flex flex-col items-center text-center gap-1.5 hover:-translate-y-0.5 hover:shadow-xl transition-all">
             <div className="w-14 h-14 shrink-0 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow" style={{ borderRadius: 16 }}>
               <item.icon className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
@@ -276,14 +276,14 @@ const TestResult = ({ resolvedId } = {}) => {
             >
               {/* Leaderboard */}
               <div className="space-y-2 xl:space-y-4">
-                <div className="flex items-end justify-between px-2 gap-2 flex-wrap">
+                <section className="flex items-end justify-between px-2 gap-2 flex-wrap">
                   <h2 className="text-xl font-black font-outfit uppercase">{translate('Leaderboard')}</h2>
                   {lbStats.totalParticipants > 0 && (
                     <span className="text-[11px] font-black text-gray-500 uppercase tracking-widest">
                       {lbStats.totalParticipants.toLocaleString('en-IN')} candidates · Top {Math.min(leaderboard.length, lbStats.totalParticipants)}
                     </span>
                   )}
-                </div>
+                </section>
                 <Card padded={false} className="overflow-hidden">
                   <table className="w-full">
                     <thead className="bg-gradient-to-r from-slate-100 via-slate-50 to-white text-primary-900 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white text-xs font-black uppercase border-b border-slate-200 dark:border-transparent">
@@ -335,11 +335,11 @@ const TestResult = ({ resolvedId } = {}) => {
               </div>
 
               {/* Section breakdown */}
-              <div className="space-y-2 xl:space-y-4">
+              <section className="space-y-2 xl:space-y-4">
                 <h2 className="text-xl font-black font-outfit uppercase px-2">{translate('Section Performance')}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                   {Object.entries(result?.sectionWiseScore || {}).map(([name, stats], idx) => (
-                    <Card key={idx}>
+                    <Card as="article" key={idx}>
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-black text-xs uppercase tracking-wider">{name}</span>
                         <span className="font-black text-primary-600 dark:text-primary-300">{translate('{score} pts', { score: fmtNum(stats.score) })}</span>
@@ -355,7 +355,7 @@ const TestResult = ({ resolvedId } = {}) => {
                     </Card>
                   ))}
                 </div>
-              </div>
+              </section>
             </motion.div>
           ) : (
             <motion.div
@@ -371,8 +371,8 @@ const TestResult = ({ resolvedId } = {}) => {
                 const isSkipped = attempt?.selectedIndex === -1 || !attempt;
 
                 return (
-                  <Card key={idx} className={`p-0 overflow-hidden border-2 ${isCorrect ? 'border-primary-500/20' : isSkipped ? 'border-gray-200' : 'border-red-300 dark:border-red-500/40'}`}>
-                    <div className={`p-3 xl:p-6 border-b flex justify-between items-start ${isCorrect ? 'bg-primary-500/5' : isSkipped ? 'bg-gray-50' : 'bg-red-50 dark:bg-red-500/10'}`}>
+                  <Card as="section" key={idx} className={`p-0 overflow-hidden border-2 ${isCorrect ? 'border-primary-500/20' : isSkipped ? 'border-gray-200' : 'border-red-300 dark:border-red-500/40'}`}>
+                    <section className={`p-3 xl:p-6 border-b flex justify-between items-start ${isCorrect ? 'bg-primary-500/5' : isSkipped ? 'bg-gray-50' : 'bg-red-50 dark:bg-red-500/10'}`}>
                       <div className="space-y-1">
                         <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-primary-600' : isSkipped ? 'text-gray-400' : 'text-red-600 dark:text-red-400'}`}>
                           {isCorrect ? translate('PERFECT') : isSkipped ? translate('SKIPPED') : translate('INCORRECT')}
@@ -380,7 +380,7 @@ const TestResult = ({ resolvedId } = {}) => {
                         <h3 className="text-lg font-bold leading-tight whitespace-pre-wrap">{q.questionText}</h3>
                       </div>
                       {isCorrect ? <CircleCheck className="text-primary-600 dark:text-primary-300 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-red-600 dark:text-red-400 w-8 h-8" />}
-                    </div>
+                    </section>
 
                     <div className="p-3 xl:p-6 space-y-2 xl:space-y-4">
                       {q.questionImage && (
@@ -438,15 +438,15 @@ const TestResult = ({ resolvedId } = {}) => {
       {/* --- Share Result --- */}
       {mounted && result && (
         <section className="px-0 py-4 xl:py-8">
-          <Card className="bg-primary-50 dark:bg-slate-800">
-            <div className="text-center space-y-2 mb-4">
+          <Card as="section" className="bg-primary-50 dark:bg-slate-800">
+            <section className="text-center space-y-2 mb-4">
               <h2 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Flex your result')}</h2>
               <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">
                 {result.rank && lbStats.totalParticipants > 0
                   ? translate('Share your All India Rank #{rank} of {total} with friends', { rank: result.rank, total: lbStats.totalParticipants.toLocaleString('en-IN') })
                   : translate('Share your score and challenge friends to beat it')}
               </p>
-            </div>
+            </section>
             <ShareComponent
               url={(() => {
                 const p = new URLSearchParams();

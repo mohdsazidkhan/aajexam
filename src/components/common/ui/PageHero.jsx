@@ -20,11 +20,11 @@ import { m as motion } from 'framer-motion';
  *   stats    optional [{ label, value }] rendered as compact cells in the top row, before the actions
  */
 const PageHero = ({ icon: Icon, eyebrow, title, subtitle, badge, actions, center, stats, children, className = '' }) => (
-  <motion.section
+  <motion.header
     initial={{ opacity: 0, y: 8 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.25 }}
-    className={`relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 text-slate-900 shadow-xl ring-1 ring-primary-200 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 dark:text-white dark:ring-white/10 ${className}`}
+    className={`z-auto relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 text-slate-900 shadow-xl ring-1 ring-primary-200 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 dark:text-white dark:ring-white/10 ${className}`}
     style={{ borderRadius: 16 }}
   >
     <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
@@ -69,7 +69,7 @@ const PageHero = ({ icon: Icon, eyebrow, title, subtitle, badge, actions, center
 
       {children}
     </div>
-  </motion.section>
+  </motion.header>
 );
 
 export default PageHero;

@@ -186,7 +186,7 @@ const AdminBlogForm = () => {
 
         <form onSubmit={handleSubmit} className="space-y-3">
           {/* Blog Details */}
-          <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+          <section className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
             <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Blog Details</h2>
             <div className="grid grid-cols-1 gap-3">
               {/* Title */}
@@ -244,10 +244,10 @@ const AdminBlogForm = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </section>
 
           {/* Media & SEO */}
-          <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+          <section className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
             <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Media & SEO</h2>
             <div className="grid grid-cols-1 gap-3">
               <div>
@@ -280,10 +280,10 @@ const AdminBlogForm = () => {
                 <p className="text-xs text-gray-500 mt-1">{formData.metaDescription.length}/160 characters</p>
               </div>
             </div>
-          </div>
+          </section>
 
           {/* Settings */}
-          <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+          <section className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
             <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Settings</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div>
@@ -306,7 +306,7 @@ const AdminBlogForm = () => {
                 <label className="ml-2 text-sm text-gray-700 dark:text-gray-300 font-medium">Pinned Blog</label>
               </div>
             </div>
-          </div>
+          </section>
 
           {/* Error */}
           {error && (

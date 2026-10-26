@@ -17,7 +17,8 @@ const Card = ({
   noShadow = false,
   noBorder = false,
   depth = true,
-  glow = false
+  glow = false,
+  as = 'div' // semantic element: div, section, article, aside
 }) => {
   const variants = {
     white: 'bg-background-surface text-content-primary border-slate-200 dark:border-slate-800 shadow-md hover:shadow-lg',
@@ -37,7 +38,7 @@ const Card = ({
     '5xl': 'rounded-[3.5rem]',
   };
 
-  const Container = hoverable ? motion.div : 'div';
+  const Container = hoverable ? (motion[as] || motion.div) : as;
   const motionProps = hoverable ? {
     whileHover: hoverable && !onClick ? {} : hoverable ? { y: -8, scale: 1.005 } : {}
   } : {};

@@ -409,7 +409,7 @@ const AdminMostActiveUsers = () => {
                                     {viewMode === 'grid' && (
                                         <div className="grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                                             {pagedUsers.map((u) => (
-                                                <div key={u.userId} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                                                <section key={u.userId} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                     <div className="flex items-start justify-between gap-2">
                                                         <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl flex items-center justify-center font-black text-sm">
                                                             {u.name?.[0]?.toUpperCase() || 'U'}
@@ -439,7 +439,7 @@ const AdminMostActiveUsers = () => {
                                                         <span>{formatDate(u.lastActive)}</span>
                                                     </div>
                                                     <div className="flex justify-center">{viewButton(u)}</div>
-                                                </div>
+                                                </section>
                                             ))}
                                         </div>
                                     )}
@@ -447,7 +447,7 @@ const AdminMostActiveUsers = () => {
                                     {viewMode === 'list' && (
                                         <div className="space-y-3">
                                             {pagedUsers.map((u) => (
-                                                <div key={u.userId} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                                                <section key={u.userId} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                     <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl flex items-center justify-center shrink-0 font-black text-sm">
                                                         {u.name?.[0]?.toUpperCase() || 'U'}
                                                         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{u.rank}</span>
@@ -477,7 +477,7 @@ const AdminMostActiveUsers = () => {
                                                             </div>
                                                         ))}
                                                     </div>
-                                                </div>
+                                                </section>
                                             ))}
                                         </div>
                                     )}

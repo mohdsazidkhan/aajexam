@@ -4,7 +4,7 @@ import useTranslate from '../../hooks/useTranslate';
 const AuthorBio = () => {
   const { translate, rich } = useTranslate();
     return (
-        <div className="mt-4 p-4 md:p-5 xl:p-6 bg-white dark:bg-slate-800 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group">
+        <section className="mt-4 p-4 md:p-5 xl:p-6 bg-white dark:bg-slate-800 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group">
             {/* Decorative background */}
             <div className="absolute top-0 right-0 w-24 xl:w-48 h-24 xl:h-48 bg-primary-500/5 rounded-full blur-[60px] -mr-24 -mt-24 pointer-events-none group-hover:bg-primary-500/10 transition-colors" />
 
@@ -28,7 +28,7 @@ const AuthorBio = () => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

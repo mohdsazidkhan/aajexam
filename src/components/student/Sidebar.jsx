@@ -193,7 +193,7 @@ const StudentSidebar = () => {
   const initials = (user.name || user.username || 'U').charAt(0).toUpperCase();
 
   return (
-    <div
+    <aside
       className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-white dark:bg-slate-900 border-r-2 border-slate-100 dark:border-slate-800 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
         }`}
     >
@@ -201,7 +201,7 @@ const StudentSidebar = () => {
       {/* Navigation */}
       <nav ref={navRef} aria-label={translate('Sidebar navigation')} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium min-w-[240px] relative z-10">
         {displaySections.map((section, idx) => (
-          <div key={idx}>
+          <section key={idx}>
             <h3 className="text-[11px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-[0.3em] px-2 mb-2">
               {translate(section.title)}
             </h3>
@@ -229,7 +229,7 @@ const StudentSidebar = () => {
                 );
               })}
             </div>
-          </div>
+          </section>
         ))}
       </nav>
 
@@ -242,7 +242,7 @@ const StudentSidebar = () => {
           <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> {translate('LOG OUT')}
         </button>
       </div>
-    </div>
+    </aside>
   );
 };
 

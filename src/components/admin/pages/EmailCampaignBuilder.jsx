@@ -360,17 +360,17 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
           </div>
         </div>
 
-        <div className="relative overflow-hidden bg-background-surface shadow-md p-4 border border-slate-200 dark:border-white/10" style={{ borderRadius: 16 }}>
+        <section className="relative overflow-hidden bg-background-surface shadow-md p-4 border border-slate-200 dark:border-white/10" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
           <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
-            <div>
+            <section>
               <h2 className="text-xl font-black font-outfit uppercase tracking-tight flex items-center gap-2.5">
                 <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
               </h2>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                 The platform logo &amp; footer are added automatically.
               </p>
-            </div>
+            </section>
             {campaign && (
               <span className="text-[10px] font-mono text-slate-400" title={campaign.campaignId}>
                 ID: #{String(campaign.campaignId || '').slice(-6)}
@@ -496,9 +496,9 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             </div>
 
             {/* --- Right column: preview + campaign progress --- */}
-            <div className="space-y-2 xl:space-y-3">
+            <aside className="space-y-2 xl:space-y-3">
               {campaign && (
-                <div className="border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl p-4 bg-slate-50 dark:bg-white/5">
+                <section className="border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl p-4 bg-slate-50 dark:bg-white/5">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-sm font-bold">
                       {isDraft && '📝 Draft'}
@@ -614,7 +614,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                       ) : null}
                     </div>
                   )}
-                </div>
+                </section>
               )}
 
               <div>
@@ -629,9 +629,9 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                   <div dangerouslySetInnerHTML={{ __html: previewHtml }} />
                 </div>
               </div>
-            </div>
+            </aside>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

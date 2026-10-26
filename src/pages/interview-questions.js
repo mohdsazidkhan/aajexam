@@ -49,7 +49,7 @@ const typeConfig = {
 const CategoryCard = ({ category, index, typeLabel }) => {
   return (
     <Link href={`/${category.slug}-interview-questions`} className="block">
-    <Card padded={false} hoverable
+    <Card as="section" padded={false} hoverable
       className="overflow-hidden border-2 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] cursor-pointer">
       <div className="w-full flex items-center justify-between gap-2 sm:gap-3 p-3 sm:p-5 bg-background-surface">
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -194,7 +194,7 @@ const InterviewQuestionsPage = ({ initialCategories = [] } = {}) => {
                 {questions.map((q, idx) => {
                   return (
                     <motion.div key={q._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
-                      <Card hoverable onClick={() => router.push(`/interview-questions/${q.slug}`)}
+                      <Card as="section" hoverable onClick={() => router.push(`/interview-questions/${q.slug}`)}
                         className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                         <div className="flex items-start justify-between">
                           <div className="flex items-center gap-3">

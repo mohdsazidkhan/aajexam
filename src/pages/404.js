@@ -30,7 +30,7 @@ export default function Custom404() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] -mr-48 -mt-48 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />
 
-        <div className="max-w-md w-full overflow-hidden bg-background-surface shadow-xl p-6 xl:p-10 text-center border border-slate-200 dark:border-slate-800 relative z-10 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
+        <section className="max-w-md w-full overflow-hidden bg-background-surface shadow-xl p-6 xl:p-10 text-center border border-slate-200 dark:border-slate-800 relative z-10 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
           <div className="flex items-center justify-center w-24 h-24 mx-auto bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-8 shadow-sm border-2 border-white dark:border-slate-800">
             <svg className="w-12 h-12 text-black dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.47-.881-6.084-2.33A7.962 7.962 0 014 12a8 8 0 1116 0z" />
@@ -87,7 +87,7 @@ export default function Custom404() {
               </button>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </>
   )

@@ -200,7 +200,7 @@ const AdminStudyPlanPage = () => {
               ) : viewMode === 'grid' ? (
                 <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                   {plans.map((plan) => (
-                    <Card key={plan._id} className="flex flex-col gap-2 relative">
+                    <Card as="article" key={plan._id} className="flex flex-col gap-2 relative">
                       <button
                         onClick={() => handleDelete(plan)}
                         title="Delete"
@@ -232,7 +232,7 @@ const AdminStudyPlanPage = () => {
               ) : (
                 <div className="h-full overflow-auto space-y-2 xl:space-y-3">
                   {plans.map((plan) => (
-                    <Card key={plan._id} className="">
+                    <Card as="article" key={plan._id} className="">
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                         <div>
                           <div className="text-sm text-slate-400 uppercase tracking-[0.2em]">{plan.exam?.name || 'Unknown Exam'}</div>

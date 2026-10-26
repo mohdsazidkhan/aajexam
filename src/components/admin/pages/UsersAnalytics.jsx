@@ -268,11 +268,11 @@ const AdminUsersAnalytics = () => {
                                  <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
                             </div>
                         ) : students.length === 0 ? (
-                            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
+                            <section className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
                                 <Globe className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
                                  <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter italic">No Users Found</h3>
                                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your search or filters.</p>
-                            </div>
+                            </section>
         ) : (
                             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-auto flex flex-col">
                                 <div className="flex-1 min-h-0 overflow-auto">
@@ -318,7 +318,7 @@ const AdminUsersAnalytics = () => {
                                 {viewMode === 'list' && (
                                     <div className="h-full overflow-auto space-y-3">
                                         {students.map((s, idx) => (
-                                            <div key={s._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                                            <section key={s._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                                                 <div className="relative w-10 h-10 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-xl flex items-center justify-center font-black text-sm shrink-0">
                                                     {(s.name || 'U')[0]}
                                                     <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
@@ -335,7 +335,7 @@ const AdminUsersAnalytics = () => {
                                                     <div className="text-[9px] font-bold text-slate-400 uppercase">Earnings</div>
                                                 </div>
                                                 <button aria-label="Open" onClick={() => goToUser(s._id)} className="p-2 bg-slate-100 dark:bg-slate-700 text-primary-600 dark:text-primary-300 rounded-lg shrink-0"><ArrowUpRight className="w-4 h-4" /></button>
-                                            </div>
+                                            </section>
                                         ))}
                                     </div>
                                 )}

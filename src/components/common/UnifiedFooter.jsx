@@ -67,19 +67,19 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
 
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8 mb-4 xl:mb-8">
-          <div className="xl:col-span-1 space-y-8">
-            <div className="space-y-2 xl:space-y-4">
+          <section className="xl:col-span-1 space-y-8">
+            <section className="space-y-2 xl:space-y-4">
               <h2 className="text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-content-primary">
                 AAJ<span className="text-primary-600 dark:text-primary-300 text-glow-primary">{translate('EXAM')}</span>
               </h2>
               <div className="h-1 w-12 bg-primary-600 rounded-full" />
-            </div>
+            </section>
 
             <p className="text-sm font-bold text-content-secondary leading-relaxed max-w-xs">
               {translate('Practice smarter, prepare with confidence, and track your progress in one place.')}
             </p>
 
-            <div className="flex flex-wrap gap-3">
+            <nav className="flex flex-wrap gap-3">
               {socialLinks.map((social, index) => (
                 <motion.a
                   whileHover={{ scale: 1.08, y: -2 }}
@@ -94,12 +94,12 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   <social.icon className="w-4 h-4" />
                 </motion.a>
               ))}
-            </div>
-          </div>
+            </nav>
+          </section>
 
-          <div className="space-y-8">
+          <nav aria-label={translate('Explore')} className="space-y-8">
             <h3 className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase tracking-[0.25em] flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
               {translate('Explore')}
             </h3>
             <ul className="grid grid-cols-1 gap-4">
@@ -114,11 +114,11 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div className="space-y-8">
+          <nav aria-label={translate('Legal')} className="space-y-8">
             <h3 className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase tracking-[0.25em] flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
               {translate('Legal')}
             </h3>
             <ul className="grid grid-cols-1 gap-4">
@@ -133,15 +133,15 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div className="space-y-8">
+          <section className="space-y-8">
             <h3 className="text-xs font-black text-black dark:text-white uppercase tracking-[0.25em] flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse"/>
+              <span className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse"/>
               {translate('Support')}
             </h3>
             <div className="space-y-5 max-w-xs xl:max-w-none mx-auto sm:mx-0">
-              <div className="space-y-5">
+              <address className="space-y-5 not-italic">
                 <a
                   href={`mailto:${config.CONTACT.EMAIL}`}
                   aria-label={translate('Send us an email')}
@@ -173,7 +173,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                     <p className="text-xs font-bold text-content-secondary">{config.CONTACT.PHONE}</p>
                   </div>
                 </a>
-              </div>
+              </address>
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -186,7 +186,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </section>
         </div>
 
         <div className="pt-10 border-t border-slate-200 dark:border-slate-800/70 flex flex-col xl:flex-row items-center justify-between gap-6">

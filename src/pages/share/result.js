@@ -51,7 +51,7 @@ export default function SharedResult({ stats }) {
         type="article"
       />
 
-      <main className="min-h-screen bg-background-page py-12">
+      <div className="min-h-screen bg-background-page py-12">
         <div className="container mx-auto space-y-10">
 
           <motion.div
@@ -64,7 +64,7 @@ export default function SharedResult({ stats }) {
                 <Trophy className="w-64 h-64 rotate-12" />
               </div>
 
-              <div className="relative z-10 space-y-6">
+              <header className="relative z-10 space-y-6">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow text-xs font-black uppercase tracking-widest" style={{ borderRadius: 999 }}>
                   <Crown className="w-4 h-4" />
                   {translate(band)}
@@ -95,7 +95,7 @@ export default function SharedResult({ stats }) {
                     {rich('Beat <0></0> of candidates on AajExam', [() => <span className="text-primary-700 dark:text-primary-200">{pctNum.toFixed(1)}%</span>])}
                   </p>
                 )}
-              </div>
+              </header>
             </Card>
           </motion.div>
 
@@ -106,7 +106,7 @@ export default function SharedResult({ stats }) {
               { label: 'Score', value: score ?? '—', icon: Zap, color: '' },
               { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: '' },
             ].map((item, idx) => (
-              <Card key={idx} className="flex flex-col items-center text-center gap-2">
+              <Card as="article" key={idx} className="flex flex-col items-center text-center gap-2">
                 <div className="w-12 h-12 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow" style={{ borderRadius: 14 }}>
                   <item.icon className="w-6 h-6" />
                 </div>
@@ -116,7 +116,7 @@ export default function SharedResult({ stats }) {
             ))}
           </section>
 
-          <Card className="p-8 xl:p-10 text-center space-y-5">
+          <Card as="section" className="p-8 xl:p-10 text-center space-y-5">
             <h2 className="text-2xl xl:text-3xl font-black font-outfit uppercase">
               Think you can beat this?
             </h2>
@@ -144,7 +144,7 @@ export default function SharedResult({ stats }) {
           </Card>
 
         </div>
-      </main>
+      </div>
 
     </>
   );

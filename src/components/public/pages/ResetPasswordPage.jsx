@@ -77,7 +77,7 @@ const ResetPasswordPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="w-full max-w-md relative z-10"
         >
-          <Card className="p-6 xl:p-8 border-none shadow-xl space-y-6">
+          <Card as="section" className="p-6 xl:p-8 border-none shadow-xl space-y-6">
 
             {/* Header */}
             <div className="text-center space-y-2 xl:space-y-4">

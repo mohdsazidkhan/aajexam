@@ -138,17 +138,17 @@ const SubjectListPage = ({ initialSubjects = [] } = {}) => {
           {pageItems.map((sub, idx) => (
             <motion.div key={sub._id || sub.slug} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
               <Link href={`/subjects/${sub.slug}`} className="block">
-<Card hoverable
+<Card as="section" hoverable
                 className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
                       {(currentPage - 1) * pageSize + idx + 1}
                     </div>
-                    <div>
+                    <section>
                       <h2 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(sub.name)}</h2>
                       {sub.description && <p className="text-[10px] font-bold text-content-muted line-clamp-1">{sub.description}</p>}
-                    </div>
+                    </section>
                   </div>
                   <div className="flex items-center gap-3 shrink-0">
                     <div className="flex items-center gap-1.5">

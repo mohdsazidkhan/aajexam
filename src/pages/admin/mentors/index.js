@@ -206,7 +206,7 @@ const AdminMentors = () => {
             /* ── Grid View ── */
             <div className="overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
               {mentors.map((m, i) => (
-                <Card key={m._id || i} className="!p-4 flex flex-col justify-between gap-3">
+                <Card as="article" key={m._id || i} className="!p-4 flex flex-col justify-between gap-3">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide ${statusColor(m.status)}`}>{m.status}</span>
@@ -244,7 +244,7 @@ const AdminMentors = () => {
             /* ── List View ── */
             <div className="h-full overflow-auto space-y-3">
               {mentors.map((m, i) => (
-                <Card key={m._id || i} className="!p-4 flex items-center gap-3 flex-wrap sm:flex-nowrap">
+                <Card as="article" key={m._id || i} className="!p-4 flex items-center gap-3 flex-wrap sm:flex-nowrap">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide ${statusColor(m.status)}`}>{m.status}</span>

@@ -53,7 +53,7 @@ const SubjectAccordion = ({ subject }) => {
   const isAllDone = subject.completedTopics === subject.totalTopics && subject.totalTopics > 0;
 
   return (
-    <Card padded={false} className="overflow-hidden mb-3 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+    <Card as="section" padded={false} className="overflow-hidden mb-3 hover:shadow-xl hover:-translate-y-0.5 transition-all">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-4 sm:p-5 bg-background-surface hover:bg-primary-50/60 dark:hover:bg-white/5 transition-colors"
@@ -220,7 +220,7 @@ const SyllabusTrackerPage = () => {
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
 
               {/* Progress Header */}
-              <Card className="flex flex-col md:flex-row items-center gap-6 sm:gap-10">
+              <Card as="section" className="flex flex-col md:flex-row items-center gap-6 sm:gap-10">
                 <div className="relative w-32 h-32 flex-shrink-0">
                   <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                     <path className="text-slate-100 dark:text-slate-800" strokeWidth="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -230,7 +230,7 @@ const SyllabusTrackerPage = () => {
                     <span className="text-3xl font-black font-outfit text-primary-700 dark:text-primary-200">{trackerData.overallProgress}%</span>
                   </div>
                 </div>
-                <div className="text-center md:text-left flex-1">
+                <section className="text-center md:text-left flex-1">
                   <h2 className="text-xl sm:text-2xl font-black text-content-primary mb-1">{translate('Overall Progress')}</h2>
                   <p className="text-sm font-bold text-content-muted">
                     {rich('You have mastered <0></0> out of <1></1> topics for this exam.', [() => <strong className="text-primary-600 dark:text-primary-300">{trackerData.completedTopics}</strong>, () => <strong>{trackerData.totalTopics}</strong>])}
@@ -240,7 +240,7 @@ const SyllabusTrackerPage = () => {
                       <CheckCircle2 className="w-4 h-4" /> Syllabus Completed!
                     </div>
                   )}
-                </div>
+                </section>
               </Card>
 
               {/* Accordions */}

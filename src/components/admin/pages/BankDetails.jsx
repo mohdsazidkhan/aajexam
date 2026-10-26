@@ -207,7 +207,7 @@ export default function AdminBankDetails() {
   const CardView = () => (
     <div className="grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
       {bankDetails.map((detail, idx) => (
-        <div key={detail._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <section key={detail._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-3 min-w-0">
               <div className="relative w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
@@ -252,7 +252,7 @@ export default function AdminBankDetails() {
             <span>Added {formatDate(detail.createdAt)}</span>
             <span className="text-primary-600 dark:text-primary-300">#{detail._id?.slice(-8).toUpperCase()}</span>
           </div>
-        </div>
+        </section>
       ))}
     </div>
   );
@@ -260,7 +260,7 @@ export default function AdminBankDetails() {
   const ListView = () => (
     <div className="h-full overflow-auto space-y-3">
       {bankDetails.map((detail, idx) => (
-        <div key={detail._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <section key={detail._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
           <div className="flex items-center gap-3">
             <div className="relative w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
               {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
@@ -295,7 +295,7 @@ export default function AdminBankDetails() {
             <div className="text-[9px] font-bold text-slate-400 uppercase">Added</div>
             <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{formatDate(detail.createdAt)}</div>
           </div>
-        </div>
+        </section>
       ))}
     </div>
   );
@@ -369,13 +369,13 @@ export default function AdminBankDetails() {
         {loading ? (
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         ) : error ? (
-          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-12 text-center">
+          <section className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-12 text-center">
             <Zap className="w-12 h-12 text-primary-600 dark:text-primary-300 mx-auto mb-4" />
             <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase mb-2">Error Loading Bank Details</h3>
             <p className="text-sm text-slate-500 dark:text-slate-400">{error}</p>
-          </div>
+          </section>
         ) : bankDetails.length === 0 ? (
-          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-12 text-center">
+          <section className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-12 text-center">
             <University className="w-12 h-12 text-slate-300 mx-auto mb-4" />
             <h3 className="text-lg font-black text-slate-500 uppercase">No Bank Details Found</h3>
             <p className="text-sm text-slate-400 mt-2">
@@ -383,7 +383,7 @@ export default function AdminBankDetails() {
                 ? "No bank details match your search."
                 : "No students have submitted their bank details yet."}
             </p>
-          </div>
+          </section>
         ) : (
           <>
           <div className="flex-1 min-h-0 overflow-auto">

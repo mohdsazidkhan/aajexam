@@ -94,7 +94,7 @@ export default function FollowersListPage() {
           ) : (
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-4">
               {followers.map((user) => (
-                <div
+                <section
                   key={user._id}
                   onClick={() => handleUserClick(user.username)}
                   className="flex items-center min-w-0 gap-3 xl:gap-4 p-3 xl:p-4 bg-white dark:bg-slate-900 rounded-[1rem] xl:rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700 transition-all cursor-pointer group shadow-sm active:translate-y-1 active:border-b-2"
@@ -123,7 +123,7 @@ export default function FollowersListPage() {
                       {translate('{count} followers', { count: user.followersCount || 0 })}
                     </p>
                   </div>
-                </div>
+                </section>
               ))}
             </div>
           )}

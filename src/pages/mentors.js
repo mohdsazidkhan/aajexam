@@ -83,17 +83,17 @@ const MentorsPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
             {mentors.map((mentor, i) => (
-              <Card key={mentor._id || i} className="hover:shadow-sm transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700"
+              <Card as="article" key={mentor._id || i} className="hover:shadow-sm transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700"
                 onClick={() => router.push(`/mentor/${mentor._id}`)}>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 font-black text-sm">
                       {mentor.user?.name?.charAt(0) || 'M'}
                     </div>
-                    <div className="flex-1">
+                    <section className="flex-1">
                       <h2 className="text-sm font-black text-slate-900 dark:text-white">{mentor.user?.name || translate('Mentor')}</h2>
                       {mentor.isVerified && <span className="text-[9px] font-bold text-primary-600 dark:text-primary-300 flex items-center gap-1"><Shield className="w-3 h-3" /> {translate('Verified')}</span>}
-                    </div>
+                    </section>
                     <div className="flex items-center gap-1">
                       <Star className="w-3 h-3 text-black dark:text-white fill-black dark:fill-white" />
                       <span className="text-xs font-black text-slate-600">{mentor.rating?.toFixed(1) || '0.0'}</span>

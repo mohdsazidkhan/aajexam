@@ -194,7 +194,7 @@ const AdminExamNews = () => {
             /* ── Grid View ── */
             <div className="overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
               {news.map((n, i) => (
-                <Card key={n._id || i} className="!p-4 flex flex-col justify-between gap-3 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                <Card as="article" key={n._id || i} className="!p-4 flex flex-col justify-between gap-3 hover:shadow-xl hover:-translate-y-0.5 transition-all">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${typeColor(n.type)}`}>{n.type?.replace('_', ' ')}</span>
@@ -225,7 +225,7 @@ const AdminExamNews = () => {
             /* ── List View ── */
             <div className="h-full overflow-auto space-y-2">
               {news.map((n, i) => (
-                <Card key={n._id || i} className="!p-4 flex items-center gap-3 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                <Card as="article" key={n._id || i} className="!p-4 flex items-center gap-3 hover:shadow-xl hover:-translate-y-0.5 transition-all">
                   {n.isPinned && <Pin className="w-4 h-4 text-primary-600 dark:text-primary-300 fill-current flex-shrink-0" />}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
@@ -257,10 +257,10 @@ const AdminExamNews = () => {
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowForm(false); setEditId(null); }} className="absolute inset-0 bg-black/50" />
                 <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
                   <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-slate-700/50 flex items-center justify-between shrink-0">
-                    <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><div>
+                    <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><section>
                       <h2 className="text-base font-bold text-slate-900 dark:text-white">{editId ? 'Edit Exam News' : 'Add New Exam News'}</h2>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Fill in the details below</p>
-                    </div></div>
+                    </section></div>
                     <button aria-label="Close" onClick={() => { setShowForm(false); setEditId(null); }} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
                   </div>
                   <div className="p-4 space-y-2 xl:space-y-3 overflow-y-auto flex-1">

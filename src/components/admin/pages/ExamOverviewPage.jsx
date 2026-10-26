@@ -30,7 +30,7 @@ import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext
 const formatNumber = (num) => (num || 0).toLocaleString('en-IN');
 
 const StatCard = ({ title, count, icon: Icon, color }) => (
-  <Card hoverable padded={false} className="border border-slate-200 dark:border-white/5 shadow-sm bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl overflow-hidden group">
+  <Card as="section" hoverable padded={false} className="border border-slate-200 dark:border-white/5 shadow-sm bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl overflow-hidden group">
     <div className="p-4 flex flex-col relative">
       <div className="flex items-center justify-between mb-3">
         <div className={`w-10 h-10 rounded-lg xl:rounded-xl bg-${color}-500/10 text-${color}-600 dark:text-${color}-400 flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm`}>

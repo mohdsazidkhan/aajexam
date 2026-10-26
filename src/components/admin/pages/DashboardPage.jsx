@@ -242,9 +242,9 @@ const DashboardPage = () => {
                     </span>
                     <span className="text-2xl xl:text-3xl font-black font-outfit tracking-tight text-primary-700 dark:text-primary-200 tabular-nums leading-none">{card.count}</span>
                   </div>
-                  <div className="px-3 pb-2">
+                  <section className="px-3 pb-2">
                     <h2 className="text-xs xl:text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors leading-tight break-words">{card.title}</h2>
-                  </div>
+                  </section>
                   <div className="relative mt-auto px-3 py-1.5 border-t border-dashed border-slate-300 dark:border-slate-700 bg-primary-50/60 dark:bg-white/5">
                     <span className="absolute -left-1.5 -top-[7px] w-3 h-3 bg-background-page" style={{ borderRadius: 999 }} />
                     <span className="absolute -right-1.5 -top-[7px] w-3 h-3 bg-background-page" style={{ borderRadius: 999 }} />

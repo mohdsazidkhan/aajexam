@@ -66,7 +66,7 @@ const TestStartModal = ({
           </h2>
 
           {/* Test Info */}
-          <div className="bg-primary-50/60 dark:bg-background-surface-secondary p-3 xl:p-6 mb-3 xl:mb-6 border border-dashed border-primary-300 dark:border-slate-700 shadow-sm" style={{ borderRadius: 16 }}>
+          <section className="bg-primary-50/60 dark:bg-background-surface-secondary p-3 xl:p-6 mb-3 xl:mb-6 border border-dashed border-primary-300 dark:border-slate-700 shadow-sm" style={{ borderRadius: 16 }}>
             <h3 className="text-content-primary text-sm xl:text-md mb-3 xl:mb-6 uppercase font-black tracking-widest leading-relaxed text-center px-2 break-words">
               {translateData(testTitle)}
             </h3>
@@ -139,7 +139,7 @@ const TestStartModal = ({
                 </div>
               )}
             </div>
-          </div>
+          </section>
 
           {/* Sections Preview */}
           {sections.length > 0 && (

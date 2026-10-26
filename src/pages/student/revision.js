@@ -176,7 +176,7 @@ const RevisionPage = () => {
               )}
             </Card>
           ) : (
-            <Card radius="2xl" className="text-center space-y-2 xl:space-y-3">
+            <Card as="section" radius="2xl" className="text-center space-y-2 xl:space-y-3">
               <Zap className="w-12 h-12 text-primary-600 dark:text-primary-300 mx-auto" />
               <h2 className="text-xl font-black text-slate-900 dark:text-white">{activeTab === 'all' ? translate('All Caught Up!') : translate('No items here')}</h2>
               <p className="text-sm text-slate-400 leading-relaxed">

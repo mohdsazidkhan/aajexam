@@ -212,12 +212,12 @@ const PaymentTransactions = () => {
     <div className="relative bg-background-surface shadow-md border border-slate-200 dark:border-slate-800 overflow-hidden font-outfit mb-4 xl:mb-6" style={{ borderRadius: 16 }}>
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 z-10 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
       {/* Header */}
-      <div className="bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white p-3 xl:p-4 pt-4 relative overflow-hidden group">
+      <section className="bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white p-3 xl:p-4 pt-4 relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-white/10 transition-colors"></div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 xl:gap-4 relative z-10">
-          <div>
+          <section>
             <h2 className="text-lg xl:text-2xl font-black uppercase tracking-tight">{rich('Payment <0>History</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
-          </div>
+          </section>
           <div className="flex items-center w-full sm:w-auto">
             <button
               onClick={() => setShowFilters(!showFilters)}
@@ -228,7 +228,7 @@ const PaymentTransactions = () => {
             </button>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Summary Cards */}
       {summary && (
@@ -421,10 +421,10 @@ const PaymentTransactions = () => {
 
                 {/* Expanded Details */}
                 {expandedTransaction === transaction.id && (
-                  <div className="border-t-2 border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-3 xl:p-4">
+                  <section className="border-t-2 border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-3 xl:p-4">
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-4">
                       {/* Payment Details */}
-                      <div className="bg-white dark:bg-slate-800 p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
+                      <section className="bg-white dark:bg-slate-800 p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
                         <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-2 xl:mb-3 flex items-center gap-2 xl:gap-3">
                           <FaCreditCard className="text-primary-600 dark:text-primary-300" />
                           {translate('Payment Details')}
@@ -443,10 +443,10 @@ const PaymentTransactions = () => {
                             </span>
                           </div>
                         </div>
-                      </div>
+                      </section>
 
                       {/* Info Details */}
-                      <div className="bg-white dark:bg-slate-800 p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
+                      <section className="bg-white dark:bg-slate-800 p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
                         <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-2 xl:mb-3 flex items-center gap-2 xl:gap-3">
                           <FaReceipt className="text-primary-600 dark:text-primary-300" />
                           {translate('Transaction Details')}
@@ -461,9 +461,9 @@ const PaymentTransactions = () => {
                             <span className="text-slate-800 dark:text-white font-mono break-all text-right">{transaction.orderId}</span>
                           </div>
                         </div>
-                      </div>
+                      </section>
                     </div>
-                  </div>
+                  </section>
                 )}
               </div>
             ))}

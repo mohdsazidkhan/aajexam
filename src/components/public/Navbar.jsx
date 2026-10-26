@@ -104,7 +104,7 @@ const PublicNavbar = () => {
   return (
     <>
       {promoActive && <PromoTopBar />}
-      <nav
+      <header
         className={`fixed ${promoActive ? 'top-8' : 'top-0'} left-0 right-0 z-[100] transition-all duration-500 pointer-events-none ${scrolled
           ? 'py-2.5 bg-white dark:bg-black border-b border-slate-100 dark:border-slate-800 shadow-md after:content-[""] after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-primary-500 after:via-primary-300 after:to-primary-500'
           : 'py-2.5 bg-white dark:bg-black border-b border-slate-100 dark:border-slate-800 shadow-md after:content-[""] after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-primary-500 after:via-primary-300 after:to-primary-500'
@@ -127,7 +127,7 @@ const PublicNavbar = () => {
             </Link>
 
             {/* --- Desktop Navigation --- */}
-            <div className="hidden xl:flex xl:flex-1 xl:justify-center">
+            <nav aria-label={translate('Main navigation')} className="hidden xl:flex xl:flex-1 xl:justify-center">
               <div className="flex items-center gap-1.5 p-1">
                 {navLinks.map((link) => {
                   const isActive = router.pathname === link.href;
@@ -145,7 +145,7 @@ const PublicNavbar = () => {
                   );
                 })}
               </div>
-            </div>
+            </nav>
 
             {/* --- Actions --- */}
             <div className="flex items-center gap-3 relative z-10">
@@ -158,7 +158,7 @@ const PublicNavbar = () => {
           </div>
         </div>
 
-      </nav>
+      </header>
     </>
   );
 };

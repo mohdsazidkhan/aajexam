@@ -13,11 +13,11 @@ import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext
 
 const Panel = ({ icon: Icon, title, children, className = '' }) => (
   <section className={`relative overflow-hidden bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md ${className}`}>
-    <div className="relative flex items-center gap-2.5 px-4 py-2.5 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
+    <section className="relative flex items-center gap-2.5 px-4 py-2.5 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
       <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
       <span className="relative w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></span>
       <h2 className="relative text-xs font-black uppercase tracking-[0.14em]">{title}</h2>
-    </div>
+    </section>
     <div className="p-4">{children}</div>
   </section>
 );

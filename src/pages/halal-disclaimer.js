@@ -33,7 +33,7 @@ export default function HalalDisclaimer() {
                     />
                 </div>
                 <div className="py-0 xl:py-6 my-4">
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] shadow-sm p-4 md:p-8 xl:p-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] shadow-sm p-4 md:p-8 xl:p-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
 
@@ -71,7 +71,7 @@ export default function HalalDisclaimer() {
                                             desc: 'All subscription plans, access levels, and referral reward conditions are clearly stated. No user is misled about what they are paying for or what they will earn.'
                                         }
                                     ].map((item, idx) => (
-                                        <div key={idx} className="relative pl-8 border-l-4 border-primary-500/20">
+                                        <article key={idx} className="relative pl-8 border-l-4 border-primary-500/20">
                                             <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-2">
                                                 <FaCheckCircle className="text-primary-600 dark:text-primary-300 text-lg flex-shrink-0" />
                                                 {item.title}
@@ -82,7 +82,7 @@ export default function HalalDisclaimer() {
                                                 </p>
                                             )}
                                             <p className="text-slate-600 dark:text-slate-400 font-bold">{item.desc}</p>
-                                        </div>
+                                        </article>
                                     ))}
                                 </div>
                             </section>
@@ -106,7 +106,7 @@ export default function HalalDisclaimer() {
                                 </div>
                             </section>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </MobileAppWrapper>

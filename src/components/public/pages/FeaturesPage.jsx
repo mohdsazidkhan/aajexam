@@ -163,17 +163,17 @@ const FeaturesPage = () => {
 
         {/* --- Plan Summary Cards --- */}
         <section className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8">
-          <Card className="relative overflow-hidden p-4 xl:p-10 space-y-3 xl:space-y-6">
+          <Card as="section" className="relative overflow-hidden p-4 xl:p-10 space-y-3 xl:space-y-6">
             <div className="flex items-center justify-between">
               <div className="p-2.5 xl:p-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300" style={{ borderRadius: 14 }}>
                 <GraduationCap className="w-5 h-5 xl:w-7 xl:h-7" />
               </div>
               <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest px-2.5 xl:px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700" style={{ borderRadius: 999 }}>{translate('Free forever')}</span>
             </div>
-            <div>
+            <section>
               <h2 className="text-lg xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate('Free')}</h2>
               <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400 mt-1">{translate('Everything you need to start preparing today, no card required.')}</p>
-            </div>
+            </section>
             <ul className="space-y-1.5 xl:space-y-2.5">
               {FREE_PLAN_FEATURES.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300">
@@ -187,7 +187,7 @@ const FeaturesPage = () => {
             </div>
           </Card>
 
-          <Card className="isolate p-4 xl:p-10 space-y-3 xl:space-y-6 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-2 ring-primary-400/60 dark:ring-white/20 shadow-xl relative overflow-hidden">
+          <Card as="section" className="isolate p-4 xl:p-10 space-y-3 xl:space-y-6 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-2 ring-primary-400/60 dark:ring-white/20 shadow-xl relative overflow-hidden">
             <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
             <Crown className="absolute -bottom-8 -right-8 w-44 h-44 text-primary-600/10 dark:text-white/5 rotate-[-12deg]" />
             <div className="flex items-center justify-between relative z-10">
@@ -196,10 +196,10 @@ const FeaturesPage = () => {
               </div>
               <ProBadge size="sm" />
             </div>
-            <div className="relative z-10">
+            <section className="relative z-10">
               <h2 className="text-lg xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate('PRO')}</h2>
               <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400 mt-1">{translate('From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.', { price: lowestPerMonth, plan: translate(cheapestPlan.label) })} <span className="block mt-1 text-primary-700 dark:text-primary-200">{translate('Plans: {durations}', { durations: PRO_PLANS.map((p) => translate(p.label)).join(' · ') })}</span></p>
-            </div>
+            </section>
             <ul className="space-y-1.5 xl:space-y-2.5 relative z-10">
               {PRO_PLAN_FEATURES.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300">
@@ -216,13 +216,13 @@ const FeaturesPage = () => {
 
         {/* --- PRO plan comparison (prices/durations come from .env via lib/plans) --- */}
         <section className="space-y-3 xl:space-y-6">
-          <div className="text-center space-y-1.5 xl:space-y-2 max-w-2xl mx-auto pb-3 border-b border-dashed border-primary-300/70 dark:border-white/15">
+          <section className="text-center space-y-1.5 xl:space-y-2 max-w-2xl mx-auto pb-3 border-b border-dashed border-primary-300/70 dark:border-white/15">
             <h2 className="text-base xl:text-3xl font-black font-outfit uppercase tracking-tight">{translate('Compare PRO plans')}</h2>
             <p className="text-[10px] xl:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.06em] xl:tracking-[0.15em] px-2">{translate('Same PRO features in every plan — the longer you commit, the more you save')}</p>
-          </div>
+          </section>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-6">
             {PRO_PLANS.map((plan) => (
-              <Card key={plan.id} className={`relative overflow-hidden p-4 xl:p-8 flex flex-col justify-between space-y-4 xl:space-y-6 hover:-translate-y-1 hover:shadow-xl transition-all ${plan.badge ? 'ring-2 ring-primary-400/70 shadow-xl' : ''}`}>
+              <Card as="article" key={plan.id} className={`relative overflow-hidden p-4 xl:p-8 flex flex-col justify-between space-y-4 xl:space-y-6 hover:-translate-y-1 hover:shadow-xl transition-all ${plan.badge ? 'ring-2 ring-primary-400/70 shadow-xl' : ''}`}>
                 <div className="space-y-2 xl:space-y-4">
                   <div className="flex items-center justify-between gap-2 min-h-[24px]">
                     <h3 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{translate(plan.label)}</h3>
@@ -251,7 +251,7 @@ const FeaturesPage = () => {
         {/* --- Highlights --- */}
         <section className="grid grid-cols-1 xl:grid-cols-3 gap-4 xl:gap-8">
           {HIGHLIGHTS.map((h, i) => (
-            <Card key={i} className="group relative overflow-hidden space-y-2.5 xl:space-y-5 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+            <Card as="article" key={i} className="group relative overflow-hidden space-y-2.5 xl:space-y-5 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
               <div className="p-2.5 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform w-fit" style={{ borderRadius: 14 }}>
                 <h.icon className="w-4 h-4 xl:w-6 xl:h-6" />
               </div>
@@ -265,21 +265,21 @@ const FeaturesPage = () => {
 
         {/* --- Full comparison --- */}
         <section className="space-y-2 xl:space-y-4 xl:space-y-8">
-          <div className="text-center space-y-1.5 xl:space-y-2 max-w-2xl mx-auto pb-3 border-b border-dashed border-primary-300/70 dark:border-white/15">
+          <section className="text-center space-y-1.5 xl:space-y-2 max-w-2xl mx-auto pb-3 border-b border-dashed border-primary-300/70 dark:border-white/15">
             <h2 className="text-base xl:text-3xl font-black font-outfit uppercase tracking-tight">{translate('Full feature comparison')}</h2>
             <p className="text-[10px] xl:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.06em] xl:tracking-[0.15em] px-2">{translate('Enforced on the server — locked content shows a real upgrade gate, not just a hidden button')}</p>
-          </div>
+          </section>
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-6">
             {FEATURE_GROUPS.map((group) => (
-              <Card key={group.title} className="p-0 overflow-hidden" padded={false}>
-                <div className="relative flex items-center gap-2 xl:gap-3 px-3 py-2.5 xl:px-6 xl:py-4 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
+              <Card as="article" key={group.title} className="p-0 overflow-hidden" padded={false}>
+                <section className="relative flex items-center gap-2 xl:gap-3 px-3 py-2.5 xl:px-6 xl:py-4 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
                   <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
                   <div className="relative p-2 xl:p-2.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
                     <group.icon className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
                   </div>
                   <h3 className="relative text-xs xl:text-sm font-black font-outfit uppercase tracking-[0.14em]">{translate(group.title)}</h3>
-                </div>
+                </section>
                 <table className="w-full">
                   <thead>
                     <tr className="text-[8px] xl:text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 bg-primary-50/50 dark:bg-white/5">
@@ -305,10 +305,10 @@ const FeaturesPage = () => {
 
         {/* --- CTA --- */}
         <section className="px-0 py-4 xl:py-8">
-          <Card className="p-5 xl:p-16 text-center bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 border border-primary-200 dark:border-slate-800 text-slate-900 dark:text-white shadow-xl relative overflow-hidden" style={{ borderRadius: 16 }}>
+          <Card as="section" className="p-5 xl:p-16 text-center bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 border border-primary-200 dark:border-slate-800 text-slate-900 dark:text-white shadow-xl relative overflow-hidden" style={{ borderRadius: 16 }}>
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
-            <div className="relative z-10 space-y-2 xl:space-y-4 xl:space-y-8">
+            <section className="relative z-10 space-y-2 xl:space-y-4 xl:space-y-8">
               <h2 className="text-lg xl:text-4xl font-black font-outfit uppercase tracking-tight xl:tracking-tighter">{rich('Ready to go <0>PRO</0>?', [(c) => <span className="text-primary-600 dark:text-primary-400">{c}</span>])}</h2>
               <p className="text-xs xl:text-lg font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-1">
                 {translate('Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.', { price: lowestPerMonth, plan: translate(cheapestPlan.label) })}
@@ -317,7 +317,7 @@ const FeaturesPage = () => {
                 <Button variant="primary" size="md" fullWidth icon={Crown} className="sm:w-fit" onClick={() => router.push('/student/subscription')}>{translate('Upgrade to PRO')}</Button>
                 <Button variant="secondary" size="md" fullWidth className="sm:w-fit !bg-white !border-primary-200 !text-slate-900 dark:!bg-white/5 dark:!border-white/10 dark:!text-white" onClick={() => router.push('/register')}>{translate('Start free')}</Button>
               </div>
-            </div>
+            </section>
           </Card>
         </section>
       </div>

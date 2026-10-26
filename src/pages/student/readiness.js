@@ -132,7 +132,7 @@ const ReadinessPage = () => {
 
               {/* Weak Subjects */}
               {readiness.weakSubjects?.length > 0 && (
-                <Card className="space-y-3">
+                <Card as="section" className="space-y-3">
                   <h3 className="text-sm font-black text-black dark:text-white flex items-center gap-1"><AlertTriangle className="w-4 h-4" /> {translate('Weak Subjects (Below 50%)')}</h3>
                   {readiness.weakSubjects.map((s, i) => (
                     <div key={i} className="flex items-center justify-between px-3 py-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
@@ -145,7 +145,7 @@ const ReadinessPage = () => {
 
               {/* Strong Subjects */}
               {readiness.strongSubjects?.length > 0 && (
-                <Card className="space-y-3">
+                <Card as="section" className="space-y-3">
                   <h3 className="text-sm font-black text-primary-600 dark:text-primary-300 flex items-center gap-1"><CheckCircle className="w-4 h-4" /> {translate('Strong Subjects (Above 70%)')}</h3>
                   {readiness.strongSubjects.map((s, i) => (
                     <div key={i} className="flex items-center justify-between px-3 py-3 bg-primary-50 dark:bg-primary-900/10 rounded-lg">
@@ -161,7 +161,7 @@ const ReadinessPage = () => {
           {analyzing && !readiness && <ReadinessSkeleton />}
 
           {!readiness && !analyzing && (
-            <Card className="text-center space-y-2 xl:space-y-4">
+            <Card as="section" className="text-center space-y-2 xl:space-y-4">
               <BarChart3 className="w-12 h-12 text-slate-300 mx-auto" />
               <h2 className="text-xl font-black text-slate-400">{translate('Select an Exam')}</h2>
               <p className="text-sm text-slate-400">{translate('Choose your target exam to see your readiness score based on your quiz and test history.')}</p>

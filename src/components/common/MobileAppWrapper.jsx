@@ -23,9 +23,9 @@ const MobileAppWrapper = ({ children, title, showHeader = true }) => {
   // MobileAppWrapper only wraps content and adds scroll-to-top.
   return (
     <div className="mobile-app-container min-h-screen">
-      <main className={`mobile-content`}>
+      <div className={`mobile-content`}>
         {children}
-      </main>
+      </div>
       <ScrollToTopButton />
     </div>
   );

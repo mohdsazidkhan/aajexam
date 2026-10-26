@@ -168,7 +168,7 @@ const AskQuestionPage = () => {
   if (success) {
     return (
       <div className="min-h-screen bg-background-primary flex items-center justify-center px-4">
-        <Card className="text-center max-w-md w-full" radius="2xl">
+        <Card as="section" className="text-center max-w-md w-full" radius="2xl">
           <CheckCircle className="w-16 h-16 text-primary-600 dark:text-primary-300 mx-auto mb-4" />
           <h2 className="text-xl font-black text-content-primary uppercase mb-2">{translate('Question Posted!')}</h2>
           <p className="text-sm text-content-muted">{translate('Redirecting to community questions...')}</p>
@@ -197,7 +197,7 @@ const AskQuestionPage = () => {
           )}
 
           {/* Exam Selection */}
-          <Card className="mb-4" radius="2xl">
+          <Card as="section" className="mb-4" radius="2xl">
             <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Select Exam')}</h3>
             <select
               value={form.exam}
@@ -215,7 +215,7 @@ const AskQuestionPage = () => {
           </Card>
 
           {/* Question */}
-          <Card className="mb-4" radius="2xl">
+          <Card as="section" className="mb-4" radius="2xl">
             <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Your Question')}</h3>
             <textarea
               value={form.question}
@@ -260,7 +260,7 @@ const AskQuestionPage = () => {
           </Card>
 
           {/* Options (MCQ) */}
-          <Card className="mb-4" radius="2xl">
+          <Card as="section" className="mb-4" radius="2xl">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-xs font-black text-content-muted uppercase tracking-wider">{translate('Options (Optional)')}</h3>
               {form.options.length < 6 && (
@@ -311,7 +311,7 @@ const AskQuestionPage = () => {
           </Card>
 
           {/* Explanation */}
-          <Card className="mb-6" radius="2xl">
+          <Card as="section" className="mb-6" radius="2xl">
             <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Explanation (Optional)')}</h3>
             <textarea
               value={form.explanation}

@@ -92,7 +92,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
   const canSave = isValid && (username === currentUsername || available === true);
 
   return (
-    <div className="username-setup bg-white dark:bg-slate-800 rounded-[2rem] p-5 xl:p-10 border-2 border-slate-100 dark:border-slate-700 shadow-sm max-w-[500px] mx-auto font-outfit">
+    <section className="username-setup bg-white dark:bg-slate-800 rounded-[2rem] p-5 xl:p-10 border-2 border-slate-100 dark:border-slate-700 shadow-sm max-w-[500px] mx-auto font-outfit">
       <h3 className="m-0 mb-2 text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">{translate('Set Your Username')}</h3>
       <p className="username-info m-0 mb-8 text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">
         {translate('Choose a unique username that others can use to find and follow you.')}
@@ -148,7 +148,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
       >
         {saving ? translate('Saving student...') : translate('Save Student Identity')}
       </button>
-    </div>
+    </section>
   );
 };
 

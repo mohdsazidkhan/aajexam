@@ -206,11 +206,11 @@ export default function UserDetailsPage() {
               <button onClick={() => fetchUserDetails(page, limit, searchTerm)} className="mt-4 xl:mt-4 px-4 xl:px-10 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">Try Again</button>
             </div>
           ) : userDetails.length === 0 ? (
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
+            <section className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
               <Users className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
               <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter">No Users Found</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your search to find students.</p>
-            </div>
+            </section>
           ) : (
             <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="h-auto flex flex-col">
               {viewMode === 'table' && (

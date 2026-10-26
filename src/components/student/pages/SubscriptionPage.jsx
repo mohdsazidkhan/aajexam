@@ -165,7 +165,7 @@ const SubscriptionPage = () => {
             <Crown className="pointer-events-none absolute right-6 top-6 w-36 h-36 text-primary-600/10 dark:text-white/5 rotate-12" />
 
             <div className="relative grid grid-cols-1 xl:grid-cols-[1fr_260px]">
-              <div className="p-4 xl:p-6 space-y-4">
+              <header className="z-auto p-4 xl:p-6 space-y-4">
                 <div className="flex items-center gap-3">
                   {/* Card chip */}
                   <span className="w-10 h-7 bg-gradient-to-br from-amber-200 to-amber-500 shadow" style={{ borderRadius: 6 }} />
@@ -201,7 +201,7 @@ const SubscriptionPage = () => {
                         : translate('Pick a plan below to unlock all exam practice tests.')}
                   </p>
                 </div>
-              </div>
+              </header>
 
               {/* Perforated stub: days left or the upgrade call-to-action */}
               <div className="relative p-4 xl:p-6 bg-primary-600/5 dark:bg-black/20 border-t border-dashed border-primary-300 dark:border-white/35 xl:border-t-0 xl:border-l flex flex-col items-center justify-center text-center gap-3">
@@ -247,7 +247,7 @@ const SubscriptionPage = () => {
         )}
 
         <section className="space-y-5 xl:space-y-8">
-          <div className="text-center space-y-2 xl:space-y-3 max-w-3xl mx-auto px-2">
+          <section className="text-center space-y-2 xl:space-y-3 max-w-3xl mx-auto px-2">
             <h2 className="text-xl xl:text-4xl font-black font-outfit tracking-tight">{translate('Choose your exam prep plan')}</h2>
             {freePromoActive && (
               <p className="inline-block text-xs xl:text-base font-bold text-primary-800 dark:text-primary-200 bg-primary-100 dark:bg-primary-500/15 border-2 border-dashed border-primary-400/70 px-4 py-2" style={{ borderRadius: 12 }}>
@@ -259,7 +259,7 @@ const SubscriptionPage = () => {
                 {translate('See the full feature comparison')}
               </Link>
             </div>
-          </div>
+          </section>
 
           {/* Coupon voucher slot */}
           <div className="max-w-xl mx-auto w-full px-2">

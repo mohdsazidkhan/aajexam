@@ -174,7 +174,7 @@ const DailyChallengePage = () => {
 
         {/* Not started yet */}
         {!started && !attempted && (
-          <Card className="text-center space-y-6">
+          <Card as="section" className="text-center space-y-6">
             <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center mx-auto bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 24 }}>
               <Zap className="w-10 h-10 sm:w-12 sm:h-12" />
             </div>
@@ -203,7 +203,7 @@ const DailyChallengePage = () => {
               </span>
               </div>
             </div>
-            <Card className="space-y-2 xl:space-y-4">
+            <Card as="section" className="space-y-2 xl:space-y-4">
               <h3 className="text-[15px] sm:text-base xl:text-lg font-black text-slate-900 dark:text-white leading-relaxed break-words">{getHindi(challenge.questions[currentQ].question)?.questionText || challenge.questions[currentQ].questionText}</h3>
               <div className="space-y-3">
                 {challenge.questions[currentQ].options.map((opt, i) => (
@@ -230,7 +230,7 @@ const DailyChallengePage = () => {
         {attempted && attemptData && (
           <div className="space-y-6">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-              <Card className="text-center space-y-2 xl:space-y-4 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl">
+              <Card as="section" className="text-center space-y-2 xl:space-y-4 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl">
                 <h2 className="text-2xl font-black text-slate-900 dark:text-white">{translate('Challenge Complete!')}</h2>
                 <div className="grid grid-cols-3 gap-2 sm:gap-4">
                   <div className="space-y-1">
@@ -251,7 +251,7 @@ const DailyChallengePage = () => {
 
             {/* Per-question review + discussion */}
             {challenge?.questions?.length > 0 && (
-              <Card className="space-y-2 xl:space-y-4">
+              <Card as="section" className="space-y-2 xl:space-y-4">
                 <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2">
                   <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Target className="w-4 h-4" /></span> Question Review & Discussion
                 </h3>
@@ -306,7 +306,7 @@ const DailyChallengePage = () => {
             {/* Leaderboard */}
             {leaderboard.length > 0 && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-                <Card className="space-y-3 relative overflow-hidden">
+                <Card as="section" className="space-y-3 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
                   <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Trophy className="w-4 h-4" /></span> {translate('Today\'s Leaderboard')}</h3>
                   <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>

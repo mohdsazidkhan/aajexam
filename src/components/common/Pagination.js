@@ -70,7 +70,7 @@ const Pagination = ({
   );
 
   const navBlock = totalPages > 1 && (
-      <div className="flex items-center gap-1.5">
+      <nav className="flex items-center gap-1.5">
         {/* Previous Button */}
         <motion.button
           whileHover={currentPage > 1 ? { y: -1 } : {}}
@@ -127,7 +127,7 @@ const Pagination = ({
         >
           <ChevronRight className="w-3.5 h-3.5" />
         </motion.button>
-      </div>
+      </nav>
   );
 
   if (compact && inline) {

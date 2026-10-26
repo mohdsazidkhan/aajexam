@@ -162,7 +162,7 @@ export default function MentorProfilePage() {
 
         {/* Exams Cleared */}
         {mentor.examsCleared?.length > 0 && (
-          <Card>
+          <Card as="section">
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Award className="w-4 h-4" /></span> {translate('Exams Cleared')}</h2>
             <div className="flex flex-col gap-2">
               {mentor.examsCleared.map((exam, i) => (
@@ -181,7 +181,7 @@ export default function MentorProfilePage() {
 
         {/* Strategy */}
         {mentor.strategy && (
-          <Card>
+          <Card as="section">
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">{translate('Preparation Strategy')}</h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">{mentor.strategy}</p>
           </Card>
@@ -189,7 +189,7 @@ export default function MentorProfilePage() {
 
         {/* Daily Routine */}
         {mentor.dailyRoutine && (
-          <Card>
+          <Card as="section">
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span> {translate('Daily Routine')}</h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">{mentor.dailyRoutine}</p>
           </Card>
@@ -197,7 +197,7 @@ export default function MentorProfilePage() {
 
         {/* Tips */}
         {mentor.tips?.length > 0 && (
-          <Card>
+          <Card as="section">
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">{translate('Tips for Students')}</h2>
             <ul className="space-y-2">
               {mentor.tips.map((tip, i) => (
@@ -211,7 +211,7 @@ export default function MentorProfilePage() {
 
         {/* Books */}
         {mentor.booksRecommended?.length > 0 && (
-          <Card>
+          <Card as="section">
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span> {translate('Recommended Books')}</h2>
             <div className="flex flex-wrap gap-2">
               {mentor.booksRecommended.map((book, i) => (
@@ -223,7 +223,7 @@ export default function MentorProfilePage() {
 
         {/* Specialization */}
         {mentor.specialization?.length > 0 && (
-          <Card>
+          <Card as="section">
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">{translate('Specialization')}</h2>
             <div className="flex flex-wrap gap-2">
               {mentor.specialization.map((spec, i) => (
@@ -234,7 +234,7 @@ export default function MentorProfilePage() {
         )}
 
         {/* AMA Section */}
-        <Card>
+        <Card as="section">
           <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-4 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><MessageCircle className="w-4 h-4" /></span> {translate('Ask Me Anything')}</h2>
 
           {/* Ask Question */}

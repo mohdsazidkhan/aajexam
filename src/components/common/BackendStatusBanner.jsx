@@ -48,7 +48,7 @@ const BackendStatusBanner = () => {
         >
           <div className="relative group">
             {/* Glassmorphism Container */}
-            <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-2 border-black/30 dark:border-white/30 rounded-[2.5rem] p-6 shadow-[0_20px_50px_rgba(244,63,94,0.2)] flex flex-col xl:flex-row items-center gap-8 overflow-hidden transition-all duration-500">
+            <section className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-2 border-black/30 dark:border-white/30 rounded-[2.5rem] p-6 shadow-[0_20px_50px_rgba(244,63,94,0.2)] flex flex-col xl:flex-row items-center gap-8 overflow-hidden transition-all duration-500">
               {/* Background Tech Highlight */}
               <div className="absolute -left-10 -top-10 w-40 h-40 bg-black/5 dark:bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -89,7 +89,7 @@ const BackendStatusBanner = () => {
                 <RefreshCcw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
                 {isRefreshing ? translate('LINKING...') : translate('RE-LINK')}
               </motion.button>
-            </div>
+            </section>
 
             {/* Subtle Bottom Glow Line */}
             <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-transparent blur-sm opacity-50" />

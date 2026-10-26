@@ -263,7 +263,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                 ))}
                             </div>
                             {/* ── Register Gate CTA ── */}
-                            <div className="mt-8 relative overflow-hidden rounded-[2rem] border-2 border-primary-500/30 bg-primary-50 dark:bg-slate-900 p-6 xl:p-10 text-slate-900 dark:text-white">
+                            <section className="mt-8 relative overflow-hidden rounded-[2rem] border-2 border-primary-500/30 bg-primary-50 dark:bg-slate-900 p-6 xl:p-10 text-slate-900 dark:text-white">
                                 <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] pointer-events-none" />
                                 <div className="relative z-10 flex flex-col xl:flex-row items-start xl:items-center gap-6">
                                     <div className="flex-1 space-y-3">
@@ -303,7 +303,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </section>
                         </section>
                     )}
 

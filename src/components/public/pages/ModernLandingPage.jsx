@@ -507,14 +507,14 @@ const ModernLandingPage = () => {
          {/* ── Features Section ── */}
          <section id="features" className="py-6 xl:py-12 border-t-2 border-b-2 border-slate-100 dark:border-slate-800">
             <div className="container mx-auto px-3 xl:px-0 space-y-5 xl:space-y-8">
-               <div className="text-center space-y-6 max-w-3xl mx-auto">
+               <section className="text-center space-y-6 max-w-3xl mx-auto">
                   <h2 className="text-xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">{translate('Study Smart.')} <br /> {translate('Pass Your Exam.')}</h2>
                   <p className="text-xl font-bold text-slate-700 dark:text-slate-400 px-4">{translate('Everything you need to prepare for government exams, all in one place.')}</p>
 
-               </div>
+               </section>
 
                <div className="grid grid-cols-1 xl:grid-cols-12 gap-3 xl:gap-5">
-                  <Card className="xl:col-span-8 p-5 xl:p-8 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-none shadow-xl text-slate-900 dark:text-white flex flex-col justify-between group overflow-hidden relative rounded-[2rem] xl:rounded-[4rem]">
+                  <Card as="section" className="xl:col-span-8 p-5 xl:p-8 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-none shadow-xl text-slate-900 dark:text-white flex flex-col justify-between group overflow-hidden relative rounded-[2rem] xl:rounded-[4rem]">
                      <div className="space-y-6 relative z-10 max-w-xl">
                         <div className="p-4 xl:p-5 bg-white/80 dark:bg-white/20 backdrop-blur-md rounded-3xl xl:rounded-[2.5rem] w-fit shadow-sm border-2 border-slate-200 dark:border-white/20">
                            <Trophy className="w-10 h-10 xl:w-12 xl:h-12" />
@@ -531,7 +531,7 @@ const ModernLandingPage = () => {
                      <div className="absolute top-0 right-0 w-full h-full bg-white/80 dark:bg-white/10 pointer-events-none" />
                   </Card>
 
-                  <Card className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] xl:rounded-[4rem] shadow-sm">
+                  <Card as="section" className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] xl:rounded-[4rem] shadow-sm">
                      <div className="space-y-2 xl:space-y-4">
                         <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] w-fit rounded-2xl">
                            <Flame className="w-8 h-8 xl:w-10 xl:h-10" />
@@ -552,7 +552,7 @@ const ModernLandingPage = () => {
                      </div>
                   </Card>
 
-                  <Card className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] xl:rounded-[4rem] shadow-sm">
+                  <Card as="section" className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] xl:rounded-[4rem] shadow-sm">
                      <div className="space-y-2 xl:space-y-4">
                         <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] w-fit rounded-2xl">
                            <Zap className="w-8 h-8 xl:w-10 xl:h-10" />
@@ -573,7 +573,7 @@ const ModernLandingPage = () => {
                      </div>
                   </Card>
 
-                  <Card className="xl:col-span-8 p-4 xl:p-8 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-sm flex flex-col xl:flex-row items-center gap-6 xl:gap-10 overflow-hidden group rounded-[2rem] xl:rounded-[4rem]">
+                  <Card as="section" className="xl:col-span-8 p-4 xl:p-8 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-sm flex flex-col xl:flex-row items-center gap-6 xl:gap-10 overflow-hidden group rounded-[2rem] xl:rounded-[4rem]">
                      <div className="flex-1 space-y-2 xl:space-y-4 relative z-10 text-center xl:text-left">
                         <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] w-fit rounded-2xl mx-auto xl:mx-0">
                            <Medal className="w-10 h-10 xl:w-12 xl:h-12" />

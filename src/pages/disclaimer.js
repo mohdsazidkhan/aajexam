@@ -80,7 +80,7 @@ export default function Disclaimer() {
                                 </p>
                             </section>
 
-                            <div className="text-center pt-8 border-t border-slate-100 dark:border-slate-800">
+                            <section className="text-center pt-8 border-t border-slate-100 dark:border-slate-800">
                                 <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">Contact Us</h2>
                                 <p className="text-slate-500 dark:text-slate-400 font-bold mb-8">
                                     If you have any questions regarding this disclaimer, please contact us at:<br />
@@ -92,7 +92,7 @@ export default function Disclaimer() {
                                 >
                                     Back to Home
                                 </button>
-                            </div>
+                            </section>
                         </div>
                     </div>
                 </div>

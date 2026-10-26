@@ -347,7 +347,7 @@ const ProfilePage = () => {
               </div>
 
               {/* Footer: actions, socials and barcode */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-dashed border-slate-300 dark:border-white/25">
+              <footer className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-dashed border-slate-300 dark:border-white/25">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full">
                   {student?.username && (
                     <Button variant="secondary" size="sm" icon={Eye} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push(`/u/${student.username}`)}>
@@ -376,7 +376,7 @@ const ProfilePage = () => {
                     {translate('My Challenges')}
                   </Button>
                 </div>
-              </div>
+              </footer>
             </div>
 
             {/* Perforated rank stub */}

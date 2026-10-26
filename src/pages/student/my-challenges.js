@@ -105,9 +105,9 @@ const MyChallengesPage = () => {
 
                         return (
                            <motion.div key={challenge._id || idx} className="h-full" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
-                              <Card className="p-0 h-full overflow-hidden group hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800">
+                              <Card as="section" className="p-0 h-full overflow-hidden group hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800">
                                  {/* Challenge Header */}
-                                 <div className="p-5 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-800 dark:border-white/30">
+                                 <section className="p-5 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-800 dark:border-white/30">
                                     <div className="flex justify-between items-start mb-4">
                                        <div>
                                           <div className="text-[10px] font-black uppercase tracking-wider text-black dark:text-white mb-1 flex items-center gap-1">
@@ -137,10 +137,10 @@ const MyChallengesPage = () => {
                                           <div className="text-lg font-black text-slate-700 dark:text-slate-300">{challengersCount}</div>
                                        </div>
                                     </div>
-                                 </div>
+                                 </section>
 
                                  {/* Leaderboard Section */}
-                                 <div className="p-5 bg-white dark:bg-slate-900">
+                                 <section className="p-5 bg-white dark:bg-slate-900">
                                     <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-2">
                                        <Trophy className="w-3.5 h-3.5" /> Opponent Scores
                                     </h3>
@@ -175,7 +175,7 @@ const MyChallengesPage = () => {
                                           )}
                                        </div>
                                     )}
-                                 </div>
+                                 </section>
                               </Card>
                            </motion.div>
                         );

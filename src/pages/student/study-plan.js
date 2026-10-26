@@ -131,7 +131,7 @@ const StudyPlanPage = () => {
 
           {/* Create Form */}
           {showForm && (
-            <Card className="space-y-5">
+            <Card as="section" className="space-y-5">
               <h2 className="text-sm font-black text-slate-900 dark:text-white">{translate('Generate Study Plan')}</h2>
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                 <div>
@@ -180,7 +180,7 @@ const StudyPlanPage = () => {
 
           {/* Plans List */}
           {!activePlan && plans.map((plan, i) => (
-            <Card key={plan._id || i} className="space-y-3">
+            <Card as="article" key={plan._id || i} className="space-y-3">
               <div className="flex items-start justify-between">
                 <div>
                   <h3 className="text-sm font-black text-slate-900 dark:text-white">{translateData(plan.exam?.name) || translate('Study Plan')}</h3>
@@ -214,13 +214,13 @@ const StudyPlanPage = () => {
             <div className="space-y-5">
               <button onClick={() => setActivePlan(null)} className="text-sm font-bold text-primary-600 dark:text-primary-300 hover:underline">{translate('Back to Plans')}</button>
               <div className="flex items-center justify-between flex-wrap gap-3">
-                <div>
+                <section>
                   <h2 className="text-lg font-black text-slate-900 dark:text-white">{translateData(activePlan.exam?.name)}</h2>
                   <p className="text-[11px] font-bold text-slate-400 mt-0.5">
                     {activePlan.weeklySchedule?.[0]?.startDate && <>Start: <b>{fmtDate(activePlan.weeklySchedule[0].startDate)}</b> · </>}
                     {translate('Exam:')} <b>{fmtDate(activePlan.examDate)}</b> · {translate('{count} days', { count: activePlan.totalDays })}
                   </p>
-                </div>
+                </section>
                 <div className="inline-flex rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-800 p-1">
                   <button onClick={() => setViewMode('weekly')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'weekly' ? 'bg-white dark:bg-slate-700 text-primary-600 dark:text-primary-300 shadow-sm' : 'text-slate-500'}`}>
                     <LayoutGrid className="w-3 h-3" /> Weekly
@@ -232,7 +232,7 @@ const StudyPlanPage = () => {
               </div>
 
               {viewMode === 'weekly' && activePlan.weeklySchedule?.map((week, wi) => (
-                <Card key={wi} className="space-y-3">
+                <Card as="article" key={wi} className="space-y-3">
                   <div className="flex items-center justify-between flex-wrap gap-2">
                     <h3 className="text-xs font-black text-slate-500 uppercase tracking-wider">{translate('Week {n}', { n: week.week })}</h3>
                     {week.startDate && (
@@ -261,7 +261,7 @@ const StudyPlanPage = () => {
 
               {viewMode === 'calendar' && (
                 (activePlan.dailyTasks?.length > 0 ? activePlan.dailyTasks : []).map((d, di) => (
-                  <Card key={di} className="space-y-2">
+                  <Card as="article" key={di} className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4 text-primary-600 dark:text-primary-300" />
                       <h3 className="text-xs font-black text-slate-900 dark:text-white">{dayName(d.date)}, {fmtDate(d.date)}</h3>
@@ -287,7 +287,7 @@ const StudyPlanPage = () => {
           )}
 
           {plans.length === 0 && !showForm && (
-            <Card className="text-center space-y-2 xl:space-y-4">
+            <Card as="section" className="text-center space-y-2 xl:space-y-4">
               <CalendarDays className="w-12 h-12 text-slate-300 mx-auto" />
               <h2 className="text-xl font-black text-slate-400">{translate('No Study Plans Yet')}</h2>
               <p className="text-sm text-slate-400">{translate('Create your first AI-powered study plan!')}</p>

@@ -166,7 +166,7 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) =
 
         {/* Today highlight */}
         {todayAffairs?.total > 0 && !search && isCurrentMonth && category === 'all' && (
-          <div className="bg-slate-100 dark:bg-slate-800 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 dark:border-white/30">
+          <section className="bg-slate-100 dark:bg-slate-800 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 dark:border-white/30">
             <h2 className="text-sm font-black text-black dark:text-white mb-2 flex items-center gap-2">
               <Flame className="w-4 h-4" /> {translate('Today — {count} Updates', { count: todayAffairs.total })}
             </h2>
@@ -178,7 +178,7 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) =
                 </button>
               ))}
             </div>
-          </div>
+          </section>
         )}
 
         {/* ── Grid ── */}
@@ -188,19 +188,19 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) =
             return (
               <motion.div key={affair._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
                 <Link href={`/current-affairs/${affair.slug}`} className="block">
-                <Card hoverable
+                <Card as="section" hoverable
                   className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
                         {(page - 1) * pageSize + idx + 1}
                       </div>
-                      <div>
+                      <section>
                         <h2 className="text-sm font-black text-content-primary tracking-tight line-clamp-2 leading-tight">{affair.title}</h2>
                         <p className="text-[10px] font-bold text-content-muted uppercase mt-0.5">
                           {new Date(affair.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                         </p>
-                      </div>
+                      </section>
                     </div>
                     <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                   </div>

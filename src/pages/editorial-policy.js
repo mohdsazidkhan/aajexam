@@ -34,7 +34,7 @@ export default function EditorialPolicy() {
                     </div>
 
                     {/* Mission Statement */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
                         <h2 className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
@@ -49,10 +49,10 @@ export default function EditorialPolicy() {
                                 We understand that our users trust us with their exam preparation, and we take this responsibility seriously. Our editorial team works diligently to ensure that all content is factually correct, up-to-date with current exam patterns, and aligned with official syllabus of SSC, UPSC, Banking, Railway, and other government examinations.
                             </p>
                         </div>
-                    </div>
+                    </section>
 
                     {/* Content Creation Process */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800">
+                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
                             <div className="w-14 h-14 bg-primary-600 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-600">
                                 <FaBook className="text-white text-2xl" />
@@ -67,7 +67,7 @@ export default function EditorialPolicy() {
                                 { step: 3, title:'Verification', desc:'Factual information cross-verified with authoritative sources and government publications.', color:'bg-primary-600'},
                                 { step: 4, title: 'Regular Updates', desc: 'Continuous monitoring and updating of syllabus changes and current affairs.', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <div key={idx} className="flex gap-6 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
+                                <section key={idx} className="flex gap-6 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
                                     <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-black text-2xl shadow-sm border-b-2 border-black/20`}>
                                         {item.step}
                                     </div>
@@ -75,13 +75,13 @@ export default function EditorialPolicy() {
                                         <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">{item.title}</h3>
                                         <p className="text-slate-500 dark:text-slate-400 font-bold">{item.desc}</p>
                                     </div>
-                                </div>
+                                </section>
                             ))}
                         </div>
-                    </div>
+                    </section>
 
                     {/* Quality Standards */}
-                    <div className="bg-slate-950 rounded-[3rem] p-4 md:p-8 xl:p-12 mb-16 border-2 border-slate-800 shadow-sm relative overflow-hidden text-center">
+                    <section className="bg-slate-950 rounded-[3rem] p-4 md:p-8 xl:p-12 mb-16 border-2 border-slate-800 shadow-sm relative overflow-hidden text-center">
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
                         <h2 className="text-xl xl:text-4xl font-black text-white mb-12 uppercase tracking-tight relative z-10">Quality Standards</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 relative z-10">
@@ -91,19 +91,19 @@ export default function EditorialPolicy() {
                                 { title:'Clarity', desc:'Unambiguous and easily understood', color:'bg-primary-600'},
                                 { title: 'Calibration', desc: 'Appropriately calibrated difficulty', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <div key={idx} className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] flex flex-col items-center gap-4">
+                                <section key={idx} className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] flex flex-col items-center gap-4">
                                     <div className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center shadow-sm">
                                         <FaCheckCircle className="text-white text-lg" />
                                     </div>
                                     <h3 className="text-lg font-black text-white uppercase tracking-tight mb-1">{item.title}</h3>
                                     <p className="text-slate-400 font-bold text-xs uppercase tracking-widest">{item.desc}</p>
-                                </div>
+                                </section>
                             ))}
                         </div>
-                    </div>
+                    </section>
 
                     {/* User Feedback */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-sm p-4 xl:p-8 mb-8">
+                    <section className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-sm p-4 xl:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-12 h-12 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center">
                                 <FaHandshake className="text-white text-2xl" />
@@ -118,10 +118,10 @@ export default function EditorialPolicy() {
                                 Verified errors are corrected immediately, and users who report valid issues are acknowledged in our monthly community updates. This collaborative approach helps us maintain the highest quality standards and ensures our content remains accurate and relevant.
                             </p>
                         </div>
-                    </div>
+                    </section>
 
                     {/* Corrections Policy */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-sm p-4 xl:p-8 mb-8">
+                    <section className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-sm p-4 xl:p-8 mb-8">
                         <h2 className="text-2xl xl:text-3xl font-bold text-gray-800 dark:text-white mb-6">Corrections and Updates Policy</h2>
                         <div className="space-y-2 xl:space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
@@ -137,10 +137,10 @@ export default function EditorialPolicy() {
                                 Major content updates, such as changes in exam patterns or syllabus revisions, are announced through our platform notifications and email newsletters to ensure all users are aware of the changes.
                             </p>
                         </div>
-                    </div>
+                    </section>
 
                     {/* Ethical Standards */}
-                    <div className="bg-primary-50 dark:bg-primary-900/20 rounded-3xl p-4 xl:p-8 mb-8">
+                    <section className="bg-primary-50 dark:bg-primary-900/20 rounded-3xl p-4 xl:p-8 mb-8">
                         <h2 className="text-2xl xl:text-3xl font-bold text-gray-800 dark:text-white mb-6">Ethical Standards</h2>
                         <div className="space-y-2 xl:space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
@@ -165,11 +165,11 @@ export default function EditorialPolicy() {
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </section>
 
                     {/* CTA */}
                     <div className="text-center mt-16">
-                        <div className="bg-primary-600 rounded-[3rem] p-4 md:p-8 xl:p-12 border-b-[12px] border-primary-600 shadow-sm">
+                        <section className="bg-primary-600 rounded-[3rem] p-4 md:p-8 xl:p-12 border-b-[12px] border-primary-600 shadow-sm">
                             <h2 className="text-2xl xl:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
                                 Questions About Our Policy?
                             </h2>
@@ -182,7 +182,7 @@ export default function EditorialPolicy() {
                             >
                                 Back to Home
                             </button>
-                        </div>
+                        </section>
                     </div>
                 </div>
             </div>

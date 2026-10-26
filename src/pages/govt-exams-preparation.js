@@ -87,7 +87,7 @@ export default function GovtExamsPreparation({ initialData }) {
                             <div className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-8">
                                 {exams.length > 0 ? (
                                     exams.map((exam, index) => (
-                                        <div key={exam._id || index} className="bg-white dark:bg-slate-900 rounded-[1rem] xl:rounded-[2.5rem] p-4 xl:p-8 shadow-sm hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 flex flex-col justify-between group active:translate-y-1 active:border-b-2">
+                                        <section key={exam._id || index} className="bg-white dark:bg-slate-900 rounded-[1rem] xl:rounded-[2.5rem] p-4 xl:p-8 shadow-sm hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 flex flex-col justify-between group active:translate-y-1 active:border-b-2">
                                             <div>
                                                 <div className="flex items-center justify-start gap-4 mb-2 xl:mb-4">
                                                 <div className="w-10 xl:w-16 h-10 xl:h-16 bg-primary-50 dark:bg-primary-900/20 rounded-2xl flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-800 overflow-hidden">
@@ -109,7 +109,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                             >
                                                 {translate('Start Practice')} <FaChartLine className="ml-2" />
                                             </button>
-                                        </div>
+                                        </section>
                                     ))
                                 ) : (
                                     <div className="col-span-full text-center py-20 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 shadow-sm font-bold uppercase tracking-widest text-slate-400 text-sm">
@@ -123,7 +123,7 @@ export default function GovtExamsPreparation({ initialData }) {
                         </>
                     )}
 
-                    <div className="mt-8 xl:mt-16 bg-slate-950 dark:bg-slate-900 rounded-[3rem] p-4 xl:p-10 xl:p-20 text-white text-center border-2 border-slate-800 relative overflow-hidden shadow-sm">
+                    <section className="mt-8 xl:mt-16 bg-slate-950 dark:bg-slate-900 rounded-[3rem] p-4 xl:p-10 xl:p-20 text-white text-center border-2 border-slate-800 relative overflow-hidden shadow-sm">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
@@ -139,7 +139,7 @@ export default function GovtExamsPreparation({ initialData }) {
                         >
                             {translate('Get Started Now')}
                         </button>
-                    </div>
+                    </section>
                 </div>
             </div>
         </MobileAppWrapper>

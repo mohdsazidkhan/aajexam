@@ -620,7 +620,7 @@ const AdminGenerateTests = () => {
         {/* ── STEP 1: SELECT EXAM ── */}
         {step === 1 && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 16, padding: 28 }}>
+            <section style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 16, padding: 28 }}>
               <h2 style={{ margin: '0 0 20px', fontSize: 16, fontWeight: 700, color: 'var(--gt-text)', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <BookOpen size={16} color="#58cc02" /> Select Exam
               </h2>
@@ -680,7 +680,7 @@ const AdminGenerateTests = () => {
                   </div>
                 </div>
               )}
-            </div>
+            </section>
           </motion.div>
         )}
 
@@ -688,14 +688,14 @@ const AdminGenerateTests = () => {
         {step === 2 && selectedExam && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 16, padding: 28 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+              <section style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
                 <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: 'var(--gt-text)', display: 'flex', alignItems: 'center', gap: 8 }}>
                   <Layers size={16} color="#58cc02" /> Select Exam Pattern
                 </h2>
                 <span style={{ fontSize: 12, padding: '3px 10px', borderRadius: 20, background: 'rgba(88,204,2,0.15)', color: 'var(--gt-accent)' }}>
                   {selectedExam.name}
                 </span>
-              </div>
+              </section>
 
               {patterns.length === 0 ? (
                 <div style={{ textAlign: 'center', padding: '40px 20px', color: '#64748b' }}>
@@ -760,7 +760,7 @@ const AdminGenerateTests = () => {
         {step === 3 && selectedPattern && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             {/* Config card */}
-            <div style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+            <section style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
               <h2 style={{ margin: '0 0 18px', fontSize: 15, fontWeight: 700, color: 'var(--gt-text)', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <Sparkles size={15} color="#58cc02" /> Generation Config
               </h2>
@@ -824,7 +824,7 @@ const AdminGenerateTests = () => {
                 <StatChip icon={<Trophy size={11} />} label={`${selectedPattern.totalMarks} marks`} />
                 <StatChip icon={<Target size={11} />} label={`${totalExpected} questions total`} />
               </div>
-            </div>
+            </section>
 
             {/* Generate button */}
             {!generating && !generationDone && (

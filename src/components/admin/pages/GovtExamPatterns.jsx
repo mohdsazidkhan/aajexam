@@ -341,11 +341,11 @@ const AdminGovtExamPatterns = () => {
       {loading ? (
         <AdminTableSkeleton showHeader={false} showFilters={false} />
       ) : patterns.length === 0 ? (
-        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
+        <section className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
           <Boxes className="w-16 h-16 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
           <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Patterns Found</h3>
           <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Select an exam above or create a new pattern to get started.</p>
-        </div>
+        </section>
       ) : (
         <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           {viewMode === 'table' && (
@@ -424,16 +424,16 @@ const AdminGovtExamPatterns = () => {
         <div className="fixed inset-0 z-[999]">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-slate-950/60 backdrop-blur-md" />
           <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
-            <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
+            <section className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl shadow-sm"><Binary className="w-5 h-5" /></div>
-                <div>
+                <section>
                   <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingPattern ? 'Edit' : 'Add'} <span className="text-primary-600 dark:text-primary-300">Pattern</span></h2>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingPattern ? `Editing: ${editingPattern.title}` : 'Create a new exam pattern'}</p>
-                </div>
+                </section>
               </div>
               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg xl:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
-            </div>
+            </section>
             <div className="flex flex-col flex-1 min-h-0 overflow-y-auto custom-scrollbar">
               <div className="w-full shrink-0 p-3 xl:p-5 border-b border-slate-100 dark:border-white/5">
                 <form onSubmit={handleSubmit} className="space-y-2 xl:space-y-3 xl:space-y-4">

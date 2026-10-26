@@ -99,14 +99,14 @@ const AdminProfilePage = () => {
 
       {/* Change password */}
       <section className="relative overflow-hidden bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md">
-        <div className="relative flex items-center gap-3 px-4 py-2.5 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
+        <section className="relative flex items-center gap-3 px-4 py-2.5 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
           <span className="relative w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Lock className="w-4 h-4" /></span>
-          <div className="relative min-w-0">
+          <section className="relative min-w-0">
             <h2 className="text-sm font-black uppercase tracking-[0.14em] leading-tight">Change password</h2>
             <p className="text-[11px] font-bold text-primary-800/70 dark:text-white/70 leading-tight">Use a strong password to keep your account safe.</p>
-          </div>
-        </div>
+          </section>
+        </section>
 
         <form onSubmit={handleChangePassword} className="p-4 space-y-4">
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-3">

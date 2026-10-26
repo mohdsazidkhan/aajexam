@@ -89,7 +89,7 @@ const AboutUs = () => {
 
             {/* --- Mission & Vision --- */}
             <section className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
-               <Card className="p-6 xl:p-10 space-y-8 border-none bg-primary-50 dark:bg-slate-900 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 relative overflow-hidden">
+               <Card as="section" className="p-6 xl:p-10 space-y-8 border-none bg-primary-50 dark:bg-slate-900 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 relative overflow-hidden">
                   <div className="relative z-10 space-y-6">
                      <div className="inline-flex items-center gap-2 bg-primary-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest text-primary-700 dark:text-primary-400 backdrop-blur-sm border border-primary-500/30">
                         <Rocket className="w-4 h-4" /> OUR MISSION
@@ -123,14 +123,14 @@ const AboutUs = () => {
 
             {/* --- Platform Features Grid --- */}
             <section className="space-y-12">
-               <div className="text-center space-y-2">
+               <section className="text-center space-y-2">
                   <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight">{translate('Our Features')}</h2>
                   <p className="text-xs font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{translate('Designed for your study success')}</p>
-               </div>
+               </section>
 
                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                   {features.map((f, i) => (
-                     <Card key={i} hoverable className="group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
+                     <Card as="article" key={i} hoverable className="group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
                         <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit shadow-sm`}>
                            <f.icon className="w-6 h-6" />
                         </div>
@@ -145,7 +145,7 @@ const AboutUs = () => {
 
             {/* --- Trust & Commitment --- */}
             <section>
-               <Card className="p-10 border-none bg-slate-100 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-800">
+               <Card as="section" className="p-10 border-none bg-slate-100 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-800">
                   <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
                      <div className="xl:col-span-4 text-center xl:text-left space-y-6">
                         <div className="w-20 h-20 bg-white dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto xl:mx-0 shadow-sm">
@@ -165,24 +165,24 @@ const AboutUs = () => {
 
             {/* --- CTA --- */}
             <section>
-               <Card className="p-8 xl:p-12 text-center bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-none text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 relative overflow-hidden">
-                  <div className="relative z-10 space-y-8">
+               <Card as="section" className="p-8 xl:p-12 text-center bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-none text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 relative overflow-hidden">
+                  <section className="relative z-10 space-y-8">
                      <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tight">{translate('Ready to Begin?')}</h2>
                      <p className="text-lg font-medium opacity-90 max-w-2xl mx-auto leading-relaxed">{translate('Join thousands of students who are already passing exams and earning cash by referring friends to AajExam.')}</p>
                      <Button onClick={() => router.push('/')} variant="secondary" size="lg" className="mx-auto px-12 py-6 text-sm font-black">{translate('START LEARNING FOR FREE')}</Button>
-                  </div>
+                  </section>
                   <Sparkles className="absolute top-10 left-10 w-24 h-24 text-slate-900/10 dark:text-white/10" />
                   <ShieldCheck className="absolute bottom-10 right-10 w-20 xl:w-32 h-20 xl:h-32 text-slate-900/10 dark:text-white/10" />
                </Card>
             </section>
 
             {/* --- Footer Info --- */}
-            <section className="space-y-12">
+            <footer className="space-y-12">
                <AuthorBio />
                <div className="text-center pt-10 border-t border-slate-100 dark:border-slate-800">
                   <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em]">{translate('About Us | Last Updated February 2026')}</p>
                </div>
-            </section>
+            </footer>
          </div>
 
       </div>

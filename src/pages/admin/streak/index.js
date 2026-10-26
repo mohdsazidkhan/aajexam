@@ -140,7 +140,7 @@ const AdminStreakPage = () => {
               <>
                 <div className="flex-1 min-h-0">
                   {rankedLeaderboard.length === 0 ? (
-                    <Card className="p-10 text-center space-y-3">
+                    <Card as="section" className="p-10 text-center space-y-3">
                       <Flame className="w-12 h-12 text-slate-300 mx-auto" />
                       <h2 className="text-lg font-black text-slate-500">No streak data {searchTerm ? 'found' : 'available yet'}</h2>
                       {searchTerm && <p className="text-sm text-slate-400">Try a different name, email, or username.</p>}
@@ -152,7 +152,7 @@ const AdminStreakPage = () => {
                   ) : viewMode === 'grid' ? (
                     <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                       {rankedLeaderboard.map((entry, i) => (
-                        <Card key={entry._id || i} className="flex flex-col gap-3">
+                        <Card as="article" key={entry._id || i} className="flex flex-col gap-3">
                           <div className="flex items-start justify-between gap-2">
                             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0"><Flame className="w-5 h-5" /></div>
                             <span className="text-[10px] font-black text-slate-400">#{entry.rank}</span>
@@ -172,7 +172,7 @@ const AdminStreakPage = () => {
                   ) : (
                     <div className="h-full overflow-auto space-y-3">
                       {rankedLeaderboard.map((entry, i) => (
-                        <Card key={entry._id || i} className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                        <Card as="article" key={entry._id || i} className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                           <div>
                             <div className="text-xs uppercase tracking-[0.2em] text-slate-400">#{entry.rank}</div>
                             <h2 className="text-lg font-black text-slate-900 dark:text-white">{entry.user?.name || entry.user?.username || 'Unknown'}</h2>

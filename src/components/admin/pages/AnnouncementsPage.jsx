@@ -84,7 +84,7 @@ const AnnouncementViewModal = ({ announcement, onClose }) => {
   const a = announcement;
   return (
     <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/60" onClick={onClose}>
-      <div className="w-full max-w-lg max-h-[85vh] overflow-auto bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70" onClick={(e) => e.stopPropagation()}>
+      <section className="w-full max-w-lg max-h-[85vh] overflow-auto bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
@@ -121,7 +121,7 @@ const AnnouncementViewModal = ({ announcement, onClose }) => {
             </div>
           </div>
         )}
-      </div>
+      </section>
     </div>
   );
 };
@@ -270,7 +270,7 @@ const AnnouncementsPage = () => {
   if (!isMounted) return null;
 
   const renderGridCard = (a, idx) => (
-    <div key={a._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+    <section key={a._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
       <div className="flex items-start justify-between gap-2">
         <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
           <Megaphone className="w-5 h-5" />
@@ -288,11 +288,11 @@ const AnnouncementsPage = () => {
         <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {formatDateTime(a.createdAt)}</span>
       </div>
       <ViewButton onClick={() => setViewing(a)} className="justify-center" />
-    </div>
+    </section>
   );
 
   const renderListRow = (a, idx) => (
-    <div key={a._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+    <section key={a._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
       <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
         <Megaphone className="w-5 h-5" />
         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
@@ -305,7 +305,7 @@ const AnnouncementsPage = () => {
       {a.target === 'users' && <div className="hidden md:block shrink-0"><TargetTypeTag target={a.target} recipientCount={a.recipientCount} /></div>}
       <TargetBadge target={a.target} recipientCount={a.recipientCount} recipients={a.recipients} />
       <ViewButton onClick={() => setViewing(a)} className="shrink-0" />
-    </div>
+    </section>
   );
 
   return (

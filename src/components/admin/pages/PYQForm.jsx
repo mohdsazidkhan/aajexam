@@ -257,7 +257,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
 
                 <form onSubmit={handleSubmit} className="space-y-3">
                     {/* Paper meta */}
-                    <Card className="space-y-3">
+                    <Card as="section" className="space-y-3">
                         <h2 className="text-sm font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider">Paper Details</h2>
 
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
@@ -322,13 +322,13 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                     </Card>
 
                     {/* Questions */}
-                    <Card className="space-y-3">
-                        <div className="flex items-center justify-between">
+                    <Card as="section" className="space-y-3">
+                        <section className="flex items-center justify-between">
                             <h2 className="text-sm font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider">Questions ({form.questions.length})</h2>
                             <button type="button" onClick={addQuestion} className="px-3 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg text-xs font-bold hover:bg-primary-600 transition flex items-center gap-1">
                                 <Plus className="w-3 h-3" /> Add Question
                             </button>
-                        </div>
+                        </section>
 
                         <div className="space-y-3">
                             {form.questions.map((q, qi) => (

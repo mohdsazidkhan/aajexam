@@ -178,13 +178,13 @@ const RegisterPageInner = () => {
 
         {/* Right panel — form */}
         <div className="flex-1 flex items-center justify-center overflow-y-auto py-4 xl:py-8">
-          <Card className="w-full max-w-md p-5 xl:p-8 shadow-xl space-y-5">
-            <div className="text-center space-y-3">
+          <Card as="section" className="w-full max-w-md p-5 xl:p-8 shadow-xl space-y-5">
+            <section className="text-center space-y-3">
               <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">{translate('Register')}</h2>
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 {translate('Fill in your details to create your free account.')}
               </p>
-            </div>
+            </section>
 
             {/* Google Sign-Up */}
             <div className="space-y-2 xl:space-y-4 mt-2">

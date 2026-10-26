@@ -369,7 +369,7 @@ const TestStart = ({ resolvedId } = {}) => {
       </AnimatePresence>
 
       {/* --- Main Quiz Body --- */}
-      <main className="flex-1 relative flex flex-col xl:flex-row overflow-hidden">
+      <div className="flex-1 relative flex flex-col xl:flex-row overflow-hidden">
 
         {/* Sidebar Palette (Desktop) */}
         <motion.aside
@@ -520,7 +520,7 @@ const TestStart = ({ resolvedId } = {}) => {
             </motion.div>
           </AnimatePresence>
         </section>
-      </main>
+      </div>
 
       {/* --- Bottom Action Bar (Fixed) --- */}
       <footer className="min-h-[4rem] sm:min-h-[5rem] xl:h-24 shrink-0 bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-3 sm:px-6 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] gap-2 flex items-center justify-between z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">

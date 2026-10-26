@@ -83,10 +83,10 @@ const StatMini = ({ icon: Icon, label, value }) => (
 const SectionHeader = ({ icon: Icon, title, subtitle }) => (
    <div className="flex items-center gap-2.5 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15">
       {Icon && <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></div>}
-      <div>
+      <section>
          <h2 className="text-base xl:text-lg font-black font-outfit uppercase tracking-tight">{title}</h2>
          {subtitle && <p className="text-xs text-content-secondary font-bold">{subtitle}</p>}
-      </div>
+      </section>
    </div>
 );
 
@@ -486,7 +486,7 @@ const MyAnalyticsPage = () => {
                               <SectionHeader icon={Target} title={translate('Topic Wise Performance')} />
                               <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {(showAllTopics ? quiz.topicWise : quiz.topicWise.slice(0, 6)).map((tp, idx) => (
-                                    <Card key={idx} radius="2xl" className="border-slate-200 dark:border-slate-800">
+                                    <Card as="article" key={idx} radius="2xl" className="border-slate-200 dark:border-slate-800">
                                        <div className="flex items-center justify-between gap-2">
                                           <div>
                                              <p className="font-black text-sm">{translateData(tp.name)}</p>
@@ -627,7 +627,7 @@ const MyAnalyticsPage = () => {
                               </div>
                               <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {myReelsList.map((r, idx) => (
-                                    <Card key={r._id || idx} padded={false} className="p-3 h-full flex flex-col gap-2">
+                                    <Card as="article" key={r._id || idx} padded={false} className="p-3 h-full flex flex-col gap-2">
                                        <div className="flex items-center justify-between gap-2">
                                           <span className="px-2.5 py-0.5 text-[10px] font-black uppercase bg-primary-100 dark:bg-primary-400/20 text-primary-800 dark:text-primary-200" style={{ borderRadius: 999 }}>{translate(r.type === 'current_affairs' ? 'Current Affairs' : r.type === 'tip' ? 'Tip' : r.type === 'fact' ? 'Fact' : r.type === 'poll' ? 'Poll' : 'Question')}</span>
                                           <span className={`px-2.5 py-0.5 text-[10px] font-black uppercase ${r.status === 'published' ? 'bg-primary-500 text-white' : r.status === 'rejected' ? 'bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200'}`} style={{ borderRadius: 999 }}>{translate(r.status === 'published' ? 'Published' : r.status === 'pending' ? 'Pending' : r.status === 'rejected' ? 'Rejected' : r.status === 'archived' ? 'Archived' : 'Draft')}</span>

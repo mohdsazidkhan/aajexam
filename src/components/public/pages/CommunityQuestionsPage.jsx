@@ -208,7 +208,7 @@ const CommunityQuestionsPage = () => {
             </button>
           </Card>
         ) : questions.length === 0 ? (
-          <Card className="text-center py-2 xl:py-4">
+          <Card as="section" className="text-center py-2 xl:py-4">
             <MessageSquarePlus className="w-12 h-12 text-content-muted mx-auto mb-3 opacity-50" />
             <h2 className="text-lg font-bold text-content-primary mb-1">{translate('No Questions Yet')}</h2>
             <p className="text-sm text-content-muted mb-4">{translate('Be the first to share a question with the community!')}</p>
@@ -223,7 +223,7 @@ const CommunityQuestionsPage = () => {
         ) : (
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 container py-2 xl:py-4">
             {questions.map((q) => (
-              <Card key={q._id} radius="2xl" hoverable className="group">
+              <Card as="article" key={q._id} radius="2xl" hoverable className="group">
                 {/* Author & Meta */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">

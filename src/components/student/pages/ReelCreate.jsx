@@ -350,9 +350,9 @@ const ReelCreate = () => {
               )}
 
               {/* Audio & Duration — Instagram Style */}
-              <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
+              <section style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-                <div className="flex items-center justify-between">
+                <section className="flex items-center justify-between">
                   <h2 className="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
                     <Music className="w-4 h-4 text-black dark:text-white" /> Add Audio
                   </h2>
@@ -360,7 +360,7 @@ const ReelCreate = () => {
                     <button type="button" onClick={() => { setAudioFile(''); if (audioPreviewRef.current) { audioPreviewRef.current.pause(); audioPreviewRef.current = null; } setAudioPlaying(null); }}
                       className="text-[10px] font-bold text-black dark:text-white uppercase tracking-wider">{translate('Remove')}</button>
                   )}
-                </div>
+                </section>
 
                 {/* Search */}
                 <div className="relative">
@@ -428,7 +428,7 @@ const ReelCreate = () => {
                   </div>
                   <p className="text-[10px] text-slate-400 mt-1">{translate('Reel will auto-scroll after this time (5-120 sec)')}</p>
                 </div>
-              </div>
+              </section>
 
               <Button type="submit" disabled={loading} className="w-full">{loading ? translate('Submitting...') : translate('Submit Reel')}</Button>
             </form>

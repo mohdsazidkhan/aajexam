@@ -158,7 +158,7 @@ const QuizHistoryPage = () => {
                                     )}
 
                                     {/* Footer */}
-                                    <div className="flex items-center justify-between pt-2 mt-auto">
+                                    <footer className="flex items-center justify-between pt-2 mt-auto">
                                        <div className="flex items-center gap-1 text-[9px] font-bold text-slate-400">
                                           <Calendar className="w-3 h-3" />
                                           {attempt.submittedAt ? new Date(attempt.submittedAt).toLocaleDateString() : new Date(attempt.createdAt).toLocaleDateString()}
@@ -178,7 +178,7 @@ const QuizHistoryPage = () => {
                                              {translate('Resume')}
                                           </button>
                                        )}
-                                    </div>
+                                    </footer>
                                  </div>
                               </Card>
                            </motion.div>

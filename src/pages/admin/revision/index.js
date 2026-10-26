@@ -257,7 +257,7 @@ const AdminRevisionPage = () => {
               ) : viewMode === 'grid' ? (
                 <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                   {items.map((item) => (
-                    <Card key={item._id} className="flex flex-col gap-2">
+                    <Card as="article" key={item._id} className="flex flex-col gap-2">
                       <div className="flex items-center justify-between">
                         <div className="text-xs text-slate-400 uppercase tracking-[0.2em]">{SOURCE_LABELS[item.source] || item.source}</div>
                         <span className={`px-2 py-0.5 rounded-lg text-[9px] font-black uppercase tracking-[0.1em] ${STATUS_COLORS[item.status] || STATUS_COLORS.active}`}>{item.status}</span>
@@ -284,7 +284,7 @@ const AdminRevisionPage = () => {
               ) : (
                 <div className="h-full overflow-auto space-y-2 xl:space-y-3">
                   {items.map((item) => (
-                    <Card key={item._id}>
+                    <Card as="article" key={item._id}>
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                         <div>
                           <div className="text-sm text-slate-400 uppercase tracking-[0.2em]">{SOURCE_LABELS[item.source] || item.source}</div>

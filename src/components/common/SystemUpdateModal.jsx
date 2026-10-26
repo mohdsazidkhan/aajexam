@@ -40,10 +40,10 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
               <div className="w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center shadow-sm transform -rotate-6">
                 <FaGraduationCap className="text-3xl text-primary-600 dark:text-primary-300" />
               </div>
-              <div>
+              <section>
                 <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter">{translate('AajExam — Exam Focused!')}</h2>
                 <p className="text-[10px] font-black uppercase tracking-widest text-primary-100 opacity-80 mt-1">{translate('Dedicated Exam Preparation Platform')}</p>
-              </div>
+              </section>
             </div>
             <button aria-label={translate('Close')}
               onClick={handleClose}
@@ -58,17 +58,17 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
         <div className="p-4 xl:p-10 space-y-8">
 
           {/* PLATFORM UPDATE */}
-          <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white rounded-2xl p-6">
+          <section className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white rounded-2xl p-6">
             <h3 className="text-sm xl:text-lg font-black text-black dark:text-white mb-2 flex items-center uppercase tracking-tight">
               <FaShieldAlt className="text-black dark:text-white mr-2" /> Platform Update
             </h3>
             <p className="text-sm text-black dark:text-white font-medium">
               {rich("AajExam is now <0>100% dedicated to Government Exam Preparation!</0> We've streamlined the platform to focus entirely on helping you crack your dream exam.", [(c) => <span className="font-black">{c}</span>])}
             </p>
-          </div>
+          </section>
 
           {/* WHAT'S NEW */}
-          <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-600 rounded-2xl p-6">
+          <section className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-600 rounded-2xl p-6">
             <h3 className="text-sm xl:text-lg font-black text-primary-600 dark:text-primary-200 mb-3 uppercase tracking-tight">
               {translate('✅ What\'s Available')}
             </h3>
@@ -102,20 +102,20 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </section>
 
           {/* DATA SAFE NOTICE */}
-          <div className="bg-primary-600 text-white rounded-[2rem] p-6 shadow-sm border-2 border-white dark:border-slate-700">
+          <section className="bg-primary-600 text-white rounded-[2rem] p-6 shadow-sm border-2 border-white dark:border-slate-700">
             <h3 className="text-sm xl:text-lg font-black mb-2 flex items-center uppercase tracking-tight">
               <FaShieldAlt className="mr-3" /> Your Data is Safe
             </h3>
             <p className="text-sm font-medium opacity-90 leading-relaxed">
               {translate('Your account, subscription, and referral rewards are completely safe. All your exam preparation data has been preserved on this platform.')}
             </p>
-          </div>
+          </section>
 
           {/* APP LINKS */}
-          <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-600 rounded-2xl p-6">
+          <section className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-600 rounded-2xl p-6">
             <h3 className="text-sm xl:text-lg font-black text-primary-600 dark:text-primary-200 mb-4 flex items-center uppercase tracking-tight">
               <span className="text-xl mr-2">📱</span>
               {translate('Our Apps')}
@@ -140,12 +140,12 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
                 {translate('SubgQuiz (Quizzes)')}
               </a>
             </div>
-          </div>
+          </section>
 
         </div>
 
         {/* FOOTER */}
-        <div className="bg-slate-100 dark:bg-slate-800/50 p-8 rounded-b-[2.5rem] border-t-2 border-slate-200 dark:border-slate-800">
+        <footer className="bg-slate-100 dark:bg-slate-800/50 p-8 rounded-b-[2.5rem] border-t-2 border-slate-200 dark:border-slate-800">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
             <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest text-center sm:text-left leading-loose">
               {translate('Crack your dream exam with AajExam.')}
@@ -157,7 +157,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
               {translate('Start Preparing!')}
             </button>
           </div>
-        </div>
+        </footer>
       </div>
     </div>
   );

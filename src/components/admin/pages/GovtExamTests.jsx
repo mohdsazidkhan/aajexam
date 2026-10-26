@@ -383,11 +383,11 @@ const AdminGovtExamTests = () => {
                {loading ? (
                   <AdminTableSkeleton showHeader={false} showFilters={false} />
                ) : tests.length === 0 ? (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
+                  <section className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
                      <FileText className="w-16 h-16 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
                      <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">No Tests Found</h3>
                      <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">Select a pattern above to view its tests, or create a new test.</p>
-                  </div>
+                  </section>
                ) : (
                   <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="h-auto flex flex-col">
                      {viewMode === 'table' && (
@@ -469,13 +469,13 @@ const AdminGovtExamTests = () => {
                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-[#0A0F1E]/80 backdrop-blur-xl" />
                      <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0D1225] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-outfit">
 
-                        <div className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
+                        <section className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
                            <div className="flex items-center gap-3">
                               <div className="p-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl shadow-sm"><Settings className="w-5 h-5" /></div>
-                              <div>
+                              <section>
                                  <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{editingTest ? 'Edit' : 'Add'} <span className="text-primary-600 dark:text-primary-300">Test</span></h2>
                                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{editingTest ? `Editing: ${editingTest.title}` : 'Create a new practice test'}</p>
-                              </div>
+                              </section>
                            </div>
                            <div className="flex items-center gap-3">
                               <button onClick={() => setUploadMode(!uploadMode)} className={`px-3 xl:px-4 py-2 rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-widest border-2 transition-all ${uploadMode ? 'bg-primary-600 text-white border-primary-600 shadow-sm' : 'bg-slate-100 dark:bg-white/5 text-slate-400 border-transparent hover:border-primary-500/30'}`}>
@@ -483,12 +483,12 @@ const AdminGovtExamTests = () => {
                               </button>
                               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg xl:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
                            </div>
-                        </div>
+                        </section>
 
                         <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
                            {uploadMode ? (
                               <div className="w-full max-w-4xl mx-auto flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-6 space-y-3">
-                                 <div className="p-3 xl:p-5 bg-primary-500/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-primary-500/20">
+                                 <section className="p-3 xl:p-5 bg-primary-500/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-primary-500/20">
                                     <div className="flex items-center gap-3 mb-4">
                                        <div className="p-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm text-primary-600 dark:text-primary-300"><Download className="w-6 h-6" /></div>
                                        <div>
@@ -500,7 +500,7 @@ const AdminGovtExamTests = () => {
                                     <button onClick={handleBulkUpload} className="w-full mt-4 xl:mt-4 py-3 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-[2rem] font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
                                        <UploadCloud className="w-5 h-5" /> Import Questions
                                     </button>
-                                 </div>
+                                 </section>
                               </div>
                            ) : (
                               <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">

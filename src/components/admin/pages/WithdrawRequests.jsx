@@ -235,11 +235,11 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
           {loading ? (
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : items.length === 0 ? (
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
+            <section className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
               <CreditCard className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
               <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">No Withdrawal Requests</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">No pending withdrawal requests at this time.</p>
-            </div>
+            </section>
           ) : (
             <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex-1 min-h-0 overflow-auto flex flex-col">
               {viewMode === 'table' ? (

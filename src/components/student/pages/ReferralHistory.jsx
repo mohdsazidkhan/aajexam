@@ -356,9 +356,9 @@ export default function ReferralHistory() {
                {/* Left Sidebar: Breakdown */}
                <div className="space-y-3">
                   <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 xl:gap-8">
-                     <div className="space-y-2">
+                     <section className="space-y-2">
                         <h2 className="flex items-center gap-2.5 text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
-                     </div>
+                     </section>
 
                      <div className="w-full xl:w-auto xl:min-w-[320px] space-y-2 xl:space-y-4">
                         {[
@@ -388,16 +388,16 @@ export default function ReferralHistory() {
                {/* Right Area: Friend List */}
                <div className="space-y-2 xl:space-y-3">
                   <div className="flex items-center justify-between">
-                     <div className="space-y-1 xl:space-y-2">
+                     <section className="space-y-1 xl:space-y-2">
                         <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
-                     </div>
+                     </section>
                   </div>
 
                   <AnimatePresence mode="wait">
                      {loading ? (
                         <ListSkeleton rows={6} />
                      ) : transactions.length === 0 ? (
-                        <Card className="py-4 text-center space-y-2 xl:space-y-3 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-2xl">
+                        <Card as="section" className="py-4 text-center space-y-2 xl:space-y-3 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-2xl">
                            <Users className="w-8 h-8 xl:w-10 xl:h-10 text-slate-200 mx-auto" />
                            <div className="space-y-1 xl:space-y-2">
                               <h3 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{translate('No Referrals Yet')}</h3>

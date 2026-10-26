@@ -141,7 +141,7 @@ export default function SampleQuiz() {
 
   return (
     <section className="container mx-auto px-3 xl:px-0 py-4 xl:py-8">
-      <div className="relative overflow-hidden w-full bg-background-surface border border-slate-200 dark:border-slate-800 shadow-xl p-4 xl:p-6" style={{ borderRadius: 16 }}>
+      <section className="relative overflow-hidden w-full bg-background-surface border border-slate-200 dark:border-slate-800 shadow-xl p-4 xl:p-6" style={{ borderRadius: 16 }}>
         <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
         <div className="pointer-events-none absolute -top-16 -right-10 w-56 h-56 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
         {phase === 'idle' || phase === 'loading' ? (
@@ -224,7 +224,7 @@ export default function SampleQuiz() {
             <div className="text-center text-sm font-bold">{translate('Your score')}: {score}/{questions.length}</div>
           )
         ) : null}
-      </div>
+      </section>
     </section>
   );
 }

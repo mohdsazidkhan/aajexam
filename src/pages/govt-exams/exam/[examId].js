@@ -226,7 +226,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Exam Hero */}
       <Card className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10 overflow-hidden relative">
-        <div className="relative z-10 space-y-3">
+        <header className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
           </div>
@@ -258,13 +258,13 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               </span>
             )}
           </div>
-        </div>
+        </header>
         <Target className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-slate-900/10 dark:text-white/10 -rotate-12" />
       </Card>
 
       {/* About / SEO long-form intro — server-rendered for crawlers */}
       {aboutText && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800">
+        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
             <FileText className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('About {name}', { name: translateData(examName) })}
@@ -277,7 +277,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Exam Information — eligibility, age limit, selection process, salary */}
       {facts && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800">
+        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight flex items-center gap-3">
             <Info className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('{name} Exam Information', { name: translateData(examName) })}
@@ -308,14 +308,14 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Exam Pattern - straight from the exam's real test patterns */}
       {patterns.length > 0 && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800">
+        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
             <Clock className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('{name} Exam Pattern', { name: translateData(examName) })}
           </h2>
           <div className="space-y-6">
             {patterns.map((pt) => (
-              <div key={pt._id} className="space-y-2">
+              <article key={pt._id} className="space-y-2">
                 <h3 className="text-base font-black text-content-primary">{pt.title}</h3>
                 <p className="text-sm font-medium text-content-muted">
                   {pt.duration} min · {pt.totalMarks} marks · {pt.negativeMarking > 0 ? `${pt.negativeMarking} negative marking per wrong answer` : 'no negative marking'}
@@ -346,7 +346,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     </table>
                   </div>
                 )}
-              </div>
+              </article>
             ))}
           </div>
         </Card>
@@ -354,7 +354,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Latest updates and important dates - from published exam news */}
       {examNews.length > 0 && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800">
+        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
             <Newspaper className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('{name} Latest Updates', { name: translateData(examName) })}
@@ -379,7 +379,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Previous year papers by year */}
       {pyqYears.length > 0 && exam?.slug && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800">
+        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
             <History className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('{name} Previous Year Papers', { name: translateData(examName) })}
@@ -408,7 +408,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Syllabus & Subjects */}
       {subjectAreas.length > 0 && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800">
+        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
             <ListChecks className="w-5 h-5 text-primary-600 dark:text-primary-300" />
             {translate('{name} Syllabus & Subjects', { name: translateData(examName) })}
@@ -477,7 +477,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           ) : (
             paged(subjects).map((subject, idx) => (
               <motion.div key={subject._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
-                <Card
+                <Card as="section"
                   hoverable
                   onClick={() => {
                     if (!subject.slug) return setActiveTab('quizzes');
@@ -514,7 +514,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           ) : (
             paged(topics).map((topic, idx) => (
               <motion.div key={topic._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
-                <Card
+                <Card as="section"
                   hoverable
                   onClick={() => {
                     if (!topic.slug) return setActiveTab('quizzes');
@@ -558,7 +558,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 const pyqMeta = isPyqTab && (test.pyqYear || test.pyqShift || test.pyqExamName);
                 return (
                   <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
-                    <Card className={`group h-full border-2 transition-all p-4 overflow-hidden flex flex-col gap-3 ${isCompleted ? 'border-primary-200 dark:border-primary-600' : 'border-slate-200 dark:border-slate-800 hover:border-primary-700'}`}>
+                    <Card as="section" className={`group h-full border-2 transition-all p-4 overflow-hidden flex flex-col gap-3 ${isCompleted ? 'border-primary-200 dark:border-primary-600' : 'border-slate-200 dark:border-slate-800 hover:border-primary-700'}`}>
                       <div className="flex items-center gap-3">
                         <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">{sno(idx)}</div>
                         <div className="flex-1 min-w-0">
@@ -616,7 +616,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               const diffColor = quiz.difficulty === 'easy' ? 'text-primary-600 bg-primary-50' : quiz.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800';
               return (
                 <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
-                  <Card
+                  <Card as="section"
                     hoverable
                     onClick={() => router.push(`/quiz/${quiz.slug}`)}
                     className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
@@ -648,7 +648,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       )}
 
       {/* How to Prepare */}
-      <Card className="border-2 border-slate-100 dark:border-slate-800">
+      <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <GraduationCap className="w-5 h-5 text-primary-600 dark:text-primary-300" />
           {translate('How to Prepare for {name}', { name: translateData(examName) })}
@@ -666,7 +666,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </Card>
 
       {/* Related Searches */}
-      <Card className="border-2 border-slate-100 dark:border-slate-800">
+      <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <Search className="w-5 h-5 text-primary-600 dark:text-primary-300" />
           {translate('Related Searches')}
@@ -684,7 +684,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </Card>
 
       {/* FAQ — rendered visibly to match the FAQ structured data above */}
-      <Card className="border-2 border-slate-100 dark:border-slate-800">
+      <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <HelpCircle className="w-5 h-5 text-primary-600 dark:text-primary-300" />
           {translate('Frequently Asked Questions')}
@@ -701,7 +701,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Contextual registration CTA — only for logged-out visitors */}
       {!isAuthenticated() && (
-        <Card className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10">
+        <Card as="section" className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10">
           <div className="flex items-start gap-4">
             <UserPlus className="w-8 h-8 shrink-0" />
             <div>

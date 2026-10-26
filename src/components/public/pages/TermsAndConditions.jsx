@@ -73,11 +73,11 @@ const TermsAndConditions = () => {
             <div>
 
                   {/* --- Content Main --- */}
-                  <main className="space-y-4 xl:space-y-5">
+                  <article className="space-y-4 xl:space-y-5">
 
                      {/* Acceptance of Terms */}
                      <section id="acceptance" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-6 xl:p-8 rounded-[2rem] xl:rounded-[4rem] shadow-sm border-none relative overflow-hidden mt-4">
+                        <section className="bg-white dark:bg-slate-800 p-4 md:p-6 xl:p-8 rounded-[2rem] xl:rounded-[4rem] shadow-sm border-none relative overflow-hidden mt-4">
                            <div className="flex items-center gap-4 mb-5">
                               <div className="w-12 h-12 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <CircleCheck className="w-6 h-6" />
@@ -92,7 +92,7 @@ const TermsAndConditions = () => {
                                  AajExam is a <strong>100% knowledge-based learning platform</strong>. It is built to help students practice for government exams. There is no gambling or luck involved — only your hard work.
                               </p>
                            </div>
-                        </div>
+                        </section>
                      </section>
 
                      {/* User Eligibility */}
@@ -135,10 +135,10 @@ const TermsAndConditions = () => {
                         </div>
 
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 relative z-10">
-                           <div className="p-4 xl:p-5 bg-primary-600/10 dark:bg-white/5 rounded-[2.5rem] border-2 border-primary-300 dark:border-white/10 space-y-2 xl:space-y-4">
+                           <section className="p-4 xl:p-5 bg-primary-600/10 dark:bg-white/5 rounded-[2.5rem] border-2 border-primary-300 dark:border-white/10 space-y-2 xl:space-y-4">
                               <h3 className="text-primary-600 dark:text-primary-300 font-black uppercase tracking-widest text-xs">Free Plan</h3>
                               <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Unlimited topic-wise practice, 2 subject tests/day, first full mock test free, and latest-year PYQs for every exam.</p>
-                           </div>
+                           </section>
                            <div className="p-4 xl:p-5 bg-primary-500/10 rounded-[2.5rem] border-2 border-primary-500/20 space-y-2 xl:space-y-4 shadow-sm group hover:scale-[1.02] transition-transform">
                               <div className="flex justify-between items-center">
                                  <h4 className="text-slate-900 dark:text-white font-black uppercase tracking-widest text-xs">Pro Plan</h4>
@@ -165,7 +165,7 @@ const TermsAndConditions = () => {
                         </div>
 
                         <div className="space-y-5">
-                           <div className="p-4 xl:p-4 xl:p-5 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
+                           <section className="p-4 xl:p-4 xl:p-5 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
                               <h3 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white px-2">How Rewards Work</h3>
                               <ul className="space-y-4">
                                  <li className="flex gap-6">
@@ -176,7 +176,7 @@ const TermsAndConditions = () => {
                                     </div>
                                  </li>
                               </ul>
-                           </div>
+                           </section>
                         </div>
                      </section>
 
@@ -232,40 +232,40 @@ const TermsAndConditions = () => {
 
                      {/* Contact Section */}
                      <section id="contact" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-6 xl:p-8 rounded-[2.5rem] xl:rounded-[4rem] shadow-sm space-y-5 border-none relative overflow-hidden">
+                        <section className="bg-white dark:bg-slate-800 p-4 md:p-6 xl:p-8 rounded-[2.5rem] xl:rounded-[4rem] shadow-sm space-y-5 border-none relative overflow-hidden">
                            <div className="flex items-center gap-4">
                               <div className="w-12 h-12 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <Mail className="w-6 h-6" />
                               </div>
-                              <div className="space-y-1">
+                              <section className="space-y-1">
                                  <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">Contact Information</h2>
                                  <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">LEGAL AND SUPPORT</p>
-                              </div>
+                              </section>
                            </div>
-                           <div className="p-4 xl:p-4 xl:p-5 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 xl:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
+                           <address className="not-italic p-4 xl:p-4 xl:p-5 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 xl:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
                               <p className="text-xl xl:text-2xl font-black text-primary-600 dark:text-primary-300 tracking-tight">{config.CONTACT.EMAIL}</p>
-                           </div>
+                           </address>
                            <button
                               onClick={() => router.push('/student/dashboard')}
                               className="w-full bg-slate-900 dark:bg-slate-700 text-white py-3 rounded-[2rem] font-black uppercase tracking-[0.3em] text-xs shadow-sm active:scale-95 transition-all font-outfit"
                            >
                               BACK TO HOME
                            </button>
-                        </div>
+                        </section>
                      </section>
 
                      <div>
                         <AuthorBio />
                      </div>
 
-                     <div className="text-center pt-4 border-t border-slate-200 dark:border-slate-800">
+                     <footer className="text-center pt-4 border-t border-slate-200 dark:border-slate-800">
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.6em]">
                            LAST UPDATED: 1ST APRIL 2026
                         </p>
-                     </div>
+                     </footer>
 
-                  </main>
+                  </article>
             </div>
 
          </div>

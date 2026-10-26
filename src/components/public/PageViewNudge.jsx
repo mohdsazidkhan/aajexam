@@ -58,7 +58,7 @@ const NudgeInner = ({ onClose }) => {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className="fixed bottom-0 left-0 right-0 z-50 flex justify-center p-0 sm:p-4 pointer-events-none"
     >
-      <div className="pointer-events-auto w-full max-w-4xl relative bg-slate-900 text-white sm:rounded-3xl shadow-sm border-t sm:border-2 border-primary-500/30 overflow-hidden flex flex-col md:flex-row items-center gap-4 md:gap-6 p-4 md:p-5 pr-12 md:pr-14">
+      <section className="pointer-events-auto w-full max-w-4xl relative bg-slate-900 text-white sm:rounded-3xl shadow-sm border-t sm:border-2 border-primary-500/30 overflow-hidden flex flex-col md:flex-row items-center gap-4 md:gap-6 p-4 md:p-5 pr-12 md:pr-14">
         {/* background glow */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
         
@@ -96,7 +96,7 @@ const NudgeInner = ({ onClose }) => {
            ) : translate('Save Progress Free')}
            {!isGoogleLoading && <ArrowRight className="w-4 h-4" />}
         </button>
-      </div>
+      </section>
     </motion.div>
   );
 };

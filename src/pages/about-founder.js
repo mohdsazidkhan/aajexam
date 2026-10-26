@@ -63,7 +63,7 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* About */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
                         <h2 className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
@@ -81,10 +81,10 @@ export default function AboutAuthor() {
                                 {translate('Under his leadership, AajExam has grown to serve thousands of students preparing for SSC, UPSC, Banking, Railway, and other government examinations. The platform\'s comprehensive exam preparation system and extensive test database reflect his commitment to structured, effective learning methodologies.')}
                             </p>
                         </div>
-                    </div>
+                    </section>
 
                     {/* Expertise */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800">
+                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
                             <div className="w-14 h-14 bg-primary-600 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-600">
                                 <FaCode className="text-white text-2xl" />
@@ -98,19 +98,19 @@ export default function AboutAuthor() {
                                 { title:'System Architecture', desc:'Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.', color:'bg-primary-600'},
                                 { title: 'Data Analytics', desc: 'Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize outcomes.', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <div key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-4 mlgp-8 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
+                                <article key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-4 mlgp-8 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
                                     <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-3">
                                         <div className={`w-2 h-6 ${item.color} rounded-full`} />
                                         {translate(item.title)}
                                     </h3>
                                     <p className="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">{translate(item.desc)}</p>
-                                </div>
+                                </article>
                             ))}
                         </div>
-                    </div>
+                    </section>
 
                     {/* Vision & Mission */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
                         <div className="flex items-center gap-4 mb-10">
                             <div className="w-14 h-14 bg-primary-600 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-600">
@@ -138,10 +138,10 @@ export default function AboutAuthor() {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </section>
 
                     {/* Achievements */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800">
+                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
                             <div className="w-14 h-14 bg-primary-600 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-600">
                                 <FaChalkboardTeacher className="text-white text-2xl" />
@@ -155,7 +155,7 @@ export default function AboutAuthor() {
                                 { title:'Content Curation', desc:'Curated thousands of exam questions across multiple subjects.', color:'bg-primary-600'},
                                 { title: 'User Growth', desc: 'Onboarded thousands of students across India.', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <div key={idx} className="flex items-start gap-5 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800">
+                                <section key={idx} className="flex items-start gap-5 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800">
                                     <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 text-white font-black shadow-sm border-b-2 border-black/20`}>
                                         ✓
                                     </div>
@@ -163,13 +163,13 @@ export default function AboutAuthor() {
                                         <h3 className="text-lg font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{translate(item.title)}</h3>
                                         <p className="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">{translate(item.desc)}</p>
                                     </div>
-                                </div>
+                                </section>
                             ))}
                         </div>
-                    </div>
+                    </section>
 
                     {/* Philosophy */}
-                    <div className="bg-primary-50 dark:bg-slate-950 p-4 md:p-8 xl:p-10 mb-10 xl:mb-12 ring-1 ring-primary-200 dark:ring-slate-800 shadow-xl relative overflow-hidden" style={{ borderRadius: 16 }}>
+                    <section className="bg-primary-50 dark:bg-slate-950 p-4 md:p-8 xl:p-10 mb-10 xl:mb-12 ring-1 ring-primary-200 dark:ring-slate-800 shadow-xl relative overflow-hidden" style={{ borderRadius: 16 }}>
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 dark:bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
                         <h2 className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight relative z-10">{translate('Educational Philosophy')}</h2>
@@ -181,10 +181,10 @@ export default function AboutAuthor() {
                                 {translate('He advocates for a balanced approach that combines technology-enabled convenience with pedagogically sound learning principles. He personally oversees the editorial process and ensures all content meets rigorous standards.')}
                             </p>
                         </div>
-                    </div>
+                    </section>
 
                     {/* Contact */}
-                    <div className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-4 xl:p-8 mb-8" style={{ borderRadius: 16 }}>
+                    <section className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-4 xl:p-8 mb-8" style={{ borderRadius: 16 }}>
                         <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
                         <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
                         <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
@@ -196,7 +196,7 @@ export default function AboutAuthor() {
                             <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('Connect with Sazid')}</h2>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 xl:gap-4 pt-4 border-t border-dashed border-slate-300 dark:border-white/25">
+                        <address className="not-italic grid grid-cols-1 sm:grid-cols-3 gap-3 xl:gap-4 pt-4 border-t border-dashed border-slate-300 dark:border-white/25">
                             {[
                                 { href: `mailto:${config.CONTACT.EMAIL}`, icon: FaEnvelope, label: translate('Email'), external: false },
                                 { href: 'https://www.linkedin.com/in/mohd-sazid-khan', icon: FaLinkedin, label: translate('LinkedIn'), external: true },
@@ -216,12 +216,12 @@ export default function AboutAuthor() {
                                     <span className="ml-auto text-primary-600 dark:text-primary-300 font-black group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
                                 </a>
                             ))}
-                        </div>
-                    </div>
+                        </address>
+                    </section>
 
                     {/* CTA */}
                     <div className="text-center mt-16">
-                        <div className="bg-primary-600 rounded-[3rem] p-4 md:p-8 xl:p-12 border-b-[12px] border-primary-600 shadow-sm">
+                        <section className="bg-primary-600 rounded-[3rem] p-4 md:p-8 xl:p-12 border-b-[12px] border-primary-600 shadow-sm">
                             <h2 className="text-2xl xl:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
                                 {translate('Join Thousands of Successful Students')}
                             </h2>
@@ -234,7 +234,7 @@ export default function AboutAuthor() {
                             >
                                 {translate('Get Started Now')}
                             </button>
-                        </div>
+                        </section>
                     </div>
                 </div>
             </div>

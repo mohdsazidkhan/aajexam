@@ -315,7 +315,7 @@ const LocationsPage = () => {
   if (!isMounted) return null;
 
   const renderGridCard = (item, idx, { Icon, title, subtitle, onEdit, onDelete, page, itemsPerPage }) => (
-    <div key={item._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+    <section key={item._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
       <div className="flex items-start justify-between gap-2">
         <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
           <Icon className="w-5 h-5" />
@@ -331,11 +331,11 @@ const LocationsPage = () => {
         <button onClick={onEdit} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-primary-600 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-3.5 h-3.5" /> Edit</button>
         <button onClick={onDelete} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-3.5 h-3.5" /> Deactivate</button>
       </div>
-    </div>
+    </section>
   );
 
   const renderListRow = (item, idx, { Icon, title, subtitle, onEdit, onDelete, page, itemsPerPage }) => (
-    <div key={item._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+    <section key={item._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
       <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
         <Icon className="w-5 h-5" />
         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
@@ -349,7 +349,7 @@ const LocationsPage = () => {
         <button aria-label="Edit" onClick={onEdit} className="p-1.5 text-primary-600 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-4 h-4" /></button>
         <button aria-label="Delete" onClick={onDelete} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
       </div>
-    </div>
+    </section>
   );
 
   return (
@@ -429,10 +429,10 @@ const LocationsPage = () => {
             <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setStateModal(false)} className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-3xl" />
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-white dark:bg-[#0A0F1E] rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
-                <div className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+                <section className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <h2 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingState ? 'Edit' : 'Add'} State</h2>
                   <button aria-label="Close" onClick={() => setStateModal(false)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>
-                </div>
+                </section>
                 <form onSubmit={handleStateSubmit} className="p-4 space-y-3">
                   <input required placeholder="State name" value={stateForm.name} onChange={e => setStateForm({ name: e.target.value })} className="w-full px-4 py-2 bg-white dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-sm font-semibold" />
                   <button type="submit" className="w-full py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all">
@@ -450,10 +450,10 @@ const LocationsPage = () => {
             <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setCityModal(false)} className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-3xl" />
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-white dark:bg-[#0A0F1E] rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
-                <div className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+                <section className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <h2 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingCity ? 'Edit' : 'Add'} City</h2>
                   <button aria-label="Close" onClick={() => setCityModal(false)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>
-                </div>
+                </section>
                 <form onSubmit={handleCitySubmit} className="p-4 space-y-3">
                   <input required placeholder="City name" value={cityForm.name} onChange={e => setCityForm({ ...cityForm, name: e.target.value })} className="w-full px-4 py-2 bg-white dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-sm font-semibold" />
                   <StyledSelect

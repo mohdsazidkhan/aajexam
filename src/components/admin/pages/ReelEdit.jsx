@@ -270,16 +270,16 @@ const AdminReelEdit = () => {
   if (loading) {
     return (
       <div className="flex min-h-screen">
-          <main className="flex-1 transition-all duration-300">
+          <div className="flex-1 transition-all duration-300">
             <div className="flex items-center justify-center min-h-screen"><AdminTableSkeleton /></div>
-          </main>
+          </div>
         </div>
     );
   }
 
   return (
     <div className="flex min-h-screen">
-        <main className="flex-1 transition-all duration-300">
+        <div className="flex-1 transition-all duration-300">
           <div className="mt-4 xl:mt-2">
 
             {/* Header */}
@@ -298,7 +298,7 @@ const AdminReelEdit = () => {
             <form onSubmit={handleSubmit} className="space-y-3">
 
               {/* Status + Common Fields */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+              <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                 <h3 className="font-bold text-slate-900 dark:text-white">Common Details</h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -355,11 +355,11 @@ const AdminReelEdit = () => {
                   <label className={labelClass}>Content / Description</label>
                   <textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} />
                 </div>
-              </div>
+              </section>
 
               {/* Question Fields */}
               {type === 'question' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-bold text-black dark:text-white">Question Details</h3>
                   <div>
                     <label className={labelClass}>Question Text *</label>
@@ -389,12 +389,12 @@ const AdminReelEdit = () => {
                     <label className={labelClass}>Shortcut / Trick</label>
                     <textarea value={shortcutTrick} onChange={e => setShortcutTrick(e.target.value)} rows={2} className={inputClass} />
                   </div>
-                </div>
+                </section>
               )}
 
               {/* Fact Fields */}
               {type === 'fact' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-bold text-primary-600 dark:text-primary-400">Fact Details</h3>
                   <div>
                     <label className={labelClass}>Highlight Text</label>
@@ -415,12 +415,12 @@ const AdminReelEdit = () => {
                     <button type="button" onClick={() => setKeyPoints([...keyPoints, ''])}
                       className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add point</button>
                   </div>
-                </div>
+                </section>
               )}
 
               {/* Tip Fields */}
               {type === 'tip' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-bold text-black dark:text-white">Trick / Shortcut Details</h3>
                   <div>
                     <label className={labelClass}>Formula</label>
@@ -455,12 +455,12 @@ const AdminReelEdit = () => {
                     <button type="button" onClick={() => setTryYourself([...tryYourself, ''])}
                       className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add example</button>
                   </div>
-                </div>
+                </section>
               )}
 
               {/* CA Fields */}
               {type === 'current_affairs' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-bold text-black dark:text-white">Current Affairs Details</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
@@ -504,12 +504,12 @@ const AdminReelEdit = () => {
                     <label className={labelClass}>Key Takeaway</label>
                     <textarea value={keyTakeaway} onChange={e => setKeyTakeaway(e.target.value)} rows={2} className={inputClass} />
                   </div>
-                </div>
+                </section>
               )}
 
               {/* Poll Fields */}
               {type === 'poll' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                   <h3 className="font-bold text-primary-600 dark:text-primary-400">Poll Details</h3>
                   <div>
                     <label className={labelClass}>Poll Question</label>
@@ -534,11 +534,11 @@ const AdminReelEdit = () => {
                         className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add option</button>
                     )}
                   </div>
-                </div>
+                </section>
               )}
 
               {/* Audio & Duration — Instagram Style */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+              <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
                 <div className="flex items-center justify-between">
                   <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     <Music className="w-5 h-5 text-black dark:text-white" /> Add Audio
@@ -612,7 +612,7 @@ const AdminReelEdit = () => {
                   </div>
                   <p className="text-xs text-slate-400 mt-1">Reel will auto-scroll after this time (5-120 sec)</p>
                 </div>
-              </div>
+              </section>
 
               {/* Submit */}
               <div className="flex items-center justify-end gap-3 pt-2 pb-8">
@@ -627,7 +627,7 @@ const AdminReelEdit = () => {
               </div>
             </form>
           </div>
-        </main>
+        </div>
       </div>
   );
 };

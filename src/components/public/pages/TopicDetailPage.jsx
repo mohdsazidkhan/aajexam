@@ -91,7 +91,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
         <div className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white shadow-xl ring-1 ring-white/10 p-5 xl:p-6 mb-5" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '18px 18px' }} />
           <div className="pointer-events-none absolute -bottom-24 right-6 w-72 h-72 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="relative">
+          <header className="z-auto relative">
           <Layers className="w-8 h-8 mb-2 text-primary-300" />
           <h1 className="text-xl xl:text-3xl font-black uppercase">{translateData(topic.name)}</h1>
           <p className="text-sm opacity-80 mt-1">{topic.subject?.name || ''}{topic.exams?.length ? ` · ${topic.exams.map(e => e.name).join(', ')}` : ''}</p>
@@ -115,7 +115,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
             </button>
             <p className="text-[10px] font-bold text-white/80 mt-2 pl-1">{translate('Generates custom difficulty based on your past accuracy.')}</p>
           </div>
-          </div>
+          </header>
         </div>
 
         {/* Tabs */}
@@ -151,10 +151,10 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
                       {translate('{count} CARDS', { count: deck.cardCount })}
                     </span>
                   </div>
-                  <div>
+                  <section>
                     <h2 className="text-white dark:text-black font-black text-lg leading-tight group-hover:scale-105 transition-transform origin-left">{deck.title}</h2>
                     <p className="text-white/70 dark:text-black/70 text-xs font-medium mt-1 line-clamp-2">{deck.description}</p>
-                  </div>
+                  </section>
                 </div>
               </motion.div>
             ))}
@@ -168,15 +168,15 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
               {paged(quizzes).map((quiz, idx) => (
                 <motion.div key={quiz._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
                   <Link href={`/quiz/${quiz.slug}`} className="block">
-                    <Card hoverable
+                    <Card as="section" hoverable
                       className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
                           <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">{sno(idx)}</div>
-                          <div>
+                          <section>
                             <h2 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(quiz.title)}</h2>
                             {quiz.subject?.name && <p className="text-[10px] font-bold text-content-muted uppercase">{translateData(quiz.subject.name)}</p>}
-                          </div>
+                          </section>
                         </div>
                         <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-primary-600 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                       </div>
@@ -206,7 +206,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
                 const done = test.userAttempt?.status === 'Completed';
                 return (
                   <motion.div key={test._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
-                    <Card className={`flex flex-col gap-4 rounded-[1.5rem] bg-background-surface shadow-sm ${done ? 'border-primary-200 dark:border-primary-600' : 'border-slate-200 dark:border-slate-800'}`}>
+                    <Card as="section" className={`flex flex-col gap-4 rounded-[1.5rem] bg-background-surface shadow-sm ${done ? 'border-primary-200 dark:border-primary-600' : 'border-slate-200 dark:border-slate-800'}`}>
                       <div className="flex items-start gap-3">
                         <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">{sno(idx)}</div>
                         <h2 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(test.title)}</h2>

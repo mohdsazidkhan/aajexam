@@ -168,7 +168,7 @@ const PayuSuccess = () => {
       />
       <div className="min-h-screen py-8">
         <div className="max-w-3xl mx-auto">
-          <div className="relative overflow-hidden bg-background-surface p-6 xl:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
+          <section className="relative overflow-hidden bg-background-surface p-6 xl:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
             <div className="text-center space-y-2 xl:space-y-4">
               <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto ${success ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>
                 {success ? <CheckCircle2 className="w-12 h-12" /> : <CircleAlert className="w-12 h-12" />}
@@ -184,7 +184,7 @@ const PayuSuccess = () => {
             </div>
 
             {success && detailRows.length > 0 && (
-              <div className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 xl:p-8 space-y-2 xl:space-y-4">
+              <section className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 xl:p-8 space-y-2 xl:space-y-4">
                 <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">{translate('Transaction details')}</h2>
                 <div className="space-y-3">
                   {detailRows.map((item) => (
@@ -194,7 +194,7 @@ const PayuSuccess = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </section>
             )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -232,7 +232,7 @@ const PayuSuccess = () => {
                 </>
               )}
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </MobileAppWrapper>
