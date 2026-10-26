@@ -6,8 +6,10 @@ import { toast } from 'react-hot-toast';
 import { Megaphone, Send, X as XIcon } from 'lucide-react';
 import API from '../../lib/api';
 import UserSearchPicker from './UserSearchPicker';
+import { ANNOUNCE_CONDITIONS } from '../../lib/announceConditions';
 
-const EMPTY_FORM = { title: '', description: '', target: 'all' };
+const EMPTY_FORM = { title: '', description: '', target: 'all', condition: '' };
+const GROUP_TARGETS = ['all', 'pro', 'free'];
 
 // Shared "Announce" compose modal — used by both the Notifications page's
 // quick-send button and the dedicated Announcements page, so the send logic
@@ -22,6 +24,19 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
   const [specificUser, setSpecificUser] = useState(null);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [sending, setSending] = useState(false);
+  const [audienceCount, setAudienceCount] = useState(null);
+
+  // Live preview: how many students the chosen group + profile condition reaches.
+  useEffect(() => {
+    if (!isOpen || !GROUP_TARGETS.includes(composeForm.target)) { setAudienceCount(null); return undefined; }
+    let alive = true;
+    setAudienceCount(null);
+    const qs = new URLSearchParams({ target: composeForm.target, ...(composeForm.condition && { condition: composeForm.condition }) });
+    API.request(`/api/admin/notifications/broadcast?${qs}`)
+      .then((res) => { if (alive && res?.success) setAudienceCount(res.count); })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, [isOpen, composeForm.target, composeForm.condition]);
 
   const handleClose = () => {
     if (sending) return;
@@ -51,6 +66,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
       title: composeForm.title,
       description: composeForm.description,
       target: isUserTarget ? 'users' : composeForm.target,
+      ...(!isUserTarget && composeForm.condition && { condition: composeForm.condition }),
       ...(isUserTarget && {
         userIds: composeForm.target === 'specific' ? [specificUser._id] : selectedUsers.map((u) => u._id)
       })
@@ -112,7 +128,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                   value={composeForm.target}
                   onChange={(e) => {
                     const target = e.target.value;
-                    setComposeForm((f) => ({ ...f, target }));
+                    setComposeForm((f) => ({ ...f, target, condition: GROUP_TARGETS.includes(target) ? f.condition : '' }));
                     setSpecificUser(null);
                     setSelectedUsers([]);
                   }}
@@ -125,6 +141,24 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                   <option value="selected">Selected users</option>
                 </select>
               </div>
+              {GROUP_TARGETS.includes(composeForm.target) && (
+                <div>
+                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Profile condition</label>
+                  <select
+                    value={composeForm.condition}
+                    onChange={(e) => setComposeForm((f) => ({ ...f, condition: e.target.value }))}
+                    className="w-full px-3 py-2.5 border-2 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600 border-slate-300"
+                  >
+                    <option value="">No condition (everyone in this group)</option>
+                    {ANNOUNCE_CONDITIONS.map((c) => (
+                      <option key={c.key} value={c.key}>{c.label}</option>
+                    ))}
+                  </select>
+                  <p className="mt-1 text-[11px] font-bold text-primary-700 dark:text-primary-300">
+                    {audienceCount === null ? 'Counting...' : `Will be sent to ${audienceCount} student${audienceCount === 1 ? '' : 's'}`}
+                  </p>
+                </div>
+              )}
               {composeForm.target === 'specific' && (
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">User</label>

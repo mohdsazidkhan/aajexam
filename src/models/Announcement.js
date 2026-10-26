@@ -8,6 +8,8 @@ const announcementSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true },
   description: { type: String, required: true, trim: true },
   target: { type: String, enum: ['all', 'pro', 'free', 'users'], required: true },
+  // Profile condition that narrowed an all / pro / free audience (see lib/announceConditions.js), '' = none.
+  condition: { type: String, default: '' },
   recipientCount: { type: Number, default: 0 },
   // Only populated when target === 'users' (specific/selected user picks) — a
   // denormalized snapshot so the list stays accurate even if a user later

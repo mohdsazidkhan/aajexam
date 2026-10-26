@@ -13,6 +13,7 @@ import ResponsiveTable from '../../common/ResponsiveTable';
 import Pagination from '../../common/Pagination';
 import StyledSelect from '../../common/ui/StyledSelect';
 import AnnounceModal from '../AnnounceModal';
+import { announceConditionLabel } from '../../../lib/announceConditions';
 import Sidebar from '../Sidebar';
 import useDebounce from '../../../hooks/useDebounce';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
@@ -39,16 +40,17 @@ const getTargetTypeLabel = (target, recipientCount) => {
   return TARGET_META[target]?.label || TARGET_META.all.label;
 };
 
-const TargetTypeTag = ({ target, recipientCount }) => {
+const TargetTypeTag = ({ target, recipientCount, condition }) => {
   const meta = TARGET_META[target] || TARGET_META.all;
   return (
     <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold ${meta.className}`}>
       <meta.icon className="w-3 h-3" /> {getTargetTypeLabel(target, recipientCount)}
+      {condition && <span className="font-medium opacity-80">· {announceConditionLabel(condition)}</span>}
     </span>
   );
 };
 
-const TargetBadge = ({ target, recipientCount, recipients }) => {
+const TargetBadge = ({ target, recipientCount, recipients, condition }) => {
   if (target === 'users' && recipientCount === 1 && recipients?.[0]?.email) {
     return (
       <span title={recipients[0].name} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
@@ -66,7 +68,7 @@ const TargetBadge = ({ target, recipientCount, recipients }) => {
     );
   }
 
-  return <TargetTypeTag target={target} recipientCount={recipientCount} />;
+  return <TargetTypeTag target={target} recipientCount={recipientCount} condition={condition} />;
 };
 
 const ViewButton = ({ onClick, className = '' }) => (
@@ -100,7 +102,7 @@ const AnnouncementViewModal = ({ announcement, onClose }) => {
         <p className="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap break-words">{a.description}</p>
 
         <div className="flex flex-wrap items-center gap-2">
-          <TargetTypeTag target={a.target} recipientCount={a.recipientCount} />
+          <TargetTypeTag target={a.target} recipientCount={a.recipientCount} condition={a.condition} />
           <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1"><Send className="w-3 h-3" /> {a.recipientCount} recipients</span>
         </div>
 
@@ -176,12 +178,12 @@ const AnnouncementsPage = () => {
     {
       key: 'sentType',
       header: 'Sent Type',
-      render: (_, a) => <TargetTypeTag target={a.target} recipientCount={a.recipientCount} />
+      render: (_, a) => <TargetTypeTag target={a.target} recipientCount={a.recipientCount} condition={a.condition} />
     },
     {
       key: 'target',
       header: 'Sent To',
-      render: (_, a) => <TargetBadge target={a.target} recipientCount={a.recipientCount} recipients={a.recipients} />
+      render: (_, a) => <TargetBadge target={a.target} recipientCount={a.recipientCount} recipients={a.recipients} condition={a.condition} />
     },
     {
       key: 'recipientCount',
@@ -276,13 +278,13 @@ const AnnouncementsPage = () => {
           <Megaphone className="w-5 h-5" />
           <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
         </div>
-        <TargetTypeTag target={a.target} recipientCount={a.recipientCount} />
+        <TargetTypeTag target={a.target} recipientCount={a.recipientCount} condition={a.condition} />
       </div>
       <div>
         <h3 className="font-bold text-slate-900 dark:text-white line-clamp-1">{a.title}</h3>
         <p className="text-xs text-slate-400 line-clamp-2 mt-0.5">{a.description}</p>
       </div>
-      {a.target === 'users' && <TargetBadge target={a.target} recipientCount={a.recipientCount} recipients={a.recipients} />}
+      {a.target === 'users' && <TargetBadge target={a.target} recipientCount={a.recipientCount} recipients={a.recipients} condition={a.condition} />}
       <div className="flex items-center justify-between text-xs text-slate-400 mt-auto pt-2 border-t border-slate-100 dark:border-slate-700">
         <span className="flex items-center gap-1"><Send className="w-3 h-3" /> {a.recipientCount} sent</span>
         <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {formatDateTime(a.createdAt)}</span>
@@ -302,8 +304,8 @@ const AnnouncementsPage = () => {
         <p className="text-xs text-slate-400 truncate">{a.description}</p>
       </div>
       <span className="text-xs text-slate-400 shrink-0 hidden sm:flex items-center gap-1"><Calendar className="w-3 h-3" /> {formatDateTime(a.createdAt)}</span>
-      {a.target === 'users' && <div className="hidden md:block shrink-0"><TargetTypeTag target={a.target} recipientCount={a.recipientCount} /></div>}
-      <TargetBadge target={a.target} recipientCount={a.recipientCount} recipients={a.recipients} />
+      {a.target === 'users' && <div className="hidden md:block shrink-0"><TargetTypeTag target={a.target} recipientCount={a.recipientCount} condition={a.condition} /></div>}
+      <TargetBadge target={a.target} recipientCount={a.recipientCount} recipients={a.recipients} condition={a.condition} />
       <ViewButton onClick={() => setViewing(a)} className="shrink-0" />
     </section>
   );
