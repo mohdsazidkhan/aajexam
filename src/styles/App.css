@@ -203,3 +203,11 @@
     padding: 1rem 0rem;
   }
 }
+
+/* Hero mini-quiz: soft invitation pulse on the options until the visitor plays */
+@keyframes heroQuizPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } 50% { box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.28); } }
+.hero-quiz-pulse { animation: heroQuizPulse 2.2s ease-in-out infinite; }
+.hero-quiz-pulse:nth-child(2) { animation-delay: 0.25s; }
+.hero-quiz-pulse:nth-child(3) { animation-delay: 0.5s; }
+.hero-quiz-pulse:nth-child(4) { animation-delay: 0.75s; }
+@media (prefers-reduced-motion: reduce) { .hero-quiz-pulse { animation: none; } }

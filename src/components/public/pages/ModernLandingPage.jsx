@@ -25,6 +25,8 @@ import {
    Lightbulb,
    Award,
    Check,
+   X,
+   RotateCcw,
 } from 'lucide-react';
 import { m as motion } from 'framer-motion';
 import MobileAppWrapper from "../../common/MobileAppWrapper";
@@ -32,9 +34,11 @@ import API from '../../../lib/api';
 import Button from '../../common/ui/Button';
 import Card from '../../common/ui/Card';
 import dynamic from 'next/dynamic';
+
+// Google's sign-in script only loads once the visitor reaches the end of the hero quiz.
+const HeroGoogleSignup = dynamic(() => import('../HeroGoogleSignup'), { ssr: false });
 import useTranslate from '../../../hooks/useTranslate';
 
-const SampleQuiz = dynamic(() => import('../SampleQuiz'), { ssr: false });
 
 const POPULAR_PYQ_EXAMS = [
    { slug: 'ssc-cgl', name: 'SSC CGL' },
@@ -62,6 +66,294 @@ const POPULAR_PYQ_EXAMS = [
    { slug: 'rssb-computer-instructor', name: 'RSSB Computer Instructor' },
    { slug: 'esic-udc-prelims', name: 'ESIC UDC' },
 ];
+
+// Hero mini-quiz: a playable 5-question round so a visitor feels the product before signing up.
+// Questions are real: one random question from each of five random published quizzes, fetched on every
+// load (see /api/public/sample-quiz?quiz=1). The answer key never reaches the browser up front: the
+// picked option is checked server-side. If the request fails the card falls back to numeric sums.
+// Every label reuses an existing translation key. Radii are inline because styles/index.css flattens
+// every rounded-* class.
+const HERO_FALLBACK = [
+   { q: '12 × 8 = ?', opts: ['86', '92', '96', '98'], a: 2 },
+   { q: '25% of 200 = ?', opts: ['50', '40', '25', '75'], a: 0 },
+   { q: '15 + 27 ÷ 3 = ?', opts: ['14', '24', '32', '42'], a: 1 },
+   { q: '7² − 9 = ?', opts: ['58', '49', '40', '42'], a: 2 },
+   { q: '√144 = ?', opts: ['10', '14', '12', '16'], a: 2 },
+];
+const HERO_COUNT = 5;
+const HERO_SECS = 20;
+const HERO_NEXT_MS = 1200;
+const HERO_RING = 2 * Math.PI * 15;
+
+const heroCheck = async (id, choice) => {
+   const res = await fetch('/api/public/sample-quiz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, choice, hero: true }),
+   });
+   const d = await res.json();
+   if (!d.success) throw new Error('check failed');
+   return d;
+};
+
+const HeroQuizCard = () => {
+   const { translate, translateData } = useTranslate();
+   const [items, setItems] = useState(null); // null while the round is loading
+   const [loadKey, setLoadKey] = useState(0);
+   const [idx, setIdx] = useState(0);
+   const [chosen, setChosen] = useState(null); // option index, -1 = ran out of time
+   const [result, setResult] = useState(null); // null until the answer is known, then true / false
+   const [rightIdx, setRightIdx] = useState(null);
+   const [secs, setSecs] = useState(HERO_SECS);
+   const [started, setStarted] = useState(false); // the clock only runs once the visitor has played
+   const [marks, setMarks] = useState([]);
+   const [streak, setStreak] = useState(0);
+   const [points, setPoints] = useState(0);
+   const [gain, setGain] = useState(0);
+
+   // fresh random round on every page load and every "Try Again"
+   useEffect(() => {
+      let alive = true;
+      setItems(null);
+      (async () => {
+         let rows = [];
+         try {
+            const res = await fetch('/api/public/sample-quiz?quiz=1', { cache: 'no-store' });
+            const d = await res.json();
+            if (d.success) rows = d.data.map((r) => ({ id: r.id, q: r.text, opts: r.options, title: r.quiz?.title || '' }));
+         } catch { /* keep the fallback below */ }
+         if (alive) setItems([...rows, ...HERO_FALLBACK].slice(0, HERO_COUNT));
+      })();
+      return () => { alive = false; };
+   }, [loadKey]);
+
+   const total = HERO_COUNT;
+   const done = idx >= total;
+   const q = items ? items[Math.min(idx, total - 1)] : null;
+   const local = q && q.a !== undefined; // fallback sums carry their own answer
+   const correctAt = local ? q.a : rightIdx;
+   const locked = chosen !== null;
+   const score = marks.filter(Boolean).length;
+
+   const settle = (ok) => {
+      setResult(ok);
+      setMarks((m) => [...m, ok]);
+      if (ok) {
+         const g = 10 + streak * 5;
+         setGain(g);
+         setPoints((p) => p + g);
+         setStreak((s) => s + 1);
+      } else {
+         setGain(0);
+         setStreak(0);
+      }
+   };
+
+   const answer = async (i) => {
+      if (locked || done || !q) return;
+      setStarted(true);
+      setChosen(i);
+      if (local) { settle(i === q.a); return; }
+      try {
+         const d = await heroCheck(q.id, i);
+         setRightIdx(d.correctIndex);
+         settle(d.correct);
+      } catch {
+         settle(false);
+      }
+   };
+
+   // countdown (paused until the first answer, so an idle visitor never sees the round end by itself)
+   useEffect(() => {
+      if (!items || !started || done || locked) return undefined;
+      const t = setInterval(() => setSecs((s) => Math.max(0, s - 1)), 1000);
+      return () => clearInterval(t);
+   }, [items, started, done, locked]);
+
+   useEffect(() => {
+      if (!items || !started || done || locked || secs > 0) return;
+      setChosen(-1);
+      if (!local) heroCheck(q.id, 0).then((d) => setRightIdx(d.correctIndex)).catch(() => {});
+      settle(false);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [secs, items, started, done, locked]);
+
+   // move on once the answer has been shown
+   useEffect(() => {
+      if (result === null) return undefined;
+      const t = setTimeout(() => {
+         setIdx((i) => i + 1);
+         setChosen(null);
+         setResult(null);
+         setRightIdx(null);
+         setSecs(HERO_SECS);
+      }, HERO_NEXT_MS);
+      return () => clearTimeout(t);
+   }, [result]);
+
+   const restart = () => {
+      setIdx(0); setChosen(null); setResult(null); setRightIdx(null); setSecs(HERO_SECS); setStarted(false);
+      setMarks([]); setStreak(0); setPoints(0); setGain(0);
+      setLoadKey((k) => k + 1);
+   };
+
+   const low = secs <= 5;
+   const accuracy = Math.round((score / total) * 100);
+   const bestStreak = marks.reduce((acc, ok) => { const run = ok ? acc.run + 1 : 0; return { run, best: Math.max(acc.best, run) }; }, { run: 0, best: 0 }).best;
+   const qLen = q ? q.q.length : 0;
+   const qSize = qLen <= 16 ? 'text-3xl xl:text-4xl' : qLen <= 70 ? 'text-base xl:text-xl' : 'text-sm xl:text-lg';
+
+   return (
+      <>
+         <div className="relative flex items-center justify-between gap-3 px-5 py-3.5 bg-black/25 border-b border-white/15">
+            <div className="flex items-center gap-3 min-w-0">
+               <div className="relative w-10 h-10 shrink-0">
+                  <svg viewBox="0 0 36 36" className="w-10 h-10 -rotate-90" aria-hidden="true">
+                     <circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="3" />
+                     <circle
+                        cx="18" cy="18" r="15" fill="none" strokeWidth="3" strokeLinecap="round"
+                        className={low ? 'stroke-red-300' : 'stroke-primary-300'}
+                        style={{ strokeDasharray: HERO_RING, strokeDashoffset: HERO_RING * (1 - (done ? 0 : secs / HERO_SECS)), transition: 'stroke-dashoffset 1s linear' }}
+                     />
+                  </svg>
+                  <span className="absolute inset-0 flex items-center justify-center text-sm font-black tabular-nums">{done ? '✓' : secs}</span>
+               </div>
+               <span className="text-xs xl:text-sm font-black uppercase tracking-[0.2em] truncate">{translate('Question')} {Math.min(idx + 1, total)}/{total}</span>
+            </div>
+            <div className="flex items-center gap-3 shrink-0">
+               <span className="flex items-center gap-1.5 text-base font-black tabular-nums">
+                  <Flame className={`w-5 h-5 ${(done ? bestStreak : streak) > 0 ? 'text-orange-300' : 'text-white/50'}`} /> {done ? bestStreak : streak}
+               </span>
+               <span className="flex items-center gap-1.5 text-base font-black tabular-nums">
+                  <Trophy className="w-5 h-5 text-primary-300" /> {points}
+               </span>
+            </div>
+         </div>
+
+         <div className="relative flex h-2 gap-1.5 px-5 pt-3">
+            {Array.from({ length: total }, (_, i) => {
+               const m = marks[i];
+               const cls = m === true ? 'bg-primary-300' : m === false ? 'bg-red-400' : i === idx && !done ? 'bg-white' : 'bg-white/20';
+               return <span key={i} className={`flex-1 h-1 ${cls}`} style={{ borderRadius: 4 }} />;
+            })}
+         </div>
+
+         {done ? (
+            <div className="relative p-5 xl:p-6 pt-6 space-y-5 text-center">
+               <div>
+                  <p className="text-5xl xl:text-6xl font-black font-outfit leading-none">{score}<span className="text-white/60">/{total}</span></p>
+                  <p className="mt-2 text-[11px] font-black uppercase tracking-[0.25em] text-white/80">{translate('Correct')}</p>
+               </div>
+               <div className="grid grid-cols-3 gap-2">
+                  {[
+                     { l: translate('Accuracy'), v: `${accuracy}%`, I: Target },
+                     { l: translate('Score'), v: points, I: Trophy },
+                     { l: translate('Streak'), v: bestStreak, I: Flame },
+                  ].map(({ l, v, I }) => (
+                     <div key={l} className="bg-white/10 ring-1 ring-white/20 px-2 py-2.5" style={{ borderRadius: 10 }}>
+                        <I className="w-4 h-4 mx-auto mb-1 text-primary-300" />
+                        <p className="text-lg font-black font-outfit leading-none tabular-nums">{v}</p>
+                        <p className="mt-1 text-[10px] font-black uppercase tracking-[0.12em] text-white/80">{l}</p>
+                     </div>
+                  ))}
+               </div>
+               <div className="flex items-center justify-center gap-2 pt-1">
+                  <button type="button" onClick={restart} className="inline-flex items-center gap-1.5 px-4 py-2.5 text-[11px] font-black uppercase tracking-widest text-white ring-1 ring-white/40 hover:bg-white/10 transition-colors" style={{ borderRadius: 8 }}>
+                     <RotateCcw className="w-3.5 h-3.5" /> {translate('Try Again')}
+                  </button>
+                  <HeroGoogleSignup />
+               </div>
+            </div>
+         ) : !q ? (
+            <div className="relative p-4 xl:p-5 space-y-3.5 animate-pulse" aria-busy="true">
+               <div className="h-10" />
+               <div className="h-[116px] bg-white/10 ring-1 ring-white/20" style={{ borderRadius: 12 }} />
+               <div className="grid grid-cols-2 gap-2">
+                  {[0, 1, 2, 3].map((i) => <div key={i} className="h-[60px] bg-white/10 ring-1 ring-white/20" style={{ borderRadius: 10 }} />)}
+               </div>
+               <div className="h-[40px] border-t border-dashed border-white/30" />
+            </div>
+         ) : (
+            <div className="relative p-4 xl:p-5 space-y-3.5">
+               <p className="min-h-[2.5rem] text-xs font-black uppercase tracking-[0.1em] leading-snug text-primary-200">
+                  {q.title ? translateData(q.title) : ''}
+               </p>
+               <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="flex items-center justify-center min-h-[116px] bg-white/10 ring-1 ring-white/20 px-4 py-4 text-center"
+                  style={{ borderRadius: 12 }}
+               >
+                  <p className={`${qSize} font-black font-outfit tracking-tight leading-snug`}>{q.q}</p>
+               </motion.div>
+
+               <div className="relative grid grid-cols-2 gap-3">
+                  {q.opts.map((val, i) => {
+                     const known = result !== null;
+                     const isRight = known && i === correctAt;
+                     const isWrong = known && result === false && chosen === i;
+                     const pending = locked && !known && chosen === i;
+                     const dim = known && !isRight && !isWrong;
+                     return (
+                        <motion.button
+                           key={`${idx}-${i}`}
+                           type="button"
+                           disabled={locked}
+                           onClick={() => answer(i)}
+                           animate={isWrong ? { x: [0, -7, 7, -5, 5, 0] } : { x: 0 }}
+                           transition={{ duration: 0.4 }}
+                           whileTap={locked ? undefined : { scale: 0.97 }}
+                           className={`relative flex items-center gap-2.5 px-3 py-2.5 min-h-[60px] text-left ring-1 transition-colors duration-200 ${isRight ? 'bg-white text-primary-800 ring-white shadow-lg' : isWrong ? 'bg-red-500 text-white ring-red-300' : pending ? 'bg-white/25 text-white ring-white' : dim ? 'bg-white/5 text-white/60 ring-white/15' : 'bg-white/10 text-white ring-white/30 hover:bg-white/20 hover:ring-white/60 cursor-pointer'} ${!started && !locked ? 'hero-quiz-pulse' : ''}`}
+                           style={{ borderRadius: 10 }}
+                        >
+                           <span className={`w-7 h-7 shrink-0 flex items-center justify-center text-xs font-black ${isRight ? 'bg-primary-600 text-white' : isWrong ? 'bg-white text-red-600' : 'bg-primary-300 text-[#000]'}`} style={{ borderRadius: 6 }}>
+                              {String.fromCharCode(65 + i)}
+                           </span>
+                           <span className="min-w-0 flex-1 text-sm xl:text-base font-black font-outfit leading-tight line-clamp-3 break-words">{val}</span>
+                           {isRight && <Check className="w-4 h-4 shrink-0 text-primary-700" strokeWidth={4} />}
+                           {isWrong && <X className="w-4 h-4 shrink-0" strokeWidth={4} />}
+                           {isRight && chosen === i && [0, 1, 2, 3, 4, 5, 6, 7].map((p) => (
+                              <motion.span
+                                 key={p}
+                                 aria-hidden="true"
+                                 initial={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                                 animate={{ opacity: 0, x: Math.cos((p / 8) * Math.PI * 2) * 46, y: Math.sin((p / 8) * Math.PI * 2) * 30, scale: 0.4 }}
+                                 transition={{ duration: 0.7, ease: 'easeOut' }}
+                                 className="absolute right-6 top-1/2 w-1.5 h-1.5 bg-primary-400 pointer-events-none"
+                                 style={{ borderRadius: '50%' }}
+                              />
+                           ))}
+                        </motion.button>
+                     );
+                  })}
+               </div>
+
+               <div className="relative flex items-center justify-between min-h-[40px] pt-3 border-t border-dashed border-white/30" aria-live="polite">
+                  {result !== null ? (
+                     <motion.span
+                        key={`fb-${idx}`}
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex items-center gap-2 text-base font-black uppercase tracking-widest"
+                     >
+                        {result
+                           ? <><Check className="w-4 h-4 text-primary-300" strokeWidth={4} /> {translate('Correct')} <span className="text-primary-300 tabular-nums">+{gain}</span></>
+                           : <><X className="w-4 h-4 text-red-300" strokeWidth={4} /> {translate('Wrong')}</>}
+                     </motion.span>
+                  ) : (
+                     <span className="text-[11px] font-black uppercase tracking-[0.2em] text-white/70">{translate('Question')} {idx + 1}</span>
+                  )}
+                  <span className="flex items-center gap-1 text-[11px] font-black uppercase tracking-widest text-white/80">
+                     <Zap className="w-3.5 h-3.5 text-primary-300" /> {translate('Correct')} {score}/{total}
+                  </span>
+               </div>
+            </div>
+         )}
+      </>
+   );
+};
 
 const ModernLandingPage = () => {
    const { translate, rich } = useTranslate();
@@ -154,7 +446,7 @@ const ModernLandingPage = () => {
             </div>
 
             <div className="container mx-auto px-3 xl:px-6 relative z-10 w-full">
-               <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_0.9fr] items-center gap-6 xl:gap-10 py-5 xl:py-10">
+               <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] items-center gap-6 xl:gap-10 py-5 xl:py-10">
                   {/* Copy */}
                   <div className="space-y-5 xl:space-y-7 text-center xl:text-left">
                      <div className="inline-flex uppercase items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-[10px] xl:text-xs font-black tracking-[0.15em] shadow-[0_4px_20px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
@@ -213,13 +505,13 @@ const ModernLandingPage = () => {
                      </div>
                   </div>
 
-                  {/* Student pass: decorative ticket with live counts */}
-                  <div className="relative mx-auto w-full max-w-md">
+                  {/* Playable mini-quiz: visitors answer five quick questions right in the hero */}
+                  <div className="relative mx-auto w-full max-w-lg">
                   {[
                      { Icon: GraduationCap, cls: '-top-5 -left-5 xl:-left-8', d: 0 },
-                     { Icon: Lightbulb, cls: '-top-4 right-6', d: 0.6 },
-                     { Icon: Pencil, cls: 'top-1/2 -right-4 xl:-right-7', d: 1.2 },
-                     { Icon: Award, cls: '-bottom-5 right-10', d: 1.8 },
+                     { Icon: Lightbulb, cls: '-top-5 -right-3 xl:-right-6', d: 0.6 },
+                     { Icon: Pencil, cls: '-bottom-5 -left-5 xl:-left-8', d: 1.2 },
+                     { Icon: Award, cls: '-bottom-5 -right-3 xl:-right-6', d: 1.8 },
                   ].map(({ Icon, cls, d }) => (
                      <motion.span
                         key={cls}
@@ -232,20 +524,9 @@ const ModernLandingPage = () => {
                         <Icon className="w-5 h-5" />
                      </motion.span>
                   ))}
-                  <div aria-hidden="true" className="hidden sm:block absolute z-20 -bottom-6 -left-4 xl:-left-8 w-28 p-2.5 bg-white dark:bg-slate-800 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 rotate-[4deg]" style={{ borderRadius: 10 }}>
-                     {[1, 0, 2, 3].map((on, r) => (
-                        <div key={r} className="flex items-center justify-between py-[3px]">
-                           {[0, 1, 2, 3].map((c) => (
-                              <span key={c} className={`flex items-center justify-center w-4 h-4 border-2 ${c === on ? 'bg-primary-600 border-primary-600 text-white' : 'border-slate-300 dark:border-slate-600'}`} style={{ borderRadius: '50%' }}>
-                                 {c === on && <Check className="w-2.5 h-2.5" strokeWidth={4} />}
-                              </span>
-                           ))}
-                        </div>
-                     ))}
-                  </div>
                   <motion.div
                      initial={{ opacity: 0, y: 24, rotate: 0 }}
-                     animate={{ opacity: 1, y: 0, rotate: -2 }}
+                     animate={{ opacity: 1, y: 0, rotate: 0 }}
                      transition={{ duration: 0.5 }}
                      className="relative w-full overflow-hidden text-white shadow-2xl ring-1 ring-white/10 bg-gradient-to-br from-primary-700 via-primary-800 to-primary-950"
                      style={{ borderRadius: 16 }}
@@ -253,49 +534,7 @@ const ModernLandingPage = () => {
                      <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '16px 16px' }} />
                      <div className="pointer-events-none absolute -top-16 -right-10 w-56 h-56 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
 
-                     <div className="relative flex items-center justify-between gap-3 px-4 py-2.5 bg-black/25 border-b border-white/15">
-                        <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.25em]">
-                           <Trophy className="w-4 h-4 text-primary-300" /> AajExam · {translate('Student profile')}
-                        </span>
-                        <span className="px-2.5 py-0.5 text-[10px] font-black uppercase tracking-widest bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000]">{translate('FREE')}</span>
-                     </div>
-
-                     <div className="relative p-4 xl:p-5 space-y-4">
-                        <div className="flex items-center gap-3">
-                           <div className="w-14 h-16 bg-white/90 text-primary-700 dark:text-primary-300 flex items-center justify-center shadow-lg rotate-[-3deg]" style={{ borderRadius: 6 }}>
-                              <Users className="w-7 h-7" />
-                           </div>
-                           <div className="min-w-0">
-                              <p className="text-[9px] font-black uppercase tracking-[0.25em] text-white/60">{translate('Target exams')}</p>
-                              <p className="text-xl xl:text-2xl font-black font-outfit uppercase leading-tight">{translate('Your Dream Job')}</p>
-                              <p className="text-xs font-bold text-primary-200">{translate('Join Now For Free')}</p>
-                           </div>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-2 pt-3 border-t border-dashed border-white/30">
-                           {[
-                              { label: 'Students', val: stats.activeStudents, icon: Users },
-                              { label: 'Exams', val: stats.totalExams, icon: Target },
-                              { label: 'Quizzes', val: stats.totalQuizzes, icon: Gamepad2 },
-                              { label: 'Questions', val: stats.totalQuestions, icon: Brain },
-                           ].map((c) => (
-                              <div key={c.label} className="relative overflow-hidden bg-white/10 ring-1 ring-white/20 px-3 py-2.5" style={{ borderRadius: 10 }}>
-                                 <c.icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-white/10" />
-                                 <p className="relative text-xl font-black font-outfit leading-none text-primary-200">{c.val}</p>
-                                 <p className="relative mt-1 text-[9px] font-black uppercase tracking-[0.12em] text-white/75">{translate(c.label)}</p>
-                              </div>
-                           ))}
-                        </div>
-
-                        <div className="flex items-end justify-between gap-3 pt-3 border-t border-dashed border-white/30">
-                           <div className="flex items-stretch h-7" aria-hidden="true">
-                              {Array.from('AAJEXAM2026').flatMap((ch) => { const c = ch.charCodeAt(0); return [1 + (c % 3), 1 + ((c >> 2) % 2)]; }).map((w, i) => (
-                                 <span key={i} className={i % 2 === 0 ? 'bg-white/85' : 'bg-transparent'} style={{ width: w * 2 }} />
-                              ))}
-                           </div>
-                           <p className="text-[9px] font-mono tracking-[0.3em] text-white/60">AAJEXAM</p>
-                        </div>
-                     </div>
+                     <HeroQuizCard />
                   </motion.div>
                   </div>
                </div>
@@ -348,9 +587,6 @@ const ModernLandingPage = () => {
             </div>
          </section>
          </div>
-
-         {/* ── Try before signup ── */}
-         <SampleQuiz />
 
          {/* ── 3-Step How It Works ── */}
          <section className="px-0 py-3 xl:py-5">
