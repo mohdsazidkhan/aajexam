@@ -36,7 +36,7 @@ export async function POST(req) {
         }
 
         const finalTitle = trimmedTitle.slice(0, 200);
-        const finalDescription = trimmedDescription.slice(0, 500);
+        const finalDescription = trimmedDescription.slice(0, 5000);
 
         // Stream recipients and insert in batches so a broadcast to millions of students
         // never holds the whole user list (or one giant insertMany) in memory.

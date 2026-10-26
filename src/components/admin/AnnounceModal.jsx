@@ -153,11 +153,12 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                 <textarea
                   value={composeForm.description}
                   onChange={(e) => setComposeForm((f) => ({ ...f, description: e.target.value }))}
-                  maxLength={500}
-                  rows={4}
+                  maxLength={5000}
+                  rows={8}
                   placeholder="What do you want to tell them?"
                   className="w-full px-3 py-2.5 border-2 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600 border-slate-300"
                 />
+                <p className="mt-1 text-right text-[10px] font-bold text-slate-400 tabular-nums">{composeForm.description.length}/5000</p>
               </div>
               <button
                 type="submit"
