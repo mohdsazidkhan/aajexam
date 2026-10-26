@@ -104,8 +104,8 @@ const HowItWorks = () => {
                {steps.map((step, idx) => (
                   <motion.div
                      key={step.id}
-                     initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
-                     whileInView={{ opacity: 1, x: 0 }}
+                     initial={{ x: idx % 2 === 0 ? -50 : 50 }}
+                     whileInView={{ x: 0 }}
                      viewport={{ once: true }}
                      className={`relative flex flex-col xl:flex-row items-center gap-12 ${idx % 2 === 0 ? 'xl:flex-row' : 'xl:flex-row-reverse'}`}
                   >

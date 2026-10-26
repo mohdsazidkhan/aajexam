@@ -259,8 +259,8 @@ const DashboardPage = () => {
 
       {/* Quick Links */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ scale: 0.98 }}
+        whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
         className="relative isolate overflow-hidden p-3 xl:p-5 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl"

@@ -638,7 +638,7 @@ const ModernLandingPage = () => {
                <Trophy className="pointer-events-none absolute right-6 top-6 w-40 h-40 xl:w-56 xl:h-56 text-white/5 rotate-12" />
                <div className="relative z-10 space-y-3 xl:space-y-5">
                   <motion.h2
-                     whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
+                     whileInView={{ scale: [0.95, 1] }}
                      className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-[0.98]"
                   >
                      {translate('Your Dream Job')} <br /><span className="text-primary-300">{translate('Is Waiting.')}</span>
