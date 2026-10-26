@@ -6,6 +6,7 @@ export default function Document() {
     <Html lang="en" dir="ltr" className={`${inter.variable} ${lato.variable}`}>
       <Head>
         <meta charSet="UTF-8" />
+        <meta name="msvalidate.01" content="8BE1BD4E94313DD9D70555327CE21EAB" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
