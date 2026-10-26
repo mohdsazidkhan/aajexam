@@ -93,7 +93,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
         updateQuery({ examId: e.target.value, examIds: '', all: e.target.value ? '' : '1', page: 1 });
     };
 
-    const seoTitle = 'Previous Year Question Papers (PYQ) – Free Solved PYQ Mock Tests for SSC, RRB, IBPS, UPSC | AajExam';
+    const seoTitle = 'Previous Year Question Papers (PYQ) – SSC, RRB, IBPS, UPSC | AajExam';
     const seoDesc = `Practise ${totalPYQs} verified previous year question papers (PYQ) for SSC CGL, CHSL, GD, MTS, RRB NTPC, IBPS PO/Clerk, SBI Clerk and UPSC — year-wise, shift-wise, with detailed solutions on AajExam.`.slice(0, 160);
 
     const breadcrumbItems = [
