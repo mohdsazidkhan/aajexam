@@ -8,10 +8,13 @@ import {
   X,
   Settings,
   LayoutDashboard,
-  ShieldCheck,
   Filter,
   UserCircle,
   Bell,
+  ChevronRight,
+  Flame,
+  Activity,
+  Megaphone,
 } from 'lucide-react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,12 +35,27 @@ const AdminNavbar = () => {
 
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [notifCount, setNotifCount] = useState(0);
+  const [fetchedUsername, setFetchedUsername] = useState('');
+  const username = user?.username || fetchedUsername;
 
   useEffect(() => {
     if (isMounted) {
       dispatch(initializeDarkMode());
     }
   }, [isMounted, dispatch]);
+
+  // Sessions saved before login returned the username have none in localStorage: fetch it once for the menu header.
+  useEffect(() => {
+    if (!isMounted || !user || user.username) return;
+    let cancelled = false;
+    API.getProfile()
+      .then((res) => {
+        const u = res?.user || res?.data || res;
+        if (!cancelled && u?.username) setFetchedUsername(u.username);
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [isMounted, user]);
 
   useEffect(() => {
     if (!isMounted) return;
@@ -175,39 +193,59 @@ const AdminNavbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               role="menu"
-              className="fixed top-12 xl:top-16 right-3 xl:right-8 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-2xl z-[170]"
+              className="fixed top-12 xl:top-16 right-3 xl:right-8 w-72 max-w-[calc(100vw-1.5rem)] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl z-[170] overflow-hidden"
+              style={{ borderRadius: 20 }}
             >
-              {/* User info */}
-              <div className="px-3 py-2.5 mb-1 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-800/50">
-                <p className="text-[14px] font-bold text-slate-900 dark:text-white truncate">{user?.name || 'Admin'}</p>
-                <p className="text-[12px] text-slate-400 truncate">{user?.email || ''}</p>
+              {/* Identity header: avatar, name, email, role (same as the student menu) */}
+              <div className="relative overflow-hidden px-4 pt-4 pb-3 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-b border-slate-200 dark:border-white/10">
+                <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '14px 14px' }} />
+                <div className="pointer-events-none absolute -top-12 -right-10 w-36 h-36 bg-primary-300/25 dark:bg-primary-500/20 blur-2xl" style={{ borderRadius: '50%' }} />
+                <span className="absolute top-3 right-3 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000]" style={{ borderRadius: 999 }}>
+                  Admin
+                </span>
+                <div className="relative flex items-center gap-3">
+                  <div className="shrink-0 p-[3px] bg-gradient-to-tr from-primary-300 via-primary-500 to-primary-700 shadow-md" style={{ borderRadius: 16 }}>
+                    <div className="w-12 h-12 flex items-center justify-center bg-primary-600 text-white text-lg font-black uppercase border-2 border-white dark:border-slate-900" style={{ borderRadius: 13 }}>
+                      {user?.name?.charAt(0) || 'A'}
+                    </div>
+                  </div>
+                  <div className="min-w-0 flex-1 pr-12">
+                    <p className="text-base font-black text-slate-900 dark:text-white leading-tight break-words">{user?.name || 'Admin'}</p>
+                    {username && <p className="text-xs font-bold text-primary-700 dark:text-primary-300 break-all">@{username}</p>}
+                    <p className="mt-0.5 text-[11px] font-medium text-slate-500 dark:text-white/60 break-all">{user?.email || ''}</p>
+                  </div>
+                </div>
               </div>
 
-              {/* Admin badge — mobile */}
-              <div className="xl:hidden flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl bg-primary-50 dark:bg-primary-900/10 mb-1">
-                <ShieldCheck className="w-4 h-4 text-primary-600 dark:text-primary-300" />
-                <span className="text-sm font-bold text-primary-600 dark:text-primary-400">Admin Panel</span>
+              <div className="p-2">
+                {[
+                  { label: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard' },
+                  { label: 'Profile', icon: UserCircle, path: '/admin/profile' },
+                  { label: 'Most Active', icon: Flame, path: '/admin/most-active-users' },
+                  { label: 'Traffic', icon: Activity, path: '/admin/traffic' },
+                  { label: 'Announcements', icon: Megaphone, path: '/admin/announcements' },
+                ].map(item => (
+                  <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
+                    <button className="group w-full flex items-center gap-3 px-2 py-2 text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-primary-500/10 transition-colors" style={{ borderRadius: 12 }}>
+                      <span className="w-8 h-8 shrink-0 flex items-center justify-center bg-primary-500/10 text-primary-700 dark:text-primary-300 group-hover:bg-primary-600 group-hover:text-white transition-colors" style={{ borderRadius: 10 }}>
+                        <item.icon className="w-4 h-4" />
+                      </span>
+                      <span className="flex-1 text-left truncate">{item.label}</span>
+                      <ChevronRight className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all" />
+                    </button>
+                  </Link>
+                ))}
+
+                <div className="my-2 border-t border-dashed border-slate-200 dark:border-slate-800 mx-1" />
+
+                <button
+                  onClick={handleLogout}
+                  className="w-full flex items-center justify-center gap-2.5 px-3 py-2.5 text-sm font-black uppercase tracking-wider bg-red-500 hover:bg-red-600 text-white transition-all"
+                  style={{ borderRadius: 12 }}
+                >
+                  <LogOut className="w-4 h-4" /> Log out
+                </button>
               </div>
-
-              {[
-                { label: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard' },
-                { label: 'Profile', icon: UserCircle, path: '/admin/profile' },
-              ].map(item => (
-                <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
-                  <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
-                    <item.icon className="w-4 h-4 text-slate-400" /> {item.label}
-                  </button>
-                </Link>
-              ))}
-
-              <div className="my-1 border-t border-slate-100 dark:border-slate-800 mx-2" />
-
-              <button
-                onClick={handleLogout}
-                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold bg-red-500 hover:bg-red-600 text-white transition-all"
-              >
-                <LogOut className="w-4 h-4" /> Log out
-              </button>
             </motion.div>
           </>
         )}
