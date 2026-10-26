@@ -53,7 +53,7 @@ const noteFilters = [
   ...Object.entries(noteTypeConfig).map(([id, c]) => ({ id, label: c.label, icon: c.icon }))
 ];
 
-const NotesPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
+const NotesPage = ({ initialItems = [], initialTotalPages = 1, initialTotal } = {}) => {
   const { translate } = useTranslate();
   const [notes, setNotes] = useState(initialItems);
   const [loading, setLoading] = useState(initialItems.length === 0);
@@ -62,6 +62,8 @@ const NotesPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const [totalPages, setTotalPages] = useState(initialTotalPages);
+  // notes matching the current filter across all pages (not just this page)
+  const [total, setTotal] = useState(initialTotal ?? initialItems.length);
   const router = useRouter();
   const targetVersion = useTargetExamsVersion();
 
@@ -75,7 +77,7 @@ const NotesPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
         const { examIds } = API.withTargetExams({});
         if (examIds) params.set('examIds', examIds);
         const res = await API.request(`/api/notes?${params}`);
-        if (res?.success) { setNotes(res.data || []); setTotalPages(res.pagination?.totalPages || 1); }
+        if (res?.success) { setNotes(res.data || []); setTotalPages(res.pagination?.totalPages || 1); setTotal(res.pagination?.total ?? (res.data || []).length); }
       } catch (e) { } finally { setLoading(false); }
     };
     fetchData();
@@ -97,7 +99,7 @@ const NotesPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
         icon={StickyNote}
         eyebrow={translate('Notes')}
         title={translate('Notes')}
-        subtitle={translate('{count} Notes Available', { count: notes.length })}
+        subtitle={translate('{count} Notes Available', { count: total })}
         center={
           <div className="w-full">
             <div className="relative">
@@ -211,10 +213,10 @@ export async function getServerSideProps({ res }) {
       StudyNote.countDocuments(query),
     ]);
     if (res) res.setHeader('Cache-Control', 'public, s-maxage=600, stale-while-revalidate=3600');
-    return { props: { initialItems: JSON.parse(JSON.stringify(notes)), initialTotalPages: Math.ceil(total / PUBLIC_DEFAULT_PAGE_SIZE) || 1 } };
+    return { props: { initialItems: JSON.parse(JSON.stringify(notes)), initialTotalPages: Math.ceil(total / PUBLIC_DEFAULT_PAGE_SIZE) || 1, initialTotal: total } };
   } catch (e) {
     console.error('notes hub ssr error', e);
-    return { props: { initialItems: [], initialTotalPages: 1 } };
+    return { props: { initialItems: [], initialTotalPages: 1, initialTotal: 0 } };
   }
 }
 

@@ -60,7 +60,7 @@ const diffChip = (d) => {
 };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
-const QuizListPage = ({ initialQuizzes = [] } = {}) => {
+const QuizListPage = ({ initialQuizzes = [], initialTotal } = {}) => {
   const { translate, translateData } = useTranslate();
   const router = useRouter();
   const [quizzes, setQuizzes] = useState(initialQuizzes);
@@ -70,7 +70,7 @@ const QuizListPage = ({ initialQuizzes = [] } = {}) => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const [totalPages, setTotalPages] = useState(1);
-  const [totalCount, setTotalCount] = useState(0);
+  const [totalCount, setTotalCount] = useState(initialTotal ?? initialQuizzes.length);
   const targetVersion = useTargetExamsVersion();
 
   const [debouncedSearch, setDebouncedSearch] = useState('');

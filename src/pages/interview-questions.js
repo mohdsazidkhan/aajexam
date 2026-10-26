@@ -47,6 +47,7 @@ const typeConfig = {
 // Clicking a card navigates straight to that category's own detail page
 // (/interview-questions/category/[slug]) instead of expanding inline.
 const CategoryCard = ({ category, index, typeLabel }) => {
+  const { translate } = useTranslate();
   return (
     <Link href={`/${category.slug}-interview-questions`} className="block">
     <Card as="section" padded={false} hoverable
@@ -58,11 +59,18 @@ const CategoryCard = ({ category, index, typeLabel }) => {
           </div>
           <div className="min-w-0 text-left">
             <h3 className="text-xs sm:text-sm font-black text-content-primary truncate">{category.name}</h3>
-            {typeLabel && (
-              <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[9px] font-black uppercase text-content-muted">
-                {typeLabel}
-              </span>
-            )}
+            <div className="mt-1 flex items-center gap-1.5 flex-wrap">
+              {typeLabel && (
+                <span className="inline-block px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[9px] font-black uppercase text-content-muted">
+                  {typeLabel}
+                </span>
+              )}
+              {category.questionCount !== undefined && (
+                <span className="inline-block px-2 py-0.5 rounded-full bg-primary-50 dark:bg-primary-900/30 text-[9px] font-black uppercase text-primary-700 dark:text-primary-300">
+                  {translate('{count} Questions', { count: category.questionCount })}
+                </span>
+              )}
+            </div>
           </div>
         </div>
         <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-content-muted shrink-0" />
@@ -72,13 +80,13 @@ const CategoryCard = ({ category, index, typeLabel }) => {
   );
 };
 
-const InterviewQuestionsPage = ({ initialCategories = [] } = {}) => {
+const InterviewQuestionsPage = ({ initialCategories = [], initialTotal = 0 } = {}) => {
   const { translate } = useTranslate();
   const [type, setType] = useState('all');
   const [language, setLanguage] = useState('en');
   const [categories, setCategories] = useState(initialCategories);
   const [loadingCategories, setLoadingCategories] = useState(initialCategories.length === 0);
-  const [totalQuestions, setTotalQuestions] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(initialTotal);
   const [search, setSearch] = useState('');
   const [questions, setQuestions] = useState([]);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
@@ -281,15 +289,21 @@ export async function getServerSideProps({ res }) {
   try {
     const dbConnect = (await import('../lib/db')).default;
     const InterviewCategory = (await import('../models/InterviewCategory')).default;
+    const InterviewQuestion = (await import('../models/InterviewQuestion')).default;
+    const { withQuestionCounts } = await import('../lib/interviewCounts');
     await dbConnect();
-    const categories = await InterviewCategory.find({ isActive: true })
-      .select('name slug type order')
-      .sort({ order: 1, name: 1 })
-      .lean();
+    const [categories, initialTotal] = await Promise.all([
+      InterviewCategory.find({ isActive: true })
+        .select('name slug type order')
+        .sort({ order: 1, name: 1 })
+        .lean()
+        .then(withQuestionCounts),
+      InterviewQuestion.countDocuments({ status: 'published' }),
+    ]);
     if (res) res.setHeader('Cache-Control', 'public, s-maxage=600, stale-while-revalidate=3600');
-    return { props: { initialCategories: JSON.parse(JSON.stringify(categories)) } };
+    return { props: { initialCategories: JSON.parse(JSON.stringify(categories)), initialTotal } };
   } catch (e) {
     console.error('interview questions hub ssr error', e);
-    return { props: { initialCategories: [] } };
+    return { props: { initialCategories: [], initialTotal: 0 } };
   }
 }

@@ -167,7 +167,7 @@ const TopicListPage = ({ initialTopics = [] } = {}) => {
                     <BrainCircuit className="w-3 h-3" />
                     {translate('{count} Quizzes', { count: topic.quizCount || 0 })}
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
+                  <div className={`flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50 ${topic.questionCount === undefined ? 'hidden' : ''}`}>
                     <HelpCircle className="w-3 h-3" />
                     {topic.questionCount || 0} Qs
                   </div>

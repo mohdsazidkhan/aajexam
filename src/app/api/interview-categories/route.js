@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import InterviewCategory from '@/models/InterviewCategory';
+import { withQuestionCounts } from '@/lib/interviewCounts';
 
 // GET - List interview categories (public)
 export async function GET(req) {
@@ -17,7 +18,7 @@ export async function GET(req) {
             .sort({ order: 1, name: 1 })
             .lean();
 
-        return NextResponse.json({ success: true, data: categories });
+        return NextResponse.json({ success: true, data: await withQuestionCounts(categories) });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }

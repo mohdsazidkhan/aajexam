@@ -12,18 +12,21 @@ export async function buildQuizzesIndex(examIds = []) {
   const scoped = examIds.length > 0;
   await dbConnect();
 
-  const [subjectDocs, topicCounts, quizDocs, seriesGroups] = await Promise.all([
+  const quizFilter = { status: 'published', ...(scoped ? { applicableExams: { $in: examIds } } : { noindexOverride: { $ne: true } }) };
+
+  const [subjectDocs, topicCounts, quizDocs, quizTotal, seriesGroups] = await Promise.all([
     Subject.find(scoped ? { exams: { $in: examIds } } : {}).select('name slug').sort({ name: 1 }).limit(300).lean(),
     Topic.aggregate([
       { $match: { ...notEmbedded, ...(scoped ? { exams: { $in: examIds.map((id) => new mongoose.Types.ObjectId(id)) } } : {}) } },
       { $group: { _id: '$subject', n: { $sum: 1 } } }
     ]),
     // The full-catalogue list skips noindex quizzes (crawler links); a logged-in user's own exams show them all.
-    Quiz.find({ status: 'published', ...(scoped ? { applicableExams: { $in: examIds } } : { noindexOverride: { $ne: true } }) })
-      .select('title slug difficulty publishedAt createdAt')
+    Quiz.find(quizFilter)
+      .select('title slug difficulty duration questions publishedAt createdAt')
       .sort({ publishedAt: -1, createdAt: -1 })
       .limit(120)
       .lean(),
+    Quiz.countDocuments(quizFilter),
     // Consolidated /practice/<exam>/<subject> question banks.
     Quiz.aggregate([
       { $match: { type: 'subject_test', status: 'published' } },
@@ -69,8 +72,11 @@ export async function buildQuizzesIndex(examIds = []) {
     latestQuizzes: quizDocs.filter((q) => q?.slug).map((q) => ({
       title: q.title || q.slug,
       slug: q.slug,
-      meta: q.difficulty || null
+      meta: q.difficulty || null,
+      duration: q.duration || 0,
+      questionCount: Array.isArray(q.questions) ? q.questions.length : 0
     })),
+    quizTotal,
     practiceGroups
   };
 }

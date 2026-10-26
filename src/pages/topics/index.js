@@ -47,7 +47,7 @@ export default function Topics(props) {
           { name: 'Topics', url: '/topics' }
         ])}
       />
-      <TopicListPage initialTopics={(props.groups || []).flatMap((g) => (g.items || []).map((i) => ({ _id: i.href, slug: String(i.href).replace('/topics/', ''), name: i.name, subject: g.heading && g.heading !== 'Other topics' ? { name: g.heading } : null })))} />
+      <TopicListPage initialTopics={(props.groups || []).flatMap((g) => (g.items || []).map((i) => ({ _id: i.href, slug: String(i.href).replace('/topics/', ''), name: i.name, quizCount: i.quizCount, subject: g.heading && g.heading !== 'Other topics' ? { name: g.heading } : null })))} />
 
       <div className="px-3 xl:px-0 pb-10">
         <LinkIndexSection

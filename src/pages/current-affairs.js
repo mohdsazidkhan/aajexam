@@ -59,7 +59,7 @@ const now = new Date();
 const CURRENT_YEAR = now.getFullYear();
 const YEAR_OPTIONS = Array.from({ length: 5 }, (_, i) => CURRENT_YEAR - i);
 
-const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
+const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1, initialTotal } = {}) => {
   const { translate } = useTranslate();
   const [affairs, setAffairs] = useState(initialItems);
   const [todayAffairs, setTodayAffairs] = useState(null);
@@ -71,6 +71,8 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) =
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const [totalPages, setTotalPages] = useState(initialTotalPages);
+  // updates matching the current month / category / search across all pages (not just this page)
+  const [total, setTotal] = useState(initialTotal ?? initialItems.length);
   const router = useRouter();
   const targetVersion = useTargetExamsVersion();
 
@@ -87,7 +89,7 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) =
           API.request(`/api/current-affairs?${params}`),
           API.request(`/api/current-affairs/today${examIds ? `?examIds=${examIds}` : ''}`)
         ]);
-        if (listRes?.success) { setAffairs(listRes.data || []); setTotalPages(listRes.pagination?.totalPages || 1); }
+        if (listRes?.success) { setAffairs(listRes.data || []); setTotalPages(listRes.pagination?.totalPages || 1); setTotal(listRes.pagination?.total ?? (listRes.data || []).length); }
         if (todayRes?.success) setTodayAffairs(todayRes.data);
       } catch (e) { } finally { setLoading(false); }
     };
@@ -116,7 +118,7 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) =
         icon={Newspaper}
         eyebrow={translate('Current Affairs')}
         title={translate('Current Affairs')}
-        subtitle={translate('{count} Updates Available', { count: affairs.length })}
+        subtitle={translate('{count} Updates Available', { count: total })}
         actions={
 <>
           {/* Search + Date */}
@@ -268,10 +270,10 @@ export async function getServerSideProps({ res }) {
       CurrentAffair.countDocuments(query),
     ]);
     if (res) res.setHeader('Cache-Control', 'public, s-maxage=600, stale-while-revalidate=3600');
-    return { props: { initialItems: JSON.parse(JSON.stringify(affairs)), initialTotalPages: Math.ceil(total / PUBLIC_DEFAULT_PAGE_SIZE) || 1 } };
+    return { props: { initialItems: JSON.parse(JSON.stringify(affairs)), initialTotalPages: Math.ceil(total / PUBLIC_DEFAULT_PAGE_SIZE) || 1, initialTotal: total } };
   } catch (e) {
     console.error('current affairs hub ssr error', e);
-    return { props: { initialItems: [], initialTotalPages: 1 } };
+    return { props: { initialItems: [], initialTotalPages: 1, initialTotal: 0 } };
   }
 }
 

@@ -52,7 +52,7 @@ export default function Quizzes(props) {
           })
         ].filter(Boolean)}
       />
-      <QuizListPage initialQuizzes={(props.latestQuizzes || []).map((q) => ({ _id: q.slug, slug: q.slug, title: q.title, difficulty: q.meta || undefined }))} />
+      <QuizListPage initialTotal={props.quizTotal} initialQuizzes={(props.latestQuizzes || []).map((q) => ({ _id: q.slug, slug: q.slug, title: q.title, difficulty: q.meta || undefined, duration: q.duration, totalQuestions: q.questionCount }))} />
 
       <div className="px-3 xl:px-0 pb-10 space-y-6">
         <LinkIndexSection
