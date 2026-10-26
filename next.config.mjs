@@ -56,6 +56,10 @@ const nextConfig = {
   // Tree-shake heavy icon/animation libraries so unused exports don't ship.
   // Cuts the "Reduce unused JavaScript" / "Legacy JavaScript" PageSpeed audits.
   experimental: {
+    // Compile server bundles and collect build traces in parallel (shorter `next build`).
+    webpackBuildWorker: true,
+    parallelServerCompiles: true,
+    parallelServerBuildTraces: true,
     optimizePackageImports: [
       'lucide-react',
       'react-icons',

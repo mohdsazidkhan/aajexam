@@ -9,12 +9,8 @@ import {
 } from '../../../../utils/schema';
 import useTranslate from '../../../../hooks/useTranslate';
 
-// A topic page needs enough real content to be worth a visit — below this,
-// getStaticPaths never generates the page at all (proper 404, per the "empty
-// page" rule), so no thin/junk topic (mislabelled metadata like "Tier-I" or
-// "CGL" that occasionally exists as a Topic doc from an old import) ever gets
-// a public URL. Any topic that clears the bar is public and indexable.
-const MIN_QUESTIONS_TO_INDEX = 10;
+// Pages are generated on first request (getStaticPaths prebuilds nothing); the sitemap only lists
+// topics with enough real content (see sitemap.xml.js).
 const QUESTIONS_ON_PAGE = 20;
 const SETS_ON_PAGE = 30;
 
@@ -268,60 +264,9 @@ async function loadTopicSeries(examSlug, subjectSlug, topicSlug) {
 }
 
 export async function getStaticPaths() {
-  try {
-    const dbConnect = (await import('../../../../lib/db')).default;
-    const Quiz = (await import('../../../../models/Quiz')).default;
-    await dbConnect();
-
-    const groups = await Quiz.aggregate([
-      { $match: { type: 'subject_test', status: 'published', topic: { $ne: null } } },
-      { $unwind: '$applicableExams' },
-      {
-        $group: {
-          _id: { exam: '$applicableExams', subject: '$subject', topic: '$topic' },
-          questions: { $sum: { $size: { $ifNull: ['$questions', []] } } },
-        },
-      },
-      { $match: { questions: { $gte: MIN_QUESTIONS_TO_INDEX } } },
-    ]);
-
-    // A topic page is only worth indexing when its subject genuinely has 2+
-    // distinct qualifying topics for that exam — a subject with just one topic
-    // bucket would make the topic page a near-duplicate of its parent subject
-    // page, which is exactly what we don't want to index.
-    const examSubjectTopicCounts = new Map();
-    groups.forEach((g) => {
-      const key = `${g._id.exam}::${g._id.subject}`;
-      examSubjectTopicCounts.set(key, (examSubjectTopicCounts.get(key) || 0) + 1);
-    });
-    const qualifyingGroups = groups.filter((g) => examSubjectTopicCounts.get(`${g._id.exam}::${g._id.subject}`) >= 2);
-
-    const Exam = (await import('../../../../models/Exam')).default;
-    const Subject = (await import('../../../../models/Subject')).default;
-    const Topic = (await import('../../../../models/Topic')).default;
-    const [exams, subjects, topics] = await Promise.all([
-      Exam.find({ _id: { $in: qualifyingGroups.map((g) => g._id.exam) } }).select('slug').lean(),
-      Subject.find({ _id: { $in: qualifyingGroups.map((g) => g._id.subject) }, isActive: { $ne: false } }).select('slug').lean(),
-      Topic.find({ _id: { $in: qualifyingGroups.map((g) => g._id.topic) }, isActive: { $ne: false } }).select('slug').lean(),
-    ]);
-    const examSlugs = new Map(exams.map((e) => [String(e._id), e.slug]));
-    const subjectSlugs = new Map(subjects.map((s) => [String(s._id), s.slug]));
-    const topicSlugs = new Map(topics.map((t) => [String(t._id), t.slug]));
-
-    const paths = qualifyingGroups
-      .map((g) => ({
-        examSlug: examSlugs.get(String(g._id.exam)),
-        subjectSlug: subjectSlugs.get(String(g._id.subject)),
-        topicSlug: topicSlugs.get(String(g._id.topic)),
-      }))
-      .filter((p) => p.examSlug && p.subjectSlug && p.topicSlug)
-      .map((params) => ({ params }));
-
-    return { paths, fallback: 'blocking' };
-  } catch (e) {
-    console.error('topic practice getStaticPaths failed:', e);
-    return { paths: [], fallback: 'blocking' };
-  }
+  // Nothing is prebuilt: each page is generated on its first request (queries take ~200ms) and then
+  // cached by ISR (`revalidate` below). Prebuilding ~100 of them made `next build` ~1 minute slower.
+  return { paths: [], fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {

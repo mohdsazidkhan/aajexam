@@ -96,7 +96,7 @@ export async function getStaticPaths() {
     const blogs = await Blog.find({ status: 'published' })
       .select('slug')
       .sort({ publishedAt: -1 })
-      .limit(200)
+      .limit(24)
       .lean();
 
     const paths = blogs.filter(b => b?.slug).map(b => ({ params: { slug: b.slug } }));

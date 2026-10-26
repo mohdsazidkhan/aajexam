@@ -261,45 +261,9 @@ async function loadSeries(examSlug, subjectSlug) {
 }
 
 export async function getStaticPaths() {
-  try {
-    const dbConnect = (await import('../../../lib/db')).default;
-    const Quiz = (await import('../../../models/Quiz')).default;
-    await dbConnect();
-
-    const groups = await Quiz.aggregate([
-      { $match: { type: 'subject_test', status: 'published' } },
-      { $unwind: '$applicableExams' },
-      {
-        $group: {
-          _id: { exam: '$applicableExams', subject: '$subject' },
-          questions: { $sum: { $size: { $ifNull: ['$questions', []] } } },
-        },
-      },
-      { $match: { questions: { $gte: MIN_QUESTIONS_TO_INDEX } } },
-    ]);
-
-    const Exam = (await import('../../../models/Exam')).default;
-    const Subject = (await import('../../../models/Subject')).default;
-    const [exams, subjects] = await Promise.all([
-      Exam.find({ _id: { $in: groups.map((g) => g._id.exam) } }).select('slug').lean(),
-      Subject.find({ _id: { $in: groups.map((g) => g._id.subject) } }).select('slug').lean(),
-    ]);
-    const examSlugs = new Map(exams.map((e) => [String(e._id), e.slug]));
-    const subjectSlugs = new Map(subjects.map((s) => [String(s._id), s.slug]));
-
-    const paths = groups
-      .map((g) => ({
-        examSlug: examSlugs.get(String(g._id.exam)),
-        subjectSlug: subjectSlugs.get(String(g._id.subject)),
-      }))
-      .filter((p) => p.examSlug && p.subjectSlug)
-      .map((params) => ({ params }));
-
-    return { paths, fallback: 'blocking' };
-  } catch (e) {
-    console.error('practice getStaticPaths failed:', e);
-    return { paths: [], fallback: 'blocking' };
-  }
+  // Nothing is prebuilt: each page is generated on its first request (queries take ~200ms) and then
+  // cached by ISR (`revalidate` below). Prebuilding ~100 of them made `next build` ~1 minute slower.
+  return { paths: [], fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {

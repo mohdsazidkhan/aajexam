@@ -40,6 +40,10 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
+// `next build` renders hundreds of pages at once from a few workers; a pool of 3 makes their queries
+// queue for ~10s each. Runtime (serverless) keeps the small pool below.
+const IS_BUILD = process.env.NEXT_PHASE === 'phase-production-build';
+
 async function dbConnect() {
   if (cached.conn) {
     return cached.conn;
@@ -51,7 +55,7 @@ async function dbConnect() {
       // Serverless: every warm instance holds its own pool, and the M0 cap is
       // 500 connections cluster-wide, so keep each pool small and let idle
       // sockets go quickly.
-      maxPoolSize: 3,
+      maxPoolSize: IS_BUILD ? 20 : 3,
       minPoolSize: 0,
       maxIdleTimeMS: 10000,
       serverSelectionTimeoutMS: 5000,
