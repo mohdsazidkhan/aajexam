@@ -46,7 +46,7 @@ const typeConfig = {
   vacancy: { icon: Users, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Vacancy'},
   date_change: { icon: AlertTriangle, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Date Change'},
 };
-const defaultType = { icon: Megaphone, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600', label: 'Other' };
+const defaultType = { icon: Megaphone, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-200 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600', label: 'Other' };
 
 const typeFilters = [
   { id: 'all', label: 'All', icon: Sparkles },

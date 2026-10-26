@@ -378,7 +378,7 @@ const ModernLandingPage = () => {
                            <div className="relative border-t-2 border-dashed border-primary-500/30 bg-primary-600/5 py-2 flex items-center justify-center">
                               <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
                               <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
-                              <span className="text-2xl font-black font-outfit text-primary-600/40 dark:text-primary-300/50 leading-none">0{item.step}</span>
+                              <span className="text-2xl font-black font-outfit text-primary-700 dark:text-primary-300/50 leading-none">0{item.step}</span>
                            </div>
                         </div>
                      ))}

@@ -50,7 +50,7 @@ const catConfig = {
   awards: { icon: Trophy, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800'},
   appointments: { icon: Sparkles, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800'},
 };
-const defaultCat = { icon: Newspaper, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' };
+const defaultCat = { icon: Newspaper, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-200 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' };
 
 const categories = ['all', 'national', 'international', 'economy', 'science', 'sports', 'awards', 'appointments', 'defence', 'environment'];
 
@@ -214,7 +214,7 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) =
                       <Tag className="w-3 h-3" />
                       {translate((affair.category || '').charAt(0).toUpperCase() + (affair.category || '').slice(1))}
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-black text-slate-500 uppercase bg-slate-50 dark:bg-slate-700 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-600">
+                    <div className="flex items-center gap-1.5 text-[10px] font-black text-slate-500 dark:text-slate-200 uppercase bg-slate-50 dark:bg-slate-700 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-600">
                       <Eye className="w-3 h-3" />
                       {affair.views || 0}
                     </div>

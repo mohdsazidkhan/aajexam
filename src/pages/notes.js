@@ -46,7 +46,7 @@ const noteTypeConfig = {
   tables: { icon: StickyNote, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Tables'},
   mnemonics: { icon: Sparkles, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Mnemonics'},
 };
-const defaultNoteType = { icon: StickyNote, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200', label: 'Note' };
+const defaultNoteType = { icon: StickyNote, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-200 bg-slate-50 dark:bg-slate-700 border-slate-200', label: 'Note' };
 
 const noteFilters = [
   { id: 'all', label: 'All', icon: Sparkles },
@@ -159,7 +159,7 @@ const NotesPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
                       <Icon className="w-3 h-3" />
                       {translate(cfg.label)}
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-black text-slate-500 uppercase bg-slate-50 dark:bg-slate-700 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-600">
+                    <div className="flex items-center gap-1.5 text-[10px] font-black text-slate-500 dark:text-slate-200 uppercase bg-slate-50 dark:bg-slate-700 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-600">
                       <Eye className="w-3 h-3" />
                       {note.views || 0}
                     </div>

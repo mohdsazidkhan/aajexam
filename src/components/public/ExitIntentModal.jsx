@@ -160,7 +160,7 @@ const ExitIntentModalInner = ({ onClose }) => {
             {isGoogleLoading ? translate('Signing in...') : translate(promoActive ? 'Get PRO Free Now' : 'Claim Free Account')}
           </button>
           {promoActive ? (
-            <p className="mt-2 text-[10px] text-red-600 dark:text-red-500 font-bold uppercase tracking-widest">{translate('Offer valid till 31 Dec 2026')}</p>
+            <p className="mt-2 text-[10px] text-red-600 dark:text-red-400 font-bold uppercase tracking-widest">{translate('Offer valid till 31 Dec 2026')}</p>
           ) : (
             <p className="mt-2 text-[10px] text-slate-400 font-bold uppercase tracking-widest">{translate('Takes only 10 seconds')}</p>
           )}

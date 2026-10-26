@@ -130,7 +130,7 @@ const WelcomePromoModalInner = ({ onClose }) => {
               )}
               {isGoogleLoading ? translate('Signing in...') : translate('Get PRO Free Now')}
             </button>
-            <p className="mt-2 text-[9px] text-red-600 dark:text-red-500 font-bold uppercase tracking-widest">{translate('Offer valid till 31 Dec 2026')}</p>
+            <p className="mt-2 text-[9px] text-red-600 dark:text-red-400 font-bold uppercase tracking-widest">{translate('Offer valid till 31 Dec 2026')}</p>
           </div>
         </div>
       </motion.div>

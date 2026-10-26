@@ -241,7 +241,7 @@ const FAQ = () => {
                             <h2 className="text-2xl xl:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                                 Still Have Questions?
                             </h2>
-                            <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
+                            <p className="text-lg mb-6 text-gray-700 dark:text-white">
                                 {translate('Can\'t find the answer you\'re looking for? Our support team is here to help!')}
                             </p>
                             <button

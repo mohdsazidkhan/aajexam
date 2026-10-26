@@ -66,9 +66,9 @@
 
   .dark {
     --slate-400: 148 163 184;
-    --slate-500: 100 116 139;
+    --slate-500: 136 150 170; /* was 100 116 139: 3.5:1 on the page bg, now >= 4.5:1 on page and card */
     --gray-400: 156 163 175;
-    --gray-500: 107 114 128;
+    --gray-500: 140 148 162; /* was 107 114 128 */
 
     /* Central Theme Tokens - Dark Mode (AajExam Inspired) */
     --bg-page: #131f24; /* bg-slate-900 */
@@ -76,7 +76,7 @@
     --bg-surface-secondary: #1c2d35; /* Slate 800 for cards */
     --text-primary: #f8fafc; /* Slate 50 for text */
     --text-secondary: #94a3b8; /* Slate 400 for secondary text */
-    --text-muted: #64748b; /* Slate 500 for muted text */
+    --text-muted: #8896aa; /* lighter Slate 500: 4.5:1+ on page and card surfaces */
     --border-primary: #1c2d35; /* border-slate-800 — single section-separator border */
     --border-secondary: #455a64; /* Slate 600 */
   }

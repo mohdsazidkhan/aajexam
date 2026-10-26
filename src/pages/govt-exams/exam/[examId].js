@@ -459,7 +459,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           >
             <tab.icon className="w-3.5 h-3.5" />
             {translate(tab.label)}
-            <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>
+            <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-black/20' : 'bg-slate-200 dark:bg-slate-700 dark:text-slate-200'}`}>
               {tab.count}
             </span>
           </button>

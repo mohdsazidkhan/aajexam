@@ -173,12 +173,12 @@ export default function EditorialPolicy() {
                             <h2 className="text-2xl xl:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
                                 Questions About Our Policy?
                             </h2>
-                            <p className="text-md md:text-xl xl:text-2xl font-bold mb-10 text-white/90 uppercase tracking-widest text-xs">
+                            <p className="text-md md:text-xl xl:text-2xl font-bold mb-10 text-white uppercase tracking-widest text-xs">
                                 Contact our editorial team at: <strong>{config.CONTACT.EMAIL}</strong>
                             </p>
                             <button
                                 onClick={() => router.push('/')}
-                                className="bg-white text-primary-600 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-sm active:translate-y-1 active:shadow-none"
+                                className="bg-white text-primary-600 dark:text-primary-300 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-sm active:translate-y-1 active:shadow-none"
                             >
                                 Back to Home
                             </button>

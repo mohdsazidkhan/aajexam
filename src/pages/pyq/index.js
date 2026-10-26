@@ -270,7 +270,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                     <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition relative overflow-hidden">
                                         <div className="relative z-10">
                                             <div className="text-xs xl:text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-1 leading-tight line-clamp-2 min-h-[2rem]">{translateData(e.name)}</div>
-                                            <div className="text-[10px] font-bold text-slate-500 flex items-center justify-between mb-2">
+                                            <div className="text-[10px] font-bold text-slate-500 dark:text-slate-300 flex items-center justify-between mb-2">
                                                 <span>{e.paperCount} {e.paperCount === 1 ? 'paper' : 'papers'}</span>
                                                 <FaArrowRight className="text-[10px] opacity-0 group-hover:opacity-100 transition" />
                                             </div>
@@ -278,10 +278,10 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                             {/* Progress Bar UI */}
                                             <div className="space-y-1.5 mt-auto">
                                                 <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-widest">
-                                                    <span className={completed > 0 ? 'text-primary-600 dark:text-primary-300' : 'text-slate-400'}>
+                                                    <span className={completed > 0 ? 'text-primary-600 dark:text-primary-300' : 'text-slate-400 dark:text-slate-300'}>
                                                         {completed > 0 ? translate('In Progress') : translate('Start Now')}
                                                     </span>
-                                                    <span className="text-slate-500">{completed}/{total}</span>
+                                                    <span className="text-slate-500 dark:text-slate-300">{completed}/{total}</span>
                                                 </div>
                                                 <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                                                     <div 
