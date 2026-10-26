@@ -233,7 +233,7 @@ const HeroQuizCard = () => {
          <div className="relative flex h-2 gap-1.5 px-5 pt-3">
             {Array.from({ length: total }, (_, i) => {
                const m = marks[i];
-               const cls = m === true ? 'bg-primary-300' : m === false ? 'bg-red-400' : i === idx && !done ? 'bg-white' : 'bg-white/20';
+               const cls = m === true ? 'bg-primary-300' : m === false ? 'bg-red-400' : i === idx && !done ? 'bg-[#fff]' : 'bg-white/20';
                return <span key={i} className={`flex-1 h-1 ${cls}`} style={{ borderRadius: 4 }} />;
             })}
          </div>
@@ -305,10 +305,10 @@ const HeroQuizCard = () => {
                            animate={isWrong ? { x: [0, -7, 7, -5, 5, 0] } : { x: 0 }}
                            transition={{ duration: 0.4 }}
                            whileTap={locked ? undefined : { scale: 0.97 }}
-                           className={`relative flex items-center gap-2.5 px-3 py-2.5 min-h-[60px] text-left ring-1 transition-colors duration-200 ${isRight ? 'bg-white text-primary-800 ring-white shadow-lg' : isWrong ? 'bg-red-500 text-white ring-red-300' : pending ? 'bg-white/25 text-white ring-white' : dim ? 'bg-white/5 text-white/60 ring-white/15' : 'bg-white/10 text-white ring-white/30 hover:bg-white/20 hover:ring-white/60 cursor-pointer'} ${!started && !locked ? 'hero-quiz-pulse' : ''}`}
+                           className={`relative flex items-center gap-2.5 px-3 py-2.5 min-h-[60px] text-left ring-1 transition-colors duration-200 ${isRight ? 'bg-[#fff] text-primary-800 ring-white shadow-lg' : isWrong ? 'bg-red-500 text-white ring-red-300' : pending ? 'bg-white/25 text-white ring-white' : dim ? 'bg-white/5 text-white/60 ring-white/15' : 'bg-white/10 text-white ring-white/30 hover:bg-white/20 hover:ring-white/60 cursor-pointer'} ${!started && !locked ? 'hero-quiz-pulse' : ''}`}
                            style={{ borderRadius: 10 }}
                         >
-                           <span className={`w-7 h-7 shrink-0 flex items-center justify-center text-xs font-black ${isRight ? 'bg-primary-600 text-white' : isWrong ? 'bg-white text-red-600' : 'bg-primary-300 text-[#000]'}`} style={{ borderRadius: 6 }}>
+                           <span className={`w-7 h-7 shrink-0 flex items-center justify-center text-xs font-black ${isRight ? 'bg-primary-600 text-white' : isWrong ? 'bg-[#fff] text-red-600' : 'bg-primary-300 text-[#000]'}`} style={{ borderRadius: 6 }}>
                               {String.fromCharCode(65 + i)}
                            </span>
                            <span className="min-w-0 flex-1 text-sm xl:text-base font-black font-outfit leading-tight line-clamp-3 break-words">{val}</span>
