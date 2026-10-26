@@ -12,7 +12,7 @@ export default function Index({ educationalContent, isAuthenticated }) {
     <>
       <Seo
         title="AajExam – SSC, UPSC, Banking & Railway Exam Practice Tests + PYQs"
-        description="India's all-in-one government exam preparation platform. Free practice tests, previous year question papers (PYQs) and topic-wise quizzes for SSC CHSL, CGL, MTS, GD, UPSC, Banking, Railway, State PSC and more."
+        description="India's best free government exam prep: practice tests, previous year papers (PYQs) and topic-wise quizzes for SSC, UPSC, Banking, Railway and State PSC."
         keywords={[
           'government exam preparation',
           'SSC CHSL practice test',
