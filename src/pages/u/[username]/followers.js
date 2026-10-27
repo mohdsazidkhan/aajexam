@@ -63,7 +63,7 @@ export default function FollowersListPage() {
 
   const handleUserClick = (userUsername) => {
     if (userUsername) {
-      router.push(`/u/${userUsername}`);
+      router.push(`/@${userUsername}`);
     }
   };
 

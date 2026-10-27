@@ -91,8 +91,8 @@ export default function UserDetailsPage() {
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center font-black text-sm uppercase shadow-sm animate-in">{u.name?.[0] || 'U'}</div>
           <div>
-            <Link href={`/u/${u.username}`} target="_blank" className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 hover:text-primary-600 transition-colors tracking-tight block">{u.name || 'Anonymous'}</Link>
-            <Link href={`/u/${u.username}`} target="_blank" className="text-[9px] font-black text-slate-400 uppercase tracking-widest italic hover:text-primary-600 transition-colors">{u.username ? `@${u.username}` : '@unknown'}</Link>
+            <Link href={`/@${u.username}`} target="_blank" className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 hover:text-primary-600 transition-colors tracking-tight block">{u.name || 'Anonymous'}</Link>
+            <Link href={`/@${u.username}`} target="_blank" className="text-[9px] font-black text-slate-400 uppercase tracking-widest italic hover:text-primary-600 transition-colors">{u.username ? `@${u.username}` : '@unknown'}</Link>
           </div>
         </div>
       )
@@ -229,8 +229,8 @@ export default function UserDetailsPage() {
                         <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-primary-600 text-white text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{(page - 1) * itemsPerPage + i + 1}</span>
                         {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-white dark:bg-[#0D1225] rounded-lg xl:rounded-xl border-2 border-black dark:border-white shadow-sm"><Crown className="w-4 h-4 text-black dark:text-white" /></div>}
                       </div>
-                      <Link href={`/u/${u.username}`} target="_blank" className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 truncate hover:text-primary-600 transition-colors block">{u.name || 'Anonymous'}</Link>
-                      <Link href={`/u/${u.username}`} target="_blank" className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 xl:mb-4 hover:text-primary-600 transition-colors block">{u.username ? `@${u.username}` : '@unknown'}</Link>
+                      <Link href={`/@${u.username}`} target="_blank" className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 truncate hover:text-primary-600 transition-colors block">{u.name || 'Anonymous'}</Link>
+                      <Link href={`/@${u.username}`} target="_blank" className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 xl:mb-4 hover:text-primary-600 transition-colors block">{u.username ? `@${u.username}` : '@unknown'}</Link>
 
                       <div className="space-y-2 xl:space-y-3 mb-4 xl:mb-4">
                         <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase truncate bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg xl:rounded-xl border border-slate-100 dark:border-white/5"><Mail className="w-4 text-black/50 dark:text-white/50" /> {u.email || 'N/A'}</div>
@@ -255,9 +255,9 @@ export default function UserDetailsPage() {
                       <div className="flex-1">
                         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                           <div>
-                            <Link href={`/u/${u.username}`} target="_blank" className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 hover:text-primary-600 transition-colors block">{u.name || 'Anonymous'}</Link>
+                            <Link href={`/@${u.username}`} target="_blank" className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 hover:text-primary-600 transition-colors block">{u.name || 'Anonymous'}</Link>
                             <div className="flex items-center gap-3">
-                              <Link href={`/u/${u.username}`} target="_blank" className="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-primary-600 transition-colors">@{u.username || 'unknown'}</Link>
+                              <Link href={`/@${u.username}`} target="_blank" className="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-primary-600 transition-colors">@{u.username || 'unknown'}</Link>
                             </div>
                           </div>
                         </div>

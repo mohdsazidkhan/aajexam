@@ -88,7 +88,7 @@ export default function CommunityQuestionDetailPage() {
             </div>
             <span className="font-bold text-slate-800 dark:text-slate-200">{question.author?.name || translate('User')}</span>
             {question.author?.username && (
-              <Link href={`/u/${question.author.username}`} className="text-primary-600 dark:text-primary-300 font-semibold hover:underline">
+              <Link href={`/@${question.author.username}`} className="text-primary-600 dark:text-primary-300 font-semibold hover:underline">
                 @{question.author.username}
               </Link>
             )}

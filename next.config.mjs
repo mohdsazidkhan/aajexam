@@ -89,9 +89,12 @@ const nextConfig = {
   // emailed links working. (/subscription/payu-* stay where they are — PayU return URLs.)
   async redirects() {
     const studentPages = [
-      'dashboard', 'profile', 'settings', 'notifications', 'bookmarks', 'my-questions', 'my-reels', 'my-challenges', 'my-analytics', 'payment-history', 'readiness', 'revision', 'streak', 'study-plan', 'all-india-rank', 'syllabus-tracker', 'exam-calendar', 'leaderboard', 'exam-history', 'quiz-history', 'referral-history', 'subscription',
+      'dashboard', 'profile', 'settings', 'notifications', 'bookmarks', 'my-questions', 'my-reels', 'my-challenges', 'my-analytics', 'payment-history', 'readiness', 'revision', 'streak', 'study-plan', 'all-india-rank', 'syllabus-tracker', 'exam-calendar', 'exam-history', 'quiz-history', 'referral-history', 'subscription',
     ];
     return [
+      // Public profiles live at /@username (rewrite below); the old /u/username URLs redirect there.
+      { source: '/u/:username', destination: '/@:username', permanent: true },
+      { source: '/u/:username/:path*', destination: '/@:username/:path*', permanent: true },
       { source: '/home', destination: '/student/dashboard', permanent: true },
       ...studentPages.map((name) => ({ source: `/${name}`, destination: `/student/${name}`, permanent: true })),
       { source: '/quiz-result', destination: '/student/quiz-result', permanent: true },
@@ -173,6 +176,9 @@ const nextConfig = {
   // /interview-questions/category/[slug] page — the file/route stays put.
   async rewrites() {
     return [
+      // /@username masks the real /u/[username] page (and its followers / following sub-pages).
+      { source: '/@:username', destination: '/u/:username' },
+      { source: '/@:username/:path*', destination: '/u/:username/:path*' },
       {
         source: '/:slug-interview-questions',
         destination: '/interview-questions/category/:slug',

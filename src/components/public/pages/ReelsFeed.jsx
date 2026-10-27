@@ -986,7 +986,7 @@ const ReelsFeed = () => {
 
               {/* Profile avatar + follow */}
               <div className="relative">
-                <Link href={`/u/${currentReel.createdBy?.username || 'aajexam'}`}>
+                <Link href={`/@${currentReel.createdBy?.username || 'aajexam'}`}>
                   <div className="w-9 h-9 rounded-full bg-primary-600 p-[2px]">
                     <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-white text-xs font-black uppercase">
                       {(currentReel.createdBy?.username || 'A').charAt(0)}
@@ -1043,7 +1043,7 @@ const ReelsFeed = () => {
               <div className="px-4 pb-3 pt-12 pointer-events-auto">
                 {/* Creator row */}
                 <div className="flex items-center gap-2 mb-2">
-                  <Link href={`/u/${currentReel.createdBy?.username || 'aajexam'}`} className="shrink-0">
+                  <Link href={`/@${currentReel.createdBy?.username || 'aajexam'}`} className="shrink-0">
                     <div className="w-8 h-8 rounded-full bg-primary-600 p-[1.5px]">
                       <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-white text-[10px] font-black uppercase">
                         {(currentReel.createdBy?.username || 'A').charAt(0)}
@@ -1051,7 +1051,7 @@ const ReelsFeed = () => {
                     </div>
                   </Link>
                   <Link
-                    href={`/u/${currentReel.createdBy?.username || 'aajexam'}`}
+                    href={`/@${currentReel.createdBy?.username || 'aajexam'}`}
                     className="text-[13px] font-extrabold text-white hover:underline"
                     style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}
                   >

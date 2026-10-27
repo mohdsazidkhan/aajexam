@@ -76,7 +76,7 @@ export const Podium = ({ top3, currentUserId }) => {
         const rc = rankConfig[entry.rank];
 
         return (
-          <Link href={entry.username ? `/u/${entry.username}` : '#'} key={entry.rank}>
+          <Link href={entry.username ? `/@${entry.username}` : '#'} key={entry.rank}>
             <motion.div
               initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 * entry.rank, type: 'spring', stiffness: 120 }}
               className="flex flex-col items-center gap-0.5"
@@ -140,7 +140,7 @@ export const LeaderboardRow = ({ entry, index, currentUserId }) => {
 
   return (
     <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: Math.min(index * 0.025, 0.5) }}>
-      <Link href={entry.username ? `/u/${entry.username}` : '#'}>
+      <Link href={entry.username ? `/@${entry.username}` : '#'}>
         {/* ── Desktop: table row ── */}
         <div className={`hidden xl:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
           ${isTop3 ? rc.rowBg : isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-black border-b-primary-400 dark:border-b-primary-600' : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700 hover:shadow-md'} ${isTop3 ? `border-l-4 ${rc.accent}` : ''}`}>

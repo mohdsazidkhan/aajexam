@@ -350,15 +350,15 @@ const ProfilePage = () => {
               <footer className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-dashed border-slate-300 dark:border-white/25">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full">
                   {student?.username && (
-                    <Button variant="secondary" size="sm" icon={Eye} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push(`/u/${student.username}`)}>
+                    <Button variant="secondary" size="sm" icon={Eye} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push(`/@${student.username}`)}>
                       {translate('Public profile')}
                     </Button>
                   )}
                   <Button variant="secondary" size="sm" icon={Settings} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/settings')}>
                     {translate('Settings')}
                   </Button>
-                  <Button variant="secondary" size="sm" icon={Trophy} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/leaderboard')}>
-                    {translate('Leaderboard')}
+                  <Button variant="secondary" size="sm" icon={Trophy} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/all-india-rank')}>
+                    {translate('All India Rank')}
                   </Button>
                   <Button variant="secondary" size="sm" icon={ShieldCheck} className="w-full justify-center rounded-xl text-xs font-black [&_.btn-label]:whitespace-normal [&_.btn-label]:text-center [&_.btn-label]:leading-tight" onClick={() => router.push('/student/subscription')}>
                     {translate('Subscription')}
@@ -405,24 +405,14 @@ const ProfilePage = () => {
                 </button>
               </div>
 
-              <div className="grid grid-cols-2 gap-1.5">
+              <div className="grid grid-cols-1 gap-1.5">
                 <div className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
-                  <p className="text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-white/70 leading-none">{translate('Exam AIR')}</p>
+                  <p className="text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-white/70 leading-none">{translate('All India Rank')}</p>
                   <div className="flex flex-wrap items-baseline justify-between gap-x-2">
                     <p className="text-2xl font-black font-outfit leading-tight text-primary-700 dark:text-primary-200">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
                     <p className="text-[10px] font-bold text-slate-600 dark:text-white/70 text-right leading-tight">
                       {student?.examAIR ? translate('of {total}', { total: student.examAIR.total }) : translate('No exams yet')}
                       {student?.examAIR && <><br />{translate('{time} spent', { time: formatTimeSpent(student.examAIR.totalTimeSpent, 'exam') })}</>}
-                    </p>
-                  </div>
-                </div>
-                <div className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
-                  <p className="text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-white/70 leading-none">{translate('Quiz AIR')}</p>
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-2">
-                    <p className="text-2xl font-black font-outfit leading-tight">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
-                    <p className="text-[10px] font-bold text-slate-600 dark:text-white/70 text-right leading-tight">
-                      {student?.quizAIR ? translate('of {total}', { total: student.quizAIR.total }) : translate('No quizzes yet')}
-                      {student?.quizAIR && <><br />{translate('{time} spent', { time: formatTimeSpent(student.quizAIR.totalTimeSpent, 'quiz') })}</>}
                     </p>
                   </div>
                 </div>

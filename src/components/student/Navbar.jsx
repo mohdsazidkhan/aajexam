@@ -41,7 +41,7 @@ const PAGE_TITLES = [
   ['/current-affairs', 'Current Affairs'], ['/exam-news', 'Exam News'], ['/student/exam-calendar', 'Exam Calendar'],
   ['/pyq', "PYQ's"], ['/student/syllabus-tracker', 'Syllabus Tracker'], ['/student/revision', 'Revision Queue'],
   ['/student/study-plan', 'Study Planner'], ['/notes', 'Notes & Formulas'], ['/interview-questions', 'Interview Questions'],
-  ['/mentors', 'Mentors'], ['/student/leaderboard', 'Leaderboard'], ['/student/all-india-rank', 'All India Rank'],
+  ['/mentors', 'Mentors'], ['/student/all-india-rank', 'All India Rank'],
   ['/student/state-rank', 'State Rank'], ['/student/city-rank', 'City Rank'], ['/student/my-analytics', 'Performance'],
   ['/student/readiness', 'Exam Readiness'], ['/student/exam-history', 'Exam History'],
   ['/student/payment-history', 'Payment History'], ['/student/quiz-history', 'Quiz History'],

@@ -343,7 +343,7 @@ const SettingsPage = () => {
                           />
                           <span className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                             <Globe className="w-4 h-4 text-primary-600 dark:text-primary-300" />
-                            Make my profile public (visible at /u/{profile.username || 'username'})
+                            Make my profile public (visible at /@{profile.username || 'username'})
                           </span>
                         </label>
 

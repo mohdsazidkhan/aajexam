@@ -8,7 +8,7 @@ export async function getStaticProps({ params }) {
   const { username } = params || {};
   return {
     redirect: {
-      destination: `/u/${encodeURIComponent(username || '')}`,
+      destination: `/@${encodeURIComponent(username || '')}`,
       permanent: true
     }
   };

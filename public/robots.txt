@@ -53,9 +53,6 @@ Disallow: /govt-exams/test/
 Disallow: /subscription/payu-success
 Disallow: /subscription/payu-failure
 
-# Internal user profile aliases
-Disallow: /u/
-
 # Share pages (transactional, ephemeral)
 Disallow: /share/
 

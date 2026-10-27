@@ -96,7 +96,7 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
             <span className="font-bold text-slate-800 dark:text-slate-200">{item.author?.name || translate('User')}</span>
             {item.author?.username && (
               <a
-                href={`/u/${item.author.username}`}
+                href={`/@${item.author.username}`}
                 className="text-[11px] font-semibold text-primary-600 dark:text-primary-300 hover:underline"
               >
                 @{item.author.username}

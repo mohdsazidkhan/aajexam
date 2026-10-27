@@ -68,7 +68,7 @@ const SOCIAL_ICONS = { instagram: Instagram, facebook: Facebook, x: Twitter, you
 
 const LINE_CLS = 'border-slate-200 dark:border-white/15';
 
-const PublicProfilePage = ({ username: ssrUsername, seo }) => {
+const PublicProfilePage = ({ username: ssrUsername, profile: ssrProfile, seo }) => {
   const { translate } = useTranslate();
   const router = useRouter();
   const { username = ssrUsername } = router.query || {};
@@ -170,8 +170,44 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
     }
   };
 
+  // Rendered in every state (loading / error / loaded) from the statically generated props, so the
+  // first HTML Google fetches already has the title, canonical, noindex flag and structured data.
+  const seoProfile = profile || ssrProfile;
+  const seoPublic = Boolean(seoProfile?.isPublicProfile);
+  const seoTag = (
+    <Seo
+      title={seo?.title || 'Profile - AajExam'}
+      description={seo?.description}
+      keywords={seo?.keywords}
+      image={seo?.image}
+      canonical={seo?.url}
+      type="profile"
+      noIndex={!seoPublic}
+      schemas={seoPublic ? {
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        url: seo?.url,
+        mainEntity: {
+          '@type': 'Person',
+          name: seoProfile.name,
+          alternateName: `@${seoProfile.username}`,
+          url: seo?.url,
+          ...(seoProfile.bio ? { description: seoProfile.bio } : {}),
+          ...(seoProfile.profilePicture ? { image: seoProfile.profilePicture } : {}),
+        },
+      } : undefined}
+    />
+  );
+
   if (loading) return (
     <div className="min-h-screen bg-background-page pb-20 font-outfit">
+      {seoTag}
+      {ssrProfile && seoPublic && (
+        <div className="sr-only">
+          <h1>{ssrProfile.name} (@{ssrProfile.username})</h1>
+          {ssrProfile.bio && <p>{ssrProfile.bio}</p>}
+        </div>
+      )}
       <PublicProfileSkeleton />
     </div>
   );
@@ -179,6 +215,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   if (error) {
     return (
       <section className="flex flex-col items-center justify-center min-h-screen text-center px-4 font-outfit">
+        {seoTag}
         <h2 className="text-lg xl:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">{translate('Profile Not Found')}</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
@@ -200,8 +237,8 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   const initial = profile.name?.charAt(0)?.toUpperCase() || 'U';
 
   const stats = [
-    { label: 'Followers', value: profile.followersCount || 0, icon: Users, href: `/u/${encodeURIComponent(profile.username)}/followers` },
-    { label: 'Following', value: profile.followingCount || 0, icon: UserCheck, href: `/u/${encodeURIComponent(profile.username)}/following` },
+    { label: 'Followers', value: profile.followersCount || 0, icon: Users, href: `/@${encodeURIComponent(profile.username)}/followers` },
+    { label: 'Following', value: profile.followingCount || 0, icon: UserCheck, href: `/@${encodeURIComponent(profile.username)}/following` },
     { label: 'Reels', value: profile.reelsCount || 0, icon: PlayCircle },
     { label: 'Views', value: profile.profileViews || 0, icon: Eye },
   ];
@@ -217,8 +254,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   ];
 
   const ranks = [
-    { label: 'Exam AIR', data: profile.examAIR, empty: 'No exams yet' },
-    { label: 'Quiz AIR', data: profile.quizAIR, empty: 'No quizzes yet' },
+    { label: 'All India Rank', data: profile.examAIR, empty: 'No exams yet' },
     { label: 'State Rank', data: profile.stateRank, empty: 'No exams yet', notSet: true },
     { label: 'City Rank', data: profile.cityRank, empty: 'No exams yet', notSet: true },
   ];
@@ -235,14 +271,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   return (
     <MobileAppWrapper title={profile.name || translate('Profile')}>
       <div className="max-w-full mx-auto min-h-screen font-outfit pt-3 xl:pt-5">
-        <Seo
-          title={seo?.title || 'Profile - AajExam'}
-          description={seo?.description}
-          keywords={seo?.keywords}
-          image={seo?.image}
-          canonical={seo?.url}
-          type="profile"
-        />
+        {seoTag}
 
         {/* ══════════ HERO — aurora, spinning-ring avatar, rank card, glass stats ══════════ */}
         <section
@@ -349,9 +378,9 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                       <button
                         className="col-span-2 sm:col-span-1 w-full sm:w-auto px-4 py-2 bg-white hover:bg-slate-50 text-slate-800 ring-1 ring-slate-300 dark:bg-white/15 dark:hover:bg-white/25 dark:text-white dark:ring-white/30 font-black uppercase tracking-wider text-[10px] active:translate-y-0.5 transition-all"
                         style={{ borderRadius: 12 }}
-                        onClick={() => router.push('/student/leaderboard')}
+                        onClick={() => router.push('/student/all-india-rank')}
                       >
-                        {translate('Leaderboard')}
+                        {translate('All India Rank')}
                       </button>
                     </>
                   )}
@@ -398,7 +427,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               })}
             </div>
             {showStats && (
-              <div className="grid grid-cols-4 gap-1.5">
+              <div className="grid grid-cols-3 gap-1.5">
                 {ranks.map((r) => (
                   <div key={r.label} className="min-w-[104px] px-2.5 py-2 text-left bg-white ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 12 }}>
                     <span className="block text-[8px] font-black uppercase tracking-wider text-slate-500 dark:text-white/70 truncate">{translate(r.label)}</span>
@@ -555,10 +584,10 @@ export async function getStaticProps({ params }) {
   const titleBase = 'AajExam';
   const name = profile?.name || username;
   const title = `${name} (@${profile?.username || username}) - ${titleBase}`;
-  const description = profile?.bio || `${name}'s profile on AajExam.`;
+  const description = profile?.bio || `${name} (@${profile?.username || username}) on AajExam - exam preparation profile with All India Rank, State Rank and City Rank for government exams.`;
   const image = profile?.profilePicture || '/logo.png';
   const keywords = `${name}, profile, exams`;
-  const url = `${baseUrl}/u/${encodeURIComponent(username || '')}`;
+  const url = `${baseUrl}/@${encodeURIComponent(username || '')}`;
 
   const safeProps = JSON.parse(
     JSON.stringify(

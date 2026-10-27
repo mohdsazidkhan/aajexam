@@ -8,7 +8,7 @@ export default function FollowingRedirect() {
   const { username } = router.query;
 
   useEffect(() => {
-    if (username) router.replace(`/u/${encodeURIComponent(username)}/following`);
+    if (username) router.replace(`/@${encodeURIComponent(username)}/following`);
   }, [username, router]);
 
   return <Seo title="Redirecting..." noIndex={true} />;

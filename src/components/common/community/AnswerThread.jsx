@@ -116,7 +116,7 @@ function AnswerItem({
             </div>
             <span className="font-bold text-slate-800 dark:text-slate-200">{item.author?.name || translate('User')}</span>
             {item.author?.username && (
-              <Link href={`/u/${item.author.username}`} className="text-[11px] font-semibold text-primary-600 dark:text-primary-300 hover:underline">
+              <Link href={`/@${item.author.username}`} className="text-[11px] font-semibold text-primary-600 dark:text-primary-300 hover:underline">
                 @{item.author.username}
               </Link>
             )}

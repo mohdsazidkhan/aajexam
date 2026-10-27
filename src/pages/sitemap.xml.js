@@ -34,7 +34,7 @@ const xmlUrl = ({ loc, lastmod, changefreq, priority }) => {
    </url>`;
 };
 
-function generateSiteMap({ currentAffairDigests = [], exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [], practiceSeries = [], practiceTopics = [], interviewCategories = [], interviewQuestions = [] }) {
+function generateSiteMap({ currentAffairDigests = [], exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [], practiceSeries = [], practiceTopics = [], interviewCategories = [], interviewQuestions = [], profiles = [] }) {
     // Only PUBLIC, non-login pages here. Login-gated pages (profile, history,
     // dashboards, etc.) and admin pages are excluded by design and are also
     // disallowed in robots.txt + carry noIndex meta on the page itself.
@@ -101,7 +101,9 @@ function generateSiteMap({ currentAffairDigests = [], exams = [], categoryIds = 
         // Category pages use the pretty /{slug}-interview-questions URL (masked
         // via next.config.mjs rewrite onto /interview-questions/category/[slug]).
         interviewCategories.filter(c => c?.slug).map(c => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/${c.slug}-interview-questions`, lastmod: c.updatedAt, changefreq: 'weekly', priority: '0.75' })).join(''),
-        interviewQuestions.filter(q => q?.slug).map(q => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/interview-questions/${q.slug}`, lastmod: q.updatedAt || q.createdAt, changefreq: 'monthly', priority: '0.7' })).join('')
+        interviewQuestions.filter(q => q?.slug).map(q => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/interview-questions/${q.slug}`, lastmod: q.updatedAt || q.createdAt, changefreq: 'monthly', priority: '0.7' })).join(''),
+        // Public student profiles live at /@username (masked onto /u/[username] in next.config.mjs).
+        profiles.filter(u => u?.username).map(u => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/@${encodeURIComponent(u.username)}`, lastmod: u.updatedAt, changefreq: 'weekly', priority: '0.5' })).join('')
     ];
 
     return `<?xml version="1.0" encoding="UTF-8"?>
@@ -126,6 +128,7 @@ export async function getServerSideProps({ res }) {
 
         const [
             exams,
+            profiles,
             categoryIds,
             blogs,
             notes,
@@ -139,6 +142,8 @@ export async function getServerSideProps({ res }) {
             interviewQuestions,
         ] = await Promise.all([
             Exam.find({ isActive: true }).select('_id slug updatedAt createdAt').lean(),
+            // Only profiles the student made public (isPublicProfile) — private ones are noindex.
+            safeFind(() => import('../models/User'), 'username updatedAt', { status: 'active', isPublicProfile: true, username: { $exists: true, $ne: '' } }, 5000, { updatedAt: -1 }),
             safeFind(() => import('../models/ExamCategory'), '_id slug updatedAt'),
             safeFind(() => import('../models/Blog'), 'slug updatedAt publishedAt createdAt', { status: 'published' }, 5000, { publishedAt: -1 }),
             safeFind(() => import('../models/StudyNote'), 'slug updatedAt publishedAt createdAt', {}, 5000, { publishedAt: -1 }),
@@ -278,7 +283,7 @@ export async function getServerSideProps({ res }) {
         });
         const pyqExamIndexes = Array.from(pyqExamIndexMap.values());
 
-        const sitemap = generateSiteMap({ currentAffairDigests, exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries, practiceTopics, interviewCategories, interviewQuestions });
+        const sitemap = generateSiteMap({ currentAffairDigests, exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries, practiceTopics, interviewCategories, interviewQuestions, profiles });
 
         res.setHeader('Content-Type', 'text/xml');
         res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=600');

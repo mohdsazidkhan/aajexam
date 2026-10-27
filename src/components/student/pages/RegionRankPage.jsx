@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect, useCallback } from 'react';
-import { Trophy, Flame, Users, TrendingUp, RefreshCw, MapPin, Sparkles, Map as MapIcon, Building2, Settings as SettingsIcon } from 'lucide-react';
+import { Trophy, Flame, Users, TrendingUp, RefreshCw, MapPin, Sparkles, Map as MapIcon, Building2, Settings as SettingsIcon, Target, ChevronDown } from 'lucide-react';
 import { m as motion } from 'framer-motion';
 import Link from '@/components/common/AppLink';
 import API from '../../../lib/api';
@@ -36,7 +36,9 @@ const KINDS = {
 const RegionRankPage = ({ kind }) => {
   useRequireLogin();
   const cfg = KINDS[kind];
-  const { translate } = useTranslate();
+  const { translate, translateData } = useTranslate();
+  const [exams, setExams] = useState([]);
+  const [selectedExamId, setSelectedExamId] = useState('');
   const [state, setState] = useState({ data: [], me: null, place: '', totalUsers: 0, needsPlace: false });
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -44,10 +46,21 @@ const RegionRankPage = ({ kind }) => {
   const currentUser = typeof window !== 'undefined' ? getCurrentUser() : null;
   const currentUserId = currentUser?._id || currentUser?.id;
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await API.request('/api/real-exams/all-exams');
+        if (res?.success && res.data) setExams(res.data);
+      } catch (e) {
+        console.error('Failed to load exams', e);
+      }
+    })();
+  }, []);
+
   const load = useCallback(async (isRefresh = false) => {
     try {
       if (isRefresh) setRefreshing(true); else setLoading(true);
-      const res = await API.request(cfg.api);
+      const res = await API.request(`${cfg.api}${selectedExamId ? `?examId=${selectedExamId}` : ''}`);
       if (res?.success) {
         setState({ data: res.data || [], me: res.me || null, place: res.place || '', totalUsers: res.totalUsers || 0, needsPlace: !!res.needsPlace });
       }
@@ -57,7 +70,7 @@ const RegionRankPage = ({ kind }) => {
       setLoading(false);
       setRefreshing(false);
     }
-  }, [cfg.api, kind]);
+  }, [cfg.api, kind, selectedExamId]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -105,15 +118,37 @@ const RegionRankPage = ({ kind }) => {
                     {translate('Top 10 students in {place} ranked by total time spent', { place: place || '—' })}
                   </p>
 
-                  {/* Place chip (takes the spot of the exam dropdown) */}
-                  {place && (
-                    <div className="flex justify-center xl:justify-start">
-                      <div className="inline-flex max-w-full items-center gap-2 bg-white/15 border border-white/30 text-white text-sm font-bold rounded-xl h-9 px-3 backdrop-blur-md">
-                        <MapPin className="w-4 h-4 shrink-0" />
-                        <span className="truncate">{place}</span>
+                  {/* Place chip + exam filter (same dropdown as All India Rank) */}
+                  <div className="max-w-sm mx-auto xl:mx-0 space-y-2">
+                    {place && (
+                      <div className="flex justify-center xl:justify-start">
+                        <div className="inline-flex max-w-full items-center gap-2 bg-white/15 border border-white/30 text-white text-sm font-bold rounded-xl h-9 px-3 backdrop-blur-md">
+                          <MapPin className="w-4 h-4 shrink-0" />
+                          <span className="truncate">{place}</span>
+                        </div>
+                      </div>
+                    )}
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                        <Target className="w-4 h-4 text-white" />
+                      </div>
+                      <select
+                        value={selectedExamId}
+                        onChange={(e) => setSelectedExamId(e.target.value)}
+                        className="w-full appearance-none bg-white/15 hover:bg-white/20 border border-white/30 text-white text-sm font-bold rounded-xl h-9 pl-9 pr-9 outline-none focus:ring-2 focus:ring-white/60 backdrop-blur-md cursor-pointer transition-all"
+                      >
+                        <option value="" className="bg-white dark:bg-slate-800 text-black dark:text-white">{translate('🌍 All Exams (Overall AIR)')}</option>
+                        {exams.map(e => (
+                          <option key={e._id} value={e._id} className="bg-white dark:bg-slate-800 text-black dark:text-white">
+                            {translateData(e.name)}
+                          </option>
+                        ))}
+                      </select>
+                      <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none">
+                        <ChevronDown className="w-4 h-4 text-white" />
                       </div>
                     </div>
-                  )}
+                  </div>
                 </div>
 
                 {loading ? (

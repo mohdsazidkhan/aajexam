@@ -251,7 +251,7 @@ export default function UserFullDetail() {
           </div>
         ) : null}
         {p.username ? (
-          <Link href={`/u/${p.username}`} target="_blank" className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-600 dark:text-primary-300">
+          <Link href={`/@${p.username}`} target="_blank" className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-600 dark:text-primary-300">
             Public profile <ExternalLink className="w-3.5 h-3.5" />
           </Link>
         ) : null}

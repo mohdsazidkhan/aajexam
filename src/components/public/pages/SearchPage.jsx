@@ -323,7 +323,7 @@ const SearchPage = () => {
             const isThisLoading = followLoading === userId;
             return (
                <div className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 transition-colors">
-                  <Link href={item.username ? `/u/${item.username}` : '#'} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg xl:rounded-xl">
+                  <Link href={item.username ? `/@${item.username}` : '#'} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg xl:rounded-xl">
                      <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full bg-primary-600 p-[2px] shrink-0">
                         <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white font-black text-lg">{(item.name || item.username || 'U').charAt(0).toUpperCase()}</div>
                      </div>

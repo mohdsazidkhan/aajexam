@@ -3,7 +3,7 @@ import dbConnect from '@/lib/db';
 import { protect, admin } from '@/middleware/auth';
 import { rankPlace, listPlaces } from '@/lib/utils/regionRank';
 
-// GET /api/admin/state-rank?value=<place>&limit=10 — admin mirror of /api/state-rank. Admins have no
+// GET /api/admin/state-rank?examId=optional&value=<place>&limit=10 — admin mirror of /api/state-rank. Admins have no
 // state of their own, so they pick one; defaults to the state with the most students.
 export async function GET(req) {
     try {
@@ -14,10 +14,11 @@ export async function GET(req) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit'), 10) || 10, 1), 100);
+        const examId = searchParams.get('examId') || null;
         const options = await listPlaces('state');
         const value = (searchParams.get('value') || '').trim() || options[0]?.value || '';
 
-        const result = value ? await rankPlace({ field: 'state', value, limit }) : { place: '', totalUsers: 0, data: [] };
+        const result = value ? await rankPlace({ field: 'state', value, limit, examId }) : { place: '', totalUsers: 0, data: [] };
         return NextResponse.json({ success: true, options, value, ...result });
     } catch (error) {
         console.error('Admin state rank API error:', error);

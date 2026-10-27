@@ -1,6 +1,7 @@
 import User from '@/models/User';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import UserStreak from '@/models/UserStreak';
+import mongoose from 'mongoose';
 
 // State / City rank: the All India Rank ordering (total exam time, then exams, accuracy, score)
 // restricted to the active students of one state or one city. `state` and `city` are free-text on
@@ -48,7 +49,8 @@ export async function listPlaces(field) {
 
 // Ranked students of one place. Returns { place, totalUsers, data } where data is the top `limit`
 // (rank is the real position) and `me` is the caller's row even when they are outside the top.
-export async function rankPlace({ field, value, limit = 10, userId = null }) {
+// `examId` (optional) limits the ranking to attempts of that one exam; omitted = all exams combined.
+export async function rankPlace({ field, value, limit = 10, userId = null, examId = null }) {
     const key = placeKey(value, field);
     if (!FIELDS.includes(field) || !key) return { place: '', totalUsers: 0, data: [], me: null };
 
@@ -58,10 +60,16 @@ export async function rankPlace({ field, value, limit = 10, userId = null }) {
     if (!users.length) return { place: key === 'delhi' ? 'Delhi' : titleCase(key), totalUsers: 0, data: [], me: null };
 
     const byId = new Map(users.map((u) => [String(u._id), u]));
+    const examStages = examId && mongoose.Types.ObjectId.isValid(examId) ? [
+        { $lookup: { from: 'exampatterns', localField: 'pt.examPattern', foreignField: '_id', as: 'pattern' } },
+        { $unwind: { path: '$pattern', preserveNullAndEmptyArrays: false } },
+        { $match: { 'pattern.exam': new mongoose.Types.ObjectId(examId) } },
+    ] : [];
     const rows = await UserTestAttempt.aggregate([
         { $match: { status: 'Completed', user: { $in: users.map((u) => u._id) } } },
         { $lookup: { from: 'practicetests', localField: 'practiceTest', foreignField: '_id', as: 'pt' } },
-        { $unwind: { path: '$pt', preserveNullAndEmptyArrays: true } },
+        { $unwind: { path: '$pt', preserveNullAndEmptyArrays: !examStages.length } },
+        ...examStages,
         {
             $group: {
                 _id: '$user',

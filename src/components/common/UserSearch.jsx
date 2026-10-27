@@ -44,7 +44,7 @@ const UserSearch = () => {
   };
 
   const handleUserClick = (username) => {
-    router.push(`/u/${username}`);
+    router.push(`/@${username}`);
   };
 
   return (

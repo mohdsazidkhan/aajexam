@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { m as motion } from 'framer-motion';
-import { Trophy, Map as MapIcon, Building2, Users } from 'lucide-react';
+import { Trophy, Map as MapIcon, Building2, Users, Target } from 'lucide-react';
 import API from '../../../lib/api';
 import { toast } from 'react-hot-toast';
 import ResponsiveTable from '../../common/ResponsiveTable';
@@ -27,15 +27,28 @@ const RegionRankPage = ({ kind }) => {
   const [data, setData] = useState([]);
   const [options, setOptions] = useState([]);
   const [value, setValue] = useState('');
+  const [exams, setExams] = useState([]);
+  const [examId, setExamId] = useState('all');
   const [limit, setLimit] = useState('10');
   const [place, setPlace] = useState('');
   const [totalUsers, setTotalUsers] = useState(0);
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await API.getAllExams();
+        setExams(res?.success ? res.data || [] : (Array.isArray(res) ? res : []));
+      } catch (error) {
+        console.error('Error fetching exams:', error);
+      }
+    })();
+  }, []);
+
   const load = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await cfg.fetch({ limit, ...(value && { value }) });
+      const res = await cfg.fetch({ limit, ...(value && { value }), ...(examId !== 'all' && { examId }) });
       setOptions(res.options || []);
       setData(res.data || []);
       setPlace(res.place || '');
@@ -47,7 +60,7 @@ const RegionRankPage = ({ kind }) => {
     } finally {
       setLoading(false);
     }
-  }, [cfg, kind, limit, value]);
+  }, [cfg, kind, limit, value, examId]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -106,12 +119,21 @@ const RegionRankPage = ({ kind }) => {
       className="w-full"
     />
   );
+  const examSelect = (
+    <StyledSelect
+      icon={Target}
+      value={examId}
+      onChange={setExamId}
+      options={[{ value: 'all', label: 'OVERALL (ALL EXAMS)' }, ...exams.map((e) => ({ value: e._id, label: e.name.toUpperCase() }))]}
+      className="w-full"
+    />
+  );
   const limitSelect = <StyledSelect icon={Trophy} value={limit} onChange={setLimit} options={LIMITS} className="w-full" />;
 
   useAdminMobileHeader({
     title: cfg.title,
     count: totalUsers,
-    filters: (<>{placeSelect}{limitSelect}</>),
+    filters: (<>{placeSelect}{examSelect}{limitSelect}</>),
   });
 
   if (!isMounted) return null;
@@ -119,8 +141,9 @@ const RegionRankPage = ({ kind }) => {
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
-        <div className="hidden md:grid grid-cols-1 lg:grid-cols-[1fr_1fr_auto] gap-2 items-center">
+        <div className="hidden md:grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr_auto] gap-2 items-center">
           {placeSelect}
+          {examSelect}
           {limitSelect}
           <div className="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2">
             <span className="flex items-center gap-1.5 text-xs font-black text-primary-600 dark:text-primary-300"><Users className="w-4 h-4" />{totalUsers} ranked</span>

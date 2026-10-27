@@ -588,8 +588,8 @@ const StudentsPage = () => {
 
                         <div className="flex-1 space-y-2 xl:space-y-3">
                           <div className="flex flex-wrap items-center gap-3">
-                            <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-600 transition-colors">{student.name}</Link>
-                            {student.username && <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-bold text-slate-400 hover:text-primary-600 transition-colors">@{student.username}</Link>}
+                            <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-600 transition-colors">{student.name}</Link>
+                            {student.username && <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-bold text-slate-400 hover:text-primary-600 transition-colors">@{student.username}</Link>}
                             <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-primary-500/20 bg-primary-500/10 text-primary-600 ${student.subscriptionStatus === 'PRO' ? 'border-black/20 dark:border-white/20 bg-black/10 dark:bg-white/10 text-black dark:text-white' : ''}`}>
                               {student.subscriptionStatus || 'FREE'}
                             </div>
@@ -647,8 +647,8 @@ const StudentsPage = () => {
                           </div>
                         </div>
 
-                        <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1 hover:text-primary-600 transition-colors block">{student.name}</Link>
-                        <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 hover:text-primary-600 transition-colors block">{student.username ? `@${student.username}` : 'No username set'}</Link>
+                        <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1 hover:text-primary-600 transition-colors block">{student.name}</Link>
+                        <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 hover:text-primary-600 transition-colors block">{student.username ? `@${student.username}` : 'No username set'}</Link>
 
                         <div className="grid grid-cols-2 gap-3 w-full mb-4 xl:mb-4">
                           <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
@@ -666,7 +666,7 @@ const StudentsPage = () => {
                         </div>
 
                         <div className="w-full flex items-center gap-3">
-                          <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="flex-1">
+                          <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="flex-1">
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             className="w-full py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-sm"

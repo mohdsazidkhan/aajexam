@@ -241,7 +241,7 @@ const StudentEditPage = ({ studentId }) => {
                     </div>
                     <div className="sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <Toggle checked={form.isBlocked} onChange={(v) => set('isBlocked', v)} label="Blocked" hint="Blocked students cannot sign in" />
-                      <Toggle checked={form.isPublicProfile} onChange={(v) => set('isPublicProfile', v)} label="Public profile" hint="Visible at /u/username" />
+                      <Toggle checked={form.isPublicProfile} onChange={(v) => set('isPublicProfile', v)} label="Public profile" hint="Visible at /@username" />
                     </div>
                   </div>
                 </Section>

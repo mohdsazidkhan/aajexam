@@ -35,11 +35,8 @@ import {
   CalendarDays,
   Users,
   MessageCircle,
-  Trophy,
   Swords,
   Sparkles,
-  Map as MapIcon,
-  Building2,
   MessageCircleQuestion,
   Bell,
   Eye,
@@ -148,10 +145,6 @@ const StudentSidebar = () => {
     {
       title: 'PROGRESS',
       items: [
-        { path: '/student/leaderboard', icon: Trophy, label: 'Leaderboard', isPro: true },
-        { path: '/student/all-india-rank', icon: Globe, label: 'All India Rank', isPro: true },
-        { path: '/student/state-rank', icon: MapIcon, label: 'State Rank', isPro: true },
-        { path: '/student/city-rank', icon: Building2, label: 'City Rank', isPro: true },
         { path: '/student/my-analytics', icon: TrendingUp, label: 'Performance', isPro: true },
         { path: '/student/readiness', icon: Target, label: 'Exam Readiness', isPro: true },
         { path: '/student/exam-history', icon: History, label: 'Exam History', isPro: true },
@@ -171,9 +164,9 @@ const StudentSidebar = () => {
       items: [
         { path: '/student/profile', icon: User, label: 'My Profile' },
         ...(user?.username ? [
-          { path: `/u/${user.username}/followers`, icon: Users, label: 'My Followers' },
-          { path: `/u/${user.username}/following`, icon: UserCheck, label: 'My Followings' },
-          { path: `/u/${user.username}`, icon: Eye, label: 'Public profile' },
+          { path: `/@${user.username}/followers`, icon: Users, label: 'My Followers' },
+          { path: `/@${user.username}/following`, icon: UserCheck, label: 'My Followings' },
+          { path: `/@${user.username}`, icon: Eye, label: 'Public profile' },
         ] : []),
         { path: '/student/subscription', icon: ShieldCheck, label: 'Subscription' },
         { path: '/student/settings', icon: Settings, label: 'Settings' },
