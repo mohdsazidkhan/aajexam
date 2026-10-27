@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
@@ -237,27 +238,27 @@ const ReelCreate = () => {
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                 <div className="grid grid-cols-2 gap-3">
                   <div><label className={labelClass}>{translate('Exam')}</label>
-                    <select value={examType} onChange={e => { setExamType(e.target.value); setSubject(''); setTopic(''); }} className={inputClass}>
+                    <Select value={examType} onChange={e => { setExamType(e.target.value); setSubject(''); setTopic(''); }} className={inputClass}>
                       <option value="">{translate('Select Exam')}</option>
                       {examsList.map(ex => <option key={ex._id} value={ex.name}>{ex.name}</option>)}
-                    </select>
+                    </Select>
                   </div>
                   <div><label className={labelClass}>{translate('Subject')}</label>
-                    <select value={subject} onChange={e => { setSubject(e.target.value); setTopic(''); }} className={inputClass}>
+                    <Select value={subject} onChange={e => { setSubject(e.target.value); setTopic(''); }} className={inputClass}>
                       <option value="">{translate('Select Subject')}</option>
                       {subjectsList.map(s => <option key={s._id} value={s.name}>{s.name}</option>)}
-                    </select>
+                    </Select>
                   </div>
                   <div><label className={labelClass}>{translate('Topic')}</label>
-                    <select value={topic} onChange={e => setTopic(e.target.value)} className={inputClass}>
+                    <Select value={topic} onChange={e => setTopic(e.target.value)} className={inputClass}>
                       <option value="">{translate('Select Topic')}</option>
                       {topicsList.filter(t => !subject || t.subject?.name === subject).map(t => <option key={t._id} value={t.name}>{t.name}</option>)}
-                    </select>
+                    </Select>
                   </div>
                   <div><label className={labelClass}>{translate('Difficulty')}</label>
-                    <select value={difficulty} onChange={e => setDifficulty(e.target.value)} className={inputClass}>
+                    <Select value={difficulty} onChange={e => setDifficulty(e.target.value)} className={inputClass}>
                       <option value="easy">{translate('Easy')}</option><option value="medium">{translate('Medium')}</option><option value="hard">{translate('Hard')}</option>
-                    </select>
+                    </Select>
                   </div>
                 </div>
                 <div><label className={labelClass}>{translate('Title')}</label><input value={title} onChange={e => setTitle(e.target.value)} placeholder={translate('Card title')} className={inputClass} /></div>

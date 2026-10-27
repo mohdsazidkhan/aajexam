@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect } from "react";
 import { m as motion, AnimatePresence } from "framer-motion";
 import API from "../../../lib/api";
@@ -243,10 +244,10 @@ const AdminQuizTopics = () => {
             </section>
             <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
 <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-5 space-y-3">
-              <select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm">
+              <Select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm">
                 <option value="">Select Subject</option>
                 {subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
-              </select>
+              </Select>
               <input required placeholder="Topic Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
               <input placeholder="Description" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
               <input type="number" placeholder="Order" value={form.order} onChange={e => setForm({ ...form, order: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />

@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import {
@@ -176,7 +177,7 @@ export default function CommunityModeration() {
   );
 
   const statusFilterSelect = (
-    <select
+    <Select
       value={status}
       onChange={(e) => { setStatus(e.target.value); setPage(1); }}
       className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
@@ -185,7 +186,7 @@ export default function CommunityModeration() {
       <option value="pending">Pending ({statusCounts.pending || 0})</option>
       <option value="approved">Approved ({statusCounts.approved || 0})</option>
       <option value="rejected">Rejected ({statusCounts.rejected || 0})</option>
-    </select>
+    </Select>
   );
 
   const paginationControl = (

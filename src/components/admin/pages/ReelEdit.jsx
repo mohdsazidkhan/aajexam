@@ -1,5 +1,6 @@
 "use client";
 
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect } from "react";
 import API from '../../../lib/api';
 import { toast } from 'react-hot-toast';
@@ -304,21 +305,21 @@ const AdminReelEdit = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className={labelClass}>Status</label>
-                    <select value={status} onChange={e => setStatus(e.target.value)} className={inputClass}>
+                    <Select value={status} onChange={e => setStatus(e.target.value)} className={inputClass}>
                       <option value="draft">Draft</option>
                       <option value="pending">Pending</option>
                       <option value="published">Published</option>
                       <option value="rejected">Rejected</option>
                       <option value="archived">Archived</option>
-                    </select>
+                    </Select>
                   </div>
                   <div>
                     <label className={labelClass}>Difficulty</label>
-                    <select value={difficulty} onChange={e => setDifficulty(e.target.value)} className={inputClass}>
+                    <Select value={difficulty} onChange={e => setDifficulty(e.target.value)} className={inputClass}>
                       <option value="easy">Easy</option>
                       <option value="medium">Medium</option>
                       <option value="hard">Hard</option>
-                    </select>
+                    </Select>
                   </div>
                   <div>
                     <label className={labelClass}>Title</label>
@@ -326,24 +327,24 @@ const AdminReelEdit = () => {
                   </div>
                   <div>
                     <label className={labelClass}>Exam Type</label>
-                    <select value={examType} onChange={e => { setExamType(e.target.value); setSubject(''); setTopic(''); }} className={inputClass}>
+                    <Select value={examType} onChange={e => { setExamType(e.target.value); setSubject(''); setTopic(''); }} className={inputClass}>
                       <option value="">Select Exam</option>
                       {examsList.map(ex => <option key={ex._id} value={ex.name}>{ex.name}{ex.code ? ` (${ex.code})` : ''}</option>)}
-                    </select>
+                    </Select>
                   </div>
                   <div>
                     <label className={labelClass}>Subject</label>
-                    <select value={subject} onChange={e => { setSubject(e.target.value); setTopic(''); }} className={inputClass}>
+                    <Select value={subject} onChange={e => { setSubject(e.target.value); setTopic(''); }} className={inputClass}>
                       <option value="">Select Subject</option>
                       {subjectsList.map(s => <option key={s._id} value={s.name}>{s.name}</option>)}
-                    </select>
+                    </Select>
                   </div>
                   <div>
                     <label className={labelClass}>Topic</label>
-                    <select value={topic} onChange={e => setTopic(e.target.value)} className={inputClass}>
+                    <Select value={topic} onChange={e => setTopic(e.target.value)} className={inputClass}>
                       <option value="">Select Topic</option>
                       {topicsList.filter(t => !subject || t.subject?.name === subject).map(t => <option key={t._id} value={t.name}>{t.name}</option>)}
-                    </select>
+                    </Select>
                   </div>
                   <div className="sm:col-span-2">
                     <label className={labelClass}>Tags (comma separated)</label>
@@ -469,7 +470,7 @@ const AdminReelEdit = () => {
                     </div>
                     <div>
                       <label className={labelClass}>CA Category</label>
-                      <select value={caCategory} onChange={e => setCaCategory(e.target.value)} className={inputClass}>
+                      <Select value={caCategory} onChange={e => setCaCategory(e.target.value)} className={inputClass}>
                         <option value="">Select</option>
                         <option value="National">National</option>
                         <option value="International">International</option>
@@ -480,7 +481,7 @@ const AdminReelEdit = () => {
                         <option value="Awards">Awards</option>
                         <option value="Appointments">Appointments</option>
                         <option value="Schemes">Schemes</option>
-                      </select>
+                      </Select>
                     </div>
                   </div>
                   <div>

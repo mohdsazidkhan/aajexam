@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../../components/common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { MessageCircleQuestion, Plus, Pencil, Trash2, Eye, Table2, List, LayoutGrid, X, Search } from 'lucide-react';
@@ -257,10 +258,10 @@ const AdminInterviewQuestions = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Category <span className="text-black dark:text-white">*</span></label>
-                        <select value={form.category} onChange={e => setForm({ ...form, category: e.target.value })} className={inputClass}>
+                        <Select value={form.category} onChange={e => setForm({ ...form, category: e.target.value })} className={inputClass}>
                           <option value="">Select Category</option>
                           {categories.map(c => <option key={c._id} value={c._id}>{c.name} ({c.type})</option>)}
-                        </select>
+                        </Select>
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Tags</label>

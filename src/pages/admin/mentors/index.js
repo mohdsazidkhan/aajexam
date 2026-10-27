@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../../components/common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { Users, Shield, Eye, Star, Table2, List, LayoutGrid, Search } from 'lucide-react';
 import { toast } from 'react-hot-toast';
@@ -23,7 +24,7 @@ const statusColor = (s) => {
 };
 
 const StatusSelect = ({ mentor, onChange }) => (
-  <select
+  <Select
     value={mentor.status}
     onChange={e => onChange(mentor._id, e.target.value, e.target.value === 'active' ? true : undefined)}
     className="px-2 py-1.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg text-[11px] font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
@@ -32,7 +33,7 @@ const StatusSelect = ({ mentor, onChange }) => (
     <option value="active">Active</option>
     <option value="suspended">Suspended</option>
     <option value="rejected">Rejected</option>
-  </select>
+  </Select>
 );
 
 const AdminMentors = () => {
@@ -130,13 +131,13 @@ const AdminMentors = () => {
   );
 
   const statusFilterSelect = (
-    <select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600">
+    <Select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600">
       <option value="">All</option>
       <option value="pending">Pending</option>
       <option value="active">Active</option>
       <option value="suspended">Suspended</option>
       <option value="rejected">Rejected</option>
-    </select>
+    </Select>
   );
 
   const viewToggleButtons = (

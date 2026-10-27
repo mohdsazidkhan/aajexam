@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import DatePicker from 'react-datepicker';
@@ -359,10 +360,10 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
 
         <div className={`grid grid-cols-1 gap-3 items-start ${form.discountType === 'percentage' ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
           <Field label="Discount type">
-            <select className={inputCls} value={form.discountType} onChange={(e) => set('discountType', e.target.value)}>
+            <Select className={inputCls} value={form.discountType} onChange={(e) => set('discountType', e.target.value)}>
               <option value="percentage">Percentage (%)</option>
               <option value="flat">Flat (₹)</option>
-            </select>
+            </Select>
           </Field>
           <Field label={form.discountType === 'percentage' ? 'Percent off' : 'Rupees off'}>
             <input className={inputCls} type="number" min="1" max={form.discountType === 'percentage' ? 99 : undefined} step="any" value={form.discountValue} onChange={(e) => set('discountValue', e.target.value)} required />

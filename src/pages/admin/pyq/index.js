@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../../components/common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { FileText, Plus, Pencil, Trash2, Filter, Table as TableIcon, List, LayoutGrid, Search } from 'lucide-react';
 import { toast } from 'react-hot-toast';
@@ -130,7 +131,7 @@ const AdminPYQ = () => {
   const examFilterSelect = (
     <div className="relative flex items-center w-full sm:w-auto">
       <Filter className="absolute left-2.5 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
-      <select
+      <Select
         value={selectedExamId}
         onChange={handleExamChange}
         className="w-full sm:w-auto pl-8 pr-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 transition sm:min-w-[160px]"
@@ -139,7 +140,7 @@ const AdminPYQ = () => {
         {exams.map(exam => (
           <option key={exam._id} value={exam._id}>{exam.name}</option>
         ))}
-      </select>
+      </Select>
     </div>
   );
 

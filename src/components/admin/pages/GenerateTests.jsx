@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import {
@@ -630,7 +631,7 @@ const AdminGenerateTests = () => {
                 <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: 'var(--gt-text-2)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   Exam Category
                 </label>
-                <select
+                <Select
                   value={selectedCategory}
                   onChange={(e) => handleCategoryChange(e.target.value)}
                   style={selectStyle}
@@ -639,7 +640,7 @@ const AdminGenerateTests = () => {
                   {categories.map((c) => (
                     <option key={c._id} value={c._id}>{c.name}</option>
                   ))}
-                </select>
+                </Select>
               </div>
 
               {/* Exams */}
@@ -804,7 +805,7 @@ const AdminGenerateTests = () => {
                 {/* Access Level */}
                 <div>
                   <label style={labelStyle}>Access Level</label>
-                  <select
+                  <Select
                     value={accessLevel}
                     onChange={(e) => setAccessLevel(e.target.value)}
                     disabled={generating}
@@ -812,7 +813,7 @@ const AdminGenerateTests = () => {
                   >
                     <option value="FREE">🆓 Free</option>
                     <option value="PRO">⭐ Pro</option>
-                  </select>
+                  </Select>
                 </div>
               </div>
 

@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Trophy, Flame, Target, TrendingUp,
-  Users, RefreshCw, Globe, ChevronDown, Sparkles, Clock
+  Users, RefreshCw, Globe, Sparkles, Clock
 } from 'lucide-react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import API from '../../lib/api';
@@ -10,12 +10,13 @@ import Card from '../../components/common/ui/Card';
 import Seo from '../../components/common/Seo';
 import SubscriptionGuard from '../../components/student/SubscriptionGuard';
 import { getCurrentUser } from '../../lib/utils/authUtils';
-import { formatSecondsSpent } from '../../lib/utils/timeFormat';
+import { formatSecondsExact } from '../../lib/utils/timeFormat';
 import useTranslate from '../../hooks/useTranslate';
 import Pagination from '../../components/common/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../lib/constants/pagination';
 import useRequireLogin from '../../hooks/useRequireLogin';
-import { LeaderboardSkeleton, Podium, LeaderboardRow, MyRankCard, TABLE_GRID_COLS } from '../../components/student/rank/RankParts';
+import { LeaderboardSkeleton, Podium, LeaderboardRow, MyRankCard, RankSortSelect, TABLE_GRID_COLS } from '../../components/student/rank/RankParts';
+import SearchableSelect from '../../components/common/SearchableSelect';
 
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 const AllIndiaRankPage = () => {
@@ -23,6 +24,7 @@ const AllIndiaRankPage = () => {
   const { translate, translateData } = useTranslate();
   const [exams, setExams] = useState([]);
   const [selectedExamId, setSelectedExamId] = useState('');
+  const [sort, setSort] = useState('time');
   const [data, setData] = useState([]);
   const [totalAttempts, setTotalAttempts] = useState(0);
   const [totalUsers, setTotalUsers] = useState(0);
@@ -56,7 +58,7 @@ const AllIndiaRankPage = () => {
     try {
       if (isRefresh) setRefreshing(true);
       else setLoading(true);
-      const url = `/api/air?limit=1000${selectedExamId ? `&examId=${selectedExamId}` : ''}`;
+      const url = `/api/air?limit=100${selectedExamId ? `&examId=${selectedExamId}` : ''}${sort !== 'time' ? `&sort=${sort}` : ''}`;
       const res = await API.request(url);
       if (res?.success) {
         setData(res.data || []);
@@ -70,10 +72,10 @@ const AllIndiaRankPage = () => {
       setLoading(false);
       setRefreshing(false);
     }
-  }, [selectedExamId]);
+  }, [selectedExamId, sort]);
 
   useEffect(() => { fetchAIR(); }, [fetchAIR]);
-  useEffect(() => { setPage(1); }, [selectedExamId]);
+  useEffect(() => { setPage(1); }, [selectedExamId, sort]);
 
   const top3 = data.slice(0, 3);
   // Top 3 show on the podium AND at the top of the table below (per user's choice).
@@ -95,12 +97,14 @@ const AllIndiaRankPage = () => {
           <div className="space-y-3 xl:space-y-4">
             
             {/* ── Hero Banner — green gradient with gold podium ── */}
-            <section className="relative rounded-2xl overflow-hidden shadow-md bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white">
-              <div className="pointer-events-none absolute -top-24 -left-16 w-72 h-72 rounded-full bg-white/10 blur-2xl" />
-              <div className="pointer-events-none absolute -bottom-32 right-8 w-96 h-96 rounded-full bg-primary-300/20 blur-3xl" />
-              <Trophy className="pointer-events-none absolute right-3 top-2 w-28 h-28 text-white/5 rotate-12" />
+            <section className="relative rounded-2xl shadow-md bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white">
+              <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
+              <div className="absolute -top-24 -left-16 w-72 h-72 rounded-full bg-white/10 blur-2xl" />
+              <div className="absolute -bottom-32 right-8 w-96 h-96 rounded-full bg-primary-300/20 blur-3xl" />
+              <Trophy className="absolute right-3 top-2 w-28 h-28 text-white/5 rotate-12" />
+              </div>
 
-              <div className="relative z-10 grid grid-cols-1 xl:grid-cols-2 items-end gap-2 xl:gap-6 px-3 xl:px-6 pt-3 xl:pt-4 pb-0">
+              <div className="relative z-40 grid grid-cols-1 xl:grid-cols-2 items-end gap-2 xl:gap-6 px-3 xl:px-6 pt-3 xl:pt-4 pb-0">
                 <div className="space-y-2 xl:space-y-2.5 text-center xl:text-left pb-3 xl:pb-4">
                   <div className="flex flex-wrap items-center justify-center xl:justify-start gap-2 xl:gap-3">
                     <motion.h1
@@ -123,30 +127,19 @@ const AllIndiaRankPage = () => {
 
                   <p className="text-[11px] xl:text-xs font-bold text-white/80 max-w-md mx-auto xl:mx-0 flex items-center justify-center xl:justify-start gap-1.5">
                     <Trophy className="w-3.5 h-3.5 shrink-0 text-primary-300" />
-                    {translate('Top 1000 students ranking based on total time spent')}
+                    {translate('Top 100 Student Rankings')}
                   </p>
 
-                  {/* Exam Filter Dropdown */}
-                  <div className="max-w-sm mx-auto xl:mx-0">
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                        <Target className="w-4 h-4 text-white" />
-                      </div>
-                      <select
+                  {/* Exam filter + rank-based-on, one row */}
+                  <div className="flex flex-col sm:flex-row gap-2 w-full max-w-sm mx-auto xl:mx-0 text-left">
+                    <div className="w-full max-w-[260px] min-w-0">
+                      <SearchableSelect
+                        icon={Target}
                         value={selectedExamId}
-                        onChange={(e) => setSelectedExamId(e.target.value)}
-                        className="w-full appearance-none bg-white/15 hover:bg-white/20 border border-white/30 text-white text-sm font-bold rounded-xl h-9 pl-9 pr-9 outline-none focus:ring-2 focus:ring-white/60 backdrop-blur-md cursor-pointer transition-all"
-                      >
-                        <option value="" className="bg-white dark:bg-slate-800 text-black dark:text-white">{translate('🌍 All Exams (Overall AIR)')}</option>
-                        {exams.map(e => (
-                          <option key={e._id} value={e._id} className="bg-white dark:bg-slate-800 text-black dark:text-white">
-                            {translateData(e.name)}
-                          </option>
-                        ))}
-                      </select>
-                      <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none">
-                        <ChevronDown className="w-4 h-4 text-white" />
-                      </div>
+                        onChange={setSelectedExamId}
+                        options={[{ value: '', label: translate('All Exams ({label})', { label: 'AIR' }) }, ...exams.map((e) => ({ value: e._id, label: translateData(e.name) }))]}
+                        placeholder={translate('All Exams ({label})', { label: 'AIR' })}
+                      />
                     </div>
                   </div>
                 </div>
@@ -164,35 +157,13 @@ const AllIndiaRankPage = () => {
               </div>
             </section>
 
-            {/* ── My Rank ── */}
-            {!loading && myEntry && <MyRankCard entry={myEntry} totalUsers={totalUsers} />}
-
-            {/* ── List Actions ── */}
-            <div className="flex justify-between items-center">
-               <div className="flex items-center gap-2.5">
-                 <span className="h-6 w-1.5 rounded-full bg-primary-600" />
-                 <h3 className="text-sm xl:text-base font-black text-content-primary uppercase">
-                   {selectedExamId ? translate('Filtered Ranks') : translate('All Student Ranks')}
-                 </h3>
-               </div>
-               <button
-                onClick={() => fetchAIR(true)}
-                disabled={refreshing || loading}
-                title={translate('Refresh Ranks')}
-                className="flex items-center gap-1.5 px-3 h-9 rounded-xl font-black text-[10px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:hover:border-white transition-all disabled:opacity-40"
-              >
-                <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
-                <span className="hidden sm:inline">{translate('Refresh')}</span>
-              </button>
-            </div>
-
             {/* ── Quick Stats ── */}
             {!loading && data.length > 0 && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-5 gap-2 xl:gap-3">
                 {[
                   { label: 'Ranked Users', value: `${totalUsers}+`, icon: Users, tile: 'bg-primary-50 text-primary-600 dark:bg-primary-500/15 dark:text-primary-300' },
                   { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, tile: 'bg-sky-50 text-sky-600 dark:bg-sky-500/15 dark:text-sky-300' },
-                  { label: selectedExamId ? 'Time Spent On This Exam' : 'Total All Exams Time Spent', value: formatSecondsSpent(totalTimeSpentSeconds), icon: Clock, tile: 'bg-violet-50 text-violet-600 dark:bg-violet-500/15 dark:text-violet-300' },
+                  { label: selectedExamId ? 'Time Spent On This Exam' : 'Total Time Spent', value: formatSecondsExact(totalTimeSpentSeconds), icon: Clock, tile: 'bg-violet-50 text-violet-600 dark:bg-violet-500/15 dark:text-violet-300' },
                   { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, tile: 'bg-primary-50 text-primary-600 dark:bg-primary-500/15 dark:text-primary-300' },
                   { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, tile: 'bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-300' },
                 ].map((stat, i) => (
@@ -208,6 +179,31 @@ const AllIndiaRankPage = () => {
                 ))}
               </motion.div>
             )}
+
+            {/* ── My Rank ── */}
+            {!loading && myEntry && <MyRankCard entry={myEntry} totalUsers={totalUsers} />}
+
+            {/* ── List Actions ── */}
+            <div className="flex justify-between items-center">
+               <div className="flex items-center gap-2.5">
+                 <span className="h-6 w-1.5 rounded-full bg-primary-600" />
+                 <h3 className="text-sm xl:text-base font-black text-content-primary uppercase">
+                   {selectedExamId ? translate('Filtered Ranks') : translate('Students')}
+                 </h3>
+               </div>
+               <div className="flex items-center gap-2 min-w-0">
+                 <div className="w-44 sm:w-72 min-w-0"><RankSortSelect value={sort} onChange={setSort} /></div>
+               <button
+                onClick={() => fetchAIR(true)}
+                disabled={refreshing || loading}
+                title={translate('Refresh Ranks')}
+                className="flex items-center gap-1.5 px-3 h-9 rounded-xl font-black text-[10px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:hover:border-white transition-all disabled:opacity-40"
+              >
+                <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
+                <span className="hidden sm:inline">{translate('Refresh')}</span>
+              </button>
+               </div>
+            </div>
 
             {/* ── Leaderboard List ── */}
             {loading ? (
@@ -226,12 +222,12 @@ const AllIndiaRankPage = () => {
               </div>
             ) : (
               <AnimatePresence mode="wait">
-                <motion.div key={selectedExamId} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-2">
+                <motion.div key={`${selectedExamId}:${sort}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-2">
                   {/* Column header — desktop table only; mobile list has no header row */}
                   <div className={`hidden xl:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 pb-1`}>
                     <p className="text-[10px] font-black text-content-muted uppercase text-center">#</p>
                     <p className="text-[10px] font-black text-content-muted uppercase">{translate('Player')}</p>
-                    <p className="text-[10px] font-black text-content-muted uppercase text-center whitespace-nowrap">{translate('Total Time Spent')}</p>
+                    <p className="text-[10px] font-black text-content-muted uppercase text-center whitespace-nowrap">{translate('Time Spent')}</p>
                     <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Exams')}</p>
                     <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Marks')}</p>
                     <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Correct')}</p>

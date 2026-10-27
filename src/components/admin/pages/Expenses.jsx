@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { useSSR } from '../../../hooks/useSSR';
@@ -426,13 +427,13 @@ const AdminExpenses = () => {
 
                                     <div className="space-y-2 xl:space-y-3">
                                         <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Category</label>
-                                        <select
+                                        <Select
                                             value={formData.category}
                                             onChange={e => setFormData({ ...formData, category: e.target.value })}
                                             className="w-full px-4 xl:px-5 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all cursor-pointer shadow-sm border-slate-300 dark:border-slate-700"
                                         >
                                             {expenseCategories.map(cat => <option key={cat.id} value={cat.id}>{cat.label}</option>)}
-                                        </select>
+                                        </Select>
                                     </div>
 
                                     <div className="space-y-2 xl:space-y-3">

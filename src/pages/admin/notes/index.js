@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../../components/common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { StickyNote, Plus, Pencil, Trash2, Eye, Table2, List, LayoutGrid, X, Search } from 'lucide-react';
@@ -255,24 +256,24 @@ const AdminNotes = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Subject <span className="text-black dark:text-white">*</span></label>
-                        <select value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} className={inputClass}>
+                        <Select value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} className={inputClass}>
                           <option value="">Select Subject</option>
                           {subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
-                        </select>
+                        </Select>
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Note Type</label>
-                        <select value={form.noteType} onChange={e => setForm({ ...form, noteType: e.target.value })} className={inputClass}>
+                        <Select value={form.noteType} onChange={e => setForm({ ...form, noteType: e.target.value })} className={inputClass}>
                           {noteTypes.map(t => <option key={t} value={t}>{t.replace('_', ' ')}</option>)}
-                        </select>
+                        </Select>
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Difficulty</label>
-                        <select value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value })} className={inputClass}>
+                        <Select value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value })} className={inputClass}>
                           <option value="beginner">Beginner</option>
                           <option value="intermediate">Intermediate</option>
                           <option value="advanced">Advanced</option>
-                        </select>
+                        </Select>
                       </div>
                     </div>
                     <div>

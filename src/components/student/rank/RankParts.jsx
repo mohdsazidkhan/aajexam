@@ -6,10 +6,29 @@ import { m as motion } from 'framer-motion';
 import Link from '@/components/common/AppLink';
 import { useSelector } from 'react-redux';
 import { ProBadge } from '../../common/ui';
-import { formatTimeSpent } from '../../../lib/utils/timeFormat';
+import { formatTimeExact } from '../../../lib/utils/timeFormat';
 import useTranslate from '../../../hooks/useTranslate';
+import SearchableSelect from '../../common/SearchableSelect';
+import { RANK_SORT_OPTIONS } from '../../../lib/utils/rankSort';
 
 // Shared by All India Rank, State Rank and City Rank so the three pages stay visually identical.
+// ─── "Rank based on" dropdown (value is the ?sort= key understood by rankSort.js) ───
+export { RANK_SORT_OPTIONS };
+
+export const RankSortSelect = ({ value, onChange }) => {
+  const { translate } = useTranslate();
+  return (
+    <SearchableSelect
+      prefix={translate('Rank Based on')}
+      value={value}
+      onChange={onChange}
+      options={RANK_SORT_OPTIONS.map((o) => ({ value: o.value, label: translate(o.label) }))}
+      placeholder={translate('Rank Based on')}
+      className="ring-2 ring-primary-400/60 border-primary-500"
+    />
+  );
+};
+
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
   <div className={`container mx-auto animate-pulse bg-primary-500/15 dark:bg-primary-500/20 rounded-lg xl:rounded-xl ${className}`} />
@@ -91,7 +110,7 @@ export const Podium = ({ top3, currentUserId }) => {
               </div>
               <div className={`w-[76px] sm:w-24 ${stepH[entry.rank] || 'h-9'} ${rc?.gradient || 'bg-slate-400'} flex flex-col items-center justify-center shadow-[0_-4px_24px_rgba(0,0,0,0.18)]`} style={{ borderRadius: '8px 8px 0 0' }}>
                 <span className={`font-black text-xs sm:text-sm leading-none ${rc?.badgeText || 'text-white'}`}>#{entry.rank}</span>
-                <span className={`mt-0.5 text-[9px] sm:text-[10px] font-black uppercase leading-none opacity-80 ${rc?.badgeText || 'text-white'}`}>{formatTimeSpent(entry.totalTimeSpent, 'exam')}</span>
+                <span className={`mt-0.5 text-[9px] sm:text-[10px] font-black uppercase leading-none opacity-80 ${rc?.badgeText || 'text-white'}`}>{formatTimeExact(entry.totalTimeSpent, 'exam')}</span>
               </div>
             </motion.div>
           </Link>
@@ -121,10 +140,10 @@ export const LeaderboardRow = ({ entry, index, currentUserId }) => {
   const identity = (
     <div className="min-w-0">
       <div className="flex items-center gap-1.5 flex-wrap">
-        <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-black dark:text-white' : 'text-content-primary'}`}>
+        <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-violet-800 dark:text-violet-200' : 'text-content-primary'}`}>
           {entry.name || entry.username || translate('Anonymous')}
         </p>
-        {isMe && <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">{translate('You')}</span>}
+        {isMe && <span className="text-[9px] font-black uppercase bg-violet-600 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">{translate('You')}</span>}
         {entry.subscriptionStatus === 'PRO' && <ProBadge size="xs" className="flex-shrink-0" />}
       </div>
       <div className="flex items-center gap-1.5 flex-wrap">
@@ -143,14 +162,14 @@ export const LeaderboardRow = ({ entry, index, currentUserId }) => {
       <Link href={entry.username ? `/@${entry.username}` : '#'}>
         {/* ── Desktop: table row ── */}
         <div className={`hidden xl:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
-          ${isTop3 ? rc.rowBg : isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-black border-b-primary-400 dark:border-b-primary-600' : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700 hover:shadow-md'} ${isTop3 ? `border-l-4 ${rc.accent}` : ''}`}>
+          ${isTop3 ? rc.rowBg : isMe ? 'border-violet-500 bg-violet-50 dark:bg-violet-500/15 shadow-md shadow-violet-500/20' : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700 hover:shadow-md'} ${isTop3 ? `border-l-4 ${rc.accent}` : ''} ${isMe && isTop3 ? 'ring-2 ring-violet-500' : ''}`}>
           {rankBadge}
           <div className="flex items-center gap-2.5 min-w-0">
             <Avatar entry={entry} size="md" />
             {identity}
           </div>
           <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
-            <Clock className="w-3 h-3 text-content-muted" />{formatTimeSpent(entry.totalTimeSpent, 'exam')}
+            <Clock className="w-3 h-3 text-content-muted" />{formatTimeExact(entry.totalTimeSpent, 'exam')}
           </p>
           <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
             <Target className="w-3 h-3 text-content-muted" />{entry.totalExams}
@@ -165,7 +184,7 @@ export const LeaderboardRow = ({ entry, index, currentUserId }) => {
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
         <div className={`flex xl:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
-          ${isTop3 ? rc.rowBg : isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-black border-b-primary-400 dark:border-b-primary-600' : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'} ${isTop3 ? `border-l-4 ${rc.accent}` : ''}`}>
+          ${isTop3 ? rc.rowBg : isMe ? 'border-violet-500 bg-violet-50 dark:bg-violet-500/15 shadow-md shadow-violet-500/20' : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'} ${isTop3 ? `border-l-4 ${rc.accent}` : ''} ${isMe && isTop3 ? 'ring-2 ring-violet-500' : ''}`}>
           <div className="flex items-center gap-3">
             {rankBadge}
             <Avatar entry={entry} size="md" />
@@ -179,10 +198,10 @@ export const LeaderboardRow = ({ entry, index, currentUserId }) => {
             </div>
             <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
           </div>
-          <div className="grid grid-cols-3 gap-2 pl-[52px]">
+          <div className="grid grid-cols-3 gap-2">
             <div>
-              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide whitespace-nowrap">{translate('Total Time Spent')}</p>
-              <p className="text-sm font-black text-content-primary">{formatTimeSpent(entry.totalTimeSpent, 'exam')}</p>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide leading-tight">{translate('Time Spent')}</p>
+              <p className="text-sm font-black text-content-primary">{formatTimeExact(entry.totalTimeSpent, 'exam')}</p>
             </div>
             <div>
               <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{translate('Exams')}</p>
@@ -225,17 +244,17 @@ export const MyRankCard = ({ entry, totalUsers }) => {
     { label: translate('Exams'), value: entry.totalExams },
     { label: translate('Accuracy'), value: `${entry.avgAccuracy}%` },
     { label: translate('Avg Score'), value: `${entry.avgPercentage}%` },
-    { label: translate('Total Time Spent'), value: formatTimeSpent(entry.totalTimeSpent, 'exam') },
+    { label: translate('Time Spent'), value: formatTimeExact(entry.totalTimeSpent, 'exam') },
   ];
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="sticky bottom-4 z-30 px-1">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white shadow-lg ring-1 ring-slate-200 dark:ring-white/20 px-3 py-2">
-        <Trophy className="pointer-events-none absolute -right-2 -bottom-4 w-20 h-20 text-slate-900/10 dark:text-white/10 -rotate-12" />
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white shadow-lg px-3 py-2">
+        <Trophy className="pointer-events-none absolute -right-2 -bottom-4 w-20 h-20 text-white/10 -rotate-12" />
         {/* One row on desktop (rank · avatar · name · top % · stats); wraps on small screens */}
         <div className="relative flex flex-wrap items-center gap-x-3 gap-y-1.5">
-          <div className="flex items-baseline gap-1.5 rounded-xl bg-white/80 dark:bg-white/15 px-2.5 py-1 ring-1 ring-slate-200 dark:ring-white/25">
-            <span className="text-sm sm:text-base font-black uppercase tracking-wide text-slate-900 dark:text-white">{translate('Your Rank')}</span>
-            <span className="text-xl sm:text-2xl font-black leading-none text-slate-600 dark:text-primary-200">#{entry.rank}</span>
+          <div className="flex items-baseline gap-1.5 rounded-xl bg-white/15 px-2.5 py-1 ring-1 ring-white/30">
+            <span className="text-sm sm:text-base font-black uppercase tracking-wide text-white">{translate('Your Rank')}</span>
+            <span className="text-xl sm:text-2xl font-black leading-none text-primary-200">#{entry.rank}</span>
           </div>
           <Avatar entry={entry} size="sm" />
 <div className="min-w-0">
@@ -244,17 +263,17 @@ export const MyRankCard = ({ entry, totalUsers }) => {
               {entry.subscriptionStatus === 'PRO' && <ProBadge size="xs" className="flex-shrink-0" />}
             </div>
             <div className="flex items-center gap-2 flex-wrap">
-              {entry.username && <p className="text-[10px] font-bold text-slate-700 dark:text-white/70 truncate">@{entry.username}</p>}
+              {entry.username && <p className="text-[10px] font-bold text-white/80 truncate">@{entry.username}</p>}
               {topPct !== null && (
-                <p className="text-[10px] font-bold text-slate-600 dark:text-primary-200 whitespace-nowrap">{translate('Top {percent}% of {total} ranked students', { percent: topPct, total: totalUsers })}</p>
+                <p className="text-[10px] font-bold text-primary-200 whitespace-nowrap">{translate('Top {percent}% of {total} ranked students', { percent: topPct, total: totalUsers })}</p>
               )}
             </div>
           </div>
           <div className="flex flex-wrap gap-1.5 xl:ml-auto">
             {chips.map((c) => (
-              <span key={c.label} className="inline-flex items-center gap-1 rounded-full bg-primary-100 dark:bg-black/30 ring-1 ring-primary-300 dark:ring-white/25 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-primary-900 dark:text-white">
-                <span className="text-primary-800 dark:text-white/90">{c.label}</span>
-                <span className="font-black text-primary-700 dark:text-primary-200">{c.value}</span>
+              <span key={c.label} className="inline-flex items-center gap-1 rounded-full bg-white/15 ring-1 ring-white/30 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-white">
+                <span className="text-white/90">{c.label}</span>
+                <span className="font-black text-primary-200">{c.value}</span>
               </span>
             ))}
           </div>

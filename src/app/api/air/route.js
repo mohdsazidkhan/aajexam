@@ -4,20 +4,22 @@ import UserTestAttempt from '@/models/UserTestAttempt';
 import mongoose from 'mongoose';
 import { readCache, writeCache } from '@/lib/utils/sharedCache';
 import { statsReady, topLifetime, examScopeTotals } from '@/lib/utils/leaderboardStats';
+import { normalizeRankSort, rowSort } from '@/lib/utils/rankSort';
 
 // This ranks every completed attempt on the platform (several full scans), so the result is
 // cached (shared across server instances) per (examId, limit) instead of recomputed per request.
 const CACHE_TTL_SEC = 5 * 60;
 
-// GET /api/air?examId=optional&limit=20
+// GET /api/air?examId=optional&limit=20 (max 100, top-100 board)&sort=time|attempts|correct|score|accuracy|avg
 export async function GET(req) {
     try {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const examId = searchParams.get('examId');
-        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000);
+        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 100);
 
-        const cacheKey = `${examId || 'all'}:${limit}`;
+        const sort = normalizeRankSort(searchParams.get('sort'));
+        const cacheKey = `${examId || 'all'}:${limit}${sort === 'time' ? '' : `:${sort}`}`;
         const useStats = await statsReady();
         const hit = await readCache(`air:${useStats ? 's:' : ''}${cacheKey}`);
         if (hit) return NextResponse.json(hit);
@@ -27,7 +29,7 @@ export async function GET(req) {
         if (useStats) {
             const scope = examId || 'all';
             const [rows, totals] = await Promise.all([
-                topLifetime({ kind: 'exam', scope, pool: limit, countKey: 'totalExams' }),
+                topLifetime({ kind: 'exam', scope, pool: limit, countKey: 'totalExams', sortKey: sort }),
                 examScopeTotals(scope),
             ]);
             const body = {
@@ -117,7 +119,7 @@ export async function GET(req) {
             },
             {
                 // Rank by: most exams attempted, then accuracy, then total score.
-                $sort: { totalTimeSpent: -1, totalExams: -1, avgAccuracy: -1, totalScore: -1, _id: 1 }
+                $sort: rowSort(sort)
             },
             { $limit: limit },
             // Join User data

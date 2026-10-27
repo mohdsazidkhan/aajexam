@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
@@ -235,9 +236,9 @@ const StudentEditPage = ({ studentId }) => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className={LB}>Status</label>
-                      <select className={IN} value={form.status} onChange={(e) => set('status', e.target.value)}>
+                      <Select className={IN} value={form.status} onChange={(e) => set('status', e.target.value)}>
                         {STATUSES.map((s) => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
-                      </select>
+                      </Select>
                     </div>
                     <div className="sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <Toggle checked={form.isBlocked} onChange={(v) => set('isBlocked', v)} label="Blocked" hint="Blocked students cannot sign in" />
@@ -250,10 +251,10 @@ const StudentEditPage = ({ studentId }) => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className={LB}>Gender</label>
-                      <select className={IN} value={form.gender} onChange={(e) => set('gender', e.target.value)}>
+                      <Select className={IN} value={form.gender} onChange={(e) => set('gender', e.target.value)}>
                         <option value="">Select gender</option>
                         {GENDERS.map((g) => <option key={g.value} value={g.value}>{g.label}</option>)}
-                      </select>
+                      </Select>
                     </div>
                     <div>
                       <label className={LB}>Date of birth</label>
@@ -265,17 +266,17 @@ const StudentEditPage = ({ studentId }) => {
                     </div>
                     <div>
                       <label className={LB}>Qualification</label>
-                      <select className={IN} value={form.qualification} onChange={(e) => set('qualification', e.target.value)}>
+                      <Select className={IN} value={form.qualification} onChange={(e) => set('qualification', e.target.value)}>
                         <option value="">Select qualification</option>
                         {QUALIFICATIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-                      </select>
+                      </Select>
                     </div>
                     <div>
                       <label className={LB}>How did they hear about us?</label>
-                      <select className={IN} value={form.heardFrom} onChange={(e) => set('heardFrom', e.target.value)}>
+                      <Select className={IN} value={form.heardFrom} onChange={(e) => set('heardFrom', e.target.value)}>
                         <option value="">Select an option</option>
                         {HEARD_FROM.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-                      </select>
+                      </Select>
                     </div>
                     <div className="sm:col-span-2">
                       <label className={LB}>Bio <span className="normal-case tracking-normal font-bold text-slate-400">({form.bio.length}/200)</span></label>

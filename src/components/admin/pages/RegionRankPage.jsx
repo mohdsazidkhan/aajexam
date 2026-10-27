@@ -11,6 +11,7 @@ import { AdminTableSkeleton } from '../Skeletons';
 import { useSSR } from '../../../hooks/useSSR';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 import { formatTimeSpent } from '../../../lib/utils/timeFormat';
+import { RANK_SORT_OPTIONS } from '../../../lib/utils/rankSort';
 
 // Admin State Rank / City Rank. Admins have no state or city of their own, so they pick one
 // (default: the place with the most students). Same ordering as All India Rank.
@@ -29,7 +30,8 @@ const RegionRankPage = ({ kind }) => {
   const [value, setValue] = useState('');
   const [exams, setExams] = useState([]);
   const [examId, setExamId] = useState('all');
-  const [limit, setLimit] = useState('10');
+  const [sort, setSort] = useState('time');
+  const [limit, setLimit] = useState('100');
   const [place, setPlace] = useState('');
   const [totalUsers, setTotalUsers] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -48,7 +50,7 @@ const RegionRankPage = ({ kind }) => {
   const load = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await cfg.fetch({ limit, ...(value && { value }), ...(examId !== 'all' && { examId }) });
+      const res = await cfg.fetch({ limit, ...(value && { value }), ...(examId !== 'all' && { examId }), ...(sort !== 'time' && { sort }) });
       setOptions(res.options || []);
       setData(res.data || []);
       setPlace(res.place || '');
@@ -60,7 +62,7 @@ const RegionRankPage = ({ kind }) => {
     } finally {
       setLoading(false);
     }
-  }, [cfg, kind, limit, value, examId]);
+  }, [cfg, kind, limit, value, examId, sort]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -128,12 +130,20 @@ const RegionRankPage = ({ kind }) => {
       className="w-full"
     />
   );
+  const sortSelect = (
+    <StyledSelect
+      value={sort}
+      onChange={setSort}
+      options={RANK_SORT_OPTIONS.map((o) => ({ value: o.value, label: `RANK BASED ON: ${o.label.toUpperCase()}` }))}
+      className="w-full"
+    />
+  );
   const limitSelect = <StyledSelect icon={Trophy} value={limit} onChange={setLimit} options={LIMITS} className="w-full" />;
 
   useAdminMobileHeader({
     title: cfg.title,
     count: totalUsers,
-    filters: (<>{placeSelect}{examSelect}{limitSelect}</>),
+    filters: (<>{placeSelect}{examSelect}{sortSelect}{limitSelect}</>),
   });
 
   if (!isMounted) return null;
@@ -141,15 +151,18 @@ const RegionRankPage = ({ kind }) => {
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
-        <div className="hidden md:grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr_auto] gap-2 items-center">
+        <div className="hidden md:grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr_1fr_auto] gap-2 items-center">
           {placeSelect}
           {examSelect}
+          {sortSelect}
           {limitSelect}
           <div className="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2">
             <span className="flex items-center gap-1.5 text-xs font-black text-primary-600 dark:text-primary-300"><Users className="w-4 h-4" />{totalUsers} ranked</span>
             <span className="flex items-center gap-1.5 text-xs font-black text-slate-500"><cfg.Icon className="w-4 h-4" />{place || '—'}</span>
           </div>
         </div>
+
+        <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wide text-primary-700 dark:text-primary-300"><Trophy className="w-3.5 h-3.5 shrink-0" />Top 100 Student Rankings</p>
 
         {loading ? (
           <AdminTableSkeleton showHeader={false} showFilters={false} />

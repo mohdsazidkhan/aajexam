@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import PageHero from '@/components/common/ui/PageHero';
 import { MessageSquare } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
@@ -199,7 +200,7 @@ const AskQuestionPage = () => {
           {/* Exam Selection */}
           <Card as="section" className="mb-4" radius="2xl">
             <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Select Exam')}</h3>
-            <select
+            <Select
               value={form.exam}
               onChange={(e) => handleChange('exam', e.target.value)}
               className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
@@ -211,7 +212,7 @@ const AskQuestionPage = () => {
                   {exam.name}
                 </option>
               ))}
-            </select>
+            </Select>
           </Card>
 
           {/* Question */}

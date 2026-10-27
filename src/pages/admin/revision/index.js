@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../../components/common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { RotateCcw, Clock, CheckCircle, ShieldCheck, Search, Table as TableIcon, List, LayoutGrid } from 'lucide-react';
 import { toast } from 'react-hot-toast';
@@ -181,12 +182,12 @@ const AdminRevisionPage = () => {
   );
 
   const statusFilterSelect = (
-    <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm">
+    <Select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm">
       <option value="">All Status</option>
       <option value="active">Active</option>
       <option value="mastered">Mastered</option>
       <option value="suspended">Suspended</option>
-    </select>
+    </Select>
   );
 
   const viewToggleButtons = (

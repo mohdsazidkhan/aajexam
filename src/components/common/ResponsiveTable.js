@@ -1,5 +1,6 @@
 'use client';
 
+import Select from './ui/Select';
 import React, { useState } from 'react';
 import {
   Table,
@@ -307,13 +308,13 @@ const ResponsiveTable = ({
           {showPagination && (
             <div className="px-5 py-3 xl:py-2.5 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-[1.25rem] xl:rounded-2xl shadow-sm flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto">
               <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest font-outfit">{translate('Page Size')}</span>
-              <select
+              <Select
                 value={itemsPerPageState}
                 onChange={handleItemsPerPageChange}
                 className="bg-transparent text-xs font-black text-slate-900 dark:text-white outline-none cursor-pointer focus:text-primary-600 transition-colors font-outfit"
               >
                 {PAGE_SIZE_OPTIONS.map(v => <option key={v} value={v} className="bg-slate-900">{v}</option>)}
-              </select>
+              </Select>
             </div>
           )}
         </motion.div>

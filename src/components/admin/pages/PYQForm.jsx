@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { Plus, Trash2, Save, ArrowLeft, FileText, Upload, X } from 'lucide-react';
 import { toast } from 'react-hot-toast';
@@ -280,26 +281,26 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                             </div>
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Shift</label>
-                                <select value={form.pyqShift} onChange={e => setForm({ ...form, pyqShift: e.target.value })}
+                                <Select value={form.pyqShift} onChange={e => setForm({ ...form, pyqShift: e.target.value })}
                                     className="w-full px-3 py-2.5 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none focus:border-primary-600">
                                     {SHIFTS.map(s => <option key={s} value={s}>{s || '— none —'}</option>)}
-                                </select>
+                                </Select>
                             </div>
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Exam *</label>
-                                <select value={selectedExam} onChange={e => { setSelectedExam(e.target.value); setForm(f => ({ ...f, examPattern: '' })); }}
+                                <Select value={selectedExam} onChange={e => { setSelectedExam(e.target.value); setForm(f => ({ ...f, examPattern: '' })); }}
                                     className="w-full px-3 py-2.5 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none focus:border-primary-600">
                                     <option value="">Select Exam</option>
                                     {exams.map(x => <option key={x._id} value={x._id}>{x.name}</option>)}
-                                </select>
+                                </Select>
                             </div>
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Pattern *</label>
-                                <select value={form.examPattern} onChange={e => onPatternChange(e.target.value)} disabled={!patterns.length}
+                                <Select value={form.examPattern} onChange={e => onPatternChange(e.target.value)} disabled={!patterns.length}
                                     className="w-full px-3 py-2.5 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none focus:border-primary-600 disabled:opacity-50">
                                     <option value="">{patterns.length ? 'Select Pattern' : 'Select exam first'}</option>
                                     {patterns.map(p => <option key={p._id} value={p._id}>{p.title}</option>)}
-                                </select>
+                                </Select>
                             </div>
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Duration (min) *</label>
@@ -407,11 +408,11 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                         <div>
                                             <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider">Section *</label>
                                             {sectionOptions.length > 0 ? (
-                                                <select value={q.section} onChange={e => updateQuestion(qi, { section: e.target.value })}
+                                                <Select value={q.section} onChange={e => updateQuestion(qi, { section: e.target.value })}
                                                     className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-600">
                                                     <option value="">Select section</option>
                                                     {sectionOptions.map(s => <option key={s} value={s}>{s}</option>)}
-                                                </select>
+                                                </Select>
                                             ) : (
                                                 <input type="text" value={q.section} onChange={e => updateQuestion(qi, { section: e.target.value })}
                                                     className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-600"
@@ -420,10 +421,10 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                         </div>
                                         <div>
                                             <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider">Difficulty</label>
-                                            <select value={q.difficulty} onChange={e => updateQuestion(qi, { difficulty: e.target.value })}
+                                            <Select value={q.difficulty} onChange={e => updateQuestion(qi, { difficulty: e.target.value })}
                                                 className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-600">
                                                 {DIFFICULTIES.map(d => <option key={d} value={d}>{d}</option>)}
-                                            </select>
+                                            </Select>
                                         </div>
                                     </div>
 

@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../components/common/ui/Select';
 import { ListPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import { Target, CheckCircle2, Circle, ChevronDown, ChevronUp, PlayCircle, BookOpen, Layers } from 'lucide-react';
@@ -198,14 +199,14 @@ const SyllabusTrackerPage = () => {
                 <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                   <Target className="w-4 h-4 text-slate-400" />
                 </div>
-                <select
+                <Select
                   value={selectedExam}
                   onChange={e => setSelectedExam(e.target.value)}
                   className="w-full appearance-none bg-white dark:bg-black border border-slate-300 dark:border-slate-700 text-content-primary text-sm font-bold rounded-lg xl:rounded-xl py-3 pl-10 pr-10 outline-none focus:border-primary-600 cursor-pointer"
                 >
                   <option value="">{translate('Select Exam to Track')}</option>
                   {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
-                </select>
+                </Select>
                 <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
                   <ChevronDown className="w-4 h-4 text-slate-400" />
                 </div>

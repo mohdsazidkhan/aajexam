@@ -13,6 +13,7 @@ import { useSSR } from '../../../hooks/useSSR';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 import { formatTimeSpent } from '../../../lib/utils/timeFormat';
+import { RANK_SORT_OPTIONS } from '../../../lib/utils/rankSort';
 
 const AllIndiaRankPage = () => {
   const { isMounted } = useSSR();
@@ -20,6 +21,7 @@ const AllIndiaRankPage = () => {
   const [exams, setExams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [examId, setExamId] = useState('all');
+  const [sort, setSort] = useState('time');
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
@@ -48,6 +50,7 @@ const AllIndiaRankPage = () => {
         page: currentPage,
         limit: itemsPerPage,
         ...(examId !== 'all' && { examId }),
+        ...(sort !== 'time' && { sort }),
         ...(searchTerm && { search: searchTerm }),
       };
       const response = await API.getAdminAIR(params);
@@ -59,7 +62,7 @@ const AllIndiaRankPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [examId, currentPage, itemsPerPage, searchTerm]);
+  }, [examId, currentPage, itemsPerPage, searchTerm, sort]);
 
   useEffect(() => {
     const timer = setTimeout(() => fetchAIR(), 300);
@@ -151,6 +154,15 @@ const AllIndiaRankPage = () => {
     />
   );
 
+  const sortSelect = (
+    <StyledSelect
+      value={sort}
+      onChange={(val) => { setSort(val); setCurrentPage(1); }}
+      options={RANK_SORT_OPTIONS.map((o) => ({ value: o.value, label: `RANK BASED ON: ${o.label.toUpperCase()}` }))}
+      className="w-full"
+    />
+  );
+
   const viewToggleButtons = (
     <div className="flex items-center gap-1 w-full">
       {[
@@ -190,6 +202,7 @@ const AllIndiaRankPage = () => {
       <>
         {searchInput}
         {examSelect}
+        {sortSelect}
         {viewToggleButtons}
         {paginationControl}
       </>
@@ -203,6 +216,8 @@ const AllIndiaRankPage = () => {
       <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 
         {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
+
+        <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wide text-primary-700 dark:text-primary-300"><Trophy className="w-3.5 h-3.5 shrink-0" />Top 100 Student Rankings</p>
 
         <div className="flex-1 min-h-0 overflow-auto flex flex-col">
           {loading ? (

@@ -1,4 +1,5 @@
 'use client';
+import Select from '../common/ui/Select';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { m as motion, AnimatePresence } from 'framer-motion';
@@ -211,19 +212,19 @@ const ProfileDetailsModal = () => {
           <div className="space-y-3">
             <div className="space-y-1">
               <label className={label}>{translate('Qualification')}</label>
-              <select className={FIELD_CLASSNAME} value={form.qualification} onChange={(e) => setForm({ ...form, qualification: e.target.value })}>
+              <Select className={FIELD_CLASSNAME} value={form.qualification} onChange={(e) => setForm({ ...form, qualification: e.target.value })}>
                 <option value="">{translate('Select qualification')}</option>
                 {QUALIFICATIONS.map((o) => <option key={o.value} value={o.value}>{translate(o.label)}</option>)}
-              </select>
+              </Select>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-1">
                 <label className={label}>{translate('Gender')}</label>
-                <select className={FIELD_CLASSNAME} value={form.gender} onChange={(e) => setForm({ ...form, gender: e.target.value })}>
+                <Select className={FIELD_CLASSNAME} value={form.gender} onChange={(e) => setForm({ ...form, gender: e.target.value })}>
                   <option value="">{translate('Select gender')}</option>
                   {GENDERS.map((o) => <option key={o.value} value={o.value}>{translate(o.label)}</option>)}
-                </select>
+                </Select>
               </div>
               <div className="space-y-1 min-w-0">
                 <label className={label}>{translate('Date of birth')}</label>
@@ -255,10 +256,10 @@ const ProfileDetailsModal = () => {
 
             <div className="space-y-1">
               <label className={label}>{translate('How did you hear about us?')}</label>
-              <select className={FIELD_CLASSNAME} value={form.heardFrom} onChange={(e) => setForm({ ...form, heardFrom: e.target.value })}>
+              <Select className={FIELD_CLASSNAME} value={form.heardFrom} onChange={(e) => setForm({ ...form, heardFrom: e.target.value })}>
                 <option value="">{translate('Select an option')}</option>
                 {HEARD_FROM.map((o) => <option key={o.value} value={o.value}>{o.brand ? o.label : translate(o.label)}</option>)}
-              </select>
+              </Select>
             </div>
           </div>
 

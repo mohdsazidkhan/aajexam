@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import { MessageSquare } from 'lucide-react';
 import PageHero from '@/components/common/ui/PageHero';
 import { CardGridSkeleton } from '../../common/skeletons/PageSkeletons';
@@ -162,7 +163,7 @@ const CommunityQuestionsPage = () => {
           title={translate('Questions and Answers')}
           actions={
             <div className="w-full xl:w-auto flex flex-col sm:flex-row sm:items-center gap-2">
-              <select
+              <Select
                 value={filters.exam}
                 onChange={(e) => handleFilterChange('exam', e.target.value)}
                 className="w-full sm:w-44 px-3 py-2 rounded-lg xl:rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-600 transition-colors"
@@ -174,16 +175,16 @@ const CommunityQuestionsPage = () => {
                     {exam.name}
                   </option>
                 ))}
-              </select>
+              </Select>
 
-              <select
+              <Select
                 value={filters.sort}
                 onChange={(e) => handleFilterChange('sort', e.target.value)}
                 className="w-full sm:w-44 px-3 py-2 rounded-lg xl:rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-600 transition-colors"
               >
                 <option value="latest">{translate('Latest First')}</option>
                 <option value="popular">{translate('Most Popular')}</option>
-              </select>
+              </Select>
               {authenticated && (
                 <Link href="/community-questions/ask" className="shrink-0">
                   <Button variant="primary" size="sm" icon={MessageSquarePlus}>

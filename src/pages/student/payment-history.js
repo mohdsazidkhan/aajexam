@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../components/common/ui/Select';
 import PageHero from '@/components/common/ui/PageHero';
 import { PaymentsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
@@ -213,7 +214,7 @@ const PaymentHistoryPage = () => {
    const filtersGroup = (
       <div className="flex flex-wrap gap-2 items-center">
          {filterOptions.months?.length > 0 && (
-            <select
+            <Select
                className="px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-black outline-none focus:border-primary-600"
                value={filterMonth} onChange={e => { setFilterMonth(e.target.value); setCurrentPage(1); }}
             >
@@ -221,10 +222,10 @@ const PaymentHistoryPage = () => {
                {filterOptions.months.map(m => (
                   <option key={m.value} value={m.value}>{m.label}</option>
                ))}
-            </select>
+            </Select>
          )}
          {filterOptions.years?.length > 0 && (
-            <select
+            <Select
                className="px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-black outline-none focus:border-primary-600"
                value={filterYear} onChange={e => { setFilterYear(e.target.value); setCurrentPage(1); }}
             >
@@ -232,7 +233,7 @@ const PaymentHistoryPage = () => {
                {filterOptions.years.map(y => (
                   <option key={y} value={y}>{y}</option>
                ))}
-            </select>
+            </Select>
          )}
          {(filterMonth || filterYear) && (
             <button onClick={clearFilters} className="px-3 py-2 text-xs font-black text-primary-700 dark:text-primary-200 hover:bg-white/60 dark:hover:bg-white/10 rounded-lg transition-colors">

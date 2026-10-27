@@ -1,4 +1,5 @@
 'use client';
+import Select from '../components/common/ui/Select';
 import PageHero from '@/components/common/ui/PageHero';
 import React, { useState, useEffect, useMemo } from 'react';
 import { Newspaper, Calendar, Tag, Eye, ChevronRight, Search, X, TrendingUp, Sparkles, Globe, Flame, Trophy, Sword, Leaf } from 'lucide-react';
@@ -130,14 +131,14 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1, initialT
             </div>
             <div className="relative flex gap-2 mt-2 xl:mt-0">
               <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
-              <select value={selectedMonth} onChange={e => { setSelectedMonth(Number(e.target.value)); setPage(1); }}
+              <Select value={selectedMonth} onChange={e => { setSelectedMonth(Number(e.target.value)); setPage(1); }}
                 className="bg-white dark:bg-black rounded-lg xl:rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border border-slate-300 dark:border-slate-600 appearance-none cursor-pointer">
                 {MONTH_NAMES.map((m, i) => <option key={m} value={i + 1}>{m}</option>)}
-              </select>
-              <select value={selectedYear} onChange={e => { setSelectedYear(Number(e.target.value)); setPage(1); }}
+              </Select>
+              <Select value={selectedYear} onChange={e => { setSelectedYear(Number(e.target.value)); setPage(1); }}
                 className="bg-white dark:bg-black rounded-lg xl:rounded-xl py-2.5 px-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border border-slate-300 dark:border-slate-600 appearance-none cursor-pointer">
                 {YEAR_OPTIONS.map(y => <option key={y} value={y}>{y}</option>)}
-              </select>
+              </Select>
             </div>
             {hasFilters && (
               <button onClick={() => { setSearch(''); setSelectedMonth(now.getMonth() + 1); setSelectedYear(CURRENT_YEAR); setCategory('all'); setPage(1); }}

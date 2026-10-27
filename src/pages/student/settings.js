@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../components/common/ui/Select';
 import { Settings as SettingsIcon } from 'lucide-react';
 import PageHero from '@/components/common/ui/PageHero';
 import { SettingsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
@@ -228,7 +229,7 @@ const SettingsPage = () => {
 
                           <div className="space-y-1">
                             <label className="text-xs font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Qualification')}</label>
-                            <select
+                            <Select
                               className={FIELD_CLASSNAME}
                               value={profile.qualification || ''}
                               onChange={(event) => setProfile({ ...profile, qualification: event.target.value })}
@@ -237,12 +238,12 @@ const SettingsPage = () => {
                               {QUALIFICATIONS.map((option) => (
                                 <option key={option.value} value={option.value}>{translate(option.label)}</option>
                               ))}
-                            </select>
+                            </Select>
                           </div>
 
                           <div className="space-y-1">
                             <label className="text-xs font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Gender')}</label>
-                            <select
+                            <Select
                               className={FIELD_CLASSNAME}
                               value={profile.gender || ''}
                               onChange={(event) => setProfile({ ...profile, gender: event.target.value })}
@@ -251,7 +252,7 @@ const SettingsPage = () => {
                               {GENDERS.map((option) => (
                                 <option key={option.value} value={option.value}>{translate(option.label)}</option>
                               ))}
-                            </select>
+                            </Select>
                           </div>
 
                           <div className="space-y-1 min-w-0">
@@ -288,7 +289,7 @@ const SettingsPage = () => {
 
                           <div className="space-y-1 sm:col-span-2">
                             <label className="text-xs font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('How did you hear about us?')}</label>
-                            <select
+                            <Select
                               className={FIELD_CLASSNAME}
                               value={profile.heardFrom || ''}
                               onChange={(event) => setProfile({ ...profile, heardFrom: event.target.value })}
@@ -297,7 +298,7 @@ const SettingsPage = () => {
                               {HEARD_FROM.map((option) => (
                                 <option key={option.value} value={option.value}>{option.brand ? option.label : translate(option.label)}</option>
                               ))}
-                            </select>
+                            </Select>
                           </div>
 
                         </div>

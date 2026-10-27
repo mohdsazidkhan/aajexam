@@ -2,6 +2,7 @@ import User from '@/models/User';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import UserStreak from '@/models/UserStreak';
 import mongoose from 'mongoose';
+import { rowSort } from '@/lib/utils/rankSort';
 
 // State / City rank: the All India Rank ordering (total exam time, then exams, accuracy, score)
 // restricted to the active students of one state or one city. `state` and `city` are free-text on
@@ -50,7 +51,8 @@ export async function listPlaces(field) {
 // Ranked students of one place. Returns { place, totalUsers, data } where data is the top `limit`
 // (rank is the real position) and `me` is the caller's row even when they are outside the top.
 // `examId` (optional) limits the ranking to attempts of that one exam; omitted = all exams combined.
-export async function rankPlace({ field, value, limit = 10, userId = null, examId = null }) {
+// `sort` (see rankSort.js) picks the metric the ranking is based on; default is total time spent.
+export async function rankPlace({ field, value, limit = 10, userId = null, examId = null, sort = 'time' }) {
     const key = placeKey(value, field);
     if (!FIELDS.includes(field) || !key) return { place: '', totalUsers: 0, data: [], me: null };
 
@@ -81,7 +83,7 @@ export async function rankPlace({ field, value, limit = 10, userId = null, examI
                 totalTimeSpent: { $sum: '$totalTime' },
             },
         },
-        { $sort: { totalTimeSpent: -1, totalExams: -1, avgAccuracy: -1, totalScore: -1, _id: 1 } },
+        { $sort: rowSort(sort) },
     ]);
 
     const streaks = await UserStreak.find({ user: { $in: rows.map((r) => r._id) } }).select('user currentStreak').lean();
@@ -121,6 +123,9 @@ export async function rankPlace({ field, value, limit = 10, userId = null, examI
     return {
         place,
         totalUsers: ranked.length,
+        // Whole place (not just the top `limit`): attempts and time spent, time in seconds like /api/air.
+        totalAttempts: ranked.reduce((n, r) => n + r.totalExams, 0),
+        totalTimeSpentSeconds: Math.round(ranked.reduce((n, r) => n + r.totalTimeSpent, 0) / 1000),
         data: ranked.slice(0, limit),
         me: meId ? ranked.find((r) => String(r.userId) === meId) || null : null,
     };

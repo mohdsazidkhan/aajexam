@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import { useEffect, useState, useCallback } from 'react';
 import { Users, MousePointerClick, LogOut, UserPlus, LogIn, Activity, X } from 'lucide-react';
 import Sidebar from '../Sidebar';
@@ -272,14 +273,14 @@ export default function Traffic() {
               </button>
             ))}
           </div>
-          <select
+          <Select
             value={rangeId}
             onChange={(e) => setRangeId(e.target.value)}
             aria-label="Date range"
             className="order-2 md:order-3 px-3 py-2 rounded-xl border dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500 border-slate-300"
           >
             {RANGES.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
-          </select>
+          </Select>
         </div>
 
         {error ? <div className="p-4 rounded-xl bg-rose-500/10 text-rose-600 text-sm font-bold">{error}</div> : null}

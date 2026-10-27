@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
 import { toast } from 'react-hot-toast';
@@ -405,10 +406,10 @@ const AdminGovtExams = () => {
               <div className="space-y-2 xl:space-y-3 xl:space-y-4">
                 <div className="space-y-2 xl:space-y-3">
                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Category</label>
-                  <select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase tracking-widest outline-none appearance-none cursor-pointer border-slate-300 dark:border-slate-700">
+                  <Select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase tracking-widest outline-none appearance-none cursor-pointer border-slate-300 dark:border-slate-700">
                     <option value="">Select Category...</option>
                     {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>)}
-                  </select>
+                  </Select>
                 </div>
                 <div className="grid grid-cols-2 gap-3 xl:gap-3">
                   <div className="space-y-2 xl:space-y-3">

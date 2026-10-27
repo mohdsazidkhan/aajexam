@@ -1,3 +1,4 @@
+import Select from '../../components/common/ui/Select';
 import { useState, useEffect } from 'react';
 import { Target } from 'lucide-react';
 import PageHero from '@/components/common/ui/PageHero';
@@ -235,22 +236,22 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                         {translate('Your target exams · Show all')}
                                     </button>
                                 )}
-                                <select
+                                <Select
                                     value={filterExam}
                                     onChange={onExamChange}
                                     className="flex-1 xl:flex-none xl:w-56 min-w-0 px-3 h-10 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">{translate('All Exams')}</option>
                                     {exams.map((e) => <option key={e._id} value={e._id}>{translateData(e.name)}</option>)}
-                                </select>
-                                <select
+                                </Select>
+                                <Select
                                     value={filterYear}
                                     onChange={onYearChange}
                                     className="flex-1 xl:flex-none xl:w-36 min-w-0 px-3 h-10 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">{translate('All Years')}</option>
                                     {years.map((y) => <option key={y} value={y}>{y}</option>)}
-                                </select>
+                                </Select>
                             </div>
                         }
                     />

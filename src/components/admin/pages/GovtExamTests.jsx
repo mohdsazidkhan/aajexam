@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
 import { toast } from 'react-hot-toast';
@@ -621,11 +622,11 @@ const AdminGovtExamTests = () => {
                                           </div>
                                           <div className="space-y-1">
                                              <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Difficulty</label>
-                                             <select value={currentQuestion.difficulty} onChange={(e) => setCurrentQuestion({ ...currentQuestion, difficulty: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all">
+                                             <Select value={currentQuestion.difficulty} onChange={(e) => setCurrentQuestion({ ...currentQuestion, difficulty: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all">
                                                 <option value="easy">Easy</option>
                                                 <option value="medium">Medium</option>
                                                 <option value="hard">Hard</option>
-                                             </select>
+                                             </Select>
                                           </div>
                                        </div>
                                        <button type="button" onClick={handleAddQuestion} className="w-full py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:brightness-110 transition-all">

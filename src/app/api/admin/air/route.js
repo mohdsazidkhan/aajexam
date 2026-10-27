@@ -3,10 +3,11 @@ import dbConnect from '@/lib/db';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import mongoose from 'mongoose';
 import { protect, admin } from '@/middleware/auth';
+import { normalizeRankSort, rowSort } from '@/lib/utils/rankSort';
 
-// GET /api/admin/air?examId=optional&page=1&limit=20&search=
+// GET /api/admin/air?examId=optional&page=1&limit=20&search=&sort=time|attempts|correct|score|accuracy|avg
 // Admin-only mirror of /api/air — same exam-attempt ranking pipeline, but
-// paginated and searchable instead of capped at a "top N" list.
+// paginated and searchable; like the student page it only covers the top 100 ranked students.
 export async function GET(req) {
     try {
         const auth = await protect(req);
@@ -20,6 +21,7 @@ export async function GET(req) {
         const page = Math.max(parseInt(searchParams.get('page'), 10) || 1, 1);
         const limit = Math.min(Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000), 100);
         const search = (searchParams.get('search') || '').trim();
+        const sort = normalizeRankSort(searchParams.get('sort'));
 
         const preGroupStages = [
             { $match: { status: 'Completed' } }
@@ -85,7 +87,7 @@ export async function GET(req) {
             // Rank by: most exams attempted, then accuracy, then total score —
             // must match /api/air's sort exactly (this is meant to be the same
             // ranking pipeline, just paginated/searchable for admin use).
-            { $sort: { totalTimeSpent: -1, totalExams: -1, avgAccuracy: -1, totalScore: -1, _id: 1 } },
+            { $sort: rowSort(sort) },
             {
                 $lookup: {
                     from: 'users',
@@ -131,7 +133,8 @@ export async function GET(req) {
 
         const leaderboard = await UserTestAttempt.aggregate(pipeline);
 
-        let ranked = leaderboard.map((entry, idx) => ({ rank: idx + 1, ...entry }));
+        // Top 100 only (same board as the student page); search and paging work within it.
+        let ranked = leaderboard.slice(0, 100).map((entry, idx) => ({ rank: idx + 1, ...entry }));
 
         if (search) {
             const term = search.toLowerCase();

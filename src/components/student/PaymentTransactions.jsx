@@ -1,4 +1,5 @@
 ﻿import React, { useState, useEffect } from 'react';
+import Select from '../common/ui/Select';
 import { FaFilter, FaDownload, FaEye, FaEyeSlash, FaRupeeSign, FaCheckCircle, FaTimesCircle, FaClock, FaExclamationTriangle, FaCreditCard, FaReceipt, FaTag, FaCalendar, FaGlobe, FaSearch, FaTimes } from 'react-icons/fa';
 import API from '../../lib/api';
 import { ListSkeleton } from '../common/skeletons/PrivateSkeletons';
@@ -294,7 +295,7 @@ const PaymentTransactions = () => {
             </div>
 
             {/* Month Filter */}
-            <select
+            <Select
               value={filters.month}
               onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
               className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-white dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
@@ -311,10 +312,10 @@ const PaymentTransactions = () => {
               <option value={10}>{translate('October')}</option>
               <option value={11}>{translate('November')}</option>
               <option value={12}>{translate('December')}</option>
-            </select>
+            </Select>
 
             {/* Year Filter */}
-            <select
+            <Select
               value={filters.year}
               onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
               className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-white dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
@@ -322,10 +323,10 @@ const PaymentTransactions = () => {
               {filterOptions.years?.map(year => (
                 <option key={year.value || year} value={year.value || year}>{year.label || year}</option>
               ))}
-            </select>
+            </Select>
 
             {/* Status Filter */}
-            <select
+            <Select
               value={filters.status}
               onChange={(e) => handleFilterChange('status', e.target.value)}
               className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-white dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
@@ -337,7 +338,7 @@ const PaymentTransactions = () => {
               <option value="authorized">{translate('Authorized')}</option>
               <option value="failed">{translate('Failed')}</option>
               <option value="refunded">{translate('Refunded')}</option>
-            </select>
+            </Select>
           </div>
 
           <div className="flex justify-end">

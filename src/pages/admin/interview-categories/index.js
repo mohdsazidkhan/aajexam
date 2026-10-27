@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../../components/common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { FolderTree, Plus, Pencil, Trash2, X, Search, Table2, List, LayoutGrid } from 'lucide-react';
@@ -230,10 +231,10 @@ const AdminInterviewCategories = () => {
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Job Type</label>
-                        <select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })} className={inputClass}>
+                        <Select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })} className={inputClass}>
                           <option value="government">Government</option>
                           <option value="private">Private</option>
-                        </select>
+                        </Select>
                       </div>
                     </div>
                     <div>

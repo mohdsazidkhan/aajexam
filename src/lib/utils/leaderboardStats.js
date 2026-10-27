@@ -3,6 +3,7 @@ import LeaderboardStat from '@/models/LeaderboardStat';
 import User from '@/models/User';
 import UserStreak from '@/models/UserStreak';
 import { cached } from '@/lib/utils/sharedCache';
+import { statSort } from '@/lib/utils/rankSort';
 
 // Reads/writes for the precomputed leaderboard totals (see models/LeaderboardStat.js).
 
@@ -120,10 +121,12 @@ async function shapeRows(rows, { kind, countKey }) {
 
 const SORT = { totalTime: -1, n: -1, avgAccuracy: -1, totalScore: -1, user: 1 };
 
+// `sortKey` (see rankSort.js) re-orders by another metric; the default keeps the indexed time order.
+
 /** Lifetime board straight off the index — no scan of attempts. */
-export async function topLifetime({ kind, scope = 'all', pool, countKey }) {
+export async function topLifetime({ kind, scope = 'all', pool, countKey, sortKey = 'time' }) {
     const rows = await LeaderboardStat.find({ kind, scope, day: null })
-        .sort(SORT).limit(pool).lean();
+        .sort(sortKey === 'time' ? SORT : statSort(sortKey)).limit(pool).allowDiskUse(true).lean();
     return shapeRows(rows, { kind, countKey });
 }
 

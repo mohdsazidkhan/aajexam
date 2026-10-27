@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Pagination from "../../common/Pagination";
@@ -285,11 +286,11 @@ export default function UserReferralDetail() {
                     <div className="flex flex-wrap items-center gap-3">
                         <div className="relative group">
                             <Clock className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                            <select
+                            <Select
                                 className="pl-14 pr-10 py-2.5 bg-white dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
                             >
                                 <option>Filter by Date</option>
-                            </select>
+                            </Select>
                             <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
                         </div>
                     </div>

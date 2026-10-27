@@ -1,5 +1,6 @@
 'use client';
 
+import Select from './ui/Select';
 import React from 'react';
 import { Search, X, Filter } from 'lucide-react';
 import { m as motion, AnimatePresence } from 'framer-motion';
@@ -47,7 +48,7 @@ const SearchFilter = ({
         <div className="flex flex-wrap items-center gap-3 w-full xl:w-auto">
           {Object.entries(filterOptions).map(([key, options]) => (
             <div key={key} className="relative flex-1 xl:flex-none min-w-[150px]">
-              <select
+              <Select
                 value={filters[key] || ''}
                 onChange={(e) => onFilterChange(key, e.target.value)}
                 className="w-full appearance-none pl-5 pr-12 py-4 bg-slate-50 dark:bg-black border-2 border-transparent hover:border-slate-200 dark:hover:border-slate-700 rounded-2xl outline-none text-[10px] font-black uppercase tracking-[0.1em] text-slate-600 dark:text-slate-400 cursor-pointer transition-all duration-300 focus:border-primary-500/30"
@@ -58,7 +59,7 @@ const SearchFilter = ({
                     {option.label}
                   </option>
                 ))}
-              </select>
+              </Select>
               <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
                 <Filter className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
               </div>

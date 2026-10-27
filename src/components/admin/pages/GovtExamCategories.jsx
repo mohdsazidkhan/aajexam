@@ -1,5 +1,6 @@
 "use client";
 
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
 import { toast } from 'react-hot-toast';
@@ -432,7 +433,7 @@ const AdminGovtExamCategories = () => {
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">JURISDICTION TYPE</label>
                     <div className="relative">
-                      <select
+                      <Select
                         value={formData.type}
                         onChange={(e) => setFormData({ ...formData, type: e.target.value })}
                         className="w-full px-4 xl:px-5 py-3 bg-white dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-600 transition-all font-outfit dark:text-white shadow-sm appearance-none cursor-pointer"
@@ -440,7 +441,7 @@ const AdminGovtExamCategories = () => {
                       >
                         <option value="Central">CENTRAL</option>
                         <option value="State">STATE</option>
-                      </select>
+                      </Select>
                       <ChevronRight className="absolute right-8 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 rotate-90 pointer-events-none" />
                     </div>
                   </div>

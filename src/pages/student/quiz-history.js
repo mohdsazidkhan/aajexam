@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../components/common/ui/Select';
 import PageHero from '@/components/common/ui/PageHero';
 import { HistoryPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
@@ -75,14 +76,14 @@ const QuizHistoryPage = () => {
                   eyebrow={translate('Quiz History')}
                   title={translate('Quiz History')}
                   actions={
-                     <select
+                     <Select
                         className="px-4 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold outline-none focus:border-primary-700"
                         value={filter} onChange={e => { setFilter(e.target.value); setCurrentPage(1); }}
                      >
                         <option value="">{translate('All')}</option>
                         <option value="Completed">{translate('Completed')}</option>
                         <option value="InProgress">{translate('In Progress')}</option>
-                     </select>
+                     </Select>
                   }
                />
 

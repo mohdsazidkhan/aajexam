@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../../components/common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { Target, Plus, Zap, Trash2, Calendar, Table as TableIcon, List, LayoutGrid } from 'lucide-react';
 import { toast } from 'react-hot-toast';
@@ -150,27 +151,27 @@ const AdminDailyChallenge = () => {
   ];
 
   const bulkYearSelect = (
-    <select value={bulkYear} onChange={e => setBulkYear(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black outline-none">
+    <Select value={bulkYear} onChange={e => setBulkYear(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black outline-none">
       <option value={new Date().getFullYear()}>{new Date().getFullYear()}</option>
       <option value={new Date().getFullYear() + 1}>{new Date().getFullYear() + 1}</option>
-    </select>
+    </Select>
   );
 
   const bulkMonthSelect = (
-    <select value={bulkMonth} onChange={e => setBulkMonth(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black outline-none">
+    <Select value={bulkMonth} onChange={e => setBulkMonth(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black outline-none">
       {Array.from({ length: 12 }).map((_, i) => (
         <option key={i} value={i}>{new Date(2000, i, 1).toLocaleString('default', { month: 'long' })}</option>
       ))}
-    </select>
+    </Select>
   );
 
   const bulkCountSelect = (
-    <select value={bulkCount} onChange={e => setBulkCount(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black outline-none">
+    <Select value={bulkCount} onChange={e => setBulkCount(parseInt(e.target.value))} className="w-full xl:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black outline-none">
       <option value={5}>5 Questions / Day</option>
       <option value={10}>10 Questions / Day</option>
       <option value={15}>15 Questions / Day</option>
       <option value={20}>20 Questions / Day</option>
-    </select>
+    </Select>
   );
 
   const generateMonthButton = (

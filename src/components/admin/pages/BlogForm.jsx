@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -228,13 +229,13 @@ const AdminBlogForm = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Exam *</label>
-                  <select name="exam" value={formData.exam} onChange={handleChange} required
+                  <Select name="exam" value={formData.exam} onChange={handleChange} required
                     className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black dark:text-white">
                     <option value="">Select an exam</option>
                     {exams.map(exam => (
                       <option key={exam._id} value={exam._id}>{exam.name} ({exam.code})</option>
                     ))}
-                  </select>
+                  </Select>
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Tags</label>
@@ -288,12 +289,12 @@ const AdminBlogForm = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div>
                 <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Status</label>
-                <select name="status" value={formData.status} onChange={handleChange}
+                <Select name="status" value={formData.status} onChange={handleChange}
                   className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black dark:text-white">
                   <option value="draft">Draft</option>
                   <option value="published">Published</option>
                   <option value="archived">Archived</option>
-                </select>
+                </Select>
               </div>
               <div className="flex items-center">
                 <input type="checkbox" name="isFeatured" checked={formData.isFeatured} onChange={handleChange}

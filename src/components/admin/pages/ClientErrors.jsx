@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import { useEffect, useState, useCallback } from 'react';
 import { toast } from 'react-hot-toast';
 import { isMobile } from 'react-device-detect';
@@ -199,14 +200,14 @@ export default function ClientErrors({ kind = 'mobile' }) {
             className="w-full pl-9 pr-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold outline-none focus:border-primary-500"
           />
         </div>
-        <select value={type} onChange={(e) => { setType(e.target.value); setPage(1); }} className="px-2.5 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
+        <Select value={type} onChange={(e) => { setType(e.target.value); setPage(1); }} className="px-2.5 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
           <option value="">All types</option>
           {TYPE_OPTIONS.map((t) => <option key={t} value={t}>{t}</option>)}
-        </select>
-        <select value={sort} onChange={(e) => { setSort(e.target.value); setPage(1); }} className="px-2.5 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
+        </Select>
+        <Select value={sort} onChange={(e) => { setSort(e.target.value); setPage(1); }} className="px-2.5 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold">
           <option value="recent">Most recent</option>
           <option value="count">Most frequent</option>
-        </select>
+        </Select>
         <button onClick={() => setViewMode(viewMode === 'table' ? 'grid' : 'table')} className="px-2.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-bold flex items-center gap-1.5 hover:border-primary-400 transition-colors">
           {viewMode === 'table' ? <><LayoutGrid className="w-4 h-4" /> Grid</> : <><TableIcon className="w-4 h-4" /> Table</>}
         </button>

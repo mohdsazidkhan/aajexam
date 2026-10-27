@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../../components/common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -94,7 +95,7 @@ const AdminMentorDetail = () => {
 
               <div className="flex items-center gap-2 flex-wrap">
                 <label className="text-[10px] font-black uppercase tracking-wider text-slate-600 dark:text-white/70">Status:</label>
-                <select
+                <Select
                   value={mentor.status}
                   onChange={e => updateStatus(e.target.value, e.target.value === 'active' ? true : undefined)}
                   className="px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-black bg-white dark:bg-black outline-none focus:border-primary-500"
@@ -103,7 +104,7 @@ const AdminMentorDetail = () => {
                   <option value="active">Active</option>
                   <option value="suspended">Suspended</option>
                   <option value="rejected">Rejected</option>
-                </select>
+                </Select>
                 {mentor.status === 'active' && !mentor.isVerified && (
                   <button onClick={() => updateStatus('active', true)} className="px-3 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white rounded-lg text-[10px] font-black uppercase tracking-wider shadow-md hover:brightness-110 transition-all"><Shield className="w-3 h-3 inline mr-1" />Verify</button>
                 )}

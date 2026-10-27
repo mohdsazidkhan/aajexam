@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
@@ -124,7 +125,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
             <form onSubmit={handleSendBroadcast} className="space-y-3">
               <div>
                 <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Send to</label>
-                <select
+                <Select
                   value={composeForm.target}
                   onChange={(e) => {
                     const target = e.target.value;
@@ -139,12 +140,12 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                   <option value="free">Free users only</option>
                   <option value="specific">Specific user</option>
                   <option value="selected">Selected users</option>
-                </select>
+                </Select>
               </div>
               {GROUP_TARGETS.includes(composeForm.target) && (
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Profile condition</label>
-                  <select
+                  <Select
                     value={composeForm.condition}
                     onChange={(e) => setComposeForm((f) => ({ ...f, condition: e.target.value }))}
                     className="w-full px-3 py-2.5 border-2 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600 border-slate-300"
@@ -153,7 +154,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                     {ANNOUNCE_CONDITIONS.map((c) => (
                       <option key={c.key} value={c.key}>{c.label}</option>
                     ))}
-                  </select>
+                  </Select>
                   <p className="mt-1 text-[11px] font-bold text-primary-700 dark:text-primary-300">
                     {audienceCount === null ? 'Counting...' : `Will be sent to ${audienceCount} student${audienceCount === 1 ? '' : 's'}`}
                   </p>

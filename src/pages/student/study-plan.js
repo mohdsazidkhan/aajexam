@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../components/common/ui/Select';
 import PageHero from '@/components/common/ui/PageHero';
 import { TitleRowSkeleton, CardGridSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
@@ -136,11 +137,11 @@ const StudyPlanPage = () => {
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">{translate('Target Exam *')}</label>
-                  <select value={form.examId} onChange={e => setForm({ ...form, examId: e.target.value })}
+                  <Select value={form.examId} onChange={e => setForm({ ...form, examId: e.target.value })}
                     className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none">
                     <option value="">{translate('Select Exam')}</option>
                     {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
-                  </select>
+                  </Select>
                 </div>
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">{translate('Exam Date *')}</label>

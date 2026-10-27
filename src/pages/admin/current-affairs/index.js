@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../../components/common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { Newspaper, Plus, Pencil, Trash2, Eye, LayoutGrid, List, Table2, Calendar, Tag, X, Search } from 'lucide-react';
@@ -251,9 +252,9 @@ const AdminCurrentAffairs = () => {
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Category</label>
-                        <select value={form.category} onChange={e => setForm({ ...form, category: e.target.value })} className={inputClass}>
+                        <Select value={form.category} onChange={e => setForm({ ...form, category: e.target.value })} className={inputClass}>
                           {categories.map(c => <option key={c} value={c}>{c.charAt(0).toUpperCase() + c.slice(1)}</option>)}
-                        </select>
+                        </Select>
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Tags</label>

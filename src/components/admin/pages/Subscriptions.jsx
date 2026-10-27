@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Activity, CheckCircle, Clock, Download,
@@ -810,7 +811,7 @@ const AdminSubscriptions = () => {
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-4 mb-4 bg-slate-50 dark:bg-white/5 p-4 xl:p-5 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
                     <div className="space-y-2 xl:space-y-3">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">SELECT PLAN</label>
-                      <select
+                      <Select
                         value={extendForm.plan}
                         onChange={(e) => setExtendForm({ ...extendForm, plan: e.target.value })}
                         className="w-full bg-white dark:bg-black border-2 focus:border-primary-500/50 rounded-2xl px-3 xl:px-4 py-2.5 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer border-slate-300 dark:border-slate-700"
@@ -819,11 +820,11 @@ const AdminSubscriptions = () => {
                         <option value="basic">Basic</option>
                         <option value="premium">Premium</option>
                         <option value="pro">Pro</option>
-                      </select>
+                      </Select>
                     </div>
                     <div className="space-y-2 xl:space-y-3">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">DURATION</label>
-                      <select
+                      <Select
                         value={extendForm.duration}
                         onChange={(e) => setExtendForm({ ...extendForm, duration: e.target.value })}
                         className="w-full bg-white dark:bg-black border-2 focus:border-primary-500/50 rounded-2xl px-3 xl:px-4 py-2.5 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer border-slate-300 dark:border-slate-700"
@@ -834,7 +835,7 @@ const AdminSubscriptions = () => {
                         <option value="6 months">6 Months</option>
                         <option value="1 year">1 Year</option>
                         <option value="2 years">2 Years</option>
-                      </select>
+                      </Select>
                     </div>
                   </div>
 

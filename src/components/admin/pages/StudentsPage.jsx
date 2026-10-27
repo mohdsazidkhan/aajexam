@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../common/ui/Select';
 import { useState, useEffect, useCallback } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import {
@@ -400,7 +401,7 @@ const StudentsPage = () => {
   const renderStudentActions = (student) => (
     <div className="flex items-center space-x-2">
       {/* Subscription Status Dropdown */}
-      <select
+      <Select
         value={student.subscriptionStatus || 'FREE'}
         onChange={(e) => handleStatusChange(student._id, { subscriptionStatus: e.target.value })}
         className="text-xs border border-slate-300 dark:border-slate-700 rounded px-2 py-1 bg-white dark:bg-black text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
@@ -408,7 +409,7 @@ const StudentsPage = () => {
       >
         <option value="FREE">FREE</option>
         <option value="PRO">PRO</option>
-      </select>
+      </Select>
 
       {/* Edit City Button */}
       <button

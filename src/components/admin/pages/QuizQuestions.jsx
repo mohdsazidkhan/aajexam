@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../common/ui/Select';
 import React, { useState, useEffect } from "react";
 import { m as motion, AnimatePresence } from "framer-motion";
 import API from "../../../lib/api";
@@ -250,15 +251,15 @@ const AdminQuizQuestions = () => {
             <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
 <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-5 space-y-3">
               <div className="grid grid-cols-3 gap-2">
-                <select required value={form.exam} onChange={e => setForm({ ...form, exam: e.target.value, subject: "", topic: "" })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
+                <Select required value={form.exam} onChange={e => setForm({ ...form, exam: e.target.value, subject: "", topic: "" })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
                   <option value="">Exam</option>{exams.map(ex => <option key={ex._id} value={ex._id}>{ex.name}</option>)}
-                </select>
-                <select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value, topic: "" })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
+                </Select>
+                <Select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value, topic: "" })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
                   <option value="">Subject</option>{subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
-                </select>
-                <select required value={form.topic} onChange={e => setForm({ ...form, topic: e.target.value })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
+                </Select>
+                <Select required value={form.topic} onChange={e => setForm({ ...form, topic: e.target.value })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
                   <option value="">Topic</option>{filteredTopics.map(t => <option key={t._id} value={t._id}>{t.name}</option>)}
-                </select>
+                </Select>
               </div>
               <textarea required placeholder="Question Text" rows={3} value={form.questionText} onChange={e => setForm({ ...form, questionText: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
               <div className="space-y-2">
@@ -275,12 +276,12 @@ const AdminQuizQuestions = () => {
               </div>
               <textarea placeholder="Explanation (optional)" rows={2} value={form.explanation} onChange={e => setForm({ ...form, explanation: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
               <div className="grid grid-cols-3 gap-2">
-                <select value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
+                <Select value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
                   <option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option>
-                </select>
-                <select value={form.language} onChange={e => setForm({ ...form, language: e.target.value })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
+                </Select>
+                <Select value={form.language} onChange={e => setForm({ ...form, language: e.target.value })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
                   <option value="hi">Hindi</option><option value="en">English</option>
-                </select>
+                </Select>
                 <input placeholder="Tags (comma separated)" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs" />
               </div>
               </div>

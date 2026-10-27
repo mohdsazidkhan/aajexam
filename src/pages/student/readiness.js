@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../components/common/ui/Select';
 import PageHero from '@/components/common/ui/PageHero';
 import { ListPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
@@ -96,11 +97,11 @@ const ReadinessPage = () => {
             title={translate('Exam Readiness')}
             actions={
           <div className="flex flex-col xl:flex-row gap-3 xl:gap-5 w-full xl:w-auto">
-            <select value={selectedExam} onChange={e => setSelectedExam(e.target.value)}
+            <Select value={selectedExam} onChange={e => setSelectedExam(e.target.value)}
               className="w-full xl:flex-1 px-3 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none">
               <option value="">{translate('Select Exam')}</option>
               {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
-            </select>
+            </Select>
             <button onClick={analyzeReadiness} disabled={!selectedExam || analyzing}
               className="w-full xl:w-auto px-6 py-2.5 bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
               {analyzing ? translate('Analyzing...') : translate('Analyze')}

@@ -1,4 +1,5 @@
 'use client';
+import Select from '../../../components/common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { Megaphone, Plus, Pencil, Trash2, Pin, Eye, Table2, List, LayoutGrid, Calendar, ExternalLink, X, Search } from 'lucide-react';
@@ -267,9 +268,9 @@ const AdminExamNews = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Type</label>
-                        <select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })} className={inputClass}>
+                        <Select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })} className={inputClass}>
                           {types.map(t => <option key={t} value={t}>{t.replace('_', ' ')}</option>)}
-                        </select>
+                        </Select>
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Exam Name</label>

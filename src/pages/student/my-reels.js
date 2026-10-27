@@ -1,5 +1,6 @@
 'use client';
 
+import Select from '../../components/common/ui/Select';
 import PageHero from '@/components/common/ui/PageHero';
 import { CardsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
@@ -108,7 +109,7 @@ const MyReelsPage = () => {
                   title={translate('My Reels')}
                   actions={
                      <>
-                     <select
+                     <Select
                         className="px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
                         value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setCurrentPage(1); }}
                      >
@@ -117,7 +118,7 @@ const MyReelsPage = () => {
                         <option value="pending">{translate('Pending')}</option>
                         <option value="rejected">{translate('Rejected')}</option>
                         <option value="draft">{translate('Draft')}</option>
-                     </select>
+                     </Select>
                      <Button variant="primary" className="text-xs" onClick={() => router.push('/reels/create')}>
                         <Plus className="w-4 h-4 mr-1" /> Create Reel
                      </Button>
