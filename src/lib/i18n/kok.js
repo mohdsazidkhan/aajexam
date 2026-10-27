@@ -1436,7 +1436,7 @@ const KOK = {
   'This Month': 'हो म्हयनो',
   'Top Streak': 'सगळ्यांत वयली स्ट्रीक',
   'Players': 'खेळगडी',
-  'Ranked Users': 'रँक आशिल्ले वापरपी',
+  'Top Ranked Users': 'वयर रँक आशिल्ले वापरपी',
   'Total Exams Attempted': 'एकूण दिल्ल्यो परिक्षा',
   'Time Spent On This Exam': 'ह्या परिक्षेचेर घालयलो वेळ',
   'Hashtags': 'हॅशटॅग',

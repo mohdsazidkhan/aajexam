@@ -1442,7 +1442,7 @@ const HINGLISH = {
   'This Month': 'Is Month',
   'Top Streak': 'Top Streak',
   'Players': 'Players',
-  'Ranked Users': 'Ranked Users',
+  'Top Ranked Users': 'Top Ranked Users',
   'Total Exams Attempted': 'Total Exams Attempted',
   'Time Spent On This Exam': 'Is Exam par Time Spent',
   'Hashtags': 'Hashtags',

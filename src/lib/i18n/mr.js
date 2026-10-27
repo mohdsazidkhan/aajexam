@@ -1436,7 +1436,7 @@ const MR = {
   'This Month': 'या महिन्यात',
   'Top Streak': 'टॉप स्ट्रीक',
   'Players': 'खेळाडू',
-  'Ranked Users': 'रँक मिळालेले वापरकर्ते',
+  'Top Ranked Users': 'टॉप रँक मिळालेले वापरकर्ते',
   'Total Exams Attempted': 'दिलेल्या एकूण परीक्षा',
   'Time Spent On This Exam': 'या परीक्षेवर घालवलेला वेळ',
   'Hashtags': 'हॅशटॅग',

@@ -1436,7 +1436,7 @@ const AS = {
   'This Month': 'এই মাহ',
   'Top Streak': 'শীৰ্ষ ষ্ট্ৰিক',
   'Players': 'খেলুৱৈ',
-  'Ranked Users': 'ৰেংক পোৱা ব্যৱহাৰকাৰী',
+  'Top Ranked Users': 'শীৰ্ষ ৰেংক পোৱা ব্যৱহাৰকাৰী',
   'Total Exams Attempted': 'মুঠ দিয়া পৰীক্ষা',
   'Time Spent On This Exam': 'এই পৰীক্ষাত ব্যয় কৰা সময়',
   'Hashtags': 'হেশটেগ',

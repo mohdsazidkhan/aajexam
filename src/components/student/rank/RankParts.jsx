@@ -121,7 +121,7 @@ export const Podium = ({ top3, currentUserId }) => {
 };
 
 // ─── Shared table column template (desktop only; mobile uses a stacked card) ──
-export const TABLE_GRID_COLS = 'grid-cols-[40px_1fr_84px_84px_84px_84px_84px_84px_84px_20px]';
+export const TABLE_GRID_COLS = 'grid-cols-[40px_1fr_130px_84px_84px_84px_84px_84px_84px_20px]';
 
 // ─── List Row — table row on desktop (lg+), stacked card on mobile ────────────
 export const LeaderboardRow = ({ entry, index, currentUserId }) => {
@@ -168,8 +168,8 @@ export const LeaderboardRow = ({ entry, index, currentUserId }) => {
             <Avatar entry={entry} size="md" />
             {identity}
           </div>
-          <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
-            <Clock className="w-3 h-3 text-content-muted" />{formatTimeExact(entry.totalTimeSpent, 'exam')}
+          <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1 whitespace-nowrap">
+            <Clock className="w-3 h-3 text-content-muted shrink-0" />{formatTimeExact(entry.totalTimeSpent, 'exam')}
           </p>
           <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
             <Target className="w-3 h-3 text-content-muted" />{entry.totalExams}

@@ -1436,7 +1436,7 @@ const KS = {
   'This Month': 'اس مہینے',
   'Top Streak': 'سب سے اونچی اسٹریک',
   'Players': 'کھلاڑی',
-  'Ranked Users': 'رینک والے صارفین',
+  'Top Ranked Users': 'سرفہرست رینک والے صارفین',
   'Total Exams Attempted': 'کل دیے گئے امتحانات',
   'Time Spent On This Exam': 'اس امتحان پر صرف کیا گیا وقت',
   'Hashtags': 'ہیش ٹیگز',

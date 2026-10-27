@@ -1436,7 +1436,7 @@ const MAI = {
   'This Month': 'एहि मास',
   'Top Streak': 'सभ सँ ऊँच स्ट्रीक',
   'Players': 'खिलाड़ी',
-  'Ranked Users': 'रैंक बला यूजर',
+  'Top Ranked Users': 'शीर्ष रैंक बला यूजर',
   'Total Exams Attempted': 'कुल देल गेल परीक्षा',
   'Time Spent On This Exam': 'एहि परीक्षा पर बिताओल समय',
   'Hashtags': 'हैशटैग',

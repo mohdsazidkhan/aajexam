@@ -1436,7 +1436,7 @@ const BODO = {
   'This Month': 'बे दाना',
   'Top Streak': 'गोजौ स्ट्रीक',
   'Players': 'खेलग्रा',
-  'Ranked Users': 'रैंक मोननाय बाहायग्रा',
+  'Top Ranked Users': 'गोजौ रैंक मोननाय बाहायग्रा',
   'Total Exams Attempted': 'गासै नाजानाय फोरोंना',
   'Time Spent On This Exam': 'बे फोरोंनायाव होनाय सम',
   'Hashtags': 'हैशटैगफोर',

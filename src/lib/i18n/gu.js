@@ -1436,7 +1436,7 @@ const GU = {
   'This Month': 'આ મહિને',
   'Top Streak': 'ટોચની સ્ટ્રીક',
   'Players': 'ખેલાડીઓ',
-  'Ranked Users': 'રેન્ક પામેલા વપરાશકર્તાઓ',
+  'Top Ranked Users': 'ટોચ રેન્ક પામેલા વપરાશકર્તાઓ',
   'Total Exams Attempted': 'આપેલી કુલ પરીક્ષાઓ',
   'Time Spent On This Exam': 'આ પરીક્ષા પર પસાર કરેલો સમય',
   'Hashtags': 'હેશટૅગ્સ',

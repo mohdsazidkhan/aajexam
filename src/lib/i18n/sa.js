@@ -1436,7 +1436,7 @@ const SA = {
   'This Month': 'अयं मासः',
   'Top Streak': 'शीर्षस्थः अविच्छिन्नक्रमः',
   'Players': 'क्रीडकाः',
-  'Ranked Users': 'क्रमाङ्किताः उपयोक्तारः',
+  'Top Ranked Users': 'उपरि क्रमाङ्किताः उपयोक्तारः',
   'Total Exams Attempted': 'कुलदत्ताः परीक्षाः',
   'Time Spent On This Exam': 'अस्यां परीक्षायां व्ययितः समयः',
   'Hashtags': 'हैशटैगः',

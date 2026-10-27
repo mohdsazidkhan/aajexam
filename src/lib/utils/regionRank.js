@@ -123,9 +123,9 @@ export async function rankPlace({ field, value, limit = 10, userId = null, examI
     return {
         place,
         totalUsers: ranked.length,
-        // Whole place (not just the top `limit`): attempts and time spent, time in seconds like /api/air.
-        totalAttempts: ranked.reduce((n, r) => n + r.totalExams, 0),
-        totalTimeSpentSeconds: Math.round(ranked.reduce((n, r) => n + r.totalTimeSpent, 0) / 1000),
+        // Header totals cover the top-100 board only (same as /api/air); time in seconds.
+        totalAttempts: ranked.slice(0, 100).reduce((n, r) => n + r.totalExams, 0),
+        totalTimeSpentSeconds: Math.round(ranked.slice(0, 100).reduce((n, r) => n + r.totalTimeSpent, 0) / 1000),
         data: ranked.slice(0, limit),
         me: meId ? ranked.find((r) => String(r.userId) === meId) || null : null,
     };

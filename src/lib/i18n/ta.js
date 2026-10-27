@@ -1436,7 +1436,7 @@ const TA = {
   'This Month': 'இந்த மாதம்',
   'Top Streak': 'முதன்மைத் தொடர்ச்சி',
   'Players': 'வீரர்கள்',
-  'Ranked Users': 'தரவரிசை பெற்ற பயனர்கள்',
+  'Top Ranked Users': 'முதல் தரவரிசை பெற்ற பயனர்கள்',
   'Total Exams Attempted': 'எழுதிய மொத்தத் தேர்வுகள்',
   'Time Spent On This Exam': 'இந்தத் தேர்வில் செலவிட்ட நேரம்',
   'Hashtags': 'ஹேஷ்டேக்குகள்',

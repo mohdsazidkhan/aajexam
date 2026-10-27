@@ -1436,7 +1436,7 @@ const ML = {
   'This Month': 'ഈ മാസം',
   'Top Streak': 'ഉയർന്ന സ്ട്രീക്ക്',
   'Players': 'കളിക്കാർ',
-  'Ranked Users': 'റാങ്ക് ലഭിച്ച ഉപയോക്താക്കൾ',
+  'Top Ranked Users': 'മുകളിൽ റാങ്ക് ലഭിച്ച ഉപയോക്താക്കൾ',
   'Total Exams Attempted': 'എഴുതിയ ആകെ പരീക്ഷകൾ',
   'Time Spent On This Exam': 'ഈ പരീക്ഷയിൽ ചെലവഴിച്ച സമയം',
   'Hashtags': 'ഹാഷ്ടാഗുകൾ',

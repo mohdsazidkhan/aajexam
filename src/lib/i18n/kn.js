@@ -1436,7 +1436,7 @@ const KN = {
   'This Month': 'ಈ ತಿಂಗಳು',
   'Top Streak': 'ಅಗ್ರ ಸ್ಟ್ರೀಕ್',
   'Players': 'ಆಟಗಾರರು',
-  'Ranked Users': 'ರ‍್ಯಾಂಕ್ ಪಡೆದ ಬಳಕೆದಾರರು',
+  'Top Ranked Users': 'ಅಗ್ರ ರ‍್ಯಾಂಕ್ ಪಡೆದ ಬಳಕೆದಾರರು',
   'Total Exams Attempted': 'ಬರೆದ ಒಟ್ಟು ಪರೀಕ್ಷೆಗಳು',
   'Time Spent On This Exam': 'ಈ ಪರೀಕ್ಷೆಯಲ್ಲಿ ಕಳೆದ ಸಮಯ',
   'Hashtags': 'ಹ್ಯಾಶ್‌ಟ್ಯಾಗ್‌ಗಳು',
