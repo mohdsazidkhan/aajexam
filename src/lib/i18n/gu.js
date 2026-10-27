@@ -1437,6 +1437,7 @@ const GU = {
   'Top Streak': 'ટોચની સ્ટ્રીક',
   'Players': 'ખેલાડીઓ',
   'Top Ranked Users': 'ટોચ રેન્ક પામેલા વપરાશકર્તાઓ',
+  'Total Active Users': 'કુલ સક્રિય વપરાશકર્તાઓ',
   'Total Exams Attempted': 'આપેલી કુલ પરીક્ષાઓ',
   'Time Spent On This Exam': 'આ પરીક્ષા પર પસાર કરેલો સમય',
   'Hashtags': 'હેશટૅગ્સ',

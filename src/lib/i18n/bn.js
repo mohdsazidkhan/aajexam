@@ -1437,6 +1437,7 @@ const BN = {
   'Top Streak': 'শীর্ষ স্ট্রিক',
   'Players': 'খেলোয়াড়',
   'Top Ranked Users': 'শীর্ষ র‍্যাঙ্ক পাওয়া ব্যবহারকারী',
+  'Total Active Users': 'মোট সক্রিয় ব্যবহারকারী',
   'Total Exams Attempted': 'মোট দেওয়া পরীক্ষা',
   'Time Spent On This Exam': 'এই পরীক্ষায় ব্যয় করা সময়',
   'Hashtags': 'হ্যাশট্যাগ',

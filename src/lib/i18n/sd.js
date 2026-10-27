@@ -1437,6 +1437,7 @@ const SD = {
   'Top Streak': 'सभ खां मथी स्ट्रीक',
   'Players': 'खेडारी',
   'Top Ranked Users': 'मथी रैंक वारा इस्तेमालकरीं',
+  'Total Active Users': 'कुल सरगर्म इस्तेमालकरीं',
   'Total Exams Attempted': 'कुल ॾिनल इम्तिहान',
   'Time Spent On This Exam': 'इन इम्तिहान ते गुज़ारियल वक़्तु',
   'Hashtags': 'हैशटैग',

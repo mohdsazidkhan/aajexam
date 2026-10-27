@@ -1437,6 +1437,7 @@ const PA = {
   'Top Streak': 'ਚੋਟੀ ਦੀ ਸਟ੍ਰੀਕ',
   'Players': 'ਖਿਡਾਰੀ',
   'Top Ranked Users': 'ਚੋਟੀ ਰੈਂਕ ਪ੍ਰਾਪਤ ਯੂਜ਼ਰ',
+  'Total Active Users': 'ਕੁੱਲ ਸਰਗਰਮ ਯੂਜ਼ਰ',
   'Total Exams Attempted': 'ਦਿੱਤੀਆਂ ਕੁੱਲ ਪ੍ਰੀਖਿਆਵਾਂ',
   'Time Spent On This Exam': 'ਇਸ ਪ੍ਰੀਖਿਆ \'ਤੇ ਬਿਤਾਇਆ ਸਮਾਂ',
   'Hashtags': 'ਹੈਸ਼ਟੈਗ',

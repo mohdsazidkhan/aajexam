@@ -1437,6 +1437,7 @@ const KN = {
   'Top Streak': 'ಅಗ್ರ ಸ್ಟ್ರೀಕ್',
   'Players': 'ಆಟಗಾರರು',
   'Top Ranked Users': 'ಅಗ್ರ ರ‍್ಯಾಂಕ್ ಪಡೆದ ಬಳಕೆದಾರರು',
+  'Total Active Users': 'ಒಟ್ಟು ಸಕ್ರಿಯ ಬಳಕೆದಾರರು',
   'Total Exams Attempted': 'ಬರೆದ ಒಟ್ಟು ಪರೀಕ್ಷೆಗಳು',
   'Time Spent On This Exam': 'ಈ ಪರೀಕ್ಷೆಯಲ್ಲಿ ಕಳೆದ ಸಮಯ',
   'Hashtags': 'ಹ್ಯಾಶ್‌ಟ್ಯಾಗ್‌ಗಳು',

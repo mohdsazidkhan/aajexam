@@ -1437,6 +1437,7 @@ const ML = {
   'Top Streak': 'ഉയർന്ന സ്ട്രീക്ക്',
   'Players': 'കളിക്കാർ',
   'Top Ranked Users': 'മുകളിൽ റാങ്ക് ലഭിച്ച ഉപയോക്താക്കൾ',
+  'Total Active Users': 'ആകെ സജീവം ഉപയോക്താക്കൾ',
   'Total Exams Attempted': 'എഴുതിയ ആകെ പരീക്ഷകൾ',
   'Time Spent On This Exam': 'ഈ പരീക്ഷയിൽ ചെലവഴിച്ച സമയം',
   'Hashtags': 'ഹാഷ്ടാഗുകൾ',

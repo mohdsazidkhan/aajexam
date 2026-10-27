@@ -1437,6 +1437,7 @@ const NE = {
   'Top Streak': 'शीर्ष स्ट्रिक',
   'Players': 'खेलाडी',
   'Top Ranked Users': 'माथि र्याङ्क भएका प्रयोगकर्ता',
+  'Total Active Users': 'कुल सक्रिय प्रयोगकर्ता',
   'Total Exams Attempted': 'कुल दिइएका परीक्षा',
   'Time Spent On This Exam': 'यो परीक्षामा बिताएको समय',
   'Hashtags': 'ह्यासट्याग',

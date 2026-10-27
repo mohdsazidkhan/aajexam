@@ -1437,6 +1437,7 @@ const TE = {
   'Top Streak': 'టాప్ స్ట్రీక్',
   'Players': 'ప్లేయర్లు',
   'Top Ranked Users': 'టాప్ ర్యాంక్ పొందిన యూజర్లు',
+  'Total Active Users': 'మొత్తం యాక్టివ్ యూజర్లు',
   'Total Exams Attempted': 'రాసిన మొత్తం పరీక్షలు',
   'Time Spent On This Exam': 'ఈ పరీక్షకు గడిపిన సమయం',
   'Hashtags': 'హ్యాష్‌ట్యాగ్‌లు',

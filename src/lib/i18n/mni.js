@@ -1437,6 +1437,7 @@ const MANIPURI = {
   'Top Streak': 'ꯃꯈꯥꯒꯤ ꯁ꯭ꯇ꯭ꯔꯤꯛ',
   'Players': 'ꯄ꯭ꯂꯦꯌꯔꯁ',
   'Top Ranked Users': 'ꯃꯈꯥ ꯔꯦꯡꯛ ꯂꯩꯕꯥ ꯌꯨꯖꯔꯁꯤꯡ',
+  'Total Active Users': 'ꯑꯄꯨꯟꯕ ꯑꯦꯛꯇꯤꯚ ꯌꯨꯖꯔꯁꯤꯡ',
   'Total Exams Attempted': 'ꯄꯨꯝꯅꯃꯛ ꯌꯦꯡꯂꯕꯥ ꯑꯦꯒꯖꯥꯝ',
   'Time Spent On This Exam': 'ꯃꯁꯤꯒꯤ ꯑꯦꯒꯖꯥꯃꯗꯥ ꯁꯃꯌ ꯁꯦꯝꯕꯥ',
   'Hashtags': 'ꯍꯦꯁꯇꯦꯒꯁ',

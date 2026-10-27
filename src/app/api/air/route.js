@@ -10,13 +10,9 @@ import { normalizeRankSort, rowSort } from '@/lib/utils/rankSort';
 // cached (shared across server instances) per (examId, limit) instead of recomputed per request.
 const CACHE_TTL_SEC = 5 * 60;
 
-// The board is the top 100 ranked students; the header totals (exams attempted, time spent) are summed
-// over those same 100, whatever `limit` the caller asked to see.
+// The board is the top 100 ranked students; the header totals (exams attempted, time spent) cover
+// every ranked user, whatever `limit` the caller asked to see.
 const BOARD_SIZE = 100;
-const boardTotals = (rows) => ({
-    attempts: rows.reduce((n, r) => n + (r.totalExams || 0), 0),
-    seconds: Math.round(rows.reduce((n, r) => n + (r.totalTimeSpent || 0), 0) / 1000),
-});
 
 // GET /api/air?examId=optional&limit=20 (max 100, top-100 board)&sort=time|attempts|correct|score|accuracy|avg
 export async function GET(req) {
@@ -40,14 +36,13 @@ export async function GET(req) {
                 topLifetime({ kind: 'exam', scope, pool: BOARD_SIZE, countKey: 'totalExams', sortKey: sort }),
                 examScopeTotals(scope),
             ]);
-            const board = boardTotals(rows);
             const body = {
                 success: true,
                 data: rows.slice(0, limit).map((entry, idx) => ({ rank: idx + 1, ...entry })),
                 examId,
-                totalAttempts: board.attempts,
+                totalAttempts: totals.attempts,
                 totalUsers: totals.users,
-                totalTimeSpentSeconds: board.seconds,
+                totalTimeSpentSeconds: Math.round(totals.time / 1000),
             };
             await writeCache(`air:s:${cacheKey}`, body, CACHE_TTL_SEC);
             return NextResponse.json(body);
@@ -181,11 +176,12 @@ export async function GET(req) {
             }
         );
 
-        const [leaderboard, rankedUsersResult] = await Promise.all([
+        const [leaderboard, rankedUsersResult, totalsResult] = await Promise.all([
             UserTestAttempt.aggregate(pipeline),
             // "Ranked Users" = distinct users with at least one matching completed
             // attempt (not the whole platform's user count) - same scope as above.
             UserTestAttempt.aggregate([...preGroupStages, { $group: { _id: '$user' } }, { $count: 'total' }]),
+            UserTestAttempt.aggregate([...preGroupStages, { $group: { _id: null, attempts: { $sum: 1 }, time: { $sum: '$totalTime' } } }]),
         ]);
 
         // Add rank numbers
@@ -194,14 +190,13 @@ export async function GET(req) {
             ...entry,
         }));
 
-        const board = boardTotals(leaderboard);
         const body = {
             success: true,
             data: ranked.slice(0, limit),
             examId,
-            totalAttempts: board.attempts,
+            totalAttempts: totalsResult[0]?.attempts || 0,
             totalUsers: rankedUsersResult[0]?.total || 0,
-            totalTimeSpentSeconds: board.seconds,
+            totalTimeSpentSeconds: Math.round((totalsResult[0]?.time || 0) / 1000),
         };
         await writeCache(`air:${cacheKey}`, body, CACHE_TTL_SEC);
         return NextResponse.json(body);

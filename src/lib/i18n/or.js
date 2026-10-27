@@ -1437,6 +1437,7 @@ const OR_ = {
   'Top Streak': 'ଶୀର୍ଷ ଷ୍ଟ୍ରିକ୍',
   'Players': 'ଖେଳାଳି',
   'Top Ranked Users': 'ଶୀର୍ଷ ର‍୍ୟାଙ୍କ ପାଇଥିବା ଉପଯୋଗକର୍ତ୍ତା',
+  'Total Active Users': 'ମୋଟ ସକ୍ରିୟ ଉପଯୋଗକର୍ତ୍ତା',
   'Total Exams Attempted': 'ଦିଆଯାଇଥିବା ମୋଟ ପରୀକ୍ଷା',
   'Time Spent On This Exam': 'ଏହି ପରୀକ୍ଷାରେ ବିତାଇଥିବା ସମୟ',
   'Hashtags': 'ହ୍ୟାସ୍‌ଟ୍ୟାଗ୍',

@@ -1437,6 +1437,7 @@ const DogriDict = {
   'Top Streak': 'सब्भ थमां उच्ची स्ट्रीक',
   'Players': 'खिलाड़ी',
   'Top Ranked Users': 'उप्पर रैंक आले यूजर',
+  'Total Active Users': 'कुल सक्रिय यूजर',
   'Total Exams Attempted': 'दित्तियां कुल परीक्षां',
   'Time Spent On This Exam': 'इस परीक्षा पर लग्गेआ समां',
   'Hashtags': 'हैशटैग',

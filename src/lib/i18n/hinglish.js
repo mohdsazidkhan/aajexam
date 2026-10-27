@@ -1443,6 +1443,7 @@ const HINGLISH = {
   'Top Streak': 'Top Streak',
   'Players': 'Players',
   'Top Ranked Users': 'Top Ranked Users',
+  'Total Active Users': 'Total Active Users',
   'Total Exams Attempted': 'Total Exams Attempted',
   'Time Spent On This Exam': 'Is Exam par Time Spent',
   'Hashtags': 'Hashtags',

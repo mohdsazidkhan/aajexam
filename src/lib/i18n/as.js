@@ -1437,6 +1437,7 @@ const AS = {
   'Top Streak': 'শীৰ্ষ ষ্ট্ৰিক',
   'Players': 'খেলুৱৈ',
   'Top Ranked Users': 'শীৰ্ষ ৰেংক পোৱা ব্যৱহাৰকাৰী',
+  'Total Active Users': 'মুঠ সক্ৰিয় ব্যৱহাৰকাৰী',
   'Total Exams Attempted': 'মুঠ দিয়া পৰীক্ষা',
   'Time Spent On This Exam': 'এই পৰীক্ষাত ব্যয় কৰা সময়',
   'Hashtags': 'হেশটেগ',

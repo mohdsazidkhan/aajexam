@@ -1437,6 +1437,7 @@ const BODO = {
   'Top Streak': 'गोजौ स्ट्रीक',
   'Players': 'खेलग्रा',
   'Top Ranked Users': 'गोजौ रैंक मोननाय बाहायग्रा',
+  'Total Active Users': 'गासै हाबायाव दं बाहायग्रा',
   'Total Exams Attempted': 'गासै नाजानाय फोरोंना',
   'Time Spent On This Exam': 'बे फोरोंनायाव होनाय सम',
   'Hashtags': 'हैशटैगफोर',

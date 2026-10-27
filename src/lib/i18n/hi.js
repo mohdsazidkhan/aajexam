@@ -1450,6 +1450,7 @@ const HI = {
   'Top Streak': 'सबसे ऊँची स्ट्रीक',
   'Players': 'खिलाड़ी',
   'Top Ranked Users': 'शीर्ष रैंक वाले यूज़र',
+  'Total Active Users': 'कुल सक्रिय यूज़र',
   'Total Exams Attempted': 'कुल दी गई परीक्षाएँ',
   'Time Spent On This Exam': 'इस परीक्षा पर बिताया समय',
   'Hashtags': 'हैशटैग',

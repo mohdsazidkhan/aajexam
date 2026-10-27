@@ -1437,6 +1437,7 @@ const UrduDict = {
   'Top Streak': 'سب سے اونچی اسٹریک',
   'Players': 'کھلاڑی',
   'Top Ranked Users': 'سرفہرست رینک والے صارفین',
+  'Total Active Users': 'کل فعال صارفین',
   'Total Exams Attempted': 'کل دیے گئے امتحانات',
   'Time Spent On This Exam': 'اس امتحان پر گزارا وقت',
   'Hashtags': 'ہیش ٹیگز',

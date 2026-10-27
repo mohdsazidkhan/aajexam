@@ -1437,6 +1437,7 @@ const MAI = {
   'Top Streak': 'सभ सँ ऊँच स्ट्रीक',
   'Players': 'खिलाड़ी',
   'Top Ranked Users': 'शीर्ष रैंक बला यूजर',
+  'Total Active Users': 'कुल सक्रिय यूजर',
   'Total Exams Attempted': 'कुल देल गेल परीक्षा',
   'Time Spent On This Exam': 'एहि परीक्षा पर बिताओल समय',
   'Hashtags': 'हैशटैग',

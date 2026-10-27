@@ -1437,6 +1437,7 @@ const SAT = {
   'Top Streak': 'ᱪᱤᱠᱤ ᱥᱴᱨᱤᱠ',
   'Players': 'ᱠᱷᱮᱞᱚᱣᱟᱲ ᱠᱚ',
   'Top Ranked Users': 'ᱪᱤᱠᱤ ᱨᱮᱸᱠ ᱧᱟᱢ ᱵᱮᱵᱷᱟᱨᱤᱭᱟ',
+  'Total Active Users': 'ᱥᱟᱱᱟᱢ ᱪᱟᱞᱟᱜ ᱵᱮᱵᱷᱟᱨᱤᱭᱟ ᱠᱚ',
   'Total Exams Attempted': 'ᱥᱟᱱᱟᱢ ᱮᱢᱟ ᱯᱨᱤᱠᱷᱟ',
   'Time Spent On This Exam': 'ᱱᱚᱣᱟ ᱯᱨᱤᱠᱷᱟ ᱨᱮ ᱞᱟᱜᱟᱣ ᱚᱠᱛᱚ',
   'Hashtags': 'ᱦᱮᱥᱴᱮᱜ',
