@@ -192,7 +192,7 @@ const StudentSidebar = () => {
 
   return (
     <aside
-      className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-white dark:bg-slate-900 border-r-2 border-slate-100 dark:border-slate-800 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
+      className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-background-surface border-r-2 border-border-primary overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
         }`}
     >
 
@@ -200,7 +200,7 @@ const StudentSidebar = () => {
       <nav ref={navRef} aria-label={translate('Sidebar navigation')} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium min-w-[240px] relative z-10">
         {displaySections.map((section, idx) => (
           <section key={idx}>
-            <h3 className="text-[11px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-[0.3em] px-2 mb-2">
+            <h3 className="text-[11px] font-bold text-primary-600 uppercase tracking-[0.08em] px-2 mb-2">
               {translate(section.title)}
             </h3>
             <div className="space-y-0.5">
@@ -209,11 +209,11 @@ const StudentSidebar = () => {
                 return (
                   <Link key={itemIdx} href={item.path} onClick={handleNavClick} aria-current={active ? 'page' : undefined} data-active={active ? 'true' : undefined}>
                     <button className={`w-full flex items-center justify-between px-2 py-2 transition-all duration-200 relative group overflow-hidden ${active
-                      ? 'text-primary-950'
-                      : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-primary-800 hover:bg-primary-50'
+                      ? 'text-on-primary'
+                      : darkMode ? 'text-content-muted hover:text-white hover:bg-white/5' : 'text-content-secondary hover:text-primary-800'
                       }`}>
                       {active && (
-                        <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-gradient-to-r from-primary-300 to-primary-400 shadow-md" />
+                        <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-600" />
                       )}
                       <div className="flex items-center gap-2 relative z-10">
                         <item.icon className="w-4 h-4 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
@@ -232,10 +232,10 @@ const StudentSidebar = () => {
       </nav>
 
       {/* Logout */}
-      <div className="p-4 border-t border-slate-100 dark:border-white/5 min-w-[240px]">
+      <div className="p-4 border-t border-border-primary min-w-[240px]">
         <button
           onClick={() => secureLogout(router)}
-          className="w-full py-3 rounded-lg xl:rounded-xl bg-gradient-to-r from-red-500 to-red-600 hover:brightness-110 text-white text-[11px] font-black tracking-wide shadow-md transition-all flex items-center justify-center gap-2 group"
+          className="w-full py-3 rounded-lg xl:rounded-xl hover:brightness-110 text-white text-[11px] font-bold tracking-wide transition-all flex items-center justify-center gap-2 group bg-red-600"
         >
           <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> {translate('LOG OUT')}
         </button>

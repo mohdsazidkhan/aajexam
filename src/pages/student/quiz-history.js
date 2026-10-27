@@ -77,7 +77,7 @@ const QuizHistoryPage = () => {
                   title={translate('Quiz History')}
                   actions={
                      <Select
-                        className="px-4 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold outline-none focus:border-primary-700"
+                        className="px-4 py-2.5 bg-background-surface-secondary border border-border-primary rounded-lg xl:rounded-xl text-xs font-bold outline-none focus:border-primary-700"
                         value={filter} onChange={e => { setFilter(e.target.value); setCurrentPage(1); }}
                      >
                         <option value="">{translate('All')}</option>
@@ -90,10 +90,10 @@ const QuizHistoryPage = () => {
                {/* Results */}
                {attempts.length === 0 ? (
                   <div className="py-16 text-center space-y-2 xl:space-y-4">
-                     <div className="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto">
+                     <div className="w-20 h-20 bg-background-surface-secondary rounded-2xl flex items-center justify-center mx-auto">
                         <BrainCircuit className="w-10 h-10 text-slate-300" />
                      </div>
-                     <h2 className="text-xl font-black text-slate-400">{translate('No quizzes attempted yet')}</h2>
+                     <h2 className="text-xl font-bold text-content-muted">{translate('No quizzes attempted yet')}</h2>
                      <Button variant="primary" onClick={() => router.push('/quizzes')}>{translate('Start a Quiz')}</Button>
                   </div>
                ) : (
@@ -105,27 +105,27 @@ const QuizHistoryPage = () => {
 
                         return (
                            <motion.div key={attempt._id || idx} className="h-full" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
-                              <Card className="group h-full flex flex-col hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700">
+                              <Card className="group h-full flex flex-col transition-all duration-300 border border-border-primary hover:border-primary-700">
                                  <div className="flex-1 flex flex-col gap-2 xl:gap-4">
                                     {/* Header */}
                                     <div className="flex justify-between items-start">
-                                       <div className="p-2.5 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl">
-                                          <BrainCircuit className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+                                       <div className="p-2.5 rounded-lg xl:rounded-xl">
+                                          <BrainCircuit className="w-5 h-5 text-primary-600" />
                                        </div>
                                        {isCompleted && (
-                                          <div className={`w-9 h-9 rounded-full border-2 border-${rank.color}-500/20 flex items-center justify-center text-${rank.color}-500 font-black text-lg`}>
+                                          <div className={`w-9 h-9 rounded-full border border-${rank.color}-500/20 flex items-center justify-center text-${rank.color}-500 font-bold text-lg`}>
                                              {rank.label}
                                           </div>
                                        )}
                                        {!isCompleted && (
-                                          <span className="text-[10px] font-bold text-black dark:text-white bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-lg">{translate('In Progress')}</span>
+                                          <span className="text-[10px] font-bold text-content-primary bg-background-surface-secondary px-2 py-1 rounded-lg">{translate('In Progress')}</span>
                                        )}
                                     </div>
 
                                     {/* Title */}
                                     <div className="space-y-1">
-                                       <h3 className="text-base font-black tracking-tight text-slate-900 dark:text-white line-clamp-1">{translateData(quiz?.title) || translate('Quiz')}</h3>
-                                       <p className="text-[10px] font-bold text-slate-400">
+                                       <h3 className="text-base font-bold tracking-tight text-content-primary line-clamp-1">{translateData(quiz?.title) || translate('Quiz')}</h3>
+                                       <p className="text-[10px] font-bold text-content-muted">
                                           {quiz?.applicableExams?.map(e => e.name).join(', ') || ''}{quiz?.subject?.name ? ` · ${quiz.subject.name}` : ''}{quiz?.topic?.name ? ` · ${quiz.topic.name}` : ''}
                                        </p>
                                     </div>
@@ -135,24 +135,24 @@ const QuizHistoryPage = () => {
                                        <>
                                           <div className="space-y-2">
                                              <div className="flex justify-between items-end">
-                                                <span className="text-[10px] font-black text-slate-400">{translate('Accuracy')}</span>
-                                                <span className="text-sm font-black text-primary-600 dark:text-primary-300">{Math.round(attempt.accuracy || 0)}%</span>
+                                                <span className="text-[10px] font-bold text-content-muted">{translate('Accuracy')}</span>
+                                                <span className="text-sm font-bold text-primary-600">{Math.round(attempt.accuracy || 0)}%</span>
                                              </div>
                                              <ProgressBar progress={attempt.accuracy || 0} color="emerald" height="h-1.5" showPercentage={false} />
                                           </div>
 
-                                          <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+                                          <div className="grid grid-cols-3 gap-2 pt-2 border-t border-border-primary">
                                              <div className="text-center">
-                                                <span className="text-[9px] font-black text-slate-400 block">{translate('Score')}</span>
-                                                <p className="text-sm font-black text-slate-900 dark:text-white">{Math.round(attempt.percentage || 0)}%</p>
+                                                <span className="text-[9px] font-bold text-content-muted block">{translate('Score')}</span>
+                                                <p className="text-sm font-bold text-content-primary">{Math.round(attempt.percentage || 0)}%</p>
                                              </div>
                                              <div className="text-center">
-                                                <span className="text-[9px] font-black text-slate-400 block">{translate('Correct')}</span>
-                                                <p className="text-sm font-black text-primary-600 dark:text-primary-300">{attempt.correctCount}/{attempt.correctCount + attempt.wrongCount + (attempt.skippedCount || 0)}</p>
+                                                <span className="text-[9px] font-bold text-content-muted block">{translate('Correct')}</span>
+                                                <p className="text-sm font-bold text-primary-600">{attempt.correctCount}/{attempt.correctCount + attempt.wrongCount + (attempt.skippedCount || 0)}</p>
                                              </div>
                                              <div className="text-center">
-                                                <span className="text-[9px] font-black text-slate-400 block">{translate('Rank')}</span>
-                                                <p className="text-sm font-black text-primary-600 dark:text-primary-300">#{attempt.rank || '-'}</p>
+                                                <span className="text-[9px] font-bold text-content-muted block">{translate('Rank')}</span>
+                                                <p className="text-sm font-bold text-primary-600">#{attempt.rank || '-'}</p>
                                              </div>
                                           </div>
                                        </>
@@ -160,21 +160,21 @@ const QuizHistoryPage = () => {
 
                                     {/* Footer */}
                                     <footer className="flex items-center justify-between pt-2 mt-auto">
-                                       <div className="flex items-center gap-1 text-[9px] font-bold text-slate-400">
+                                       <div className="flex items-center gap-1 text-[9px] font-bold text-content-muted">
                                           <Calendar className="w-3 h-3" />
                                           {attempt.submittedAt ? new Date(attempt.submittedAt).toLocaleDateString() : new Date(attempt.createdAt).toLocaleDateString()}
                                        </div>
                                        {isCompleted ? (
                                           <button
                                              onClick={() => router.push(`/student/quiz-result/${attempt._id}`)}
-                                             className="flex items-center gap-1 text-[10px] font-black text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-3 py-1.5 rounded-lg hover:bg-primary-100 transition-colors"
+                                             className="flex items-center gap-1 text-[10px] font-bold text-primary-600 px-3 py-1.5 rounded-lg transition-colors"
                                           >
                                              <Eye className="w-3 h-3" /> View Result
                                           </button>
                                        ) : (
                                           <button
                                              onClick={() => router.push(`/quiz/${quiz?.slug}/attempt`)}
-                                             className="text-[10px] font-black text-primary-600 bg-primary-50 px-3 py-1.5 rounded-lg"
+                                             className="text-[10px] font-bold text-primary-600 px-3 py-1.5 rounded-lg"
                                           >
                                              {translate('Resume')}
                                           </button>

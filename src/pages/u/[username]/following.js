@@ -87,9 +87,9 @@ export default function FollowingListPage() {
           {loading ? (
             <ListSkeleton rows={8} />
           ) : following.length === 0 ? (
-            <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
+            <div className="text-center py-20 bg-background-surface rounded-3xl border border-dashed border-border-primary">
               <div className="text-4xl mb-4">👥</div>
-              <p className="text-sm xl:text-lg font-black text-slate-400 uppercase tracking-tight">{translate('Not following anyone yet')}</p>
+              <p className="text-sm xl:text-lg font-bold text-content-muted tracking-tight">{translate('Not following anyone yet')}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-4">
@@ -97,29 +97,29 @@ export default function FollowingListPage() {
                 <section
                   key={user._id}
                   onClick={() => handleUserClick(user.username)}
-                  className="flex items-center min-w-0 gap-3 xl:gap-4 p-3 xl:p-4 bg-white dark:bg-slate-900 rounded-[1rem] xl:rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700 transition-all cursor-pointer group shadow-sm active:translate-y-1 active:border-b-2"
+                  className="flex items-center min-w-0 gap-3 xl:gap-4 p-3 xl:p-4 bg-background-surface rounded-[1rem] xl:rounded-3xl border border-border-primary hover:border-primary-700 transition-all cursor-pointer group active:translate-y-1 active:border-b-2"
                 >
                   {user.profilePicture ? (
                     <img
                       src={user.profilePicture}
                       alt={user.name}
-                      className="w-16 h-16 rounded-2xl object-cover border-2 border-slate-100 dark:border-slate-800"
+                      className="w-16 h-16 rounded-2xl object-cover border border-border-primary"
                     />
                   ) : (
-                    <div className="w-12 xl:w-16 h-12 xl:h-16 rounded-2xl bg-primary-600 flex items-center justify-center text-white text-md xl:text-xl font-black shadow-sm">
+                    <div className="w-12 xl:w-16 h-12 xl:h-16 rounded-2xl bg-primary-600 flex items-center justify-center text-on-primary text-md xl:text-xl font-bold">
                       {user.name?.charAt(0)?.toUpperCase() || 'U'}
                     </div>
                   )}
 
                   <div className="flex-1 min-w-0">
-                    <h3 className="truncate text-md xl:text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{user.name}</h3>
+                    <h3 className="truncate text-md xl:text-lg font-bold text-content-primary tracking-tight group-hover:text-primary-600 transition-colors">{user.name}</h3>
                     {user.username && (
-                      <p className="text-xs font-black tracking-widest text-primary-600 dark:text-primary-300 mt-1">@{user.username}</p>
+                      <p className="text-xs font-bold tracking-[0.08em] text-primary-600 mt-1">@{user.username}</p>
                     )}
                   </div>
 
                   <div className="text-right hidden sm:block xl:hidden">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted">
                       {translate('{count} followers', { count: user.followersCount || 0 })}
                     </p>
                   </div>

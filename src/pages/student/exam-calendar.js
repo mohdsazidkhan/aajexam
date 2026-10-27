@@ -17,14 +17,14 @@ import useRequireLogin from '../../hooks/useRequireLogin';
 
 // ─── Type Config (matches exam-news.js style) ──────────────────────────────────
 const typeConfig = {
-  notification: { icon: Bell, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Notification', border:'border-slate-200 dark:border-slate-800'},
-  admit_card:   { icon: CreditCard, color: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300', dot: 'bg-primary-600', label: 'Admit Card', border: 'border-primary-200 dark:border-primary-800/50' },
-  result: { icon: BarChart2, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Result', border:'border-slate-200 dark:border-slate-800'},
-  answer_key: { icon: Key, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Answer Key', border:'border-slate-200 dark:border-slate-800'},
-  vacancy: { icon: Users, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Vacancy', border:'border-slate-200 dark:border-slate-800'},
-  date_change: { icon: AlertTriangle, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Date Change', border:'border-slate-200 dark:border-slate-800'},
-  syllabus: { icon: Megaphone, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Syllabus', border:'border-slate-200 dark:border-slate-800'},
-  other:        { icon: Megaphone, color: 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400', dot: 'bg-slate-400', label: 'Other', border: 'border-slate-200 dark:border-slate-700' },
+  notification: { icon: Bell, color:'bg-background-surface-secondary text-content-primary', dot:'bg-primary-600', label:'Notification', border:'border-border-primary'},
+  admit_card:   { icon: CreditCard, color: 'text-primary-600', dot: 'bg-primary-600', label: 'Admit Card', border: 'border-primary-200 dark:border-primary-800/50' },
+  result: { icon: BarChart2, color:'bg-background-surface-secondary text-content-primary', dot:'bg-primary-600', label:'Result', border:'border-border-primary'},
+  answer_key: { icon: Key, color:'bg-background-surface-secondary text-content-primary', dot:'bg-primary-600', label:'Answer Key', border:'border-border-primary'},
+  vacancy: { icon: Users, color:'bg-background-surface-secondary text-content-primary', dot:'bg-primary-600', label:'Vacancy', border:'border-border-primary'},
+  date_change: { icon: AlertTriangle, color:'bg-background-surface-secondary text-content-primary', dot:'bg-primary-600', label:'Date Change', border:'border-border-primary'},
+  syllabus: { icon: Megaphone, color:'bg-background-surface-secondary text-content-primary', dot:'bg-primary-600', label:'Syllabus', border:'border-border-primary'},
+  other:        { icon: Megaphone, color: 'bg-background-surface-secondary text-content-secondary', dot: 'bg-border-secondary', label: 'Other', border: 'border-border-primary' },
 };
 const getType = (t) => typeConfig[t] || typeConfig.other;
 
@@ -64,7 +64,7 @@ const EventCard = ({ event, compact = false }) => {
         <div className={`flex items-start gap-2.5 p-3 rounded-lg xl:rounded-xl border ${cfg.border} ${cfg.color} transition-all hover:opacity-80 group`}>
           <Icon className="w-4 h-4 flex-shrink-0 mt-0.5" />
           <div className="flex-1 min-w-0">
-            <p className="text-[11px] font-black truncate leading-tight">{event.label}</p>
+            <p className="text-[11px] font-bold truncate leading-tight">{event.label}</p>
             <p className="text-[10px] font-bold opacity-70 truncate">{event.examName || event.examNewsTitle}</p>
           </div>
           <ExternalLink className="w-3 h-3 flex-shrink-0 opacity-0 group-hover:opacity-70 transition-opacity mt-0.5" />
@@ -78,23 +78,23 @@ const EventCard = ({ event, compact = false }) => {
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        style={{ borderRadius: 14 }} className="relative overflow-hidden flex items-start gap-3 p-3.5 pl-4 border border-slate-200 dark:border-slate-800 bg-background-surface shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all group cursor-pointer"
+        style={{ borderRadius: 14 }} className="relative overflow-hidden flex items-start gap-3 p-3.5 pl-4 border border-border-primary bg-background-surface hover:-translate-y-0.5 transition-all group cursor-pointer"
       >
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
-        <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-primary-600" />
+        <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
           <Icon className="w-4 h-4" />
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-black text-content-primary leading-tight line-clamp-2">{event.label}</p>
+          <p className="text-sm font-bold text-content-primary leading-tight line-clamp-2">{event.label}</p>
           {(event.examName || event.examNewsTitle) && (
-            <p className="text-base font-black text-content-primary mt-0.5">
+            <p className="text-base font-bold text-content-primary mt-0.5">
               {event.examName || event.examNewsTitle}
             </p>
           )}
           <div className="flex items-center gap-1 mt-1.5">
             <Clock className="w-3 h-3 text-content-muted" />
             <span className="text-[10px] font-bold text-content-muted">{dateStr}</span>
-            <span className="ml-1 text-[9px] font-black uppercase px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000]" style={{ borderRadius: 999 }}>
+            <span className="ml-1 text-[9px] font-bold uppercase px-2 py-0.5 text-on-primary bg-primary-600" style={{ borderRadius: 999 }}>
               {translate(cfg.label)}
             </span>
           </div>
@@ -120,17 +120,17 @@ const DayPanel = ({ date, events, onClose }) => {
         className="mt-4"
       >
         <Card padded={false} className="overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
+          <div className="flex items-center justify-between px-4 py-3 text-content-primary border-b border-border-primary dark:border-transparent bg-background-surface">
             <div className="flex items-center gap-2">
-              <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><CalendarDays className="w-4 h-4" /></span>
-              <span className="text-sm font-black">{dateLabel}</span>
-              <span className="text-[10px] font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] px-2 py-0.5 rounded-full">
+              <span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><CalendarDays className="w-4 h-4" /></span>
+              <span className="text-sm font-bold">{dateLabel}</span>
+              <span className="text-[10px] font-bold uppercase text-on-primary px-2 py-0.5 rounded-full bg-primary-600">
                 {events.length} event{events.length > 1 ? 's' : ''}
               </span>
             </div>
             <button
               onClick={onClose}
-              className="text-primary-800/70 dark:text-white/70 hover:text-primary-900 dark:hover:text-white transition-colors text-[10px] font-black uppercase"
+              className="text-primary-800/70 dark:text-white/70 hover:text-primary-900 dark:hover:text-white transition-colors text-[10px] font-bold uppercase"
             >
               {translate('Close')}
             </button>
@@ -240,33 +240,33 @@ const ExamCalendarPage = () => {
                 return (
                   <div key={typeKey} className="flex items-center gap-1.5 bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-2.5 py-1 shrink-0 whitespace-nowrap" style={{ borderRadius: 999 }}>
                     <div className={`w-2 h-2 rounded-full ${cfg.dot}`} />
-                    <span className="text-[10px] font-black text-slate-800 dark:text-white uppercase">{translate(cfg.label)}</span>
+                    <span className="text-[10px] font-bold text-content-primary uppercase">{translate(cfg.label)}</span>
                   </div>
                 );
               })}
             </div>
           }
         >
-          <div className="space-y-3 border-t border-dashed border-slate-300 dark:border-white/25 pt-4">
+          <div className="space-y-3 border-t border-dashed border-border-primary pt-4">
         {/* ── Month Navigation ── */}
         <div className="flex items-center justify-between gap-3">
           <button
             onClick={prevMonth}
             aria-label={translate('Previous month')}
-            style={{ borderRadius: 999 }} className="flex items-center gap-1 px-3 sm:px-4 py-2.5 font-black text-[11px] uppercase border border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary shadow-md hover:border-primary-500 hover:shadow-lg transition-all active:translate-y-0.5"
+            style={{ borderRadius: 999 }} className="flex items-center gap-1 px-3 sm:px-4 py-2.5 font-bold text-[11px] uppercase border border-border-primary bg-background-surface text-content-primary hover:border-primary-500 transition-all active:translate-y-0.5"
           >
             <ChevronLeft className="w-4 h-4" />
             <span className="hidden sm:inline">{translate('Prev')}</span>
           </button>
 
           <section className="flex-1 text-center">
-            <h2 className="text-lg sm:text-xl xl:text-2xl font-black font-outfit uppercase text-primary-700 dark:text-primary-200 tracking-tight">
+            <h2 className="text-lg sm:text-xl xl:text-2xl font-bold font-outfit text-primary-600 tracking-tight">
               {translate(MONTHS[month - 1])} {year}
             </h2>
             {(month !== now.getMonth() + 1 || year !== now.getFullYear()) && (
               <button
                 onClick={goToday}
-                className="text-[10px] font-black text-primary-600 dark:text-primary-300 hover:text-primary-600 uppercase tracking-wide mt-0.5"
+                className="text-[10px] font-bold text-primary-600 hover:text-primary-600 uppercase tracking-wide mt-0.5"
               >
                 {translate('Back to Today')}
               </button>
@@ -276,7 +276,7 @@ const ExamCalendarPage = () => {
           <button
             onClick={nextMonth}
             aria-label={translate('Next month')}
-            style={{ borderRadius: 999 }} className="flex items-center gap-1 px-3 sm:px-4 py-2.5 font-black text-[11px] uppercase border border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary shadow-md hover:border-primary-500 hover:shadow-lg transition-all active:translate-y-0.5"
+            style={{ borderRadius: 999 }} className="flex items-center gap-1 px-3 sm:px-4 py-2.5 font-bold text-[11px] uppercase border border-border-primary bg-background-surface text-content-primary hover:border-primary-500 transition-all active:translate-y-0.5"
           >
             <span className="hidden sm:inline">{translate('Next')}</span>
             <ChevronRight className="w-4 h-4" />
@@ -299,29 +299,29 @@ const ExamCalendarPage = () => {
                 onClick={() => setSelectedDate(isSelected ? null : (hasEvents ? dateStr : null))}
                 disabled={!hasEvents}
                 className={`
-                  shrink-0 w-14 sm:w-16 py-2.5 sm:py-3 border shadow-sm
+                  shrink-0 w-14 sm:w-16 py-2.5 sm:py-3 border 
                   flex flex-col items-center justify-center gap-1
                   transition-all duration-150
                   ${hasEvents ? 'cursor-pointer' : 'cursor-default opacity-60'}
                   ${isToday
-                    ? 'bg-gradient-to-br from-primary-300 to-primary-400 border-primary-400 shadow-lg'
+                    ? 'border-primary-400 bg-primary-600'
                     : isSelected
-                      ? 'bg-primary-50 dark:bg-primary-950/30 border-primary-500 ring-2 ring-primary-500/30'
-                      : 'bg-background-surface border-slate-200 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700'}
+                      ? 'border-primary-500 ring-2 ring-primary-500/30'
+                      : 'bg-background-surface border-border-primary hover:border-primary-300 dark:hover:border-primary-700'}
                 `}
                 style={{ borderRadius: 14 }}
               >
-                <span className={`text-[9px] font-black uppercase tracking-wide ${isToday ? 'text-primary-950' : 'text-content-muted'}`}>
+                <span className={`text-[9px] font-bold uppercase tracking-wide ${isToday ? 'text-on-primary' : 'text-content-muted'}`}>
                   {dayName}
                 </span>
-                <span className={`text-base sm:text-lg font-black ${isToday ? 'text-primary-950' : 'text-content-primary'}`}>
+                <span className={`text-base sm:text-lg font-bold ${isToday ? 'text-on-primary' : 'text-content-primary'}`}>
                   {day}
                 </span>
                 <div className="flex items-center gap-1 h-1.5">
                   {hasEvents && (
                     <>
                       <EventDot event={eventsForDay[0]} />
-                      <span className={`text-[8px] font-black ${isToday ? 'text-primary-950' : 'text-content-muted'}`}>{eventsForDay.length}</span>
+                      <span className={`text-[8px] font-bold ${isToday ? 'text-on-primary' : 'text-content-muted'}`}>{eventsForDay.length}</span>
                     </>
                   )}
                 </div>
@@ -348,11 +348,11 @@ const ExamCalendarPage = () => {
               onClick={() => setShowUpcoming(v => !v)}
             >
               <div className="flex items-center gap-2">
-                <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span>
-                <h2 className="text-base sm:text-lg font-black text-content-primary uppercase tracking-tight">
+                <span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span>
+                <h2 className="text-base sm:text-lg font-bold text-content-primary tracking-tight">
                   {translate('Upcoming (Next 30 Days)')}
                 </h2>
-                <span className="text-[10px] font-black bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-bold text-on-primary px-2 py-0.5 rounded-full bg-primary-600">
                   {upcoming.length}
                 </span>
               </div>
@@ -390,10 +390,10 @@ const ExamCalendarPage = () => {
         {totalEvents === 0 && upcoming.length === 0 && (
           <div className="py-16 text-center space-y-2 xl:space-y-4">
             <CalendarDays className="w-16 h-16 sm:w-20 sm:h-20 text-slate-200 dark:text-slate-700 mx-auto" />
-            <h3 className="text-lg font-black text-content-muted uppercase">{translate('No events this month')}</h3>
+            <h3 className="text-lg font-bold text-content-muted">{translate('No events this month')}</h3>
             <p className="text-sm text-content-muted font-bold">{translate('Check back later or navigate to another month.')}</p>
             <Link href="/exam-news">
-              <button className="px-6 py-2.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-lg hover:brightness-105 rounded-full font-black text-xs uppercase mt-2 transition-all">
+              <button className="px-6 py-2.5 text-on-primary hover:brightness-105 rounded-full font-bold text-xs uppercase mt-2 transition-all bg-primary-600">
                 {translate('View Exam News')}
               </button>
             </Link>

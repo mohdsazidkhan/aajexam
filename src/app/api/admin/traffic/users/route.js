@@ -8,10 +8,11 @@ import { istDay, SEGMENTS, segmentFilter } from '@/lib/utils/traffic';
 const LIMIT = 500;
 const istStart = (day) => new Date(`${day}T00:00:00+05:30`);
 
-const USER_FIELDS = 'name email phone googleId city state heardFrom referredBy createdAt lastLoginDate';
+const USER_FIELDS = 'name username email phone googleId city state heardFrom referredBy createdAt lastLoginDate';
 
 const shapeUser = (u, extra = {}) => ({
     id: String(u._id),
+    username: u.username || '',
     name: u.name || '',
     email: u.email || '',
     phone: u.phone || '',

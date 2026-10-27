@@ -119,11 +119,11 @@ const CategoryDetailPage = () => {
           <BackButton onClick={() => router.push('/interview-questions')}>
             <ArrowLeft className="w-4 h-4" /> Back to Interview Questions
           </BackButton>
-          <div className="flex rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700 shrink-0">
+          <div className="flex rounded-full overflow-hidden border border-border-primary shrink-0">
             {[{ id: 'en', label: 'EN' }, { id: 'hi', label: 'HI' }].map(l => (
               <button key={l.id} onClick={() => setLanguage(l.id)}
-                className={`px-4 py-2 font-black uppercase text-xs transition-all ${
-                  language === l.id ? 'bg-primary-600 text-white' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                className={`px-4 py-2 font-bold uppercase text-xs transition-all ${
+                  language === l.id ? 'bg-primary-600 text-on-primary' : 'bg-background-surface text-content-secondary'
                 }`}>
                 {l.label}
               </button>
@@ -131,16 +131,13 @@ const CategoryDetailPage = () => {
           </div>
         </div>
 
-        <header className="z-auto relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-4 xl:p-6 flex items-center gap-3" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-          <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] flex items-center justify-center shrink-0 shadow-lg rotate-[-4deg]" style={{ borderRadius: 12 }}>
+        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 flex items-center gap-3 bg-background-surface" style={{ borderRadius: 16 }}>
+          <div className="w-12 h-12 text-on-primary flex items-center justify-center shrink-0 bg-primary-600" style={{ borderRadius: 12 }}>
             <Icon className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white">{pageTitle}</h1>
-            <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[9px] font-black uppercase text-content-muted">
+            <h1 className="text-lg xl:text-2xl font-bold text-content-primary">{pageTitle}</h1>
+            <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-background-surface-secondary text-[9px] font-bold uppercase text-content-muted">
               {cfg.label}
             </span>
           </div>
@@ -154,15 +151,15 @@ const CategoryDetailPage = () => {
           ) : (
             items.map((q, idx) => (
               <Card as="article" key={q._id} hoverable padded={false} onClick={() => router.push(`/interview-questions/${q.slug}`)}
-                className="group flex items-center gap-3 p-3 sm:p-4 border-2 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-colors cursor-pointer rounded-[1.25rem]">
-                <span className="w-6 h-6 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-black flex items-center justify-center shrink-0">
+                className="group flex items-center gap-3 p-3 sm:p-4 border border-border-primary hover:border-black dark:hover:border-white transition-colors cursor-pointer rounded-[1.25rem]">
+                <span className="w-6 h-6 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-bold flex items-center justify-center shrink-0">
                   {idx + 1}
                 </span>
                 <span className={`text-xs sm:text-sm font-bold text-content-primary line-clamp-2 flex-1 ${language === 'hi' && q.questionHi ? 'leading-relaxed' : 'leading-tight'}`}>
                   {(language === 'hi' && q.questionHi) || q.question}
                 </span>
                 <div className="flex items-center gap-2 shrink-0">
-                  <span className="flex items-center gap-1 text-[10px] font-black text-slate-500 uppercase">
+                  <span className="flex items-center gap-1 text-[10px] font-bold text-content-muted uppercase">
                     <Eye className="w-3 h-3" /> {q.views || 0}
                   </span>
                   <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
@@ -173,7 +170,7 @@ const CategoryDetailPage = () => {
 
           {itemsPage < itemsTotalPages && (
             <button onClick={loadMore} disabled={loadingItems}
-              className="w-full py-3 text-center text-xs font-black uppercase text-primary-600 dark:text-primary-300 hover:underline disabled:opacity-50">
+              className="w-full py-3 text-center text-xs font-bold uppercase text-primary-600 hover:underline disabled:opacity-50">
               {loadingItems ? translate('Loading…') : translate('Load more')}
             </button>
           )}

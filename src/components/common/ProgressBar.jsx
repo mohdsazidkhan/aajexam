@@ -10,11 +10,11 @@
  */
 
 const COLOR_MAP = {
-    orange: 'bg-primary-600 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
-    blue: 'bg-primary-600 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
-    purple:'bg-primary-600 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
-    green: 'bg-primary-600 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
-    red:'bg-primary-600 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
+    orange: 'bg-primary-600',
+    blue: 'bg-primary-600',
+    purple:'bg-primary-600',
+    green: 'bg-primary-600',
+    red:'bg-primary-600',
 };
 
 const HEIGHT_MAP = {
@@ -37,7 +37,7 @@ export default function ProgressBar({
 
     return (
         <div className={`w-full ${className} font-outfit`}>
-            <div className={`w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden ${barHeight} shadow-sm border-2 border-slate-200 dark:border-slate-700`}>
+            <div className={`w-full bg-background-surface-secondary rounded-full overflow-hidden ${barHeight} border border-border-primary`}>
                 <div
                     className={`${barHeight} ${barColor} rounded-full ${animate ? 'transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1)' : ''} border-r-4 border-white/20`}
                     style={{ width: `${clampedPct}%` }}
@@ -49,9 +49,9 @@ export default function ProgressBar({
             </div>
             {showLabel && (
                 <div className="flex justify-between mt-2 px-1">
-                    <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">0%</span>
-                    <span className="text-xs font-black text-slate-700 dark:text-slate-200">{clampedPct}% COMPLETED</span>
-                    <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">100%</span>
+                    <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">0%</span>
+                    <span className="text-xs font-bold text-content-secondary">{clampedPct}% COMPLETED</span>
+                    <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">100%</span>
                 </div>
             )}
         </div>

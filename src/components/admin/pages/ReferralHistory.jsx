@@ -116,9 +116,9 @@ export default function ReferralHistory({ tabs = null }) {
 
   const getRewardTypeColor = (type) => {
     const colors = {
-      'plan99': 'text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20',
+      'plan99': 'text-content-primary bg-black/10 dark:bg-white/10 border-border-primary',
     };
-    return colors[type] || 'text-slate-500 bg-slate-500/10 border-slate-500/20';
+    return colors[type] || 'text-content-muted bg-slate-500/10 border-slate-500/20';
   };
 
   const columns = [
@@ -127,8 +127,8 @@ export default function ReferralHistory({ tabs = null }) {
       header: 'TIMESTAMP',
       render: (_, tx) => (
         <>
-          <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">{formatDate(tx.date)}</div>
-          <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(tx.date)}</div>
+          <div className="text-[10px] font-bold text-content-primary uppercase tracking-tight tabular-nums">{formatDate(tx.date)}</div>
+          <div className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em] italic">{formatTime(tx.date)}</div>
         </>
       )
     },
@@ -138,14 +138,14 @@ export default function ReferralHistory({ tabs = null }) {
       render: (_, tx) => (
         <Link href={`/admin/user-referral-detail?userId=${tx.inviter?._id}`} className="group/link block">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover/link:bg-primary-600 transition-all uppercase">
+            <div className="w-10 h-10 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center font-bold text-xs group-hover/link:bg-primary-600 transition-all uppercase bg-primary-600">
               {tx.inviter?.name?.[0]?.toUpperCase() || 'U'}
             </div>
             <div>
-              <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1 group-hover/link:text-primary-600 transition-colors flex items-center gap-2">
+              <div className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] leading-none mb-1 group-hover/link:text-primary-600 transition-colors flex items-center gap-2">
                 {tx.inviter?.name || 'Unknown'} <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
               </div>
-              <div className="text-[10px] font-bold text-slate-800 dark:text-slate-100 uppercase tracking-widest italic">{tx.inviter?.email || 'No email'}</div>
+              <div className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] italic">{tx.inviter?.email || 'No email'}</div>
             </div>
           </div>
         </Link>
@@ -157,16 +157,16 @@ export default function ReferralHistory({ tabs = null }) {
       render: (_, tx) => (
         tx.invitee ? (
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs border border-primary-500/20">
+            <div className="w-10 h-10 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center font-bold text-xs border border-primary-500/20 bg-primary-600">
               <User className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{tx.invitee.name || 'Unknown'}</div>
-              <div className="text-[10px] font-bold text-slate-800 dark:text-slate-100 uppercase tracking-widest italic">{tx.invitee.email || 'No email'}</div>
+              <div className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] leading-none mb-1">{tx.invitee.name || 'Unknown'}</div>
+              <div className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] italic">{tx.invitee.email || 'No email'}</div>
             </div>
           </div>
         ) : (
-          <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">External</span>
+          <span className="text-[10px] font-bold text-slate-300 uppercase tracking-[0.08em] italic">External</span>
         )
       )
     },
@@ -174,7 +174,7 @@ export default function ReferralHistory({ tabs = null }) {
       key: 'rewardType',
       header: 'REWARD TYPE',
       render: (_, tx) => (
-        <div className={`px-4 py-1.5 rounded-full border text-[9px] font-black uppercase tracking-widest inline-flex items-center gap-2 ${getRewardTypeColor(tx.rewardType)}`}>
+        <div className={`px-4 py-1.5 rounded-full border text-[9px] font-bold uppercase tracking-[0.08em] inline-flex items-center gap-2 ${getRewardTypeColor(tx.rewardType)}`}>
           {React.createElement(getRewardTypeIcon(tx.rewardType), { className: "w-3 h-3" })}
           {getRewardTypeLabel(tx.rewardType)}
         </div>
@@ -185,8 +185,8 @@ export default function ReferralHistory({ tabs = null }) {
       header: 'AMOUNT',
       render: (_, tx) => (
         <div>
-          <div className="text-xl font-black italic tracking-tighter text-primary-600 dark:text-primary-300 tabular-nums">+₹{tx.amount}</div>
-          <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Reward Earned</div>
+          <div className="text-xl font-bold italic tracking-tight text-primary-600 tabular-nums">+₹{tx.amount}</div>
+          <div className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em] italic">Reward Earned</div>
         </div>
       )
     },
@@ -194,7 +194,7 @@ export default function ReferralHistory({ tabs = null }) {
       key: 'balance',
       header: 'BALANCE AFTER',
       render: (_, tx) => (
-        <div className="font-black text-lg italic text-slate-900 dark:text-white tabular-nums">
+        <div className="font-bold text-lg italic text-content-primary tabular-nums">
           ₹{tx.balance?.toLocaleString() || 0}
         </div>
       )
@@ -203,18 +203,18 @@ export default function ReferralHistory({ tabs = null }) {
 
   const summaryCards = summary && (
     <div className="grid grid-cols-2 xl:flex xl:flex-wrap gap-2 xl:gap-3 mb-4 shrink-0">
-      <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-        <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0"><DollarSign className="w-4 h-4" /></div>
+      <div className="flex items-center gap-2 p-3 bg-background-surface rounded-xl xl:rounded-2xl border border-border-primary relative">
+        <div className="p-2 text-on-primary rounded-lg shrink-0 bg-primary-600"><DollarSign className="w-4 h-4" /></div>
         <div className="min-w-0">
-          <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.totalRewards?.toLocaleString() || 0}</div>
-          <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Rewards</div>
+          <div className="text-sm xl:text-base font-bold text-content-primary tabular-nums tracking-tight">₹{summary.totalRewards?.toLocaleString() || 0}</div>
+          <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] truncate">Total Rewards</div>
         </div>
       </div>
-      <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-        <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0"><Award className="w-4 h-4" /></div>
+      <div className="flex items-center gap-2 p-3 bg-background-surface rounded-xl xl:rounded-2xl border border-border-primary relative">
+        <div className="p-2 text-on-primary rounded-lg shrink-0 bg-primary-600"><Award className="w-4 h-4" /></div>
         <div className="min-w-0">
-          <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.plan99Rewards?.toLocaleString() || 0}</div>
-          <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Plan 99</div>
+          <div className="text-sm xl:text-base font-bold text-content-primary tabular-nums tracking-tight">₹{summary.plan99Rewards?.toLocaleString() || 0}</div>
+          <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] truncate">Plan 99</div>
         </div>
       </div>
     </div>
@@ -222,13 +222,13 @@ export default function ReferralHistory({ tabs = null }) {
 
   const searchInput = (
     <div className="relative w-full">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
       <input
         type="text"
         value={searchTerm}
         onChange={(e) => handleSearch(e.target.value)}
         placeholder="Search..."
-        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -271,9 +271,9 @@ export default function ReferralHistory({ tabs = null }) {
 
   if (loading && transactions.length === 0) {
     return (
-      <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+      <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+        <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 {tabs}
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         </div>
@@ -282,9 +282,9 @@ export default function ReferralHistory({ tabs = null }) {
   }
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 {tabs}
 
       <div className="flex-1 min-h-0 overflow-auto flex flex-col transition-all duration-500">
@@ -298,11 +298,11 @@ export default function ReferralHistory({ tabs = null }) {
         {transactions.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <History className="w-12 h-12 text-slate-300 mb-4" />
-            <h3 className="text-lg font-black text-slate-500 uppercase">No Transactions Found</h3>
-            <p className="text-sm text-slate-400 mt-2">No referral transactions found for the selected filter. Try a different filter.</p>
+            <h3 className="text-lg font-bold text-content-muted">No Transactions Found</h3>
+            <p className="text-sm text-content-muted mt-2">No referral transactions found for the selected filter. Try a different filter.</p>
           </div>
         ) : (
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+          <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden h-auto flex flex-col relative">
             <ResponsiveTable data={transactions} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
           </div>
         )}

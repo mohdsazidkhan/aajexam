@@ -93,13 +93,13 @@ const HowItWorks = () => {
             <PageHero
                icon={Rocket}
                eyebrow={translate('How It Works')}
-               title={rich('How It <0>Works</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
+               title={rich('How It <0>Works</0>', [(c) => <span className="text-primary-600">{c}</span>])}
             />
 
             {/* --- Step-by-Step Path --- */}
             <section className="relative space-y-12">
                {/* Center Line (hidden on small) */}
-               <div className="absolute left-8 xl:left-1/2 top-0 bottom-0 w-1.5 bg-slate-200 dark:bg-slate-800 -translate-x-1/2 rounded-full hidden xl:block" />
+               <div className="absolute left-8 xl:left-1/2 top-0 bottom-0 w-1.5 bg-background-surface-secondary -translate-x-1/2 rounded-full hidden xl:block" />
 
                {steps.map((step, idx) => (
                   <motion.div
@@ -110,36 +110,36 @@ const HowItWorks = () => {
                      className={`relative flex flex-col xl:flex-row items-center gap-12 ${idx % 2 === 0 ? 'xl:flex-row' : 'xl:flex-row-reverse'}`}
                   >
                      {/* Step Marker */}
-                     <div className="absolute left-8 xl:left-1/2 -translate-x-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 flex items-center justify-center z-10 shadow-sm hidden xl:flex">
-                        <div className={`w-3 h-3 rounded-full bg-${step.color}-500 shadow-sm`} />
+                     <div className="absolute left-8 xl:left-1/2 -translate-x-1/2 w-12 h-12 bg-background-surface rounded-2xl border border-border-primary flex items-center justify-center z-10 hidden xl:flex">
+                        <div className={`w-3 h-3 rounded-full bg-${step.color}-500`} />
                      </div>
 
                      {/* Content Card */}
                      <div className="w-full xl:w-[45%]">
-                        <Card as="section" className="space-y-6 group border-2 hover:border-primary-500/30 transition-all duration-300">
+                        <Card as="section" className="space-y-6 group border hover:border-primary-500/30 transition-all duration-300">
                            <div className="flex items-center justify-between">
-                              <div className={`p-4 bg-${step.color}-500/10 text-${step.color}-500 rounded-2xl group-hover:scale-110 transition-transform shadow-sm`}>
+                              <div className={`p-4 bg-${step.color}-500/10 text-${step.color}-500 rounded-2xl group-hover:scale-110 transition-transform`}>
                                  <step.icon className="w-6 h-6" />
                               </div>
-                              <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full bg-${step.color}-500/10 text-${step.color}-500`}>
+                              <span className={`text-[10px] font-bold uppercase tracking-[0.08em] px-3 py-1 rounded-full bg-${step.color}-500/10 text-${step.color}-500`}>
                                  {translate(step.badge)}
                               </span>
                            </div>
                            <section className="space-y-3">
-                              <h2 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate(step.title)}</h2>
-                              <p className="text-sm font-bold text-slate-700 dark:text-slate-400 leading-relaxed uppercase tracking-wide">{translate(step.desc)}</p>
+                              <h2 className="text-xl xl:text-2xl font-bold font-outfit tracking-tight">{translate(step.title)}</h2>
+                              <p className="text-sm font-bold text-content-secondary leading-relaxed uppercase tracking-wide">{translate(step.desc)}</p>
                            </section>
 
                            {/* Tier Details (for step 2) */}
                            {step.details && (
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                                  {step.details.map((d, di) => (
-                                    <div key={di} className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 space-y-1">
+                                    <div key={di} className="p-4 bg-background-surface-secondary rounded-2xl border border-border-primary space-y-1">
                                        <div className="flex items-center gap-2">
-                                          <d.icon className={`w-3 h-3 ${di === 1 ? 'text-primary-600 dark:text-primary-300' : 'text-primary-600'}`} />
-                                          <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">{translate(d.label)}</p>
+                                          <d.icon className={`w-3 h-3 ${di === 1 ? 'text-primary-600' : 'text-primary-600'}`} />
+                                          <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary">{translate(d.label)}</p>
                                        </div>
-                                       <p className="text-xs font-black text-slate-900 dark:text-white uppercase">{translate(d.val)}</p>
+                                       <p className="text-xs font-bold text-content-primary uppercase">{translate(d.val)}</p>
                                     </div>
                                  ))}
                               </div>
@@ -149,7 +149,7 @@ const HowItWorks = () => {
                            {step.metrics && (
                               <div className="flex flex-wrap gap-2 pt-2">
                                  {step.metrics.map((m, mi) => (
-                                    <span key={mi} className="px-3 py-1 bg-primary-500/5 text-primary-600 dark:text-primary-300 text-[10px] font-black uppercase tracking-widest rounded-full border border-primary-500/10">
+                                    <span key={mi} className="px-3 py-1 text-primary-600 text-[10px] font-bold uppercase tracking-[0.08em] rounded-full border border-primary-500/10">
                                        {m}
                                     </span>
                                  ))}
@@ -165,30 +165,30 @@ const HowItWorks = () => {
 
             {/* --- Skill-Based Callout --- */}
             <section>
-               <Card as="section" className="border-none bg-primary-50 dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm relative overflow-hidden text-center xl:text-left">
+               <Card as="section" className="border-none dark:bg-slate-900 text-content-primary relative overflow-hidden text-center xl:text-left">
                   <div className="relative z-10 flex flex-col xl:flex-row items-center gap-8">
-                     <div className="w-20 h-20 bg-primary-500/20 text-primary-600 dark:text-primary-300 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
+                     <div className="w-20 h-20 text-primary-600 rounded-3xl flex items-center justify-center flex-shrink-0 border border-primary-500/30">
                         <Lightbulb className="w-10 h-10" />
                      </div>
                      <div className="space-y-2">
-                        <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate('Important Note')}</h3>
-                        <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed uppercase tracking-wide">{translate('AajExam is about your knowledge and your hard work. The more you study and practice, the better your score. Only your effort takes you to the top.')}</p>
+                        <h3 className="text-xl xl:text-2xl font-bold font-outfit tracking-tight">{translate('Important Note')}</h3>
+                        <p className="text-sm font-bold text-content-secondary leading-relaxed uppercase tracking-wide">{translate('AajExam is about your knowledge and your hard work. The more you study and practice, the better your score. Only your effort takes you to the top.')}</p>
                      </div>
                   </div>
-                  <ShieldCheck className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-slate-900/5 dark:text-white/5 -rotate-12" />
+                  <ShieldCheck className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-slate-900/5 dark:text-white/5" />
                </Card>
             </section>
 
             {/* --- Features Grid --- */}
             <section className="grid grid-cols-1 xl:grid-cols-3 gap-8">
                {features.map((f, i) => (
-                  <Card as="article" key={i} className="group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
-                     <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit shadow-sm`}>
+                  <Card as="article" key={i} className="group space-y-6 border hover:border-primary-500/50 transition-all duration-300">
+                     <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit`}>
                         <f.icon className="w-6 h-6" />
                      </div>
                      <div className="space-y-2">
-                        <h4 className="text-xl font-black font-outfit uppercase group-hover:text-primary-600 transition-colors">{translate(f.title)}</h4>
-                        <p className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-relaxed uppercase tracking-[0.1em]">{translate(f.desc)}</p>
+                        <h4 className="text-xl font-bold font-outfit group-hover:text-primary-600 transition-colors">{translate(f.title)}</h4>
+                        <p className="text-[10px] font-bold text-content-secondary leading-relaxed uppercase tracking-[0.1em]">{translate(f.desc)}</p>
                      </div>
                   </Card>
                ))}
@@ -196,16 +196,14 @@ const HowItWorks = () => {
 
             {/* --- CTA --- */}
             <section className="pb-10 xl:pb-14">
-               <Card as="section" className="p-6 xl:p-12 text-center bg-primary-50 dark:bg-slate-900 border-none ring-1 ring-primary-200 dark:ring-slate-800 text-slate-900 dark:text-white shadow-xl relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-primary-300/20 dark:bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
-                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
+               <Card as="section" className="p-6 xl:p-12 text-center dark:bg-slate-900 border-none ring-1 ring-primary-200 dark:ring-slate-800 text-content-primary relative overflow-hidden">
 
                   <section className="relative z-10 space-y-10">
-                     <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter">{rich('Get Started <0>Today</0>', [(c) => <span className="text-primary-600 dark:text-primary-400">{c}</span>])}</h2>
-                     <p className="text-base xl:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">{translate('Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.')}</p>
+                     <h2 className="text-2xl xl:text-5xl font-bold font-outfit tracking-tight">{rich('Get Started <0>Today</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
+                     <p className="text-base xl:text-xl font-bold opacity-80 max-w-2xl mx-auto tracking-wide leading-relaxed px-4">{translate('Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.')}</p>
                      <Button
                         onClick={() => router.push('/')}
-                        className="bg-primary-600 mx-auto hover:bg-primary-600 text-white px-16 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-sm border-b-[8px] border-primary-600 active:translate-y-2 active:border-b-0 transition-all"
+                        className="bg-primary-600 mx-auto hover:bg-primary-600 text-on-primary px-16 py-4 rounded-2xl font-bold uppercase tracking-[0.08em] text-sm border-primary-600 active:translate-y-2 active:border-b-0 transition-all"
                      >
                         {translate('START NOW')}
                      </Button>

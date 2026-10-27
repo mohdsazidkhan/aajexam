@@ -26,30 +26,29 @@ const ErrorFallback = ({ error, errorInfo }) => {
                 className="absolute -top-24 left-1/2 -translate-x-1/2 w-24 xl:w-48 h-24 xl:h-48 bg-black/10 dark:bg-white/10 blur-[90px] rounded-full pointer-events-none"
               />
 
-              <div className="relative inline-flex items-center justify-center p-10 bg-white dark:bg-slate-900 rounded-[3.5rem] border-2 border-black/20 dark:border-white/20 shadow-sm mb-10 group overflow-hidden">
+              <div className="relative inline-flex items-center justify-center p-10 bg-background-surface rounded-3xl border border-border-primary mb-10 group overflow-hidden">
                 <div className="absolute inset-0 bg-black/10 dark:bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <ShieldAlert className="w-16 h-16 text-black dark:text-white drop-shadow-[0_0_15px_rgba(244,63,94,0.3)] animate-pulse" />
+                <ShieldAlert className="w-16 h-16 text-content-primary animate-pulse" />
               </div>
 
-              <h1 className="text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white mb-4 drop-shadow-sm">
+              <h1 className="text-5xl font-bold font-outfit tracking-tight text-content-primary mb-4">
                 {translate('Oops! Something Went Wrong')}
               </h1>
-              <p className="text-[11px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] leading-relaxed">
+              <p className="text-[11px] font-bold text-content-secondary uppercase tracking-[0.08em] leading-relaxed">
                 {translate("Don't worry — your progress is safe.")} <br /> {translate("Let's get you back on track.")}
               </p>
             </div>
 
             {/* Action Console Area */}
-            <div className="bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 p-10 shadow-sm space-y-8 relative overflow-hidden">
+            <div className="bg-background-surface rounded-3xl border border-border-primary p-10 space-y-8 relative overflow-hidden">
               {/* Secondary Decorative Glow */}
-              <div className="absolute -right-20 -bottom-20 w-40 h-40 bg-primary-500/5 rounded-full blur-[60px] pointer-events-none" />
 
               <div className="flex flex-col sm:flex-row gap-5 relative z-10">
                 <motion.button
                   whileHover={{ y: -4, scale: 1.02 }}
                   whileTap={{ y: 0, scale: 0.98 }}
                   onClick={() => window.location.reload()}
-                  className="flex-1 px-8 py-5 bg-primary-600 text-white rounded-3xl border-b-[8px] border-primary-600 shadow-sm font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300"
+                  className="flex-1 px-8 py-5 bg-primary-600 text-on-primary rounded-3xl border-primary-600 font-bold text-xs uppercase tracking-[0.08em] flex items-center justify-center gap-3 transition-all duration-300"
                 >
                   <RefreshCcw className="w-5 h-5" /> {translate('Try Again')}
                 </motion.button>
@@ -58,7 +57,7 @@ const ErrorFallback = ({ error, errorInfo }) => {
                   whileHover={{ y: -4, scale: 1.02 }}
                   whileTap={{ y: 0, scale: 0.98 }}
                   onClick={() => window.location.href = '/'}
-                  className="flex-1 px-8 py-5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 dark:text-slate-300 rounded-3xl border-b-[8px] border-slate-200 dark:border-slate-700 shadow-sm font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300 hover:bg-white dark:hover:bg-slate-750"
+                  className="flex-1 px-8 py-5 bg-background-surface-secondary text-content-secondary rounded-3xl border-border-primary font-bold text-xs uppercase tracking-[0.08em] flex items-center justify-center gap-3 transition-all duration-300 hover:bg-background-surface dark:hover:bg-slate-750"
                 >
                   <Home className="w-5 h-5" /> {translate('Go Home')}
                 </motion.button>
@@ -66,8 +65,8 @@ const ErrorFallback = ({ error, errorInfo }) => {
 
               {/* Secure Log Display for Development */}
               {process.env.NODE_ENV === 'development' && (
-                <details className="group border-2 border-slate-50 dark:border-slate-800 rounded-3xl overflow-hidden transition-all duration-300">
-                  <summary className="cursor-pointer px-8 py-5 bg-slate-50/50 dark:bg-slate-800/40 text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <details className="group border border-border-primary dark:border-slate-800 rounded-3xl overflow-hidden transition-all duration-300">
+                  <summary className="cursor-pointer px-8 py-5 bg-slate-50/50 text-[9px] font-bold text-content-secondary uppercase tracking-[0.08em] flex items-center justify-between hover:bg-background-surface-secondary transition-colors">
                     <div className="flex items-center gap-2.5">
                       <Terminal className="w-3.5 h-3.5" /> {translate('Error Details')}
                     </div>
@@ -75,15 +74,15 @@ const ErrorFallback = ({ error, errorInfo }) => {
                       <RefreshCcw className="w-3.5 h-3.5 rotate-90" />
                     </div>
                   </summary>
-                  <div className="p-8 bg-slate-950 text-primary-400 font-mono text-[10px] whitespace-pre-wrap overflow-auto max-h-[350px] leading-relaxed border-t-2 border-slate-100 dark:border-slate-800">
-                    <div className="flex items-center gap-2 mb-4 text-black dark:text-white border-b border-black/30 dark:border-white/30 pb-2">
+                  <div className="p-8 bg-slate-950 text-primary-400 font-mono text-[10px] whitespace-pre-wrap overflow-auto max-h-[350px] leading-relaxed border-t-2 border-border-primary">
+                    <div className="flex items-center gap-2 mb-4 text-content-primary border-b border-border-primary pb-2">
                       <AlertCircle className="w-4 h-4" /> <span>{translate('Error Info')}</span>
                     </div>
                     <span className="text-black/80 dark:text-white/80"># Error:</span> {error?.toString()}
                     <br /><br />
                     <span className="text-black/80 dark:text-white/80"># Component Stack:</span>
                     <br />
-                    <div className="mt-2 text-slate-600 dark:text-slate-400/80">
+                    <div className="mt-2 text-content-secondary dark:text-slate-400/80">
                       {errorInfo?.componentStack}
                     </div>
                   </div>
@@ -93,7 +92,7 @@ const ErrorFallback = ({ error, errorInfo }) => {
 
             {/* Bottom Metadata */}
             <div className="mt-12 text-center relative z-10">
-              <p className="text-[9px] font-black text-slate-300 dark:text-slate-800 uppercase tracking-[0.5em] mix-blend-difference">
+              <p className="text-[9px] font-bold text-slate-300 dark:text-slate-800 uppercase tracking-[0.08em] mix-blend-difference">
                 {translate('AajExam — Your exam prep journey continues')}
               </p>
             </div>

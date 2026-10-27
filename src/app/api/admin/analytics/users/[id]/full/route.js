@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import mongoose from 'mongoose';
 import dbConnect from '@/lib/db';
+import { resolveUserId } from '@/lib/utils/userRef';
 import User from '@/models/User';
 import PaymentOrder from '@/models/PaymentOrder';
 import WalletTransaction from '@/models/WalletTransaction';
@@ -14,14 +15,17 @@ export async function GET(req, { params }) {
             return NextResponse.json({ message: 'Admin access required' }, { status: 403 });
         }
 
-        const { id } = params;
-        if (!id || !mongoose.Types.ObjectId.isValid(id)) {
-            return NextResponse.json({ success: false, message: 'Valid user ID is required' }, { status: 400 });
+        const { id } = await params; // user id or username
+        if (!id) {
+            return NextResponse.json({ success: false, message: 'User ID or username is required' }, { status: 400 });
         }
 
         await dbConnect();
 
-        const userIdObj = new mongoose.Types.ObjectId(id);
+        const userIdObj = await resolveUserId(id);
+        if (!userIdObj) {
+            return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
+        }
 
         const userDoc = await User.findById(userIdObj).select('name email referralRewards followersCount followingCount referralCount level subscriptionStatus createdAt');
         if (!userDoc) {

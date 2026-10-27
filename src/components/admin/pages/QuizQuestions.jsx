@@ -111,8 +111,8 @@ const AdminQuizQuestions = () => {
 
   const searchInput = (
     <div className="relative w-full">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-      <input type="text" placeholder="Search question text..." value={filters.search} onChange={e => setFilters({ ...filters, search: e.target.value })} onKeyDown={e => e.key === 'Enter' && handleSearch()} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
+      <input type="text" placeholder="Search question text..." value={filters.search} onChange={e => setFilters({ ...filters, search: e.target.value })} onKeyDown={e => e.key === 'Enter' && handleSearch()} className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm" />
     </div>
   );
 
@@ -158,7 +158,7 @@ const AdminQuizQuestions = () => {
   );
 
   const addQuestionButton = (
-    <button onClick={openCreate} title="Add New Question" className="flex items-center justify-center bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white p-2.5 rounded-lg xl:rounded-xl hover:brightness-110 shrink-0"><Plus className="w-4 h-4"/></button>
+    <button onClick={openCreate} title="Add New Question" className="flex items-center justify-center text-on-primary p-2.5 rounded-lg xl:rounded-xl hover:brightness-110 shrink-0 bg-primary-600"><Plus className="w-4 h-4"/></button>
   );
 
   const paginationControl = questions.length > 0 && (
@@ -192,9 +192,9 @@ const AdminQuizQuestions = () => {
   if (!isMounted) return null;
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 
       {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
@@ -202,37 +202,37 @@ const AdminQuizQuestions = () => {
         <div className="flex-1 min-h-0 overflow-auto flex flex-col">
         <div className="flex-1 min-h-0 overflow-auto space-y-3">
           {questions.map((q, idx) => (
-            <div key={q._id} className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+            <div key={q._id} className="bg-background-surface rounded-lg xl:rounded-xl border border-border-primary p-4 hover:-translate-y-0.5 transition-all relative">
               <div className="flex justify-between items-start gap-3">
                 <div className="flex items-start gap-3 flex-1 min-w-0">
-                  <div className="w-8 h-8 shrink-0 rounded-lg bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center text-xs font-black">{(page - 1) * itemsPerPage + idx + 1}</div>
+                  <div className="w-8 h-8 shrink-0 rounded-lg text-on-primary flex items-center justify-center text-xs font-bold bg-primary-600">{(page - 1) * itemsPerPage + idx + 1}</div>
                   <div className="flex-1 min-w-0">
-                  <p className="text-sm font-bold text-slate-900 dark:text-white mb-2 leading-snug">{q.questionText}</p>
+                  <p className="text-sm font-bold text-content-primary mb-2 leading-snug">{q.questionText}</p>
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-1.5">
                     {q.options?.map((opt, i) => (
-                      <div key={i} className={`flex items-center gap-2 text-xs px-2.5 py-1.5 rounded-lg border ${opt.isCorrect ? 'bg-primary-50 dark:bg-primary-400/10 border-primary-300 dark:border-primary-400/40 text-primary-800 dark:text-primary-200 font-bold' : 'bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300'}`}>
-                        <span className={`w-5 h-5 shrink-0 rounded-md flex items-center justify-center text-[10px] font-black ${opt.isCorrect ? 'bg-gradient-to-br from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white' : 'bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300'}`}>{String.fromCharCode(65 + i)}</span>
+                      <div key={i} className={`flex items-center gap-2 text-xs px-2.5 py-1.5 rounded-lg border ${opt.isCorrect ? 'border-primary-300 dark:border-primary-400/40 text-primary-600 font-bold' : 'bg-background-surface-secondary border-border-primary text-content-secondary'}`}>
+                        <span className={`w-5 h-5 shrink-0 rounded-md flex items-center justify-center text-[10px] font-bold ${opt.isCorrect ? 'text-on-primary bg-primary-600' : 'bg-background-surface-secondary text-content-secondary'}`}>{String.fromCharCode(65 + i)}</span>
                         <span className="flex-1 min-w-0 break-words">{opt.text}</span>
-                        {opt.isCorrect && <CheckCircle className="w-4 h-4 shrink-0 text-primary-600 dark:text-primary-300" />}
+                        {opt.isCorrect && <CheckCircle className="w-4 h-4 shrink-0 text-primary-600" />}
                       </div>
                     ))}
                   </div>
                   <div className="flex flex-wrap gap-1.5 mt-2">
-                    {q.exam?.name && <span className="text-[10px] font-black uppercase tracking-wide px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300">{q.exam?.name}</span>}
-                    {q.subject?.name && <span className="text-[10px] font-black uppercase tracking-wide px-2.5 py-0.5 rounded-full bg-primary-100 dark:bg-primary-400/20 text-primary-800 dark:text-primary-200">{q.subject?.name}</span>}
-                    {q.topic?.name && <span className="text-[10px] font-black uppercase tracking-wide px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200">{q.topic?.name}</span>}
-                    <span className={`text-[10px] font-black uppercase tracking-wide px-2.5 py-0.5 rounded-full ${q.difficulty === 'easy' ? 'bg-primary-100 dark:bg-primary-400/20 text-primary-800 dark:text-primary-200' : q.difficulty === 'hard' ? 'bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300' : 'bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300'}`}>{q.difficulty || 'medium'}</span>
+                    {q.exam?.name && <span className="text-[10px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full bg-background-surface-secondary text-content-secondary">{q.exam?.name}</span>}
+                    {q.subject?.name && <span className="text-[10px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full text-primary-600">{q.subject?.name}</span>}
+                    {q.topic?.name && <span className="text-[10px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full bg-background-surface-secondary text-content-secondary">{q.topic?.name}</span>}
+                    <span className={`text-[10px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full ${q.difficulty === 'easy' ? 'text-primary-600' : q.difficulty === 'hard' ? 'bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300' : 'bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300'}`}>{q.difficulty || 'medium'}</span>
                   </div>
                   </div>
                 </div>
                 <div className="flex gap-1 shrink-0">
-                  <button aria-label="Edit" onClick={() => openEdit(q)} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-400/10 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-400/20 transition-colors"><Edit3 className="w-4 h-4" /></button>
+                  <button aria-label="Edit" onClick={() => openEdit(q)} className="p-1.5 rounded-lg text-primary-600 transition-colors"><Edit3 className="w-4 h-4" /></button>
                   <button aria-label="Delete" onClick={() => handleDelete(q._id)} className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors"><Trash2 className="w-4 h-4" /></button>
                 </div>
               </div>
             </div>
           ))}
-          {questions.length === 0 && <div className="py-12 text-center text-slate-400">No questions found</div>}
+          {questions.length === 0 && <div className="py-12 text-center text-content-muted">No questions found</div>}
         </div>
         </div>
       )}
@@ -242,50 +242,50 @@ const AdminQuizQuestions = () => {
       {showModal && (
         <div className="fixed inset-0 z-[999]">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-black/50" />
-          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
+          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-background-surface overflow-hidden flex flex-col">
           <div className="w-full h-full flex flex-col">
-<section className="shrink-0 flex justify-between items-center px-4 py-2.5 border-b border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><h2 className="text-base font-black uppercase tracking-tight text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Question</h2></div>
+<section className="shrink-0 flex justify-between items-center px-4 py-2.5 border-b border-border-primary">
+              <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><h2 className="text-base font-bold uppercase tracking-tight text-content-primary">{editing ? 'Edit' : 'Create'} Question</h2></div>
               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </section>
             <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
 <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-5 space-y-3">
               <div className="grid grid-cols-3 gap-2">
-                <Select required value={form.exam} onChange={e => setForm({ ...form, exam: e.target.value, subject: "", topic: "" })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
+                <Select required value={form.exam} onChange={e => setForm({ ...form, exam: e.target.value, subject: "", topic: "" })} className="px-2 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-xs">
                   <option value="">Exam</option>{exams.map(ex => <option key={ex._id} value={ex._id}>{ex.name}</option>)}
                 </Select>
-                <Select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value, topic: "" })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
+                <Select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value, topic: "" })} className="px-2 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-xs">
                   <option value="">Subject</option>{subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
                 </Select>
-                <Select required value={form.topic} onChange={e => setForm({ ...form, topic: e.target.value })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
+                <Select required value={form.topic} onChange={e => setForm({ ...form, topic: e.target.value })} className="px-2 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-xs">
                   <option value="">Topic</option>{filteredTopics.map(t => <option key={t._id} value={t._id}>{t.name}</option>)}
                 </Select>
               </div>
-              <textarea required placeholder="Question Text" rows={3} value={form.questionText} onChange={e => setForm({ ...form, questionText: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+              <textarea required placeholder="Question Text" rows={3} value={form.questionText} onChange={e => setForm({ ...form, questionText: e.target.value })} className="w-full px-3 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm" />
               <div className="space-y-2">
-                <p className="text-xs font-bold text-slate-500">Options (select correct answer):</p>
+                <p className="text-xs font-bold text-content-muted">Options (select correct answer):</p>
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
                   {form.options.map((opt, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <input type="radio" name="correct" checked={opt.isCorrect} onChange={() => updateOption(i, "isCorrect", true)} className="accent-primary-500" />
-                      <span className="text-xs font-bold text-slate-500 w-4">{String.fromCharCode(65 + i)}</span>
-                      <input required placeholder={`Option ${String.fromCharCode(65 + i)}`} value={opt.text} onChange={e => updateOption(i, "text", e.target.value)} className="flex-1 px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+                      <span className="text-xs font-bold text-content-muted w-4">{String.fromCharCode(65 + i)}</span>
+                      <input required placeholder={`Option ${String.fromCharCode(65 + i)}`} value={opt.text} onChange={e => updateOption(i, "text", e.target.value)} className="flex-1 px-3 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm" />
                     </div>
                   ))}
                 </div>
               </div>
-              <textarea placeholder="Explanation (optional)" rows={2} value={form.explanation} onChange={e => setForm({ ...form, explanation: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+              <textarea placeholder="Explanation (optional)" rows={2} value={form.explanation} onChange={e => setForm({ ...form, explanation: e.target.value })} className="w-full px-3 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm" />
               <div className="grid grid-cols-3 gap-2">
-                <Select value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
+                <Select value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value })} className="px-2 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-xs">
                   <option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option>
                 </Select>
-                <Select value={form.language} onChange={e => setForm({ ...form, language: e.target.value })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs">
+                <Select value={form.language} onChange={e => setForm({ ...form, language: e.target.value })} className="px-2 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-xs">
                   <option value="hi">Hindi</option><option value="en">English</option>
                 </Select>
-                <input placeholder="Tags (comma separated)" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} className="px-2 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs" />
+                <input placeholder="Tags (comma separated)" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} className="px-2 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-xs" />
               </div>
               </div>
-<div className="flex shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] justify-end items-center"><button type="submit"className="px-6 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white py-2.5 rounded-lg xl:rounded-xl font-bold hover:brightness-110">{editing ?'Update':'Create'}</button></div>
+<div className="flex shrink-0 px-4 xl:px-5 py-2.5 border-t border-border-primary bg-background-surface justify-end items-center"><button type="submit"className="px-6 text-on-primary py-2.5 rounded-lg xl:rounded-xl font-bold hover:brightness-110 bg-primary-600">{editing ?'Update':'Create'}</button></div>
             </form>
           </div>
           </motion.div>

@@ -59,8 +59,8 @@ export default function MentorApply() {
     }
   };
 
-  const inputClass = "w-full bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-300 dark:border-slate-700";
-  const labelClass = "text-xs font-black text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1.5 block";
+  const inputClass = "w-full bg-background-surface-secondary rounded-lg xl:rounded-xl py-2.5 px-4 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-border-primary";
+  const labelClass = "text-xs font-bold text-content-secondary uppercase tracking-wide mb-1.5 block";
 
   return (
     <div className="min-h-screen pb-6 xl:pb-12">
@@ -72,25 +72,25 @@ export default function MentorApply() {
       <div className="max-w-2xl mx-auto py-4 xl:py-8 px-4">
         <PageHero icon={Users} eyebrow={translate('Become a Mentor')} title={translate('Become a Mentor')} className="mb-4" />
 
-        <form onSubmit={handleSubmit} className="relative overflow-hidden space-y-6 p-4 xl:p-6 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+        <form onSubmit={handleSubmit} className="relative overflow-hidden space-y-6 p-4 xl:p-6 bg-background-surface border border-border-primary" style={{ borderRadius: 16 }}>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
           {/* Exams Cleared */}
           <div>
             <label className={labelClass}>{translate('Exams Cleared *')}</label>
             <div className="space-y-3">
               {form.examsCleared.map((exam, i) => (
-                <div key={i} className="flex flex-wrap gap-2 items-start p-3 bg-primary-50/50 dark:bg-white/5 rounded-lg xl:rounded-xl border border-dashed border-primary-300 dark:border-slate-700">
+                <div key={i} className="flex flex-wrap gap-2 items-start p-3 dark:bg-white/5 rounded-lg xl:rounded-xl border border-dashed border-primary-300 dark:border-slate-700">
                   <input placeholder={translate('Exam name *')} value={exam.examName} onChange={e => updateExam(i, 'examName', e.target.value)} className={`${inputClass} flex-1 min-w-[150px]`} />
                   <input type="number" placeholder={translate('Year *')} value={exam.year} onChange={e => updateExam(i, 'year', e.target.value)} className={`${inputClass} w-24`} />
                   <input type="number" placeholder={translate('Rank')} value={exam.rank} onChange={e => updateExam(i, 'rank', e.target.value)} className={`${inputClass} w-24`} />
                   <input type="number" placeholder={translate('Score')} value={exam.score} onChange={e => updateExam(i, 'score', e.target.value)} className={`${inputClass} w-24`} />
                   {form.examsCleared.length > 1 && (
-                    <button aria-label={translate('Close')} type="button" onClick={() => removeExam(i)} className="p-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><X className="w-4 h-4" /></button>
+                    <button aria-label={translate('Close')} type="button" onClick={() => removeExam(i)} className="p-2 text-content-primary hover:bg-background-surface-secondary rounded-lg"><X className="w-4 h-4" /></button>
                   )}
                 </div>
               ))}
             </div>
-            <button type="button" onClick={addExam} className="mt-2 flex items-center gap-1 text-xs font-black text-primary-700 dark:text-primary-300 hover:underline">
+            <button type="button" onClick={addExam} className="mt-2 flex items-center gap-1 text-xs font-bold text-primary-600 hover:underline">
               <Plus className="w-3 h-3" /> Add another exam
             </button>
           </div>
@@ -119,10 +119,10 @@ export default function MentorApply() {
             {form.tips.map((tip, i) => (
               <div key={i} className="flex gap-2 mb-2">
                 <input placeholder={`Tip ${i + 1}`} value={tip} onChange={e => updateField('tips', i, e.target.value)} className={`${inputClass} flex-1`} />
-                {form.tips.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('tips', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
+                {form.tips.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('tips', i)} className="p-2 text-content-primary"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('tips')} className="flex items-center gap-1 text-xs font-black text-primary-700 dark:text-primary-300"><Plus className="w-3 h-3" /> {translate('Add tip')}</button>
+            <button type="button" onClick={() => addField('tips')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add tip')}</button>
           </div>
 
           {/* Books */}
@@ -131,10 +131,10 @@ export default function MentorApply() {
             {form.booksRecommended.map((book, i) => (
               <div key={i} className="flex gap-2 mb-2">
                 <input placeholder={`Book ${i + 1}`} value={book} onChange={e => updateField('booksRecommended', i, e.target.value)} className={`${inputClass} flex-1`} />
-                {form.booksRecommended.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('booksRecommended', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
+                {form.booksRecommended.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('booksRecommended', i)} className="p-2 text-content-primary"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('booksRecommended')} className="flex items-center gap-1 text-xs font-black text-primary-700 dark:text-primary-300"><Plus className="w-3 h-3" /> {translate('Add book')}</button>
+            <button type="button" onClick={() => addField('booksRecommended')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add book')}</button>
           </div>
 
           {/* Specialization */}
@@ -143,15 +143,15 @@ export default function MentorApply() {
             {form.specialization.map((spec, i) => (
               <div key={i} className="flex gap-2 mb-2">
                 <input placeholder={`e.g. Mathematics, Reasoning`} value={spec} onChange={e => updateField('specialization', i, e.target.value)} className={`${inputClass} flex-1`} />
-                {form.specialization.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('specialization', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
+                {form.specialization.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('specialization', i)} className="p-2 text-content-primary"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('specialization')} className="flex items-center gap-1 text-xs font-black text-primary-700 dark:text-primary-300"><Plus className="w-3 h-3" /> {translate('Add specialization')}</button>
+            <button type="button" onClick={() => addField('specialization')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add specialization')}</button>
           </div>
 
           {/* Submit */}
           <button type="submit" disabled={loading}
-            style={{ borderRadius: 14 }} className="w-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] hover:brightness-105 font-black py-3 px-8 transition-all shadow-lg active:translate-y-0.5 uppercase tracking-widest text-xs flex items-center justify-center gap-2 disabled:opacity-50">
+            style={{ borderRadius: 14 }} className="w-full text-on-primary hover:brightness-105 font-bold py-3 px-8 transition-all active:translate-y-0.5 uppercase tracking-[0.08em] text-xs flex items-center justify-center gap-2 disabled:opacity-50 bg-primary-600">
             <Send className="w-4 h-4" /> {loading ? translate('Submitting...') : translate('Submit Application')}
           </button>
         </form>

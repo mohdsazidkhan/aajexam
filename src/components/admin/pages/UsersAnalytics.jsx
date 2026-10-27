@@ -82,7 +82,7 @@ const AdminUsersAnalytics = () => {
 
     const handleSearch = (e) => { e?.preventDefault(); fetchStudents(1); };
 
-    const goToUser = (id) => router.push(`/admin/user-details/${id}`);
+    const goToUser = (s) => router.push(`/admin/user-details/${s.username || s._id}`);
 
     const exportCSV = () => {
         if (!students.length) return;
@@ -103,10 +103,10 @@ const AdminUsersAnalytics = () => {
             header: 'User Profile',
             render: (_, s) => (
                 <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center font-black text-lg shadow-sm">{(s.name || 'U')[0]}</div>
+                    <div className="w-12 h-12 text-on-primary rounded-2xl flex items-center justify-center font-bold text-lg bg-primary-600">{(s.name || 'U')[0]}</div>
                     <div>
-                        <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 group-hover:text-primary-600 transition-colors tracking-tight">{s.name || 'Anonymous'}</div>
-                        <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none truncate max-w-[150px]">{s.email || 'N/A'}</div>
+                        <div className="text-sm font-bold text-content-primary uppercase leading-none mb-1 group-hover:text-primary-600 transition-colors tracking-tight">{s.name || 'Anonymous'}</div>
+                        <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] leading-none truncate max-w-[150px]">{s.email || 'N/A'}</div>
                     </div>
                 </div>
             )
@@ -117,7 +117,7 @@ const AdminUsersAnalytics = () => {
             align: 'center',
             render: (_, s) => (
                 <div className="text-center">
-                    <span className={`px-4 py-1.5 rounded-lg xl:rounded-xl border-2 text-[9px] font-black uppercase tracking-widest inline-block ${s.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{s.subscriptionStatus || 'FREE'}</span>
+                    <span className={`px-4 py-1.5 rounded-lg xl:rounded-xl border text-[9px] font-bold uppercase tracking-[0.08em] inline-block ${s.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-content-primary border-border-primary' : 'bg-slate-500/10 text-content-muted border-slate-500/20'}`}>{s.subscriptionStatus || 'FREE'}</span>
                 </div>
             )
         },
@@ -127,8 +127,8 @@ const AdminUsersAnalytics = () => {
             align: 'center',
             render: () => (
                 <div className="text-center">
-                    <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest italic">Student</span>
-                    <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full mx-auto"><div className="h-full bg-primary-600" style={{ width: '0%' }} /></div>
+                    <span className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] italic">Student</span>
+                    <div className="w-16 h-1 bg-background-surface-secondary rounded-full mx-auto"><div className="h-full bg-primary-600" style={{ width: '0%' }} /></div>
                 </div>
             )
         },
@@ -137,7 +137,7 @@ const AdminUsersAnalytics = () => {
             header: 'Earnings',
             align: 'right',
             render: (_, s) => (
-                <div className="text-right font-black text-primary-600 dark:text-primary-300 tabular-nums italic text-sm">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
+                <div className="text-right font-bold text-primary-600 tabular-nums italic text-sm">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
             )
         },
         {
@@ -146,7 +146,7 @@ const AdminUsersAnalytics = () => {
             align: 'right',
             render: (_, s) => (
                 <div className="flex justify-end">
-                    <motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl shadow-sm hover:bg-primary-700 hover:text-white transition-colors"><ArrowRight className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => goToUser(s)} whileHover={{ scale: 1.1 }} className="p-4 text-on-primary rounded-2xl hover:bg-primary-700 hover:text-white transition-colors bg-primary-600"><ArrowRight className="w-5 h-5" /></motion.button>
                 </div>
             )
         }
@@ -161,16 +161,16 @@ const AdminUsersAnalytics = () => {
                  { label: 'Other Expenses', val: summary.totalCustomExpenses || 0, icon: Target, color: 'primary', isCurrency: true },
                  { label: 'Net Profit', val: summary.netPlatform || 0, icon: Activity, color: summary.netPlatform >= 0 ? 'primary' : 'rose', isCurrency: true, isNet: true }
              ].map((stat) => (
-                <div key={stat.label} className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                <div key={stat.label} className="flex items-center gap-2 p-3 bg-background-surface rounded-xl xl:rounded-2xl border border-border-primary relative">
                     <div className={`p-2 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-lg shrink-0`}><stat.icon className="w-4 h-4" /></div>
                     <div className="min-w-0">
                         <div className="flex items-baseline gap-0.5">
-                            {stat.isCurrency && <IndianRupee className="w-3 h-3 text-slate-400" />}
-                            <div className={`text-sm xl:text-base font-black tabular-nums tracking-tight whitespace-nowrap ${stat.isNet ? (stat.val >= 0 ? 'text-primary-600' : 'text-black dark:text-white') : 'text-slate-900 dark:text-white'}`}>
+                            {stat.isCurrency && <IndianRupee className="w-3 h-3 text-content-muted" />}
+                            <div className={`text-sm xl:text-base font-bold tabular-nums tracking-tight whitespace-nowrap ${stat.isNet ? (stat.val >= 0 ? 'text-primary-600' : 'text-content-primary') : 'text-content-primary'}`}>
                                 {new Intl.NumberFormat('en-IN').format(stat.val)}
                             </div>
                         </div>
-                        <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</div>
+                        <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] whitespace-nowrap">{stat.label}</div>
                     </div>
                 </div>
             ))}
@@ -179,8 +179,8 @@ const AdminUsersAnalytics = () => {
 
     const searchInput = (
         <div className="relative w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-            <input type="text" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="Search by name or email..." className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
+            <input type="text" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="Search by name or email..." className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm" />
         </div>
     );
 
@@ -200,22 +200,22 @@ const AdminUsersAnalytics = () => {
     const viewToggleButtons = (
         <div className="flex items-center gap-1 w-full">
             {[{ icon: TableIcon, id: 'table', label: 'Table View' }, { icon: List, id: 'list', label: 'List View' }, { icon: LayoutGrid, id: 'grid', label: 'Grid View' }].map((mode) => (
-                <button key={mode.id} onClick={() => setViewMode(mode.id)} title={mode.label} className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+                <button key={mode.id} onClick={() => setViewMode(mode.id)} title={mode.label} className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}>
                     <mode.icon className="w-4 h-4" />
-                    <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+                    <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
                 </button>
             ))}
         </div>
     );
 
     const expensesButton = (
-        <button onClick={() => router.push('/admin/expenses')} className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  px-4 py-2 rounded-lg xl:rounded-xl text-sm font-bold">
+        <button onClick={() => router.push('/admin/expenses')} className="w-full flex items-center justify-center gap-2 text-on-primary px-4 py-2 rounded-lg xl:rounded-xl text-sm font-bold bg-primary-600">
             <Wallet className="w-4 h-4" /> Expenses
         </button>
     );
 
     const exportButton = (
-        <button onClick={exportCSV} className="w-full flex items-center justify-center gap-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300 px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm">
+        <button onClick={exportCSV} className="w-full flex items-center justify-center gap-2 text-primary-600 px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm">
             <Download className="w-4 h-4" /> Export to CSV
         </button>
     );
@@ -249,9 +249,9 @@ const AdminUsersAnalytics = () => {
 
     if (!isMounted) return null;
 
-    return (<div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    return (<div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
                 <Sidebar />
-                <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+                <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 
                     {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
@@ -263,21 +263,21 @@ const AdminUsersAnalytics = () => {
                              <div className="flex items-center justify-center py-32"><AdminDashboardSkeleton /></div>
                         ) : error ? (
                             <div className="text-center py-32">
-                                <div className="p-3 xl:p-5 bg-black/10 dark:bg-white/10 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 inline-block text-black dark:text-white text-2xl xl:text-6xl">!</div>
-                                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Something went wrong</h3>
-                                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
+                                <div className="p-3 xl:p-5 bg-black/10 dark:bg-white/10 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 inline-block text-content-primary text-2xl xl:text-6xl">!</div>
+                                 <h3 className="text-2xl font-bold text-content-primary mb-2">Something went wrong</h3>
+                                 <p className="text-content-muted text-[10px] font-bold uppercase tracking-[0.08em]">{error}</p>
                             </div>
                         ) : students.length === 0 ? (
-                            <section className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
+                            <section className="rounded-2xl xl:rounded-3xl border border-dashed border-border-primary p-24 text-center">
                                 <Globe className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
-                                 <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter italic">No Users Found</h3>
-                                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your search or filters.</p>
+                                 <h3 className="text-xl xl:text-3xl font-bold text-content-primary mb-4 tracking-tight italic">No Users Found</h3>
+                                <p className="text-content-muted text-[10px] font-bold uppercase tracking-[0.08em]">Try adjusting your search or filters.</p>
                             </section>
         ) : (
                             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-auto flex flex-col">
                                 <div className="flex-1 min-h-0 overflow-auto">
                                 {viewMode === 'table' && (
-                                    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                                    <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden h-auto flex flex-col relative">
                                         <ResponsiveTable
                                             data={students}
                                             columns={usersTableColumns}
@@ -293,23 +293,23 @@ const AdminUsersAnalytics = () => {
                                 {viewMode === 'grid' && (
                                     <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-3 items-start">
                                         {students.map((s, idx) => (
-                                            <div key={s._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                                            <div key={s._id} className="bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col gap-3 relative">
                                                 <div className="flex items-start justify-between gap-2">
-                                                    <div className="relative w-10 h-10 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-xl flex items-center justify-center font-black text-sm">
+                                                    <div className="relative w-10 h-10 text-on-primary rounded-xl flex items-center justify-center font-bold text-sm bg-primary-600">
                                                         {(s.name || 'U')[0]}
-                                                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
+                                                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
                                                     </div>
-                                                    <span className={`text-[9px] font-black px-2 py-0.5 rounded ${s.subscriptionStatus === 'PRO' ? 'bg-black/10 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>{s.subscriptionStatus || 'FREE'}</span>
+                                                    <span className={`text-[9px] font-bold px-2 py-0.5 rounded ${s.subscriptionStatus === 'PRO' ? 'bg-black/10 text-content-primary' : 'bg-background-surface-secondary text-content-muted'}`}>{s.subscriptionStatus || 'FREE'}</span>
                                                 </div>
                                                 <div>
-                                                    <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{s.name || 'Anonymous'}</h3>
-                                                    <p className="text-[10px] text-slate-400 truncate">{s.email || 'N/A'}</p>
+                                                    <h3 className="text-sm font-bold text-content-primary truncate">{s.name || 'Anonymous'}</h3>
+                                                    <p className="text-[10px] text-content-muted truncate">{s.email || 'N/A'}</p>
                                                 </div>
-                                                <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-700 text-xs">
-                                                    <span className="text-slate-400">Earnings</span>
-                                                    <span className="font-black text-primary-600 dark:text-primary-300">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</span>
+                                                <div className="flex items-center justify-between pt-2 border-t border-border-primary text-xs">
+                                                    <span className="text-content-muted">Earnings</span>
+                                                    <span className="font-bold text-primary-600">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</span>
                                                 </div>
-                                                <button onClick={() => goToUser(s._id)} className="w-full py-2 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg text-xs font-bold hover:bg-primary-700 transition-all">View Details</button>
+                                                <button onClick={() => goToUser(s)} className="w-full py-2 text-on-primary rounded-lg text-xs font-bold hover:bg-primary-700 transition-all bg-primary-600">View Details</button>
                                             </div>
                                         ))}
                                     </div>
@@ -318,23 +318,23 @@ const AdminUsersAnalytics = () => {
                                 {viewMode === 'list' && (
                                     <div className="h-full overflow-auto space-y-3">
                                         {students.map((s, idx) => (
-                                            <section key={s._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                                                <div className="relative w-10 h-10 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-xl flex items-center justify-center font-black text-sm shrink-0">
+                                            <section key={s._id} className="bg-background-surface rounded-xl border border-border-primary p-4 flex items-center gap-3 relative">
+                                                <div className="relative w-10 h-10 text-on-primary rounded-xl flex items-center justify-center font-bold text-sm shrink-0 bg-primary-600">
                                                     {(s.name || 'U')[0]}
-                                                    <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
+                                                    <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
                                                 </div>
                                                 <div className="flex-1 min-w-0">
-                                                    <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{s.name || 'User'}</h3>
-                                                    <div className="flex items-center gap-2 text-[10px] text-slate-400 flex-wrap">
+                                                    <h3 className="text-sm font-bold text-content-primary truncate">{s.name || 'User'}</h3>
+                                                    <div className="flex items-center gap-2 text-[10px] text-content-muted flex-wrap">
                                                         <span className="flex items-center gap-1"><Mail className="w-3 h-3" /> {s.email || 'N/A'}</span>
-                                                        <span className={`px-2 py-0.5 rounded-lg text-[9px] font-black border border-primary-500/20 text-primary-600 dark:text-primary-300`}>{s.subscriptionStatus || 'FREE'}</span>
+                                                        <span className={`px-2 py-0.5 rounded-lg text-[9px] font-bold border border-primary-500/20 text-primary-600`}>{s.subscriptionStatus || 'FREE'}</span>
                                                     </div>
                                                 </div>
                                                 <div className="text-right shrink-0">
-                                                    <div className="text-sm font-black text-primary-600 dark:text-primary-300">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
-                                                    <div className="text-[9px] font-bold text-slate-400 uppercase">Earnings</div>
+                                                    <div className="text-sm font-bold text-primary-600">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
+                                                    <div className="text-[9px] font-bold text-content-muted uppercase">Earnings</div>
                                                 </div>
-                                                <button aria-label="Open" onClick={() => goToUser(s._id)} className="p-2 bg-slate-100 dark:bg-slate-700 text-primary-600 dark:text-primary-300 rounded-lg shrink-0"><ArrowUpRight className="w-4 h-4" /></button>
+                                                <button aria-label="Open" onClick={() => goToUser(s)} className="p-2 bg-background-surface-secondary text-primary-600 rounded-lg shrink-0"><ArrowUpRight className="w-4 h-4" /></button>
                                             </section>
                                         ))}
                                     </div>

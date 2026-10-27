@@ -116,10 +116,10 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
     const papersSection = (
         <section className="px-0 py-1 xl:py-2">
             <section className="flex items-center justify-between mb-3 gap-4 flex-wrap">
-                <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
+                <h2 className="text-lg xl:text-2xl font-bold text-content-primary tracking-tight">
                     {filterExam || filterYear ? translate('Filtered Papers') : translate('Latest PYQ Papers')}
                 </h2>
-                <span className="text-xs font-black text-slate-500 uppercase tracking-widest">
+                <span className="text-xs font-bold text-content-muted uppercase tracking-[0.08em]">
                     {translate('{shown} of {total} shown', { shown: tests.length, total: totalPYQs })}
                 </span>
             </section>
@@ -127,7 +127,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
             {tests.length === 0 ? (
                 <div className="text-center py-12">
                     <FileText className="w-12 h-12 text-slate-300 dark:text-slate-700 mx-auto mb-3" />
-                    <p className="text-slate-400 font-bold">{translate('No PYQ papers match the current filters.')}</p>
+                    <p className="text-content-muted font-bold">{translate('No PYQ papers match the current filters.')}</p>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
@@ -139,7 +139,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                         return (
                             <Card as="section"
                                 key={test._id || i}
-                                className="p-4 hover:shadow-sm transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700"
+                                className="p-4 transition-all cursor-pointer border border-border-primary hover:border-primary-700"
                                 onClick={() => {
                                     if (hasAccess) router.push(linkHref);
                                     else setProModalTest(test);
@@ -148,14 +148,14 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                 <div className="space-y-3">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
-                                            <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600 dark:text-primary-300">{test.pyqYear || translate('PYQ')}</span>
-                                            {test.isLastYear && <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600 dark:text-primary-300">{translate('LATEST')}</span>}
+                                            <span className="px-2 py-1 rounded-lg text-[10px] font-bold text-primary-600">{test.pyqYear || translate('PYQ')}</span>
+                                            {test.isLastYear && <span className="px-2 py-1 rounded-lg text-[10px] font-bold text-primary-600">{translate('LATEST')}</span>}
                                         </div>
-                                        {test.pyqShift && <span className="text-[10px] font-bold text-slate-400">{test.pyqShift}</span>}
+                                        {test.pyqShift && <span className="text-[10px] font-bold text-content-muted">{test.pyqShift}</span>}
                                     </div>
-                                    <h3 className="text-sm font-black text-slate-900 dark:text-white line-clamp-2">{translateData(test.title)}</h3>
-                                    {test.examName && <p className="text-[10px] font-bold text-slate-400">{translateData(test.examName)}</p>}
-                                    <div className="flex items-center gap-4 text-[10px] text-slate-400 font-bold">
+                                    <h3 className="text-sm font-bold text-content-primary line-clamp-2">{translateData(test.title)}</h3>
+                                    {test.examName && <p className="text-[10px] font-bold text-content-muted">{translateData(test.examName)}</p>}
+                                    <div className="flex items-center gap-4 text-[10px] text-content-muted font-bold">
                                         <span className="flex items-center gap-1"><BookOpen className="w-3 h-3" />{translate('{count} Q', { count: test.questionCount || 0 })}</span>
                                         <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{translate('{count} min', { count: test.duration })}</span>
                                         <span className="flex items-center gap-1"><Trophy className="w-3 h-3" />{translate('{count} marks', { count: test.totalMarks })}</span>
@@ -164,12 +164,12 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                         {isPro ? (
                                             <div className="flex items-center gap-1">
                                                 <ProBadge size="xs" />
-                                                {!hasAccess && <Lock className="w-3 h-3 text-slate-400" />}
+                                                {!hasAccess && <Lock className="w-3 h-3 text-content-muted" />}
                                             </div>
                                         ) : (
-                                            <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-wider">{translate('Free Access')}</span>
+                                            <span className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em]">{translate('Free Access')}</span>
                                         )}
-                                        <div className="flex items-center gap-1 text-[10px] font-black text-primary-600 dark:text-primary-300">
+                                        <div className="flex items-center gap-1 text-[10px] font-bold text-primary-600">
                                             {hasAccess ? translate('Practice Now') : translate('Unlock with PRO')} <ChevronRight className="w-3 h-3" />
                                         </div>
                                     </div>
@@ -208,8 +208,6 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
             />
 
             <div className="min-h-screen pb-6 xl:pb-10 font-outfit relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="py-2 xl:py-4 space-y-3 xl:space-y-5 relative">
                     <PageHero
@@ -223,15 +221,15 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                     { label: examsWithPYQ.length === 1 ? 'exam' : 'exams', value: examsWithPYQ.length },
                                 ].map((st) => (
                                     <div key={st.label} className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
-                                        <p className="text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{st.value}</p>
-                                        <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 whitespace-nowrap">{st.label}</p>
+                                        <p className="text-lg font-bold font-outfit leading-none text-primary-600">{st.value}</p>
+                                        <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 whitespace-nowrap">{st.label}</p>
                                     </div>
                                 ))}
                                 {examIdsFilter && (
                                     <button
                                         type="button"
                                         onClick={() => updateQuery({ examIds: '', all: '1', page: 1 })}
-                                        className="px-3 h-10 rounded-xl text-[10px] font-black uppercase tracking-wider bg-primary-600 text-white whitespace-nowrap"
+                                        className="px-3 h-10 rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] bg-primary-600 text-on-primary whitespace-nowrap"
                                     >
                                         {translate('Your target exams · Show all')}
                                     </button>
@@ -239,7 +237,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                 <Select
                                     value={filterExam}
                                     onChange={onExamChange}
-                                    className="flex-1 xl:flex-none xl:w-56 min-w-0 px-3 h-10 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-xl text-xs font-bold outline-none truncate"
+                                    className="flex-1 xl:flex-none xl:w-56 min-w-0 px-3 h-10 bg-background-surface-secondary border border-border-primary rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">{translate('All Exams')}</option>
                                     {exams.map((e) => <option key={e._id} value={e._id}>{translateData(e.name)}</option>)}
@@ -247,7 +245,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                 <Select
                                     value={filterYear}
                                     onChange={onYearChange}
-                                    className="flex-1 xl:flex-none xl:w-36 min-w-0 px-3 h-10 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-xl text-xs font-bold outline-none truncate"
+                                    className="flex-1 xl:flex-none xl:w-36 min-w-0 px-3 h-10 bg-background-surface-secondary border border-border-primary rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">{translate('All Years')}</option>
                                     {years.map((y) => <option key={y} value={y}>{y}</option>)}
@@ -268,23 +266,23 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                     const pct = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
                                     
                                     return (
-                                    <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition relative overflow-hidden">
+                                    <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-background-surface-secondary rounded-xl p-3 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition relative overflow-hidden">
                                         <div className="relative z-10">
-                                            <div className="text-xs xl:text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-1 leading-tight line-clamp-2 min-h-[2rem]">{translateData(e.name)}</div>
-                                            <div className="text-[10px] font-bold text-slate-500 dark:text-slate-300 flex items-center justify-between mb-2">
+                                            <div className="text-xs xl:text-sm font-bold text-content-primary group-hover:text-primary-600 transition mb-1 leading-tight line-clamp-2 min-h-[2rem]">{translateData(e.name)}</div>
+                                            <div className="text-[10px] font-bold text-content-muted flex items-center justify-between mb-2">
                                                 <span>{e.paperCount} {e.paperCount === 1 ? 'paper' : 'papers'}</span>
                                                 <FaArrowRight className="text-[10px] opacity-0 group-hover:opacity-100 transition" />
                                             </div>
                                             
                                             {/* Progress Bar UI */}
                                             <div className="space-y-1.5 mt-auto">
-                                                <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-widest">
-                                                    <span className={completed > 0 ? 'text-primary-600 dark:text-primary-300' : 'text-slate-400 dark:text-slate-300'}>
+                                                <div className="flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.08em]">
+                                                    <span className={completed > 0 ? 'text-primary-600' : 'text-content-muted'}>
                                                         {completed > 0 ? translate('In Progress') : translate('Start Now')}
                                                     </span>
-                                                    <span className="text-slate-500 dark:text-slate-300">{completed}/{total}</span>
+                                                    <span className="text-content-muted">{completed}/{total}</span>
                                                 </div>
-                                                <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                                                <div className="h-1.5 w-full bg-background-surface-secondary rounded-full overflow-hidden">
                                                     <div 
                                                         className="h-full bg-primary-600 rounded-full transition-all duration-1000 ease-out" 
                                                         style={{ width: `${pct}%` }} 
@@ -300,10 +298,10 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
 
                     {/* Long-form intro */}
                     <section className="px-0 py-1 xl:py-2">
-                        <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center">
-                            <FaBookOpen className="text-primary-600 dark:text-primary-300 mr-3" /> Why Solve PYQs?
+                        <h2 className="text-lg xl:text-2xl font-bold text-content-primary mb-3 tracking-tight flex items-center">
+                            <FaBookOpen className="text-primary-600 mr-3" /> Why Solve PYQs?
                         </h2>
-                        <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-sm xl:text-base whitespace-pre-line">
+                        <div className="prose prose-slate dark:prose-invert max-w-none text-content-secondary font-medium leading-relaxed text-sm xl:text-base whitespace-pre-line">
                             {intro}
                         </div>
                     </section>
@@ -317,31 +315,30 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                             onClick={() => setProModalTest(null)}
                         >
                             {/* Backdrop */}
-                            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+                            <div className="absolute inset-0 bg-black/60" />
 
                             {/* Modal card */}
                             <div
-                                className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 overflow-hidden"
+                                className="relative w-full max-w-lg bg-background-surface rounded-3xl border border-border-primary overflow-hidden"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 {/* Dark header */}
                                 <div className="bg-slate-900 p-6 text-white relative overflow-hidden">
-                                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary-500/10 rounded-full blur-2xl" />
                                     <div className="flex items-start justify-between gap-3">
                                         <div className="space-y-1">
-                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest mb-2">
+                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/10 dark:bg-white/10 border border-border-primary rounded-full text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] mb-2">
                                                 <Lock className="w-3 h-3" /> PRO Only
                                             </div>
-                                            <h3 className="text-lg font-black font-outfit uppercase tracking-tight leading-tight">
+                                            <h3 className="text-lg font-bold font-outfit tracking-tight leading-tight">
                                                 {translateData(proModalTest.title)}
                                             </h3>
-                                            <p className="text-xs font-bold text-slate-400">
+                                            <p className="text-xs font-bold text-content-muted">
                                                 {translateData(proModalTest.examName)} &bull; {proModalTest.pyqYear} &bull; {translate('{count} Questions', { count: proModalTest.questionCount || 0 })} &bull; {translate('{count} min', { count: proModalTest.duration })}
                                             </p>
                                         </div>
                                         <button
                                             onClick={() => setProModalTest(null)}
-                                            className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-slate-400 hover:text-white text-lg font-black"
+                                            className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-content-muted hover:text-white text-lg font-bold"
                                         >
                                             ✕
                                         </button>
@@ -350,8 +347,8 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
 
                                 {/* Body */}
                                 <div className="p-6 space-y-5">
-                                    <p className="text-sm font-bold text-slate-600 dark:text-slate-400">
-                                        {rich('This paper is part of the <0>AajExam PRO</0> plan. Upgrade to attempt all older PYQ shifts with full analytics.', [(c) => <span className="text-primary-600 dark:text-primary-300 font-black">{c}</span>])}
+                                    <p className="text-sm font-bold text-content-secondary">
+                                        {rich('This paper is part of the <0>AajExam PRO</0> plan. Upgrade to attempt all older PYQ shifts with full analytics.', [(c) => <span className="text-primary-600 font-bold">{c}</span>])}
                                     </p>
 
                                     {/* What you unlock */}
@@ -364,7 +361,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                             { icon: '🧠', text: 'Weakness analysis' },
                                             { icon: '🚀', text: 'Unlimited mock tests' },
                                         ].map((item) => (
-                                            <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl px-3 py-2">
+                                            <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-content-secondary bg-background-surface-secondary rounded-lg xl:rounded-xl px-3 py-2">
                                                 <span>{item.icon}</span> {translate(item.text)}
                                             </div>
                                         ))}
@@ -374,13 +371,13 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                     <div className="flex flex-col gap-3 pt-1">
                                         <button
                                             onClick={() => router.push('/student/subscription')}
-                                            className="w-full py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl text-sm shadow-sm border-b-2 border-primary-600 active:translate-y-0.5 transition-all"
+                                            className="w-full py-4 bg-primary-600 hover:bg-primary-600 text-on-primary font-bold uppercase tracking-[0.08em] rounded-2xl text-sm border-b-2 border-primary-600 active:translate-y-0.5 transition-all"
                                         >
                                             {translate('Get PRO — Unlock All PYQs →')}
                                         </button>
                                         <button
                                             onClick={() => setProModalTest(null)}
-                                            className="w-full py-3 text-slate-500 dark:text-slate-400 font-black uppercase tracking-widest text-xs hover:text-slate-700 dark:hover:text-slate-200 transition"
+                                            className="w-full py-3 text-content-muted font-bold uppercase tracking-[0.08em] text-xs hover:text-content-primary dark:hover:text-slate-200 transition"
                                         >
                                             {translate('Continue with Free Plan')}
                                         </button>
@@ -391,15 +388,15 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                     )}
 
                     {/* FAQ */}
-                    <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
-                        <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                    <section className="rounded-3xl px-0 py-4 xl:py-8">
+                        <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                             {translate('Frequently Asked Questions')}
                         </h2>
                         <div className="space-y-2 xl:space-y-4">
                             {faqs.map((f, i) => (
-                                <details key={i} className="group bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-5 cursor-pointer">
-                                    <summary className="font-black text-slate-900 dark:text-white text-base xl:text-lg uppercase tracking-tight">{f.question}</summary>
-                                    <p className="mt-3 text-slate-600 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
+                                <details key={i} className="group bg-background-surface-secondary rounded-2xl border border-border-primary p-5 cursor-pointer">
+                                    <summary className="font-bold text-content-primary text-base xl:text-lg tracking-tight">{f.question}</summary>
+                                    <p className="mt-3 text-content-secondary font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
                                 </details>
                             ))}
                         </div>

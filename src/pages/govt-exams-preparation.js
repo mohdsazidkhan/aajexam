@@ -64,14 +64,12 @@ export default function GovtExamsPreparation({ initialData }) {
 
             <div className="py-4 xl:py-8 h-auto xl:min-h-screen font-outfit relative overflow-hidden">
                 {/* Background atmosphere */}
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="py-3 xl:py-6">
                     <div className="mb-4 xl:mb-6">
                         <PageHero
                             icon={FaQuestionCircle}
-                            title={rich('Government Exams <0>Preparation</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
+                            title={rich('Government Exams <0>Preparation</0>', [(c) => <span className="text-primary-600">{c}</span>])}
                             subtitle={translate('{count} Exams Available', { count: pagination.totalExams || 0 })}
                         />
                     </div>
@@ -87,32 +85,32 @@ export default function GovtExamsPreparation({ initialData }) {
                             <div className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-8">
                                 {exams.length > 0 ? (
                                     exams.map((exam, index) => (
-                                        <section key={exam._id || index} className="bg-white dark:bg-slate-900 rounded-[1rem] xl:rounded-[2.5rem] p-4 xl:p-8 shadow-sm hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 flex flex-col justify-between group active:translate-y-1 active:border-b-2">
+                                        <section key={exam._id || index} className="bg-background-surface rounded-[1rem] xl:rounded-3xl p-4 xl:p-8 transition-all duration-300 border border-border-primary flex flex-col justify-between group active:translate-y-1 active:border-b-2">
                                             <div>
                                                 <div className="flex items-center justify-start gap-4 mb-2 xl:mb-4">
-                                                <div className="w-10 xl:w-16 h-10 xl:h-16 bg-primary-50 dark:bg-primary-900/20 rounded-2xl flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-800 overflow-hidden">
+                                                <div className="w-10 xl:w-16 h-10 xl:h-16 rounded-2xl flex items-center justify-center border border-white dark:border-slate-800 overflow-hidden">
                                                     
-                                                    <FaGraduationCap className="text-primary-600 dark:text-primary-300 text-2xl" />
+                                                    <FaGraduationCap className="text-primary-600 text-2xl" />
                                                 
                                                 </div>
-                                                <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">
+                                                <h2 className="text-md md:text-xl xl:text-2xl font-bold text-content-primary tracking-tight group-hover:text-primary-600 transition-colors">
                                                     {translateData(exam.name)}
                                                 </h2>
                                                 </div>
-                                                <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-3 xl:mb-6 line-clamp-3 leading-relaxed">
+                                                <p className="text-sm font-bold text-content-secondary mb-3 xl:mb-6 line-clamp-3 leading-relaxed">
                                                     {exam.description || translate('Comprehensive exam preparation materials and practice tests.')}
                                                 </p>
                                             </div>
                                             <button
                                                 onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
-                                                className="w-full bg-primary-600 hover:bg-primary-600 text-white px-6 py-4 rounded-2xl transition-all font-black uppercase tracking-widest text-[10px] flex items-center justify-center shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0"
+                                                className="w-full bg-primary-600 hover:bg-primary-600 text-on-primary px-6 py-4 rounded-2xl transition-all font-bold uppercase tracking-[0.08em] text-[10px] flex items-center justify-center border-b-2 border-primary-600 active:translate-y-1 active:border-b-0"
                                             >
                                                 {translate('Start Practice')} <FaChartLine className="ml-2" />
                                             </button>
                                         </section>
                                     ))
                                 ) : (
-                                    <div className="col-span-full text-center py-20 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 shadow-sm font-bold uppercase tracking-widest text-slate-400 text-sm">
+                                    <div className="col-span-full text-center py-20 bg-background-surface rounded-3xl border border-border-primary font-bold uppercase tracking-[0.08em] text-content-muted text-sm">
                                         {translate('No exams found.')}
                                     </div>
                                 )}
@@ -123,11 +121,9 @@ export default function GovtExamsPreparation({ initialData }) {
                         </>
                     )}
 
-                    <section className="mt-8 xl:mt-16 bg-slate-950 dark:bg-slate-900 rounded-[3rem] p-4 xl:p-10 xl:p-20 text-white text-center border-2 border-slate-800 relative overflow-hidden shadow-sm">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
+                    <section className="mt-8 xl:mt-16 bg-slate-950 dark:bg-slate-900 rounded-3xl p-4 xl:p-10 xl:p-20 text-white text-center border border-slate-800 relative overflow-hidden">
 
-                        <h2 className="text-2xl xl:text-5xl font-black mb-3 xl:mb-6 uppercase tracking-tighter relative z-10">
+                        <h2 className="text-2xl xl:text-5xl font-bold mb-3 xl:mb-6 tracking-tight relative z-10">
                             {rich('Ready to <0>Ace</0> Your Exam?', [(c) => <span className="text-primary-400">{c}</span>])}
                         </h2>
                         <p className="text-md xl:text-xl font-bold opacity-80 mb-4 xl:mb-12 max-w-2xl mx-auto leading-relaxed relative z-10">
@@ -135,7 +131,7 @@ export default function GovtExamsPreparation({ initialData }) {
                         </p>
                         <button
                             onClick={() => router.push('/govt-exams')}
-                            className="bg-primary-600 hover:bg-primary-600 text-white px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-sm border-b-[8px] border-primary-600 active:translate-y-2 active:border-b-0 transition-all relative z-10"
+                            className="bg-primary-600 hover:bg-primary-600 text-on-primary px-12 py-5 rounded-3xl font-bold uppercase tracking-[0.08em] text-sm border-primary-600 active:translate-y-2 active:border-b-0 transition-all relative z-10"
                         >
                             {translate('Get Started Now')}
                         </button>

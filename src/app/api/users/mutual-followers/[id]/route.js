@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
+import { resolveUserId } from '@/lib/utils/userRef';
 import User from '@/models/User';
 import Follow from '@/models/Follow';
 import { protect } from '@/middleware/auth';
@@ -16,7 +17,9 @@ export async function GET(req, { params }) {
         const currentUserId = authRecord.user.id;
 
         // Ensure parameters are resolved
-        const { id: userId } = await params;
+        const { id: userRef } = await params; // user id or username
+        const userId = await resolveUserId(userRef);
+        if (!userId) return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
         const { searchParams } = new URL(req.url);
         const { page, limit, skip } = parsePaging(searchParams, { defaultLimit: 20, maxLimit: 100, legacyCap: 20 });
 

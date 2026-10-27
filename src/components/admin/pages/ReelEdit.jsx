@@ -23,15 +23,15 @@ const TYPE_LABELS = {
 };
 
 const TYPE_COLORS = {
-  question: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
-  fact: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
-  tip: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
-  current_affairs: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
-  poll: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
+  question: 'bg-background-surface-secondary text-content-primary',
+  fact: 'text-primary-600',
+  tip: 'bg-background-surface-secondary text-content-primary',
+  current_affairs: 'bg-background-surface-secondary text-content-primary',
+  poll: 'text-primary-600',
 };
 
-const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-white dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
-const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
+const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-background-surface border border-border-primary text-sm text-content-primary focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
+const labelClass = "block text-sm font-semibold text-content-secondary mb-1.5";
 
 const AdminReelEdit = () => {
   const router = useRouter();
@@ -285,11 +285,11 @@ const AdminReelEdit = () => {
 
             {/* Header */}
             <div className="flex items-center gap-3 mb-4">
-              <button aria-label="Back" onClick={() => router.push('/admin/reels')} className="p-2 rounded-lg xl:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
-                <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
+              <button aria-label="Back" onClick={() => router.push('/admin/reels')} className="p-2 rounded-lg xl:rounded-xl bg-background-surface border border-border-primary hover:bg-background-surface-secondary">
+                <ArrowLeft className="w-5 h-5 text-content-secondary" />
               </button>
               <div className="flex-1">
-                <p className="text-sm text-slate-500 dark:text-slate-400">ID: {reelId}</p>
+                <p className="text-sm text-content-muted">ID: {reelId}</p>
               </div>
               <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${TYPE_COLORS[type]}`}>
                 {TYPE_LABELS[type] || type}
@@ -299,8 +299,8 @@ const AdminReelEdit = () => {
             <form onSubmit={handleSubmit} className="space-y-3">
 
               {/* Status + Common Fields */}
-              <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                <h3 className="font-bold text-slate-900 dark:text-white">Common Details</h3>
+              <section className="bg-background-surface rounded-2xl border border-border-primary p-4 space-y-2 xl:space-y-3 relative">
+                <h3 className="font-bold text-content-primary">Common Details</h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
@@ -360,8 +360,8 @@ const AdminReelEdit = () => {
 
               {/* Question Fields */}
               {type === 'question' && (
-                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                  <h3 className="font-bold text-black dark:text-white">Question Details</h3>
+                <section className="bg-background-surface rounded-2xl border border-border-primary dark:border-white p-4 space-y-2 xl:space-y-3 relative">
+                  <h3 className="font-bold text-content-primary">Question Details</h3>
                   <div>
                     <label className={labelClass}>Question Text *</label>
                     <textarea value={questionText} onChange={e => setQuestionText(e.target.value)} rows={3} className={inputClass} required />
@@ -371,16 +371,16 @@ const AdminReelEdit = () => {
                     {options.map((opt, i) => (
                       <div key={i} className="flex items-center gap-3">
                         <button type="button" onClick={() => setCorrectAnswerIndex(i)}
-                          className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all ${correctAnswerIndex === i
-                            ? 'border-primary-600 bg-primary-600 text-white' : 'border-slate-300 dark:border-slate-600 text-slate-400 hover:border-primary-400'}`}>
+                          className={`w-8 h-8 rounded-full border flex items-center justify-center text-xs font-bold transition-all ${correctAnswerIndex === i
+                            ? 'border-primary-600 bg-primary-600 text-on-primary' : 'border-border-primary dark:border-slate-600 text-content-muted hover:border-primary-400'}`}>
                           {String.fromCharCode(65 + i)}
                         </button>
                         <input type="text" value={opt}
                           onChange={e => { const n = [...options]; n[i] = e.target.value; setOptions(n); }}
-                          placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} required />
+                          placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 border border-border-primary ${inputClass}`} required />
                       </div>
                     ))}
-                    <p className="text-xs text-primary-600 dark:text-primary-300">Correct: {String.fromCharCode(65 + correctAnswerIndex)}</p>
+                    <p className="text-xs text-primary-600">Correct: {String.fromCharCode(65 + correctAnswerIndex)}</p>
                   </div>
                   <div>
                     <label className={labelClass}>Explanation</label>
@@ -395,8 +395,8 @@ const AdminReelEdit = () => {
 
               {/* Fact Fields */}
               {type === 'fact' && (
-                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                  <h3 className="font-bold text-primary-600 dark:text-primary-400">Fact Details</h3>
+                <section className="bg-background-surface rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 relative">
+                  <h3 className="font-bold text-primary-600">Fact Details</h3>
                   <div>
                     <label className={labelClass}>Highlight Text</label>
                     <input type="text" value={highlightText} onChange={e => setHighlightText(e.target.value)} className={inputClass} />
@@ -405,24 +405,24 @@ const AdminReelEdit = () => {
                     <label className={labelClass}>Key Points</label>
                     {keyPoints.map((kp, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
-                        <span className="text-xs font-bold text-slate-400 w-5">{i + 1}.</span>
+                        <span className="text-xs font-bold text-content-muted w-5">{i + 1}.</span>
                         <input type="text" value={kp}
                           onChange={e => { const n = [...keyPoints]; n[i] = e.target.value; setKeyPoints(n); }}
-                          className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
+                          className={`flex-1 border border-border-primary ${inputClass}`} />
                         <button aria-label="Delete" type="button" onClick={() => { if (keyPoints.length > 1) setKeyPoints(keyPoints.filter((_, j) => j !== i)); }}
-                          className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
+                          className="p-1 text-content-primary hover:text-content-primary dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
                     <button type="button" onClick={() => setKeyPoints([...keyPoints, ''])}
-                      className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add point</button>
+                      className="text-xs text-content-primary flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add point</button>
                   </div>
                 </section>
               )}
 
               {/* Tip Fields */}
               {type === 'tip' && (
-                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                  <h3 className="font-bold text-black dark:text-white">Trick / Shortcut Details</h3>
+                <section className="bg-background-surface rounded-2xl border border-border-primary dark:border-white p-4 space-y-2 xl:space-y-3 relative">
+                  <h3 className="font-bold text-content-primary">Trick / Shortcut Details</h3>
                   <div>
                     <label className={labelClass}>Formula</label>
                     <input type="text" value={formula} onChange={e => setFormula(e.target.value)} className={inputClass} />
@@ -431,16 +431,16 @@ const AdminReelEdit = () => {
                     <label className={labelClass}>Steps</label>
                     {steps.map((s, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
-                        <span className="text-xs font-bold text-slate-400 w-14">Step {i + 1}</span>
+                        <span className="text-xs font-bold text-content-muted w-14">Step {i + 1}</span>
                         <input type="text" value={s}
                           onChange={e => { const n = [...steps]; n[i] = e.target.value; setSteps(n); }}
-                          className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
+                          className={`flex-1 border border-border-primary ${inputClass}`} />
                         <button aria-label="Delete" type="button" onClick={() => { if (steps.length > 1) setSteps(steps.filter((_, j) => j !== i)); }}
-                          className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
+                          className="p-1 text-content-primary hover:text-content-primary dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
                     <button type="button" onClick={() => setSteps([...steps, ''])}
-                      className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add step</button>
+                      className="text-xs text-content-primary flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add step</button>
                   </div>
                   <div>
                     <label className={labelClass}>Try Yourself Examples</label>
@@ -448,21 +448,21 @@ const AdminReelEdit = () => {
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <input type="text" value={t}
                           onChange={e => { const n = [...tryYourself]; n[i] = e.target.value; setTryYourself(n); }}
-                          className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
+                          className={`flex-1 border border-border-primary ${inputClass}`} />
                         <button aria-label="Delete" type="button" onClick={() => { if (tryYourself.length > 1) setTryYourself(tryYourself.filter((_, j) => j !== i)); }}
-                          className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
+                          className="p-1 text-content-primary hover:text-content-primary dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
                     <button type="button" onClick={() => setTryYourself([...tryYourself, ''])}
-                      className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add example</button>
+                      className="text-xs text-content-primary flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add example</button>
                   </div>
                 </section>
               )}
 
               {/* CA Fields */}
               {type === 'current_affairs' && (
-                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                  <h3 className="font-bold text-black dark:text-white">Current Affairs Details</h3>
+                <section className="bg-background-surface rounded-2xl border border-border-primary dark:border-white p-4 space-y-2 xl:space-y-3 relative">
+                  <h3 className="font-bold text-content-primary">Current Affairs Details</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className={labelClass}>Date</label>
@@ -490,16 +490,16 @@ const AdminReelEdit = () => {
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <input type="text" value={row.key}
                           onChange={e => { const n = [...tableData]; n[i] = { ...n[i], key: e.target.value }; setTableData(n); }}
-                          placeholder="Label" className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
+                          placeholder="Label" className={`flex-1 border border-border-primary ${inputClass}`} />
                         <input type="text" value={row.value}
                           onChange={e => { const n = [...tableData]; n[i] = { ...n[i], value: e.target.value }; setTableData(n); }}
-                          placeholder="Value" className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
+                          placeholder="Value" className={`flex-1 border border-border-primary ${inputClass}`} />
                         <button aria-label="Delete" type="button" onClick={() => { if (tableData.length > 1) setTableData(tableData.filter((_, j) => j !== i)); }}
-                          className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
+                          className="p-1 text-content-primary hover:text-content-primary dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
                     <button type="button" onClick={() => setTableData([...tableData, { key: '', value: '' }])}
-                      className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add row</button>
+                      className="text-xs text-content-primary flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add row</button>
                   </div>
                   <div>
                     <label className={labelClass}>Key Takeaway</label>
@@ -510,8 +510,8 @@ const AdminReelEdit = () => {
 
               {/* Poll Fields */}
               {type === 'poll' && (
-                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                  <h3 className="font-bold text-primary-600 dark:text-primary-400">Poll Details</h3>
+                <section className="bg-background-surface rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 relative">
+                  <h3 className="font-bold text-primary-600">Poll Details</h3>
                   <div>
                     <label className={labelClass}>Poll Question</label>
                     <input type="text" value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} className={inputClass} />
@@ -520,40 +520,40 @@ const AdminReelEdit = () => {
                     <label className={labelClass}>Poll Options</label>
                     {pollOptions.map((opt, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
-                        <span className="text-xs font-bold text-slate-400 w-5">{i + 1}.</span>
+                        <span className="text-xs font-bold text-content-muted w-5">{i + 1}.</span>
                         <input type="text" value={opt.text}
                           onChange={e => { const n = [...pollOptions]; n[i] = { text: e.target.value }; setPollOptions(n); }}
-                          placeholder={`Option ${i + 1}`} className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
+                          placeholder={`Option ${i + 1}`} className={`flex-1 border border-border-primary ${inputClass}`} />
                         {pollOptions.length > 2 && (
                           <button aria-label="Delete" type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}
-                            className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
+                            className="p-1 text-content-primary hover:text-content-primary dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                         )}
                       </div>
                     ))}
                     {pollOptions.length < 6 && (
                       <button type="button" onClick={() => setPollOptions([...pollOptions, { text: '' }])}
-                        className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add option</button>
+                        className="text-xs text-content-primary flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add option</button>
                     )}
                   </div>
                 </section>
               )}
 
               {/* Audio & Duration — Instagram Style */}
-              <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+              <section className="bg-background-surface rounded-2xl border border-border-primary p-4 space-y-2 xl:space-y-3 relative">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <Music className="w-5 h-5 text-black dark:text-white" /> Add Audio
+                  <h3 className="font-bold text-content-primary flex items-center gap-2">
+                    <Music className="w-5 h-5 text-content-primary" /> Add Audio
                   </h3>
                   {audioFile && (
                     <button type="button" onClick={() => { setAudioFile(''); if (audioPreviewRef.current) { audioPreviewRef.current.pause(); audioPreviewRef.current = null; } setAudioPlaying(null); }}
-                      className="text-xs font-bold text-black dark:text-white hover:underline">Remove</button>
+                      className="text-xs font-bold text-content-primary hover:underline">Remove</button>
                   )}
                 </div>
 
                 {/* Search */}
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                  <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder="Search audio..." className={`pl-9 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
+                  <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder="Search audio..." className={`pl-9 border border-border-primary ${inputClass}`} />
                 </div>
 
                 {/* Audio List */}
@@ -562,20 +562,20 @@ const AdminReelEdit = () => {
                     <div key={a.value}
                       onClick={() => handleAudioSelect(a.value)}
                       className={`flex items-center gap-3 p-3 rounded-lg xl:rounded-xl cursor-pointer transition-all ${audioFile === a.value
-                        ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white'
-                        : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
+                        ? 'bg-background-surface-secondary border border-border-primary dark:border-white'
+                        : 'hover:bg-background-surface-secondary border border-transparent'}`}
                     >
                       <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
                         className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${audioPlaying === a.value
-                          ?'bg-primary-600 text-white':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
+                          ?'bg-primary-600 text-on-primary':'bg-background-surface-secondary text-content-muted'}`}>
                         {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                       </button>
                       <div className="flex-1 min-w-0">
-                        <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-black dark:text-white ' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
+                        <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-content-primary' : 'text-content-primary'}`}>{a.label}</p>
                         <div className="flex items-center gap-2">
-                          <p className="text-[11px] text-slate-400 truncate">{a.artist}</p>
+                          <p className="text-[11px] text-content-muted truncate">{a.artist}</p>
                           {a.audioDuration && (
-                            <span className="text-[10px] font-medium text-slate-400 tabular-nums">{formatAudioDuration(a.audioDuration)}</span>
+                            <span className="text-[10px] font-medium text-content-muted tabular-nums">{formatAudioDuration(a.audioDuration)}</span>
                           )}
                         </div>
                       </div>
@@ -587,38 +587,38 @@ const AdminReelEdit = () => {
                     </div>
                   ))}
                   {filteredAudios.length === 0 && (
-                    <p className="text-sm text-slate-400 text-center py-2.5">No audio found</p>
+                    <p className="text-sm text-content-muted text-center py-2.5">No audio found</p>
                   )}
                 </div>
 
                 {/* Mute toggle */}
                 {audioPlaying && (
-                  <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center justify-between pt-3 border-t border-border-primary">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-primary-600 animate-pulse"/>
-                      <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Now Playing</span>
+                      <span className="text-xs font-semibold text-content-muted">Now Playing</span>
                     </div>
-                    <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
-                      {audioMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-black dark:text-white" />}
+                    <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-background-surface-secondary">
+                      {audioMuted ? <VolumeX className="w-4 h-4 text-content-muted" /> : <Volume2 className="w-4 h-4 text-content-primary" />}
                     </button>
                   </div>
                 )}
 
                 {/* Duration */}
-                <div className="pt-3 border-t border-slate-100 dark:border-slate-800">
+                <div className="pt-3 border-t border-border-primary">
                   <label className={labelClass}>Duration (seconds)</label>
                   <div className="relative">
                     <input type="number" value={duration} onChange={e => setDuration(e.target.value)} placeholder="e.g. 15" min="5" max="120" className={inputClass} />
-                    <Clock className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                    <Clock className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted pointer-events-none" />
                   </div>
-                  <p className="text-xs text-slate-400 mt-1">Reel will auto-scroll after this time (5-120 sec)</p>
+                  <p className="text-xs text-content-muted mt-1">Reel will auto-scroll after this time (5-120 sec)</p>
                 </div>
               </section>
 
               {/* Submit */}
               <div className="flex items-center justify-end gap-3 pt-2 pb-8">
                 <button type="button" onClick={() => router.push('/admin/reels')}
-                  className="px-4 py-2.5 rounded-lg xl:rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
+                  className="px-4 py-2.5 rounded-lg xl:rounded-xl text-sm font-medium text-content-secondary bg-background-surface border border-border-primary hover:bg-background-surface-secondary">
                   Cancel
                 </button>
                 <Button type="submit" disabled={saving} className="flex items-center gap-2">

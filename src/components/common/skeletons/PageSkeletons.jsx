@@ -7,8 +7,8 @@ const Sh = ({ className = '' }) => (
   <div className={`animate-pulse bg-primary-500/15 dark:bg-primary-500/20 rounded-lg ${className}`} />
 );
 
-const CARD = 'bg-background-surface rounded-2xl border-2 border-slate-200 dark:border-slate-800 shadow-sm';
-const CHIP = 'bg-background-surface rounded-xl border-2 border-slate-200 dark:border-slate-800 shadow-sm';
+const CARD = 'bg-background-surface rounded-2xl border border-border-primary';
+const CHIP = 'bg-background-surface rounded-xl border border-border-primary';
 
 // ─── Building blocks ────────────────────────────────────────────────────────
 
@@ -72,7 +72,7 @@ export const CardGridSkeleton = ({
         {variant === 'stats' && (
           <>
             <Sh className="h-1.5 w-full rounded-full" />
-            <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <div className="grid grid-cols-3 gap-2 pt-2 border-t border-border-primary">
               {[0, 1, 2].map((k) => <Sh key={k} className="h-8 rounded-md" />)}
             </div>
           </>
@@ -123,7 +123,7 @@ const SectionHeaderSkeleton = () => (
 // ─── Student home / dashboard ───────────────────────────────────────────────
 
 export const HomeDashboardSkeleton = () => (
-  <div className="space-y-4 xl:space-y-6 font-outfit">
+  <div className="space-y-4 xl:space-y-6 font-outfit mt-4 xl:mt-6">
     {/* 9 stat chips: 2 / 3 / 9 columns */}
     <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-9 gap-1.5 md:gap-2 xl:gap-3">
       {Array.from({ length: 9 }).map((_, i) => (
@@ -197,7 +197,7 @@ export const ChallengesPageSkeleton = ({ count = 3 }) => (
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-4">
       {Array.from({ length: count }).map((_, i) => (
         <div key={i} className={`${CARD} overflow-hidden`}>
-          <div className="p-4 bg-slate-100 dark:bg-slate-800 space-y-3">
+          <div className="p-4 bg-background-surface-secondary space-y-3">
             <Sh className="h-3 w-40 rounded-md" />
             <Sh className="h-5 w-3/4 rounded-md" />
             <Sh className="h-3 w-1/2 rounded-md" />
@@ -281,7 +281,7 @@ export const SettingsPageSkeleton = () => (
 // My Analytics: hero strip, tabs, 8 tiles (2 / 4 cols), 3-col subject cards.
 export const AnalyticsPageSkeleton = () => (
   <div className="space-y-2 xl:space-y-3 font-outfit">
-    <div className="rounded-2xl bg-primary-500/20 animate-pulse h-20 xl:h-24" />
+    <div className="rounded-2xl animate-pulse bg-primary-500/15 dark:bg-primary-500/20 h-20 xl:h-24" />
     <TabsRowSkeleton count={6} />
     <StatChipsSkeleton count={8} cols="grid-cols-2 sm:grid-cols-4" />
     <Sh className="h-6 w-48 rounded-md" />
@@ -330,7 +330,7 @@ export const RankPageSkeleton = () => (
 // Subscription: plan banner + 4 plans + payment history panel.
 export const SubscriptionPageSkeleton = () => (
   <div className="space-y-3 xl:space-y-4 font-outfit">
-    <div className="rounded-2xl bg-primary-500/20 animate-pulse h-24" />
+    <div className="rounded-2xl animate-pulse bg-primary-500/15 dark:bg-primary-500/20 h-24" />
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
       {[0, 1, 2, 3].map((i) => <Sh key={i} className="h-72 rounded-2xl" />)}
     </div>
@@ -347,9 +347,9 @@ export const SubscriptionPageSkeleton = () => (
 // footer actions | stat tiles + rank stub), the segmented tab bar and the first tab's cards.
 export const ProfilePageSkeleton = () => (
   <div className="container mx-auto space-y-2 xl:space-y-4 mt-4 font-outfit">
-    <div className="overflow-hidden bg-background-surface ring-1 ring-primary-200 dark:ring-white/10 shadow-xl" style={{ borderRadius: 16 }}>
+    <div className="overflow-hidden bg-background-surface ring-1 ring-primary-200 dark:ring-white/10" style={{ borderRadius: 16 }}>
       {/* Header strip */}
-      <div className="flex items-center justify-between gap-3 px-4 xl:px-6 py-2 bg-primary-600/10 dark:bg-black/25 border-b border-primary-200 dark:border-white/15">
+      <div className="flex items-center justify-between gap-3 px-4 xl:px-6 py-2 dark:bg-black/25 border-b border-primary-200 dark:border-white/15">
         <div className="flex items-center gap-2">
           <Sh className="h-4 w-4 rounded-full" />
           <Sh className="h-3 w-40 rounded-md" />
@@ -382,7 +382,7 @@ export const ProfilePageSkeleton = () => (
           </div>
 
           {/* Footer: actions + barcode */}
-          <div className="flex flex-wrap items-end justify-between gap-3 pt-3 border-t border-dashed border-slate-300 dark:border-white/25">
+          <div className="flex flex-wrap items-end justify-between gap-3 pt-3 border-t border-dashed border-border-primary">
             <div className="flex flex-wrap items-center gap-2">
               <Sh className="h-9 w-32 rounded-xl" />
               <Sh className="h-9 w-28 rounded-xl" />
@@ -393,7 +393,7 @@ export const ProfilePageSkeleton = () => (
         </div>
 
         {/* Stub: stat tiles + AIR */}
-        <div className="p-4 xl:p-6 bg-primary-600/5 dark:bg-black/20 border-t border-dashed border-primary-300 dark:border-white/35 xl:border-t-0 xl:border-l space-y-3">
+        <div className="p-4 xl:p-6 dark:bg-black/20 border-t border-dashed border-primary-300 dark:border-white/35 xl:border-t-0 xl:border-l space-y-3">
           <div className="grid grid-cols-2 gap-2 pb-3 border-b border-dashed border-primary-300 dark:border-white/35">
             {Array.from({ length: 6 }).map((_, i) => <Sh key={i} className="h-12 rounded-lg" />)}
           </div>
@@ -408,7 +408,7 @@ export const ProfilePageSkeleton = () => (
     </div>
 
     {/* Segmented tab bar */}
-    <div className="flex gap-1 p-1 w-fit max-w-full bg-background-surface ring-1 ring-primary-200 dark:ring-white/10 shadow-md" style={{ borderRadius: 12 }}>
+    <div className="flex gap-1 p-1 w-fit max-w-full bg-background-surface ring-1 ring-primary-200 dark:ring-white/10" style={{ borderRadius: 12 }}>
       {[0, 1, 2].map((i) => <Sh key={i} className="h-9 w-28 rounded-lg shrink-0" />)}
     </div>
 

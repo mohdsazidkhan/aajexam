@@ -3,7 +3,7 @@ import useTranslate from '../../../hooks/useTranslate';
 
 const ReelsLoadingText = () => {
   const { translate } = useTranslate();
-  return <p className="text-xs font-bold text-white/30 uppercase tracking-widest mt-8">{translate('Loading reels...')}</p>;
+  return <p className="text-xs font-bold text-white/30 uppercase tracking-[0.08em] mt-8">{translate('Loading reels...')}</p>;
 };
 
 // Basic shimmer block
@@ -18,7 +18,7 @@ const Sh = ({ className = '' }) => (
 export const ListSkeleton = ({ rows = 5 }) => (
   <div className="space-y-2 xl:space-y-4 font-outfit w-full">
     {Array.from({ length: rows }).map((_, i) => (
-      <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 p-4 xl:p-5 flex gap-4">
+      <div key={i} className="bg-background-surface rounded-2xl border border-border-primary p-4 xl:p-5 flex gap-4">
         <Sh className="w-12 h-12 rounded-lg xl:rounded-xl shrink-0" />
         <div className="flex-1 space-y-3 py-1">
           <Sh className="h-4 w-3/4 max-w-sm rounded-lg" />
@@ -35,7 +35,7 @@ export const ListSkeleton = ({ rows = 5 }) => (
 export const GridSkeleton = ({ count = 6 }) => (
   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-6 font-outfit">
     {Array.from({ length: count }).map((_, i) => (
-      <div key={i} className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-5 flex flex-col gap-4">
+      <div key={i} className="bg-background-surface rounded-2xl border border-border-primary p-5 flex flex-col gap-4">
         <Sh className="w-full aspect-[4/3] rounded-lg xl:rounded-xl" />
         <div className="space-y-3">
           <Sh className="h-4 w-full rounded-lg" />
@@ -55,7 +55,7 @@ export const DashboardSkeleton = () => (
     {/* Top Stats */}
     <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
       {[1, 2, 3, 4].map(i => (
-        <div key={i} className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-4 xl:p-6 text-center space-y-3">
+        <div key={i} className="bg-background-surface rounded-2xl border border-border-primary p-4 xl:p-6 text-center space-y-3">
           <Sh className="w-10 h-10 rounded-full mx-auto" />
           <Sh className="h-6 w-16 mx-auto rounded-lg" />
           <Sh className="h-2.5 w-20 mx-auto rounded-full" />
@@ -64,7 +64,7 @@ export const DashboardSkeleton = () => (
     </div>
     
     {/* Main Content Area */}
-    <div className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-6 space-y-6">
+    <div className="bg-background-surface rounded-2xl border border-border-primary p-6 space-y-6">
       <div className="flex justify-between items-center">
         <Sh className="h-6 w-48 rounded-lg" />
         <Sh className="h-8 w-24 rounded-full" />
@@ -81,10 +81,10 @@ export const DashboardSkeleton = () => (
 export const ProfileSkeleton = () => (
   <div className="space-y-6 xl:space-y-8 font-outfit w-full">
     {/* Header / Banner */}
-    <div className="relative bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 xl:p-10 flex flex-col items-center gap-4 text-center overflow-hidden">
+    <div className="relative bg-background-surface rounded-3xl border border-border-primary p-6 xl:p-10 flex flex-col items-center gap-4 text-center overflow-hidden">
       <Sh className="absolute inset-0 w-full h-32 xl:h-48 rounded-t-[2rem]" />
       <div className="relative z-10 mt-16 xl:mt-24 space-y-2 xl:space-y-4 flex flex-col items-center">
-        <Sh className="w-24 h-24 xl:w-32 xl:h-32 rounded-full border-2 border-white dark:border-slate-800" />
+        <Sh className="w-24 h-24 xl:w-32 xl:h-32 rounded-full border border-white dark:border-slate-800" />
         <Sh className="h-6 w-48 rounded-lg" />
         <Sh className="h-3 w-32 rounded-full" />
         <div className="flex gap-2">
@@ -100,7 +100,7 @@ export const ProfileSkeleton = () => (
     </div>
 
     {/* Content */}
-    <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 space-y-2 xl:space-y-4">
+    <div className="bg-background-surface rounded-3xl border border-border-primary p-6 space-y-2 xl:space-y-4">
       {[1, 2, 3, 4].map(i => (
         <div key={i} className="flex gap-4">
           <Sh className="w-10 h-10 rounded-lg xl:rounded-xl shrink-0" />
@@ -118,7 +118,7 @@ export const ProfileSkeleton = () => (
 // strips) and the sections underneath (community questions, reels carousel).
 export const PublicProfileSkeleton = () => (
   <div className="font-outfit w-full pt-3 xl:pt-5 space-y-2 xl:space-y-3">
-    <div className="overflow-hidden bg-background-surface ring-1 ring-primary-200 dark:ring-white/10 shadow-2xl" style={{ borderRadius: 32 }}>
+    <div className="overflow-hidden bg-background-surface ring-1 ring-primary-200 dark:ring-white/10" style={{ borderRadius: 32 }}>
       <div className="p-3 sm:p-4 xl:p-5">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4">
           <Sh className="w-16 h-20 sm:w-20 sm:h-24 xl:w-24 xl:h-28 rounded-md shrink-0" />
@@ -184,14 +184,14 @@ export const SubscriptionSkeleton = () => (
 
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-8">
       {[1, 2, 3].map(i => (
-        <div key={i} className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-8 space-y-6">
+        <div key={i} className="bg-background-surface rounded-3xl border border-border-primary p-8 space-y-6">
           <Sh className="h-6 w-32 rounded-lg" />
           <div className="space-y-2">
             <Sh className="h-10 w-40 rounded-lg xl:rounded-xl" />
             <Sh className="h-3 w-24 rounded-md" />
           </div>
           <Sh className="h-12 w-full rounded-full" />
-          <div className="space-y-2 xl:space-y-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+          <div className="space-y-2 xl:space-y-4 pt-4 border-t border-border-primary">
             {[1,2,3,4,5].map(j => (
               <div key={j} className="flex gap-3 items-center">
                 <Sh className="w-5 h-5 rounded-full shrink-0" />
@@ -208,7 +208,7 @@ export const SubscriptionSkeleton = () => (
 export const QuizAttemptSkeleton = () => (
   <div className="min-h-screen bg-background-page font-outfit">
     {/* Top bar: progress + timer */}
-    <div className="bg-white dark:bg-slate-800 border-b-2 border-slate-100 dark:border-slate-700 p-4 flex items-center justify-between gap-4">
+    <div className="bg-background-surface border-b-2 border-border-primary p-4 flex items-center justify-between gap-4">
       <Sh className="h-3 w-24 rounded-full" />
       <Sh className="h-2.5 flex-1 max-w-md rounded-full" />
       <Sh className="h-8 w-16 rounded-lg xl:rounded-xl shrink-0" />
@@ -216,7 +216,7 @@ export const QuizAttemptSkeleton = () => (
 
     <div className="max-w-3xl mx-auto p-4 xl:p-8 space-y-6">
       {/* Question card */}
-      <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 xl:p-10 space-y-6">
+      <div className="bg-background-surface rounded-3xl border border-border-primary p-6 xl:p-10 space-y-6">
         <Sh className="h-3 w-20 rounded-full" />
         <Sh className="h-6 w-full rounded-lg xl:rounded-xl" />
         <Sh className="h-6 w-2/3 rounded-lg xl:rounded-xl" />
@@ -276,7 +276,7 @@ export const ReelFeedSkeleton = () => (
 );
 
 export const FormSkeleton = ({ fields = 4 }) => (
-  <div className="max-w-2xl mx-auto bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 xl:p-10 space-y-5 font-outfit">
+  <div className="max-w-2xl mx-auto bg-background-surface rounded-3xl border border-border-primary p-6 xl:p-10 space-y-5 font-outfit">
     <Sh className="h-7 w-56 rounded-lg xl:rounded-xl" />
     {Array.from({ length: fields }).map((_, i) => (
       <div key={i} className="space-y-2">
@@ -292,7 +292,7 @@ export const QAThreadSkeleton = () => (
   <div className="space-y-5 font-outfit w-full">
     <Sh className="h-4 w-28 rounded-full" />
 
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 p-5 xl:p-6 space-y-2 xl:space-y-4">
+    <div className="bg-background-surface rounded-2xl border border-border-primary p-5 xl:p-6 space-y-2 xl:space-y-4">
       <div className="flex items-center gap-2">
         <Sh className="w-7 h-7 rounded-full shrink-0" />
         <Sh className="h-3 w-24 rounded-full" />
@@ -305,7 +305,7 @@ export const QAThreadSkeleton = () => (
 
     <Sh className="h-4 w-32 rounded-full" />
     {[1, 2, 3].map(i => (
-      <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 p-5 space-y-3">
+      <div key={i} className="bg-background-surface rounded-2xl border border-border-primary p-5 space-y-3">
         <div className="flex items-center gap-2">
           <Sh className="w-6 h-6 rounded-full shrink-0" />
           <Sh className="h-2.5 w-20 rounded-full" />
@@ -323,7 +323,7 @@ export const ChallengeSkeleton = () => (
       <Sh className="h-8 w-64 mx-auto rounded-lg xl:rounded-xl" />
       <Sh className="h-3 w-40 mx-auto rounded-full" />
     </div>
-    <div className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-8 text-center space-y-6">
+    <div className="bg-background-surface rounded-2xl border border-border-primary p-8 text-center space-y-6">
       <Sh className="w-24 h-24 rounded-3xl mx-auto" />
       <Sh className="h-5 w-56 mx-auto rounded-lg" />
       <Sh className="h-3 w-40 mx-auto rounded-full" />
@@ -337,7 +337,7 @@ export const RevisionSkeleton = () => (
     {/* Stats row */}
     <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
       {[1, 2, 3, 4].map(i => (
-        <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 p-4 text-center space-y-2">
+        <div key={i} className="bg-background-surface rounded-2xl border border-border-primary p-4 text-center space-y-2">
           <Sh className="h-6 w-10 mx-auto rounded-lg" />
           <Sh className="h-2.5 w-16 mx-auto rounded-full" />
         </div>
@@ -350,7 +350,7 @@ export const RevisionSkeleton = () => (
     </div>
 
     {/* Review card */}
-    <div className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-5 xl:p-6 space-y-5">
+    <div className="bg-background-surface rounded-2xl border border-border-primary p-5 xl:p-6 space-y-5">
       <div className="flex justify-between items-center">
         <Sh className="h-3 w-20 rounded-full" />
         <Sh className="h-3 w-16 rounded-full" />
@@ -370,13 +370,13 @@ export const RevisionSkeleton = () => (
 export const QuizResultSkeleton = () => (
   <div className="space-y-6 font-outfit w-full">
     {/* Result card */}
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-5 xl:p-8 text-center space-y-2 xl:space-y-4">
+    <div className="bg-background-surface rounded-2xl border border-border-primary p-5 xl:p-8 text-center space-y-2 xl:space-y-4">
       <Sh className="w-16 h-16 rounded-full mx-auto" />
       <Sh className="h-5 w-2/3 mx-auto rounded-lg" />
       <Sh className="h-3 w-1/3 mx-auto rounded-full" />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-2">
         {[1, 2, 3, 4].map(i => (
-          <div key={i} className="bg-slate-50 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 space-y-2">
+          <div key={i} className="bg-background-surface-secondary rounded-lg xl:rounded-xl p-3 space-y-2">
             <Sh className="h-5 w-10 mx-auto rounded-md" />
             <Sh className="h-2.5 w-12 mx-auto rounded-full" />
           </div>
@@ -385,13 +385,13 @@ export const QuizResultSkeleton = () => (
     </div>
 
     {/* Question review list */}
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-4 xl:p-8 space-y-5">
+    <div className="bg-background-surface rounded-2xl border border-border-primary p-4 xl:p-8 space-y-5">
       <div className="flex items-center gap-3">
         <Sh className="w-10 h-10 rounded-lg xl:rounded-xl shrink-0" />
         <Sh className="h-4 w-40 rounded-lg" />
       </div>
       {[1, 2, 3, 4, 5].map(i => (
-        <div key={i} className="flex items-start gap-3 p-4 rounded-lg xl:rounded-xl border border-slate-100 dark:border-slate-700">
+        <div key={i} className="flex items-start gap-3 p-4 rounded-lg xl:rounded-xl border border-border-primary">
           <Sh className="w-8 h-8 rounded-lg shrink-0" />
           <div className="flex-1 space-y-2 py-1">
             <Sh className="h-3 w-full rounded-md" />
@@ -406,7 +406,7 @@ export const QuizResultSkeleton = () => (
 export const DetailSkeleton = () => (
   <div className="space-y-6 xl:space-y-8 font-outfit w-full">
     {/* Header / Banner */}
-    <div className="relative bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 xl:p-10 text-center">
+    <div className="relative bg-background-surface rounded-3xl border border-border-primary p-6 xl:p-10 text-center">
       <div className="space-y-2 xl:space-y-4 max-w-3xl mx-auto flex flex-col items-center">
         <Sh className="w-16 h-16 xl:w-20 xl:h-20 rounded-2xl" />
         <Sh className="h-8 xl:h-10 w-full rounded-lg xl:rounded-xl" />
@@ -419,8 +419,8 @@ export const DetailSkeleton = () => (
     </div>
 
     {/* Content */}
-    <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 xl:p-10 space-y-6">
-      <Sh className="w-full aspect-video rounded-[1.5rem]" />
+    <div className="bg-background-surface rounded-3xl border border-border-primary p-6 xl:p-10 space-y-6">
+      <Sh className="w-full aspect-video rounded-2xl" />
       <div className="space-y-2 xl:space-y-4 pt-4">
         <Sh className="h-5 w-full rounded-lg" />
         <Sh className="h-5 w-full rounded-lg" />

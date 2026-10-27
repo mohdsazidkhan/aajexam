@@ -152,13 +152,13 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
         center={
           <div className="w-full">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
               <input
                 type="text"
                 placeholder={translate('Search exams...')}
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full bg-white dark:bg-black rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-300 dark:border-slate-600"
+                className="w-full bg-background-surface rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-border-primary dark:border-slate-600"
               />
             </div>
           </div>
@@ -167,10 +167,10 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
           <div className="flex gap-1.5 overflow-x-auto no-scrollbar max-w-full">
             {filters.map(f => (
               <button key={f.id} onClick={() => setActiveFilter(f.id)}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-full font-black uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-full font-bold uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   activeFilter === f.id
-                    ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] border-primary-600'
-                    : 'bg-white dark:bg-slate-700 text-slate-700 dark:text-white border-slate-300 dark:border-slate-500'
+                    ? 'text-on-primary border-primary-600 bg-primary-600'
+                    : 'bg-background-surface text-content-secondary border-border-primary dark:border-slate-500'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {translate(f.label)}
               </button>
@@ -189,15 +189,15 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
               <Card as="section"
                 hoverable
                 onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
-                className="group relative flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-sm"
+                className="group relative flex flex-col gap-4 border-border-primary hover:border-primary-700 transition-all rounded-2xl bg-background-surface"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
+                    <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 text-on-primary text-xs xl:text-base font-bold tabular-nums">
                       {idx + 1}
                     </div>
                     <section>
-                      <h2 className="text-md font-black text-content-primary uppercase tracking-tight">{translateData(exam.name)}</h2>
+                      <h2 className="text-md font-bold text-content-primary uppercase tracking-tight">{translateData(exam.name)}</h2>
                       {exam.code && <p className="text-[10px] font-bold text-content-muted uppercase">{exam.code}</p>}
                     </section>
                   </div>
@@ -208,24 +208,24 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                 {/* Category Badge */}
                 <div className="flex items-center gap-1.5">
                   {exam.category?.type === 'Central'
-                    ? <Building className="w-3 h-3 text-black dark:text-white" />
-                    : <MapPin className="w-3 h-3 text-black dark:text-white" />
+                    ? <Building className="w-3 h-3 text-content-primary" />
+                    : <MapPin className="w-3 h-3 text-content-primary" />
                   }
                   <span className="text-xs font-bold text-content-secondary">{translateData(exam.category?.name) || translate('General')}</span>
-                  <span className="text-[10px] font-bold text-content-muted px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-full">{exam.category?.type || ''}</span>
+                  <span className="text-[10px] font-bold text-content-muted px-2 py-0.5 bg-background-surface-secondary rounded-full">{exam.category?.type || ''}</span>
                 </div>
 
                 {/* Counts */}
                 <div className="flex items-center flex-wrap gap-2">
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-primary-600 uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <FileText className="w-3 h-3" />
                     {translate('{count} Tests', { count: exam.practiceTestCount || 0 })}
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                     <History className="w-3 h-3" />
                     {translate('{count} PYQs', { count: exam.pyqCount || 0 })}
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-primary-600 uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <BrainCircuit className="w-3 h-3" />
                     {translate('{count} Quizzes', { count: exam.quizCount || 0 })}
                   </div>
@@ -238,7 +238,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
           {filteredExams.length === 0 && !loading && (
             <div className="col-span-full py-20 text-center space-y-2 xl:space-y-4">
               <Search className="w-20 h-20 text-gray-300 mx-auto" />
-              <h2 className="text-xl font-black text-gray-400 uppercase">{translate('No exams found')}</h2>
+              <h2 className="text-xl font-bold text-content-muted">{translate('No exams found')}</h2>
               <Button variant="primary" onClick={() => { setActiveFilter('all'); setSearchQuery(''); }}>{translate('View All')}</Button>
             </div>
           )}

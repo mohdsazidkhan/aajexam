@@ -83,40 +83,40 @@ const AboutUs = () => {
             <PageHero
                icon={Sparkles}
                eyebrow={translate('About Us')}
-               title={rich('About <0>Us</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
+               title={rich('About <0>Us</0>', [(c) => <span className="text-primary-600">{c}</span>])}
                stats={stats.map((st) => ({ label: translate(st.label), value: st.value, icon: st.icon }))}
             />
 
             {/* --- Mission & Vision --- */}
             <section className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
-               <Card as="section" className="p-6 xl:p-10 space-y-8 border-none bg-primary-50 dark:bg-slate-900 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 relative overflow-hidden">
+               <Card as="section" className="p-6 xl:p-10 space-y-8 border-none dark:bg-slate-900 text-content-primary border border-border-primary relative overflow-hidden">
                   <div className="relative z-10 space-y-6">
-                     <div className="inline-flex items-center gap-2 bg-primary-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest text-primary-700 dark:text-primary-400 backdrop-blur-sm border border-primary-500/30">
+                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.08em] text-primary-600 border border-primary-500/30">
                         <Rocket className="w-4 h-4" /> OUR MISSION
                      </div>
-                     <h2 className="text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tight leading-none">Good Education <br />{translate('For Every Student')}</h2>
-                     <p className="text-slate-700 dark:text-slate-300 font-bold leading-relaxed">{translate('AajExam helps students across India prepare for government exams. We believe every student deserves good study material, no matter where they come from.')}</p>
+                     <h2 className="text-xl md:text-2xl xl:text-4xl font-bold font-outfit tracking-tight leading-none">Good Education <br />{translate('For Every Student')}</h2>
+                     <p className="text-content-secondary font-bold leading-relaxed">{translate('AajExam helps students across India prepare for government exams. We believe every student deserves good study material, no matter where they come from.')}</p>
                      <div className="space-y-2 xl:space-y-4">
                         {['All About Your Knowledge', 'Proven Study Methods', 'Top Students Get Rewarded'].map((pill, i) => (
                            <div key={i} className="flex items-center gap-3">
-                              <div className="w-5 h-5 bg-primary-600 rounded-full flex items-center justify-center text-[10px] font-black text-white">✓</div>
-                              <span className="text-sm font-black uppercase tracking-widest text-slate-700 dark:text-slate-300">{pill}</span>
+                              <div className="w-5 h-5 bg-primary-600 rounded-full flex items-center justify-center text-[10px] font-bold text-on-primary">✓</div>
+                              <span className="text-sm font-bold uppercase tracking-[0.08em] text-content-secondary">{pill}</span>
                            </div>
                         ))}
                      </div>
                   </div>
-                  <ShieldCheck className="absolute -bottom-10 -right-10 w-64 h-64 text-primary-600/10 dark:text-white/5 -rotate-12" />
+                  <ShieldCheck className="absolute -bottom-10 -right-10 w-64 h-64 text-primary-600/10 dark:text-white/5" />
                </Card>
 
                <div className="space-y-10 px-4">
                   <div className="space-y-2 xl:space-y-4">
-                     <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-wide">{translate('How We Help You')}</h3>
-                     <p className="text-slate-700 dark:text-slate-400 font-bold leading-relaxed">{translate('We use simple and effective ways to help you study. Our platform is built to boost your score in SSC, UPSC, Banking, and Railway exams.')}</p>
+                     <h3 className="text-xl xl:text-2xl font-bold font-outfit tracking-wide">{translate('How We Help You')}</h3>
+                     <p className="text-content-secondary font-bold leading-relaxed">{translate('We use simple and effective ways to help you study. Our platform is built to boost your score in SSC, UPSC, Banking, and Railway exams.')}</p>
                   </div>
                   <div className="space-y-2">
-                     <div className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white w-fit rounded-lg xl:rounded-xl"><Target className="w-5 h-5" /></div>
-                     <h4 className="font-black uppercase text-sm">{translate('All Subjects Covered')}</h4>
-                     <p className="text-xs font-medium text-slate-600 dark:text-slate-400">{translate('We cover Maths, English, and General Knowledge for all major government exams.')}</p>
+                     <div className="p-3 bg-black/10 dark:bg-white/10 text-content-primary w-fit rounded-lg xl:rounded-xl"><Target className="w-5 h-5" /></div>
+                     <h4 className="font-bold uppercase text-sm">{translate('All Subjects Covered')}</h4>
+                     <p className="text-xs font-medium text-content-secondary">{translate('We cover Maths, English, and General Knowledge for all major government exams.')}</p>
                   </div>
                </div>
             </section>
@@ -124,19 +124,19 @@ const AboutUs = () => {
             {/* --- Platform Features Grid --- */}
             <section className="space-y-12">
                <section className="text-center space-y-2">
-                  <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight">{translate('Our Features')}</h2>
-                  <p className="text-xs font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{translate('Designed for your study success')}</p>
+                  <h2 className="text-xl xl:text-3xl font-bold font-outfit tracking-tight">{translate('Our Features')}</h2>
+                  <p className="text-xs font-bold text-content-secondary uppercase tracking-[0.08em]">{translate('Designed for your study success')}</p>
                </section>
 
                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                   {features.map((f, i) => (
-                     <Card as="article" key={i} hoverable className="group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
-                        <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit shadow-sm`}>
+                     <Card as="article" key={i} hoverable className="group space-y-6 border hover:border-primary-500/50 transition-all duration-300">
+                        <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit`}>
                            <f.icon className="w-6 h-6" />
                         </div>
                         <div className="space-y-2">
-                           <h3 className="text-xl font-black font-outfit uppercase group-hover:text-primary-600 transition-colors">{translate(f.title)}</h3>
-                           <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">{translate(f.desc)}</p>
+                           <h3 className="text-xl font-bold font-outfit group-hover:text-primary-600 transition-colors">{translate(f.title)}</h3>
+                           <p className="text-sm font-medium text-content-secondary leading-relaxed">{translate(f.desc)}</p>
                         </div>
                      </Card>
                   ))}
@@ -145,19 +145,19 @@ const AboutUs = () => {
 
             {/* --- Trust & Commitment --- */}
             <section>
-               <Card as="section" className="p-10 border-none bg-slate-100 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-800">
+               <Card as="section" className="p-10 border-none bg-background-surface-secondary border border-border-primary">
                   <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
                      <div className="xl:col-span-4 text-center xl:text-left space-y-6">
-                        <div className="w-20 h-20 bg-white dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto xl:mx-0 shadow-sm">
-                           <Building2 className="w-10 h-10 text-primary-600 dark:text-primary-300" />
+                        <div className="w-20 h-20 bg-background-surface rounded-3xl flex items-center justify-center mx-auto xl:mx-0">
+                           <Building2 className="w-10 h-10 text-primary-600" />
                         </div>
                         <div className="space-y-2">
-                           <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Officially Registered')}</h3>
-                           <p className="text-xs font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{translate('A Government Registered Company (UDYAM)')}</p>
+                           <h3 className="text-xl xl:text-2xl font-bold font-outfit">{translate('Officially Registered')}</h3>
+                           <p className="text-xs font-bold text-content-secondary uppercase tracking-[0.08em]">{translate('A Government Registered Company (UDYAM)')}</p>
                         </div>
                      </div>
-                     <div className="xl:col-span-8 space-y-6 pl-0 xl:pl-10 xl:border-l-2 border-slate-200 dark:border-slate-700">
-                        <p className="text-sm font-medium text-slate-600 dark:text-slate-300 leading-8">Led by <strong>{translate('MOHD SAZID KHAN')}</strong>{translate(', AajExam is 100% based on your knowledge and hard work. Everything you earn here is through your own effort. We follow all rules to make sure the platform is safe, fair, and honest for every student.')}</p>
+                     <div className="xl:col-span-8 space-y-6 pl-0 xl:pl-10 xl:border-l-2 border-border-primary">
+                        <p className="text-sm font-medium text-content-secondary leading-8">Led by <strong>{translate('MOHD SAZID KHAN')}</strong>{translate(', AajExam is 100% based on your knowledge and hard work. Everything you earn here is through your own effort. We follow all rules to make sure the platform is safe, fair, and honest for every student.')}</p>
                      </div>
                   </div>
                </Card>
@@ -165,11 +165,11 @@ const AboutUs = () => {
 
             {/* --- CTA --- */}
             <section>
-               <Card as="section" className="p-8 xl:p-12 text-center bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-none text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 relative overflow-hidden">
+               <Card as="section" className="p-8 xl:p-12 text-center border-none text-content-primary border border-border-primary relative overflow-hidden bg-background-surface">
                   <section className="relative z-10 space-y-8">
-                     <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tight">{translate('Ready to Begin?')}</h2>
+                     <h2 className="text-2xl xl:text-5xl font-bold font-outfit tracking-tight">{translate('Ready to Begin?')}</h2>
                      <p className="text-lg font-medium opacity-90 max-w-2xl mx-auto leading-relaxed">{translate('Join thousands of students who are already passing exams and earning cash by referring friends to AajExam.')}</p>
-                     <Button onClick={() => router.push('/')} variant="secondary" size="lg" className="mx-auto px-12 py-6 text-sm font-black">{translate('START LEARNING FOR FREE')}</Button>
+                     <Button onClick={() => router.push('/')} variant="secondary" size="lg" className="mx-auto px-12 py-6 text-sm font-bold">{translate('START LEARNING FOR FREE')}</Button>
                   </section>
                   <Sparkles className="absolute top-10 left-10 w-24 h-24 text-slate-900/10 dark:text-white/10" />
                   <ShieldCheck className="absolute bottom-10 right-10 w-20 xl:w-32 h-20 xl:h-32 text-slate-900/10 dark:text-white/10" />
@@ -179,8 +179,8 @@ const AboutUs = () => {
             {/* --- Footer Info --- */}
             <footer className="space-y-12">
                <AuthorBio />
-               <div className="text-center pt-10 border-t border-slate-100 dark:border-slate-800">
-                  <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em]">{translate('About Us | Last Updated February 2026')}</p>
+               <div className="text-center pt-10 border-t border-border-primary">
+                  <p className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">{translate('About Us | Last Updated February 2026')}</p>
                </div>
             </footer>
          </div>

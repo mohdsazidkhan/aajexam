@@ -81,14 +81,14 @@ const PrivacyPolicy = () => {
 
                      {/* Introduction */}
                      <section id="intro" className="group">
-                        <section className="bg-white dark:bg-slate-800 p-4 md:p-6 xl:p-8 rounded-[2rem] xl:rounded-[4rem] shadow-sm border-none relative overflow-hidden mt-4">
+                        <section className="bg-background-surface p-4 md:p-6 xl:p-8 rounded-3xl xl:rounded-3xl border-none relative overflow-hidden mt-4">
                            <div className="flex items-center gap-4 mb-5">
-                              <div className="w-12 h-12 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                              <div className="w-12 h-12 text-primary-600 rounded-3xl flex items-center justify-center border border-primary-500/10">
                                  <Info className="w-6 h-6" />
                               </div>
-                              <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">Introduction</h2>
+                              <h2 className="text-xl xl:text-2xl font-bold tracking-tight text-content-primary">Introduction</h2>
                            </div>
-                           <p className="text-md xl:text-lg leading-relaxed text-slate-600 dark:text-slate-400 font-medium italic border-l-4 border-primary-500/20 pl-2 xl:pl-8">
+                           <p className="text-md xl:text-lg leading-relaxed text-content-secondary font-medium italic border-l-4 border-primary-500/20 pl-2 xl:pl-8">
                               This Privacy Policy explains how <strong>AajExam</strong> collects, uses, stores, and protects your information when you use our platform. By using AajExam, you agree to the practices described below.
                            </p>
                         </section>
@@ -97,10 +97,10 @@ const PrivacyPolicy = () => {
                      {/* Information Collection */}
                      <section id="collect" className="space-y-5">
                         <div className="flex items-center gap-4 px-4">
-                           <div className="w-12 h-12 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                           <div className="w-12 h-12 text-primary-600 rounded-3xl flex items-center justify-center border border-primary-500/10">
                               <Database className="w-6 h-6" />
                            </div>
-                           <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">Information We Collect</h2>
+                           <h2 className="text-xl xl:text-2xl font-bold tracking-tight text-content-primary">Information We Collect</h2>
                         </div>
 
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
@@ -112,14 +112,14 @@ const PrivacyPolicy = () => {
                               { title: 'Payment Details', body: 'Encrypted bank details for processing reward withdrawals.', icon: CreditCard, color: 'primary' },
                               { title: 'Device Information', body: 'Your IP address, browser, and device details.', icon: Smartphone, color: 'primary' }
                            ].map((item, i) => (
-                              <section key={i} className="bg-white dark:bg-slate-800 p-4 xl:p-5 rounded-[1rem] xl:rounded-[3rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all group">
+                              <section key={i} className="bg-background-surface p-4 xl:p-5 rounded-[1rem] xl:rounded-3xl border border-border-primary hover:border-primary-500/20 transition-all group">
                                  <div className="flex items-start gap-4">
-                                    <div className={`p-4 bg-${item.color === 'primary' ? 'primary' : item.color}-500/10 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-2xl border-2 border-transparent group-hover:border-current transition-all`}>
+                                    <div className={`p-4 bg-${item.color === 'primary' ? 'primary' : item.color}-500/10 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-2xl border border-transparent group-hover:border-current transition-all`}>
                                        <item.icon className="w-6 h-6" />
                                     </div>
                                     <div className="space-y-2">
-                                       <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 dark:text-white">{item.title}</h3>
-                                       <p className="text-xs font-medium text-slate-500 dark:text-slate-400 leading-relaxed">{item.body}</p>
+                                       <h3 className="text-sm font-bold uppercase tracking-[0.08em] text-content-primary">{item.title}</h3>
+                                       <p className="text-xs font-medium text-content-muted leading-relaxed">{item.body}</p>
                                     </div>
                                  </div>
                               </section>
@@ -128,14 +128,13 @@ const PrivacyPolicy = () => {
                      </section>
 
                      {/* Use of Information */}
-                     <section id="use" className="bg-primary-50 dark:bg-slate-900 rounded-[2rem] xl:rounded-[4rem] p-4 md:p-6 xl:p-8 space-y-6 xl:space-y-8 relative overflow-hidden shadow-sm">
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
+                     <section id="use" className="dark:bg-slate-900 rounded-3xl xl:rounded-3xl p-4 md:p-6 xl:p-8 space-y-6 xl:space-y-8 relative overflow-hidden">
 
                         <div className="flex items-center gap-4 relative z-10">
-                           <div className="w-12 h-12 bg-primary-500/20 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
+                           <div className="w-12 h-12 text-primary-600 rounded-3xl flex items-center justify-center border border-primary-500/20">
                               <Eye className="w-6 h-6" />
                            </div>
-                           <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">How We Use Information</h2>
+                           <h2 className="text-xl xl:text-2xl font-bold tracking-tight text-content-primary">How We Use Information</h2>
                         </div>
 
                         <div className="space-y-4 relative z-10">
@@ -145,17 +144,17 @@ const PrivacyPolicy = () => {
                               "To process referral rewards when friends you invite upgrade to PRO."
                            ].map((text, i) => (
                               <div key={i} className="flex gap-4 group">
-                                 <div className="w-1 h-9 bg-primary-500/20 group-hover:bg-primary-700 transition-colors rounded-full" />
-                                 <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed pt-2">{text}</p>
+                                 <div className="w-1 h-9 group-hover:bg-primary-700 transition-colors rounded-full" />
+                                 <p className="text-sm font-medium text-content-secondary leading-relaxed pt-2">{text}</p>
                               </div>
                            ))}
 
-                           <section className="ml-0 xl:ml-8 p-4 xl:p-6 bg-primary-600/10 dark:bg-white/5 rounded-[1rem] xl:rounded-[3rem] border-l-4 border-primary-600 space-y-6">
-                              <div className="flex items-center gap-4 text-primary-600 dark:text-primary-300">
+                           <section className="ml-0 xl:ml-8 p-4 xl:p-6 dark:bg-white/5 rounded-[1rem] xl:rounded-3xl border-l-4 border-primary-600 space-y-6">
+                              <div className="flex items-center gap-4 text-primary-600">
                                  <Zap className="w-6 h-6" />
-                                 <h3 className="text-sm font-black uppercase tracking-widest">Referral Rewards</h3>
+                                 <h3 className="text-sm font-bold uppercase tracking-[0.08em]">Referral Rewards</h3>
                               </div>
-                              <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">
+                              <p className="text-sm font-medium text-content-secondary leading-relaxed">
                                  Users who invite friends to AajExam receive a cash reward each time an invited friend upgrades to a paid PRO subscription for the first time. Rewards are credited to your Referral Rewards balance and can be withdrawn to your bank account.
                               </p>
                            </section>
@@ -163,34 +162,34 @@ const PrivacyPolicy = () => {
                      </section>
 
                      {/* Cookies & AdSense */}
-                     <section id="cookies" className="bg-white dark:bg-slate-800 p-4 xl:p-5 rounded-[1rem] xl:rounded-[4rem] shadow-sm space-y-6 xl:space-y-8 border-none">
+                     <section id="cookies" className="bg-background-surface p-4 xl:p-5 rounded-[1rem] xl:rounded-3xl space-y-6 xl:space-y-8 border-none">
                         <div className="flex items-center gap-4">
-                           <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-sm border-2 border-black/10 dark:border-white/10">
+                           <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-content-primary rounded-3xl flex items-center justify-center border border-border-primary">
                               <Cookie className="w-6 h-6" />
                            </div>
-                           <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">Cookies & Advertisements</h2>
+                           <h2 className="text-xl xl:text-2xl font-bold tracking-tight text-content-primary leading-none">Cookies & Advertisements</h2>
                         </div>
 
                         <div className="space-y-5">
-                           <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed italic border-l-4 border-black/20 dark:border-white/20 pl-6 px-4">
+                           <p className="text-sm font-medium text-content-secondary leading-relaxed italic border-l-4 border-border-primary pl-6 px-4">
                               We use essential cookies for keeping you logged in. AajExam also works with Google AdSense for showing advertisements.
                            </p>
 
                            <div className="grid grid-cols-1 gap-6">
-                              <section className="p-4 xl:p-10 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
+                              <section className="p-4 xl:p-10 bg-background-surface rounded-3xl space-y-6 border border-border-primary">
                                  <div className="flex items-center justify-between flex-wrap gap-4">
-                                    <h3 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white">How Ads Work</h3>
-                                    <div className="px-4 py-1.5 bg-primary-600 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-sm">GOOGLE ADSENSE</div>
+                                    <h3 className="text-sm font-bold uppercase tracking-[0.08em] text-content-primary">How Ads Work</h3>
+                                    <div className="px-4 py-1.5 bg-primary-600 text-on-primary text-[9px] font-bold uppercase tracking-[0.08em] rounded-full">GOOGLE ADSENSE</div>
                                  </div>
-                                 <ul className="grid grid-cols-1 xl:grid-cols-2 gap-6 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Showing ads based on your interests</li>
-                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Tracking how often you visit</li>
-                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Working with trusted partners</li>
-                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Showing personalized advertisements</li>
+                                 <ul className="grid grid-cols-1 xl:grid-cols-2 gap-6 text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">
+                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-content-primary" /> Showing ads based on your interests</li>
+                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-content-primary" /> Tracking how often you visit</li>
+                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-content-primary" /> Working with trusted partners</li>
+                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-content-primary" /> Showing personalized advertisements</li>
                                  </ul>
-                                 <div className="pt-6 border-t-2 border-slate-200 dark:border-slate-800 flex flex-wrap gap-4">
-                                    <a href="https://www.google.com/settings/ads" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-600 dark:text-primary-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Opt-out Google Ads</a>
-                                    <a href="http://www.aboutads.info/choices/" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-600 dark:text-primary-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Ad Choices</a>
+                                 <div className="pt-6 border-t-2 border-border-primary flex flex-wrap gap-4">
+                                    <a href="https://www.google.com/settings/ads" target="_blank" className="px-6 py-3 bg-background-surface rounded-lg xl:rounded-xl text-[9px] font-bold uppercase tracking-[0.08em] text-primary-600 border border-border-primary hover:border-primary-500/20 transition-all font-outfit">Opt-out Google Ads</a>
+                                    <a href="http://www.aboutads.info/choices/" target="_blank" className="px-6 py-3 bg-background-surface rounded-lg xl:rounded-xl text-[9px] font-bold uppercase tracking-[0.08em] text-primary-600 border border-border-primary hover:border-primary-500/20 transition-all font-outfit">Ad Choices</a>
                                  </div>
                               </section>
                            </div>
@@ -199,43 +198,43 @@ const PrivacyPolicy = () => {
 
                      {/* Security & Age */}
                      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-5">
-                        <section id="security" className="bg-white dark:bg-slate-800 p-4 xl:p-8 rounded-[3.5rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 space-y-6">
-                           <div className="w-14 h-14 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl flex items-center justify-center border-2 border-black/5 dark:border-white/5">
+                        <section id="security" className="bg-background-surface p-4 xl:p-8 rounded-3xl border border-border-primary space-y-6">
+                           <div className="w-14 h-14 bg-black/10 dark:bg-white/10 text-content-primary rounded-2xl flex items-center justify-center border border-border-primary">
                               <Lock className="w-6 h-6" />
                            </div>
-                           <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white leading-none">Data Security</h3>
-                           <p className="text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed">We use HTTPS, secure password hashing, and access controls to protect your data.</p>
+                           <h3 className="text-xl font-bold tracking-tight text-content-primary leading-none">Data Security</h3>
+                           <p className="text-sm font-medium text-content-muted leading-relaxed">We use HTTPS, secure password hashing, and access controls to protect your data.</p>
                         </section>
 
-                        <section id="eligibility" className="bg-primary-50 dark:bg-slate-900 p-4 xl:p-8 rounded-[3.5rem] shadow-sm border-none space-y-6 relative overflow-hidden">
-                           <div className="w-14 h-14 bg-black/20 dark:bg-white/20 text-black dark:text-white rounded-2xl flex items-center justify-center border border-black/20 dark:border-white/20 relative z-10 shadow-sm">
+                        <section id="eligibility" className="dark:bg-slate-900 p-4 xl:p-8 rounded-3xl border-none space-y-6 relative overflow-hidden">
+                           <div className="w-14 h-14 bg-black/20 dark:bg-white/20 text-content-primary rounded-2xl flex items-center justify-center border border-border-primary relative z-10">
                               <UserShield className="w-6 h-6" />
                            </div>
-                           <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white leading-none relative z-10">Age Limit</h3>
-                           <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed relative z-10">Users must be 13 years or older to create an account on the AajExam platform.</p>
+                           <h3 className="text-xl font-bold tracking-tight text-content-primary leading-none relative z-10">Age Limit</h3>
+                           <p className="text-sm font-medium text-content-secondary leading-relaxed relative z-10">Users must be 13 years or older to create an account on the AajExam platform.</p>
                            <Zap className="absolute -bottom-8 -right-8 w-20 xl:w-32 h-20 xl:h-32 text-slate-900/5 dark:text-white/5" />
                         </section>
                      </div>
 
                      {/* Contact Section */}
                      <section id="contact" className="group">
-                        <section className="bg-white dark:bg-slate-800 p-4 md:p-6 xl:p-8 rounded-[2.5rem] xl:rounded-[4rem] shadow-sm space-y-5 border-none relative overflow-hidden">
+                        <section className="bg-background-surface p-4 md:p-6 xl:p-8 rounded-3xl xl:rounded-3xl space-y-5 border-none relative overflow-hidden">
                            <div className="flex items-center gap-4">
-                              <div className="w-12 h-12 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                              <div className="w-12 h-12 text-primary-600 rounded-3xl flex items-center justify-center border border-primary-500/10">
                                  <Mail className="w-6 h-6" />
                               </div>
                               <section className="space-y-1">
-                                 <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">Contact Us</h2>
-                                 <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">GET IN TOUCH</p>
+                                 <h2 className="text-xl xl:text-2xl font-bold tracking-tight text-content-primary leading-none">Contact Us</h2>
+                                 <p className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">GET IN TOUCH</p>
                               </section>
                            </div>
-                           <address className="not-italic p-4 xl:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 xl:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
-                              <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
-                              <p className="text-xl xl:text-2xl font-black text-primary-600 dark:text-primary-300 tracking-tight">{config.CONTACT.EMAIL}</p>
+                           <address className="not-italic p-4 xl:p-8 bg-background-surface rounded-3xl space-y-2 xl:space-y-4 border border-border-primary group-hover:border-primary-500/20 transition-all">
+                              <p className="text-sm font-bold text-content-muted uppercase tracking-[0.08em]">Support Email:</p>
+                              <p className="text-xl xl:text-2xl font-bold text-primary-600 tracking-tight">{config.CONTACT.EMAIL}</p>
                            </address>
                            <button
                               onClick={() => router.push('/student/dashboard')}
-                              className="w-full bg-slate-900 dark:bg-slate-700 text-white py-3 rounded-[2rem] font-black uppercase tracking-[0.3em] text-xs shadow-sm active:scale-95 transition-all font-outfit"
+                              className="w-full bg-slate-900 dark:bg-slate-700 text-white py-3 rounded-3xl font-bold uppercase tracking-[0.08em] text-xs active:scale-95 transition-all font-outfit"
                            >
                               BACK TO HOME
                            </button>
@@ -246,8 +245,8 @@ const PrivacyPolicy = () => {
                         <AuthorBio />
                      </div>
 
-                     <footer className="text-center pt-4 border-t border-slate-200 dark:border-slate-800">
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.6em]">
+                     <footer className="text-center pt-4 border-t border-border-primary">
+                        <p className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">
                            LAST UPDATED: 1st April 2026
                         </p>
                      </footer>

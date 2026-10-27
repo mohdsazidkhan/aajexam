@@ -45,7 +45,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
   return (
     <div className="share-wrapper font-outfit">
       <div className="flex justify-center mt-4">
-        <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em]">
+        <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">
           {translate('Spread the knowledge')}
         </span>
       </div>
@@ -54,7 +54,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
         {isMobile && navigator.share ? (
           <button
             onClick={handleNativeShare}
-            className="px-8 py-4 bg-primary-600 text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-sm flex items-center gap-3 active:translate-y-1 transition-all"
+            className="px-8 py-4 bg-primary-600 text-on-primary rounded-2xl text-xs font-bold uppercase tracking-[0.08em] flex items-center gap-3 active:translate-y-1 transition-all"
           >
             <FaShare className="text-sm" />
             {translate('Share With Friends')}
@@ -74,7 +74,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 flex items-center justify-center rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm transition-all hover:-translate-y-1 active:translate-y-0.5 bg-white dark:bg-slate-800 text-primary-600 dark:text-primary-300"
+                  className="w-12 h-12 flex items-center justify-center rounded-2xl border border-border-primary transition-all hover:-translate-y-1 active:translate-y-0.5 bg-background-surface text-primary-600"
                   title={social.label}
                 >
                   <span className="text-xl">{social.icon}</span>
@@ -83,7 +83,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
                 <button
                   key={idx}
                   onClick={social.onClick}
-                  className="w-12 h-12 flex items-center justify-center rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm transition-all hover:-translate-y-1 active:translate-y-0.5 bg-white dark:bg-slate-800 text-primary-600 dark:text-primary-300"
+                  className="w-12 h-12 flex items-center justify-center rounded-2xl border border-border-primary transition-all hover:-translate-y-1 active:translate-y-0.5 bg-background-surface text-primary-600"
                   title={social.label}
                 >
                   <span className="text-xl">{social.icon}</span>

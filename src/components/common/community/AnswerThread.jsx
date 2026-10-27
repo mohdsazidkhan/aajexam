@@ -28,12 +28,12 @@ const timeAgo = (date) => {
 
 const RoleBadge = ({ role }) => {
   if (role === 'mentor') return (
-    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300 rounded">
+    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold text-primary-600 rounded">
       <GraduationCap className="w-2.5 h-2.5" /> MENTOR
     </span>
   );
   if (role === 'admin') return (
-    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">
+    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-background-surface-secondary text-content-primary rounded">
       <Shield className="w-2.5 h-2.5" /> ADMIN
     </span>
   );
@@ -86,9 +86,9 @@ function AnswerItem({
   const isOwner = String(item.author?._id) === String(currentUserId);
 
   return (
-    <div className={`${isReply ? 'ml-8 pl-4 border-l-2 border-slate-200 dark:border-slate-700' : item.isAcceptedAnswer ? 'border-2 border-primary-400 bg-primary-50/50 dark:bg-primary-900/10 rounded-lg xl:rounded-xl p-3' : ''} py-3`}>
+    <div className={`${isReply ? 'ml-8 pl-4 border-l-2 border-border-primary' : item.isAcceptedAnswer ? 'border border-primary-400 rounded-lg xl:rounded-xl p-3' : ''} py-3`}>
       {item.isAcceptedAnswer && !isReply && (
-        <div className="mb-2 inline-flex items-center gap-1.5 text-[10px] font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider">
+        <div className="mb-2 inline-flex items-center gap-1.5 text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em]">
           <CheckCircle2 className="w-3.5 h-3.5" /> {translate('Accepted Answer')}
         </div>
       )}
@@ -96,14 +96,14 @@ function AnswerItem({
         <div className="flex flex-col items-center gap-0.5 shrink-0">
           <button aria-label={translate('Like')}
             onClick={() => handleVote('up')}
-            className={`p-1 rounded hover:bg-primary-100 dark:hover:bg-primary-900/30 transition ${myVote === 'up' ? 'text-primary-600 dark:text-primary-300' : 'text-slate-400'}`}
+            className={`p-1 rounded transition ${myVote === 'up' ? 'text-primary-600' : 'text-content-muted'}`}
           >
             <ThumbsUp className="w-4 h-4" />
           </button>
-          <span className="text-xs font-bold text-slate-700 dark:text-slate-200">{upvotes - downvotes}</span>
+          <span className="text-xs font-bold text-content-secondary">{upvotes - downvotes}</span>
           <button aria-label={translate('Dislike')}
             onClick={() => handleVote('down')}
-            className={`p-1 rounded hover:bg-slate-100 dark:hover:bg-white/30 transition ${myVote === 'down' ? 'text-black dark:text-white' : 'text-slate-400'}`}
+            className={`p-1 rounded hover:bg-background-surface-secondary transition ${myVote === 'down' ? 'text-content-primary' : 'text-content-muted'}`}
           >
             <ThumbsDown className="w-4 h-4" />
           </button>
@@ -111,54 +111,54 @@ function AnswerItem({
 
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-1.5 text-xs mb-1">
-            <div className="w-6 h-6 rounded-full bg-primary-600 dark:bg-primary-800 text-white text-[10px] font-bold flex items-center justify-center">
+            <div className="w-6 h-6 rounded-full bg-primary-600 text-on-primary text-[10px] font-bold flex items-center justify-center">
               {(item.author?.name || '?').charAt(0).toUpperCase()}
             </div>
-            <span className="font-bold text-slate-800 dark:text-slate-200">{item.author?.name || translate('User')}</span>
+            <span className="font-bold text-content-primary">{item.author?.name || translate('User')}</span>
             {item.author?.username && (
-              <Link href={`/@${item.author.username}`} className="text-[11px] font-semibold text-primary-600 dark:text-primary-300 hover:underline">
+              <Link href={`/@${item.author.username}`} className="text-[11px] font-semibold text-primary-600 hover:underline">
                 @{item.author.username}
               </Link>
             )}
             <RoleBadge role={item.authorRole} />
             {item.isPinned && (
-              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">
+              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-background-surface-secondary text-content-primary rounded">
                 <Pin className="w-2.5 h-2.5" /> PINNED
               </span>
             )}
-            <span className="text-slate-400">· {timeAgo(item.createdAt)}</span>
-            {item.isEdited && <span className="text-slate-400 text-[10px]">{translate('(edited)')}</span>}
+            <span className="text-content-muted">· {timeAgo(item.createdAt)}</span>
+            {item.isEdited && <span className="text-content-muted text-[10px]">{translate('(edited)')}</span>}
           </div>
 
-          <p className="text-sm text-slate-800 dark:text-slate-200 whitespace-pre-wrap break-words leading-relaxed">
+          <p className="text-sm text-content-primary whitespace-pre-wrap break-words leading-relaxed">
             {item.body}
           </p>
           {item.image && (
-            <img src={item.image} alt="" className="mt-2 max-h-64 rounded-lg border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+            <img src={item.image} alt="" className="mt-2 max-h-64 rounded-lg border border-border-primary object-contain bg-background-surface" />
           )}
 
           <div className="mt-2 flex items-center gap-4 text-xs">
             {!isReply && (
-              <button onClick={() => setShowReplyBox(v => !v)} className="flex items-center gap-1 text-slate-500 hover:text-primary-600 transition">
+              <button onClick={() => setShowReplyBox(v => !v)} className="flex items-center gap-1 text-content-muted hover:text-primary-600 transition">
                 <CornerDownRight className="w-3.5 h-3.5" /> {translate('Reply')}{item.replyCount ? ` (${item.replyCount})` : ''}
               </button>
             )}
             {canAccept && !isReply && (
               <button
                 onClick={() => onAccept(item._id)}
-                className={`flex items-center gap-1 transition ${item.isAcceptedAnswer ? 'text-primary-600 dark:text-primary-300 font-bold' : 'text-slate-400 hover:text-primary-600'}`}
+                className={`flex items-center gap-1 transition ${item.isAcceptedAnswer ? 'text-primary-600 font-bold' : 'text-content-muted hover:text-primary-600'}`}
               >
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 {item.isAcceptedAnswer ? translate('Accepted') : translate('Accept')}
               </button>
             )}
             {!isOwner && (
-              <button aria-label={translate('Report')} onClick={() => onFlag(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
+              <button aria-label={translate('Report')} onClick={() => onFlag(item._id)} className="text-content-muted hover:text-content-primary dark:hover:text-white transition">
                 <Flag className="w-3.5 h-3.5" />
               </button>
             )}
             {isOwner && (
-              <button aria-label={translate('Delete')} onClick={() => onDelete(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
+              <button aria-label={translate('Delete')} onClick={() => onDelete(item._id)} className="text-content-muted hover:text-content-primary dark:hover:text-white transition">
                 <Trash2 className="w-3.5 h-3.5" />
               </button>
             )}
@@ -171,9 +171,9 @@ function AnswerItem({
                 onChange={e => setReplyText(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && submitReply()}
                 placeholder={translate('Write a reply…')}
-                className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-border-primary bg-background-surface-secondary focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
-              <button onClick={submitReply} className="px-3 py-1.5 text-xs font-bold bg-primary-600 text-white rounded-lg hover:bg-primary-600">
+              <button onClick={submitReply} className="px-3 py-1.5 text-xs font-bold bg-primary-600 text-on-primary rounded-lg hover:bg-primary-600">
                 {translate('Post')}
               </button>
             </div>
@@ -277,7 +277,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
   return (
     <div className="mt-6">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-base font-bold text-slate-800 dark:text-slate-100">
+        <h3 className="text-base font-bold text-content-primary">
           {total} {total === 1 ? translate('Answer') : translate('Answers')}
         </h3>
         {items.length > 0 && (
@@ -286,7 +286,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
               <button
                 key={s}
                 onClick={() => { setSort(s); load(s); }}
-                className={`px-2.5 py-1 rounded uppercase tracking-wider ${sort === s ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}
+                className={`px-2.5 py-1 rounded uppercase tracking-[0.08em] ${sort === s ? 'bg-primary-600 text-on-primary' : 'bg-background-surface-secondary text-content-muted'}`}
               >
                 {s === 'top' ? translate('Top') : translate('Newest')}
               </button>
@@ -296,38 +296,38 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
       </div>
 
       {user ? (
-        <div className="mb-4 p-3 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60">
+        <div className="mb-4 p-3 rounded-lg xl:rounded-xl border border-border-primary bg-background-surface">
           <textarea
             value={newAnswer}
             onChange={e => setNewAnswer(e.target.value)}
             placeholder={translate('Write your answer…')}
             rows={3}
-            className="w-full text-sm px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black focus:outline-none focus:ring-2 focus:ring-primary-500 resize-y"
+            className="w-full text-sm px-3 py-2 rounded-lg border border-border-primary bg-background-surface-secondary focus:outline-none focus:ring-2 focus:ring-primary-500 resize-y"
           />
           <div className="mt-2 flex justify-end">
             <button
               disabled={submitting || newAnswer.trim().length < 2}
               onClick={submitNew}
-              className="px-4 py-2 text-xs font-bold bg-primary-600 text-white rounded-lg hover:bg-primary-600 disabled:opacity-50"
+              className="px-4 py-2 text-xs font-bold bg-primary-600 text-on-primary rounded-lg hover:bg-primary-600 disabled:opacity-50"
             >
               {submitting ? translate('Posting…') : translate('Post Answer')}
             </button>
           </div>
         </div>
       ) : (
-        <div className="mb-4 p-3 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/40 text-center">
-          <p className="text-sm text-slate-500">
-            <Link href="/login" className="text-primary-600 dark:text-primary-300 font-bold hover:underline">{translate('Login')}</Link> to post an answer
+        <div className="mb-4 p-3 rounded-lg xl:rounded-xl border border-border-primary bg-background-surface-secondary text-center">
+          <p className="text-sm text-content-muted">
+            <Link href="/login" className="text-primary-600 font-bold hover:underline">{translate('Login')}</Link> to post an answer
           </p>
         </div>
       )}
 
       {loading && <CommentSkeleton rows={3} />}
       {!loading && items.length === 0 && (
-        <p className="text-sm text-slate-400 py-6 text-center">{translate('No answers yet. Be the first to help!')}</p>
+        <p className="text-sm text-content-muted py-6 text-center">{translate('No answers yet. Be the first to help!')}</p>
       )}
 
-      <div className="divide-y divide-slate-100 dark:divide-slate-700/50">
+      <div className="divide-y divide-border-primary">
         {items.map(item => (
           <AnswerItem
             key={item._id}

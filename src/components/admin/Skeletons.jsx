@@ -2,7 +2,7 @@ import React from 'react';
 
 // Basic shimmer block (mirrors PrivateSkeletons.jsx's local `Sh`)
 const Sh = ({ className = '' }) => (
-  <div className={`container mx-auto animate-pulse bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-primary-500/15 dark:bg-primary-500/20 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 // Generic admin table page: filter/search bar + data table.
@@ -27,14 +27,14 @@ export const AdminTableSkeleton = ({ rows = 8, columns = 6, showHeader = true, s
     )}
 
     {/* Table */}
-    <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 overflow-hidden">
-      <div className="flex gap-3 px-4 py-3 border-b border-slate-100 dark:border-slate-700">
+    <div className="bg-background-surface rounded-3xl border border-border-primary overflow-hidden">
+      <div className="flex gap-3 px-4 py-3 border-b border-border-primary">
         {Array.from({ length: columns }).map((_, i) => (
           <Sh key={i} className="h-2.5 flex-1 rounded-full" />
         ))}
       </div>
       {Array.from({ length: rows }).map((_, r) => (
-        <div key={r} className="flex items-center gap-3 px-4 py-3 border-b border-slate-50 dark:border-slate-700/50 last:border-0">
+        <div key={r} className="flex items-center gap-3 px-4 py-3 border-b border-border-primary dark:border-slate-700/50 last:border-0">
           {Array.from({ length: columns }).map((_, c) => (
             <Sh key={c} className={`h-4 flex-1 rounded-lg ${c === 0 ? 'max-w-[2rem]' : ''}`} />
           ))}
@@ -50,7 +50,7 @@ export const AdminMainDashboardSkeleton = ({ sectionCards = [8, 5, 9] }) => (
   <div className="w-full font-outfit">
     <div className="grid grid-cols-2 xl:grid-cols-5 gap-3 xl:gap-3 mb-4">
       {[1, 2, 3, 4, 5].map((i) => (
-        <div key={i} className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-white/5 p-3 xl:p-4 rounded-lg xl:rounded-[2.5rem] shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <div key={i} className="bg-background-surface border border-border-primary p-3 xl:p-4 rounded-lg xl:rounded-3xl relative">
           <div className="flex items-center justify-between">
             <div className="space-y-3">
               <Sh className="h-2.5 w-24 rounded-full" />
@@ -67,11 +67,11 @@ export const AdminMainDashboardSkeleton = ({ sectionCards = [8, 5, 9] }) => (
       <div key={s} className="mb-4">
         <div className="flex items-center gap-3 mb-3">
           <Sh className="h-2.5 w-40 rounded-full" />
-          <div className="flex-1 h-px bg-slate-200 dark:bg-white/10" />
+          <div className="flex-1 h-px bg-background-surface-secondary" />
         </div>
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-3">
           {Array.from({ length: count }).map((_, i) => (
-            <div key={i} className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-white/5 rounded-lg xl:rounded-[2rem] p-3 xl:p-4 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+            <div key={i} className="bg-background-surface border border-border-primary rounded-lg xl:rounded-3xl p-3 xl:p-4 relative">
               <div className="flex items-center justify-between mb-3">
                 <Sh className="w-10 h-10 xl:w-14 xl:h-14 rounded-2xl" />
                 <Sh className="h-6 w-12 rounded-lg" />
@@ -84,7 +84,7 @@ export const AdminMainDashboardSkeleton = ({ sectionCards = [8, 5, 9] }) => (
       </div>
     ))}
 
-    <div className="bg-white dark:bg-slate-900/40 rounded-lg xl:rounded-[3rem] p-3 xl:p-4 shadow-sm">
+    <div className="bg-background-surface rounded-lg xl:rounded-3xl p-3 xl:p-4">
       <div className="flex items-center gap-3 xl:gap-3 mb-4 px-3 xl:px-4 py-2 xl:py-2.5">
         <Sh className="w-14 h-14 rounded-2xl" />
         <div className="space-y-2">
@@ -107,7 +107,7 @@ export const AdminDashboardSkeleton = () => (
     <Sh className="h-7 w-64 rounded-lg xl:rounded-xl" />
     <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
       {[1, 2, 3, 4].map(i => (
-        <div key={i} className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-4 space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <div key={i} className="bg-background-surface rounded-2xl border border-border-primary p-4 space-y-3 relative">
           <Sh className="w-10 h-10 rounded-lg xl:rounded-xl" />
           <Sh className="h-6 w-20 rounded-lg" />
           <Sh className="h-2.5 w-24 rounded-full" />
@@ -115,11 +115,11 @@ export const AdminDashboardSkeleton = () => (
       ))}
     </div>
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-3">
-      <div className="xl:col-span-2 bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+      <div className="xl:col-span-2 bg-background-surface rounded-2xl border border-border-primary p-4 space-y-2 xl:space-y-3 relative">
         <Sh className="h-5 w-40 rounded-lg" />
         <Sh className="h-64 w-full rounded-lg xl:rounded-xl" />
       </div>
-      <div className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+      <div className="bg-background-surface rounded-2xl border border-border-primary p-4 space-y-2 xl:space-y-3 relative">
         <Sh className="h-5 w-32 rounded-lg" />
         {[1, 2, 3, 4].map(i => (
           <div key={i} className="flex items-center gap-3">
@@ -136,7 +136,7 @@ export const AdminDashboardSkeleton = () => (
 export const AdminFormSkeleton = ({ fields = 5 }) => (
   <div className="max-w-3xl mx-auto space-y-3 font-outfit w-full">
     <Sh className="h-7 w-56 rounded-lg xl:rounded-xl" />
-    <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-4 xl:p-10 space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+    <div className="bg-background-surface rounded-3xl border border-border-primary p-4 xl:p-10 space-y-3 relative">
       {Array.from({ length: fields }).map((_, i) => (
         <div key={i} className="space-y-2">
           <Sh className="h-3 w-28 rounded-md" />
@@ -154,7 +154,7 @@ export const AdminFormSkeleton = ({ fields = 5 }) => (
 // Admin detail page (user details, referral detail, etc.): profile header + stat rows.
 export const AdminDetailSkeleton = () => (
   <div className="space-y-3 font-outfit w-full">
-    <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-4 xl:p-10 flex flex-col sm:flex-row items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+    <div className="bg-background-surface rounded-3xl border border-border-primary p-4 xl:p-10 flex flex-col sm:flex-row items-center gap-3 relative">
       <Sh className="w-20 h-20 rounded-full shrink-0" />
       <div className="flex-1 space-y-3 w-full">
         <Sh className="h-6 w-56 rounded-lg" />
@@ -163,13 +163,13 @@ export const AdminDetailSkeleton = () => (
     </div>
     <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
       {[1, 2, 3, 4].map(i => (
-        <div key={i} className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-4 space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <div key={i} className="bg-background-surface rounded-2xl border border-border-primary p-4 space-y-3 relative">
           <Sh className="h-6 w-16 rounded-lg" />
           <Sh className="h-2.5 w-20 rounded-full" />
         </div>
       ))}
     </div>
-    <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+    <div className="bg-background-surface rounded-3xl border border-border-primary p-4 space-y-2 xl:space-y-3 relative">
       {[1, 2, 3].map(i => (
         <Sh key={i} className="h-14 w-full rounded-2xl" />
       ))}

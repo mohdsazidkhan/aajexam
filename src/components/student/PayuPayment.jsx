@@ -21,9 +21,9 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
       <button
         onClick={handlePayuPayment}
         disabled={loading}
-        className={`w-full py-6 px-10 rounded-[2rem] font-black text-sm text-white transition-all shadow-sm border-2 border-white/20 active:translate-y-2 active:shadow-none border-primary-600 ${
+        className={`w-full py-6 px-10 rounded-3xl font-bold text-sm text-white transition-all border border-white/20 active:translate-y-2 border-primary-600 ${
           loading
-            ? 'bg-slate-400 border-slate-500 cursor-not-allowed shadow-none translate-y-2 opacity-80'
+            ? 'bg-border-secondary border-slate-500 cursor-not-allowed translate-y-2 opacity-80'
             : 'bg-primary-600 hover:bg-primary-600 hover:-translate-y-1'
         }`}
       >
@@ -42,9 +42,9 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
         </span>
       </button>
 
-      <div className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 text-sm text-slate-600 dark:text-slate-400">
+      <div className="rounded-3xl border border-border-primary bg-background-surface p-5 text-sm text-content-secondary">
         <div className="flex items-start gap-3">
-          <ShieldCheck className="w-5 h-5 shrink-0 text-primary-600 dark:text-primary-300 mt-0.5" />
+          <ShieldCheck className="w-5 h-5 shrink-0 text-primary-600 mt-0.5" />
           <p className="font-medium">
             {translate('A secure PayU window will open in a new tab. Keep this page open until your payment is completed.')}
           </p>
@@ -52,14 +52,14 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
       </div>
 
       {paymentData?.txnid && (
-        <div className="p-5 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm">
-          <div className="flex items-center gap-3 text-primary-600 dark:text-primary-300">
-            <div className="w-10 h-10 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center text-white shadow-sm">
+        <div className="p-5 bg-background-surface rounded-3xl border border-border-primary">
+          <div className="flex items-center gap-3 text-primary-600">
+            <div className="w-10 h-10 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center text-on-primary">
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <div>
               <p className="text-sm font-semibold">{translate('Payment session created')}</p>
-              <p className="text-sm text-slate-600 dark:text-slate-400">{translate('Reference: {ref}', { ref: paymentData.txnid.slice(0, 16) })}...</p>
+              <p className="text-sm text-content-secondary">{translate('Reference: {ref}', { ref: paymentData.txnid.slice(0, 16) })}...</p>
             </div>
           </div>
         </div>

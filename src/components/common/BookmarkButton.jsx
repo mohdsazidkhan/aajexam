@@ -78,13 +78,13 @@ const BookmarkButton = ({ type, id, variant = 'icon', className = '' }) => {
   const Icon = saved ? BookmarkCheck : Bookmark;
   const label = translate(saved ? 'Remove bookmark' : 'Bookmark');
   const tone = saved
-    ? 'bg-primary-600 text-white ring-primary-600'
-    : 'bg-white text-slate-700 ring-slate-200 hover:bg-slate-50 dark:bg-slate-800 dark:text-white dark:ring-slate-700 dark:hover:bg-slate-700';
+    ? 'bg-primary-600 text-on-primary ring-primary-600'
+    : 'bg-background-surface text-content-secondary ring-slate-200 hover:bg-background-surface-secondary dark:ring-slate-700 dark:hover:bg-slate-700';
 
   if (variant === 'pill') {
     return (
       <button type="button" onClick={toggle} disabled={busy} aria-pressed={saved} title={label}
-        className={`inline-flex items-center gap-1.5 px-3 py-1.5 ring-1 text-[11px] font-black uppercase tracking-wider transition-colors disabled:opacity-60 ${tone} ${className}`}
+        className={`inline-flex items-center gap-1.5 px-3 py-1.5 ring-1 text-[11px] font-bold uppercase tracking-[0.08em] transition-colors disabled:opacity-60 ${tone} ${className}`}
         style={{ borderRadius: 999 }}>
         <Icon className="w-4 h-4" />{label}
       </button>

@@ -27,12 +27,12 @@ const timeAgo = (date) => {
 
 const RoleBadge = ({ role }) => {
   if (role === 'mentor') return (
-    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300 rounded">
+    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold text-primary-600 rounded">
       <GraduationCap className="w-2.5 h-2.5" /> MENTOR
     </span>
   );
   if (role === 'admin') return (
-    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">
+    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-background-surface-secondary text-content-primary rounded">
       <Shield className="w-2.5 h-2.5" /> ADMIN
     </span>
   );
@@ -86,69 +86,69 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
   const isOwner = String(item.author?._id) === String(currentUserId);
 
   return (
-    <div className={`${isReply ? 'ml-6 pl-3 border-l-2 border-slate-200 dark:border-slate-700' : ''} py-2`}>
+    <div className={`${isReply ? 'ml-6 pl-3 border-l-2 border-border-primary' : ''} py-2`}>
       <div className="flex items-start gap-2">
-        <div className="w-7 h-7 rounded-full bg-primary-600 dark:bg-primary-800 text-white text-xs font-bold flex items-center justify-center shrink-0">
+        <div className="w-7 h-7 rounded-full bg-primary-600 text-on-primary text-xs font-bold flex items-center justify-center shrink-0">
           {(item.author?.name || '?').charAt(0).toUpperCase()}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-1.5 text-xs">
-            <span className="font-bold text-slate-800 dark:text-slate-200">{item.author?.name || translate('User')}</span>
+            <span className="font-bold text-content-primary">{item.author?.name || translate('User')}</span>
             {item.author?.username && (
               <a
                 href={`/@${item.author.username}`}
-                className="text-[11px] font-semibold text-primary-600 dark:text-primary-300 hover:underline"
+                className="text-[11px] font-semibold text-primary-600 hover:underline"
               >
                 @{item.author.username}
               </a>
             )}
             <RoleBadge role={item.authorRole} />
             {item.isPinned && (
-              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">
+              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-background-surface-secondary text-content-primary rounded">
                 <Pin className="w-2.5 h-2.5" /> PINNED
               </span>
             )}
             {item.isAlternateSolution && (
-              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">
+              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-background-surface-secondary text-content-primary rounded">
                 <Lightbulb className="w-2.5 h-2.5" /> ALT SOLUTION
               </span>
             )}
-            <span className="text-slate-400">· {timeAgo(item.createdAt)}</span>
-            {item.isEdited && <span className="text-slate-400 text-[10px]">{translate('(edited)')}</span>}
+            <span className="text-content-muted">· {timeAgo(item.createdAt)}</span>
+            {item.isEdited && <span className="text-content-muted text-[10px]">{translate('(edited)')}</span>}
           </div>
 
-          <p className="mt-1 text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap break-words">
+          <p className="mt-1 text-sm text-content-secondary whitespace-pre-wrap break-words">
             {item.body}
           </p>
           {item.image && (
-            <img src={item.image} alt="" className="mt-2 max-h-48 rounded-lg border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+            <img src={item.image} alt="" className="mt-2 max-h-48 rounded-lg border border-border-primary object-contain bg-background-surface" />
           )}
 
           <div className="mt-1.5 flex items-center gap-3 text-xs">
             <button
               onClick={() => handleVote('up')}
-              className={`flex items-center gap-1 hover:text-primary-600 transition ${myVote === 'up' ? 'text-primary-600 dark:text-primary-300 font-bold' : 'text-slate-500'}`}
+              className={`flex items-center gap-1 hover:text-primary-600 transition ${myVote === 'up' ? 'text-primary-600 font-bold' : 'text-content-muted'}`}
             >
               <ThumbsUp className="w-3.5 h-3.5" /> {upvotes}
             </button>
             <button
               onClick={() => handleVote('down')}
-              className={`flex items-center gap-1 hover:text-black dark:hover:text-white transition ${myVote === 'down' ? 'text-black dark:text-white font-bold' : 'text-slate-500'}`}
+              className={`flex items-center gap-1 hover:text-content-primary dark:hover:text-white transition ${myVote === 'down' ? 'text-content-primary font-bold' : 'text-content-muted'}`}
             >
               <ThumbsDown className="w-3.5 h-3.5" /> {downvotes > 0 ? downvotes : ''}
             </button>
             {!isReply && (
-              <button onClick={() => setShowReplyBox(v => !v)} className="flex items-center gap-1 text-slate-500 hover:text-primary-600 transition">
+              <button onClick={() => setShowReplyBox(v => !v)} className="flex items-center gap-1 text-content-muted hover:text-primary-600 transition">
                 <CornerDownRight className="w-3.5 h-3.5" /> Reply
               </button>
             )}
             {!isOwner && (
-              <button aria-label={translate('Report')} onClick={() => onFlag(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
+              <button aria-label={translate('Report')} onClick={() => onFlag(item._id)} className="text-content-muted hover:text-content-primary dark:hover:text-white transition">
                 <Flag className="w-3.5 h-3.5" />
               </button>
             )}
             {isOwner && (
-              <button aria-label={translate('Delete')} onClick={() => onDelete(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
+              <button aria-label={translate('Delete')} onClick={() => onDelete(item._id)} className="text-content-muted hover:text-content-primary dark:hover:text-white transition">
                 <Trash2 className="w-3.5 h-3.5" />
               </button>
             )}
@@ -161,9 +161,9 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
                 onChange={e => setReplyText(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && submitReply()}
                 placeholder={translate('Write a reply…')}
-                className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-border-primary bg-background-surface-secondary focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
-              <button onClick={submitReply} className="px-3 py-1.5 text-xs font-bold bg-primary-600 text-white rounded-lg hover:bg-primary-600">
+              <button onClick={submitReply} className="px-3 py-1.5 text-xs font-bold bg-primary-600 text-on-primary rounded-lg hover:bg-primary-600">
                 {translate('Post')}
               </button>
             </div>
@@ -290,14 +290,14 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
   };
 
   return (
-    <div className="mt-3 border-t border-slate-200 dark:border-slate-700 pt-2">
+    <div className="mt-3 border-t border-border-primary pt-2">
       <button
         onClick={() => setOpen(v => !v)}
-        className="w-full flex items-center justify-between text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-primary-600 transition"
+        className="w-full flex items-center justify-between text-xs font-bold text-content-secondary hover:text-primary-600 transition"
       >
         <span className="flex items-center gap-1.5">
           <MessageSquare className="w-3.5 h-3.5" />
-          {translate('Discussion')} {total > 0 && <span className="text-slate-400">({total})</span>}
+          {translate('Discussion')} {total > 0 && <span className="text-content-muted">({total})</span>}
         </span>
         {open ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
       </button>
@@ -311,12 +311,12 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
                 onChange={e => setNewComment(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && !submitting && submitNew()}
                 placeholder={translate('Share your approach, shortcut, or doubt…')}
-                className="flex-1 text-sm px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-1 text-sm px-3 py-2 rounded-lg border border-border-primary bg-background-surface-secondary focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <button
                 disabled={submitting || newComment.trim().length < 2}
                 onClick={submitNew}
-                className="px-4 py-2 text-xs font-bold bg-primary-600 text-white rounded-lg hover:bg-primary-600 disabled:opacity-50"
+                className="px-4 py-2 text-xs font-bold bg-primary-600 text-on-primary rounded-lg hover:bg-primary-600 disabled:opacity-50"
               >
                 {submitting ? '...' : translate('Post')}
               </button>
@@ -329,7 +329,7 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
                 <button
                   key={s}
                   onClick={() => { setSort(s); load(s); }}
-                  className={`px-2 py-0.5 rounded uppercase tracking-wider ${sort === s ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}
+                  className={`px-2 py-0.5 rounded uppercase tracking-[0.08em] ${sort === s ? 'bg-primary-600 text-on-primary' : 'bg-background-surface-secondary text-content-muted'}`}
                 >
                   {s === 'top' ? translate('Top') : translate('Newest')}
                 </button>
@@ -339,10 +339,10 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
 
           {loading && <CommentSkeleton rows={3} />}
           {!loading && items.length === 0 && (
-            <p className="text-xs text-slate-400 py-2">{translate('No discussions yet. Be the first to share a trick or ask a doubt.')}</p>
+            <p className="text-xs text-content-muted py-2">{translate('No discussions yet. Be the first to share a trick or ask a doubt.')}</p>
           )}
 
-          <div className="divide-y divide-slate-100 dark:divide-slate-700/50">
+          <div className="divide-y divide-border-primary">
             {items.map(item => (
               <CommentItem
                 key={item._id}
@@ -361,7 +361,7 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
               <button
                 onClick={loadMore}
                 disabled={loadingMore}
-                className="px-4 py-1.5 text-[11px] font-bold text-primary-600 dark:text-primary-300 hover:text-primary-600 disabled:opacity-50"
+                className="px-4 py-1.5 text-[11px] font-bold text-primary-600 hover:text-primary-600 disabled:opacity-50"
               >
                 {loadingMore ? translate('Loading…') : translate('Load more comments')}
               </button>

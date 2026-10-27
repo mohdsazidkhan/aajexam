@@ -86,13 +86,13 @@ export const getAdminRoleDisplayName = (role) => {
 export const getAdminRoleColor = (role) => {
   switch (role) {
     case ADMIN_ROLES.SUPER_ADMIN:
-      return 'text-primary-600 bg-slate-100 dark:bg-slate-800 dark:text-white';
+      return 'text-primary-600 bg-background-surface-secondary dark:text-white';
     case ADMIN_ROLES.ADMIN:
-      return 'text-primary-600 bg-primary-100 dark:text-primary-400 dark:bg-primary-900/20';
+      return 'text-primary-600';
     case ADMIN_ROLES.MODERATOR:
-      return 'text-primary-600 bg-primary-100 dark:text-primary-400 dark:bg-primary-900/20';
+      return 'text-primary-600';
     default:
-      return 'text-gray-600 bg-gray-100 dark:text-gray-400 dark:bg-gray-900/20';
+      return 'text-content-secondary bg-background-surface-secondary';
   }
 };
 

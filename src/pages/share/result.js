@@ -59,29 +59,29 @@ export default function SharedResult({ stats }) {
             animate={{ y: 0, opacity: 1 }}
             className="relative"
           >
-            <Card className="relative overflow-hidden border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white p-6 xl:p-10">
+            <Card className="relative overflow-hidden border-none border border-border-primary text-content-primary p-6 xl:p-10 bg-background-surface">
               <div className="absolute top-0 right-0 opacity-10 text-primary-600 dark:text-white">
                 <Trophy className="w-64 h-64 rotate-12" />
               </div>
 
               <header className="relative z-10 space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow text-xs font-black uppercase tracking-widest" style={{ borderRadius: 999 }}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 text-on-primary text-xs font-bold uppercase tracking-[0.08em] bg-primary-600" style={{ borderRadius: 999 }}>
                   <Crown className="w-4 h-4" />
                   {translate(band)}
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-sm xl:text-base font-black uppercase tracking-widest opacity-80">
+                  <p className="text-sm xl:text-base font-bold uppercase tracking-[0.08em] opacity-80">
                     {translate('{user} scored', { user })}
                   </p>
-                  <h1 className="text-3xl xl:text-5xl font-black font-outfit tracking-tight">
+                  <h1 className="text-3xl xl:text-5xl font-bold font-outfit tracking-tight">
                     {testTitle}
                   </h1>
                 </div>
 
                 {rank && total && (
                   <div className="flex flex-wrap items-baseline gap-3">
-                    <span className="text-5xl xl:text-7xl font-black tracking-tighter text-primary-700 dark:text-primary-200">
+                    <span className="text-5xl xl:text-7xl font-bold tracking-tight text-primary-600">
                       #{rank}
                     </span>
                     <span className="text-xl xl:text-2xl font-bold opacity-80">
@@ -92,7 +92,7 @@ export default function SharedResult({ stats }) {
 
                 {pctNum > 0 && (
                   <p className="text-lg xl:text-xl font-bold opacity-90">
-                    {rich('Beat <0></0> of candidates on AajExam', [() => <span className="text-primary-700 dark:text-primary-200">{pctNum.toFixed(1)}%</span>])}
+                    {rich('Beat <0></0> of candidates on AajExam', [() => <span className="text-primary-600">{pctNum.toFixed(1)}%</span>])}
                   </p>
                 )}
               </header>
@@ -107,20 +107,20 @@ export default function SharedResult({ stats }) {
               { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: '' },
             ].map((item, idx) => (
               <Card as="article" key={idx} className="flex flex-col items-center text-center gap-2">
-                <div className="w-12 h-12 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow" style={{ borderRadius: 14 }}>
+                <div className="w-12 h-12 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 14 }}>
                   <item.icon className="w-6 h-6" />
                 </div>
-                <span className="text-xl xl:text-2xl font-black font-outfit">{item.value}</span>
-                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{translate(item.label)}</span>
+                <span className="text-xl xl:text-2xl font-bold font-outfit">{item.value}</span>
+                <span className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate(item.label)}</span>
               </Card>
             ))}
           </section>
 
           <Card as="section" className="p-8 xl:p-10 text-center space-y-5">
-            <h2 className="text-2xl xl:text-3xl font-black font-outfit uppercase">
+            <h2 className="text-2xl xl:text-3xl font-bold font-outfit">
               Think you can beat this?
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+            <p className="text-content-secondary max-w-xl mx-auto">
               {translate('Free unlimited mock tests for SSC, RRB, Banking, and State Police exams. Track your All India Rank live.')}
             </p>
             <div className="flex flex-col xl:flex-row justify-center gap-3 pt-2">

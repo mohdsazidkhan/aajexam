@@ -34,14 +34,13 @@ export default function EditorialPolicy() {
                     </div>
 
                     {/* Mission Statement */}
-                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
+                    <section className="bg-background-surface rounded-3xl p-4 md:p-8 xl:p-12 mb-12 border border-border-primary relative overflow-hidden">
 
-                        <h2 className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
+                        <h2 className="text-xl xl:text-4xl font-bold text-content-primary mb-8 tracking-tight flex items-center gap-4">
                             <div className="w-2 h-10 bg-primary-600 rounded-full" />
                             Our Mission
                         </h2>
-                        <div className="space-y-6 text-slate-600 dark:text-slate-400 text-md xl:text-xl font-bold leading-relaxed">
+                        <div className="space-y-6 text-content-secondary text-md xl:text-xl font-bold leading-relaxed">
                             <p>
                                 AajExam is committed to providing accurate, comprehensive, and high-quality educational content for government competitive exam preparation. Our editorial policy ensures that every quiz question, study material, and educational resource meets the highest standards of accuracy, relevance, and pedagogical effectiveness.
                             </p>
@@ -52,12 +51,12 @@ export default function EditorialPolicy() {
                     </section>
 
                     {/* Content Creation Process */}
-                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800">
+                    <section className="bg-background-surface rounded-3xl p-4 md:p-8 xl:p-12 mb-16 border border-border-primary">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-600 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-600">
+                            <div className="w-14 h-14 bg-primary-600 rounded-2xl flex items-center justify-center border-b-2 border-primary-600">
                                 <FaBook className="text-white text-2xl" />
                             </div>
-                            <h2 className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Creation Process</h2>
+                            <h2 className="text-xl xl:text-4xl font-bold text-content-primary tracking-tight">Creation Process</h2>
                         </div>
 
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 relative z-10">
@@ -67,13 +66,13 @@ export default function EditorialPolicy() {
                                 { step: 3, title:'Verification', desc:'Factual information cross-verified with authoritative sources and government publications.', color:'bg-primary-600'},
                                 { step: 4, title: 'Regular Updates', desc: 'Continuous monitoring and updating of syllabus changes and current affairs.', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <section key={idx} className="flex gap-6 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
-                                    <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-black text-2xl shadow-sm border-b-2 border-black/20`}>
+                                <section key={idx} className="flex gap-6 p-6 bg-background-surface-secondary rounded-3xl border border-border-primary hover:border-primary-500/30 transition-all">
+                                    <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-bold text-2xl border-b-2 border-black/20`}>
                                         {item.step}
                                     </div>
                                     <div>
-                                        <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">{item.title}</h3>
-                                        <p className="text-slate-500 dark:text-slate-400 font-bold">{item.desc}</p>
+                                        <h3 className="text-sm xl:text-xl font-bold text-content-primary mb-2 tracking-tight">{item.title}</h3>
+                                        <p className="text-content-muted font-bold">{item.desc}</p>
                                     </div>
                                 </section>
                             ))}
@@ -81,9 +80,8 @@ export default function EditorialPolicy() {
                     </section>
 
                     {/* Quality Standards */}
-                    <section className="bg-slate-950 rounded-[3rem] p-4 md:p-8 xl:p-12 mb-16 border-2 border-slate-800 shadow-sm relative overflow-hidden text-center">
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
-                        <h2 className="text-xl xl:text-4xl font-black text-white mb-12 uppercase tracking-tight relative z-10">Quality Standards</h2>
+                    <section className="bg-slate-950 rounded-3xl p-4 md:p-8 xl:p-12 mb-16 border border-slate-800 relative overflow-hidden text-center">
+                        <h2 className="text-xl xl:text-4xl font-bold text-white mb-12 tracking-tight relative z-10">Quality Standards</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 relative z-10">
                             {[
                                 { title: 'Accuracy', desc: 'Zero tolerance for misinformation', color: 'bg-primary-600' },
@@ -91,26 +89,26 @@ export default function EditorialPolicy() {
                                 { title:'Clarity', desc:'Unambiguous and easily understood', color:'bg-primary-600'},
                                 { title: 'Calibration', desc: 'Appropriately calibrated difficulty', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <section key={idx} className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] flex flex-col items-center gap-4">
-                                    <div className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center shadow-sm">
+                                <section key={idx} className="bg-white/5 border border-white/10 p-6 rounded-3xl flex flex-col items-center gap-4">
+                                    <div className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center">
                                         <FaCheckCircle className="text-white text-lg" />
                                     </div>
-                                    <h3 className="text-lg font-black text-white uppercase tracking-tight mb-1">{item.title}</h3>
-                                    <p className="text-slate-400 font-bold text-xs uppercase tracking-widest">{item.desc}</p>
+                                    <h3 className="text-lg font-bold text-white tracking-tight mb-1">{item.title}</h3>
+                                    <p className="text-content-muted font-bold text-xs uppercase tracking-[0.08em]">{item.desc}</p>
                                 </section>
                             ))}
                         </div>
                     </section>
 
                     {/* User Feedback */}
-                    <section className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-sm p-4 xl:p-8 mb-8">
+                    <section className="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-4 xl:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-12 h-12 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center">
                                 <FaHandshake className="text-white text-2xl" />
                             </div>
-                            <h2 className="text-2xl xl:text-3xl font-bold text-gray-800 dark:text-white">User Feedback Integration</h2>
+                            <h2 className="text-2xl xl:text-3xl font-bold text-content-primary">User Feedback Integration</h2>
                         </div>
-                        <div className="space-y-2 xl:space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                        <div className="space-y-2 xl:space-y-4 text-content-secondary text-lg leading-relaxed">
                             <p>
                                 We value feedback from our user community. If you encounter any errors, outdated information, or have suggestions for improvement, we encourage you to report them through our feedback system. Every report is reviewed by our editorial team within 48 hours.
                             </p>
@@ -121,9 +119,9 @@ export default function EditorialPolicy() {
                     </section>
 
                     {/* Corrections Policy */}
-                    <section className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-sm p-4 xl:p-8 mb-8">
-                        <h2 className="text-2xl xl:text-3xl font-bold text-gray-800 dark:text-white mb-6">Corrections and Updates Policy</h2>
-                        <div className="space-y-2 xl:space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                    <section className="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-4 xl:p-8 mb-8">
+                        <h2 className="text-2xl xl:text-3xl font-bold text-content-primary mb-6">Corrections and Updates Policy</h2>
+                        <div className="space-y-2 xl:space-y-4 text-content-secondary text-lg leading-relaxed">
                             <p>
                                 When errors are identified, we implement corrections immediately. For minor factual errors, corrections are made silently with internal documentation. For significant errors that may have affected user learning, we:
                             </p>
@@ -140,27 +138,27 @@ export default function EditorialPolicy() {
                     </section>
 
                     {/* Ethical Standards */}
-                    <section className="bg-primary-50 dark:bg-primary-900/20 rounded-3xl p-4 xl:p-8 mb-8">
-                        <h2 className="text-2xl xl:text-3xl font-bold text-gray-800 dark:text-white mb-6">Ethical Standards</h2>
-                        <div className="space-y-2 xl:space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                    <section className="rounded-3xl p-4 xl:p-8 mb-8">
+                        <h2 className="text-2xl xl:text-3xl font-bold text-content-primary mb-6">Ethical Standards</h2>
+                        <div className="space-y-2 xl:space-y-4 text-content-secondary text-lg leading-relaxed">
                             <p>
                                 AajExam is committed to maintaining the highest ethical standards in educational content creation:
                             </p>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-600 dark:text-primary-300 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-600 mt-1 flex-shrink-0" />
                                     <span><strong>No Plagiarism:</strong> All content is original or properly attributed. We do not copy questions from other sources without proper licensing.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-600 dark:text-primary-300 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-600 mt-1 flex-shrink-0" />
                                     <span><strong>Transparency:</strong> We clearly disclose our content creation process, review mechanisms, and update schedules.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-600 dark:text-primary-300 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-600 mt-1 flex-shrink-0" />
                                     <span><strong>No Misleading Claims:</strong> We do not make false promises about exam success or guaranteed results. Our platform provides practice and preparation tools, but success depends on individual effort.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-600 dark:text-primary-300 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-600 mt-1 flex-shrink-0" />
                                     <span><strong>Respect for Intellectual Property:</strong> We respect copyright laws and obtain proper permissions for any third-party content used on our platform.</span>
                                 </li>
                             </ul>
@@ -169,16 +167,16 @@ export default function EditorialPolicy() {
 
                     {/* CTA */}
                     <div className="text-center mt-16">
-                        <section className="bg-primary-600 rounded-[3rem] p-4 md:p-8 xl:p-12 border-b-[12px] border-primary-600 shadow-sm">
-                            <h2 className="text-2xl xl:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
+                        <section className="bg-primary-600 rounded-3xl p-4 md:p-8 xl:p-12 border-primary-600">
+                            <h2 className="text-2xl xl:text-5xl font-bold mb-6 text-white tracking-tight">
                                 Questions About Our Policy?
                             </h2>
-                            <p className="text-md md:text-xl xl:text-2xl font-bold mb-10 text-white uppercase tracking-widest text-xs">
+                            <p className="text-md md:text-xl xl:text-2xl font-bold mb-10 text-white tracking-[0.08em] text-xs">
                                 Contact our editorial team at: <strong>{config.CONTACT.EMAIL}</strong>
                             </p>
                             <button
                                 onClick={() => router.push('/')}
-                                className="bg-white text-primary-600 dark:text-primary-300 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-sm active:translate-y-1 active:shadow-none"
+                                className="bg-background-surface text-primary-600 px-12 py-5 rounded-2xl font-bold uppercase tracking-[0.08em] text-xs hover:bg-background-surface-secondary transition-all active:translate-y-1"
                             >
                                 Back to Home
                             </button>

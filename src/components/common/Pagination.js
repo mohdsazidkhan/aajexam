@@ -40,11 +40,11 @@ const Pagination = ({
 
   const hasTotals = Number.isFinite(totalItems) && Number.isFinite(itemsPerPage) && itemsPerPage > 0;
   const infoBlock = showInfo && (
-    <div className="flex items-center flex-wrap gap-x-3 gap-y-1 text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.15em] font-outfit">
+    <div className="flex items-center flex-wrap gap-x-3 gap-y-1 text-[9px] font-bold text-content-secondary uppercase tracking-[0.08em] font-outfit">
       <span>{translate('Page {page} of {total}', { page: currentPage, total: Math.max(1, totalPages) })}</span>
       {hasTotals && (
         <span>
-          {rich('Result: <0></0> of <1></1>', [() => <span className="text-slate-900 dark:text-white px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md mx-1 font-bold">{startItem} — {endItem}</span>, () => <span className="text-primary-600 dark:text-primary-300 font-black">{totalItems}</span>])}
+          {rich('Result: <0></0> of <1></1>', [() => <span className="text-content-primary px-2 py-0.5 bg-background-surface-secondary rounded-md mx-1 font-bold">{startItem} — {endItem}</span>, () => <span className="text-primary-600 font-bold">{totalItems}</span>])}
         </span>
       )}
     </div>
@@ -52,14 +52,14 @@ const Pagination = ({
 
   const pageSizeBlock = !onItemsPerPageChange ? (
     Number.isFinite(itemsPerPage) && itemsPerPage > 0 && (
-      <div className="flex items-center gap-2 text-[9px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap">
+      <div className="flex items-center gap-2 text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] whitespace-nowrap">
         {translate('Page Size')}
-        <span className="text-slate-900 dark:text-white px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md font-bold">{itemsPerPage}</span>
+        <span className="text-content-primary px-2 py-0.5 bg-background-surface-secondary rounded-md font-bold">{itemsPerPage}</span>
       </div>
     )
   ) : (
     <div className="flex items-center gap-2">
-      <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap">{translate('Page Size')}</span>
+      <span className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] whitespace-nowrap">{translate('Page Size')}</span>
       <StyledSelect
         value={itemsPerPage}
         onChange={(val) => onItemsPerPageChange(Number(val))}
@@ -77,10 +77,10 @@ const Pagination = ({
           whileTap={currentPage > 1 ? { y: 0 } : {}}
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={`flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 border-b-2 shadow-sm ${
+          className={`flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 border-b-2 ${
             currentPage === 1
-              ? 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 opacity-50 cursor-not-allowed'
-              : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600'
+              ? 'bg-background-surface-secondary border-border-primary text-content-secondary opacity-50 cursor-not-allowed'
+              : 'bg-background-surface border-border-primary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600'
           }`}
         >
           <ChevronLeft className="w-3.5 h-3.5" />
@@ -99,12 +99,12 @@ const Pagination = ({
                  whileTap={!isDots && !isCurrent ? { y: 0 } : {}}
                  onClick={() => !isDots && onPageChange(page)}
                  disabled={isDots}
-                 className={`min-w-[32px] h-8 px-1.5 flex items-center justify-center rounded-lg font-black font-outfit text-[11px] transition-all duration-300 border-b-2 ${
+                 className={`min-w-[32px] h-8 px-1.5 flex items-center justify-center rounded-lg font-bold font-outfit text-[11px] transition-all duration-300 border-b-2 ${
                    isCurrent
-                     ? 'bg-primary-600 border-primary-600 text-white shadow-sm translate-y-0.5'
+                     ? 'bg-primary-600 border-primary-600 text-on-primary translate-y-0.5'
                      : isDots
-                       ? 'text-slate-600 dark:text-slate-400 bg-transparent border-transparent cursor-default'
-                       : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600 shadow-sm'
+                       ? 'text-content-secondary bg-transparent border-transparent cursor-default'
+                       : 'bg-background-surface border-border-primary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600'
                  }`}
                >
                  {page}
@@ -119,10 +119,10 @@ const Pagination = ({
           whileTap={currentPage < totalPages ? { y: 0 } : {}}
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={`flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 border-b-2 shadow-sm ${
+          className={`flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 border-b-2 ${
             currentPage === totalPages
-              ? 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 opacity-50 cursor-not-allowed'
-              : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600'
+              ? 'bg-background-surface-secondary border-border-primary text-content-secondary opacity-50 cursor-not-allowed'
+              : 'bg-background-surface border-border-primary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600'
           }`}
         >
           <ChevronRight className="w-3.5 h-3.5" />
@@ -132,7 +132,7 @@ const Pagination = ({
 
   if (compact && inline) {
     return (
-      <div className="sticky bottom-0 z-20 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-1 py-2 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800 rounded-b-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.04)] transition-colors duration-300">
+      <div className="sticky bottom-0 z-20 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-1 py-2 bg-background-surface border-t-2 border-border-primary rounded-b-2xl transition-colors duration-300">
         <div className="order-1 min-w-0 flex-1">{infoBlock}</div>
         <div className="order-2 xl:order-3 shrink-0 xl:flex-1 xl:flex xl:justify-end">{pageSizeBlock}</div>
         <div className="order-3 xl:order-2 w-full xl:w-auto flex items-center justify-center">{navBlock}</div>
@@ -142,7 +142,7 @@ const Pagination = ({
 
   if (compact) {
     return (
-      <div className="sticky bottom-0 z-20 flex flex-col gap-2 py-2.5 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800 rounded-b-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.04)] transition-colors duration-300">
+      <div className="sticky bottom-0 z-20 flex flex-col gap-2 py-2.5 bg-background-surface border-t-2 border-border-primary rounded-b-2xl transition-colors duration-300">
         <div className="flex items-center justify-between gap-2">
           <div className="min-w-0 flex-1 truncate">{infoBlock}</div>
           <div className="shrink-0">{pageSizeBlock}</div>
@@ -155,7 +155,7 @@ const Pagination = ({
   }
 
   return (
-    <div className={`${sticky ? 'sticky bottom-0 z-20 rounded-b-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.04)]' : 'rounded-2xl shadow-sm border-2'} flex flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-2.5 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800 transition-colors duration-300`}>
+    <div className={`${sticky ? 'sticky bottom-0 z-20 rounded-b-2xl' : 'rounded-2xl border'} flex flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-2.5 bg-background-surface border-t-2 border-border-primary transition-colors duration-300`}>
       <div className="flex justify-start">{infoBlock}</div>
       <div className="flex justify-center">{pageSizeBlock}</div>
       <div className="flex justify-end">{navBlock}</div>

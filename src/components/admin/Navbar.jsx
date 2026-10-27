@@ -78,7 +78,7 @@ const AdminNavbar = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-[150] h-12 xl:h-16 bg-white dark:bg-black border-b-2 border-slate-100 dark:border-slate-800 flex items-center">
+      <header className="fixed top-0 left-0 right-0 z-[150] h-12 xl:h-16 bg-background-surface border-b-2 border-border-primary flex items-center">
         <div className="w-full mx-auto px-2 xl:px-4 flex items-center justify-between">
 
           {/* Left */}
@@ -90,8 +90,8 @@ const AdminNavbar = () => {
               aria-expanded={isSidebarOpen}
               className={`hidden xl:flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 shrink-0 ${
                 isSidebarOpen
-                  ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-md hover:scale-105'
+                  ? 'bg-background-surface-secondary text-content-secondary'
+                  : 'text-on-primary hover:scale-105 bg-primary-600'
               }`}
             >
               {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -99,24 +99,24 @@ const AdminNavbar = () => {
 
             {/* Logo — desktop */}
             <Link href="/admin/dashboard" className="hidden xl:flex items-center shrink-0">
-              <span className="text-2xl xl:text-3xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white ">
-                AAJ<span className="text-primary-600 dark:text-primary-300">EXAM</span>
+              <span className="text-2xl xl:text-3xl font-bold font-outfit tracking-tight text-content-primary">
+                AAJ<span className="text-primary-600">EXAM</span>
               </span>
             </Link>
 
             {/* Logo — mobile, smaller, left-aligned */}
             <Link href="/admin/dashboard" className="xl:hidden flex items-center shrink-0">
-              <span className="text-base font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                AAJ<span className="text-primary-600 dark:text-primary-300">EXAM</span>
+              <span className="text-base font-bold font-outfit uppercase tracking-tight text-content-primary">
+                AAJ<span className="text-primary-600">EXAM</span>
               </span>
             </Link>
 
             {/* Page title + count — shown right after the logo (web + mobile) */}
             {header.title && (
-              <div className="flex items-center gap-1 xl:gap-2 min-w-0 pl-2 xl:pl-4 ml-0 xl:ml-1 border-l border-slate-200 dark:border-slate-700">
-                <span className="text-sm xl:text-lg font-black text-slate-900 dark:text-white truncate">{header.title}</span>
+              <div className="flex items-center gap-1 xl:gap-2 min-w-0 pl-2 xl:pl-4 ml-0 xl:ml-1 border-l border-border-primary">
+                <span className="text-sm xl:text-lg font-bold text-content-primary truncate">{header.title}</span>
                 {header.count !== null && header.count !== undefined && (
-                  <span className="text-xs xl:text-sm font-bold text-slate-400 dark:text-slate-500 shrink-0">({header.count})</span>
+                  <span className="text-xs xl:text-sm font-bold text-content-muted shrink-0">({header.count})</span>
                 )}
               </div>
             )}
@@ -129,7 +129,7 @@ const AdminNavbar = () => {
               <button
                 onClick={() => setDrawerOpen(true)}
                 aria-label="Open filters"
-                className="flex w-8 h-8 rounded-lg bg-primary-50 ring-1 ring-primary-200 dark:bg-slate-800 dark:ring-white/10 items-center justify-center text-primary-700 dark:text-primary-200 hover:text-primary-900 dark:hover:text-white hover:shadow-md transition-all flex-shrink-0"
+                className="flex w-8 h-8 rounded-lg ring-1 ring-primary-200 dark:bg-slate-800 dark:ring-white/10 items-center justify-center text-primary-600 hover:text-primary-900 dark:hover:text-white transition-all flex-shrink-0"
               >
                 <Filter className="w-3.5 h-3.5" />
               </button>
@@ -139,18 +139,18 @@ const AdminNavbar = () => {
             <Link
               href="/admin/notifications"
               aria-label="Notifications"
-              className="hidden xl:flex relative w-8 h-8 rounded-lg bg-primary-50 ring-1 ring-primary-200 dark:bg-slate-800 dark:ring-white/10 items-center justify-center text-primary-700 dark:text-primary-200 hover:text-primary-900 dark:hover:text-white hover:shadow-md transition-all flex-shrink-0"
+              className="hidden xl:flex relative w-8 h-8 rounded-lg ring-1 ring-primary-200 dark:bg-slate-800 dark:ring-white/10 items-center justify-center text-primary-600 hover:text-primary-900 dark:hover:text-white transition-all flex-shrink-0"
             >
               <Bell className="w-3.5 h-3.5" />
               {notifCount > 0 && (
-                <span className="absolute -top-1 -right-1 min-w-[1.1rem] h-[1.1rem] px-1 bg-red-500 text-white text-[9px] font-black rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 min-w-[1.1rem] h-[1.1rem] px-1 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">
                   {notifCount > 99 ? '99+' : notifCount}
                 </span>
               )}
             </Link>
 
             {/* Theme colour + dark mode */}
-            <ThemeColorMenuButton buttonClassName="flex w-8 h-8 rounded-lg bg-primary-50 ring-1 ring-primary-200 dark:bg-slate-800 dark:ring-white/10 items-center justify-center text-primary-700 dark:text-primary-200 hover:text-primary-900 dark:hover:text-white hover:shadow-md transition-all flex-shrink-0" />
+            <ThemeColorMenuButton buttonClassName="flex w-8 h-8 rounded-lg ring-1 ring-primary-200 dark:bg-slate-800 dark:ring-white/10 items-center justify-center text-primary-600 hover:text-primary-900 dark:hover:text-white transition-all flex-shrink-0" />
 
             {/* Profile avatar */}
             <button
@@ -160,7 +160,7 @@ const AdminNavbar = () => {
               className="p-0.5 rounded-full flex-shrink-0"
             >
               <div className="w-7 h-7 xl:w-8 xl:h-8 rounded-full overflow-hidden bg-primary-600 p-[2px]">
-                <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-[10px] font-black uppercase">
+                <div className="w-full h-full rounded-full bg-background-surface flex items-center justify-center text-content-primary text-[10px] font-bold uppercase">
                   {user?.name?.charAt(0) || 'A'}
                 </div>
               </div>
@@ -173,8 +173,8 @@ const AdminNavbar = () => {
               aria-expanded={isSidebarOpen}
               className={`xl:hidden flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${
                 isSidebarOpen
-                  ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-md'
+                  ? 'bg-background-surface-secondary text-content-secondary'
+                  : 'text-on-primary bg-primary-600'
               }`}
             >
               {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -193,26 +193,24 @@ const AdminNavbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               role="menu"
-              className="fixed top-12 xl:top-16 right-3 xl:right-8 w-72 max-w-[calc(100vw-1.5rem)] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl z-[170] overflow-hidden"
+              className="fixed top-12 xl:top-16 right-3 xl:right-8 w-72 max-w-[calc(100vw-1.5rem)] bg-background-surface border border-border-primary z-[170] overflow-hidden"
               style={{ borderRadius: 20 }}
             >
               {/* Identity header: avatar, name, email, role (same as the student menu) */}
-              <div className="relative overflow-hidden px-4 pt-4 pb-3 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-b border-slate-200 dark:border-white/10">
-                <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '14px 14px' }} />
-                <div className="pointer-events-none absolute -top-12 -right-10 w-36 h-36 bg-primary-300/25 dark:bg-primary-500/20 blur-2xl" style={{ borderRadius: '50%' }} />
-                <span className="absolute top-3 right-3 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000]" style={{ borderRadius: 999 }}>
+              <div className="relative overflow-hidden px-4 pt-4 pb-3 border-b border-border-primary bg-background-surface">
+                <span className="absolute top-3 right-3 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-on-primary bg-primary-600" style={{ borderRadius: 999 }}>
                   Admin
                 </span>
                 <div className="relative flex items-center gap-3">
-                  <div className="shrink-0 p-[3px] bg-gradient-to-tr from-primary-300 via-primary-500 to-primary-700 shadow-md" style={{ borderRadius: 16 }}>
-                    <div className="w-12 h-12 flex items-center justify-center bg-primary-600 text-white text-lg font-black uppercase border-2 border-white dark:border-slate-900" style={{ borderRadius: 13 }}>
+                  <div className="shrink-0 p-[3px] bg-primary-600" style={{ borderRadius: 16 }}>
+                    <div className="w-12 h-12 flex items-center justify-center bg-primary-600 text-on-primary text-lg font-bold border border-white dark:border-slate-900" style={{ borderRadius: 13 }}>
                       {user?.name?.charAt(0) || 'A'}
                     </div>
                   </div>
                   <div className="min-w-0 flex-1 pr-12">
-                    <p className="text-base font-black text-slate-900 dark:text-white leading-tight break-words">{user?.name || 'Admin'}</p>
-                    {username && <p className="text-xs font-bold text-primary-700 dark:text-primary-300 break-all">@{username}</p>}
-                    <p className="mt-0.5 text-[11px] font-medium text-slate-500 dark:text-white/60 break-all">{user?.email || ''}</p>
+                    <p className="text-base font-bold text-content-primary leading-tight break-words">{user?.name || 'Admin'}</p>
+                    {username && <p className="text-xs font-bold text-primary-600 break-all">@{username}</p>}
+                    <p className="mt-0.5 text-[11px] font-medium text-content-muted dark:text-white/60 break-all">{user?.email || ''}</p>
                   </div>
                 </div>
               </div>
@@ -226,8 +224,8 @@ const AdminNavbar = () => {
                   { label: 'Announcements', icon: Megaphone, path: '/admin/announcements' },
                 ].map(item => (
                   <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
-                    <button className="group w-full flex items-center gap-3 px-2 py-2 text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-primary-500/10 transition-colors" style={{ borderRadius: 12 }}>
-                      <span className="w-8 h-8 shrink-0 flex items-center justify-center bg-primary-500/10 text-primary-700 dark:text-primary-300 group-hover:bg-primary-600 group-hover:text-white transition-colors" style={{ borderRadius: 10 }}>
+                    <button className="group w-full flex items-center gap-3 px-2 py-2 text-sm font-bold text-content-secondary transition-colors" style={{ borderRadius: 12 }}>
+                      <span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors" style={{ borderRadius: 10 }}>
                         <item.icon className="w-4 h-4" />
                       </span>
                       <span className="flex-1 text-left truncate">{item.label}</span>
@@ -236,11 +234,11 @@ const AdminNavbar = () => {
                   </Link>
                 ))}
 
-                <div className="my-2 border-t border-dashed border-slate-200 dark:border-slate-800 mx-1" />
+                <div className="my-2 border-t border-dashed border-border-primary mx-1" />
 
                 <button
                   onClick={handleLogout}
-                  className="w-full flex items-center justify-center gap-2.5 px-3 py-2.5 text-sm font-black uppercase tracking-wider bg-red-500 hover:bg-red-600 text-white transition-all"
+                  className="w-full flex items-center justify-center gap-2.5 px-3 py-2.5 text-sm font-bold uppercase tracking-[0.08em] bg-red-500 hover:bg-red-600 text-white transition-all"
                   style={{ borderRadius: 12 }}
                 >
                   <LogOut className="w-4 h-4" /> Log out

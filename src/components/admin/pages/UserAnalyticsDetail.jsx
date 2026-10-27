@@ -19,13 +19,13 @@ import {
 // --- Professional Metric Card ---
 function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) {
     const colors = {
-        primary: "text-primary-600 dark:text-primary-300 bg-primary-500/10 border-primary-500/20",
-        secondary: "text-primary-600 dark:text-primary-300 bg-primary-500/10 border-primary-500/20",
-        emerald: "text-primary-600 dark:text-primary-300 bg-primary-500/10 border-primary-500/20",
-        amber: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
-        rose: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
-        purple: "text-primary-600 dark:text-primary-300 bg-primary-500/10 border-primary-500/20",
-        cyan: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
+        primary: "text-primary-600 border-primary-500/20",
+        secondary: "text-primary-600 border-primary-500/20",
+        emerald: "text-primary-600 border-primary-500/20",
+        amber: "text-content-primary bg-black/10 dark:bg-white/10 border-border-primary",
+        rose: "text-content-primary bg-black/10 dark:bg-white/10 border-border-primary",
+        purple: "text-primary-600 border-primary-500/20",
+        cyan: "text-content-primary bg-black/10 dark:bg-white/10 border-border-primary",
     };
 
     return (
@@ -33,25 +33,24 @@ function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 })
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 + 0.3 }}
-            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-4 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden cursor-default"
+            className="group relative rounded-lg xl:rounded-xl xl:rounded-3xl border border-border-primary p-4 hover:border-primary-500/30 transition-all overflow-hidden cursor-default"
         >
             <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
                     <Icon className="w-5 h-5" />
                 </div>
-                <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{label}</div>
+                <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{label}</div>
             </div>
             <div className="space-y-1">
-                <div className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-600 transition-colors">
+                <div className="text-md md:text-xl xl:text-2xl font-bold text-content-primary tabular-nums tracking-tight leading-none group-hover:text-primary-600 transition-colors">
                     {value}
                 </div>
                 {sub && (
-                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-tight">
+                    <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] leading-tight">
                         {sub}
                     </div>
                 )}
             </div>
-            <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-primary-500/5 rounded-full blur-2xl group-hover:bg-primary-500/10 transition-colors" />
         </motion.div>
     );
 }
@@ -95,17 +94,17 @@ const AdminUserAnalyticsDetail = () => {
     const userData = d.user || {};
 
     return (
-        <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-primary-500/30">
+        <div className="text-content-primary min-h-screen font-sans">
             <Sidebar />
-            <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit adminContent">
+            <div className="w-full mx-auto text-content-primary font-outfit py-4">
 
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 md:p-5 xl:p-12 mb-4 shadow-sm overflow-hidden group"
+                    className="relative rounded-2xl xl:rounded-3xl border border-border-primary p-4 md:p-5 xl:p-12 mb-4 overflow-hidden group"
                 >
                     <div className="absolute top-0 right-0 p-3 xl:p-5 opacity-5 group-hover:opacity-10 transition-opacity">
-                        <PieChart className="w-64 h-64 text-primary-600 dark:text-primary-300 -rotate-12" />
+                        <PieChart className="w-64 h-64 text-primary-600" />
                     </div>
 
                     <div className="relative z-10 flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-12">
@@ -115,7 +114,7 @@ const AdminUserAnalyticsDetail = () => {
                                     whileHover={{ scale: 1.1, x: -5 }}
                                     whileTap={{ scale: 0.9 }}
                                     onClick={() => router.push('/admin/analytics/users-overview')}
-                                    className="p-4 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 rounded-2xl hover:text-primary-600 transition-colors"
+                                    className="p-4 bg-background-surface-secondary text-content-secondary rounded-2xl hover:text-primary-600 transition-colors"
                                 >
                                     <ArrowLeft className="w-6 h-6" />
                                 </motion.button>
@@ -123,13 +122,13 @@ const AdminUserAnalyticsDetail = () => {
 
                             {!loading && (
                                 <div className="flex flex-wrap items-center gap-3 xl:gap-3">
-                                    <div className="flex items-center gap-3 px-3 xl:px-4 py-2 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
-                                        <Mail className="w-4 h-4 text-slate-400" />
-                                        <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{userData.email || 'N/A'}</span>
+                                    <div className="flex items-center gap-3 px-3 xl:px-4 py-2 bg-background-surface-secondary rounded-2xl border border-border-primary">
+                                        <Mail className="w-4 h-4 text-content-muted" />
+                                        <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">{userData.email || 'N/A'}</span>
                                     </div>
-                                    <div className="flex items-center gap-3 px-3 xl:px-4 py-2 bg-primary-500/10 rounded-2xl border-2 border-primary-500/20">
-                                        <TrendingUp className="w-4 h-4 text-primary-600 dark:text-primary-300" />
-                                        <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest italic tracking-tighter">{userData.subscriptionStatus?.toUpperCase() || 'FREE'}</span>
+                                    <div className="flex items-center gap-3 px-3 xl:px-4 py-2 rounded-2xl border border-primary-500/20">
+                                        <TrendingUp className="w-4 h-4 text-primary-600" />
+                                        <span className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] italic tracking-tight">{userData.subscriptionStatus?.toUpperCase() || 'FREE'}</span>
                                     </div>
                                 </div>
                             )}
@@ -139,17 +138,16 @@ const AdminUserAnalyticsDetail = () => {
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className={`relative px-4 xl:px-10 py-4 xl:py-8 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 shadow-sm overflow-hidden
+                                className={`relative px-4 xl:px-10 py-4 xl:py-8 rounded-lg xl:rounded-xl xl:rounded-3xl border overflow-hidden
                                         ${netEarnings >= 0 ?"bg-primary-600 border-primary-400/50":"bg-primary-600 border-black/50"}`}
                             >
                                 <div className="relative z-10 flex flex-col items-center">
-                                    <span className="text-[10px] font-black text-white/70 uppercase tracking-[0.3em] mb-2">{netEarnings >= 0 ? 'Net Earnings' : 'Net Loss'}</span>
-                                    <div className="flex items-center gap-2 text-2xl xl:text-5xl font-black text-white tabular-nums tracking-tighter italic">
+                                    <span className="text-[10px] font-bold text-white/70 uppercase tracking-[0.08em] mb-2">{netEarnings >= 0 ? 'Net Earnings' : 'Net Loss'}</span>
+                                    <div className="flex items-center gap-2 text-2xl xl:text-5xl font-bold text-white tabular-nums tracking-tight italic">
                                         <IndianRupee className="w-8 h-8 xl:w-10 xl:h-10" />
                                         {Math.abs(netEarnings).toLocaleString('en-IN')}
                                     </div>
                                 </div>
-                                <div className="absolute top-0 right-0 w-20 xl:w-32 h-20 xl:h-32 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16" />
                             </motion.div>
                         )}
                     </div>
@@ -170,18 +168,18 @@ const AdminUserAnalyticsDetail = () => {
                             key="error"
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="max-w-2xl mx-auto bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl xl:rounded-[3.5rem] p-4 xl:p-12 text-center shadow-sm"
+                            className="max-w-2xl mx-auto bg-black/10 dark:bg-white/10 border border-border-primary rounded-2xl xl:rounded-3xl p-4 xl:p-12 text-center"
                         >
-                            <div className="w-20 h-20 bg-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-4 xl:mb-4 shadow-sm">
+                            <div className="w-20 h-20 bg-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-4 xl:mb-4">
                                 <Zap className="w-10 h-10 text-white" />
                             </div>
-                            <h3 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-4">Failed to load data. Please try again.</h3>
-                            <p className="text-black dark:text-white font-bold uppercase text-sm tracking-widest mb-4">{error}</p>
+                            <h3 className="text-md md:text-xl xl:text-2xl font-bold text-content-primary italic tracking-tight mb-4">Failed to load data. Please try again.</h3>
+                            <p className="text-content-primary font-bold uppercase text-sm tracking-[0.08em] mb-4">{error}</p>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => router.push('/admin/analytics/users-overview')}
-                                className="px-4 xl:px-5 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white font-black uppercase tracking-widest rounded-2xl shadow-sm"
+                                className="px-4 xl:px-5 py-2.5 text-on-primary font-bold uppercase tracking-[0.08em] rounded-2xl bg-primary-600"
                             >
                                 Back to Users
                             </motion.button>
@@ -196,12 +194,12 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
                                 <div className="flex items-center gap-3">
-                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-2xl shadow-sm">
+                                    <div className="p-4 text-on-primary rounded-2xl bg-primary-600">
                                         <Coins className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Revenue & Spending</h3>
-                                        <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Earnings and expenses overview</p>
+                                        <h3 className="text-sm xl:text-xl font-bold text-content-primary italic tracking-tight leading-none mb-1">Revenue & Spending</h3>
+                                        <p className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em]">Earnings and expenses overview</p>
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-5 gap-3 xl:gap-3">
@@ -221,12 +219,12 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
                                 <div className="flex items-center gap-3">
-                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-2xl shadow-sm">
+                                    <div className="p-4 text-on-primary rounded-2xl bg-primary-600">
                                         <Trophy className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Engagement & Performance</h3>
-                                        <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Quiz accuracy and leaderboard standing</p>
+                                        <h3 className="text-sm xl:text-xl font-bold text-content-primary italic tracking-tight leading-none mb-1">Engagement & Performance</h3>
+                                        <p className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em]">Quiz accuracy and leaderboard standing</p>
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-3">
@@ -244,12 +242,12 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
                                 <div className="flex items-center gap-3">
-                                    <div className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl shadow-sm">
+                                    <div className="p-4 bg-black/10 dark:bg-white/10 text-content-primary rounded-2xl">
                                         <Activity className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Activity Timeline</h3>
-                                        <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Daily, weekly, and monthly progress</p>
+                                        <h3 className="text-sm xl:text-xl font-bold text-content-primary italic tracking-tight leading-none mb-1">Activity Timeline</h3>
+                                        <p className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em]">Daily, weekly, and monthly progress</p>
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-3">
@@ -267,12 +265,12 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
                                 <div className="flex items-center gap-3">
-                                    <div className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl shadow-sm">
+                                    <div className="p-4 bg-black/10 dark:bg-white/10 text-content-primary rounded-2xl">
                                         <Users className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Referral Network</h3>
-                                        <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Followers, following, and referrals</p>
+                                        <h3 className="text-sm xl:text-xl font-bold text-content-primary italic tracking-tight leading-none mb-1">Referral Network</h3>
+                                        <p className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em]">Followers, following, and referrals</p>
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-3">
@@ -290,12 +288,12 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-2 xl:space-y-3 xl:space-y-4"
                             >
                                 <div className="flex items-center gap-3">
-                                    <div className="p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-2xl shadow-sm">
+                                    <div className="p-4 text-on-primary rounded-2xl bg-primary-600">
                                         <Book className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">Content Contributions</h3>
-                                        <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Questions, categories, quizzes, and blogs created</p>
+                                        <h3 className="text-sm xl:text-xl font-bold text-content-primary italic tracking-tight leading-none mb-1">Content Contributions</h3>
+                                        <p className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em]">Questions, categories, quizzes, and blogs created</p>
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-2 xl:grid-cols-5 gap-3 xl:gap-3">

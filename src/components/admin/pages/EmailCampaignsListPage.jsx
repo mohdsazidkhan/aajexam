@@ -14,11 +14,11 @@ import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../../../lib/constants/pag
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const STATUS_STYLES = {
-  draft: 'bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300',
-  published: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
-  active: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
-  paused: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
-  completed: 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300'
+  draft: 'bg-background-surface-secondary text-content-secondary dark:bg-white/10',
+  published: 'bg-background-surface-secondary text-content-primary',
+  active: 'bg-background-surface-secondary text-content-primary',
+  paused: 'bg-background-surface-secondary text-content-primary',
+  completed: 'text-primary-600'
 };
 const STATUS_LABEL = {
   draft: '📝 Draft', published: '✅ Published', active: '📤 Sending',
@@ -140,8 +140,8 @@ const EmailCampaignsListPage = () => {
       title={canPreview(c) ? 'Preview this email in a new tab' : 'Preview is available once the campaign has been sent to all users'}
       className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs ${
         canPreview(c)
-          ? 'bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-white/20'
-          : 'bg-slate-50 dark:bg-white/5 text-slate-300 dark:text-slate-600 cursor-not-allowed'
+          ? 'bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary'
+          : 'bg-background-surface-secondary text-slate-300 dark:text-slate-600 cursor-not-allowed'
       } ${className}`}
     >
       <Eye size={12} /> Preview
@@ -157,8 +157,8 @@ const EmailCampaignsListPage = () => {
         : 'Already sending or sent — open the campaign to delete it'}
       className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs ${
         canDelete(c)
-          ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/50'
-          : 'bg-slate-50 dark:bg-slate-800 text-slate-300 dark:text-slate-600 cursor-not-allowed'
+          ? 'bg-background-surface-secondary text-content-primary hover:bg-background-surface-secondary'
+          : 'bg-background-surface-secondary text-slate-300 dark:text-slate-600 cursor-not-allowed'
       }`}
     >
       <Trash2 size={12} /> {deletingId === c._id ? '…' : 'Delete'}
@@ -167,10 +167,10 @@ const EmailCampaignsListPage = () => {
 
   const Progress = ({ c }) => (
     <div className="min-w-[120px]">
-      <div className="w-full bg-slate-200 dark:bg-white/10 rounded-full h-1.5 overflow-hidden">
+      <div className="w-full bg-background-surface-secondary rounded-full h-1.5 overflow-hidden">
         <div className="bg-primary-600 h-1.5" style={{ width: `${pctOf(c)}%` }} />
       </div>
-      <div className="text-[10px] text-slate-500 mt-1">
+      <div className="text-[10px] text-content-muted mt-1">
         {(c.sentCount || 0) + (c.failedCount || 0)} / {c.totalTargeted || 0} ({pctOf(c)}%)
       </div>
     </div>
@@ -182,18 +182,18 @@ const EmailCampaignsListPage = () => {
       header: 'Subject',
       render: (_, c) => (
         <>
-          <Link href={`/admin/email-campaigns/${c._id}`} className="font-medium text-slate-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">
+          <Link href={`/admin/email-campaigns/${c._id}`} className="font-medium text-content-primary hover:text-primary-600 dark:hover:text-primary-600">
             {c.subject}
           </Link>
-          <div className="text-[10px] font-mono text-slate-400">#{String(c._id).slice(-6)}</div>
+          <div className="text-[10px] font-mono text-content-muted">#{String(c._id).slice(-6)}</div>
         </>
       )
     },
     { key: 'status', header: 'Status', render: (_, c) => <StatusBadge status={c.status} /> },
     { key: 'progress', header: 'Progress', render: (_, c) => <Progress c={c} /> },
-    { key: 'sentCount', header: 'Sent', render: (_, c) => <span className="text-primary-600 dark:text-primary-300 font-semibold">{c.sentCount || 0}</span> },
-    { key: 'failedCount', header: 'Failed', render: (_, c) => <span className="text-black dark:text-white font-semibold">{c.failedCount || 0}</span> },
-    { key: 'createdAt', header: 'Created', render: (_, c) => <span className="text-slate-500 text-xs whitespace-nowrap">{fmtDate(c.createdAt)}</span> },
+    { key: 'sentCount', header: 'Sent', render: (_, c) => <span className="text-primary-600 font-semibold">{c.sentCount || 0}</span> },
+    { key: 'failedCount', header: 'Failed', render: (_, c) => <span className="text-content-primary font-semibold">{c.failedCount || 0}</span> },
+    { key: 'createdAt', header: 'Created', render: (_, c) => <span className="text-content-muted text-xs whitespace-nowrap">{fmtDate(c.createdAt)}</span> },
     {
       key: 'actions',
       header: 'Actions',
@@ -202,7 +202,7 @@ const EmailCampaignsListPage = () => {
         <div className="flex justify-end gap-2">
           <PreviewBtn c={c} />
           <DeleteBtn c={c} />
-          <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
+          <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-background-surface-secondary text-content-primary hover:bg-background-surface-secondary">
             Open
           </Link>
         </div>
@@ -212,7 +212,7 @@ const EmailCampaignsListPage = () => {
 
   const newCampaignButton = (
     <Link href="/admin/email-campaigns/new"
-      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:bg-primary-600 text-white shadow-sm">
+      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium hover:bg-primary-600 text-on-primary bg-primary-600">
       <Plus size={20} /> New Campaign
     </Link>
   );
@@ -222,7 +222,7 @@ const EmailCampaignsListPage = () => {
       {FILTERS.map((f) => (
         <button key={f} onClick={() => { setFilter(f); setPage(1); }}
           className={`px-3 py-1 rounded-full text-xs font-medium capitalize ${
-            filter === f ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/20'
+            filter === f ? 'bg-primary-600 text-on-primary' : 'bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary'
           }`}>
           {f === 'completed' ? 'Sent to all' : f}
         </button>
@@ -235,7 +235,7 @@ const EmailCampaignsListPage = () => {
       {VIEWS.map((v) => (
         <button key={v.key} onClick={() => changeView(v.key)} title={`${v.label} View`}
           className={`flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${
-            view === v.key ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'
+            view === v.key ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'
           }`}>
           <v.icon size={16} />
         </button>
@@ -248,16 +248,16 @@ const EmailCampaignsListPage = () => {
       {pagination.totalPages > 1 && (
         <>
           <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page <= 1 || loading}
-            className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 disabled:opacity-40">Prev</button>
-          <span className="text-slate-500">Page {pagination.page} / {pagination.totalPages} · {pagination.total} campaigns</span>
+            className="px-3 py-1.5 rounded-lg bg-background-surface-secondary disabled:opacity-40">Prev</button>
+          <span className="text-content-muted">Page {pagination.page} / {pagination.totalPages} · {pagination.total} campaigns</span>
           <button onClick={() => setPage((p) => Math.min(pagination.totalPages, p + 1))} disabled={page >= pagination.totalPages || loading}
-            className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 disabled:opacity-40">Next</button>
+            className="px-3 py-1.5 rounded-lg bg-background-surface-secondary disabled:opacity-40">Next</button>
         </>
       )}
       <Select
         value={itemsPerPage}
         onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
-        className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 border border-slate-300 dark:border-slate-700"
+        className="px-3 py-1.5 rounded-lg bg-background-surface-secondary border border-border-primary"
       >
         {PAGE_SIZE_OPTIONS.map(v => <option key={v} value={v}>{v} per page</option>)}
       </Select>
@@ -277,16 +277,16 @@ const EmailCampaignsListPage = () => {
     )
   });
 
-  if (!isMounted) return <div className="adminContent w-full mx-auto"><AdminTableSkeleton /></div>;
+  if (!isMounted) return <div className="py-4 w-full mx-auto"><AdminTableSkeleton /></div>;
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
-      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
+      <div className="py-4 w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col">
 
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {sendingCampaign && (
-            <div className="shrink-0 mb-4 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
+            <div className="shrink-0 mb-4 p-3 rounded-lg bg-background-surface-secondary border border-border-primary dark:border-white text-xs text-content-primary">
               📤 &ldquo;{sendingCampaign.subject}&rdquo; is mid-send. Only one campaign can send at a time — finish it before starting another.
             </div>
           )}
@@ -296,17 +296,17 @@ const EmailCampaignsListPage = () => {
           {loading ? (
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : campaigns.length === 0 ? (
-            <div className="p-10 text-center bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
-              <p className="text-slate-500 dark:text-slate-400 mb-4">
+            <div className="p-10 text-center bg-background-surface dark:bg-white/5 rounded-2xl border border-border-primary">
+              <p className="text-content-muted mb-4">
                 {filter === 'all' ? 'No campaigns yet.' : `No ${filter} campaigns.`}
               </p>
-              <Link href="/admin/email-campaigns/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:bg-primary-600 text-white text-sm">
+              <Link href="/admin/email-campaigns/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-primary-600 text-on-primary text-sm bg-primary-600">
                 <Plus size={16} /> Create your first campaign
               </Link>
             </div>
           ) : view === 'table' ? (
             /* ---------- TABLE ---------- */
-            <div className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col">
+            <div className="bg-background-surface dark:bg-white/5 rounded-2xl border border-border-primary overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col">
               <ResponsiveTable
                 data={campaigns}
                 columns={campaignColumns}
@@ -321,16 +321,16 @@ const EmailCampaignsListPage = () => {
             /* ---------- LIST ---------- */
             <div className="flex-1 min-h-0 overflow-auto space-y-2">
               {campaigns.map((c, idx) => (
-                <div key={c._id} className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 p-4 flex flex-wrap items-center gap-3">
+                <div key={c._id} className="bg-background-surface dark:bg-white/5 rounded-2xl border border-border-primary p-4 flex flex-wrap items-center gap-3">
                   <div className="flex-1 min-w-[200px]">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 text-[9px] font-black flex items-center justify-center">{(page - 1) * itemsPerPage + idx + 1}</span>
-                      <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-slate-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">
+                      <span className="shrink-0 w-5 h-5 rounded-full bg-background-surface-secondary text-content-muted text-[9px] font-bold flex items-center justify-center">{(page - 1) * itemsPerPage + idx + 1}</span>
+                      <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-content-primary hover:text-primary-600 dark:hover:text-primary-600">
                         {c.subject}
                       </Link>
                       <StatusBadge status={c.status} />
                     </div>
-                    <div className="text-xs text-slate-400 mt-1">
+                    <div className="text-xs text-content-muted mt-1">
                       #{String(c._id).slice(-6)} · {fmtDate(c.createdAt)} · {c.sentCount || 0} sent
                       {(c.failedCount || 0) > 0 && ` · ${c.failedCount} failed`}
                     </div>
@@ -339,7 +339,7 @@ const EmailCampaignsListPage = () => {
                   <div className="flex gap-2">
                     <PreviewBtn c={c} />
                           <DeleteBtn c={c} />
-                    <Link href={`/admin/email-campaigns/${c._id}`} className="px-3 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
+                    <Link href={`/admin/email-campaigns/${c._id}`} className="px-3 py-1 rounded text-xs bg-background-surface-secondary text-content-primary hover:bg-background-surface-secondary">
                       Open
                     </Link>
                   </div>
@@ -350,30 +350,30 @@ const EmailCampaignsListPage = () => {
             /* ---------- GRID ---------- */
             <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
               {campaigns.map((c, idx) => (
-                <div key={c._id} className="relative bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 p-4 flex flex-col">
-                  <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{(page - 1) * itemsPerPage + idx + 1}</span>
+                <div key={c._id} className="relative bg-background-surface dark:bg-white/5 rounded-2xl border border-border-primary p-4 flex flex-col">
+                  <span className="absolute top-2 left-2 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 bg-primary-600">{(page - 1) * itemsPerPage + idx + 1}</span>
                   <div className="flex items-start justify-between gap-2 mb-2 pl-6">
                     <StatusBadge status={c.status} />
-                    <span className="text-[10px] font-mono text-slate-400">#{String(c._id).slice(-6)}</span>
+                    <span className="text-[10px] font-mono text-content-muted">#{String(c._id).slice(-6)}</span>
                   </div>
-                  <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-slate-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 line-clamp-2 mb-1">
+                  <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-content-primary hover:text-primary-600 dark:hover:text-primary-600 line-clamp-2 mb-1">
                     {c.subject}
                   </Link>
-                  {c.heading && <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-3">{c.heading}</p>}
+                  {c.heading && <p className="text-xs text-content-muted line-clamp-2 mb-3">{c.heading}</p>}
 
                   <div className="mt-auto space-y-3">
                     <Progress c={c} />
                     <div className="grid grid-cols-3 gap-1 text-center">
-                      <div><div className="text-primary-600 dark:text-primary-300 font-bold text-sm">{c.sentCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Sent</div></div>
-                      <div><div className="text-black dark:text-white font-bold text-sm">{c.failedCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Failed</div></div>
-                      <div><div className="text-black dark:text-white font-bold text-sm">{c.totalTargeted || 0}</div><div className="text-[9px] text-slate-500 uppercase">Total</div></div>
+                      <div><div className="text-primary-600 font-bold text-sm">{c.sentCount || 0}</div><div className="text-[9px] text-content-muted uppercase">Sent</div></div>
+                      <div><div className="text-content-primary font-bold text-sm">{c.failedCount || 0}</div><div className="text-[9px] text-content-muted uppercase">Failed</div></div>
+                      <div><div className="text-content-primary font-bold text-sm">{c.totalTargeted || 0}</div><div className="text-[9px] text-content-muted uppercase">Total</div></div>
                     </div>
-                    <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-white/10">
-                      <span className="text-[10px] text-slate-400">{fmtDate(c.createdAt)}</span>
+                    <div className="flex items-center justify-between gap-2 pt-2 border-t border-border-primary">
+                      <span className="text-[10px] text-content-muted">{fmtDate(c.createdAt)}</span>
                       <div className="flex gap-2">
                         <PreviewBtn c={c} />
                           <DeleteBtn c={c} />
-                        <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
+                        <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-background-surface-secondary text-content-primary hover:bg-background-surface-secondary">
                           Open
                         </Link>
                       </div>

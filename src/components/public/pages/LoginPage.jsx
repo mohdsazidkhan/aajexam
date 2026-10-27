@@ -90,19 +90,16 @@ const LoginPage = () => {
   return (
     <MobileAppWrapper showHeader={true} title={translate('Login')}>
       <div className="flex-1 flex flex-col xl:flex-row items-stretch">
-        <div className="hidden xl:flex w-1/2 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-primary-800 dark:via-primary-900 dark:to-primary-950 p-16 flex-col justify-center items-start relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '20px 20px' }} />
-          <div className="pointer-events-none absolute -top-24 -left-20 w-80 h-80 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="pointer-events-none absolute -bottom-28 right-10 w-96 h-96 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+        <div className="hidden xl:flex w-1/2 p-16 flex-col justify-center items-start relative overflow-hidden bg-background-surface">
           <div className="space-y-4 xl:space-y-8 relative z-10">
             <motion.div animate={{ rotate: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-              <div className="p-5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-xl w-fit rotate-[-4deg]" style={{ borderRadius: 18 }}>
+              <div className="p-5 text-on-primary w-fit bg-primary-600" style={{ borderRadius: 18 }}>
                 <Trophy className="w-12 h-12" />
               </div>
             </motion.div>
 
             <div className="space-y-2 xl:space-y-4">
-              <h1 className="text-2xl md:text-3xl xl:text-4xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
+              <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold font-outfit tracking-tight leading-none text-content-primary">
                 {translate('Welcome back!')}
                 <br />
                 {translate('Keep practicing.')}
@@ -115,11 +112,11 @@ const LoginPage = () => {
                 { icon: Brain, text: 'Check your progress and complete daily challenge' },
                 { icon: Sparkles, text: 'Play daily quizzes subject & topic wise' }
               ].map((item, index) => (
-                <div key={index} className="flex items-center gap-4 text-slate-700 dark:text-white font-bold">
-                  <div className="p-2 bg-primary-500/10 dark:bg-white/15 rounded-lg xl:rounded-xl">
-                    <item.icon className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+                <div key={index} className="flex items-center gap-4 text-content-secondary font-bold">
+                  <div className="p-2 dark:bg-white/15 rounded-lg xl:rounded-xl">
+                    <item.icon className="w-5 h-5 text-primary-600" />
                   </div>
-                  <span className="text-sm font-black tracking-[0.04em]">{translate(item.text)}</span>
+                  <span className="text-sm font-bold tracking-[0.04em]">{translate(item.text)}</span>
                 </div>
               ))}
             </div>
@@ -129,10 +126,10 @@ const LoginPage = () => {
         </div>
 
         <div className="flex-1 flex items-center justify-center">
-          <Card as="section" className="w-full max-w-md p-5 xl:p-8 shadow-xl space-y-6">
+          <Card as="section" className="w-full max-w-md p-5 xl:p-8 space-y-6">
             <section className="text-center space-y-3">
-              <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">{translate('Welcome back')}</h2>
-              <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
+              <h2 className="text-xl xl:text-3xl font-bold font-outfit tracking-tight text-content-primary">{translate('Welcome back')}</h2>
+              <p className="text-sm font-bold text-content-secondary tracking-[0.04em]">
                 {translate('Enter your details to log in.')}
               </p>
             </section>
@@ -140,23 +137,23 @@ const LoginPage = () => {
             <div className="space-y-2 xl:space-y-4">
               <button
                 onClick={() => googleLogin()}
-                className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-600 font-black text-sm uppercase tracking-wide hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm group mt-4 xl:mt-2"
+                className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-border-primary dark:border-slate-600 font-bold text-sm uppercase tracking-wide hover:bg-background-surface-secondary transition-all group mt-4 xl:mt-2"
               >
                 <img src="/google.svg" alt="Google" className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 {translate('Continue with Google')}
               </button>
 
               <div className="relative flex items-center py-2">
-                <div className="flex-grow border-t-2 border-slate-100 dark:border-slate-800" />
-                <span className="flex-shrink mx-4 text-xs font-black text-slate-500 dark:text-slate-400 tracking-[0.08em]">
+                <div className="flex-grow border-t-2 border-border-primary" />
+                <span className="flex-shrink mx-4 text-xs font-bold text-content-muted tracking-[0.08em]">
                   {translate('Or continue with email')}
                 </span>
-                <div className="flex-grow border-t-2 border-slate-100 dark:border-slate-800" />
+                <div className="flex-grow border-t-2 border-border-primary" />
               </div>
 
               <form onSubmit={handleLogin} className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">
+                  <label className="text-xs font-bold text-content-secondary tracking-[0.08em] px-1">
                     {translate('Email or phone')}
                   </label>
                   <div className="relative group">
@@ -164,7 +161,7 @@ const LoginPage = () => {
                     <input
                       type="text"
                       required
-                      className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                       placeholder={translate('you@example.com')}
                       value={identifier}
                       onChange={(e) => setIdentifier(e.target.value)}
@@ -174,8 +171,8 @@ const LoginPage = () => {
 
                 <div className="space-y-2">
                   <div className="flex justify-between items-end px-1">
-                    <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em]">{translate('Password')}</label>
-                    <Link href="/forgot-password" className="text-xs font-black text-primary-600 dark:text-primary-300 hover:underline">
+                    <label className="text-xs font-bold text-content-secondary tracking-[0.08em]">{translate('Password')}</label>
+                    <Link href="/forgot-password" className="text-xs font-bold text-primary-600 hover:underline">
                       {translate('Forgot password?')}
                     </Link>
                   </div>
@@ -184,7 +181,7 @@ const LoginPage = () => {
                     <input
                       type={showPassword ? 'text' : 'password'}
                       required
-                      className="w-full pl-12 pr-12 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-12 pr-12 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                       placeholder={translate('Enter your password')}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -193,23 +190,23 @@ const LoginPage = () => {
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
                       aria-label={showPassword ? translate('Hide password') : translate('Show password')}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-700 dark:text-slate-400"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-content-muted hover:text-content-primary"
                     >
                       {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
                   </div>
                 </div>
 
-                <Button variant="primary" fullWidth size="lg" className="py-5 rounded-2xl shadow-sm" type="submit" disabled={isLoading}>
+                <Button variant="primary" fullWidth size="lg" className="py-5 rounded-2xl" type="submit" disabled={isLoading}>
                   {isLoading ? translate('Logging in...') : translate('Login')}
                 </Button>
               </form>
             </div>
 
             <div className="text-center">
-              <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
+              <p className="text-sm font-bold text-content-secondary tracking-[0.04em]">
                 {translate("Don't have an account?")}{' '}
-                <Link href="/register" className="text-primary-600 dark:text-primary-300 hover:underline font-black">
+                <Link href="/register" className="text-primary-600 hover:underline font-bold">
                   {translate('REGISTER')}
                 </Link>
               </p>

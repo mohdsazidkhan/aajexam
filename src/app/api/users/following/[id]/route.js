@@ -1,6 +1,7 @@
 import { escapeRegex } from '@/lib/utils/pagination';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
+import { resolveUserId } from '@/lib/utils/userRef';
 import User from '@/models/User';
 import Follow from '@/models/Follow';
 
@@ -9,7 +10,9 @@ export async function GET(req, { params }) {
         await dbConnect();
 
         // Ensure parameters are resolved
-        const { id: userId } = await params;
+        const { id: userRef } = await params; // user id or username
+        const userId = await resolveUserId(userRef);
+        if (!userId) return NextResponse.json({ message: 'User not found' }, { status: 404 });
 
         const { searchParams } = new URL(req.url);
         const page = parseInt(searchParams.get('page')) || 1;

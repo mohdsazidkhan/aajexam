@@ -88,7 +88,7 @@ const ExitIntentModalInner = ({ onClose }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="absolute inset-0 bg-black/60 backdrop-blur-md"
+        className="absolute inset-0 bg-black/60"
         onClick={onClose}
       />
 
@@ -97,10 +97,10 @@ const ExitIntentModalInner = ({ onClose }) => {
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-primary-500/30 overflow-hidden max-h-[70vh] flex flex-col"
+        className="relative w-full max-w-md bg-background-surface rounded-3xl border border-primary-500/30 overflow-hidden max-h-[70vh] flex flex-col"
       >
         {/* Header: gradient band with the offer */}
-        <div className="relative shrink-0 bg-gradient-to-br from-primary-700 via-primary-600 to-primary-400 px-5 pt-5 pb-5 text-center text-white overflow-hidden">
+        <div className="relative shrink-0 px-5 pt-5 pb-5 text-center text-on-primary overflow-hidden bg-primary-600">
           <div className="absolute -top-10 -left-10 w-36 h-36 rounded-full bg-white/10 pointer-events-none" />
           <div className="absolute -bottom-12 -right-8 w-40 h-40 rounded-full bg-white/10 pointer-events-none" />
 
@@ -112,14 +112,14 @@ const ExitIntentModalInner = ({ onClose }) => {
           </button>
 
           <div className="relative z-10">
-            <div className="w-12 h-12 mx-auto mb-2 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center ring-4 ring-white/20">
+            <div className="w-12 h-12 mx-auto mb-2 rounded-2xl bg-white/20 flex items-center justify-center ring-4 ring-white/20">
               <Gift className="w-6 h-6 text-white" />
             </div>
-            <h2 className="text-lg sm:text-xl font-black font-outfit uppercase tracking-tight leading-tight mb-2">
+            <h2 className="text-lg sm:text-xl font-bold font-outfit tracking-tight leading-tight mb-2">
               {translate(promoActive ? 'Wait! Your FREE PRO is waiting.' : 'Wait! Don\'t Leave Empty Handed.')}
             </h2>
             {promoActive && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-primary-700 text-[11px] sm:text-xs font-black uppercase tracking-widest shadow-lg animate-pulse">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background-surface text-primary-600 text-[11px] sm:text-xs font-bold uppercase tracking-[0.08em] animate-pulse">
                 <Gift className="w-3.5 h-3.5" />
                 {translate('PRO FREE till 31 Dec 2026')}
               </span>
@@ -129,15 +129,15 @@ const ExitIntentModalInner = ({ onClose }) => {
 
         {/* Body */}
         <div className="p-4 sm:p-5 text-center overflow-y-auto min-h-0 flex-1">
-          <p className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 mb-3 max-w-xs mx-auto">
+          <p className="text-xs sm:text-sm font-bold text-content-secondary mb-3 max-w-xs mx-auto">
             {promoActive
               ? translate('Sign up in 10 seconds and unlock full PRO access. No card, no payment.')
-              : rich('Sign up in 10 seconds to unlock a <0>Free Premium Mock Test</0> and personalized progress tracking.', [(c) => <span className="text-primary-600 dark:text-primary-300 font-black">{c}</span>])}
+              : rich('Sign up in 10 seconds to unlock a <0>Free Premium Mock Test</0> and personalized progress tracking.', [(c) => <span className="text-primary-600 font-bold">{c}</span>])}
           </p>
 
-          <div className="mb-3 flex items-center justify-center gap-2 rounded-2xl bg-primary-50 dark:bg-primary-900/20 border border-primary-500/30 px-3 py-2.5">
-            <CheckCircle2 className="w-5 h-5 text-primary-600 dark:text-primary-300 shrink-0" />
-            <p className="text-sm sm:text-base font-black text-slate-900 dark:text-white leading-snug">
+          <div className="mb-3 flex items-center justify-center gap-2 rounded-2xl border border-primary-500/30 px-3 py-2.5">
+            <CheckCircle2 className="w-5 h-5 text-primary-600 shrink-0" />
+            <p className="text-sm sm:text-base font-bold text-content-primary leading-snug">
               {translate('Everything in Unlimited FREE')}
             </p>
           </div>
@@ -145,10 +145,10 @@ const ExitIntentModalInner = ({ onClose }) => {
           <button
             onClick={() => { trackPrompt('exit', 'click'); googleSignup(); }}
             disabled={isGoogleLoading}
-            className="w-full flex items-center justify-center gap-3 px-5 py-3.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black uppercase tracking-widest text-sm rounded-2xl hover:bg-slate-800 dark:hover:bg-slate-100 transition shadow-lg disabled:opacity-70 border-b-4 border-slate-700 dark:border-slate-300 active:border-b-0 active:translate-y-1"
+            className="w-full flex items-center justify-center gap-3 px-5 py-3.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold uppercase tracking-[0.08em] text-sm rounded-2xl hover:bg-slate-800 dark:hover:bg-slate-100 transition disabled:opacity-70 border-slate-700 dark:border-slate-300 active:border-b-0 active:translate-y-1"
           >
             {isGoogleLoading ? (
-              <div className="w-5 h-5 border-2 border-slate-500 border-t-transparent rounded-full animate-spin" />
+              <div className="w-5 h-5 border border-slate-500 border-t-transparent rounded-full animate-spin" />
             ) : (
               <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -160,20 +160,20 @@ const ExitIntentModalInner = ({ onClose }) => {
             {isGoogleLoading ? translate('Signing in...') : translate(promoActive ? 'Get PRO Free Now' : 'Claim Free Account')}
           </button>
           {promoActive ? (
-            <p className="mt-2 text-[10px] text-red-600 dark:text-red-400 font-bold uppercase tracking-widest">{translate('Offer valid till 31 Dec 2026')}</p>
+            <p className="mt-2 text-[10px] text-red-600 dark:text-red-400 font-bold uppercase tracking-[0.08em]">{translate('Offer valid till 31 Dec 2026')}</p>
           ) : (
-            <p className="mt-2 text-[10px] text-slate-400 font-bold uppercase tracking-widest">{translate('Takes only 10 seconds')}</p>
+            <p className="mt-2 text-[10px] text-content-muted font-bold uppercase tracking-[0.08em]">{translate('Takes only 10 seconds')}</p>
           )}
 
           {/* Not ready for Google yet: keep the visitor with an email + mobile number instead of losing them */}
-          <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-800">
+          <div className="mt-3 pt-3 border-t border-border-primary">
             {emailDone ? (
-              <p className="text-xs font-bold text-primary-600 dark:text-primary-300">{translate('Thanks! We will contact you before the free PRO offer ends.')}</p>
+              <p className="text-xs font-bold text-primary-600">{translate('Thanks! We will contact you before the free PRO offer ends.')}</p>
             ) : !showLead ? (
               <button
                 type="button"
                 onClick={() => setShowLead(true)}
-                className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-500 dark:text-slate-400 hover:text-primary-600 underline underline-offset-2"
+                className="inline-flex items-center gap-1 text-[11px] font-bold text-content-muted hover:text-primary-600 underline underline-offset-2"
               >
                 {translate('Not ready yet? Share your email & mobile number for free test updates and offer reminders.')}
                 <ChevronDown className="w-3.5 h-3.5 shrink-0" />
@@ -189,7 +189,7 @@ const ExitIntentModalInner = ({ onClose }) => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={translate('Your email')}
                   aria-label={translate('Your email')}
-                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="w-full px-3 py-2.5 rounded-xl border border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:ring-2 focus:ring-primary-500"
                 />
                 <input
                   type="tel"
@@ -202,12 +202,12 @@ const ExitIntentModalInner = ({ onClose }) => {
                   onChange={(e) => setPhone(e.target.value.replace(/[^0-9+ ]/g, ''))}
                   placeholder={translate('Your mobile number')}
                   aria-label={translate('Your mobile number')}
-                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="w-full px-3 py-2.5 rounded-xl border border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:ring-2 focus:ring-primary-500"
                 />
                 <button
                   type="submit"
                   disabled={emailBusy}
-                  className="w-full px-4 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-500 text-white text-xs font-black uppercase tracking-widest disabled:opacity-70"
+                  className="w-full px-4 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-500 text-on-primary text-xs font-bold uppercase tracking-[0.08em] disabled:opacity-70"
                 >
                   {emailBusy ? '...' : translate('Notify me')}
                 </button>

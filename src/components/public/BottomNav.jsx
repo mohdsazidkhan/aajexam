@@ -27,21 +27,21 @@ const PublicBottomNav = () => {
   ];
 
   return (
-    <nav className="xl:hidden fixed bottom-0 left-0 right-0 h-16 bg-white dark:bg-black border-t-2 border-slate-200 dark:border-slate-800 flex items-center justify-around px-4 z-50 shadow-sm">
+    <nav className="xl:hidden fixed bottom-0 left-0 right-0 h-16 bg-background-page border-t border-border-primary flex items-center justify-around px-4 z-50">
       {navItems.map((item) => {
         const isActive = currentPath === item.path;
         return (
           <Link key={item.path} href={item.path} data-cta={item.path === '/login' ? 'bottom_nav_login' : undefined} className="flex-1">
             <div className={`
-              flex flex-col items-center justify-center py-3 rounded-2xl transition-all relative
-              ${isActive ? 'text-primary-600 dark:text-primary-300' : 'text-slate-600 dark:text-slate-400'}
+              flex flex-col items-center justify-center py-3 rounded-xl transition-colors relative
+              ${isActive ? 'text-primary-600' : 'text-content-secondary'}
             `}>
-              <item.icon className={`w-6 h-6 mb-1 ${isActive ? 'scale-110' : ''}`} />
-              <span className="text-[11px] font-black uppercase tracking-[0.1em]">{translate(item.name)}</span>
+              <item.icon className={`w-6 h-6 mb-1`} />
+              <span className="text-[11px] font-bold">{translate(item.name)}</span>
               {isActive && (
                 <motion.div
                   layoutId="public-bottom-nav-pill"
-                  className="absolute inset-0 bg-primary-500/5 dark:bg-primary-500/10 rounded-2xl -z-10"
+                  className="absolute inset-0 bg-background-surface-secondary rounded-xl -z-10"
                 />
               )}
             </div>

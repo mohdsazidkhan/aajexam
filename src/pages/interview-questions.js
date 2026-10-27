@@ -20,12 +20,12 @@ const Sh = ({ className = '' }) => (
 
 const InterviewQuestionsSkeleton = () => (
   <div className="container mx-auto py-2 xl:py-4 space-y-4 xl:space-y-8">
-    <div className="h-40 xl:h-52 w-full rounded-[2.5rem] animate-pulse bg-primary-600/25 dark:bg-primary-500/25 border-b-2 border-primary-600/30 mt-4 xl:mt-8" />
+    <div className="h-40 xl:h-52 w-full rounded-3xl animate-pulse border-b-2 border-primary-600/30 mt-4 xl:mt-8" />
     <div className="flex gap-2 px-1">{[1, 2].map(i => <Sh key={i} className="h-10 w-32 rounded-full" />)}</div>
     <div className="flex gap-2 px-1">{[1, 2, 3, 4].map(i => <Sh key={i} className="h-9 w-24 rounded-full" />)}</div>
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
       {Array.from({ length: 9 }).map((_, i) => (
-        <div key={i} className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-5 space-y-3">
+        <div key={i} className="bg-background-surface rounded-2xl border border-border-primary p-5 space-y-3">
           <div className="flex gap-3">
             <Sh className="w-12 h-12 rounded-2xl shrink-0" />
             <div className="flex-1 space-y-2"><Sh className="h-4 w-3/4 rounded-lg" /><Sh className="h-2.5 w-1/2 rounded-full" /></div>
@@ -51,22 +51,22 @@ const CategoryCard = ({ category, index, typeLabel }) => {
   return (
     <Link href={`/${category.slug}-interview-questions`} className="block">
     <Card as="section" padded={false} hoverable
-      className="overflow-hidden border-2 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] cursor-pointer">
+      className="overflow-hidden border border-border-primary hover:border-black dark:hover:border-white transition-all rounded-2xl cursor-pointer">
       <div className="w-full flex items-center justify-between gap-2 sm:gap-3 p-3 sm:p-5 bg-background-surface">
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-xl sm:rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs sm:text-base font-black tabular-nums">
+          <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-xl sm:rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 text-on-primary text-xs sm:text-base font-bold tabular-nums">
             {index + 1}
           </div>
           <div className="min-w-0 text-left">
-            <h3 className="text-xs sm:text-sm font-black text-content-primary truncate">{category.name}</h3>
+            <h3 className="text-xs sm:text-sm font-bold text-content-primary truncate">{category.name}</h3>
             <div className="mt-1 flex items-center gap-1.5 flex-wrap">
               {typeLabel && (
-                <span className="inline-block px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[9px] font-black uppercase text-content-muted">
+                <span className="inline-block px-2 py-0.5 rounded-full bg-background-surface-secondary text-[9px] font-bold uppercase text-content-muted">
                   {typeLabel}
                 </span>
               )}
               {category.questionCount !== undefined && (
-                <span className="inline-block px-2 py-0.5 rounded-full bg-primary-50 dark:bg-primary-900/30 text-[9px] font-black uppercase text-primary-700 dark:text-primary-300">
+                <span className="inline-block px-2 py-0.5 rounded-full text-[9px] font-bold uppercase text-primary-600">
                   {translate('{count} Questions', { count: category.questionCount })}
                 </span>
               )}
@@ -161,9 +161,9 @@ const InterviewQuestionsPage = ({ initialCategories = [], initialTotal = 0 } = {
         center={
           <div className="w-full">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
               <input type="text" placeholder={translate('Search categories or questions...')} value={search} onChange={e => { setSearch(e.target.value); setQPage(1); }}
-                className="w-full bg-white dark:bg-black rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-300 dark:border-slate-600" />
+                className="w-full bg-background-surface rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-border-primary dark:border-slate-600" />
             </div>
           </div>
         }
@@ -171,10 +171,10 @@ const InterviewQuestionsPage = ({ initialCategories = [], initialTotal = 0 } = {
           <div className="flex gap-1.5 overflow-x-auto no-scrollbar max-w-full">
         {Object.entries(typeConfig).map(([id, c]) => (
           <button key={id} onClick={() => setType(id)}
-            className={`flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full font-black uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
+            className={`flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full font-bold uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
               type === id
-                ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] border-primary-500'
-                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
+                ? 'text-on-primary border-primary-500 bg-primary-600'
+                : 'bg-background-surface text-content-secondary border-border-primary'
             }`}>
             <c.icon className="w-4 h-4 shrink-0" /> {c.label}
           </button>
@@ -188,8 +188,8 @@ const InterviewQuestionsPage = ({ initialCategories = [], initialTotal = 0 } = {
       {search.trim() && (
         <section className="space-y-2 xl:space-y-4">
           <div className="flex items-center gap-2 px-1">
-            <Search className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />
-            <h2 className="text-xs font-black uppercase tracking-wide text-content-primary">{translate('Matching Questions')}</h2>
+            <Search className="w-4 h-4 text-primary-600 shrink-0" />
+            <h2 className="text-xs font-bold uppercase tracking-wide text-content-primary">{translate('Matching Questions')}</h2>
           </div>
 
           {loadingQuestions && questions.length === 0 ? (
@@ -203,14 +203,14 @@ const InterviewQuestionsPage = ({ initialCategories = [], initialTotal = 0 } = {
                   return (
                     <motion.div key={q._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
                       <Card as="section" hoverable onClick={() => router.push(`/interview-questions/${q.slug}`)}
-                        className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
+                        className="group flex flex-col gap-4 border-border-primary hover:border-black dark:hover:border-white transition-all rounded-2xl bg-background-surface">
                         <div className="flex items-start justify-between">
                           <div className="flex items-center gap-3">
-                            <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
+                            <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 text-on-primary text-xs xl:text-base font-bold tabular-nums">
                               {(qPage - 1) * pageSize + idx + 1}
                             </div>
                             <div>
-                              <h3 className={`text-sm font-black text-content-primary tracking-tight line-clamp-2 ${language === 'hi' && q.questionHi ? 'leading-relaxed' : 'leading-tight'}`}>
+                              <h3 className={`text-sm font-bold text-content-primary tracking-tight line-clamp-2 ${language === 'hi' && q.questionHi ? 'leading-relaxed' : 'leading-tight'}`}>
                                 {(language === 'hi' && q.questionHi) || q.question}
                               </h3>
                               {q.category?.name && (
@@ -220,7 +220,7 @@ const InterviewQuestionsPage = ({ initialCategories = [], initialTotal = 0 } = {
                           </div>
                           <div className="flex flex-col items-center gap-2">
                             <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-1 transition-all shrink-0 mt-1" />
-                            <div className="flex items-center gap-1 text-[10px] font-black text-slate-500 uppercase shrink-0">
+                            <div className="flex items-center gap-1 text-[10px] font-bold text-content-muted uppercase shrink-0">
                               <Eye className="w-3 h-3" />
                               {q.views || 0}
                             </div>
@@ -242,16 +242,16 @@ const InterviewQuestionsPage = ({ initialCategories = [], initialTotal = 0 } = {
       <section className="space-y-2 xl:space-y-3">
         <div className="flex items-center justify-between gap-2 px-1">
           <div className="flex items-center gap-2 min-w-0">
-            <ListFilter className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />
-            <h2 className="text-xs font-black uppercase tracking-wide text-content-primary truncate">{translate('Browse by Category')}</h2>
+            <ListFilter className="w-4 h-4 text-primary-600 shrink-0" />
+            <h2 className="text-xs font-bold uppercase tracking-wide text-content-primary truncate">{translate('Browse by Category')}</h2>
           </div>
-          <div className="flex rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700 shrink-0">
+          <div className="flex rounded-full overflow-hidden border border-border-primary shrink-0">
             {[{ id: 'en', label: 'EN' }, { id: 'hi', label: 'HI' }].map(l => (
               <button key={l.id} onClick={() => setLanguage(l.id)}
-                className={`px-3 py-1.5 font-black uppercase text-[10px] transition-all ${
+                className={`px-3 py-1.5 font-bold uppercase text-[10px] transition-all ${
                   language === l.id
-                    ? 'bg-primary-600 text-white'
-                    : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                    ? 'bg-primary-600 text-on-primary'
+                    : 'bg-background-surface text-content-secondary'
                 }`}>
                 {l.label}
               </button>
@@ -267,7 +267,7 @@ const InterviewQuestionsPage = ({ initialCategories = [], initialTotal = 0 } = {
             </p>
             {search && (
               <button onClick={() => setSearch('')}
-                className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">{translate('Clear Search')}</button>
+                className="px-6 py-2.5 bg-primary-600 text-on-primary rounded-full font-bold text-xs uppercase">{translate('Clear Search')}</button>
             )}
           </div>
         ) : (

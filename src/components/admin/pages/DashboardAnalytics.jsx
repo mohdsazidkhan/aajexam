@@ -158,13 +158,13 @@ const DashboardAnalytics = () => {
       key: 'user',
       header: (
         <div className="flex items-center gap-2">
-          <User className="w-4 h-4 text-primary-600 dark:text-primary-300" />
+          <User className="w-4 h-4 text-primary-600" />
           User
         </div>
       ),
       render: (_, a) => (
         <div className="flex items-center gap-3">
-          <span className="font-semibold text-gray-900 dark:text-white">
+          <span className="font-semibold text-content-primary">
             {a.user?.name || 'Unknown'}
           </span>
         </div>
@@ -174,16 +174,16 @@ const DashboardAnalytics = () => {
       key: 'quiz',
       header: (
         <div className="flex items-center gap-2">
-          <BookOpen className="w-4 h-4 text-primary-600 dark:text-primary-300" />
+          <BookOpen className="w-4 h-4 text-primary-600" />
           Quiz / Exam
         </div>
       ),
       render: (_, a) => (
         <div className="flex items-center gap-2">
-          <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-widest ${a.type === 'exam' ? 'bg-black/10 text-black dark:text-white' : 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300'}`}>
+          <span className={`px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-[0.08em] ${a.type === 'exam' ? 'bg-black/10 text-content-primary' : 'text-primary-600'}`}>
             {a.type === 'exam' ? 'Exam' : 'Quiz'}
           </span>
-          <span className="text-gray-600 dark:text-gray-300 font-medium whitespace-nowrap">
+          <span className="text-content-secondary font-medium whitespace-nowrap">
             {a.quiz?.title || 'Unknown'}
           </span>
         </div>
@@ -193,23 +193,23 @@ const DashboardAnalytics = () => {
       key: 'score',
       header: (
         <div className="flex items-center gap-2">
-          <Trophy className="w-4 h-4 text-primary-600 dark:text-primary-300" />
+          <Trophy className="w-4 h-4 text-primary-600" />
           Score
         </div>
       ),
       render: (_, a) => (
         <div className="flex items-center gap-2">
-          <span className={`px-3 py-1 rounded-full text-sm font-semibold ${a.score >= 80 ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300' :
-            a.score >= 60 ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300' :
-              a.score >= 40 ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300' :
-                'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '
+          <span className={`px-3 py-1 rounded-full text-sm font-semibold ${a.score >= 80 ? 'text-primary-600' :
+            a.score >= 60 ? 'text-primary-600' :
+              a.score >= 40 ? 'text-primary-600' :
+                'bg-background-surface-secondary text-content-primary'
             }`}>
             {a.score || 0}
           </span>
-          <span className="text-xs text-slate-700 dark:text-gray-400 ml-1">
+          <span className="text-xs text-content-secondary ml-1">
             ({a.scorePercentage || 0}%)
           </span>
-          {a.score >= 80 && <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />}
+          {a.score >= 80 && <Trophy className="w-3.5 h-3.5 text-content-primary" />}
         </div>
       )
     },
@@ -217,13 +217,13 @@ const DashboardAnalytics = () => {
       key: 'attemptedAt',
       header: (
         <div className="flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-primary-600 dark:text-primary-300" />
+          <Calendar className="w-4 h-4 text-primary-600" />
           Attempt Date
         </div>
       ),
       render: (_, a) => (
-        <div className="text-sm text-gray-600 dark:text-gray-300">
-          <div className="font-medium text-gray-900 dark:text-white">
+        <div className="text-sm text-content-secondary">
+          <div className="font-medium text-content-primary">
             {(() => {
               const date = new Date(a.attemptedAt);
               const day = date.getDate().toString().padStart(2, '0');
@@ -233,7 +233,7 @@ const DashboardAnalytics = () => {
               return `${day}-${month}-${year}`;
             })()}
           </div>
-          <div className="text-xs text-slate-700 dark:text-gray-400">
+          <div className="text-xs text-content-secondary">
             {new Date(a.attemptedAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
           </div>
         </div>
@@ -243,7 +243,7 @@ const DashboardAnalytics = () => {
 
   const RecentActivityTableView = () => (
     recentActivities.length > 0 ? (
-      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+      <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden h-auto flex flex-col relative">
         <ResponsiveTable
           data={recentActivities}
           columns={recentActivityColumns}
@@ -255,10 +255,10 @@ const DashboardAnalytics = () => {
         />
       </div>
     ) : (
-      <div className="text-center py-12 text-slate-400">
+      <div className="text-center py-12 text-content-muted">
         <div className="flex flex-col items-center gap-2">
           <FileText className="w-8 h-8 opacity-20" />
-          <span className="text-sm font-medium uppercase tracking-widest">No recent activity</span>
+          <span className="text-sm font-medium uppercase tracking-[0.08em]">No recent activity</span>
         </div>
       </div>
     )
@@ -268,43 +268,43 @@ const DashboardAnalytics = () => {
     <div className="h-full overflow-y-auto grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-3 content-start">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-white dark:bg-slate-900/40 backdrop-blur-xl border border-slate-100 dark:border-white/5 rounded-2xl p-4 hover:shadow-sm transition-all duration-200 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+          <div key={i} className="bg-background-surface border border-border-primary rounded-2xl p-4 transition-all duration-200 relative">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center">
-                <User className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+                <User className="w-5 h-5 text-primary-600" />
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
+                <h4 className="font-semibold text-content-primary text-sm">
                   {a.user?.name || 'Unknown'}
                 </h4>
-                <p className="text-xs text-gray-600 dark:text-gray-400">User</p>
+                <p className="text-xs text-content-secondary">User</p>
               </div>
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-primary-500/10 rounded-md flex items-center justify-center">
-                  <BookOpen className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" />
+                <div className="w-6 h-6 rounded-md flex items-center justify-center">
+                  <BookOpen className="w-3.5 h-3.5 text-primary-600" />
                 </div>
-                <span className="text-sm text-gray-700 dark:text-gray-300 font-medium limit-text-1">
+                <span className="text-sm text-content-secondary font-medium limit-text-1">
                   {a.quiz?.title || 'Unknown Quiz'}
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 bg-black/10 dark:bg-white/10 rounded-md flex items-center justify-center">
-                  <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />
+                  <Trophy className="w-3.5 h-3.5 text-content-primary" />
                 </div>
-                <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300'}`}>
+                <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600' : 'text-content-secondary'}`}>
                   {a.score || 0} Scored
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-primary-500/10 rounded-md flex items-center justify-center">
-                  <Calendar className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" />
+                <div className="w-6 h-6 rounded-md flex items-center justify-center">
+                  <Calendar className="w-3.5 h-3.5 text-primary-600" />
                 </div>
-                <span className="text-xs text-gray-600 dark:text-gray-400">
+                <span className="text-xs text-content-secondary">
                   Attempted: {(() => {
                     const date = new Date(a.attemptedAt);
                     const day = date.getDate().toString().padStart(2, '0');
@@ -320,10 +320,10 @@ const DashboardAnalytics = () => {
           </div>
         ))
       ) : (
-        <div className="col-span-full text-center py-12 text-slate-400">
+        <div className="col-span-full text-center py-12 text-content-muted">
           <div className="flex flex-col items-center gap-2">
             <FileText className="w-8 h-8 opacity-20" />
-            <span className="text-sm font-medium uppercase tracking-widest">No recent activity</span>
+            <span className="text-sm font-medium uppercase tracking-[0.08em]">No recent activity</span>
           </div>
         </div>
       )}
@@ -334,37 +334,37 @@ const DashboardAnalytics = () => {
     <div className="h-full overflow-y-auto space-y-3">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-600 rounded-lg p-4 hover:shadow-sm transition-all duration-200">
+          <div key={i} className="border border-primary-200 dark:border-primary-600 rounded-lg p-4 transition-all duration-200">
             <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
-                  <User className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+                  <User className="w-5 h-5 text-primary-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white">
+                  <h4 className="font-semibold text-content-primary">
                     {a.user?.name || 'Unknown'}
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">User</p>
+                  <p className="text-sm text-content-secondary">User</p>
                 </div>
               </div>
 
               <div className="flex flex-col xl:flex-row items-start xl:items-center gap-3">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
-                    <BookOpen className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" />
+                  <div className="w-6 h-6 rounded-md flex items-center justify-center">
+                    <BookOpen className="w-3.5 h-3.5 text-primary-600" />
                   </div>
-                  <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
+                  <span className="text-sm text-content-secondary font-medium">
                     {a.quiz?.title || 'Unknown Quiz'}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
-                    <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />
+                  <div className="w-6 h-6 rounded-md flex items-center justify-center">
+                    <Trophy className="w-3.5 h-3.5 text-content-primary" />
                   </div>
-                  <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600 dark:text-primary-300' :
-                    a.score >= 60 ? 'text-primary-600 dark:text-primary-400' :
-                      a.score >= 40 ? 'text-primary-600 dark:text-primary-400' :
+                  <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600' :
+                    a.score >= 60 ? 'text-primary-600' :
+                      a.score >= 40 ? 'text-primary-600' :
                         'text-primary-600 dark:text-white'
                     }`}>
                     {a.score || 0}
@@ -372,10 +372,10 @@ const DashboardAnalytics = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
-                    <Calendar className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" />
+                  <div className="w-6 h-6 rounded-md flex items-center justify-center">
+                    <Calendar className="w-3.5 h-3.5 text-primary-600" />
                   </div>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="text-sm text-content-secondary">
                     Attempted: {(() => {
                       const date = new Date(a.attemptedAt);
                       const day = date.getDate().toString().padStart(2, '0');
@@ -392,10 +392,10 @@ const DashboardAnalytics = () => {
           </div>
         ))
       ) : (
-        <div className="text-center py-12 text-slate-400">
+        <div className="text-center py-12 text-content-muted">
           <div className="flex flex-col items-center gap-2">
             <FileText className="w-8 h-8 opacity-20" />
-            <span className="text-sm font-medium uppercase tracking-widest">No recent activity</span>
+            <span className="text-sm font-medium uppercase tracking-[0.08em]">No recent activity</span>
           </div>
         </div>
       )}
@@ -414,16 +414,16 @@ const DashboardAnalytics = () => {
       ].map((stat, i) => (
         <div
           key={i}
-          className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
+          className="flex items-center gap-2 p-3 bg-background-surface rounded-xl xl:rounded-2xl border border-border-primary relative"
         >
-          <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0">
+          <div className="p-2 text-on-primary rounded-lg shrink-0 bg-primary-600">
             <stat.icon className="w-4 h-4" />
           </div>
           <div className="min-w-0">
-            <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight whitespace-nowrap">
+            <div className="text-sm xl:text-base font-bold text-content-primary tabular-nums tracking-tight whitespace-nowrap">
               {stat.value?.toLocaleString?.() || stat.value || 0}
             </div>
-            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</div>
+            <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] whitespace-nowrap">{stat.label}</div>
           </div>
         </div>
       ))}
@@ -463,30 +463,30 @@ const DashboardAnalytics = () => {
   });
 
   if (loading) return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans">
-      <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 xl:pt-6 flex-1 min-h-0 overflow-auto">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-content-primary font-sans">
+      <div className="w-full mx-auto text-content-primary font-outfit pt-4 xl:pt-6 flex-1 min-h-0 overflow-auto">
         <AdminDashboardSkeleton />
       </div>
     </div>
   );
 
   if (error) return (
-    <div className="min-h-screen bg-background-page p-4 text-black dark:text-white">
-      <div className="container mx-auto py-0 xl:py-2.5 px-4 xl:px-10 bg-slate-100 dark:bg-slate-800 border border-black dark:border-white py-2 rounded">
+    <div className="min-h-screen bg-background-page p-4 text-content-primary">
+      <div className="container mx-auto py-0 xl:py-2.5 px-4 xl:px-10 bg-background-surface-secondary border border-black dark:border-white py-2 rounded">
         {error}
       </div>
       </div>
   );
 
   if (!data) return (
-    <div className="min-h-screen bg-background-page p-4 text-center text-slate-700 dark:text-gray-400 dark:text-gray-300">
+    <div className="min-h-screen bg-background-page p-4 text-center text-content-secondary">
       No data available
     </div>
   );
 
   return (
-     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
-<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 xl:pt-6 flex-1 min-h-0 overflow-auto flex flex-col">
+     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-content-primary font-sans">
+<div className="w-full mx-auto text-content-primary font-outfit pt-4 xl:pt-6 flex-1 min-h-0 overflow-auto flex flex-col">
            {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {statCardsSection}

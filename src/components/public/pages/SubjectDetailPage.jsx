@@ -13,8 +13,8 @@ import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../../lib
 import useTranslate from '../../../hooks/useTranslate';
 
 const diffChip = (d) => {
-  if (d === 'easy') return 'text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50';
-  return 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800 dark:border-white/50';
+  if (d === 'easy') return 'text-primary-600 border-primary-100 dark:border-primary-800/50';
+  return 'text-content-primary bg-background-surface-secondary border-border-primary';
 };
 
 const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
@@ -39,7 +39,7 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
   const pageItems = quizzes.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   if (loading) return <SubjectDetailSkeleton />;
-  if (!subject) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">{translate('Subject not found')}</p></div>;
+  if (!subject) return <div className="min-h-screen flex items-center justify-center"><p className="text-content-muted">{translate('Subject not found')}</p></div>;
 
   return (
     <div className="min-h-screen pb-6 xl:pb-12">
@@ -47,22 +47,20 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
         <div className="hidden xl:flex justify-end mb-4"><BackButton onClick={() => router.back()}><ArrowLeft className="w-4 h-4" /> {translate('Back')}</BackButton></div>
 
         {/* Hero */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-5 xl:p-6 mb-5" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-          <div className="pointer-events-none absolute -bottom-24 right-6 w-72 h-72 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+        <div className="relative overflow-hidden text-content-primary border border-border-primary p-5 xl:p-6 mb-5 bg-background-surface" style={{ borderRadius: 16 }}>
           <header className="z-auto relative">
-          <BookMarked className="w-8 h-8 mb-2 text-slate-600 dark:text-primary-300" />
-          <h1 className="text-xl xl:text-3xl font-black uppercase">{translateData(subject.name)}</h1>
+          <BookMarked className="w-8 h-8 mb-2 text-content-secondary dark:text-primary-600" />
+          <h1 className="text-xl xl:text-3xl font-bold">{translateData(subject.name)}</h1>
           {subject.description && <p className="text-sm opacity-80 mt-1">{subject.description}</p>}
           <div className="flex gap-3 mt-3">
-            <span className="text-xs font-bold bg-white/80 dark:bg-white/15 ring-1 ring-slate-200 dark:ring-white/25 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{translate('{count} Quizzes', { count: quizzes.length })}</span>
+            <span className="text-xs font-bold border border-border-primary px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{translate('{count} Quizzes', { count: quizzes.length })}</span>
           </div>
           </header>
         </div>
 
         {/* Quizzes */}
         {quizzes.length === 0 ? (
-          <div className="py-16 text-center"><BrainCircuit className="w-12 h-12 text-slate-200 mx-auto mb-2" /><p className="text-sm text-slate-400">{translate('No quizzes yet')}</p></div>
+          <div className="py-16 text-center"><BrainCircuit className="w-12 h-12 text-slate-200 mx-auto mb-2" /><p className="text-sm text-content-muted">{translate('No quizzes yet')}</p></div>
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
@@ -70,14 +68,14 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
                 <motion.div key={quiz._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
                   <Link href={`/quiz/${quiz.slug}`} className="block">
                     <Card as="section" hoverable
-                      className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
+                      className="group flex flex-col gap-4 border-border-primary hover:border-primary-700 transition-all rounded-2xl bg-background-surface">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
+                          <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 text-on-primary text-xs xl:text-base font-bold tabular-nums">
                             {(currentPage - 1) * pageSize + idx + 1}
                           </div>
                           <section>
-                            <h2 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(quiz.title)}</h2>
+                            <h2 className="text-base font-bold text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(quiz.title)}</h2>
                             {quiz.topic?.name && <p className="text-[10px] font-bold text-content-muted uppercase">{translateData(quiz.topic.name)}</p>}
                           </section>
                         </div>
@@ -87,22 +85,22 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
                       {quiz.applicableExams?.length > 0 && (
                         <div className="flex items-center gap-1.5 flex-wrap">
                           {quiz.applicableExams.slice(0, 2).map((e) => (
-                            <span key={e._id || e.name} className="text-[10px] font-bold text-slate-400 bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded-full">{e.name}</span>
+                            <span key={e._id || e.name} className="text-[10px] font-bold text-content-muted bg-background-surface-secondary px-2 py-0.5 rounded-full">{e.name}</span>
                           ))}
                         </div>
                       )}
 
                       <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
-                        <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
+                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                           <HelpCircle className="w-3 h-3" />
                           {quiz.totalMarks || 0} {translate('marks')}
                         </div>
-                        <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
+                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                           <Clock className="w-3 h-3" />
                           {translate('{count} min', { count: quiz.duration || 0 })}
                         </div>
                         {quiz.difficulty && (
-                          <div className={`flex items-center gap-1.5 text-[10px] font-black uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border ${diffChip(quiz.difficulty)}`}>
+                          <div className={`flex items-center gap-1.5 text-[10px] font-bold uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border ${diffChip(quiz.difficulty)}`}>
                             <BarChart2 className="w-3 h-3" />
                             {quiz.difficulty}
                           </div>

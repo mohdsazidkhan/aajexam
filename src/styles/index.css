@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import dark mode variables/utilities */
-@import './darkMode.css';
 /* Display switches (lite mode, reduce motion, eye comfort, pure black, colour-blind marks) */
 @import './displayModes.css';
 
@@ -11,14 +9,6 @@
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
-}
-/* Light sweep across the red promo strip above the public navbar */
-@keyframes promoShine {
-  0% { transform: translateX(-120%) skewX(-20deg); }
-  60%, 100% { transform: translateX(520%) skewX(-20deg); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .promo-shine { animation: none !important; display: none; }
 }
 @keyframes spin {
   from { transform: rotate(0deg); }
@@ -31,14 +21,14 @@
     --font-primary: var(--font-inter), 'Inter', var(--font-lato), Lato, 'Noto Sans', sans-serif;
 
     /* Central Theme Tokens - Light Mode */
-    --bg-page: #f7f6f5;
-    --bg-surface: #ffffff;
-    --bg-surface-secondary: #f1f5f9;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #5b6b7f;
-    --border-primary: #f1f5f9; /* border-slate-100 — single section-separator border */
-    --border-secondary: #cbd5e1;
+    --bg-page: #ffffff;
+    --bg-surface: #ffffff; /* same as the page: surfaces are told apart by border, not by fill */
+    --bg-surface-secondary: #f4f4f5;
+    --text-primary: #09090b;
+    --text-secondary: #52525b;
+    --text-muted: #71717a;
+    --border-primary: #e4e4e7;
+    --border-secondary: #d4d4d8;
 
     --navbar-height: 5rem;
 
@@ -57,7 +47,8 @@
     --color-primary-300: #abdf8c;
     --color-primary-400: #79cc47;
     --color-primary-500: #45b800;
-    --color-primary-600: #2c7600;
+    --color-primary-600: #45b800; /* same as 500: the exact theme colour */
+    --on-primary: #ffffff; /* text on a solid primary fill (set per theme by lib/colorShades.js) */
     --color-primary-700: #246000;
     --color-primary-800: #1c4a00;
     --color-primary-900: #153700;
@@ -71,14 +62,14 @@
     --gray-500: 140 148 162; /* was 107 114 128 */
 
     /* Central Theme Tokens - Dark Mode (AajExam Inspired) */
-    --bg-page: #131f24; /* bg-slate-900 */
-    --bg-surface: #131f24; /* Slate 900 for dark mode background */
-    --bg-surface-secondary: #1c2d35; /* Slate 800 for cards */
-    --text-primary: #f8fafc; /* Slate 50 for text */
-    --text-secondary: #94a3b8; /* Slate 400 for secondary text */
-    --text-muted: #8896aa; /* lighter Slate 500: 4.5:1+ on page and card surfaces */
-    --border-primary: #1c2d35; /* border-slate-800 — single section-separator border */
-    --border-secondary: #455a64; /* Slate 600 */
+    --bg-page: #09090b;
+    --bg-surface: #09090b; /* same as the page: surfaces are told apart by border, not by fill */
+    --bg-surface-secondary: #18181b;
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1aa;
+    --text-muted: #8a8a93; /* 4.5:1+ on the page surface */
+    --border-primary: #3f3f46;
+    --border-secondary: #52525b;
   }
 
   html, body {
@@ -95,6 +86,23 @@
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     letter-spacing: -0.02em;
+  }
+
+  /* Native controls follow the theme (custom selects/inputs set their own colours) */
+  input, textarea, select {
+    color: var(--text-primary);
+  }
+
+  select option {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+  }
+
+  /* Room for the fixed mobile bottom navigation */
+  @media (max-width: 768px) {
+    body {
+      padding-bottom: 48px;
+    }
   }
 
   button {
@@ -141,59 +149,6 @@
 }
 
 @layer utilities {
-  /* Glassmorphism Utilities */
-  .glass {
-    @apply bg-white/70 dark:bg-slate-900/40 backdrop-blur-2xl border border-white/40 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
-  }
-
-  .glass-light {
-    @apply bg-white/30 backdrop-blur-xl border border-white/20 shadow-xl;
-  }
-
-  .glass-dark {
-    @apply bg-slate-950/60 backdrop-blur-3xl border border-white/5 shadow-2xl;
-  }
-
-  .glass-card {
-    @apply bg-white/80 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 shadow-sm transition-all duration-300;
-  }
-
-  /* Typography Polish */
-  .text-premium {
-    @apply tracking-tight leading-tight font-black uppercase;
-  }
-
-  .text-glow-primary {
-    text-shadow: 0 0 20px color-mix(in srgb, var(--color-primary-500) 30%, transparent);
-  }
-
-  .text-glow-secondary {
-    text-shadow: 0 0 20px rgba(28, 176, 246, 0.3);
-  }
-
-  /* Glow Effects */
-  .glow-border {
-    position: relative;
-  }
-
-  .glow-border::after {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    background: linear-gradient(45deg, var(--color-primary-500), #ffffff, #000000, var(--color-primary-500));
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(8px);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: inherit;
-  }
-
-  .glow-border:hover::after {
-    opacity: 0.4;
-    animation: glow-rotate 20s linear infinite;
-  }
-
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -202,79 +157,6 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-
-  @keyframes glow-rotate {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Shimmer Effect */
-  .shimmer {
-    @apply relative overflow-hidden;
-  }
-
-  .shimmer::before {
-    content: '';
-    @apply absolute inset-0 -translate-x-full;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    animation: shimmer 2s infinite;
-  }
-
-  @keyframes shimmer {
-    100% { transform: translateX(100%); }
-  }
-}
-
-/* Custom transitions */
-.page-transition-enter {
-  opacity: 0;
-  transform: translateY(10px);
-}
-.page-transition-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
-}
-.page-transition-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-.page-transition-exit-active {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 300ms, transform 300ms;
-}
-
-/* AajExam Button Animation */
-.btn-press:active {
-  transform: translateY(2px);
-  box-shadow: none !important;
-}
-
-.btn-press {
-  transition: all 0.1s ease;
-}
-
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -288,36 +170,6 @@
     transition-duration: 0.01ms !important;
   }
 }
-
-/* ── Global corner-radius standard ── */
-/* Forces every rounded element (buttons, cards, tables, inputs/fields, badges,
-   avatars, pills, decorative shapes — anything using a `rounded-*` utility,
-   including arbitrary values like rounded-[2.5rem]) to a single flat radius:
-   8px on web, 4px on mobile (below Tailwind's `lg` breakpoint, 1024px). */
-[class*="rounded"],
-button,
-input,
-select,
-textarea,
-table,
-th,
-td {
-  border-radius: 8px !important;
-}
-
-@media (max-width: 1023.98px) {
-  [class*="rounded"],
-  button,
-  input,
-  select,
-  textarea,
-  table,
-  th,
-  td {
-    border-radius: 4px !important;
-  }
-}
-
 
 /* Hindi (Devanagari) needs more vertical room: matras above and below the line clip or
    collide at the tight line-heights the English design uses, and wrapped text looks
@@ -398,4 +250,135 @@ html[lang="ur"] .tracking-widest {
 /* Tinted "chip" badges: primary-500 text on a primary-500/10 wash is only ~2.3:1 in light mode */
 html:not(.dark) .bg-primary-500\/10.text-primary-500 {
   color: var(--color-primary-700);
+}
+
+/* ── Third-party / contentEditable skins (cannot take Tailwind classes) ───────────────
+   Colours come from the theme tokens, so one rule set covers light and dark. */
+@layer components {
+  /* Rich text editor (admin CustomEditor) */
+  .rich-text-editor .editor {
+    min-height: 200px;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 12px 15px;
+    outline: none;
+    word-wrap: break-word;
+    color: var(--text-primary);
+  }
+  .rich-text-editor .editor:empty:before {
+    content: "Write your article content here...";
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .rich-text-editor .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid var(--border-primary);
+    background-color: var(--bg-surface-secondary);
+  }
+  .rich-text-editor .toolbar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-secondary);
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+  }
+  .rich-text-editor .toolbar button:hover {
+    background-color: var(--bg-surface-secondary);
+  }
+  .rich-text-editor .toolbar button.active {
+    background-color: var(--color-primary-600);
+    color: #fff;
+    border-color: var(--color-primary-600);
+  }
+  .rich-text-editor.fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--bg-page);
+    border: none;
+  }
+  .rich-text-editor.fullscreen .editor {
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+  .rich-text-editor.fullscreen .editor:focus {
+    box-shadow: inset 0 0 0 2px var(--color-primary-500);
+  }
+
+  /* react-datepicker skin (admin coupon form). The popper is portaled to <body>, so it is scoped by
+     .coupon-datepicker rather than by a parent. */
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+  .coupon-datepicker-popper {
+    z-index: 1100 !important;
+  }
+  .coupon-datepicker.react-datepicker {
+    font-family: inherit;
+    border: 1px solid var(--border-primary);
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+  }
+  .coupon-datepicker .react-datepicker__header {
+    background: var(--bg-surface-secondary);
+    border-bottom: 1px solid var(--border-primary);
+  }
+  .coupon-datepicker .react-datepicker__current-month,
+  .coupon-datepicker .react-datepicker-time__header {
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+  .coupon-datepicker .react-datepicker__day-name {
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .coupon-datepicker .react-datepicker__day,
+  .coupon-datepicker .react-datepicker__time-list-item {
+    color: var(--text-secondary);
+    border-radius: 0.6rem;
+    font-weight: 500;
+  }
+  .coupon-datepicker .react-datepicker__day:hover,
+  .coupon-datepicker .react-datepicker__time-list-item:hover {
+    background: var(--bg-surface-secondary) !important;
+  }
+  .coupon-datepicker .react-datepicker__day--today {
+    font-weight: 800;
+    color: var(--color-primary-600);
+  }
+  .coupon-datepicker .react-datepicker__day--disabled {
+    color: var(--text-muted);
+    opacity: 0.5;
+  }
+  .coupon-datepicker .react-datepicker__day--selected,
+  .coupon-datepicker .react-datepicker__day--keyboard-selected,
+  .coupon-datepicker .react-datepicker__time-list-item--selected {
+    background: var(--color-primary-600) !important;
+    color: #fff !important;
+  }
+  .coupon-datepicker .react-datepicker__time-container {
+    border-left: 1px solid var(--border-primary);
+  }
+  .coupon-datepicker .react-datepicker__time-container .react-datepicker__time {
+    background: transparent;
+  }
+  .coupon-datepicker .react-datepicker__navigation-icon::before {
+    border-color: var(--text-muted);
+  }
+  .coupon-datepicker .react-datepicker__triangle {
+    display: none;
+  }
 }

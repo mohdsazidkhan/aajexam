@@ -26,21 +26,19 @@ function Error({ statusCode }) {
       </Head>
       <div className="min-h-screen flex items-center justify-center px-4 font-outfit relative overflow-hidden">
         {/* Background blobs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] -mr-48 -mt-48 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />
 
-        <div className="max-w-md w-full overflow-hidden bg-background-surface shadow-xl p-6 xl:p-10 text-center border border-slate-200 dark:border-slate-800 relative z-10 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
-          <div className="flex items-center justify-center w-24 h-24 mx-auto bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-8 shadow-sm border-2 border-white dark:border-slate-800">
-            <svg className="w-12 h-12 text-black dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="max-w-md w-full overflow-hidden bg-background-surface p-6 xl:p-10 text-center border border-border-primary relative z-10">
+          <div className="flex items-center justify-center w-24 h-24 mx-auto bg-background-surface-secondary rounded-3xl mb-8 border border-white dark:border-slate-800">
+            <svg className="w-12 h-12 text-content-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>
           </div>
 
-          <h1 className="text-2xl xl:text-5xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tighter">
+          <h1 className="text-2xl xl:text-5xl font-bold text-content-primary mb-2 tracking-tight">
             {statusCode ? translate('Error {code}', { code: statusCode }) : translate('Something Went Wrong')}
           </h1>
 
-          <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-loose mb-10">
+          <p className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] leading-loose mb-10">
             {statusCode === 404
               ? translate('Sorry, this page does not exist or has been moved.')
               : statusCode === 500
@@ -52,21 +50,21 @@ function Error({ statusCode }) {
           <div className="flex flex-col gap-4">
             <button
               onClick={handleGoHome}
-              className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
+              className="w-full bg-primary-600 hover:bg-primary-600 text-on-primary font-bold py-5 px-8 rounded-3xl transition-all border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-[0.08em] text-xs"
             >
               {translate('Go to Home')}
             </button>
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={handleGoBack}
-                className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-black py-4 px-8 rounded-2xl transition-all shadow-sm border-b-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
+                className="flex-1 bg-background-surface-secondary text-content-secondary font-bold py-4 px-8 rounded-2xl transition-all border-b-2 border-border-primary active:translate-y-0.5 active:border-b-2 uppercase tracking-[0.08em] text-[10px]"
               >
                 {translate('Go Back')}
               </button>
               {statusCode !== 404 && (
                 <button
                   onClick={() => window.location.reload()}
-                  className="flex-1 bg-primary-600 hover:bg-primary-600 text-white font-black py-4 px-8 rounded-2xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
+                  className="flex-1 bg-primary-600 hover:bg-primary-600 text-on-primary font-bold py-4 px-8 rounded-2xl transition-all border-b-2 border-primary-600 active:translate-y-0.5 active:border-b-2 uppercase tracking-[0.08em] text-[10px]"
                 >
                   {translate('Try Again')}
                 </button>
@@ -76,10 +74,10 @@ function Error({ statusCode }) {
 
           {process.env.NODE_ENV === 'development' && (
             <details className="mt-6">
-              <summary className="cursor-pointer text-sm text-gray-500 dark:text-gray-400">
+              <summary className="cursor-pointer text-sm text-content-muted">
                 {translate('Error Details (Development)')}
               </summary>
-              <pre className="mt-2 text-xs bg-gray-100 dark:bg-gray-700 p-3 rounded overflow-auto">
+              <pre className="mt-2 text-xs bg-background-surface-secondary p-3 rounded overflow-auto">
                 {translate('Status Code: {code}', { code: statusCode || translate('Unknown') })}
                 <br />
                 {translate('URL: {url}', { url: typeof window !== 'undefined' ? window.location.href : 'Server-side' })}

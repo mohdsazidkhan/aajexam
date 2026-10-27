@@ -27,12 +27,13 @@ module.exports = {
                 : `color-mix(in srgb, var(--color-primary-${k}) calc(${opacityValue} * 100%), transparent)`,
           ])
         ),
+        'on-primary': 'var(--on-primary)',
         slate: {
-          950: '#0F1720', // Even darker for specific surfaces
-          900: '#131f24', // AajExam Dark Background (matches --bg-page in dark mode)
-          800: '#1c2d35', // AajExam Dark Card (matches --bg-surface in dark mode)
-          700: '#344955', // (matches --border-primary in dark mode)
-          600: '#455a64',
+          950: '#09090b', // Dark page background (matches --bg-page in dark mode)
+          900: '#09090b', // Same as 950: one flat dark background
+          800: '#18181b', // Raised/secondary dark surface (matches --bg-surface-secondary)
+          700: '#27272a', // Dark borders (matches --border-primary in dark mode)
+          600: '#3f3f46',
           // Light mode text on white / #f1f1f1 / tinted chips needs >= 4.5:1, so 400 and 500 darken in light mode
           // and keep the original slate values in dark mode (channels defined in src/styles/index.css).
           500: 'rgb(var(--slate-500) / <alpha-value>)',
@@ -60,7 +61,7 @@ module.exports = {
       },
       backgroundImage: {
         'aajexam-light': 'linear-gradient(to bottom, #f7f7f7, #ffffff)',
-        'aajexam-dark': 'linear-gradient(to bottom, #131f24, #1c2d35)',
+        'aajexam-dark': 'linear-gradient(to bottom, #09090b, #18181b)',
       },
       boxShadow: {
         'duo': '0 4px 0 0 rgba(0, 0, 0, 0.1)',
@@ -76,6 +77,8 @@ module.exports = {
         'progress-fill': 'progress-fill 1s ease-out forwards',
         'bounce-soft': 'bounce-soft 0.5s ease-out',
         'pop-in': 'pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'fade-in': 'fadeIn 0.5s ease-out',
+        'hero-pulse': 'heroPulse 2.2s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -93,6 +96,14 @@ module.exports = {
         'bounce-soft': {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-5px)' },
+        },
+        fadeIn: {
+          from: { opacity: '0', transform: 'translateY(10px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        heroPulse: {
+          '0%, 100%': { boxShadow: '0 0 0 0 transparent' },
+          '50%': { boxShadow: '0 0 0 4px color-mix(in srgb, var(--color-primary-600) 28%, transparent)' },
         },
         'pop-in': {
           '0%': { transform: 'scale(0.8)', opacity: '0' },

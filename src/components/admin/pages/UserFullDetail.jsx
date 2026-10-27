@@ -42,10 +42,10 @@ const num = (v, d = 0) => (v == null || Number.isNaN(Number(v)) ? '—' : Number
 const inr = (v) => `₹${Number(v || 0).toLocaleString('en-IN')}`;
 
 const Card = ({ title, children, right, fill, className = '' }) => (
-  <div className={`bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden  ${className}`}>
+  <div className={`bg-background-surface rounded-xl border border-border-primary overflow-hidden  ${className}`}>
     {title ? (
-      <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100 dark:border-slate-700 shrink-0">
-        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">{title}</div>
+      <div className="flex items-center justify-between px-3 py-2 border-b border-border-primary shrink-0">
+        <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted">{title}</div>
         {right}
       </div>
     ) : null}
@@ -54,31 +54,31 @@ const Card = ({ title, children, right, fill, className = '' }) => (
 );
 
 const Stat = ({ label, value, sub }) => (
-  <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 px-2.5 py-1.5 min-w-0">
-    <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 truncate">{label}</div>
+  <div className="bg-background-surface rounded-lg border border-border-primary px-2.5 py-1.5 min-w-0">
+    <div className="text-[9px] font-bold uppercase tracking-[0.08em] text-content-muted truncate">{label}</div>
     <div className="flex items-baseline gap-1.5 min-w-0">
-      <span className="text-base font-black tabular-nums leading-tight">{value}</span>
-      {sub ? <span className="text-[10px] text-slate-400 truncate">{sub}</span> : null}
+      <span className="text-base font-bold tabular-nums leading-tight">{value}</span>
+      {sub ? <span className="text-[10px] text-content-muted truncate">{sub}</span> : null}
     </div>
   </div>
 );
 
 const Field = ({ label, value }) => (
-  <div className="flex justify-between gap-3 py-1 text-xs border-b border-slate-50 dark:border-slate-700/40 last:border-0">
-    <span className="text-slate-400 font-bold">{label}</span>
+  <div className="flex justify-between gap-3 py-1 text-xs border-b border-border-primary dark:border-slate-700/40 last:border-0">
+    <span className="text-content-muted font-bold">{label}</span>
     <span className="font-bold text-right break-all sm:break-words max-w-[65%]">{value === '' || value == null ? '—' : String(value)}</span>
   </div>
 );
 
 const Pill = ({ children, tone = 'slate' }) => {
   const tones = {
-    slate: 'bg-slate-500/10 text-slate-500 border-slate-500/20',
+    slate: 'bg-slate-500/10 text-content-muted border-slate-500/20',
     green: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20',
     amber: 'bg-amber-500/10 text-amber-600 border-amber-500/20',
     rose: 'bg-rose-500/10 text-rose-600 border-rose-500/20',
     sky: 'bg-sky-500/10 text-sky-600 border-sky-500/20',
   };
-  return <span className={`inline-block px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider border ${tones[tone]}`}>{children}</span>;
+  return <span className={`inline-block px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-[0.08em] border ${tones[tone]}`}>{children}</span>;
 };
 
 const statusTone = (s) => (['Completed', 'active', 'paid', 'completed', 'mastered', 'success'].includes(s) ? 'green' : ['InProgress', 'pending', 'created'].includes(s) ? 'amber' : ['Abandoned', 'failed', 'cancelled', 'expired', 'refunded'].includes(s) ? 'rose' : 'slate');
@@ -90,20 +90,20 @@ const ViewContext = createContext('table');
 const isBlank = (v) => v === '' || v == null || v === false;
 
 const SNo = ({ n }) => (
-  <span className="w-6 h-6 rounded-full bg-primary-600 text-white text-[10px] font-black flex items-center justify-center shrink-0">{n}</span>
+  <span className="w-6 h-6 rounded-full bg-primary-600 text-on-primary text-[10px] font-bold flex items-center justify-center shrink-0">{n}</span>
 );
 
 // Generic data view: Table / List / Grid, chosen once for the whole page. cols = [{ h, r: (row) => node, right }]
 // The first column is the "title" of a row in the grid / list views.
 const Table = ({ rows, cols, empty = 'Nothing yet' }) => {
   const view = useContext(ViewContext);
-  if (!rows || !rows.length) return <div className="text-sm text-slate-400 py-2">{empty}</div>;
+  if (!rows || !rows.length) return <div className="text-sm text-content-muted py-2">{empty}</div>;
 
   if (view === 'grid') {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
         {rows.map((row, i) => (
-          <div key={row._id || i} className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-white/5 p-3">
+          <div key={row._id || i} className="rounded-lg border border-border-primary bg-slate-50/50 dark:bg-white/5 p-3">
             <div className="flex items-start gap-2">
               <SNo n={i + 1} />
               <div className="min-w-0 text-sm font-bold break-words">{cols[0].r(row, i)}</div>
@@ -113,7 +113,7 @@ const Table = ({ rows, cols, empty = 'Nothing yet' }) => {
                 const v = c.r(row, i);
                 return isBlank(v) ? null : (
                   <div key={c.h} className="flex justify-between gap-3 text-xs">
-                    <span className="text-slate-400 font-bold shrink-0">{c.h}</span>
+                    <span className="text-content-muted font-bold shrink-0">{c.h}</span>
                     <span className="text-right break-words min-w-0">{v}</span>
                   </div>
                 );
@@ -129,7 +129,7 @@ const Table = ({ rows, cols, empty = 'Nothing yet' }) => {
     return (
       <div className="flex flex-col gap-2">
         {rows.map((row, i) => (
-          <div key={row._id || i} className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-white/5 px-3 py-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+          <div key={row._id || i} className="rounded-lg border border-border-primary bg-slate-50/50 dark:bg-white/5 px-3 py-2 flex flex-wrap items-center gap-x-3 gap-y-1">
             <div className="flex items-center gap-2 min-w-0 sm:min-w-[220px] flex-1 basis-full sm:basis-auto">
               <SNo n={i + 1} />
               <div className="min-w-0 text-sm font-bold break-words">{cols[0].r(row, i)}</div>
@@ -138,7 +138,7 @@ const Table = ({ rows, cols, empty = 'Nothing yet' }) => {
               const v = c.r(row, i);
               return isBlank(v) ? null : (
                 <div key={c.h} className="text-xs">
-                  <span className="text-slate-400 font-bold">{c.h}: </span>
+                  <span className="text-content-muted font-bold">{c.h}: </span>
                   <span className="font-semibold">{v}</span>
                 </div>
               );
@@ -152,13 +152,13 @@ const Table = ({ rows, cols, empty = 'Nothing yet' }) => {
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-xs">
-        <thead className="sticky top-0 bg-slate-50 dark:bg-slate-900 z-10">
-          <tr><th className="px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-slate-400 text-left whitespace-nowrap w-12">S.No</th>{cols.map((c) => <th key={c.h} className={`px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-slate-400 whitespace-nowrap ${c.right ? 'text-right' : 'text-left'}`}>{c.h}</th>)}</tr>
+        <thead className="sticky top-0 bg-background-surface-secondary z-10 border-b border-border-primary">
+          <tr><th className="px-2 py-1.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-muted text-left whitespace-nowrap w-12">S.No</th>{cols.map((c) => <th key={c.h} className={`px-2 py-1.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-muted whitespace-nowrap ${c.right ? 'text-right' : 'text-left'}`}>{c.h}</th>)}</tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y divide-border-primary">
           {rows.map((row, i) => (
-            <tr key={row._id || i} className="border-b border-slate-100 dark:border-slate-700/50 last:border-0">
-              <td className="px-2 py-1.5 align-middle text-slate-400 font-bold tabular-nums">{i + 1}</td>
+            <tr key={row._id || i}>
+              <td className="px-2 py-1.5 align-middle text-content-muted font-bold tabular-nums">{i + 1}</td>
               {cols.map((c) => <td key={c.h} className={`px-2 py-1.5 align-middle ${c.right ? 'text-right tabular-nums whitespace-nowrap' : ''}`}>{c.r(row, i)}</td>)}
             </tr>
           ))}
@@ -175,9 +175,9 @@ const VIEWS = [
 ];
 
 const ViewSwitch = ({ view, setView, className = '' }) => (
-  <div className={`flex shrink-0 gap-1 bg-slate-100 dark:bg-white/5 p-1 rounded-xl ${className}`}>
+  <div className={`flex shrink-0 gap-1 bg-background-surface-secondary p-1 rounded-xl ${className}`}>
     {VIEWS.map(({ id: vid, label, Icon }) => (
-      <button key={vid} onClick={() => setView(vid)} title={`${label} view`} aria-label={`${label} view`} className={`p-1.5 rounded-lg transition ${view === vid ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:bg-white dark:hover:bg-white/10'}`}>
+      <button key={vid} onClick={() => setView(vid)} title={`${label} view`} aria-label={`${label} view`} className={`p-1.5 rounded-lg transition ${view === vid ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:bg-background-surface dark:hover:bg-white/10'}`}>
         <Icon className="w-4 h-4" />
       </button>
     ))}
@@ -210,15 +210,23 @@ export default function UserFullDetail() {
 
   useEffect(() => { if (isRouterReady) load(); }, [isRouterReady, load]);
 
+  // Opened with a user id: show the username in the address bar instead (no reload, the data is already here).
+  useEffect(() => {
+    const username = data?.profile?.username;
+    if (username && id && /^[a-f0-9]{24}$/i.test(String(id))) {
+      router.replace(`/admin/user-details/${encodeURIComponent(username)}`, undefined, { shallow: true });
+    }
+  }, [data, id, router]);
+
   const p = data?.profile;
   useAdminMobileHeader({ title: p?.name || 'User', count: null, filters: null });
 
   if (!isMounted) return null;
 
   const shell = (children) => (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-y-auto xl:overflow-hidden flex flex-col gap-3 max-xl:[&>*]:shrink-0">{children}</div>
+      <div className="py-4 w-full mx-auto flex-1 min-h-0 overflow-y-auto xl:overflow-hidden flex flex-col gap-3 max-xl:[&>*]:shrink-0">{children}</div>
     </div>
   );
 
@@ -227,7 +235,7 @@ export default function UserFullDetail() {
     return shell(
       <div className="text-center py-20">
         <div className="p-4 rounded-xl bg-rose-500/10 text-rose-600 text-sm font-bold inline-block">{error || 'User not found'}</div>
-        <div className="mt-4"><Link href="/admin/students" className="text-primary-600 dark:text-primary-300 font-bold text-sm">← Back to students</Link></div>
+        <div className="mt-4"><Link href="/admin/students" className="text-primary-600 font-bold text-sm">← Back to students</Link></div>
       </div>
     );
   }
@@ -241,17 +249,17 @@ export default function UserFullDetail() {
   return shell(
     <ViewContext.Provider value={view}>
       <div className="flex flex-wrap items-center justify-between gap-2 shrink-0">
-        <Link href="/admin/students" className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-primary-600">
+        <Link href="/admin/students" className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.08em] text-content-muted hover:text-primary-600">
           <ArrowLeft className="w-4 h-4" /> All students
         </Link>
         {p._id ? (
-          <div className="inline-flex p-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-            <span className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow">Details</span>
-            <Link href={`/admin/students/${p._id}`} className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/10">Edit</Link>
+          <div className="inline-flex p-1 rounded-full bg-background-surface border border-border-primary">
+            <span className="px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] text-on-primary bg-primary-600">Details</span>
+            <Link href={`/admin/students/${p._id}`} className="px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:hover:bg-white/10">Edit</Link>
           </div>
         ) : null}
         {p.username ? (
-          <Link href={`/@${p.username}`} target="_blank" className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-600 dark:text-primary-300">
+          <Link href={`/@${p.username}`} target="_blank" className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-600">
             Public profile <ExternalLink className="w-3.5 h-3.5" />
           </Link>
         ) : null}
@@ -265,19 +273,19 @@ export default function UserFullDetail() {
               // eslint-disable-next-line @next/next/no-img-element
               <img src={p.profilePicture} alt="" className="w-16 h-16 rounded-2xl object-cover" referrerPolicy="no-referrer" />
             ) : (
-              <div className="w-16 h-16 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center font-black text-2xl uppercase">{p.name?.[0] || 'U'}</div>
+              <div className="w-16 h-16 text-on-primary rounded-2xl flex items-center justify-center font-bold text-2xl bg-primary-600">{p.name?.[0] || 'U'}</div>
             )}
             {tab !== 'settings' && <ViewSwitch view={view} setView={setView} className="sm:hidden" />}
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
-              <h1 className="text-lg sm:text-xl font-black leading-tight break-words">{p.name || 'Anonymous'}</h1>
+              <h1 className="text-lg sm:text-xl font-bold leading-tight break-words">{p.name || 'Anonymous'}</h1>
               <Pill tone={p.subscriptionStatus === 'PRO' ? 'amber' : 'slate'}>{p.subscriptionStatus === 'PRO' ? <><Crown className="inline w-3 h-3 -mt-0.5" /> PRO</> : 'FREE'}</Pill>
               <Pill tone={statusTone(p.status === 'active' ? 'active' : 'failed')}>{p.status}</Pill>
               {p.role === 'admin' ? <Pill tone="sky"><ShieldCheck className="inline w-3 h-3 -mt-0.5" /> Admin</Pill> : null}
               {p.hasGoogle ? <Pill tone="sky">Google</Pill> : null}
             </div>
-            <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500 font-bold break-all sm:break-normal">
+            <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap gap-x-3 gap-y-1 text-xs text-content-muted font-bold break-all sm:break-normal">
               <span className="inline-flex items-center gap-1"><Mail className="w-3.5 h-3.5" />{p.email}</span>
               {p.phone ? <span className="inline-flex items-center gap-1"><Phone className="w-3.5 h-3.5" />{p.phone}</span> : null}
               {p.city || p.state ? <span className="inline-flex items-center gap-1"><MapPin className="w-3.5 h-3.5" />{[p.city, p.state].filter(Boolean).join(', ')}</span> : null}
@@ -291,9 +299,9 @@ export default function UserFullDetail() {
 
       {/* Tabs + view switch */}
       <div className="flex shrink-0 items-center gap-2">
-        <div className="flex gap-1 overflow-x-auto min-w-0 flex-1 bg-slate-100 dark:bg-white/5 p-1 rounded-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex gap-1 overflow-x-auto min-w-0 flex-1 bg-background-surface-secondary p-1 rounded-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {TABS.map(({ id: tid, label, Icon }) => (
-            <button key={tid} onClick={() => setTab(tid)} className={`shrink-0 inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-black uppercase tracking-wider transition ${tab === tid ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-500 hover:bg-white dark:hover:bg-white/10'}`}>
+            <button key={tid} onClick={() => setTab(tid)} className={`shrink-0 inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.08em] transition ${tab === tid ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:bg-background-surface dark:hover:bg-white/10'}`}>
               <Icon className="w-3.5 h-3.5" /> {label}
             </button>
           ))}
@@ -483,16 +491,16 @@ export default function UserFullDetail() {
                   h: 'Plan', r: (r) => (
                     <div className="min-w-[160px]">
                       <div className="font-bold">{r.description}</div>
-                      {r.subscription ? <div className="text-[10px] uppercase text-slate-400">{r.subscription.plan} &bull; {r.subscription.status}</div> : null}
-                      <div className="font-mono text-[10px] text-slate-400 break-all">{r.orderId}</div>
+                      {r.subscription ? <div className="text-[10px] uppercase text-content-muted">{r.subscription.plan} &bull; {r.subscription.status}</div> : null}
+                      <div className="font-mono text-[10px] text-content-muted break-all">{r.orderId}</div>
                     </div>
                   ),
                 },
                 {
                   h: 'Amount', right: true, r: (r) => (
                     <div>
-                      <div className="font-black">{inr(r.amount)} <span className="text-[9px] font-bold text-slate-400">{r.currency}</span></div>
-                      {r.discountAmount ? <div className="text-[10px] text-slate-400">{inr(r.originalAmount)} − {inr(r.discountAmount)}{r.couponCode ? ` (${r.couponCode})` : ''}</div> : null}
+                      <div className="font-bold">{inr(r.amount)} <span className="text-[9px] font-bold text-content-muted">{r.currency}</span></div>
+                      {r.discountAmount ? <div className="text-[10px] text-content-muted">{inr(r.originalAmount)} − {inr(r.discountAmount)}{r.couponCode ? ` (${r.couponCode})` : ''}</div> : null}
                       {r.refundAmount ? <div className="text-[10px] text-rose-600">Refunded {inr(r.refundAmount)}</div> : null}
                     </div>
                   ),
@@ -560,7 +568,7 @@ export default function UserFullDetail() {
                   />
                 </div>
               </>
-            ) : <div className="text-sm text-slate-400">No streak yet</div>}
+            ) : <div className="text-sm text-content-muted">No streak yet</div>}
           </Card>
           <div className="flex flex-col gap-3">
             <Card title={`Study plans (${data.studyPlans.length})`}>
@@ -575,7 +583,7 @@ export default function UserFullDetail() {
               />
             </Card>
             <Card title="Revision queue">
-              {Object.keys(s.revision).length === 0 ? <div className="text-sm text-slate-400">Empty</div> : Object.entries(s.revision).map(([k, v]) => <Field key={k} label={k} value={v} />)}
+              {Object.keys(s.revision).length === 0 ? <div className="text-sm text-content-muted">Empty</div> : Object.entries(s.revision).map(([k, v]) => <Field key={k} label={k} value={v} />)}
             </Card>
             <Card title={<span className="inline-flex items-center gap-1"><MessageSquare className="w-3 h-3" /> Community questions ({s.communityQuestions})</span>}>
               <Table rows={data.questions} empty="No questions asked" cols={[{ h: 'Question', r: (r) => r.question }, { h: 'Date', right: true, r: (r) => fmt(r.createdAt) }]} />

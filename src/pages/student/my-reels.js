@@ -36,19 +36,19 @@ import Pagination from '../../components/common/Pagination';
 import useTranslate from '../../hooks/useTranslate';
 
 const TYPE_CONFIG = {
-   question: { label: 'Question', icon: HelpCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
-   fact: { label: 'Fact', icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
-   tip: { label: 'Tip', icon: Zap, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
-   current_affairs: { label: 'Current Affairs', icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
-   poll: { label: 'Poll', icon: BarChart3, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   question: { label: 'Question', icon: HelpCircle, color: 'text-content-primary', bg: 'bg-background-surface-secondary' },
+   fact: { label: 'Fact', icon: BookOpen, color: 'text-content-primary', bg: 'bg-background-surface-secondary' },
+   tip: { label: 'Tip', icon: Zap, color: 'text-content-primary', bg: 'bg-background-surface-secondary' },
+   current_affairs: { label: 'Current Affairs', icon: Newspaper, color: 'text-content-primary', bg: 'bg-background-surface-secondary' },
+   poll: { label: 'Poll', icon: BarChart3, color: 'text-content-primary', bg: 'bg-background-surface-secondary' },
 };
 
 const STATUS_CONFIG = {
-   published: { label: 'Published', icon: CheckCircle, color: 'text-primary-600 dark:text-primary-300', bg: 'bg-primary-50 dark:bg-primary-900/20' },
-   pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
-   rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
-   draft: { label: 'Draft', icon: Clock, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20' },
-   archived: { label: 'Archived', icon: Clock, color: 'text-gray-400', bg: 'bg-white dark:bg-slate-900/20' },
+   published: { label: 'Published', icon: CheckCircle, color: 'text-primary-600', bg: '' },
+   pending: { label: 'Pending', icon: Clock, color: 'text-content-primary', bg: 'bg-background-surface-secondary' },
+   rejected: { label: 'Rejected', icon: XCircle, color: 'text-content-primary', bg: 'bg-background-surface-secondary' },
+   draft: { label: 'Draft', icon: Clock, color: 'text-content-muted', bg: 'bg-background-surface' },
+   archived: { label: 'Archived', icon: Clock, color: 'text-content-muted', bg: 'bg-background-surface' },
 };
 
 const MyReelsPage = () => {
@@ -110,7 +110,7 @@ const MyReelsPage = () => {
                   actions={
                      <>
                      <Select
-                        className="px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
+                        className="px-4 py-3 bg-background-surface-secondary border border-border-primary rounded-2xl text-xs font-bold outline-none focus:border-primary-700"
                         value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setCurrentPage(1); }}
                      >
                         <option value="">{translate('All Status')}</option>
@@ -129,11 +129,11 @@ const MyReelsPage = () => {
                {/* Reels Grid */}
                {reels.length === 0 ? (
                   <div className="py-4 xl:py-8 text-center space-y-3 xl:space-y-6">
-                     <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
-                        <PlayCircle className="w-10 h-10 text-gray-400" />
+                     <div className="w-24 h-24 bg-background-surface-secondary rounded-3xl flex items-center justify-center mx-auto opacity-50">
+                        <PlayCircle className="w-10 h-10 text-content-muted" />
                      </div>
-                     <h2 className="text-xl xl:text-2xl font-black font-outfit">{translate('No reels yet')}</h2>
-                     <p className="text-sm font-bold text-gray-400">{translate('Create your first reel and share knowledge!')}</p>
+                     <h2 className="text-xl xl:text-2xl font-bold font-outfit">{translate('No reels yet')}</h2>
+                     <p className="text-sm font-bold text-content-muted">{translate('Create your first reel and share knowledge!')}</p>
                      <Button variant="primary" className="mx-auto" onClick={() => router.push('/reels/create')}>{translate('Create Reel')}</Button>
                   </div>
                ) : (
@@ -146,15 +146,15 @@ const MyReelsPage = () => {
 
                         return (
                            <motion.div key={reel._id || idx} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
-                              <Card className="group hover:shadow-sm transition-all duration-500 border-2 flex flex-col h-full">
+                              <Card className="group transition-all duration-500 border flex flex-col h-full">
                                  <div className="space-y-2 xl:space-y-4 flex-1">
                                     {/* Top: Type + Status */}
                                     <div className="flex items-center justify-between">
-                                       <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase ${typeConfig.bg} ${typeConfig.color}`}>
+                                       <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase ${typeConfig.bg} ${typeConfig.color}`}>
                                           <TypeIcon className="w-3 h-3" />
                                           {translate(typeConfig.label)}
                                        </div>
-                                       <div className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-black uppercase ${statusConfig.bg} ${statusConfig.color}`}>
+                                       <div className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase ${statusConfig.bg} ${statusConfig.color}`}>
                                           <StatusIcon className="w-3 h-3" />
                                           {translate(statusConfig.label)}
                                        </div>
@@ -163,35 +163,35 @@ const MyReelsPage = () => {
                                     {/* Subject & Topic */}
                                     <div className="flex flex-wrap items-center gap-1.5">
                                        {reel.subject && (
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white uppercase">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-background-surface-secondary text-content-primary uppercase">
                                              #{reel.subject}
                                           </span>
                                        )}
                                        {reel.topic && (
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-background-surface-secondary text-content-primary">
                                              #{reel.topic}
                                           </span>
                                        )}
                                        {reel.difficulty && (
-                                          <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold uppercase ${reel.difficulty === 'easy' ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/20' : reel.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 ' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 '}`}>
+                                          <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold uppercase ${reel.difficulty === 'easy' ? 'text-primary-600' : reel.difficulty === 'hard' ? 'text-content-primary bg-background-surface-secondary' : 'text-content-primary bg-background-surface-secondary'}`}>
                                              {reel.difficulty}
                                           </span>
                                        )}
                                     </div>
 
                                     {/* Title */}
-                                    <p className="font-black text-sm xl:text-base line-clamp-3 leading-snug">{getReelTitle(reel)}</p>
+                                    <p className="font-bold text-sm xl:text-base line-clamp-3 leading-snug">{getReelTitle(reel)}</p>
 
                                     {/* Rejected reason */}
                                     {reel.status === 'rejected' && reel.adminNotes && (
-                                       <p className="text-[11px] font-bold text-black dark:text-white bg-slate-100 dark:bg-slate-800 p-2 rounded-lg xl:rounded-xl">
+                                       <p className="text-[11px] font-bold text-content-primary bg-background-surface-secondary p-2 rounded-lg xl:rounded-xl">
                                           {translate('Reason: {note}', { note: reel.adminNotes })}
                                        </p>
                                     )}
                                  </div>
 
                                  {/* Footer: Stats */}
-                                 <footer className="flex items-center justify-between text-[9px] font-black text-gray-400 pt-3 mt-3 border-t-2 border-slate-50 dark:border-slate-800">
+                                 <footer className="flex items-center justify-between text-[9px] font-bold text-content-muted pt-3 mt-3 border-t-2 border-border-primary dark:border-slate-800">
                                     <div className="flex items-center gap-3">
                                        <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{reel.viewsCount || 0}</span>
                                        <span className="flex items-center gap-1"><Heart className="w-3 h-3" />{reel.likesCount || 0}</span>

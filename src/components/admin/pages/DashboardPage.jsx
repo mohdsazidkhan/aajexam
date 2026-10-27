@@ -91,7 +91,7 @@ const DashboardPage = () => {
   const sections = [
     {
       title: 'USERS & ENGAGEMENT',
-      accent: 'text-primary-600 dark:text-primary-300',
+      accent: 'text-primary-600',
       cards: [
         { title: 'Total Students', count: stats.students || 0, link: '/admin/students', icon: Users, subtitle: `${stats.newStudentsThisMonth || 0} new this month` },
         { title: 'Yesterday Users', count: stats.newStudentsYesterday || 0, link: '/admin/students', icon: UserPlus, subtitle: 'Signups yesterday' },
@@ -105,7 +105,7 @@ const DashboardPage = () => {
     },
     {
       title: 'EXAMS & PRACTICE TESTS',
-      accent: 'text-primary-600 dark:text-primary-300',
+      accent: 'text-primary-600',
       cards: [
         { title: 'Exam Categories', count: stats.examCategories || 0, link: '/admin/govt-exams', icon: Layers, subtitle: 'Central & State' },
         { title: 'Exams', count: stats.exams || 0, link: '/admin/govt-exams/exams', icon: BookOpen, subtitle: `${stats.activeExams || 0} active` },
@@ -116,7 +116,7 @@ const DashboardPage = () => {
     },
     {
       title: 'QUIZ BANK',
-      accent: 'text-primary-600 dark:text-primary-300',
+      accent: 'text-primary-600',
       cards: [
         { title: 'Quizzes', count: stats.quizzes || 0, link: '/admin/quiz/quizzes', icon: Sparkles, subtitle: `${stats.publishedQuizzes || 0} published` },
         { title: 'Questions', count: stats.questions || 0, link: '/admin/quiz/questions', icon: HelpCircle, subtitle: `${stats.activeQuestions || 0} active` },
@@ -126,7 +126,7 @@ const DashboardPage = () => {
     },
     {
       title: 'CONTENT LIBRARY',
-      accent: 'text-black dark:text-white',
+      accent: 'text-content-primary',
       cards: [
         { title: 'Reels', count: stats.reels || 0, link: '/admin/reels', icon: Film, subtitle: `${stats.publishedReels || 0} published` },
         { title: 'Study Notes', count: stats.studyNotes || 0, link: '/admin/notes', icon: StickyNote, subtitle: 'Total uploaded' },
@@ -138,7 +138,7 @@ const DashboardPage = () => {
     },
     {
       title: 'FINANCE & PAYOUTS',
-      accent: 'text-primary-600 dark:text-primary-300',
+      accent: 'text-primary-600',
       cards: [
         { title: 'Total Revenue', count: formatINR(stats.totalRevenue), link: '/admin/payment-transactions', icon: Banknote, subtitle: 'Lifetime' },
         { title: 'Revenue Today', count: formatINR(stats.revenueToday), link: '/admin/payment-transactions', icon: TrendingUp, subtitle: formatINR(stats.revenueThisMonth) + ' this month' },
@@ -157,7 +157,7 @@ const DashboardPage = () => {
 
   if (loading) {
     return (
-      <div className="w-full text-slate-900 dark:text-white font-outfit my-4">
+      <div className="w-full text-content-primary font-outfit my-4">
         <AdminMainDashboardSkeleton sectionCards={sections.map((s) => s.cards.length)} />
       </div>
     );
@@ -165,7 +165,7 @@ const DashboardPage = () => {
 
   if (error) {
     return (
-      <div className="w-full text-slate-900 dark:text-white font-outfit my-4">
+      <div className="w-full text-content-primary font-outfit my-4">
         <div className="flex items-center justify-center h-64">
           <div className="text-center">
             <div className="text-2xl xl:text-6xl mb-4">⚠️</div>
@@ -177,7 +177,7 @@ const DashboardPage = () => {
   }
 
   return (
-    <div className="w-full text-slate-900 dark:text-white font-outfit my-4">
+    <div className="w-full text-content-primary font-outfit my-4">
       {/* Top Headline KPIs */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -192,17 +192,16 @@ const DashboardPage = () => {
           { label: 'TEST COMPLETION', value: `${stats.testAttempts > 0 ? Math.round((stats.completedAttempts / stats.testAttempts) * 100) : 0}%`, subtitle: `${stats.completedAttempts || 0} of ${stats.testAttempts || 0} attempts`, icon: Sparkles, color: 'primary' },
           { label: 'LAST 30 DAYS USERS', value: (stats.newStudentsLast30Days || 0).toLocaleString('en-IN'), subtitle: 'Signups in last 30 days', icon: UserPlus, color: 'primary' },
         ].map((item, idx) => (
-          <div key={idx} className="group relative isolate overflow-hidden p-3 xl:p-4 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all" style={{ borderRadius: 16 }}>
-            <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
+          <div key={idx} className="group relative isolate overflow-hidden p-3 xl:p-4 border border-border-primary hover:-translate-y-0.5 transition-all bg-background-surface" style={{ borderRadius: 16 }}>
             <item.icon className="pointer-events-none absolute -right-3 -bottom-3 w-20 h-20 text-primary-600/10 dark:text-white/10 rotate-12" />
             <div className="flex items-start justify-between gap-2">
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 dark:text-white/75 leading-tight">{item.label}</p>
-              <span className="shrink-0 w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
+              <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 leading-tight">{item.label}</p>
+              <span className="shrink-0 w-8 h-8 flex items-center justify-center text-on-primary group-hover:rotate-0 transition-transform bg-primary-600" style={{ borderRadius: 10 }}>
                 <item.icon className="w-4 h-4" />
               </span>
             </div>
-            <p className="mt-2 text-2xl xl:text-4xl font-black font-outfit leading-none tracking-tight text-primary-700 dark:text-primary-200">{item.value}</p>
-            <p className="mt-2 pt-2 border-t border-dashed border-slate-300 dark:border-white/25 text-[10px] font-black uppercase tracking-wide text-slate-600 dark:text-white/75 leading-tight">{item.subtitle}</p>
+            <p className="mt-2 text-2xl xl:text-4xl font-bold font-outfit leading-none tracking-tight text-primary-600">{item.value}</p>
+            <p className="mt-2 pt-2 border-t border-dashed border-border-primary text-[10px] font-bold uppercase tracking-wide text-content-secondary dark:text-white/75 leading-tight">{item.subtitle}</p>
           </div>
         ))}
       </motion.div>
@@ -211,10 +210,10 @@ const DashboardPage = () => {
       {sections.map((section) => (
         <div key={section.title} className="mb-3">
           <div className="flex items-center gap-3 mb-2">
-            <span className={`text-[10px] font-black ${section.accent} uppercase tracking-[0.3em]`}>
+            <span className={`text-[10px] font-bold ${section.accent} uppercase tracking-[0.3em]`}>
               {section.title}
             </span>
-            <div className="flex-1 h-px bg-slate-200 dark:bg-white/10" />
+            <div className="flex-1 h-px bg-background-surface-secondary" />
           </div>
           <motion.div
             variants={{ show: { transition: { staggerChildren: 0.04 } } }}
@@ -232,23 +231,23 @@ const DashboardPage = () => {
               >
                 <div
                   onClick={() => router.push(card.link)}
-                  className="group h-full cursor-pointer relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col"
+                  className="group h-full cursor-pointer relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 transition-all flex flex-col"
                   style={{ borderRadius: 14 }}
                 >
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                   <div className="flex items-center justify-between gap-2 px-3 pt-3 pb-2">
-                    <span className="w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 12 }}>
+                    <span className="w-10 h-10 shrink-0 flex items-center justify-center text-on-primary group-hover:rotate-0 transition-transform bg-primary-600" style={{ borderRadius: 12 }}>
                       <card.icon className="w-5 h-5" />
                     </span>
-                    <span className="text-2xl xl:text-3xl font-black font-outfit tracking-tight text-primary-700 dark:text-primary-200 tabular-nums leading-none">{card.count}</span>
+                    <span className="text-2xl xl:text-3xl font-bold font-outfit tracking-tight text-primary-600 tabular-nums leading-none">{card.count}</span>
                   </div>
                   <section className="px-3 pb-2">
-                    <h2 className="text-xs xl:text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors leading-tight break-words">{card.title}</h2>
+                    <h2 className="text-xs xl:text-sm font-bold uppercase tracking-tight text-content-primary group-hover:text-primary-600 transition-colors leading-tight break-words">{card.title}</h2>
                   </section>
-                  <div className="relative mt-auto px-3 py-1.5 border-t border-dashed border-slate-300 dark:border-slate-700 bg-primary-50/60 dark:bg-white/5">
+                  <div className="relative mt-auto px-3 py-1.5 border-t border-dashed border-border-primary dark:bg-white/5">
                     <span className="absolute -left-1.5 -top-[7px] w-3 h-3 bg-background-page" style={{ borderRadius: 999 }} />
                     <span className="absolute -right-1.5 -top-[7px] w-3 h-3 bg-background-page" style={{ borderRadius: 999 }} />
-                    <p className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wide leading-tight break-words">{card.subtitle || 'METRIC'}</p>
+                    <p className="text-[9px] font-bold text-content-muted uppercase tracking-wide leading-tight break-words">{card.subtitle || 'METRIC'}</p>
                   </div>
                 </div>
               </motion.div>
@@ -263,21 +262,19 @@ const DashboardPage = () => {
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
-        className="relative isolate overflow-hidden p-3 xl:p-5 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl"
+        className="relative isolate overflow-hidden p-3 xl:p-5 border border-border-primary bg-background-surface"
         style={{ borderRadius: 16 }}
       >
-        <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-        <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
         <Zap className="pointer-events-none absolute right-4 top-3 w-24 h-24 xl:w-32 xl:h-32 text-primary-600/10 dark:text-white/5 rotate-12" />
 
-        <div className="relative flex items-center gap-3 mb-3 xl:mb-4 pb-3 border-b border-dashed border-slate-300 dark:border-white/25">
-          <div className="w-11 h-11 xl:w-12 xl:h-12 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
+        <div className="relative flex items-center gap-3 mb-3 xl:mb-4 pb-3 border-b border-dashed border-border-primary">
+          <div className="w-11 h-11 xl:w-12 xl:h-12 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 14 }}>
             <Zap className="w-5 h-5 xl:w-6 xl:h-6 fill-current" />
           </div>
           <div>
-            <span className="text-[10px] font-black text-slate-500 dark:text-white/60 uppercase tracking-[0.25em] mb-0.5 block">SHORTCUTS</span>
-            <h2 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">
-              QUICK <span className="text-primary-600 dark:text-primary-300">LINKS</span>
+            <span className="text-[10px] font-bold text-content-muted dark:text-white/60 uppercase tracking-[0.08em] mb-0.5 block">SHORTCUTS</span>
+            <h2 className="text-xl xl:text-2xl font-bold font-outfit tracking-tight text-content-primary leading-none">
+              QUICK <span className="text-primary-600">LINKS</span>
             </h2>
           </div>
         </div>
@@ -301,16 +298,16 @@ const DashboardPage = () => {
             { href: '/admin/contacts', label: 'Contacts', desc: 'View user contact submissions', icon: Mail },
           ].map((action, i) => (
             <motion.div key={i} whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>
-              <Link href={action.href} className="group relative flex items-center gap-3 p-3 bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 shadow-sm hover:shadow-lg transition-all h-full" style={{ borderRadius: 12 }}>
-                <div className="pointer-events-none absolute inset-y-2 left-0 w-1 rounded-r-full bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
-                <span className="ml-1 w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 12 }}>
+              <Link href={action.href} className="group relative flex items-center gap-3 p-3 bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary transition-all h-full" style={{ borderRadius: 12 }}>
+                <div className="pointer-events-none absolute inset-y-2 left-0 w-1 rounded-r-full bg-primary-600" />
+                <span className="ml-1 w-10 h-10 shrink-0 flex items-center justify-center text-on-primary group-hover:rotate-0 transition-transform bg-primary-600" style={{ borderRadius: 12 }}>
                   <action.icon className="w-5 h-5" />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-black uppercase text-xs tracking-wide text-slate-900 dark:text-white group-hover:text-primary-700 dark:group-hover:text-primary-200 transition-colors leading-tight">{action.label}</h3>
-                  <p className="mt-0.5 text-[10px] font-bold text-slate-500 dark:text-white/65 leading-snug">{action.desc}</p>
+                  <h3 className="font-bold uppercase text-xs tracking-wide text-content-primary group-hover:text-primary-700 dark:group-hover:text-primary-600 transition-colors leading-tight">{action.label}</h3>
+                  <p className="mt-0.5 text-[10px] font-bold text-content-muted dark:text-white/65 leading-snug">{action.desc}</p>
                 </div>
-                <ChevronRight className="w-4 h-4 shrink-0 text-primary-600 dark:text-primary-300 group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="w-4 h-4 shrink-0 text-primary-600 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
           ))}

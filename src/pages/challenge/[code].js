@@ -45,13 +45,13 @@ export default function ChallengePage() {
         return (
             <div className="min-h-screen bg-background-page pb-24 font-outfit">
                 <div className="max-w-xl mx-auto px-4 py-8 animate-pulse">
-                    <div className="h-5 w-32 bg-slate-200 dark:bg-slate-800 rounded-full mb-6" />
-                    <div className="bg-slate-200 dark:bg-slate-800 rounded-[2rem] p-8 flex flex-col items-center gap-4">
-                        <div className="w-20 h-20 bg-slate-300 dark:bg-slate-700 rounded-2xl" />
-                        <div className="h-6 w-64 bg-slate-300 dark:bg-slate-700 rounded-lg" />
-                        <div className="h-4 w-40 bg-slate-300 dark:bg-slate-700 rounded-lg" />
-                        <div className="h-16 w-40 bg-slate-300 dark:bg-slate-700 rounded-lg xl:rounded-xl" />
-                        <div className="h-14 w-full bg-slate-300 dark:bg-slate-700 rounded-2xl" />
+                    <div className="h-5 w-32 bg-background-surface-secondary rounded-full mb-6" />
+                    <div className="bg-background-surface-secondary rounded-3xl p-8 flex flex-col items-center gap-4">
+                        <div className="w-20 h-20 bg-border-primary dark:bg-slate-700 rounded-2xl" />
+                        <div className="h-6 w-64 bg-border-primary dark:bg-slate-700 rounded-lg" />
+                        <div className="h-4 w-40 bg-border-primary dark:bg-slate-700 rounded-lg" />
+                        <div className="h-16 w-40 bg-border-primary dark:bg-slate-700 rounded-lg xl:rounded-xl" />
+                        <div className="h-14 w-full bg-border-primary dark:bg-slate-700 rounded-2xl" />
                     </div>
                 </div>
             </div>
@@ -67,41 +67,39 @@ export default function ChallengePage() {
             <Seo title="Quiz Challenge!" description="You've been challenged to beat a quiz score." />
 
             <div className="max-w-xl mx-auto px-4 py-8">
-                <button onClick={() => router.push('/')} className="flex items-center gap-2 text-slate-500 hover:text-slate-800 dark:hover:text-white mb-6 transition">
+                <button onClick={() => router.push('/')} className="flex items-center gap-2 text-content-muted hover:text-content-primary dark:hover:text-white mb-6 transition">
                     <ArrowLeft className="w-5 h-5" /> Back to Home
                 </button>
 
                 {/* Challenge Header Card */}
-                <div className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 p-6 xl:p-8 text-center shadow-xl relative isolate overflow-hidden mb-8" style={{ borderRadius: 16 }}>
-                    <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-                    <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+                <div className="border border-border-primary p-6 xl:p-8 text-center relative isolate overflow-hidden mb-8 bg-background-surface" style={{ borderRadius: 16 }}>
                     
                     <header className="relative z-10 flex flex-col items-center">
-                        <div className="w-20 h-20 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center mb-4 rotate-[-4deg]" style={{ borderRadius: 22 }}>
+                        <div className="w-20 h-20 text-on-primary flex items-center justify-center mb-4 bg-primary-600" style={{ borderRadius: 22 }}>
                             <Swords className="w-10 h-10" />
                         </div>
                         
-                        <h1 className="text-slate-900 dark:text-white text-3xl font-black mb-2 uppercase tracking-wide">
+                        <h1 className="text-content-primary text-3xl font-bold mb-2 tracking-wide">
                             {translate('{name} Challenged You!', { name: challenge.host?.name || translate('Someone') })}
                         </h1>
-                        <p className="text-slate-700 dark:text-white/80 font-medium mb-6 text-lg">
-                            {rich('Quiz: <0></0>', [() => <span className="text-primary-700 dark:text-primary-200 font-bold">{challenge.quiz?.title || translate('Unknown')}</span>])}
+                        <p className="text-content-secondary dark:text-white/80 font-medium mb-6 text-lg">
+                            {rich('Quiz: <0></0>', [() => <span className="text-primary-600 font-bold">{challenge.quiz?.title || translate('Unknown')}</span>])}
                         </p>
 
-                        <div className="inline-block bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 px-6 py-3 mb-6" style={{ borderRadius: 12 }}>
-                            <p className="text-slate-600 dark:text-white/75 text-xs font-bold uppercase tracking-wider mb-1">{translate('Target to beat')}</p>
-                            <p className="text-primary-700 dark:text-primary-200 text-4xl font-black font-outfit">{Math.round(hostScore?.percentage || 0)}%</p>
+                        <div className="inline-block border border-border-primary px-6 py-3 mb-6" style={{ borderRadius: 12 }}>
+                            <p className="text-content-secondary dark:text-white/75 text-xs font-bold uppercase tracking-[0.08em] mb-1">{translate('Target to beat')}</p>
+                            <p className="text-primary-600 text-4xl font-bold font-outfit">{Math.round(hostScore?.percentage || 0)}%</p>
                         </div>
 
                         {!challenge.hasPlayed ? (
                             <button 
                                 onClick={handleAcceptChallenge}
-                                style={{ borderRadius: 14 }} className="w-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] hover:brightness-105 font-black text-xl py-4 shadow-lg transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2"
+                                style={{ borderRadius: 14 }} className="w-full text-on-primary hover:brightness-105 font-bold text-xl py-4 transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2 bg-primary-600"
                             >
                                 <Play className="w-6 h-6 fill-current" /> ACCEPT CHALLENGE
                             </button>
                         ) : (
-                            <div className="bg-primary-100 dark:bg-primary-500/20 border border-primary-300 dark:border-primary-400/30 text-primary-800 dark:text-primary-100 px-6 py-3 rounded-lg xl:rounded-xl font-bold flex items-center gap-2">
+                            <div className="border border-primary-300 dark:border-primary-400/30 text-primary-600 dark:text-primary-100 px-6 py-3 rounded-lg xl:rounded-xl font-bold flex items-center gap-2">
                                 <Trophy className="w-5 h-5" /> You have completed this challenge!
                             </div>
                         )}
@@ -110,40 +108,40 @@ export default function ChallengePage() {
 
                 {/* Private Leaderboard */}
                 {challenge.hasPlayed && (
-                    <section className="relative overflow-hidden bg-background-surface p-6 shadow-md border border-slate-200 dark:border-slate-700" style={{ borderRadius: 16 }}>
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+                    <section className="relative overflow-hidden bg-background-surface p-6 border border-border-primary" style={{ borderRadius: 16 }}>
+                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow p-2.5" style={{ borderRadius: 12 }}>
+                            <div className="text-on-primary p-2.5 bg-primary-600" style={{ borderRadius: 12 }}>
                                 <Users className="w-5 h-5" />
                             </div>
-                            <h2 className="text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">{translate('Challenge Leaderboard')}</h2>
+                            <h2 className="text-xl font-bold text-content-primary tracking-tight">{translate('Challenge Leaderboard')}</h2>
                         </div>
 
                         <div className="space-y-3">
                             {leaderboard.map((entry, index) => (
                                 <section key={index} className={`flex items-center gap-4 p-4 rounded-2xl transition-all ${
-                                    index === 0 ? 'bg-primary-50 dark:bg-primary-400/10 border border-primary-300 dark:border-primary-400/40' :
-                                    'bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700 border border-transparent'
+                                    index === 0 ? 'border border-primary-300 dark:border-primary-400/40' :
+                                    'bg-background-surface-secondary hover:bg-background-surface-secondary border border-transparent'
                                 }`}>
                                     <div className="flex-shrink-0">
-                                        {index === 0 ? <Crown className="w-8 h-8 text-amber-500 drop-shadow-sm" /> :
-                                         index === 1 ? <Medal className="w-8 h-8 text-slate-400 drop-shadow-sm" /> :
-                                         index === 2 ? <Medal className="w-8 h-8 text-orange-500 drop-shadow-sm" /> :
-                                         <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-slate-500">#{index + 1}</div>}
+                                        {index === 0 ? <Crown className="w-8 h-8 text-amber-500" /> :
+                                         index === 1 ? <Medal className="w-8 h-8 text-content-muted" /> :
+                                         index === 2 ? <Medal className="w-8 h-8 text-orange-500" /> :
+                                         <div className="w-8 h-8 rounded-full bg-background-surface-secondary flex items-center justify-center font-bold text-content-muted">#{index + 1}</div>}
                                     </div>
                                     
                                     <div className="flex-grow min-w-0">
-                                        <h3 className="font-bold text-slate-800 dark:text-white truncate text-lg">
+                                        <h3 className="font-bold text-content-primary truncate text-lg">
                                             {entry.user?.name || translate('Anonymous')}
-                                            {entry.isHost && <span className="ml-2 text-[10px] bg-primary-100 dark:bg-primary-400/20 text-primary-800 dark:text-primary-200 px-2 py-0.5 rounded-full uppercase tracking-wider">{translate('Host')}</span>}
+                                            {entry.isHost && <span className="ml-2 text-[10px] text-primary-600 px-2 py-0.5 rounded-full uppercase tracking-[0.08em]">{translate('Host')}</span>}
                                         </h3>
                                     </div>
 
                                     <div className="text-right">
-                                        <p className={`font-black text-2xl ${index === 0 ? 'text-primary-700 dark:text-primary-200' : 'text-slate-800 dark:text-white'}`}>
+                                        <p className={`font-bold text-2xl ${index === 0 ? 'text-primary-600' : 'text-content-primary'}`}>
                                             {Math.round(entry.percentage)}%
                                         </p>
-                                        <p className="text-xs text-slate-400 font-medium">{Math.round(entry.totalTime)}s</p>
+                                        <p className="text-xs text-content-muted font-medium">{Math.round(entry.totalTime)}s</p>
                                     </div>
                                 </section>
                             ))}

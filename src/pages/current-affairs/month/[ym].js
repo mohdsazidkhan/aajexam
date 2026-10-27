@@ -27,16 +27,13 @@ const CurrentAffairsMonth = ({ year, month, total, groups, prevKey, nextKey, ind
         ])}
       />
 
-      <header className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-4 xl:p-6 space-y-2" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-          <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
-        <Link href="/current-affairs" className="block text-right text-sm font-bold text-primary-600 dark:text-primary-300 hover:underline">← Current Affairs</Link>
-        <h1 className="text-2xl xl:text-4xl font-black text-slate-900 dark:text-white">Current Affairs {label} – Monthly Digest</h1>
-        <p className="text-sm xl:text-base font-semibold text-slate-600 dark:text-slate-500 dark:text-white/60">
+      <header className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 space-y-2 bg-background-surface" style={{ borderRadius: 16 }}>
+        <Link href="/current-affairs" className="block text-right text-sm font-bold text-primary-600 hover:underline">← Current Affairs</Link>
+        <h1 className="text-2xl xl:text-4xl font-bold text-content-primary">Current Affairs {label} – Monthly Digest</h1>
+        <p className="text-sm xl:text-base font-semibold text-content-secondary dark:text-white/60">
           {total} important updates from {label}, grouped by category, for SSC, UPSC, Banking, Railway and State PSC exams.
         </p>
-        <nav className="flex gap-3 text-sm font-bold text-primary-600 dark:text-primary-300" aria-label="Other months">
+        <nav className="flex gap-3 text-sm font-bold text-primary-600" aria-label="Other months">
           {prevKey && <Link href={`/current-affairs/month/${prevKey}`} className="hover:underline">← Previous month</Link>}
           {nextKey && <Link href={`/current-affairs/month/${nextKey}`} className="hover:underline">Next month →</Link>}
         </nav>
@@ -44,17 +41,17 @@ const CurrentAffairsMonth = ({ year, month, total, groups, prevKey, nextKey, ind
 
       {groups.map((g) => (
         <section key={g.category} className="space-y-3">
-          <h2 className="text-xl font-black text-slate-900 dark:text-white">{cap(g.category)} ({g.items.length})</h2>
+          <h2 className="text-xl font-bold text-content-primary">{cap(g.category)} ({g.items.length})</h2>
           <ul className="space-y-3">
             {g.items.map((it) => (
-              <li key={it.slug} className="rounded-xl border border-slate-200 dark:border-slate-800 p-3 xl:p-4 bg-white dark:bg-slate-900">
-                <p className="text-[11px] font-bold text-slate-400">{fmtDay(it.date)}</p>
-                <h3 className="text-base font-black text-slate-900 dark:text-white">
+              <li key={it.slug} className="rounded-xl border border-border-primary p-3 xl:p-4 bg-background-surface">
+                <p className="text-[11px] font-bold text-content-muted">{fmtDay(it.date)}</p>
+                <h3 className="text-base font-bold text-content-primary">
                   <Link href={`/current-affairs/${it.slug}`} className="hover:underline">{it.title}</Link>
                 </h3>
-                {it.content && <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">{it.content}</p>}
+                {it.content && <p className="text-sm text-content-secondary leading-relaxed whitespace-pre-line">{it.content}</p>}
                 {it.keyPoints?.length > 0 && (
-                  <ul className="mt-1 list-disc pl-5 text-xs text-slate-600 dark:text-slate-400 space-y-0.5">
+                  <ul className="mt-1 list-disc pl-5 text-xs text-content-secondary space-y-0.5">
                     {it.keyPoints.map((kp, i) => <li key={i}>{kp}</li>)}
                   </ul>
                 )}

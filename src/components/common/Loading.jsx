@@ -26,17 +26,17 @@ const Loading = ({
   };
 
   const colorMap = {
-    primary: 'bg-primary-400 shadow-sm',
-    secondary: 'bg-primary-400 shadow-sm',
-    accent:'bg-primary-600 shadow-sm',
-    gray: 'bg-slate-400 shadow-sm',
+    primary: 'bg-primary-400',
+    secondary: 'bg-primary-400',
+    accent:'bg-primary-600',
+    gray: 'bg-border-secondary',
   };
 
   const selectedSize = sizeMap[size] || sizeMap.md;
   const selectedColor = colorMap[color] || colorMap.primary;
 
   const wrapperClasses = fullScreen
-    ? 'fixed inset-0 flex items-center justify-center bg-white/60 dark:bg-slate-950/60 backdrop-blur-md z-[100]'
+    ? 'fixed inset-0 flex items-center justify-center bg-white/60 dark:bg-slate-950/60 z-[100]'
     : 'flex items-center justify-center py-8';
 
   return (
@@ -46,7 +46,7 @@ const Loading = ({
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-          className={`absolute ${selectedSize.ring} rounded-full border-2 border-dashed border-slate-200 dark:border-slate-800`}
+          className={`absolute ${selectedSize.ring} rounded-full border border-dashed border-border-primary`}
         />
 
         {/* Pulsing HUD Aura */}
@@ -67,7 +67,7 @@ const Loading = ({
             ]
           }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className={`relative ${selectedSize.dot} rounded-full ${selectedColor} z-10 shadow-sm`}
+          className={`relative ${selectedSize.dot} rounded-full ${selectedColor} z-10`}
         />
 
         {/* Loading Message */}
@@ -77,7 +77,7 @@ const Loading = ({
             animate={{ opacity: 1, y: 0 }}
             className={`absolute top-full ${selectedSize.mt} text-center`}
           >
-            <p className={`${selectedSize.text} font-black text-slate-700 dark:text-slate-400 uppercase tracking-[0.4em] font-outfit animate-pulse`}>
+            <p className={`${selectedSize.text} font-bold text-content-secondary uppercase tracking-[0.08em] font-outfit animate-pulse`}>
               {message}
             </p>
           </motion.div>

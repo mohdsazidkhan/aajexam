@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import mongoose from 'mongoose';
 import dbConnect from '@/lib/db';
+import { resolveUserId } from '@/lib/utils/userRef';
 import QuizAttempt from '@/models/QuizAttempt';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import Quiz from '@/models/Quiz';
@@ -22,20 +22,24 @@ export async function GET(req, { params }) {
             return NextResponse.json({ message: 'Admin access required' }, { status: 403 });
         }
 
-        const { id } = await params;
-        if (!id || !mongoose.Types.ObjectId.isValid(id)) {
-            return NextResponse.json({ success: false, message: 'Valid user ID is required' }, { status: 400 });
+        const { id } = await params; // user id or username
+        if (!id) {
+            return NextResponse.json({ success: false, message: 'User ID or username is required' }, { status: 400 });
         }
 
         await dbConnect();
+        const uid = await resolveUserId(id);
+        if (!uid) {
+            return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
+        }
         const { searchParams } = new URL(req.url);
         const period = searchParams.get('period') || 'all-time';
         const range = getISTRange(period);
 
-        const filter = { user: id, status: 'Completed', ...(range ? { createdAt: range } : {}) };
+        const filter = { user: uid, status: 'Completed', ...(range ? { createdAt: range } : {}) };
 
         const [user, quizDocs, examDocs] = await Promise.all([
-            User.findById(id).select('name email').lean(),
+            User.findById(uid).select('name email').lean(),
             QuizAttempt.find(filter)
                 .sort({ createdAt: -1 })
                 .limit(MAX_ROWS)

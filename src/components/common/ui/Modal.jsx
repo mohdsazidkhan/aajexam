@@ -19,8 +19,8 @@ const Modal = ({
   closeOnBackdrop = true,
   className = '',
   titleClassName = '',
-  bodyClassName = 'p-10 xl:p-14 pt-8 xl:pt-10',
-  headerClassName = 'p-10 xl:p-14 pb-6 xl:pb-8',
+  bodyClassName = 'p-5 xl:p-8 pt-5 xl:pt-6',
+  headerClassName = 'p-5 xl:p-8 pb-4 xl:pb-5',
   bodyMaxHeight = 'max-h-[75vh]',
   animationType = 'spring',
   icon: Icon,
@@ -60,15 +60,13 @@ const Modal = ({
   const modalVariants = {
     hidden: {
       opacity: 0,
-      scale: 0.95,
-      y: 20,
-      rotateX: -10
+      scale: 0.97,
+      y: 12
     },
     visible: {
       opacity: 1,
       scale: 1,
       y: 0,
-      rotateX: 0,
       transition: {
         type: animationType === 'spring' ? 'spring' : 'tween',
         stiffness: 300,
@@ -100,7 +98,7 @@ const Modal = ({
             animate="visible"
             exit="hidden"
             onClick={handleBackdropClick}
-            className="fixed inset-0 bg-slate-950/40 backdrop-blur-md"
+            className="fixed inset-0 bg-black/50"
           />
 
           <motion.section
@@ -111,27 +109,26 @@ const Modal = ({
             animate="visible"
             exit="exit"
             className={`
- relative bg-white dark:bg-slate-900 ${sizes[size]} 
-              ${size === 'fullscreen' ? 'rounded-none' : 'rounded-[3rem] xl:rounded-[4.5rem]'} 
- border-2 border-slate-200 dark:border-slate-800 ${size === 'fullscreen' ? '' : 'border-b-[12px] shadow-sm'} 
-              transition-all duration-300 font-outfit overflow-hidden
+ relative bg-background-surface ${sizes[size]}
+              ${size === 'fullscreen' ? 'rounded-none' : 'rounded-2xl xl:rounded-3xl'}
+ border border-border-primary
+              font-outfit overflow-hidden
               ${className}
             `}
-            style={{ perspective: '1000px' }}
             {...props}
           >
             {/* Header Stats */}
             {(title || showCloseButton) && (
-              <header className={`z-auto flex items-center justify-between ${headerClassName} border-b-2 border-slate-100 dark:border-slate-700/50`}>
-                <div className="flex items-center gap-6">
+              <header className={`z-auto flex items-center justify-between ${headerClassName} border-b border-border-primary`}>
+                <div className="flex items-center gap-4">
                   {Icon && (
-                    <div className="w-16 h-16 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-[1.5rem] flex items-center justify-center border-2 border-primary-500/20">
-                      <Icon className="w-8 h-8" />
+                    <div className="w-12 h-12 text-primary-600 rounded-xl flex items-center justify-center border border-border-primary">
+                      <Icon className="w-6 h-6" />
                     </div>
                   )}
                   <div className="space-y-1 text-left">
-                    {title && <h2 className={`text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none ${titleClassName}`}>{title}</h2>}
-                    {subtitle && <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-slate-400">{subtitle}</p>}
+                    {title && <h2 className={`text-xl xl:text-2xl font-bold text-content-primary leading-tight ${titleClassName}`}>{title}</h2>}
+                    {subtitle && <p className="text-sm font-medium text-content-secondary">{subtitle}</p>}
                   </div>
                 </div>
 
@@ -140,7 +137,7 @@ const Modal = ({
                     variant="secondary"
                     size="sm"
                     onClick={onClose}
-                    className="!p-3 border-b-2 hover:border-b-2 hover:translate-y-0.5"
+                    className="!p-2.5"
                     icon={X}
                   />
                 )}
@@ -152,8 +149,6 @@ const Modal = ({
               {children}
             </div>
 
-            {/* Glowing Accent */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
           </motion.section>
         </div>
       )}

@@ -59,7 +59,7 @@ export default function FlashcardDeck() {
             <div className="fixed inset-0 bg-slate-900 flex flex-col items-center justify-center z-50 px-6 gap-6 animate-pulse">
                 <div className="absolute top-6 left-6 w-8 h-8 bg-slate-800 rounded-full" />
                 <div className="absolute top-6 right-6 w-8 h-8 bg-slate-800 rounded-full" />
-                <div className="w-full max-w-sm aspect-[3/4] bg-slate-800 rounded-[2rem]" />
+                <div className="w-full max-w-sm aspect-[3/4] bg-slate-800 rounded-3xl" />
                 <div className="flex gap-2">
                     {[1, 2, 3, 4, 5].map((i) => (
                         <div key={i} className="w-2 h-2 bg-slate-700 rounded-full" />
@@ -89,7 +89,7 @@ export default function FlashcardDeck() {
             />
 
             {/* Mobile/Story Container */}
-            <div className="relative w-full h-full max-w-md bg-slate-900 shadow-sm overflow-hidden sm:rounded-[2.5rem] sm:h-[85vh] sm:border-[8px] sm:border-slate-800">
+            <div className="relative w-full h-full max-w-md bg-slate-900 overflow-hidden sm:rounded-3xl sm:h-[85vh] sm:border-[8px] sm:border-slate-800">
                 
                 {/* Background Layer */}
                 <div className={`absolute inset-0 ${bgClass} transition-colors duration-500`} />
@@ -102,7 +102,7 @@ export default function FlashcardDeck() {
                         {deck.cards.map((_, idx) => (
                             <div key={idx} className="h-1 flex-1 bg-white/30 rounded-full overflow-hidden">
                                 <div 
-                                    className={`h-full bg-white transition-all duration-300 ${idx < currentIndex ? 'w-full' : idx === currentIndex ? 'w-full' : 'w-0'}`} 
+                                    className={`h-full bg-background-surface transition-all duration-300 ${idx < currentIndex ? 'w-full' : idx === currentIndex ? 'w-full' : 'w-0'}`} 
                                     style={{ opacity: idx <= currentIndex ? 1 : 0 }}
                                 />
                             </div>
@@ -117,7 +117,7 @@ export default function FlashcardDeck() {
                             </button>
                             <div>
                                 <h1 className="font-bold text-sm tracking-wide">{deck.title}</h1>
-                                <p className="text-[10px] opacity-70 uppercase tracking-widest">{currentIndex + 1} / {deck.cards.length}</p>
+                                <p className="text-[10px] opacity-70 uppercase tracking-[0.08em]">{currentIndex + 1} / {deck.cards.length}</p>
                             </div>
                         </div>
                         <button aria-label={translate('Share')} onClick={() => {
@@ -145,7 +145,7 @@ export default function FlashcardDeck() {
                             transition={{ duration: 0.2 }}
                             className="w-full text-center"
                         >
-                            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-sm">
+                            <div className="bg-white/10 border border-white/20 p-8 rounded-3xl">
                                 {currentCard.image && (
                                     <img 
                                         src={currentCard.image} 
@@ -159,7 +159,7 @@ export default function FlashcardDeck() {
                                 />
                             </div>
                             
-                            <div className="mt-8 text-white/50 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2">
+                            <div className="mt-8 text-white/50 text-xs font-bold uppercase tracking-[0.08em] flex items-center justify-center gap-2">
                                 <span className="w-8 h-[1px] bg-white/20" />
                                 {translate('Tap right to next')}
                                 <span className="w-8 h-[1px] bg-white/20" />

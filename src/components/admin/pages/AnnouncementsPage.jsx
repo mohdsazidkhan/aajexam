@@ -20,9 +20,9 @@ import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const TARGET_META = {
-  all: { label: 'All Users', icon: Users, className: 'bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200' },
+  all: { label: 'All Users', icon: Users, className: 'text-primary-600 dark:bg-primary-600 dark:text-primary-600' },
   pro: { label: 'PRO Subscribers', icon: Crown, className: 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400' },
-  free: { label: 'Free Users', icon: Gift, className: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
+  free: { label: 'Free Users', icon: Gift, className: 'bg-background-surface-secondary text-content-primary' },
   users: { label: 'Selected Users', icon: UserIcon, className: 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400' }
 };
 
@@ -75,7 +75,7 @@ const ViewButton = ({ onClick, className = '' }) => (
   <button
     onClick={(e) => { e.stopPropagation(); onClick(); }}
     title="View announcement"
-    className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-primary-50 text-primary-600 hover:bg-primary-100 dark:bg-primary-900/20 dark:text-primary-400 dark:hover:bg-primary-900/40 ${className}`}
+    className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold text-primary-600 ${className}`}
   >
     <Eye className="w-3.5 h-3.5" /> View
   </button>
@@ -86,38 +86,38 @@ const AnnouncementViewModal = ({ announcement, onClose }) => {
   const a = announcement;
   return (
     <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/60" onClick={onClose}>
-      <section className="w-full max-w-lg max-h-[85vh] overflow-auto bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70" onClick={(e) => e.stopPropagation()}>
+      <section className="w-full max-w-lg max-h-[85vh] overflow-auto bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col gap-3 relative" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl text-on-primary flex items-center justify-center shrink-0 bg-primary-600">
               <Megaphone className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-lg text-slate-900 dark:text-white break-words">{a.title}</h3>
+            <h3 className="font-bold text-lg text-content-primary break-words">{a.title}</h3>
           </div>
-          <button onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 shrink-0" title="Close">
+          <button onClick={onClose} className="p-1.5 rounded-lg text-content-muted hover:bg-background-surface-secondary shrink-0" title="Close">
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <p className="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap break-words">{a.description}</p>
+        <p className="text-sm text-content-secondary whitespace-pre-wrap break-words">{a.description}</p>
 
         <div className="flex flex-wrap items-center gap-2">
           <TargetTypeTag target={a.target} recipientCount={a.recipientCount} condition={a.condition} />
-          <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1"><Send className="w-3 h-3" /> {a.recipientCount} recipients</span>
+          <span className="text-xs text-content-muted flex items-center gap-1"><Send className="w-3 h-3" /> {a.recipientCount} recipients</span>
         </div>
 
-        <div className="text-xs text-slate-500 dark:text-slate-400 space-y-1 pt-3 border-t border-slate-100 dark:border-slate-700">
-          <div>Sent by: <span className="font-bold text-slate-700 dark:text-slate-200">{a.sentBy?.name || 'Admin'}</span></div>
+        <div className="text-xs text-content-muted space-y-1 pt-3 border-t border-border-primary">
+          <div>Sent by: <span className="font-bold text-content-secondary">{a.sentBy?.name || 'Admin'}</span></div>
           <div className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {formatDateTime(a.createdAt)}</div>
         </div>
 
         {a.target === 'users' && a.recipients?.length > 0 && (
-          <div className="pt-3 border-t border-slate-100 dark:border-slate-700">
-            <div className="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Recipients</div>
+          <div className="pt-3 border-t border-border-primary">
+            <div className="text-xs font-bold uppercase tracking-[0.08em] text-content-muted mb-2">Recipients</div>
             <div className="space-y-1 max-h-48 overflow-auto">
               {a.recipients.map((r, i) => (
-                <div key={r.userId || i} className="text-sm text-slate-700 dark:text-slate-300">
-                  {r.name} <span className="text-slate-400">· {r.email}</span>
+                <div key={r.userId || i} className="text-sm text-content-secondary">
+                  {r.name} <span className="text-content-muted">· {r.email}</span>
                 </div>
               ))}
             </div>
@@ -170,8 +170,8 @@ const AnnouncementsPage = () => {
       header: 'Announcement',
       render: (_, a) => (
         <div className="max-w-xs">
-          <div className="text-sm font-bold text-slate-900 dark:text-white truncate">{a.title}</div>
-          <div className="text-xs text-slate-400 truncate">{a.description}</div>
+          <div className="text-sm font-bold text-content-primary truncate">{a.title}</div>
+          <div className="text-xs text-content-muted truncate">{a.description}</div>
         </div>
       )
     },
@@ -188,17 +188,17 @@ const AnnouncementsPage = () => {
     {
       key: 'recipientCount',
       header: 'Recipients',
-      render: (_, a) => <span className="text-sm font-bold text-slate-900 dark:text-white">{a.recipientCount}</span>
+      render: (_, a) => <span className="text-sm font-bold text-content-primary">{a.recipientCount}</span>
     },
     {
       key: 'sentBy',
       header: 'Sent By',
-      render: (_, a) => <span className="text-sm text-slate-600 dark:text-slate-300">{a.sentBy?.name || 'Admin'}</span>
+      render: (_, a) => <span className="text-sm text-content-secondary">{a.sentBy?.name || 'Admin'}</span>
     },
     {
       key: 'createdAt',
       header: 'Sent At',
-      render: (_, a) => <span className="text-sm text-slate-500 dark:text-slate-400">{formatDateTime(a.createdAt)}</span>
+      render: (_, a) => <span className="text-sm text-content-muted">{formatDateTime(a.createdAt)}</span>
     },
     {
       key: 'actions',
@@ -217,11 +217,11 @@ const AnnouncementsPage = () => {
         <button
           key={mode.id}
           onClick={() => setViewMode(mode.id)}
-          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
           title={mode.label}
         >
           <mode.icon className="w-4 h-4" />
-          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+          <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
         </button>
       ))}
     </div>
@@ -230,8 +230,8 @@ const AnnouncementsPage = () => {
   const filters = (
     <>
       <div className="relative w-full">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-        <input type="text" placeholder="Search title or message..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
+        <input type="text" placeholder="Search title or message..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm" />
       </div>
       <StyledSelect
         icon={Users}
@@ -248,7 +248,7 @@ const AnnouncementsPage = () => {
         className="w-full xl:w-64"
       />
       {viewToggleButtons}
-      <button onClick={() => setShowCompose(true)} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110">
+      <button onClick={() => setShowCompose(true)} className="w-full xl:w-auto flex items-center justify-center gap-2 text-on-primary px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110 bg-primary-600">
         <Plus className="w-4 h-4" /> New Announcement
       </button>
       <Pagination
@@ -272,20 +272,20 @@ const AnnouncementsPage = () => {
   if (!isMounted) return null;
 
   const renderGridCard = (a, idx) => (
-    <section key={a._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+    <section key={a._id} className="bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col gap-3 relative">
       <div className="flex items-start justify-between gap-2">
-        <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
+        <div className="relative w-10 h-10 rounded-xl text-on-primary flex items-center justify-center shrink-0 bg-primary-600">
           <Megaphone className="w-5 h-5" />
-          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
+          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{(page - 1) * itemsPerPage + idx + 1}</span>
         </div>
         <TargetTypeTag target={a.target} recipientCount={a.recipientCount} condition={a.condition} />
       </div>
       <div>
-        <h3 className="font-bold text-slate-900 dark:text-white line-clamp-1">{a.title}</h3>
-        <p className="text-xs text-slate-400 line-clamp-2 mt-0.5">{a.description}</p>
+        <h3 className="font-bold text-content-primary line-clamp-1">{a.title}</h3>
+        <p className="text-xs text-content-muted line-clamp-2 mt-0.5">{a.description}</p>
       </div>
       {a.target === 'users' && <TargetBadge target={a.target} recipientCount={a.recipientCount} recipients={a.recipients} condition={a.condition} />}
-      <div className="flex items-center justify-between text-xs text-slate-400 mt-auto pt-2 border-t border-slate-100 dark:border-slate-700">
+      <div className="flex items-center justify-between text-xs text-content-muted mt-auto pt-2 border-t border-border-primary">
         <span className="flex items-center gap-1"><Send className="w-3 h-3" /> {a.recipientCount} sent</span>
         <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {formatDateTime(a.createdAt)}</span>
       </div>
@@ -294,16 +294,16 @@ const AnnouncementsPage = () => {
   );
 
   const renderListRow = (a, idx) => (
-    <section key={a._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-      <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
+    <section key={a._id} className="bg-background-surface rounded-xl border border-border-primary p-3 flex items-center gap-3 relative">
+      <div className="relative w-10 h-10 rounded-xl text-on-primary flex items-center justify-center shrink-0 bg-primary-600">
         <Megaphone className="w-5 h-5" />
-        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
+        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{(page - 1) * itemsPerPage + idx + 1}</span>
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className="font-bold text-slate-900 dark:text-white truncate">{a.title}</h3>
-        <p className="text-xs text-slate-400 truncate">{a.description}</p>
+        <h3 className="font-bold text-content-primary truncate">{a.title}</h3>
+        <p className="text-xs text-content-muted truncate">{a.description}</p>
       </div>
-      <span className="text-xs text-slate-400 shrink-0 hidden sm:flex items-center gap-1"><Calendar className="w-3 h-3" /> {formatDateTime(a.createdAt)}</span>
+      <span className="text-xs text-content-muted shrink-0 hidden sm:flex items-center gap-1"><Calendar className="w-3 h-3" /> {formatDateTime(a.createdAt)}</span>
       {a.target === 'users' && <div className="hidden md:block shrink-0"><TargetTypeTag target={a.target} recipientCount={a.recipientCount} condition={a.condition} /></div>}
       <TargetBadge target={a.target} recipientCount={a.recipientCount} recipients={a.recipients} condition={a.condition} />
       <ViewButton onClick={() => setViewing(a)} className="shrink-0" />
@@ -311,22 +311,22 @@ const AnnouncementsPage = () => {
   );
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
         <div className="flex-1 min-h-0 overflow-auto">
           {loading ? (
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : announcements.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-20 h-20 bg-slate-100 dark:bg-slate-900 rounded-[2rem] flex items-center justify-center mx-auto mb-4">
+              <div className="w-20 h-20 bg-background-surface-secondary rounded-3xl flex items-center justify-center mx-auto mb-4">
                 <Megaphone className="w-10 h-10 text-slate-300" />
               </div>
-              <h3 className="text-lg font-black text-slate-500 uppercase">No Announcements Yet</h3>
-              <p className="text-sm text-slate-400 mt-2">Send your first announcement to see it here.</p>
+              <h3 className="text-lg font-bold text-content-muted">No Announcements Yet</h3>
+              <p className="text-sm text-content-muted mt-2">Send your first announcement to see it here.</p>
             </div>
           ) : viewMode === 'table' ? (
-            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+            <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden h-auto flex flex-col relative">
               <ResponsiveTable data={announcements} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} emptyMessage="No announcements found" fillHeight />
             </div>
           ) : viewMode === 'grid' ? (

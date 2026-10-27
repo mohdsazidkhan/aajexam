@@ -156,29 +156,26 @@ const SubscriptionPage = () => {
         {/* Membership pass: current plan + validity, with a perforated side stub */}
         {subscription && (
           <section
-            className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 text-slate-900 shadow-xl ring-1 ring-primary-200 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 dark:text-white dark:ring-white/10"
+            className="relative overflow-hidden text-content-primary ring-1 ring-primary-200 dark:ring-white/10 bg-background-surface"
             style={{ borderRadius: 16 }}
           >
-            <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-            <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-            <div className="pointer-events-none absolute -bottom-28 right-24 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
             <Crown className="pointer-events-none absolute right-6 top-6 w-36 h-36 text-primary-600/10 dark:text-white/5 rotate-12" />
 
             <div className="relative grid grid-cols-1 xl:grid-cols-[1fr_260px]">
               <header className="z-auto p-4 xl:p-6 space-y-4">
                 <div className="flex items-center gap-3">
                   {/* Card chip */}
-                  <span className="w-10 h-7 bg-gradient-to-br from-amber-200 to-amber-500 shadow" style={{ borderRadius: 6 }} />
-                  <span className="text-[10px] xl:text-xs font-black uppercase tracking-[0.3em] text-slate-600 dark:text-white/70">AajExam · {translate('Membership pass')}</span>
+                  <span className="w-10 h-7 bg-background-surface" style={{ borderRadius: 6 }} />
+                  <span className="text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/70">AajExam · {translate('Membership pass')}</span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
+                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 14 }}>
                     <Crown className="w-7 h-7 xl:w-8 xl:h-8" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[10px] xl:text-xs font-black uppercase tracking-[0.2em] text-slate-500 dark:text-white/60">{translate('Your current plan')}</p>
-                    <h1 className="text-2xl xl:text-4xl font-black font-outfit leading-none uppercase tracking-tight">
+                    <p className="text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] text-content-muted dark:text-white/60">{translate('Your current plan')}</p>
+                    <h1 className="text-2xl xl:text-4xl font-bold font-outfit leading-none tracking-tight">
                       {isActive
                         ? translate('{plan} plan is active', { plan: subscription.planName })
                         : translate('{plan} plan has expired', { plan: subscription.planName })}
@@ -187,11 +184,11 @@ const SubscriptionPage = () => {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] xl:text-xs font-black uppercase tracking-widest ${isActive ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500/40' : 'bg-red-500/15 text-red-700 dark:text-red-300 ring-1 ring-red-500/40'}`} style={{ borderRadius: 999 }}>
+                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] ${isActive ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500/40' : 'bg-red-500/15 text-red-700 dark:text-red-300 ring-1 ring-red-500/40'}`} style={{ borderRadius: 999 }}>
                     <span className={`w-1.5 h-1.5 ${isActive ? 'bg-emerald-500' : 'bg-red-500'}`} style={{ borderRadius: '50%' }} />
                     {isActive ? translate('Active') : translate('Expired')}
                   </span>
-                  <p className="text-xs xl:text-sm font-semibold text-slate-700 dark:text-white/85">
+                  <p className="text-xs xl:text-sm font-semibold text-content-secondary dark:text-white/85">
                     {subscription.expiryDate
                       ? isActive
                         ? translate('Valid until {date}', { date: new Date(subscription.expiryDate).toLocaleDateString() })
@@ -204,14 +201,14 @@ const SubscriptionPage = () => {
               </header>
 
               {/* Perforated stub: days left or the upgrade call-to-action */}
-              <div className="relative p-4 xl:p-6 bg-primary-600/5 dark:bg-black/20 border-t border-dashed border-primary-300 dark:border-white/35 xl:border-t-0 xl:border-l flex flex-col items-center justify-center text-center gap-3">
+              <div className="relative p-4 xl:p-6 dark:bg-black/20 border-t border-dashed border-primary-300 dark:border-white/35 xl:border-t-0 xl:border-l flex flex-col items-center justify-center text-center gap-3">
                 <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
                 <span className="xl:hidden absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
                 <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
                 {countdown !== null ? (
                   <div className="w-full">
                     {freePromoActive && (
-                      <p className="mb-3 text-lg xl:text-xl font-black font-outfit uppercase leading-tight tracking-tight text-primary-700 dark:text-primary-200">
+                      <p className="mb-3 text-lg xl:text-xl font-bold font-outfit leading-tight tracking-tight text-primary-600">
                         {translate('PRO FREE till 31 Dec 2026')}
                       </p>
                     )}
@@ -223,20 +220,20 @@ const SubscriptionPage = () => {
                         { v: countdown.seconds, l: 'Sec' },
                       ].map((u) => (
                         <div key={u.l} className="min-w-0 px-1 py-2 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 10 }}>
-                          <div className="text-xl xl:text-2xl font-black font-outfit leading-none tabular-nums text-primary-700 dark:text-primary-200">{String(u.v).padStart(2, '0')}</div>
-                          <div className="mt-1 text-[8px] font-black uppercase tracking-wider text-slate-600 dark:text-white/75 truncate">{translate(u.l)}</div>
+                          <div className="text-xl xl:text-2xl font-bold font-outfit leading-none tabular-nums text-primary-600">{String(u.v).padStart(2, '0')}</div>
+                          <div className="mt-1 text-[8px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 truncate">{translate(u.l)}</div>
                         </div>
                       ))}
                     </div>
-                    <div className="mt-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-white/75">{translate('Days left')}</div>
+                    <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Days left')}</div>
                   </div>
                 ) : (
-                  <div className="text-3xl xl:text-4xl font-black font-outfit leading-none uppercase text-slate-700 dark:text-white/90">{planName || 'FREE'}</div>
+                  <div className="text-3xl xl:text-4xl font-bold font-outfit leading-none text-content-secondary dark:text-white/90">{planName || 'FREE'}</div>
                 )}
                 {(isFreePlan || !isActive) && (
                   <button
                     onClick={() => document.getElementById('pro-plans')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] font-black uppercase tracking-widest text-xs shadow-lg hover:brightness-105 active:translate-y-0.5 transition-all"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 text-on-primary font-bold uppercase tracking-[0.08em] text-xs hover:brightness-105 active:translate-y-0.5 transition-all bg-primary-600"
                   >
                     <Sparkles className="w-4 h-4" /> {translate('View PRO plans')}
                   </button>
@@ -248,14 +245,14 @@ const SubscriptionPage = () => {
 
         <section className="space-y-5 xl:space-y-8">
           <section className="text-center space-y-2 xl:space-y-3 max-w-3xl mx-auto px-2">
-            <h2 className="text-xl xl:text-4xl font-black font-outfit tracking-tight">{translate('Choose your exam prep plan')}</h2>
+            <h2 className="text-xl xl:text-4xl font-bold font-outfit tracking-tight">{translate('Choose your exam prep plan')}</h2>
             {freePromoActive && (
-              <p className="inline-block text-xs xl:text-base font-bold text-primary-800 dark:text-primary-200 bg-primary-100 dark:bg-primary-500/15 border-2 border-dashed border-primary-400/70 px-4 py-2" style={{ borderRadius: 12 }}>
+              <p className="inline-block text-xs xl:text-base font-bold text-primary-600 border border-dashed border-primary-400/70 px-4 py-2" style={{ borderRadius: 12 }}>
                 {translate('🎁 PRO is free for everyone till 31 Dec 2026 — every registered student already gets full access to all practice tests, mock exams, and detailed performance reports.')}
               </p>
             )}
             <div>
-              <Link href="/features" className="inline-block text-xs xl:text-sm font-bold text-primary-600 dark:text-primary-300 hover:text-primary-700 underline underline-offset-4">
+              <Link href="/features" className="inline-block text-xs xl:text-sm font-bold text-primary-600 hover:text-primary-700 underline underline-offset-4">
                 {translate('See the full feature comparison')}
               </Link>
             </div>
@@ -264,11 +261,11 @@ const SubscriptionPage = () => {
           {/* Coupon voucher slot */}
           <div className="max-w-xl mx-auto w-full px-2">
             {appliedCoupon ? (
-              <div className="relative flex items-center justify-between gap-3 border-2 border-dashed border-primary-500/60 bg-primary-500/10 px-4 py-3" style={{ borderRadius: 12 }}>
+              <div className="relative flex items-center justify-between gap-3 border border-dashed border-primary-500/60 px-4 py-3" style={{ borderRadius: 12 }}>
                 <div className="flex items-center gap-3 min-w-0">
-                  <span className="w-9 h-9 flex items-center justify-center bg-primary-600 text-white shrink-0" style={{ borderRadius: 10 }}><Tag className="w-4 h-4" /></span>
+                  <span className="w-9 h-9 flex items-center justify-center bg-primary-600 text-on-primary shrink-0" style={{ borderRadius: 10 }}><Tag className="w-4 h-4" /></span>
                   <div className="min-w-0">
-                    <p className="text-sm font-black text-primary-700 dark:text-primary-300 tracking-widest">{appliedCoupon.code} {translate('applied')}</p>
+                    <p className="text-sm font-bold text-primary-600 tracking-[0.08em]">{appliedCoupon.code} {translate('applied')}</p>
                     <p className="text-xs font-medium text-content-secondary truncate">{appliedCoupon.description}</p>
                   </div>
                 </div>
@@ -277,16 +274,16 @@ const SubscriptionPage = () => {
                 </button>
               </div>
             ) : (
-              <form onSubmit={(e) => { e.preventDefault(); applyCoupon(); }} className="flex items-stretch bg-background-surface border-2 border-dashed border-primary-500/40 shadow-sm overflow-hidden" style={{ borderRadius: 12 }}>
-                <span className="flex items-center px-3 text-primary-600 dark:text-primary-300"><Tag className="w-5 h-5" /></span>
+              <form onSubmit={(e) => { e.preventDefault(); applyCoupon(); }} className="flex items-stretch bg-background-surface border border-dashed border-primary-500/40 overflow-hidden" style={{ borderRadius: 12 }}>
+                <span className="flex items-center px-3 text-primary-600"><Tag className="w-5 h-5" /></span>
                 <input
                   value={couponInput}
                   onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
                   placeholder={translate('Have a coupon code?')}
                   maxLength={30}
-                  className="flex-1 min-w-0 bg-transparent py-3 text-sm font-bold uppercase tracking-widest outline-none"
+                  className="flex-1 min-w-0 bg-transparent py-3 text-sm font-bold uppercase tracking-[0.08em] outline-none"
                 />
-                <button type="submit" disabled={couponLoading || !couponInput.trim()} className="px-5 bg-primary-600 hover:bg-primary-700 disabled:opacity-50 text-white text-xs font-black uppercase tracking-widest flex items-center">
+                <button type="submit" disabled={couponLoading || !couponInput.trim()} className="px-5 bg-primary-600 hover:bg-primary-700 disabled:opacity-50 text-on-primary text-xs font-bold uppercase tracking-[0.08em] flex items-center">
                   {couponLoading ? <LoaderCircle className="w-4 h-4 animate-spin" /> : translate('Apply')}
                 </button>
               </form>
@@ -304,7 +301,7 @@ const SubscriptionPage = () => {
               return (
                 <div
                   key={plan.key}
-                  className={`relative flex flex-col overflow-hidden h-full transition-transform hover:-translate-y-1 ${hl ? 'bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white shadow-xl ring-2 ring-primary-300/70' : 'bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md'}`}
+                  className={`relative flex flex-col overflow-hidden h-full transition-transform hover:-translate-y-1 ${hl ? 'text-on-primary ring-2 ring-primary-300/70 bg-primary-600' : 'bg-background-surface border border-border-primary'}`}
                   style={{ borderRadius: 16 }}
                 >
                   {hl && <div className="pointer-events-none absolute -top-16 -right-10 w-48 h-48 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />}
@@ -312,13 +309,13 @@ const SubscriptionPage = () => {
                   <div className="relative p-4 xl:p-6 space-y-3 flex-1">
                     <div className="flex items-start justify-between gap-2 min-h-[28px]">
                       <div className="flex items-center gap-2 min-w-0">
-                        <span className={`w-8 h-8 flex items-center justify-center shrink-0 ${hl ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-black' : 'bg-primary-500/10 text-primary-600 dark:text-primary-300'}`} style={{ borderRadius: 10 }}>
+                        <span className={`w-8 h-8 flex items-center justify-center shrink-0 ${hl ? 'text-on-primary bg-primary-600' : 'text-primary-600'}`} style={{ borderRadius: 10 }}>
                           <Crown className="w-4 h-4" />
                         </span>
-                        <h3 className="text-base xl:text-xl font-black font-outfit tracking-tight truncate">{translate(plan.label)}</h3>
+                        <h3 className="text-base xl:text-xl font-bold font-outfit tracking-tight truncate">{translate(plan.label)}</h3>
                       </div>
                       {plan.badge && (
-                        <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider px-2 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow whitespace-nowrap" style={{ borderRadius: 999 }}>
+                        <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] px-2 py-1 text-on-primary whitespace-nowrap bg-primary-600" style={{ borderRadius: 999 }}>
                           {translate(plan.badge)}
                         </span>
                       )}
@@ -326,7 +323,7 @@ const SubscriptionPage = () => {
 
                     <div className="space-y-1.5">
                       <div className="flex items-end gap-2">
-                        <span className="text-4xl xl:text-5xl font-black font-outfit leading-none">₹{fmtMoney(couponPrice ? couponPrice.finalAmount : plan.price)}</span>
+                        <span className="text-4xl xl:text-5xl font-bold font-outfit leading-none">₹{fmtMoney(couponPrice ? couponPrice.finalAmount : plan.price)}</span>
                         {couponPrice && <span className={`text-xs xl:text-sm font-medium line-through pb-1 ${muted}`}>₹{plan.price}</span>}
                         {!couponPrice && plan.saving > 0 && <span className={`text-xs xl:text-sm font-medium line-through pb-1 ${muted}`}>₹{plan.normalPrice}</span>}
                       </div>
@@ -336,12 +333,12 @@ const SubscriptionPage = () => {
                       </p>
                       <div className="flex flex-wrap gap-1.5 pt-0.5">
                         {couponPrice && (
-                          <span className="text-[10px] xl:text-xs font-black px-2.5 py-1 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500/40" style={{ borderRadius: 999 }}>
+                          <span className="text-[10px] xl:text-xs font-bold px-2.5 py-1 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500/40" style={{ borderRadius: 999 }}>
                             {translate('Coupon saves ₹{amount}', { amount: fmtMoney(couponPrice.discount) })}
                           </span>
                         )}
                         {plan.discountPct > 0 && (
-                          <span className={`text-[10px] xl:text-xs font-black px-2.5 py-1 ${hl ? 'bg-white/20 text-white' : 'bg-primary-500/10 text-primary-700 dark:text-primary-300'}`} style={{ borderRadius: 999 }}>
+                          <span className={`text-[10px] xl:text-xs font-bold px-2.5 py-1 ${hl ? 'bg-white/20 text-white' : 'text-primary-600'}`} style={{ borderRadius: 999 }}>
                             {plan.discountPct}% OFF
                           </span>
                         )}
@@ -350,12 +347,12 @@ const SubscriptionPage = () => {
                   </div>
 
                   {/* Tear-off stub */}
-                  <div className={`relative p-4 xl:p-5 border-t-2 border-dashed ${hl ? 'border-white/40 bg-black/15' : 'border-primary-500/30 bg-primary-600/5'}`}>
+                  <div className={`relative p-4 xl:p-5 border-t-2 border-dashed ${hl ? 'border-white/40 bg-black/15' : 'border-primary-500/30'}`}>
                     {notches}
                     <button
                       disabled={!!buyingPlan}
                       onClick={() => handleBuy(plan)}
-                      className={`w-full flex items-center justify-center gap-2 py-3.5 text-xs xl:text-sm font-black uppercase tracking-widest shadow-lg transition-all active:translate-y-0.5 disabled:opacity-60 ${hl ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] hover:brightness-105' : 'bg-primary-600 hover:bg-primary-700 text-white'}`}
+                      className={`w-full flex items-center justify-center gap-2 py-3.5 text-xs xl:text-sm font-bold uppercase tracking-[0.08em] transition-all active:translate-y-0.5 disabled:opacity-60 ${hl ? 'text-on-primary hover:brightness-105 bg-primary-600' : 'bg-primary-600 hover:bg-primary-700 text-on-primary'}`}
                     >
                       {isBuying ? (
                         <>
@@ -378,7 +375,7 @@ const SubscriptionPage = () => {
             <ul className="grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-3">
               {PRO_PLAN_FEATURES.map((feature) => (
                 <li key={feature} className="flex items-center gap-3 px-3 py-2.5 bg-background-surface-secondary border-b-2 border-dashed border-primary-500/40" style={{ borderRadius: 10 }}>
-                  <span className="w-7 h-7 flex items-center justify-center bg-primary-500/10 text-primary-600 dark:text-primary-300 shrink-0" style={{ borderRadius: 8 }}>
+                  <span className="w-7 h-7 flex items-center justify-center text-primary-600 shrink-0" style={{ borderRadius: 8 }}>
                     <CircleCheck className="w-4 h-4" />
                   </span>
                   <span className="text-xs xl:text-sm font-bold text-content-primary">{translate(feature)}</span>

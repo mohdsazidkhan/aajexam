@@ -133,12 +133,12 @@ const StudentNavbar = () => {
   const isExpired = rawPlan === 'PRO' && user.subscriptionExpiry && new Date(user.subscriptionExpiry) <= new Date();
   const plan = isExpired ? 'EXPIRED' : rawPlan;
   const pageTitle = pageTitleFor(router.pathname);
-  const planBadgeClassWeb = `absolute top-2 right-1 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow'}`;
-  const planBadgeClassMobile = `absolute top-1 -right-[45px] px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow'}`;
+  const planBadgeClassWeb = `absolute top-2 right-1 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'text-on-primary bg-primary-600'}`;
+  const planBadgeClassMobile = `absolute top-1 -right-[45px] px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide ${isExpired ? 'bg-red-500 text-white' : 'text-on-primary bg-primary-600'}`;
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-[150] h-12 xl:h-16 bg-white dark:bg-black border-b-2 border-slate-100 dark:border-slate-800 flex items-center">
+      <header className="fixed top-0 left-0 right-0 z-[150] h-12 xl:h-16 bg-background-surface border-b-2 border-border-primary flex items-center">
         <div className="relative w-full mx-auto px-2 xl:px-4 flex items-center justify-between">
 
           {/* Left */}
@@ -149,8 +149,8 @@ const StudentNavbar = () => {
               aria-label={isSidebarOpen ? translate('Close menu') : translate('Open menu')}
               aria-expanded={isSidebarOpen}
               className={`hidden xl:flex w-10 h-10 rounded-2xl items-center justify-center transition-all active:scale-95 ${isSidebarOpen
-                  ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-md hover:scale-105'
+                  ? 'bg-background-surface-secondary text-content-secondary'
+                  : 'text-on-primary hover:scale-105 bg-primary-600'
                 }`}
             >
               {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -159,10 +159,10 @@ const StudentNavbar = () => {
             {/* Logo — desktop */}
             <Link href="/student/dashboard" className="relative hidden xl:flex items-start gap-1">
               <span className="flex flex-col leading-none">
-                <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                  AAJ<span className="text-primary-600 dark:text-primary-300">{translate('EXAM')}</span>
+                <span className="text-2xl font-bold font-outfit tracking-tight text-content-primary">
+                  AAJ<span className="text-primary-600">{translate('EXAM')}</span>
                 </span>
-                <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
+                <span className="text-[10px] font-bold text-content-muted tracking-[0.1em] uppercase mt-0.5">
                   {translate('Prepare Your Exam Today')}
                 </span>
               </span>
@@ -171,8 +171,8 @@ const StudentNavbar = () => {
 
             {/* Logo — mobile, smaller, left-aligned */}
             <Link href="/student/dashboard" className="relative xl:hidden flex items-center gap-1.5 shrink-0">
-              <span className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                AAJ<span className="text-primary-600 dark:text-primary-300">{translate('EXAM')}</span>
+              <span className="text-xl font-bold font-outfit tracking-tight text-content-primary">
+                AAJ<span className="text-primary-600">{translate('EXAM')}</span>
               </span>
               <span className={planBadgeClassMobile}>{plan}</span>
             </Link>
@@ -180,15 +180,15 @@ const StudentNavbar = () => {
 
           {/* Active page title — desktop: starts where the sidebar ends (240px) so it lines up with the page content */}
           {pageTitle && (
-            <p className="hidden xl:block absolute left-[256px] top-1/2 -translate-y-1/2 max-w-[13rem] 2xl:max-w-[22rem] truncate pl-3 border-l-4 border-primary-600 dark:border-primary-300 leading-tight text-lg font-black uppercase tracking-tight text-slate-900 dark:text-white">
+            <p className="hidden xl:block absolute left-[256px] top-1/2 -translate-y-1/2 max-w-[13rem] 2xl:max-w-[22rem] truncate pl-3 border-l-4 border-primary-600 dark:border-primary-300 leading-tight text-lg font-bold tracking-tight text-content-primary">
               {translate(pageTitle)}
             </p>
           )}
 
           {/* Center — logged-in user's name on desktop */}
           <div className="hidden xl:block absolute left-1/2 -translate-x-1/2">
-            <span className="uppercase text-lg font-black text-slate-700 dark:text-slate-300 truncate max-w-xs">
-              {translate('Welcome back,')} <span className="text-primary-600 dark:text-primary-300">{user.name}</span>
+            <span className="text-lg font-bold text-content-secondary truncate max-w-xs">
+              {translate('Welcome back,')} <span className="text-primary-600">{user.name}</span>
             </span>
           </div>
 
@@ -198,18 +198,18 @@ const StudentNavbar = () => {
             <Link
               href="/student/notifications"
               aria-label={unreadCount > 0 ? translate('Notifications, {count} unread', { count: unreadCount }) : translate('Notifications')}
-              className="relative flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-primary-700 dark:text-slate-300 hover:text-primary-900 hover:shadow-md transition-all flex-shrink-0"
+              className="relative flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-background-surface-secondary items-center justify-center text-primary-600 dark:text-slate-300 hover:text-primary-900 transition-all flex-shrink-0"
             >
               <Bell className="w-4 h-4 xl:w-5 xl:h-5" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] text-[9px] font-black flex items-center justify-center shadow">
+                <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center bg-primary-600">
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>
               )}
             </Link>
 
             {/* Theme colour + dark mode */}
-            <ThemeColorMenuButton buttonClassName="flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-primary-700 dark:text-slate-300 hover:text-primary-900 hover:shadow-md transition-all flex-shrink-0" />
+            <ThemeColorMenuButton buttonClassName="flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-background-surface-secondary items-center justify-center text-primary-600 dark:text-slate-300 hover:text-primary-900 transition-all flex-shrink-0" />
 
             {/* Profile avatar — plan (PRO/FREE/EXPIRED) now shown as a
                 badge next to the logo instead of floating on the avatar. */}
@@ -232,7 +232,7 @@ const StudentNavbar = () => {
                     />
                   ) : (
                     <div
-                      className={`w-full h-full border border-y-black dark:border-y-white rounded-full flex items-center justify-center text-slate-900 dark:text-white text-xs font-black uppercase`}
+                      className={`w-full h-full border border-y-black dark:border-y-white rounded-full flex items-center justify-center text-content-primary text-xs font-bold uppercase`}
                     >
                       {user.name?.charAt(0)}
                     </div>
@@ -247,8 +247,8 @@ const StudentNavbar = () => {
               aria-label={isSidebarOpen ? translate('Close menu') : translate('Open menu')}
               aria-expanded={isSidebarOpen}
               className={`xl:hidden flex w-9 h-9 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${isSidebarOpen
-                  ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-md'
+                  ? 'bg-background-surface-secondary text-content-secondary'
+                  : 'text-on-primary bg-primary-600'
                 }`}
             >
               {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -267,37 +267,35 @@ const StudentNavbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               role="menu"
-              className="fixed top-12 xl:top-16 right-3 xl:right-8 w-72 max-w-[calc(100vw-1.5rem)] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl z-[170] overflow-hidden"
+              className="fixed top-12 xl:top-16 right-3 xl:right-8 w-72 max-w-[calc(100vw-1.5rem)] bg-background-surface border border-border-primary z-[170] overflow-hidden"
               style={{ borderRadius: 20 }}
             >
               {/* Identity header: photo, name, username, email, plan */}
-              <div className="relative overflow-hidden px-4 pt-4 pb-3 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-b border-slate-200 dark:border-white/10">
-                <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '14px 14px' }} />
-                <div className="pointer-events-none absolute -top-12 -right-10 w-36 h-36 bg-primary-300/25 dark:bg-primary-500/20 blur-2xl" style={{ borderRadius: '50%' }} />
-                <span className={`absolute top-3 right-3 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest ${isExpired ? 'bg-red-500 text-white' : rawPlan === 'PRO' ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-black shadow' : 'bg-slate-200 text-slate-700 ring-1 ring-slate-300 dark:bg-white/15 dark:text-white dark:ring-white/30'}`} style={{ borderRadius: 999 }}>
+              <div className="relative overflow-hidden px-4 pt-4 pb-3 border-b border-border-primary bg-background-surface">
+                <span className={`absolute top-3 right-3 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.08em] ${isExpired ? 'bg-red-500 text-white' : rawPlan === 'PRO' ? 'text-on-primary bg-primary-600' : 'bg-background-surface-secondary text-content-secondary ring-1 ring-slate-300 dark:bg-white/15 dark:ring-white/30'}`} style={{ borderRadius: 999 }}>
                   {isExpired ? 'EXPIRED' : rawPlan === 'PRO' ? 'PRO' : translate('FREE')}
                 </span>
                 <div className="relative flex items-center gap-3">
-                  <div className="shrink-0 p-[3px] bg-gradient-to-tr from-primary-300 via-primary-500 to-primary-700 shadow-md" style={{ borderRadius: 16 }}>
+                  <div className="shrink-0 p-[3px] bg-primary-600" style={{ borderRadius: 16 }}>
                     {profilePicture ? (
                       <Image
                         src={profilePicture}
                         alt={user.name || 'Profile'}
                         width={56}
                         height={56}
-                        className="w-14 h-14 object-cover border-2 border-white dark:border-slate-900"
+                        className="w-14 h-14 object-cover border border-white dark:border-slate-900"
                         style={{ borderRadius: 13 }}
                       />
                     ) : (
-                      <div className="w-14 h-14 flex items-center justify-center bg-primary-600 text-white text-xl font-black uppercase border-2 border-white dark:border-slate-900" style={{ borderRadius: 13 }}>
+                      <div className="w-14 h-14 flex items-center justify-center bg-primary-600 text-on-primary text-xl font-bold border border-white dark:border-slate-900" style={{ borderRadius: 13 }}>
                         {user.name?.charAt(0)}
                       </div>
                     )}
                   </div>
                   <div className="min-w-0 flex-1 pr-10">
-                    <p className="text-base font-black text-slate-900 dark:text-white leading-tight truncate">{user.name}</p>
-                    {username && <p className="text-xs font-bold text-primary-700 dark:text-primary-300 truncate">@{username}</p>}
-                    <p className="mt-0.5 text-[11px] font-medium text-slate-500 dark:text-white/60 truncate">{user.email}</p>
+                    <p className="text-base font-bold text-content-primary leading-tight truncate">{user.name}</p>
+                    {username && <p className="text-xs font-bold text-primary-600 truncate">@{username}</p>}
+                    <p className="mt-0.5 text-[11px] font-medium text-content-muted dark:text-white/60 truncate">{user.email}</p>
                   </div>
                 </div>
               </div>
@@ -310,13 +308,13 @@ const StudentNavbar = () => {
                   { label: translate('Settings'), icon: Settings, path: '/student/settings' },
                 ].map(item => (
                   <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
-                    <button className="group w-full flex items-center gap-3 px-2 py-2 text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-primary-500/10 transition-colors" style={{ borderRadius: 12 }}>
-                      <span className="w-8 h-8 shrink-0 flex items-center justify-center bg-primary-500/10 text-primary-700 dark:text-primary-300 group-hover:bg-primary-600 group-hover:text-white transition-colors" style={{ borderRadius: 10 }}>
+                    <button className="group w-full flex items-center gap-3 px-2 py-2 text-sm font-bold text-content-secondary transition-colors" style={{ borderRadius: 12 }}>
+                      <span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors" style={{ borderRadius: 10 }}>
                         <item.icon className="w-4 h-4" />
                       </span>
                       <span className="flex-1 text-left truncate">{item.label}</span>
                       {item.showBalance ? (
-                        <span className="px-2 py-0.5 bg-primary-500/10 text-sm font-black text-primary-700 dark:text-primary-300 flex items-center gap-0.5" style={{ borderRadius: 999 }}>
+                        <span className="px-2 py-0.5 text-sm font-bold text-primary-600 flex items-center gap-0.5" style={{ borderRadius: 999 }}>
                           <IndianRupee className="w-3 h-3" />{user.walletBalance || 0}
                         </span>
                       ) : (
@@ -326,11 +324,11 @@ const StudentNavbar = () => {
                   </Link>
                 ))}
 
-                <div className="my-2 border-t border-dashed border-slate-200 dark:border-slate-800 mx-1" />
+                <div className="my-2 border-t border-dashed border-border-primary mx-1" />
 
                 <button
                   onClick={handleLogout}
-                  className="w-full flex items-center justify-center gap-2.5 px-3 py-2.5 text-sm font-black uppercase tracking-wider bg-red-500 hover:bg-red-600 text-white transition-all"
+                  className="w-full flex items-center justify-center gap-2.5 px-3 py-2.5 text-sm font-bold uppercase tracking-[0.08em] bg-red-500 hover:bg-red-600 text-white transition-all"
                   style={{ borderRadius: 12 }}
                 >
                   <LogOut className="w-4 h-4" /> {translate('Log out')}

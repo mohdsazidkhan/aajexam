@@ -27,8 +27,8 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
         return (
             <div className="min-h-screen flex items-center justify-center px-4">
                 <div className="text-center">
-                    <h1 className="text-2xl font-black text-slate-800 dark:text-white mb-4">{translate('Exam Not Found')}</h1>
-                    <Link href="/pyq" className="text-primary-600 dark:text-primary-300 hover:text-primary-600 font-bold">{translate('← Browse all PYQs')}</Link>
+                    <h1 className="text-2xl font-bold text-content-primary mb-4">{translate('Exam Not Found')}</h1>
+                    <Link href="/pyq" className="text-primary-600 hover:text-primary-600 font-bold">{translate('← Browse all PYQs')}</Link>
                 </div>
             </div>
         );
@@ -88,82 +88,77 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
             />
 
             <div className="py-4 xl:py-8 min-h-screen font-outfit relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="py-0 xl:py-6 relative">
                     {/* Breadcrumb */}
-                    <nav aria-label={translate('Breadcrumb')} className="pt-3 xl:pt-4 mb-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
-                        <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
-                        <span className="text-slate-400">/</span>
-                        <Link href="/pyq" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('PYQ')}</Link>
-                        <span className="text-slate-400">/</span>
-                        <span className="text-slate-600 dark:text-slate-400">{translateData(examName)}</span>
+                    <nav aria-label={translate('Breadcrumb')} className="pt-3 xl:pt-4 mb-6 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.08em] flex-wrap">
+                        <Link href="/" className="text-primary-600 hover:text-primary-600">{translate('Home')}</Link>
+                        <span className="text-content-muted">/</span>
+                        <Link href="/pyq" className="text-primary-600 hover:text-primary-600">{translate('PYQ')}</Link>
+                        <span className="text-content-muted">/</span>
+                        <span className="text-content-secondary">{translateData(examName)}</span>
                     </nav>
 
                     {/* Hero */}
-                    <header className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-6 md:p-6 xl:p-8 mb-10" style={{ borderRadius: 16 }}>
-            <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-            <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-            <div className="pointer-events-none absolute -bottom-28 right-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+                    <header className="relative overflow-hidden border border-border-primary p-6 md:p-6 xl:p-8 mb-10 bg-background-surface" style={{ borderRadius: 16 }}>
             <div className="relative">
                         <div className="flex items-center mb-6 gap-4 flex-wrap">
-                            <div className="w-14 h-14 xl:w-16 xl:h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-800 flex-shrink-0">
-                                <FaGraduationCap className="text-2xl xl:text-3xl text-primary-600 dark:text-primary-300" />
+                            <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-2xl flex items-center justify-center border border-white dark:border-slate-800 flex-shrink-0">
+                                <FaGraduationCap className="text-2xl xl:text-3xl text-primary-600" />
                             </div>
                             <div>
-                                <span className="block text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest mb-1">{translate('Previous Year Papers')}</span>
-                                <h1 className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
+                                <span className="block text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] mb-1">{translate('Previous Year Papers')}</span>
+                                <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold text-content-primary tracking-tight">
                                     {translate('{name} Previous Year Papers', { name: translateData(examName) })}
                                 </h1>
                             </div>
                         </div>
-                        <p className="text-md xl:text-lg font-bold text-slate-600 dark:text-white/80 mb-8 leading-relaxed max-w-4xl">
+                        <p className="text-md xl:text-lg font-bold text-content-secondary dark:text-white/80 mb-8 leading-relaxed max-w-4xl">
                             {translate('All {name} previous year question papers in one place — {papers} solved papers across {years} {yearWord}, attemptable as free timed mock tests with detailed answer explanations.', { name: translateData(examName), papers: totalPapers, years: years.length, yearWord: years.length === 1 ? translate('year') : translate('years') })}
                         </p>
 
                         <div className="grid grid-cols-3 gap-4 xl:gap-6">
-                            <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaListOl className="text-xl text-primary-600 dark:text-primary-300 mx-auto mb-2" />
-                                <div className="text-2xl font-black text-slate-900 dark:text-white">{totalPapers}</div>
-                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Total Papers')}</div>
+                            <div className="bg-background-surface-secondary rounded-2xl p-4 text-center border border-border-primary">
+                                <FaListOl className="text-xl text-primary-600 mx-auto mb-2" />
+                                <div className="text-2xl font-bold text-content-primary">{totalPapers}</div>
+                                <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Total Papers')}</div>
                             </div>
-                            <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaCalendar className="text-xl text-black dark:text-white mx-auto mb-2" />
-                                <div className="text-2xl font-black text-slate-900 dark:text-white">{years.length}</div>
-                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Years Covered')}</div>
+                            <div className="bg-background-surface-secondary rounded-2xl p-4 text-center border border-border-primary">
+                                <FaCalendar className="text-xl text-content-primary mx-auto mb-2" />
+                                <div className="text-2xl font-bold text-content-primary">{years.length}</div>
+                                <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Years Covered')}</div>
                             </div>
-                            <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaTrophy className="text-xl text-primary-600 dark:text-primary-300 mx-auto mb-2" />
-                                <div className="text-2xl font-black text-slate-900 dark:text-white">{translate('FREE')}</div>
-                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('To Attempt')}</div>
+                            <div className="bg-background-surface-secondary rounded-2xl p-4 text-center border border-border-primary">
+                                <FaTrophy className="text-xl text-primary-600 mx-auto mb-2" />
+                                <div className="text-2xl font-bold text-content-primary">{translate('FREE')}</div>
+                                <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('To Attempt')}</div>
                             </div>
                         </div>
                     </div>
           </header>
 
                     {/* Long-form intro */}
-                    <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
-                        <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
-                            <FaBookOpen className="text-primary-600 dark:text-primary-300 mr-3" /> {translate('About {name} PYQs', { name: translateData(examName) })}
+                    <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                        <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight flex items-center">
+                            <FaBookOpen className="text-primary-600 mr-3" /> {translate('About {name} PYQs', { name: translateData(examName) })}
                         </h2>
-                        <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
+                        <div className="prose prose-slate dark:prose-invert max-w-none text-content-secondary font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                             {intro}
                         </div>
                     </section>
 
                     {/* Year-grouped paper listings */}
                     {years.length === 0 ? (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 text-center px-0 py-4 xl:py-8">
+                        <section className="rounded-3xl mb-10 border border-border-primary text-center px-0 py-4 xl:py-8">
                             <FaListOl className="text-5xl text-slate-300 dark:text-slate-700 mx-auto mb-4" />
-                            <h2 className="text-xl font-black text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-tight">{translate('No PYQ papers seeded yet')}</h2>
-                            <p className="text-slate-500 font-medium">{translate('{name} previous year papers will appear here as soon as they are added.', { name: translateData(examName) })}</p>
+                            <h2 className="text-xl font-bold text-content-secondary mb-2 tracking-tight">{translate('No PYQ papers seeded yet')}</h2>
+                            <p className="text-content-muted font-medium">{translate('{name} previous year papers will appear here as soon as they are added.', { name: translateData(examName) })}</p>
                         </section>
                     ) : (
                         years.map((year) => (
-                            <section key={year} id={`year-${year}`} className="bg-white dark:bg-slate-900 rounded-[3rem] p-2 md:p-4 xl:p-8 shadow-sm mb-8 border-2 border-slate-200 dark:border-slate-800">
-                                <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
-                                    <span className="mr-3 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-600 dark:text-primary-300 text-sm">{year}</span>
+                            <section key={year} id={`year-${year}`} className="bg-background-surface rounded-3xl p-2 md:p-4 xl:p-8 mb-8 border border-border-primary">
+                                <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight flex items-center">
+                                    <span className="mr-3 px-3 py-1 rounded-full text-primary-600 text-sm">{year}</span>
                                     {translate('{name} — {count} {unit}', { name: translateData(examName), count: papersByYear[year].length, unit: papersByYear[year].length === 1 ? translate('Paper') : translate('Papers') })}
                                 </h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -175,7 +170,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                         return (
                                             <div
                                                 key={p._id}
-                                                className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition cursor-pointer"
+                                                className="group block bg-background-surface-secondary rounded-2xl p-5 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition cursor-pointer"
                                                 onClick={() => {
                                                     if (hasAccess) router.push(linkHref);
                                                     else setProModalTest({ ...p, examName });
@@ -183,20 +178,20 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                             >
                                                 <div className="flex items-center gap-2 mb-3 flex-wrap justify-between">
                                                     <div className="flex items-center gap-2 flex-wrap">
-                                                        <span className="px-2 py-0.5 bg-primary-100 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{translate('PYQ {year}', { year: p.pyqYear })}</span>
-                                                        {p.pyqShift && <span className="px-2 py-0.5 bg-slate-200 dark:bg-slate-700 rounded text-[9px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest">{p.pyqShift}</span>}
+                                                        <span className="px-2 py-0.5 rounded text-[9px] font-bold text-primary-600 uppercase tracking-[0.08em]">{translate('PYQ {year}', { year: p.pyqYear })}</span>
+                                                        {p.pyqShift && <span className="px-2 py-0.5 bg-background-surface-secondary rounded text-[9px] font-bold text-content-secondary uppercase tracking-[0.08em]">{p.pyqShift}</span>}
                                                     </div>
                                                     {isPro ? (
                                                         <div className="flex items-center gap-1">
                                                             <ProBadge size="xs" />
-                                                            {!hasAccess && <Lock className="w-3 h-3 text-slate-400" />}
+                                                            {!hasAccess && <Lock className="w-3 h-3 text-content-muted" />}
                                                         </div>
                                                     ) : (
-                                                        <span className="text-[9px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-wider">{translate('Free Access')}</span>
+                                                        <span className="text-[9px] font-bold text-primary-600 uppercase tracking-[0.08em]">{translate('Free Access')}</span>
                                                     )}
                                                 </div>
-                                                <h3 className="text-sm xl:text-base font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-3 line-clamp-2">{translateData(p.title)}</h3>
-                                                <div className="flex items-center gap-3 text-[11px] font-bold text-slate-500">
+                                                <h3 className="text-sm xl:text-base font-bold text-content-primary group-hover:text-primary-600 transition mb-3 line-clamp-2">{translateData(p.title)}</h3>
+                                                <div className="flex items-center gap-3 text-[11px] font-bold text-content-muted">
                                                     <span className="flex items-center gap-1"><FaListOl className="text-[10px]" />{translate('{count} Q', { count: p.questionCount })}</span>
                                                     <span className="flex items-center gap-1"><FaClock className="text-[10px]" />{translate('{count} min', { count: p.duration })}</span>
                                                     <span className="flex items-center gap-1"><FaTrophy className="text-[10px]" />{p.totalMarks}</span>
@@ -216,31 +211,30 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                             onClick={() => setProModalTest(null)}
                         >
                             {/* Backdrop */}
-                            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+                            <div className="absolute inset-0 bg-black/60" />
 
                             {/* Modal card */}
                             <div
-                                className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 overflow-hidden"
+                                className="relative w-full max-w-lg bg-background-surface rounded-3xl border border-border-primary overflow-hidden"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 {/* Dark header */}
                                 <div className="bg-slate-900 p-6 text-white relative overflow-hidden">
-                                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary-500/10 rounded-full blur-2xl" />
                                     <div className="flex items-start justify-between gap-3">
                                         <div className="space-y-1">
-                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest mb-2">
+                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/10 dark:bg-white/10 border border-border-primary rounded-full text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] mb-2">
                                                 <Lock className="w-3 h-3" /> PRO Only
                                             </div>
-                                            <h3 className="text-lg font-black font-outfit uppercase tracking-tight leading-tight">
+                                            <h3 className="text-lg font-bold font-outfit tracking-tight leading-tight">
                                                 {translateData(proModalTest.title)}
                                             </h3>
-                                            <p className="text-xs font-bold text-slate-400">
+                                            <p className="text-xs font-bold text-content-muted">
                                                 {translateData(proModalTest.examName)} &bull; {proModalTest.pyqYear} &bull; {translate('{count} Questions', { count: proModalTest.questionCount || 0 })} &bull; {translate('{count} min', { count: proModalTest.duration })}
                                             </p>
                                         </div>
                                         <button
                                             onClick={() => setProModalTest(null)}
-                                            className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-slate-400 hover:text-white text-lg font-black"
+                                            className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-content-muted hover:text-white text-lg font-bold"
                                         >
                                             ✕
                                         </button>
@@ -249,8 +243,8 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
                                 {/* Body */}
                                 <div className="p-6 space-y-5">
-                                    <p className="text-sm font-bold text-slate-600 dark:text-slate-400">
-                                        {rich('This paper is part of the <0>AajExam PRO</0> plan. Upgrade to attempt all older PYQ shifts with full analytics.', [(c) => <span className="text-primary-600 dark:text-primary-300 font-black">{c}</span>])}
+                                    <p className="text-sm font-bold text-content-secondary">
+                                        {rich('This paper is part of the <0>AajExam PRO</0> plan. Upgrade to attempt all older PYQ shifts with full analytics.', [(c) => <span className="text-primary-600 font-bold">{c}</span>])}
                                     </p>
 
                                     {/* What you unlock */}
@@ -263,7 +257,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                             { icon: '🧠', text: 'Weakness analysis' },
                                             { icon: '🚀', text: 'Unlimited mock tests' },
                                         ].map((item) => (
-                                            <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl px-3 py-2">
+                                            <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-content-secondary bg-background-surface-secondary rounded-lg xl:rounded-xl px-3 py-2">
                                                 <span>{item.icon}</span> {translate(item.text)}
                                             </div>
                                         ))}
@@ -273,13 +267,13 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                     <div className="flex flex-col gap-3 pt-1">
                                         <button
                                             onClick={() => router.push('/student/subscription')}
-                                            className="w-full py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl text-sm shadow-sm border-b-2 border-primary-600 active:translate-y-0.5 transition-all"
+                                            className="w-full py-4 bg-primary-600 hover:bg-primary-600 text-on-primary font-bold uppercase tracking-[0.08em] rounded-2xl text-sm border-b-2 border-primary-600 active:translate-y-0.5 transition-all"
                                         >
                                             {translate('Get PRO — Unlock All PYQs →')}
                                         </button>
                                         <button
                                             onClick={() => setProModalTest(null)}
-                                            className="w-full py-3 text-slate-500 dark:text-slate-400 font-black uppercase tracking-widest text-xs hover:text-slate-700 dark:hover:text-slate-200 transition"
+                                            className="w-full py-3 text-content-muted font-bold uppercase tracking-[0.08em] text-xs hover:text-content-primary dark:hover:text-slate-200 transition"
                                         >
                                             {translate('Continue with Free Plan')}
                                         </button>
@@ -291,15 +285,15 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
                     {/* FAQ */}
                     {faqs?.length > 0 && (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
-                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                        <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                            <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('Frequently Asked Questions')}
                             </h2>
                             <div className="space-y-2 xl:space-y-4">
                                 {faqs.map((f, i) => (
-                                    <details key={i} className="group bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-5 cursor-pointer">
-                                        <summary className="font-black text-slate-900 dark:text-white text-base xl:text-lg uppercase tracking-tight">{f.question}</summary>
-                                        <p className="mt-3 text-slate-600 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
+                                    <details key={i} className="group bg-background-surface-secondary rounded-2xl border border-border-primary p-5 cursor-pointer">
+                                        <summary className="font-bold text-content-primary text-base xl:text-lg tracking-tight">{f.question}</summary>
+                                        <p className="mt-3 text-content-secondary font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
                                     </details>
                                 ))}
                             </div>
@@ -308,20 +302,20 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
                     {/* Other exams */}
                     {otherExams?.length > 0 && (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
-                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                        <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                            <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('Other Exam PYQs')}
                             </h2>
                             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
                                 {otherExams.map((e) => (
-                                    <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition text-center">
-                                        <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-1">{translateData(e.name)}</div>
-                                        <div className="text-[10px] font-bold text-slate-500">{translate('{count} papers', { count: e.paperCount })}</div>
+                                    <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-background-surface-secondary rounded-2xl p-4 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition text-center">
+                                        <div className="text-sm font-bold text-content-primary group-hover:text-primary-600 transition mb-1">{translateData(e.name)}</div>
+                                        <div className="text-[10px] font-bold text-content-muted">{translate('{count} papers', { count: e.paperCount })}</div>
                                     </Link>
                                 ))}
                             </div>
                             <div className="mt-6 text-center">
-                                <Link href="/pyq" className="inline-flex items-center text-sm font-black text-primary-600 dark:text-primary-300 hover:text-primary-600 uppercase tracking-widest">
+                                <Link href="/pyq" className="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-600 uppercase tracking-[0.08em]">
                                     {translate('Browse all PYQs')} <FaArrowRight className="ml-2" />
                                 </Link>
                             </div>

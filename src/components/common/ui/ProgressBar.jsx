@@ -23,14 +23,14 @@ const ProgressBar = ({
   animate = true
 }) => {
   const variants = {
-    primary: 'bg-primary-600 shadow-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
+    primary: 'bg-primary-600',
   };
 
   const heights = {
-    sm: 'h-3 rounded-full',
-    md: 'h-6 rounded-[1rem]',
-    xl: 'h-10 rounded-[1.5rem]',
-    xl: 'h-14 rounded-[2rem]',
+    sm: 'h-2 rounded-full',
+    md: 'h-3 rounded-full',
+    lg: 'h-5 rounded-full',
+    xl: 'h-7 rounded-full',
   };
 
   const progressValue = Math.min(Math.max(progress, 0), 100);
@@ -38,39 +38,26 @@ const ProgressBar = ({
   return (
     <div className={`w-full space-y-2 xl:space-y-4 ${className}`}>
       {(label || showPercentage) && (
-        <div className="flex justify-between items-end px-4">
+        <div className="flex justify-between items-end">
           <div className="flex items-center gap-3">
             {Icon && <Icon className="w-4 h-4 text-content-secondary" />}
-            {label && <span className="text-[10px] font-black uppercase tracking-[0.3em] text-content-secondary font-outfit">{label}</span>}
+            {label && <span className="text-xs font-bold uppercase tracking-[0.08em] text-content-secondary font-outfit">{label}</span>}
           </div>
           {showPercentage && (
-            <span className="text-sm font-black font-outfit uppercase tracking-tighter text-content-primary">
+            <span className="text-sm font-bold font-outfit text-content-primary">
               {progressValue.toFixed(0)}<PercentLabel />
             </span>
           )}
         </div>
       )}
 
-      <div className={`w-full bg-background-surface-secondary overflow-hidden ${heights[height] || `${height} rounded-full`} border-2 border-slate-200 dark:border-slate-800 shadow-sm group relative`}>
+      <div className={`w-full bg-background-surface-secondary overflow-hidden ${heights[height] || `${height} rounded-full`} group relative`}>
         <motion.div
           initial={animate ? { width: 0 } : { width: `${progressValue}%` }}
           animate={{ width: `${progressValue}%` }}
-          transition={{ duration: 1.5, ease: [0.34, 1.56, 0.64, 1] }}
-          className={`h-full ${variants[variant] || variants.primary} relative rounded-inherit overflow-hidden`}
-        >
-          {/* Global Shimmer Utility */}
-          <div className="absolute inset-0 shimmer opacity-30" />
-
-          {/* Active Glow Pulse */}
-          <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </motion.div>
-
-        {/* Subtle Decorative Grid */}
-        <div className="absolute inset-0 flex justify-between px-1 pointer-events-none opacity-5">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="w-[1px] h-full bg-slate-400" />
-          ))}
-        </div>
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className={`h-full ${variants[variant] || variants.primary} rounded-full`}
+        />
       </div>
     </div>
   );

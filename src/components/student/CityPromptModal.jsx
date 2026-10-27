@@ -125,7 +125,7 @@ const CityPromptModal = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute inset-0 bg-black/60 backdrop-blur-md"
+          className="absolute inset-0 bg-black/60"
           onClick={handleClose}
         />
 
@@ -133,26 +133,26 @@ const CityPromptModal = () => {
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm border-2 border-primary-500/20 p-5 sm:p-6"
+          className="relative w-full max-w-md bg-background-surface rounded-3xl border border-primary-500/20 p-5 sm:p-6"
         >
           <button aria-label={translate('Close')}
             onClick={handleClose}
-            className="absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white transition"
+            className="absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-background-surface-secondary text-content-muted hover:text-content-primary dark:hover:text-white transition"
           >
             <X className="w-4 h-4" />
           </button>
 
-          <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm border-2 border-white dark:border-slate-800">
-            {needCity ? <MapPin className="w-6 h-6 text-primary-600 dark:text-primary-300" /> : <Target className="w-6 h-6 text-primary-600 dark:text-primary-300" />}
+          <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 border border-white dark:border-slate-800">
+            {needCity ? <MapPin className="w-6 h-6 text-primary-600" /> : <Target className="w-6 h-6 text-primary-600" />}
           </div>
 
-          <h2 className="text-lg font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-1 text-center">
+          <h2 className="text-lg font-bold font-outfit tracking-tight text-content-primary mb-1 text-center">
             {needCity && needExams ? translate('Complete Your Profile') : needCity ? translate('Add Your City') : translate('Your Target Exams')}
           </h2>
 
           {needCity && (
             <>
-              <p className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-4 text-center">
+              <p className="text-xs font-bold text-content-secondary mb-4 text-center">
                 {translate('Show up on your city\'s leaderboard and compete with students near you.')}
               </p>
               <StateCitySelect
@@ -166,14 +166,14 @@ const CityPromptModal = () => {
 
           {needExams && (
             <div className={needCity ? 'mt-5' : ''}>
-              <p className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-3 text-center">
+              <p className="text-xs font-bold text-content-secondary mb-3 text-center">
                 {translate('Which exams are you preparing for? We\'ll show only their content. Pick one or more, or keep All Exams.')}
               </p>
               <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto p-1">
                 <button
                   type="button"
                   onClick={() => setSelectedExamIds([])}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${selectedExamIds.length === 0 ? 'bg-primary-600 border-primary-600 text-white' : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary-500'}`}
+                  className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${selectedExamIds.length === 0 ? 'bg-primary-600 border-primary-600 text-on-primary' : 'border-border-primary text-content-secondary hover:border-primary-500'}`}
                 >
                   {selectedExamIds.length === 0 && <Check className="w-3 h-3" />}
                   All Exams
@@ -185,7 +185,7 @@ const CityPromptModal = () => {
                       key={exam._id}
                       type="button"
                       onClick={() => toggleExam(exam._id)}
-                      className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${active ? 'bg-primary-600 border-primary-600 text-white' : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary-500'}`}
+                      className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${active ? 'bg-primary-600 border-primary-600 text-on-primary' : 'border-border-primary text-content-secondary hover:border-primary-500'}`}
                     >
                       {active && <Check className="w-3 h-3" />}
                       {translateData(exam.name)}
@@ -199,13 +199,13 @@ const CityPromptModal = () => {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="w-full mt-4 flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl hover:bg-primary-700 transition shadow-sm disabled:opacity-70 border-b-2 border-primary-800 active:border-b-0 active:translate-y-1"
+            className="w-full mt-4 flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-on-primary font-bold uppercase tracking-[0.08em] rounded-2xl hover:bg-primary-700 transition disabled:opacity-70 border-b-2 border-primary-800 active:border-b-0 active:translate-y-1"
           >
             {saving ? translate('Saving...') : needExams ? translate('Save') : translate('Save City')}
           </button>
           <button
             onClick={handleSkip}
-            className="w-full mt-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:text-slate-600 dark:hover:text-slate-300 transition"
+            className="w-full mt-2 text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] hover:text-content-primary dark:hover:text-slate-300 transition"
           >
             {translate('Skip')}
           </button>

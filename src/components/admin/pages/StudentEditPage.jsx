@@ -14,9 +14,9 @@ import { AdminFormSkeleton } from '../Skeletons';
 import { useSSR } from '../../../hooks/useSSR';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
-const IN = 'w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm font-semibold text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 disabled:opacity-60';
-const LB = 'block text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.14em] mb-1';
-const TILE = 'w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]';
+const IN = 'w-full px-3 py-2 bg-background-surface border border-border-primary rounded-lg text-sm font-semibold text-content-primary outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 disabled:opacity-60';
+const LB = 'block text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1';
+const TILE = 'w-8 h-8 shrink-0 flex items-center justify-center text-on-primary bg-primary-600';
 
 const STATUSES = ['active', 'inactive', 'suspended', 'banned'];
 const SOCIAL_FIELDS = [
@@ -40,8 +40,8 @@ const toDateInput = (d) => {
 };
 
 const Section = ({ icon: Icon, title, children, className = '' }) => (
-  <section className={`relative bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 shadow-md before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70 ${className}`}>
-    <h2 className="flex items-center gap-2.5 mb-3 text-xs font-black uppercase tracking-[0.14em] text-slate-900 dark:text-white">
+  <section className={`relative bg-background-surface rounded-2xl border border-border-primary p-4 ${className}`}>
+    <h2 className="flex items-center gap-2.5 mb-3 text-xs font-bold uppercase tracking-[0.08em] text-content-primary">
       <span className={TILE} style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></span>
       {title}
     </h2>
@@ -53,14 +53,14 @@ const Toggle = ({ checked, onChange, label, hint }) => (
   <button
     type="button"
     onClick={() => onChange(!checked)}
-    className={`w-full flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl border text-left transition-all ${checked ? 'border-primary-400 bg-primary-50 dark:bg-primary-400/10' : 'border-slate-300 dark:border-slate-700 bg-white dark:bg-black'}`}
+    className={`w-full flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl border text-left transition-all ${checked ? 'border-primary-400' : 'border-border-primary bg-background-surface'}`}
   >
     <span>
-      <span className="block text-xs font-black uppercase tracking-wide text-slate-800 dark:text-slate-100">{label}</span>
-      {hint && <span className="block text-[10px] font-bold text-slate-500 dark:text-slate-400">{hint}</span>}
+      <span className="block text-xs font-bold uppercase tracking-wide text-content-primary">{label}</span>
+      {hint && <span className="block text-[10px] font-bold text-content-muted">{hint}</span>}
     </span>
-    <span className={`relative w-10 h-6 rounded-full shrink-0 transition-colors ${checked ? 'bg-primary-600' : 'bg-slate-300 dark:bg-slate-600'}`}>
-      <span className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-all ${checked ? 'left-[18px]' : 'left-0.5'}`} />
+    <span className={`relative w-10 h-6 rounded-full shrink-0 transition-colors ${checked ? 'bg-primary-600' : 'bg-border-primary dark:bg-slate-600'}`}>
+      <span className={`absolute top-0.5 w-5 h-5 rounded-full bg-background-surface transition-all ${checked ? 'left-[18px]' : 'left-0.5'}`} />
     </span>
   </button>
 );
@@ -181,30 +181,30 @@ const StudentEditPage = ({ studentId }) => {
   if (!isMounted) return null;
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto flex-1 min-h-0 flex flex-col">
+      <div className="py-4 w-full mx-auto flex-1 min-h-0 flex flex-col">
         {loading ? (
           <div className="p-4"><AdminFormSkeleton fields={8} /></div>
         ) : error ? (
           <div className="flex-1 flex flex-col items-center justify-center gap-3 text-center">
-            <p className="text-sm font-black text-red-600">{error}</p>
-            <Link href="/admin/students" className="px-4 py-2 rounded-lg bg-slate-100 dark:bg-white/10 text-sm font-black">Back to students</Link>
+            <p className="text-sm font-bold text-red-600">{error}</p>
+            <Link href="/admin/students" className="px-4 py-2 rounded-lg bg-background-surface-secondary text-sm font-bold">Back to students</Link>
           </div>
         ) : (
           <form onSubmit={handleSave} className="flex-1 min-h-0 flex flex-col">
             {/* Top bar */}
             <div className="shrink-0 flex flex-wrap items-center justify-between gap-2 pb-3">
-              <Link href="/admin/students" className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wide bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary-400 transition-colors">
+              <Link href="/admin/students" className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide bg-background-surface border border-border-primary hover:border-primary-400 transition-colors">
                 <ArrowLeft className="w-4 h-4" /> Students
               </Link>
               <div className="min-w-0 text-center flex-1">
-                <div className="text-sm font-black truncate">{original?.name}</div>
-                <div className="text-[10px] font-bold text-slate-500 dark:text-slate-400 truncate">{original?.email}</div>
+                <div className="text-sm font-bold truncate">{original?.name}</div>
+                <div className="text-[10px] font-bold text-content-muted truncate">{original?.email}</div>
               </div>
-              <div className="inline-flex p-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-                <Link href={`/admin/user-details/${studentId}`} className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/10">Details</Link>
-                <span className="px-4 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow">Edit</span>
+              <div className="inline-flex p-1 rounded-full bg-background-surface border border-border-primary">
+                <Link href={`/admin/user-details/${original?.username || studentId}`} className="px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:hover:bg-white/10">Details</Link>
+                <span className="px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] text-on-primary bg-primary-600">Edit</span>
               </div>
             </div>
 
@@ -279,7 +279,7 @@ const StudentEditPage = ({ studentId }) => {
                       </Select>
                     </div>
                     <div className="sm:col-span-2">
-                      <label className={LB}>Bio <span className="normal-case tracking-normal font-bold text-slate-400">({form.bio.length}/200)</span></label>
+                      <label className={LB}>Bio <span className="normal-case tracking-normal font-bold text-content-muted">({form.bio.length}/200)</span></label>
                       <textarea rows={3} maxLength={200} className={`${IN} resize-y`} value={form.bio} onChange={(e) => set('bio', e.target.value)} />
                     </div>
                   </div>
@@ -298,10 +298,10 @@ const StudentEditPage = ({ studentId }) => {
 
                 <Section icon={GraduationCap} title={`Target exams (${form.targetExams.length})`}>
                   <div className="relative mb-2">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
                     <input className={`${IN} pl-9`} placeholder="Search exams..." value={examSearch} onChange={(e) => setExamSearch(e.target.value)} />
                   </div>
-                  {form.targetExams.length === 0 && <p className="mb-2 text-[10px] font-black uppercase tracking-wider text-slate-400">No exam selected - the student sees all exams</p>}
+                  {form.targetExams.length === 0 && <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted">No exam selected - the student sees all exams</p>}
                   <div className="flex flex-wrap gap-1.5 max-h-64 overflow-y-auto custom-scrollbar">
                     {filteredExams.map((ex) => {
                       const on = form.targetExams.includes(String(ex._id));
@@ -310,7 +310,7 @@ const StudentEditPage = ({ studentId }) => {
                           key={ex._id}
                           type="button"
                           onClick={() => toggleExam(String(ex._id))}
-                          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wide border transition-all ${on ? 'bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white border-transparent shadow' : 'bg-white dark:bg-black text-slate-600 dark:text-slate-300 border-slate-300 dark:border-slate-700 hover:border-primary-400'}`}
+                          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide border transition-all ${on ? 'text-on-primary border-transparent bg-primary-600' : 'bg-background-surface text-content-secondary border-border-primary hover:border-primary-400'}`}
                         >
                           {on && <Check className="w-3 h-3" />}
                           {ex.code || ex.name}
@@ -323,10 +323,10 @@ const StudentEditPage = ({ studentId }) => {
             </div>
 
             {/* Fixed footer */}
-            <div className="shrink-0 -mx-1 px-4 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] flex items-center justify-end gap-3">
-              {dirty && <span className="mr-auto text-[10px] font-black uppercase tracking-wider text-amber-600 dark:text-amber-400">Unsaved changes</span>}
-              <button type="button" onClick={() => router.push('/admin/students')} className="px-6 py-2.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Cancel</button>
-              <button type="submit" disabled={saving || !dirty} className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
+            <div className="shrink-0 -mx-1 px-4 py-2.5 border-t border-border-primary bg-background-surface flex items-center justify-end gap-3">
+              {dirty && <span className="mr-auto text-[10px] font-bold uppercase tracking-[0.08em] text-amber-600 dark:text-amber-400">Unsaved changes</span>}
+              <button type="button" onClick={() => router.push('/admin/students')} className="px-6 py-2.5 rounded-lg bg-background-surface-secondary text-content-secondary text-[10px] font-bold uppercase tracking-[0.08em] hover:bg-background-surface-secondary transition-all">Cancel</button>
+              <button type="submit" disabled={saving || !dirty} className="px-6 py-2.5 rounded-lg text-on-primary text-[10px] font-bold uppercase tracking-[0.08em] flex items-center gap-2 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed transition-all bg-primary-600">
                 <Save className="w-4 h-4" /> {saving ? 'Saving...' : 'Save changes'}
               </button>
             </div>

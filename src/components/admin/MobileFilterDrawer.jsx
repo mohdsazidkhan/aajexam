@@ -33,22 +33,22 @@ const AdminMobileFilterDrawer = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-            className="fixed top-0 right-0 bottom-0 z-[999] w-[300px] max-w-sm xl:w-[350px] xl:max-w-[350px] bg-slate-50 dark:bg-slate-950 border-l-2 border-slate-100 dark:border-slate-800 shadow-[-8px_0_24px_rgba(0,0,0,0.15)] flex flex-col"
+            className="fixed top-0 right-0 bottom-0 z-[999] w-[300px] max-w-sm xl:w-[350px] xl:max-w-[350px] bg-background-surface-secondary border-l-2 border-border-primary flex flex-col"
           >
-            <div className="flex items-center justify-between px-4 h-12 border-b-2 border-slate-100 dark:border-slate-800 shrink-0">
+            <div className="flex items-center justify-between px-4 h-12 border-b-2 border-border-primary shrink-0">
               <div className="flex items-center gap-2 min-w-0">
-                <Filter className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />
-                <span className="text-sm font-black text-slate-900 dark:text-white truncate">
+                <Filter className="w-4 h-4 text-primary-600 shrink-0" />
+                <span className="text-sm font-bold text-content-primary truncate">
                   {header.title}
                   {header.count !== null && header.count !== undefined && (
-                    <span className="text-slate-400 dark:text-slate-500"> ({header.count})</span>
+                    <span className="text-content-muted"> ({header.count})</span>
                   )}
                 </span>
               </div>
               <button
                 onClick={() => setDrawerOpen(false)}
                 aria-label="Close filters"
-                className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500"
+                className="p-2 rounded-lg bg-background-surface-secondary text-content-muted"
               >
                 <X className="w-4 h-4" />
               </button>

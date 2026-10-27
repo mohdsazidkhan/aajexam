@@ -189,13 +189,13 @@ export default function ReferralHistory() {
             {/* --- Header Section --- */}
             <PageHero
                icon={Users}
-               title={rich('Referral <0>History</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
+               title={rich('Referral <0>History</0>', [(c) => <span className="text-primary-600">{c}</span>])}
                actions={user && (
                   <div className="w-full xl:w-auto xl:min-w-[300px] px-3 py-2 bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 text-left" style={{ borderRadius: 12 }}>
-                     <p className="text-[9px] xl:text-xs font-black text-slate-600 dark:text-white/75 uppercase tracking-widest leading-none mb-1">{translate('Your Referral Code')}</p>
+                     <p className="text-[9px] xl:text-xs font-bold text-content-secondary dark:text-white/75 uppercase tracking-[0.08em] leading-none mb-1">{translate('Your Referral Code')}</p>
                      <div className="flex items-center gap-2 xl:gap-3">
-                        <p className="flex-1 text-sm xl:text-lg font-bold font-mono tracking-wider truncate text-primary-700 dark:text-primary-200">{user.referralCode}</p>
-                        <button type="button" className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }} onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                        <p className="flex-1 text-sm xl:text-lg font-bold font-mono tracking-[0.08em] truncate text-primary-600">{user.referralCode}</p>
+                        <button type="button" className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase text-on-primary hover:brightness-105 transition-all bg-primary-600" style={{ borderRadius: 999 }} onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                            <Copy className="w-3.5 h-3.5 xl:w-4 xl:h-4" /> COPY LINK
                         </button>
                      </div>
@@ -213,15 +213,15 @@ export default function ReferralHistory() {
                      { label: 'Times Rewarded', val: user.referralRewards?.length || 0, icon: Gift, color: 'primary' },
                      { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'primary' }
                   ].map((s, i) => (
-                     <div key={i} className="group relative overflow-hidden p-3 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all" style={{ borderRadius: 12 }}>
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+                     <div key={i} className="group relative overflow-hidden p-3 bg-background-surface border border-border-primary hover:-translate-y-1 transition-all" style={{ borderRadius: 12 }}>
+                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                         <div className="flex justify-between items-start mb-1.5">
-                           <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+                           <div className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
                               <s.icon className="w-4 h-4" />
                            </div>
                         </div>
-                        <p className="text-[8px] xl:text-[10px] font-black text-content-secondary uppercase tracking-widest mb-0.5 xl:mb-1">{translate(s.label)}</p>
-                        <p className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight text-primary-700 dark:text-primary-200 truncate">{s.val}</p>
+                        <p className="text-[8px] xl:text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] mb-0.5 xl:mb-1">{translate(s.label)}</p>
+                        <p className="text-sm xl:text-xl font-bold font-outfit tracking-tight text-primary-600 truncate">{s.val}</p>
                      </div>
                   ))}
                </section>
@@ -235,7 +235,7 @@ export default function ReferralHistory() {
                         <div className="space-y-2">
                            {(user.walletBalance || 0) >= MIN_PAYOUT ? (
                               <div className="flex items-start gap-2">
-                                 <CircleCheck className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0 mt-0.5" />
+                                 <CircleCheck className="w-4 h-4 text-primary-600 shrink-0 mt-0.5" />
                                  <p className="text-sm font-bold text-content-secondary">
                                     {bankDetail
                                        ? `You're eligible to withdraw to your ${bankDetail.bankName} account`
@@ -247,11 +247,11 @@ export default function ReferralHistory() {
                                  <div className="flex items-start gap-2">
                                     <Clock className="w-4 h-4 shrink-0 mt-0.5" />
                                     <p className="text-sm font-bold text-content-secondary xl:whitespace-nowrap">
-                                       {rich('Minimum withdrawal is <0></0> — earn <1></1> more to unlock it', [() => <span className="font-black text-primary-600 dark:text-primary-300">₹{MIN_PAYOUT.toLocaleString()}</span>, () => <span className="font-black text-primary-600 dark:text-primary-300">₹{(MIN_PAYOUT - (user.walletBalance || 0)).toLocaleString()}</span>])}
+                                       {rich('Minimum withdrawal is <0></0> — earn <1></1> more to unlock it', [() => <span className="font-bold text-primary-600">₹{MIN_PAYOUT.toLocaleString()}</span>, () => <span className="font-bold text-primary-600">₹{(MIN_PAYOUT - (user.walletBalance || 0)).toLocaleString()}</span>])}
                                     </p>
                                  </div>
-                                 <div className="w-full xl:w-56 xl:shrink-0 h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                                    <div className="h-full bg-gradient-to-r from-primary-500 via-primary-300 to-primary-400 rounded-full" style={{ width: `${Math.min(100, ((user.walletBalance || 0) / MIN_PAYOUT) * 100)}%` }} />
+                                 <div className="w-full xl:w-56 xl:shrink-0 h-2 bg-background-surface-secondary rounded-full overflow-hidden">
+                                    <div className="h-full rounded-full bg-primary-600" style={{ width: `${Math.min(100, ((user.walletBalance || 0) / MIN_PAYOUT) * 100)}%` }} />
                                  </div>
                               </div>
                            )}
@@ -259,11 +259,11 @@ export default function ReferralHistory() {
 
                         {(user.walletBalance || 0) >= MIN_PAYOUT && !showPayoutForm && !showBankForm && (
                            bankDetail ? (
-                              <Button variant="primary" className="rounded-full px-5 py-2 text-xs font-black shadow-sm shrink-0" onClick={() => { setPayoutAmount(String(user.walletBalance)); setShowPayoutForm(true); }}>
+                              <Button variant="primary" className="rounded-full px-5 py-2 text-xs font-bold shrink-0" onClick={() => { setPayoutAmount(String(user.walletBalance)); setShowPayoutForm(true); }}>
                                  {translate('Request Withdrawal')} <ArrowRight className="w-4 h-4 ml-1" />
                               </Button>
                            ) : (
-                              <Button variant="primary" className="rounded-full px-5 py-2 text-xs font-black shadow-sm shrink-0" onClick={() => setShowBankForm(true)}>
+                              <Button variant="primary" className="rounded-full px-5 py-2 text-xs font-bold shrink-0" onClick={() => setShowBankForm(true)}>
                                  {translate('Add Bank Details')} <ArrowRight className="w-4 h-4 ml-1" />
                               </Button>
                            )
@@ -272,11 +272,11 @@ export default function ReferralHistory() {
 
                      {/* Saved bank details + edit link */}
                      {bankDetail && !showBankForm && (user.walletBalance || 0) >= MIN_PAYOUT && (
-                        <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                        <div className="mt-3 pt-3 border-t border-border-primary flex flex-wrap items-center justify-between gap-3">
                            <p className="text-xs font-bold text-content-secondary">
                               {bankDetail.bankName} •••• {bankDetail.accountNumber?.slice(-4)} ({bankDetail.accountHolderName})
                            </p>
-                           <button onClick={() => setShowBankForm(true)} className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest hover:underline">
+                           <button onClick={() => setShowBankForm(true)} className="text-xs font-bold text-primary-600 uppercase tracking-[0.08em] hover:underline">
                               {translate('Edit Bank Details')}
                            </button>
                         </div>
@@ -284,7 +284,7 @@ export default function ReferralHistory() {
 
                      {/* Bank details form */}
                      {showBankForm && (
-                        <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-4">
+                        <div className="mt-3 pt-3 border-t border-border-primary space-y-4">
                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                               {[
                                  { key: 'accountHolderName', label: 'Account Holder Name' },
@@ -295,21 +295,21 @@ export default function ReferralHistory() {
                                  { key: 'upiId', label: 'UPI ID (optional)' }
                               ].map((f) => (
                                  <div key={f.key}>
-                                    <label className="text-[10px] font-black text-content-secondary uppercase tracking-widest">{translate(f.label)}</label>
+                                    <label className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">{translate(f.label)}</label>
                                     <input
                                        type="text"
                                        value={bankForm[f.key]}
                                        onChange={(e) => setBankForm((prev) => ({ ...prev, [f.key]: e.target.value }))}
-                                       className="w-full mt-1 px-4 py-3 border border-slate-300 dark:border-slate-700 bg-white dark:bg-black font-bold text-sm focus:border-primary-600 outline-none"
+                                       className="w-full mt-1 px-4 py-3 border border-border-primary bg-background-surface font-bold text-sm focus:border-primary-600 outline-none"
                                     />
                                  </div>
                               ))}
                            </div>
                            <div className="flex gap-3">
-                              <Button variant="primary" disabled={savingBank} className="rounded-full px-5 py-2 text-xs font-black shadow-sm" onClick={handleSaveBankDetail}>
+                              <Button variant="primary" disabled={savingBank} className="rounded-full px-5 py-2 text-xs font-bold" onClick={handleSaveBankDetail}>
                                  {savingBank ? translate('Saving...') : translate('Save Bank Details')}
                               </Button>
-                              <Button variant="secondary" className="rounded-full px-5 py-2 text-xs font-black" onClick={() => setShowBankForm(false)}>
+                              <Button variant="secondary" className="rounded-full px-5 py-2 text-xs font-bold" onClick={() => setShowBankForm(false)}>
                                  {translate('Cancel')}
                               </Button>
                            </div>
@@ -318,30 +318,30 @@ export default function ReferralHistory() {
 
                      {/* Withdrawal amount form */}
                      {showPayoutForm && (
-                        <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-4">
+                        <div className="mt-3 pt-3 border-t border-border-primary space-y-4">
                            <div className="max-w-xs">
-                              <label className="text-[10px] font-black text-content-secondary uppercase tracking-widest">{translate('Amount (min ₹{min}, max ₹{max})', { min: MIN_PAYOUT, max: (user.walletBalance || 0).toLocaleString() })}</label>
+                              <label className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">{translate('Amount (min ₹{min}, max ₹{max})', { min: MIN_PAYOUT, max: (user.walletBalance || 0).toLocaleString() })}</label>
                               <input
                                  type="number"
                                  min={MIN_PAYOUT}
                                  max={user.walletBalance}
                                  value={payoutAmount}
                                  onChange={(e) => setPayoutAmount(e.target.value)}
-                                 className="w-full mt-1 px-4 py-3 border border-slate-300 dark:border-slate-700 bg-white dark:bg-black font-bold text-sm focus:border-primary-600 outline-none"
+                                 className="w-full mt-1 px-4 py-3 border border-border-primary bg-background-surface font-bold text-sm focus:border-primary-600 outline-none"
                               />
                            </div>
-                           <p className="text-[11px] font-bold text-content-secondary uppercase tracking-widest">
+                           <p className="text-[11px] font-bold text-content-secondary uppercase tracking-[0.08em]">
                               {translate('Paid to: {bank}', { bank: bankDetail?.bankName })} •••• {bankDetail?.accountNumber?.slice(-4)}
                            </p>
                            <div className="flex gap-3">
-                              <Button variant="primary" disabled={submittingPayout} className="rounded-full px-5 py-2 text-xs font-black shadow-sm" onClick={handleRequestPayout}>
+                              <Button variant="primary" disabled={submittingPayout} className="rounded-full px-5 py-2 text-xs font-bold" onClick={handleRequestPayout}>
                                  {submittingPayout ? translate('Submitting...') : translate('Submit Request')}
                               </Button>
-                              <Button variant="secondary" className="rounded-full px-5 py-2 text-xs font-black" onClick={() => setShowPayoutForm(false)}>
+                              <Button variant="secondary" className="rounded-full px-5 py-2 text-xs font-bold" onClick={() => setShowPayoutForm(false)}>
                                  {translate('Cancel')}
                               </Button>
                            </div>
-                           <p className="text-[10px] font-bold text-content-secondary uppercase tracking-widest">
+                           <p className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">
                               {translate('After you submit, admin reviews the request and marks it paid.')}
                            </p>
                         </div>
@@ -357,7 +357,7 @@ export default function ReferralHistory() {
                <div className="space-y-3">
                   <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 xl:gap-8">
                      <section className="space-y-2">
-                        <h2 className="flex items-center gap-2.5 text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
+                        <h2 className="flex items-center gap-2.5 text-xl font-bold font-outfit tracking-tight"><span className="w-9 h-9 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
                      </section>
 
                      <div className="w-full xl:w-auto xl:min-w-[320px] space-y-2 xl:space-y-4">
@@ -370,14 +370,14 @@ export default function ReferralHistory() {
                               <Card key={i} className="relative overflow-hidden group">
                                  <div className="flex justify-between items-center relative z-10">
                                     <div className="space-y-1">
-                                       <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none">{translate(b.label)}</p>
-                                       <p className="text-xl font-black font-outfit text-content-primary uppercase">₹{amount.toLocaleString()}</p>
+                                       <p className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] leading-none">{translate(b.label)}</p>
+                                       <p className="text-xl font-bold font-outfit text-content-primary">₹{amount.toLocaleString()}</p>
                                     </div>
-                                    <div className="text-[10px] font-black px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow" style={{ borderRadius: 999 }}>
+                                    <div className="text-[10px] font-bold px-3 py-1 text-on-primary bg-primary-600" style={{ borderRadius: 999 }}>
                                        {translate('{count} FRIENDS', { count })}
                                     </div>
                                  </div>
-                                 <div className="absolute top-0 right-0 w-1.5 h-full bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
+                                 <div className="absolute top-0 right-0 w-1.5 h-full bg-primary-600" />
                               </Card>
                            );
                         })}
@@ -389,7 +389,7 @@ export default function ReferralHistory() {
                <div className="space-y-2 xl:space-y-3">
                   <div className="flex items-center justify-between">
                      <section className="space-y-1 xl:space-y-2">
-                        <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
+                        <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-bold font-outfit tracking-tight"><span className="w-9 h-9 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
                      </section>
                   </div>
 
@@ -397,11 +397,11 @@ export default function ReferralHistory() {
                      {loading ? (
                         <ListSkeleton rows={6} />
                      ) : transactions.length === 0 ? (
-                        <Card as="section" className="py-4 text-center space-y-2 xl:space-y-3 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-2xl">
+                        <Card as="section" className="py-4 text-center space-y-2 xl:space-y-3 border-dashed border border-border-primary bg-transparent rounded-2xl">
                            <Users className="w-8 h-8 xl:w-10 xl:h-10 text-slate-200 mx-auto" />
                            <div className="space-y-1 xl:space-y-2">
-                              <h3 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{translate('No Referrals Yet')}</h3>
-                              <p className="text-[10px] xl:text-xs font-bold text-content-secondary uppercase tracking-widest">{translate('You have not referred anyone yet. Share your link and start earning.')}</p>
+                              <h3 className="text-sm xl:text-xl font-bold font-outfit tracking-tight">{translate('No Referrals Yet')}</h3>
+                              <p className="text-[10px] xl:text-xs font-bold text-content-secondary uppercase tracking-[0.08em]">{translate('You have not referred anyone yet. Share your link and start earning.')}</p>
                            </div>
                            <Button variant="primary" size="sm" className="xl:px-8 xl:py-3 mx-auto xl:rounded-full" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                               {translate('COPY LINK')}
@@ -412,12 +412,12 @@ export default function ReferralHistory() {
                            <Card className="overflow-hidden" padded={false}>
                               <div className="overflow-x-auto">
                                  <table className="w-full text-left border-collapse">
-                                    <thead className="bg-gradient-to-r from-slate-100 via-slate-50 to-white text-primary-900 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
+                                    <thead className="text-primary-900 dark:text-white bg-background-surface border-b border-border-primary">
                                        <tr>
-                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-slate-200 dark:border-transparent">{translate('Student')}</th>
-                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-slate-200 dark:border-transparent">{translate('Reward Type')}</th>
-                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-slate-200 dark:border-transparent">{translate('Reward')}</th>
-                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-slate-200 dark:border-transparent text-right">{translate('Status')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.08em] border-b border-border-primary dark:border-transparent">{translate('Student')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.08em] border-b border-border-primary dark:border-transparent">{translate('Reward Type')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.08em] border-b border-border-primary dark:border-transparent">{translate('Reward')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.08em] border-b border-border-primary dark:border-transparent text-right">{translate('Status')}</th>
                                        </tr>
                                     </thead>
                                     <tbody className="divide-y divide-border-primary">
@@ -425,26 +425,26 @@ export default function ReferralHistory() {
                                           <motion.tr key={tx._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition-colors">
                                              <td className="px-4 py-3">
                                                 <div className="flex items-center gap-3">
-                                                   <div className="w-8 h-8 flex items-center justify-center font-black text-sm bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+                                                   <div className="w-8 h-8 flex items-center justify-center font-bold text-sm text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
                                                       {(tx.invitee?.name || 'S').charAt(0).toUpperCase()}
                                                    </div>
                                                    <div>
                                                       <p className="text-sm font-bold font-outfit uppercase truncate max-w-[150px]">{tx.invitee?.name || translate('Student')}</p>
-                                                      <p className="text-[10px] font-black text-content-secondary uppercase tracking-tight">{new Date(tx.date).toLocaleDateString()}</p>
+                                                      <p className="text-[10px] font-bold text-content-secondary uppercase tracking-tight">{new Date(tx.date).toLocaleDateString()}</p>
                                                    </div>
                                                 </div>
                                              </td>
                                              <td className="px-4 py-3">
-                                                <span className="px-3 py-1 text-[10px] font-black tracking-widest uppercase bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-200 ring-1 ring-slate-200 dark:ring-white/10" style={{ borderRadius: 999 }}>
+                                                <span className="px-3 py-1 text-[10px] font-bold tracking-[0.08em] uppercase text-primary-600 border border-border-primary" style={{ borderRadius: 999 }}>
                                                    {translate(rewardLabels[tx.rewardType] || '')}
                                                 </span>
                                              </td>
                                              <td className="px-4 py-3">
-                                                <p className="text-sm font-black text-primary-600 dark:text-primary-300 uppercase">+₹{tx.amount}</p>
+                                                <p className="text-sm font-bold text-primary-600 uppercase">+₹{tx.amount}</p>
                                              </td>
                                              <td className="px-4 py-3 text-right">
-                                                <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">{translate('Balance')}</p>
-                                                <p className="text-sm font-black font-outfit uppercase tracking-tight text-content-secondary">₹{tx.balance?.toLocaleString()}</p>
+                                                <p className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] leading-none mb-1">{translate('Balance')}</p>
+                                                <p className="text-sm font-bold font-outfit uppercase tracking-tight text-content-secondary">₹{tx.balance?.toLocaleString()}</p>
                                              </td>
                                           </motion.tr>
                                        ))}
@@ -460,7 +460,7 @@ export default function ReferralHistory() {
                                     <button
                                        key={i}
                                        onClick={() => setPage(i + 1)}
-                                       style={{ borderRadius: 10 }} className={`w-10 h-10 text-xs font-black transition-all ${page === i + 1 ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow' : 'bg-background-surface text-content-secondary border border-slate-200 dark:border-slate-700 hover:border-primary-500'}`}
+                                       style={{ borderRadius: 10 }} className={`w-10 h-10 text-xs font-bold transition-all ${page === i + 1 ? 'text-on-primary bg-primary-600' : 'bg-background-surface text-content-secondary border border-border-primary hover:border-primary-500'}`}
                                     >
                                        {i + 1}
                                     </button>

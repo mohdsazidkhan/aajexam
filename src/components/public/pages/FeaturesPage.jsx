@@ -139,9 +139,9 @@ const HIGHLIGHTS = [
 
 const Cell = ({ value }) => {
   const { translate } = useTranslate();
-  if (value === true) return <span className="mx-auto w-5 h-5 xl:w-6 xl:h-6 flex items-center justify-center bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5 xl:w-4 xl:h-4" /></span>;
+  if (value === true) return <span className="mx-auto w-5 h-5 xl:w-6 xl:h-6 flex items-center justify-center text-primary-600" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5 xl:w-4 xl:h-4" /></span>;
   if (value === false) return <X className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-slate-300 dark:text-slate-700 mx-auto" />;
-  return <span className="inline-block whitespace-nowrap px-2.5 py-0.5 text-[9px] xl:text-[10px] font-black uppercase tracking-wide bg-primary-50 dark:bg-white/10 text-primary-800 dark:text-primary-200 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{translate(value)}</span>;
+  return <span className="inline-block whitespace-nowrap px-2.5 py-0.5 text-[9px] xl:text-[10px] font-bold uppercase tracking-wide dark:bg-white/10 text-primary-600 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{translate(value)}</span>;
 };
 
 const FeaturesPage = () => {
@@ -158,26 +158,26 @@ const FeaturesPage = () => {
         <PageHero
           icon={Sparkles}
           eyebrow={translate('Features')}
-          title={rich('Everything on <0>AajExam</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
+          title={rich('Everything on <0>AajExam</0>', [(c) => <span className="text-primary-600">{c}</span>])}
         />
 
         {/* --- Plan Summary Cards --- */}
         <section className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8">
           <Card as="section" className="relative overflow-hidden p-4 xl:p-10 space-y-3 xl:space-y-6">
             <div className="flex items-center justify-between">
-              <div className="p-2.5 xl:p-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300" style={{ borderRadius: 14 }}>
+              <div className="p-2.5 xl:p-4 bg-background-surface-secondary text-content-secondary" style={{ borderRadius: 14 }}>
                 <GraduationCap className="w-5 h-5 xl:w-7 xl:h-7" />
               </div>
-              <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest px-2.5 xl:px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700" style={{ borderRadius: 999 }}>{translate('Free forever')}</span>
+              <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] px-2.5 xl:px-3 py-1 bg-background-surface-secondary text-content-secondary border border-border-primary" style={{ borderRadius: 999 }}>{translate('Free forever')}</span>
             </div>
             <section>
-              <h2 className="text-lg xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate('Free')}</h2>
-              <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400 mt-1">{translate('Everything you need to start preparing today, no card required.')}</p>
+              <h2 className="text-lg xl:text-2xl font-bold font-outfit tracking-tight">{translate('FREE')}</h2>
+              <p className="text-xs xl:text-sm font-bold text-content-secondary mt-1">{translate('Everything you need to start preparing today, no card required.')}</p>
             </section>
             <ul className="space-y-1.5 xl:space-y-2.5">
               {FREE_PLAN_FEATURES.map((f) => (
-                <li key={f} className="flex items-start gap-2 text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300">
-                  <span className="mt-0.5 w-5 h-5 flex-shrink-0 flex items-center justify-center bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5" /></span>
+                <li key={f} className="flex items-start gap-2 text-xs xl:text-sm font-bold text-content-secondary">
+                  <span className="mt-0.5 w-5 h-5 flex-shrink-0 flex items-center justify-center text-primary-600" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5" /></span>
                   {f}
                 </li>
               ))}
@@ -187,23 +187,22 @@ const FeaturesPage = () => {
             </div>
           </Card>
 
-          <Card as="section" className="isolate p-4 xl:p-10 space-y-3 xl:space-y-6 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-2 ring-primary-400/60 dark:ring-white/20 shadow-xl relative overflow-hidden">
-            <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-            <Crown className="absolute -bottom-8 -right-8 w-44 h-44 text-primary-600/10 dark:text-white/5 rotate-[-12deg]" />
+          <Card as="section" className="isolate p-4 xl:p-10 space-y-3 xl:space-y-6 ring-2 ring-primary-400/60 dark:ring-white/20 relative overflow-hidden bg-background-surface">
+            <Crown className="absolute -bottom-8 -right-8 w-44 h-44 text-primary-600/10 dark:text-white/5" />
             <div className="flex items-center justify-between relative z-10">
-              <div className="p-2.5 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 14 }}>
+              <div className="p-2.5 xl:p-4 text-on-primary bg-primary-600" style={{ borderRadius: 14 }}>
                 <Crown className="w-5 h-5 xl:w-7 xl:h-7" />
               </div>
               <ProBadge size="sm" />
             </div>
             <section className="relative z-10">
-              <h2 className="text-lg xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate('PRO')}</h2>
-              <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400 mt-1">{translate('From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.', { price: lowestPerMonth, plan: translate(cheapestPlan.label) })} <span className="block mt-1 text-primary-700 dark:text-primary-200">{translate('Plans: {durations}', { durations: PRO_PLANS.map((p) => translate(p.label)).join(' · ') })}</span></p>
+              <h2 className="text-lg xl:text-2xl font-bold font-outfit tracking-tight">{translate('PRO')}</h2>
+              <p className="text-xs xl:text-sm font-bold text-content-secondary mt-1">{translate('From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.', { price: lowestPerMonth, plan: translate(cheapestPlan.label) })} <span className="block mt-1 text-primary-600">{translate('Plans: {durations}', { durations: PRO_PLANS.map((p) => translate(p.label)).join(' · ') })}</span></p>
             </section>
             <ul className="space-y-1.5 xl:space-y-2.5 relative z-10">
               {PRO_PLAN_FEATURES.map((f) => (
-                <li key={f} className="flex items-start gap-2 text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300">
-                  <span className="mt-0.5 w-5 h-5 flex-shrink-0 flex items-center justify-center bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5" /></span>
+                <li key={f} className="flex items-start gap-2 text-xs xl:text-sm font-bold text-content-secondary">
+                  <span className="mt-0.5 w-5 h-5 flex-shrink-0 flex items-center justify-center text-primary-600" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5" /></span>
                   {f}
                 </li>
               ))}
@@ -217,29 +216,29 @@ const FeaturesPage = () => {
         {/* --- PRO plan comparison (prices/durations come from .env via lib/plans) --- */}
         <section className="space-y-3 xl:space-y-6">
           <section className="text-center space-y-1.5 xl:space-y-2 max-w-2xl mx-auto pb-3 border-b border-dashed border-primary-300/70 dark:border-white/15">
-            <h2 className="text-base xl:text-3xl font-black font-outfit uppercase tracking-tight">{translate('Compare PRO plans')}</h2>
-            <p className="text-[10px] xl:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.06em] xl:tracking-[0.15em] px-2">{translate('Same PRO features in every plan — the longer you commit, the more you save')}</p>
+            <h2 className="text-base xl:text-3xl font-bold font-outfit tracking-tight">{translate('Compare PRO plans')}</h2>
+            <p className="text-[10px] xl:text-sm font-bold text-content-muted uppercase tracking-[0.06em] tracking-[0.08em] px-2">{translate('Same PRO features in every plan — the longer you commit, the more you save')}</p>
           </section>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-6">
             {PRO_PLANS.map((plan) => (
-              <Card as="article" key={plan.id} className={`relative overflow-hidden p-4 xl:p-8 flex flex-col justify-between space-y-4 xl:space-y-6 hover:-translate-y-1 hover:shadow-xl transition-all ${plan.badge ? 'ring-2 ring-primary-400/70 shadow-xl' : ''}`}>
+              <Card as="article" key={plan.id} className={`relative overflow-hidden p-4 xl:p-8 flex flex-col justify-between space-y-4 xl:space-y-6 hover:-translate-y-1 transition-all ${plan.badge ? 'ring-2 ring-primary-400/70' : ''}`}>
                 <div className="space-y-2 xl:space-y-4">
                   <div className="flex items-center justify-between gap-2 min-h-[24px]">
-                    <h3 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{translate(plan.label)}</h3>
+                    <h3 className="text-sm xl:text-xl font-bold font-outfit tracking-tight">{translate(plan.label)}</h3>
                     {plan.badge && (
-                      <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow whitespace-nowrap" style={{ borderRadius: 999 }}>{translate(plan.badge)}</span>
+                      <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] px-2.5 py-1 text-on-primary whitespace-nowrap bg-primary-600" style={{ borderRadius: 999 }}>{translate(plan.badge)}</span>
                     )}
                   </div>
                   <div className="flex items-end gap-2">
-                    <span className="text-3xl xl:text-4xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200">₹{plan.price}</span>
-                    {plan.saving > 0 && <span className="text-xs xl:text-sm font-bold text-slate-500 line-through pb-0.5">₹{plan.normalPrice}</span>}
+                    <span className="text-3xl xl:text-4xl font-bold font-outfit leading-none text-primary-600">₹{plan.price}</span>
+                    {plan.saving > 0 && <span className="text-xs xl:text-sm font-bold text-content-muted line-through pb-0.5">₹{plan.normalPrice}</span>}
                   </div>
-                  <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400">
+                  <p className="text-xs xl:text-sm font-bold text-content-secondary">
                     ₹{Number.isInteger(plan.perMonth) ? plan.perMonth : plan.perMonth.toFixed(2)}{translate('/month')}
                     {plan.saving > 0 && <> · {translate('Save ₹{amount}', { amount: plan.saving })}</>}
                   </p>
                   {plan.discountPct > 0 && (
-                    <span className="inline-block text-[10px] xl:text-xs font-black px-2.5 py-1 bg-primary-100 dark:bg-primary-400/20 text-primary-800 dark:text-primary-200 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{plan.discountPct}% OFF</span>
+                    <span className="inline-block text-[10px] xl:text-xs font-bold px-2.5 py-1 text-primary-600 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{plan.discountPct}% OFF</span>
                   )}
                 </div>
                 <Button variant={plan.badge ? 'primary' : 'secondary'} size="sm" fullWidth icon={ArrowRight} iconPosition="right" onClick={() => router.push('/student/subscription')}>{translate('Choose plan')}</Button>
@@ -251,13 +250,13 @@ const FeaturesPage = () => {
         {/* --- Highlights --- */}
         <section className="grid grid-cols-1 xl:grid-cols-3 gap-4 xl:gap-8">
           {HIGHLIGHTS.map((h, i) => (
-            <Card as="article" key={i} className="group relative overflow-hidden space-y-2.5 xl:space-y-5 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-              <div className="p-2.5 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform w-fit" style={{ borderRadius: 14 }}>
+            <Card as="article" key={i} className="group relative overflow-hidden space-y-2.5 xl:space-y-5 hover:-translate-y-1 transition-all duration-300">
+              <div className="p-2.5 xl:p-4 text-on-primary group-hover:rotate-0 transition-transform w-fit bg-primary-600" style={{ borderRadius: 14 }}>
                 <h.icon className="w-4 h-4 xl:w-6 xl:h-6" />
               </div>
               <div className="space-y-1 xl:space-y-2">
-                <h3 className="text-sm xl:text-lg font-black font-outfit uppercase">{translate(h.title)}</h3>
-                <p className="text-[10px] xl:text-[11px] font-bold text-slate-600 dark:text-slate-400 leading-relaxed uppercase tracking-[0.04em] xl:tracking-[0.08em]">{translate(h.desc)}</p>
+                <h3 className="text-sm xl:text-lg font-bold font-outfit">{translate(h.title)}</h3>
+                <p className="text-[10px] xl:text-[11px] font-bold text-content-secondary leading-relaxed uppercase tracking-[0.04em] xl:tracking-[0.08em]">{translate(h.desc)}</p>
               </div>
             </Card>
           ))}
@@ -266,32 +265,31 @@ const FeaturesPage = () => {
         {/* --- Full comparison --- */}
         <section className="space-y-2 xl:space-y-4 xl:space-y-8">
           <section className="text-center space-y-1.5 xl:space-y-2 max-w-2xl mx-auto pb-3 border-b border-dashed border-primary-300/70 dark:border-white/15">
-            <h2 className="text-base xl:text-3xl font-black font-outfit uppercase tracking-tight">{translate('Full feature comparison')}</h2>
-            <p className="text-[10px] xl:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.06em] xl:tracking-[0.15em] px-2">{translate('Enforced on the server — locked content shows a real upgrade gate, not just a hidden button')}</p>
+            <h2 className="text-base xl:text-3xl font-bold font-outfit tracking-tight">{translate('Full feature comparison')}</h2>
+            <p className="text-[10px] xl:text-sm font-bold text-content-muted uppercase tracking-[0.06em] tracking-[0.08em] px-2">{translate('Enforced on the server — locked content shows a real upgrade gate, not just a hidden button')}</p>
           </section>
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-6">
             {FEATURE_GROUPS.map((group) => (
               <Card as="article" key={group.title} className="p-0 overflow-hidden" padded={false}>
-                <section className="relative flex items-center gap-2 xl:gap-3 px-3 py-2.5 xl:px-6 xl:py-4 bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">
-                  <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
-                  <div className="relative p-2 xl:p-2.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+                <section className="relative flex items-center gap-2 xl:gap-3 px-3 py-2.5 xl:px-6 xl:py-4 text-content-primary border-b border-border-primary dark:border-transparent bg-background-surface">
+                  <div className="relative p-2 xl:p-2.5 text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
                     <group.icon className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
                   </div>
-                  <h3 className="relative text-xs xl:text-sm font-black font-outfit uppercase tracking-[0.14em]">{translate(group.title)}</h3>
+                  <h3 className="relative text-xs xl:text-sm font-bold font-outfit uppercase tracking-[0.08em]">{translate(group.title)}</h3>
                 </section>
                 <table className="w-full">
-                  <thead>
-                    <tr className="text-[8px] xl:text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 bg-primary-50/50 dark:bg-white/5">
-                      <th className="text-left px-3 py-1.5 xl:px-6 xl:py-2 font-black">{translate('Feature')}</th>
-                      <th className="whitespace-nowrap px-2 xl:px-3 py-1.5 xl:py-2 font-black">{translate('Free')}</th>
-                      <th className="whitespace-nowrap px-2 xl:px-3 py-1.5 xl:py-2 font-black">{translate('Pro')}</th>
+                  <thead className="border-b border-border-primary">
+                    <tr className="text-[8px] xl:text-[9px] font-bold uppercase tracking-[0.08em] text-content-muted dark:bg-white/5">
+                      <th className="text-left px-3 py-1.5 xl:px-6 xl:py-2 font-bold">{translate('Feature')}</th>
+                      <th className="whitespace-nowrap px-2 xl:px-3 py-1.5 xl:py-2 font-bold">{translate('Free')}</th>
+                      <th className="whitespace-nowrap px-2 xl:px-3 py-1.5 xl:py-2 font-bold">{translate('Pro')}</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="divide-y divide-border-primary">
                     {group.items.map((item, idx) => (
-                      <tr key={item.label} className={`hover:bg-primary-50/40 dark:hover:bg-white/5 transition-colors ${idx !== 0 ? 'border-t border-dashed border-slate-200 dark:border-slate-800' : ''}`}>
-                        <td className="w-full px-3 py-2 xl:px-6 xl:py-3 text-[11px] xl:text-xs font-bold text-slate-700 dark:text-slate-300">{translate(item.label)}</td>
+                      <tr key={item.label} className={`dark:hover:bg-white/5 transition-colors ${idx !== 0 ? 'border-t border-dashed border-border-primary' : ''}`}>
+                        <td className="w-full px-3 py-2 xl:px-6 xl:py-3 text-[11px] xl:text-xs font-bold text-content-secondary">{translate(item.label)}</td>
                         <td className="text-center whitespace-nowrap px-2 xl:px-3 py-2 xl:py-3"><Cell value={item.free} /></td>
                         <td className="text-center whitespace-nowrap px-2 xl:px-3 py-2 xl:py-3"><Cell value={item.pro} /></td>
                       </tr>
@@ -305,17 +303,15 @@ const FeaturesPage = () => {
 
         {/* --- CTA --- */}
         <section className="px-0 py-4 xl:py-8">
-          <Card as="section" className="p-5 xl:p-16 text-center bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 border border-primary-200 dark:border-slate-800 text-slate-900 dark:text-white shadow-xl relative overflow-hidden" style={{ borderRadius: 16 }}>
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
+          <Card as="section" className="p-5 xl:p-16 text-center border border-primary-200 dark:border-slate-800 text-content-primary relative overflow-hidden bg-background-surface" style={{ borderRadius: 16 }}>
             <section className="relative z-10 space-y-2 xl:space-y-4 xl:space-y-8">
-              <h2 className="text-lg xl:text-4xl font-black font-outfit uppercase tracking-tight xl:tracking-tighter">{rich('Ready to go <0>PRO</0>?', [(c) => <span className="text-primary-600 dark:text-primary-400">{c}</span>])}</h2>
-              <p className="text-xs xl:text-lg font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-1">
+              <h2 className="text-lg xl:text-4xl font-bold font-outfit tracking-tight tracking-tight">{rich('Ready to go <0>PRO</0>?', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
+              <p className="text-xs xl:text-lg font-bold opacity-80 max-w-2xl mx-auto tracking-wide leading-relaxed px-1">
                 {translate('Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.', { price: lowestPerMonth, plan: translate(cheapestPlan.label) })}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 xl:gap-4 items-center justify-center">
                 <Button variant="primary" size="md" fullWidth icon={Crown} className="sm:w-fit" onClick={() => router.push('/student/subscription')}>{translate('Upgrade to PRO')}</Button>
-                <Button variant="secondary" size="md" fullWidth className="sm:w-fit !bg-white !border-primary-200 !text-slate-900 dark:!bg-white/5 dark:!border-white/10 dark:!text-white" onClick={() => router.push('/register')}>{translate('Start free')}</Button>
+                <Button variant="secondary" size="md" fullWidth className="sm:w-fit !bg-background-surface !border-primary-200 !text-content-primary dark:!bg-white/5 dark:!border-white/10 dark:!text-white" onClick={() => router.push('/register')}>{translate('Start free')}</Button>
               </div>
             </section>
           </Card>

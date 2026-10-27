@@ -55,16 +55,16 @@ const UserSearch = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={translate('Search students by name or username...')}
-          className="search-input w-full p-5 pr-14 text-sm font-black uppercase tracking-widest border-2 border-slate-300 dark:border-slate-700 rounded-2xl outline-none transition-all bg-slate-50 dark:bg-black text-slate-900 dark:white focus:border-primary-700 shadow-sm"
+          className="search-input w-full p-5 pr-14 text-sm font-bold uppercase tracking-[0.08em] border border-border-primary rounded-2xl outline-none transition-all bg-background-surface-secondary text-content-primary dark:white focus:border-primary-700"
         />
         {loading && (
-          <span className="search-spinner absolute right-5 top-1/2 -translate-y-1/2 w-6 h-6 border-2 border-slate-100 dark:border-slate-700 border-t-primary-500 rounded-full animate-spin"></span>
+          <span className="search-spinner absolute right-5 top-1/2 -translate-y-1/2 w-6 h-6 border border-border-primary border-t-primary-500 rounded-full animate-spin"></span>
         )}
       </div>
 
       {searched && users.length === 0 && !loading && (
-        <div className="no-results text-center py-16 px-5 bg-slate-100 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-dashed border-slate-200/50 dark:border-slate-700/30">
-          <p className="m-0 text-sm font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em]">{translate('No students found for "{query}"', { query })}</p>
+        <div className="no-results text-center py-16 px-5 bg-background-surface-secondary rounded-3xl border border-dashed border-border-primary">
+          <p className="m-0 text-sm font-bold text-content-secondary uppercase tracking-[0.08em]">{translate('No students found for "{query}"', { query })}</p>
         </div>
       )}
 
@@ -73,38 +73,38 @@ const UserSearch = () => {
           {users.map((user) => (
             <div
               key={user._id}
-              className="user-result-item flex items-center gap-5 p-5 bg-white dark:bg-slate-900 rounded-3xl border-2 border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer transition-all hover:-translate-y-1 active:translate-y-1 group"
+              className="user-result-item flex items-center gap-5 p-5 bg-background-surface rounded-3xl border border-border-primary cursor-pointer transition-all hover:-translate-y-1 active:translate-y-1 group"
               onClick={() => handleUserClick(user.username)}
             >
               <img
                 src={user.profilePicture || '/logo.png'}
                 alt={user.name}
-                className="user-result-avatar w-16 h-16 rounded-2xl object-cover flex-shrink-0 border-2 border-slate-100 shadow-sm"
+                className="user-result-avatar w-16 h-16 rounded-2xl object-cover flex-shrink-0 border border-border-primary"
               />
               <div className="user-result-info flex-1 min-w-0">
-                <h4 className="m-0 mb-1 text-base font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors overflow-hidden text-ellipsis whitespace-nowrap">
+                <h4 className="m-0 mb-1 text-base font-bold text-content-primary uppercase tracking-tight group-hover:text-primary-600 transition-colors overflow-hidden text-ellipsis whitespace-nowrap">
                   {user.name}
                 </h4>
-                <p className="user-result-username m-0 mb-1 text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">
+                <p className="user-result-username m-0 mb-1 text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">
                   @{user.username}
                 </p>
                 {user.bio && (
-                  <p className="user-result-bio m-0 text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-wider overflow-hidden text-ellipsis whitespace-nowrap">
+                  <p className="user-result-bio m-0 text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] overflow-hidden text-ellipsis whitespace-nowrap">
                     {user.bio}
                   </p>
                 )}
               </div>
               <div className="user-result-stats flex items-center gap-6 flex-shrink-0">
                 <div className="user-stat flex flex-col items-center text-center">
-                  <span className="bg-primary-600 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
+                  <span className="bg-primary-600 text-on-primary px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.08em]">
                     {translate('STUDENT')}
                   </span>
                 </div>
                 <div className="user-stat flex flex-col items-center text-center">
-                  <span className="text-lg font-black text-slate-900 dark:text-white">
+                  <span className="text-lg font-bold text-content-primary">
                     {user.followersCount || 0}
                   </span>
-                  <small className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mt-0.5">{translate('Students')}</small>
+                  <small className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] mt-0.5">{translate('Students')}</small>
                 </div>
               </div>
             </div>

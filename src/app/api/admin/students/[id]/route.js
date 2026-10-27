@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import mongoose from 'mongoose';
 import dbConnect from '@/lib/db';
+import { resolveUserId } from '@/lib/utils/userRef';
 import User from '@/models/User';
 import Exam from '@/models/Exam';
 import { protect, admin } from '@/middleware/auth';
@@ -29,10 +30,11 @@ export async function GET(req, { params }) {
             return NextResponse.json({ message: 'Admin access required' }, { status: 403 });
         }
         await dbConnect();
-        const { id } = await params;
-        if (!mongoose.isValidObjectId(id)) return NextResponse.json({ message: 'Invalid id' }, { status: 400 });
+        const { id } = await params; // user id or username
+        const uid = await resolveUserId(id);
+        if (!uid) return NextResponse.json({ message: 'Student not found' }, { status: 404 });
 
-        const student = await User.findById(id).populate('targetExams', 'name code');
+        const student = await User.findById(uid).populate('targetExams', 'name code');
         if (!student || student.role !== 'student') return NextResponse.json({ message: 'Student not found' }, { status: 404 });
         return NextResponse.json({ success: true, data: publicStudent(student) });
     } catch (error) {
@@ -50,10 +52,11 @@ export async function PUT(req, { params }) {
 
         await dbConnect();
         const body = await req.json();
-        const { id } = await params;
-        if (!mongoose.isValidObjectId(id)) return NextResponse.json({ message: 'Invalid id' }, { status: 400 });
+        const { id } = await params; // user id or username
+        const uid = await resolveUserId(id);
+        if (!uid) return NextResponse.json({ message: 'Student not found' }, { status: 404 });
 
-        const student = await User.findById(id);
+        const student = await User.findById(uid);
         if (!student || student.role !== 'student') return NextResponse.json({ message: 'Student not found' }, { status: 404 });
 
         const { name, email, phone, status, isBlocked, city } = body;
@@ -158,9 +161,11 @@ export async function DELETE(req, { params }) {
         }
 
         await dbConnect();
-        const { id } = await params;
+        const { id } = await params; // user id or username
+        const uid = await resolveUserId(id);
+        if (!uid) return NextResponse.json({ message: 'Student not found' }, { status: 404 });
 
-        const student = await User.findByIdAndDelete(id);
+        const student = await User.findByIdAndDelete(uid);
         if (!student) return NextResponse.json({ message: 'Student not found' }, { status: 404 });
 
         return NextResponse.json({ message: 'Student deleted successfully' });

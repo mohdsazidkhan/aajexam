@@ -170,8 +170,8 @@ const AskQuestionPage = () => {
     return (
       <div className="min-h-screen bg-background-primary flex items-center justify-center px-4">
         <Card as="section" className="text-center max-w-md w-full" radius="2xl">
-          <CheckCircle className="w-16 h-16 text-primary-600 dark:text-primary-300 mx-auto mb-4" />
-          <h2 className="text-xl font-black text-content-primary uppercase mb-2">{translate('Question Posted!')}</h2>
+          <CheckCircle className="w-16 h-16 text-primary-600 mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-content-primary mb-2">{translate('Question Posted!')}</h2>
           <p className="text-sm text-content-muted">{translate('Redirecting to community questions...')}</p>
         </Card>
       </div>
@@ -192,18 +192,18 @@ const AskQuestionPage = () => {
         <form onSubmit={handleSubmit}>
           {/* Error */}
           {error && (
-            <div className="mb-4 px-4 py-3 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-800 dark:border-white/20 text-black dark:text-white text-sm font-semibold">
+            <div className="mb-4 px-4 py-3 rounded-lg xl:rounded-xl bg-background-surface-secondary border border-border-primary text-content-primary text-sm font-semibold">
               {error}
             </div>
           )}
 
           {/* Exam Selection */}
           <Card as="section" className="mb-4" radius="2xl">
-            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Select Exam')}</h3>
+            <h3 className="text-xs font-bold text-content-muted uppercase tracking-[0.08em] mb-3">{translate('Select Exam')}</h3>
             <Select
               value={form.exam}
               onChange={(e) => handleChange('exam', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
               required
             >
               <option value="">{translate('Select Exam')}</option>
@@ -217,7 +217,7 @@ const AskQuestionPage = () => {
 
           {/* Question */}
           <Card as="section" className="mb-4" radius="2xl">
-            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Your Question')}</h3>
+            <h3 className="text-xs font-bold text-content-muted uppercase tracking-[0.08em] mb-3">{translate('Your Question')}</h3>
             <textarea
               value={form.question}
               onChange={(e) => handleChange('question', e.target.value)}
@@ -225,7 +225,7 @@ const AskQuestionPage = () => {
               rows={4}
               maxLength={2000}
               required
-              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
+              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
             />
             <p className="text-[10px] text-content-muted text-right mt-1">
               {form.question.length}/2000
@@ -235,17 +235,17 @@ const AskQuestionPage = () => {
             <div className="mt-3">
               {form.image ? (
                 <div className="relative inline-block">
-                  <img src={form.image} alt="Uploaded" className="max-h-40 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800" />
+                  <img src={form.image} alt="Uploaded" className="max-h-40 rounded-lg xl:rounded-xl border border-border-primary" />
                   <button aria-label={translate('Close')}
                     type="button"
                     onClick={() => setForm(prev => ({ ...prev, image: null }))}
-                    className="absolute -top-2 -right-2 p-1 rounded-full bg-primary-600 text-white shadow-sm"
+                    className="absolute -top-2 -right-2 p-1 rounded-full bg-primary-600 text-on-primary"
                   >
                     <X className="w-3 h-3" />
                   </button>
                 </div>
               ) : (
-                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg xl:rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-800 text-content-muted text-xs font-bold cursor-pointer hover:border-primary-700 hover:text-primary-600 transition-colors">
+                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg xl:rounded-xl border border-dashed border-border-primary text-content-muted text-xs font-bold cursor-pointer hover:border-primary-700 hover:text-primary-600 transition-colors">
                   <ImageIcon className="w-4 h-4" />
                   {uploadingImage ? translate('Uploading...') : translate('Add Image (optional)')}
                   <input
@@ -263,12 +263,12 @@ const AskQuestionPage = () => {
           {/* Options (MCQ) */}
           <Card as="section" className="mb-4" radius="2xl">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-xs font-black text-content-muted uppercase tracking-wider">{translate('Options (Optional)')}</h3>
+              <h3 className="text-xs font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Options (Optional)')}</h3>
               {form.options.length < 6 && (
                 <button
                   type="button"
                   onClick={addOption}
-                  className="flex items-center gap-1 text-xs font-bold text-primary-600 dark:text-primary-300 hover:text-primary-600 transition-colors"
+                  className="flex items-center gap-1 text-xs font-bold text-primary-600 hover:text-primary-600 transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" /> Add
                 </button>
@@ -277,21 +277,21 @@ const AskQuestionPage = () => {
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
               {form.options.map((opt, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  <span className="text-xs font-black text-content-muted w-5">{String.fromCharCode(65 + i)}.</span>
+                  <span className="text-xs font-bold text-content-muted w-5">{String.fromCharCode(65 + i)}.</span>
                   <input
                     type="text"
                     value={opt.text}
                     onChange={(e) => handleOptionChange(i, 'text', e.target.value)}
                     placeholder={`Option ${String.fromCharCode(65 + i)}`}
-                    className="flex-1 px-3 py-2 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors"
+                    className="flex-1 px-3 py-2 rounded-lg xl:rounded-xl border border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors"
                   />
                   <button
                     type="button"
                     onClick={() => handleOptionChange(i, 'isCorrect', !opt.isCorrect)}
-                    className={`p-2 rounded-lg xl:rounded-xl border-2 text-xs font-bold transition-colors ${
+                    className={`p-2 rounded-lg xl:rounded-xl border text-xs font-bold transition-colors ${
                       opt.isCorrect
-                        ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-300'
-                        : 'border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-400'
+                        ? 'border-primary-400 text-primary-600'
+                        : 'border-border-primary text-content-muted hover:border-primary-400'
                     }`}
                     title={translate('Mark as correct answer')}
                   >
@@ -301,7 +301,7 @@ const AskQuestionPage = () => {
                     <button aria-label={translate('Delete')}
                       type="button"
                       onClick={() => removeOption(i)}
-                      className="p-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
+                      className="p-2 rounded-lg xl:rounded-xl border border-border-primary text-content-muted hover:border-black dark:hover:border-white hover:text-content-primary dark:hover:text-white transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -313,14 +313,14 @@ const AskQuestionPage = () => {
 
           {/* Explanation */}
           <Card as="section" className="mb-6" radius="2xl">
-            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Explanation (Optional)')}</h3>
+            <h3 className="text-xs font-bold text-content-muted uppercase tracking-[0.08em] mb-3">{translate('Explanation (Optional)')}</h3>
             <textarea
               value={form.explanation}
               onChange={(e) => handleChange('explanation', e.target.value)}
               placeholder={translate('Add an explanation for the answer...')}
               rows={3}
               maxLength={3000}
-              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
+              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
             />
           </Card>
 

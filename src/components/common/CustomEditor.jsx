@@ -173,7 +173,7 @@ const CustomEditor = ({
 
   const renderToolbarButton = (button) => {
     if (button.type === 'separator') {
-      return <div key={Math.random()} className="w-px h-6 bg-gray-300 dark:bg-gray-500 mx-1"></div>;
+      return <div key={Math.random()} className="w-px h-6 bg-border-primary dark:bg-gray-500 mx-1"></div>;
     }
 
     if (button.type === 'heading') {
@@ -181,7 +181,7 @@ const CustomEditor = ({
         <select
           key={button.type}
           onChange={(e) => execCommand('formatBlock', e.target.value)}
-          className="px-2 py-1 text-sm bg-slate-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-gray-500 border border-slate-300 dark:border-slate-700 rounded"
+          className="px-2 py-1 text-sm bg-background-surface-secondary hover:bg-background-surface-secondary dark:hover:bg-gray-500 border border-border-primary rounded"
           title={button.title}
           disabled={disabled}
         >
@@ -218,7 +218,7 @@ const CustomEditor = ({
         key={button.type}
         type="button"
         onClick={buttonActions[button.type]}
-        className="px-2 py-1 text-sm bg-slate-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-gray-500 border border-slate-300 dark:border-slate-700 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-2 py-1 text-sm bg-background-surface-secondary hover:bg-background-surface-secondary dark:hover:bg-gray-500 border border-border-primary rounded disabled:opacity-50 disabled:cursor-not-allowed"
         title={button.title}
         disabled={disabled}
       >
@@ -230,7 +230,7 @@ const CustomEditor = ({
   const editorContent = (
     <>
       {showToolbar && (
-        <div className={`toolbar bg-gray-50 dark:bg-gray-700 border-b border-gray-300 dark:border-gray-600 p-2 flex flex-wrap gap-1 ${isFullscreen ? 'sticky' : ''}`}>
+        <div className={`toolbar bg-background-surface-secondary border-b border-border-primary dark:border-gray-600 p-2 flex flex-wrap gap-1 ${isFullscreen ? 'sticky' : ''}`}>
           {getToolbarButtons().map(renderToolbarButton)}
         </div>
       )}
@@ -241,7 +241,7 @@ const CustomEditor = ({
         onInput={handleInput}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        className="editor p-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none"
+        className="editor p-3 bg-background-surface text-content-primary focus:outline-none"
         style={{ minHeight: isFullscreen ? 'calc(100vh - 60px)' : minHeight }}
         suppressContentEditableWarning={true}
         {...props}
@@ -252,7 +252,7 @@ const CustomEditor = ({
   if (isFullscreen && mounted) {
     return (
       <>
-        <div className={`rich-text-editor border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden ${className}`} style={{ minHeight }} />
+        <div className={`rich-text-editor border border-border-primary dark:border-gray-600 rounded-md overflow-hidden ${className}`} style={{ minHeight }} />
         {createPortal(
           <div className="rich-text-editor fullscreen">
             {editorContent}
@@ -264,7 +264,7 @@ const CustomEditor = ({
   }
 
   return (
-    <div className={`rich-text-editor border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden ${className}`}>
+    <div className={`rich-text-editor border border-border-primary dark:border-gray-600 rounded-md overflow-hidden ${className}`}>
       {editorContent}
     </div>
   );

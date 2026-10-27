@@ -89,10 +89,10 @@ export default function UserDetailsPage() {
     {
       key: 'profile', header: 'Profile', render: (_, u) => (
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center font-black text-sm uppercase shadow-sm animate-in">{u.name?.[0] || 'U'}</div>
+          <div className="w-12 h-12 text-on-primary rounded-2xl flex items-center justify-center font-bold text-sm uppercase animate-in bg-primary-600">{u.name?.[0] || 'U'}</div>
           <div>
-            <Link href={`/@${u.username}`} target="_blank" className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 hover:text-primary-600 transition-colors tracking-tight block">{u.name || 'Anonymous'}</Link>
-            <Link href={`/@${u.username}`} target="_blank" className="text-[9px] font-black text-slate-400 uppercase tracking-widest italic hover:text-primary-600 transition-colors">{u.username ? `@${u.username}` : '@unknown'}</Link>
+            <Link href={`/@${u.username}`} target="_blank" className="text-sm font-bold text-content-primary uppercase leading-none mb-1 hover:text-primary-600 transition-colors tracking-tight block">{u.name || 'Anonymous'}</Link>
+            <Link href={`/@${u.username}`} target="_blank" className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] italic hover:text-primary-600 transition-colors">{u.username ? `@${u.username}` : '@unknown'}</Link>
           </div>
         </div>
       )
@@ -100,27 +100,27 @@ export default function UserDetailsPage() {
     {
       key: 'contact', header: 'Contact Information', render: (_, u) => (
         <div className="space-y-1">
-          <div className="text-[10px] font-black text-slate-700 dark:text-slate-300 flex items-center gap-2"><Mail className="w-3" /> {u.email || 'N/A'}</div>
-          <div className="text-[9px] font-black text-slate-400 flex items-center gap-2"><Phone className="w-3" /> {u.phone || 'No phone'}</div>
+          <div className="text-[10px] font-bold text-content-secondary flex items-center gap-2"><Mail className="w-3" /> {u.email || 'N/A'}</div>
+          <div className="text-[9px] font-bold text-content-muted flex items-center gap-2"><Phone className="w-3" /> {u.phone || 'No phone'}</div>
         </div>
       )
     },
     {
       key: 'joined', header: 'Joined', render: (_, u) => (
-        <div className="text-[9px] font-bold text-slate-400 whitespace-nowrap">{formatDate(u.createdAt)}</div>
+        <div className="text-[9px] font-bold text-content-muted whitespace-nowrap">{formatDate(u.createdAt)}</div>
       )
     },
     {
       key: 'plan', header: 'Plan', align: 'right', render: (_, u) => (
         <div className="flex flex-col items-end gap-1">
-          <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{u.subscriptionStatus || 'FREE'}</div>
+          <div className={`px-3 py-1 rounded-lg text-[8px] font-bold uppercase tracking-[0.08em] border ${u.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-content-primary border-border-primary' : 'bg-slate-500/10 text-content-muted border-slate-500/20'}`}>{u.subscriptionStatus || 'FREE'}</div>
         </div>
       )
     },
     {
       key: 'action', header: 'Action', align: 'right', render: (_, u) => (
         <div className="flex justify-end">
-          <Link href={`/admin/user-details/${u.username || u._id}`} title="View full user details" aria-label="View full user details" className="p-2 bg-primary-600/10 text-primary-600 rounded-lg hover:bg-primary-600 hover:text-white transition-all">
+          <Link href={`/admin/user-details/${u.username || u._id}`} title="View full user details" aria-label="View full user details" className="p-2 text-primary-600 rounded-lg hover:bg-primary-600 hover:text-white transition-all">
             <Eye className="w-4 h-4" />
           </Link>
         </div>
@@ -130,13 +130,13 @@ export default function UserDetailsPage() {
 
   const searchInput = (
     <div className="relative w-full">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
       <input
         type="text"
         value={searchTerm}
         onChange={(e) => handleSearch(e.target.value)}
         placeholder="Search by name, email, or username..."
-        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -144,16 +144,16 @@ export default function UserDetailsPage() {
   const viewToggleButtons = (
     <div className="flex items-center gap-1 w-full">
       {[{ icon: TableIcon, id: 'table', label: 'Table View' }, { icon: List, id: 'list', label: 'List View' }, { icon: LayoutGrid, id: 'grid', label: 'Grid View' }].map((mode) => (
-        <button key={mode.id} onClick={() => setViewMode(mode.id)} title={mode.label} className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+        <button key={mode.id} onClick={() => setViewMode(mode.id)} title={mode.label} className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}>
           <mode.icon className="w-4 h-4" />
-          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+          <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
         </button>
       ))}
     </div>
   );
 
   const exportButton = (
-    <button className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110">
+    <button className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 text-on-primary px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110 bg-primary-600">
       <DownloadCloud className="w-4 h-4" /> Export
     </button>
   );
@@ -186,9 +186,9 @@ export default function UserDetailsPage() {
   if (!isMounted) return null;
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 
 
         {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
@@ -200,21 +200,21 @@ export default function UserDetailsPage() {
             <div className="flex items-center justify-center py-32"><AdminDetailSkeleton /></div>
           ) : error ? (
             <div className="text-center py-32">
-              <div className="p-3 xl:p-5 bg-black/10 dark:bg-white/10 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 border-2 border-dashed border-black/20 dark:border-white/20 inline-block"><MailWarning className="w-16 h-16 text-black dark:text-white" /></div>
-              <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Connection Problem</h3>
-              <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
-              <button onClick={() => fetchUserDetails(page, limit, searchTerm)} className="mt-4 xl:mt-4 px-4 xl:px-10 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">Try Again</button>
+              <div className="p-3 xl:p-5 bg-black/10 dark:bg-white/10 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 border border-dashed border-border-primary inline-block"><MailWarning className="w-16 h-16 text-content-primary" /></div>
+              <h3 className="text-2xl font-bold text-content-primary mb-2">Connection Problem</h3>
+              <p className="text-content-muted text-[10px] font-bold uppercase tracking-[0.08em]">{error}</p>
+              <button onClick={() => fetchUserDetails(page, limit, searchTerm)} className="mt-4 xl:mt-4 px-4 xl:px-10 py-2.5 text-on-primary rounded-2xl text-[10px] font-bold uppercase tracking-[0.08em] bg-primary-600">Try Again</button>
             </div>
           ) : userDetails.length === 0 ? (
-            <section className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
+            <section className="rounded-2xl xl:rounded-3xl border border-dashed border-border-primary p-24 text-center">
               <Users className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
-              <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase mb-4 tracking-tighter">No Users Found</h3>
-              <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your search to find students.</p>
+              <h3 className="text-xl xl:text-3xl font-bold text-content-primary mb-4 tracking-tight">No Users Found</h3>
+              <p className="text-content-muted text-[10px] font-bold uppercase tracking-[0.08em]">Try adjusting your search to find students.</p>
             </section>
           ) : (
             <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="h-auto flex flex-col">
               {viewMode === 'table' && (
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm flex-1 min-h-0 overflow-auto flex flex-col">
+                <div className="rounded-lg xl:rounded-xl xl:rounded-3xl border border-border-primary overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col">
                   <ResponsiveTable data={userDetails} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
                 </div>
               )}
@@ -222,23 +222,23 @@ export default function UserDetailsPage() {
               {viewMode === 'grid' && (
                 <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-3 xl:gap-4">
                   {userDetails.map((u, i) => (
-                    <motion.div key={u._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm text-center group relative overflow-hidden flex flex-col font-outfit">
+                    <motion.div key={u._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="rounded-lg xl:rounded-xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 text-center group relative overflow-hidden flex flex-col font-outfit">
                       <div className={`absolute top-0 left-0 w-full h-1.5 ${u.subscriptionStatus ==='PRO'?'bg-primary-600':'bg-primary-600'}`} />
                       <div className="mb-4 mx-auto relative">
-                        <div className="w-20 h-20 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-sm group-hover:rotate-6 transition-all">{u.name?.[0] || 'U'}</div>
-                        <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-primary-600 text-white text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{(page - 1) * itemsPerPage + i + 1}</span>
-                        {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-white dark:bg-[#0D1225] rounded-lg xl:rounded-xl border-2 border-black dark:border-white shadow-sm"><Crown className="w-4 h-4 text-black dark:text-white" /></div>}
+                        <div className="w-20 h-20 text-on-primary rounded-lg xl:rounded-3xl flex items-center justify-center font-bold text-3xl group-hover:rotate-6 transition-all bg-primary-600">{u.name?.[0] || 'U'}</div>
+                        <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-primary-600 text-on-primary text-[10px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-[#0D1225]">{(page - 1) * itemsPerPage + i + 1}</span>
+                        {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-background-surface dark:bg-[#0D1225] rounded-lg xl:rounded-xl border border-black dark:border-white"><Crown className="w-4 h-4 text-content-primary" /></div>}
                       </div>
-                      <Link href={`/@${u.username}`} target="_blank" className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 truncate hover:text-primary-600 transition-colors block">{u.name || 'Anonymous'}</Link>
-                      <Link href={`/@${u.username}`} target="_blank" className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 xl:mb-4 hover:text-primary-600 transition-colors block">{u.username ? `@${u.username}` : '@unknown'}</Link>
+                      <Link href={`/@${u.username}`} target="_blank" className="text-lg font-bold text-content-primary italic tracking-tight leading-none mb-1 truncate hover:text-primary-600 transition-colors block">{u.name || 'Anonymous'}</Link>
+                      <Link href={`/@${u.username}`} target="_blank" className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] mb-4 xl:mb-4 hover:text-primary-600 transition-colors block">{u.username ? `@${u.username}` : '@unknown'}</Link>
 
                       <div className="space-y-2 xl:space-y-3 mb-4 xl:mb-4">
-                        <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase truncate bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg xl:rounded-xl border border-slate-100 dark:border-white/5"><Mail className="w-4 text-black/50 dark:text-white/50" /> {u.email || 'N/A'}</div>
-                        <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg xl:rounded-xl border border-slate-100 dark:border-white/5"><Phone className="w-4 text-primary-500/50" /> {u.phone || 'N/A'}</div>
-                        <div className="flex items-center gap-3 text-[9px] font-black text-slate-400 bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg xl:rounded-xl border border-slate-100 dark:border-white/5"><Calendar className="w-4 text-primary-500/50 shrink-0" /> {formatDate(u.createdAt)}</div>
+                        <div className="flex items-center gap-3 text-[10px] font-bold text-content-muted uppercase truncate bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg xl:rounded-xl border border-border-primary"><Mail className="w-4 text-black/50 dark:text-white/50" /> {u.email || 'N/A'}</div>
+                        <div className="flex items-center gap-3 text-[10px] font-bold text-content-muted uppercase bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg xl:rounded-xl border border-border-primary"><Phone className="w-4 text-primary-500/50" /> {u.phone || 'N/A'}</div>
+                        <div className="flex items-center gap-3 text-[9px] font-bold text-content-muted bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg xl:rounded-xl border border-border-primary"><Calendar className="w-4 text-primary-500/50 shrink-0" /> {formatDate(u.createdAt)}</div>
                       </div>
 
-                      <Link href={`/admin/user-details/${u.username || u._id}`} className="w-full py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-sm group-hover:bg-primary-700 group-hover:text-white transition-all text-center flex items-center justify-center gap-2"><Eye className="w-4 h-4" /> View Full Details</Link>
+                      <Link href={`/admin/user-details/${u.username || u._id}`} className="w-full py-2.5 text-on-primary rounded-2xl text-[9px] font-bold uppercase tracking-[0.08em] group-hover:bg-primary-700 group-hover:text-white transition-all text-center flex items-center justify-center gap-2 bg-primary-600"><Eye className="w-4 h-4" /> View Full Details</Link>
                     </motion.div>
                   ))}
                 </div>
@@ -247,27 +247,27 @@ export default function UserDetailsPage() {
               {viewMode === 'list' && (
                 <div className="flex-1 min-h-0 overflow-auto space-y-3 xl:space-y-3">
                   {userDetails.map((u, i) => (
-                    <motion.div key={u._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm flex flex-col md:flex-row md:items-center gap-3 xl:gap-4 group hover:border-primary-500/30 transition-all font-outfit">
-                      <div className="relative w-20 h-20 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-xl xl:rounded-[2.5rem] flex items-center justify-center font-black text-4xl shadow-sm shrink-0">
+                    <motion.div key={u._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }} className="rounded-lg xl:rounded-xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 flex flex-col md:flex-row md:items-center gap-3 xl:gap-4 group hover:border-primary-500/30 transition-all font-outfit">
+                      <div className="relative w-20 h-20 text-on-primary rounded-lg xl:rounded-xl xl:rounded-3xl flex items-center justify-center font-bold text-4xl shrink-0 bg-primary-600">
                         {u.name?.[0] || 'U'}
-                        <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-primary-600 text-white text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{(page - 1) * itemsPerPage + i + 1}</span>
+                        <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-primary-600 text-on-primary text-[10px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-[#0D1225]">{(page - 1) * itemsPerPage + i + 1}</span>
                       </div>
                       <div className="flex-1">
                         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                           <div>
-                            <Link href={`/@${u.username}`} target="_blank" className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 hover:text-primary-600 transition-colors block">{u.name || 'Anonymous'}</Link>
+                            <Link href={`/@${u.username}`} target="_blank" className="text-2xl font-bold text-content-primary italic tracking-tight leading-none mb-1 hover:text-primary-600 transition-colors block">{u.name || 'Anonymous'}</Link>
                             <div className="flex items-center gap-3">
-                              <Link href={`/@${u.username}`} target="_blank" className="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-primary-600 transition-colors">@{u.username || 'unknown'}</Link>
+                              <Link href={`/@${u.username}`} target="_blank" className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] hover:text-primary-600 transition-colors">@{u.username || 'unknown'}</Link>
                             </div>
                           </div>
                         </div>
-                        <div className="flex flex-wrap items-center gap-10 pt-4 border-t border-slate-100 dark:border-white/5">
-                          <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest"><Mail className="w-4 text-black/50 dark:text-white/50" /> {u.email || 'No email'}</div>
-                          <div className="flex items-center gap-2 text-[9px] font-black text-slate-400"><Calendar className="w-4 text-primary-500/50" /> {formatDate(u.createdAt)}</div>
-                          <div className={`px-4 py-1 rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-slate-100 text-slate-400 border-slate-200'}`}>{u.subscriptionStatus || 'FREE'} Member</div>
+                        <div className="flex flex-wrap items-center gap-10 pt-4 border-t border-border-primary">
+                          <div className="flex items-center gap-2 text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]"><Mail className="w-4 text-black/50 dark:text-white/50" /> {u.email || 'No email'}</div>
+                          <div className="flex items-center gap-2 text-[9px] font-bold text-content-muted"><Calendar className="w-4 text-primary-500/50" /> {formatDate(u.createdAt)}</div>
+                          <div className={`px-4 py-1 rounded-lg xl:rounded-xl text-[9px] font-bold uppercase tracking-[0.08em] border ${u.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-content-primary border-border-primary' : 'bg-background-surface-secondary text-content-muted border-border-primary'}`}>{u.subscriptionStatus || 'FREE'} Member</div>
                         </div>
                       </div>
-                      <Link href={`/admin/user-details/${u.username || u._id}`} aria-label="View full user details" title="View full user details" className="p-4 bg-slate-100 dark:bg-white/5 text-primary-600 rounded-3xl hover:bg-primary-700 hover:text-white transition-all shadow-sm"><Eye className="w-6 h-6" /></Link>
+                      <Link href={`/admin/user-details/${u.username || u._id}`} aria-label="View full user details" title="View full user details" className="p-4 bg-background-surface-secondary text-primary-600 rounded-3xl hover:bg-primary-700 hover:text-white transition-all"><Eye className="w-6 h-6" /></Link>
                     </motion.div>
                   ))}
                 </div>

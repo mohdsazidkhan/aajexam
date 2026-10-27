@@ -27,56 +27,54 @@ export default function Custom500() {
       </Head>
       <div className="min-h-screen flex items-center justify-center px-4 font-outfit relative overflow-hidden">
         {/* Background blobs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] -mr-48 -mt-48 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />
 
-        <section className="max-w-md w-full overflow-hidden bg-background-surface shadow-xl p-6 xl:p-10 text-center border border-slate-200 dark:border-slate-800 relative z-10 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
-          <div className="flex items-center justify-center w-24 h-24 mx-auto bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-8 shadow-sm border-2 border-white dark:border-slate-800">
-            <svg className="w-12 h-12 text-black dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <section className="max-w-md w-full overflow-hidden bg-background-surface p-6 xl:p-10 text-center border border-border-primary relative z-10">
+          <div className="flex items-center justify-center w-24 h-24 mx-auto bg-background-surface-secondary rounded-3xl mb-8 border border-white dark:border-slate-800">
+            <svg className="w-12 h-12 text-content-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
 
-          <h1 className="text-7xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tighter">
+          <h1 className="text-7xl font-bold text-content-primary mb-2 tracking-tight">
             500
           </h1>
 
-          <h2 className="text-xl xl:text-2xl font-black text-slate-800 dark:text-slate-200 mb-4 uppercase tracking-tight">
+          <h2 className="text-xl xl:text-2xl font-bold text-content-primary mb-4 tracking-tight">
             {translate('Something went wrong')}
           </h2>
 
-          <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-loose mb-10">
+          <p className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] leading-loose mb-10">
             {translate('We hit a server error on our end.')}<br />{translate('Our team is looking into it. Please try again in a moment.')}
           </p>
 
           <div className="flex flex-col gap-4">
             <button
               onClick={() => window.location.reload()}
-              className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
+              className="w-full bg-primary-600 hover:bg-primary-600 text-on-primary font-bold py-5 px-8 rounded-3xl transition-all border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-[0.08em] text-xs"
             >
               {translate('Try Again')}
             </button>
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={handleGoHome}
-                className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-black py-4 px-8 rounded-2xl transition-all shadow-sm border-b-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
+                className="flex-1 bg-background-surface-secondary text-content-secondary font-bold py-4 px-8 rounded-2xl transition-all border-b-2 border-border-primary active:translate-y-0.5 active:border-b-2 uppercase tracking-[0.08em] text-[10px]"
               >
                 {translate('Home')}
               </button>
               <button
                 onClick={handleGoBack}
-                className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-black py-4 px-8 rounded-2xl transition-all shadow-sm border-b-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
+                className="flex-1 bg-background-surface-secondary text-content-secondary font-bold py-4 px-8 rounded-2xl transition-all border-b-2 border-border-primary active:translate-y-0.5 active:border-b-2 uppercase tracking-[0.08em] text-[10px]"
               >
                 {translate('Back')}
               </button>
             </div>
           </div>
 
-          <div className="mt-8 text-sm text-gray-500 dark:text-gray-400">
+          <div className="mt-8 text-sm text-content-muted">
             <p>{translate('If the problem persists, please contact our support team.')}</p>
             <button
               onClick={() => router.push('/contact')}
-              className="text-primary-600 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 mt-2"
+              className="text-primary-600 hover:text-primary-600 dark:text-primary-600 dark:hover:text-primary-600 mt-2"
             >
               {translate('Contact Support')}
             </button>

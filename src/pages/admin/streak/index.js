@@ -57,29 +57,29 @@ const AdminStreakPage = () => {
   const rankedLeaderboard = leaderboard.map((entry, idx) => ({ ...entry, rank: (page - 1) * itemsPerPage + idx + 1 }));
 
   const columns = [
-    { key: 'rank', header: '#', align: 'center', render: (v) => <span className="text-xs font-black text-slate-400">#{v}</span> },
+    { key: 'rank', header: '#', align: 'center', render: (v) => <span className="text-xs font-bold text-content-muted">#{v}</span> },
     {
       key: 'user', header: 'User', render: (_, e) => (
         <div>
-          <p className="font-bold text-slate-900 dark:text-white">{e.user?.name || e.user?.username || 'Unknown'}</p>
-          <p className="text-[10px] text-slate-400 mt-0.5">{e.user?.email || e.user?.username || ''}</p>
+          <p className="font-bold text-content-primary">{e.user?.name || e.user?.username || 'Unknown'}</p>
+          <p className="text-[10px] text-content-muted mt-0.5">{e.user?.email || e.user?.username || ''}</p>
         </div>
       )
     },
-    { key: 'currentStreak', header: 'Current Streak', align: 'center', render: (v) => <span className="font-black text-black dark:text-white">{v}</span> },
-    { key: 'longestStreak', header: 'Longest Streak', align: 'center', render: (v) => <span className="font-bold text-slate-600 dark:text-slate-300">{v}</span> },
-    { key: 'totalActiveDays', header: 'Active Days', align: 'center', render: (v) => <span className="font-bold text-slate-600 dark:text-slate-300">{v}</span> },
+    { key: 'currentStreak', header: 'Current Streak', align: 'center', render: (v) => <span className="font-bold text-content-primary">{v}</span> },
+    { key: 'longestStreak', header: 'Longest Streak', align: 'center', render: (v) => <span className="font-bold text-content-secondary">{v}</span> },
+    { key: 'totalActiveDays', header: 'Active Days', align: 'center', render: (v) => <span className="font-bold text-content-secondary">{v}</span> },
   ];
 
   const searchInput = (
     <div className="relative w-full sm:w-64">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
       <input
         type="text"
         placeholder="Search by name, email, username..."
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -92,7 +92,7 @@ const AdminStreakPage = () => {
         { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
       ].map(({ mode, icon: Icon, label }) => (
         <button key={mode} onClick={() => setViewMode(mode)} title={label}
-          className={`flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+          className={`flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}>
           <Icon className="w-4 h-4" />
         </button>
       ))}
@@ -125,13 +125,13 @@ const AdminStreakPage = () => {
 
   return (
     <AdminRoute>
-      <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+      <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
         <Head>
           <title>Admin Streak Dashboard - AajExam</title>
           <meta name="robots" content="noindex,nofollow" />
         </Head>
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+        <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
@@ -142,8 +142,8 @@ const AdminStreakPage = () => {
                   {rankedLeaderboard.length === 0 ? (
                     <Card as="section" className="p-10 text-center space-y-3">
                       <Flame className="w-12 h-12 text-slate-300 mx-auto" />
-                      <h2 className="text-lg font-black text-slate-500">No streak data {searchTerm ? 'found' : 'available yet'}</h2>
-                      {searchTerm && <p className="text-sm text-slate-400">Try a different name, email, or username.</p>}
+                      <h2 className="text-lg font-bold text-content-muted">No streak data {searchTerm ? 'found' : 'available yet'}</h2>
+                      {searchTerm && <p className="text-sm text-content-muted">Try a different name, email, or username.</p>}
                     </Card>
                   ) : viewMode === 'table' ? (
                     <Card className="!p-0 overflow-hidden h-auto xl:h-full flex flex-col" padded={false}>
@@ -154,17 +154,17 @@ const AdminStreakPage = () => {
                       {rankedLeaderboard.map((entry, i) => (
                         <Card as="article" key={entry._id || i} className="flex flex-col gap-3">
                           <div className="flex items-start justify-between gap-2">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0"><Flame className="w-5 h-5" /></div>
-                            <span className="text-[10px] font-black text-slate-400">#{entry.rank}</span>
+                            <div className="w-10 h-10 rounded-xl text-on-primary flex items-center justify-center shrink-0 bg-primary-600"><Flame className="w-5 h-5" /></div>
+                            <span className="text-[10px] font-bold text-content-muted">#{entry.rank}</span>
                           </div>
                           <div>
-                            <h3 className="text-sm font-black text-slate-900 dark:text-white truncate">{entry.user?.name || entry.user?.username || 'Unknown'}</h3>
-                            <p className="text-[10px] text-slate-400 mt-0.5 truncate">{entry.user?.email || entry.user?.username || ''}</p>
+                            <h3 className="text-sm font-bold text-content-primary truncate">{entry.user?.name || entry.user?.username || 'Unknown'}</h3>
+                            <p className="text-[10px] text-content-muted mt-0.5 truncate">{entry.user?.email || entry.user?.username || ''}</p>
                           </div>
-                          <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100 dark:border-slate-700">
-                            <div><span className="font-black text-black dark:text-white">{entry.currentStreak}</span> <span className="text-slate-400">current</span></div>
-                            <div><span className="font-black text-slate-600 dark:text-slate-300">{entry.longestStreak}</span> <span className="text-slate-400">longest</span></div>
-                            <div><span className="font-black text-slate-600 dark:text-slate-300">{entry.totalActiveDays}</span> <span className="text-slate-400">days</span></div>
+                          <div className="flex items-center justify-between text-xs pt-2 border-t border-border-primary">
+                            <div><span className="font-bold text-content-primary">{entry.currentStreak}</span> <span className="text-content-muted">current</span></div>
+                            <div><span className="font-bold text-content-secondary">{entry.longestStreak}</span> <span className="text-content-muted">longest</span></div>
+                            <div><span className="font-bold text-content-secondary">{entry.totalActiveDays}</span> <span className="text-content-muted">days</span></div>
                           </div>
                         </Card>
                       ))}
@@ -174,13 +174,13 @@ const AdminStreakPage = () => {
                       {rankedLeaderboard.map((entry, i) => (
                         <Card as="article" key={entry._id || i} className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                           <div>
-                            <div className="text-xs uppercase tracking-[0.2em] text-slate-400">#{entry.rank}</div>
-                            <h2 className="text-lg font-black text-slate-900 dark:text-white">{entry.user?.name || entry.user?.username || 'Unknown'}</h2>
-                            <p className="text-sm text-slate-500 dark:text-slate-400">Current streak: <span className="font-bold text-black dark:text-white">{entry.currentStreak}</span></p>
+                            <div className="text-xs uppercase tracking-[0.08em] text-content-muted">#{entry.rank}</div>
+                            <h2 className="text-lg font-bold text-content-primary">{entry.user?.name || entry.user?.username || 'Unknown'}</h2>
+                            <p className="text-sm text-content-muted">Current streak: <span className="font-bold text-content-primary">{entry.currentStreak}</span></p>
                           </div>
-                          <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
-                            <div><span className="font-black text-slate-900 dark:text-white">{entry.totalActiveDays}</span> active days</div>
-                            <div><span className="font-black text-slate-900 dark:text-white">{entry.longestStreak}</span> longest streak</div>
+                          <div className="flex items-center gap-3 text-sm text-content-secondary">
+                            <div><span className="font-bold text-content-primary">{entry.totalActiveDays}</span> active days</div>
+                            <div><span className="font-bold text-content-primary">{entry.longestStreak}</span> longest streak</div>
                           </div>
                         </Card>
                       ))}

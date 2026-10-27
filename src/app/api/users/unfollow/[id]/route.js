@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
+import { resolveUserId } from '@/lib/utils/userRef';
 import User from '@/models/User';
 import Follow from '@/models/Follow';
 import { protect } from '@/middleware/auth';
@@ -11,7 +12,9 @@ export async function DELETE(req, { params }) {
         if (!auth.authenticated) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
 
         const followerId = auth.user.id;
-        const { id } = await params;
+        const { id: userRef } = await params; // user id or username
+        const id = await resolveUserId(userRef);
+        if (!id) return NextResponse.json({ message: 'User not found' }, { status: 404 });
 
         const result = await Follow.findOneAndDelete({ follower: followerId, following: id });
         if (!result) return NextResponse.json({ message: 'Not following' }, { status: 400 });

@@ -97,10 +97,8 @@ const AllIndiaRankPage = () => {
           <div className="space-y-3 xl:space-y-4">
             
             {/* ── Hero Banner — green gradient with gold podium ── */}
-            <section className="relative rounded-2xl shadow-md bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white">
+            <section className="relative rounded-2xl text-on-primary bg-primary-600">
               <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
-              <div className="absolute -top-24 -left-16 w-72 h-72 rounded-full bg-white/10 blur-2xl" />
-              <div className="absolute -bottom-32 right-8 w-96 h-96 rounded-full bg-primary-300/20 blur-3xl" />
               <Trophy className="absolute right-3 top-2 w-28 h-28 text-white/5 rotate-12" />
               </div>
 
@@ -109,14 +107,14 @@ const AllIndiaRankPage = () => {
                   <div className="flex flex-wrap items-center justify-center xl:justify-start gap-2 xl:gap-3">
                     <motion.h1
                       initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                      className="text-xl xl:text-3xl font-black uppercase text-white tracking-tight leading-tight"
+                      className="text-xl xl:text-3xl font-bold text-white tracking-tight leading-tight"
                     >
                       {translate('All India Rank')}
                     </motion.h1>
                     {/* PRO badge — gold, animated sparkle */}
                     <motion.div
                       initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                      className="inline-flex items-center gap-1.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-[0_2px_12px_rgba(251,191,36,0.4)]"
+                      className="inline-flex items-center gap-1.5 text-on-primary px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.08em] bg-primary-600"
                     >
                       <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}>
                         <Sparkles className="w-3.5 h-3.5" />
@@ -162,16 +160,16 @@ const AllIndiaRankPage = () => {
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-3">
                 {[
                   { label: 'Total Active Users', value: `${totalUsers}`, icon: Users, tile: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-300' },
-                  { label: 'Top Ranked Users', value: `${Math.min(totalUsers, 100)}`, icon: Users, tile: 'bg-primary-50 text-primary-600 dark:bg-primary-500/15 dark:text-primary-300' },
+                  { label: 'Top Ranked Users', value: `${Math.min(totalUsers, 100)}`, icon: Users, tile: 'text-primary-600' },
                   { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, tile: 'bg-sky-50 text-sky-600 dark:bg-sky-500/15 dark:text-sky-300' },
                   { label: selectedExamId ? 'Time Spent On This Exam' : 'Total Time Spent', value: formatSecondsExact(totalTimeSpentSeconds), icon: Clock, tile: 'bg-violet-50 text-violet-600 dark:bg-violet-500/15 dark:text-violet-300' },
                 ].map((stat, i) => (
-                  <div key={i} className="flex items-center gap-3 px-3 py-3 rounded-2xl bg-background-surface border-2 border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow min-w-0">
+                  <div key={i} className="flex items-center gap-3 px-3 py-3 rounded-2xl bg-background-surface border border-border-primary transition-shadow min-w-0">
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${stat.tile}`}>
                       <stat.icon className="w-5 h-5" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-base sm:text-xl font-black text-content-primary leading-tight truncate">{stat.value}</p>
+                      <p className="text-base sm:text-xl font-bold text-content-primary leading-tight truncate">{stat.value}</p>
                       <p className="text-[9px] sm:text-[10px] font-bold text-content-muted uppercase leading-tight truncate">{translate(stat.label)}</p>
                     </div>
                   </div>
@@ -186,7 +184,7 @@ const AllIndiaRankPage = () => {
             <div className="flex justify-between items-center">
                <div className="flex items-center gap-2.5">
                  <span className="h-6 w-1.5 rounded-full bg-primary-600" />
-                 <h3 className="text-sm xl:text-base font-black text-content-primary uppercase">
+                 <h3 className="text-sm xl:text-base font-bold text-content-primary uppercase">
                    {selectedExamId ? translate('Filtered Ranks') : translate('Students')}
                  </h3>
                </div>
@@ -196,7 +194,7 @@ const AllIndiaRankPage = () => {
                 onClick={() => fetchAIR(true)}
                 disabled={refreshing || loading}
                 title={translate('Refresh Ranks')}
-                className="flex items-center gap-1.5 px-3 h-9 rounded-xl font-black text-[10px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:hover:border-white transition-all disabled:opacity-40"
+                className="flex items-center gap-1.5 px-3 h-9 rounded-xl font-bold text-[10px] uppercase border border-border-primary bg-background-surface text-content-muted hover:border-slate-200 dark:hover:border-white transition-all disabled:opacity-40"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
                 <span className="hidden sm:inline">{translate('Refresh')}</span>
@@ -210,11 +208,11 @@ const AllIndiaRankPage = () => {
             ) : data.length === 0 ? (
               <div className="py-16 sm:py-20 text-center space-y-2 xl:space-y-4">
                 <Globe className="w-16 h-16 sm:w-20 sm:h-20 text-slate-200 dark:text-slate-700 mx-auto" />
-                <h3 className="text-lg sm:text-xl font-black text-content-muted uppercase">{translate('No Ranks Found')}</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-content-muted">{translate('No Ranks Found')}</h3>
                 <p className="text-sm text-content-muted font-bold">{translate('No test attempts match the current filter.')}</p>
                 <button 
                   onClick={() => setSelectedExamId('')}
-                  className="px-6 py-2.5 bg-primary-600 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors"
+                  className="px-6 py-2.5 bg-primary-600 hover:bg-primary-800 text-on-primary rounded-full font-bold text-xs uppercase mt-2 transition-colors"
                 >
                   {translate('View All Exams')}
                 </button>
@@ -224,15 +222,15 @@ const AllIndiaRankPage = () => {
                 <motion.div key={`${selectedExamId}:${sort}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-2">
                   {/* Column header — desktop table only; mobile list has no header row */}
                   <div className={`hidden xl:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 pb-1`}>
-                    <p className="text-[10px] font-black text-content-muted uppercase text-center">#</p>
-                    <p className="text-[10px] font-black text-content-muted uppercase">{translate('Player')}</p>
-                    <p className="text-[10px] font-black text-content-muted uppercase text-center whitespace-nowrap">{translate('Time Spent')}</p>
-                    <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Exams')}</p>
-                    <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Marks')}</p>
-                    <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Correct')}</p>
-                    <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Score')}</p>
-                    <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Accuracy')}</p>
-                    <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Avg Score')}</p>
+                    <p className="text-[10px] font-bold text-content-muted uppercase text-center">#</p>
+                    <p className="text-[10px] font-bold text-content-muted uppercase">{translate('Player')}</p>
+                    <p className="text-[10px] font-bold text-content-muted uppercase text-center whitespace-nowrap">{translate('Time Spent')}</p>
+                    <p className="text-[10px] font-bold text-content-muted uppercase text-center">{translate('Exams')}</p>
+                    <p className="text-[10px] font-bold text-content-muted uppercase text-center">{translate('Marks')}</p>
+                    <p className="text-[10px] font-bold text-content-muted uppercase text-center">{translate('Correct')}</p>
+                    <p className="text-[10px] font-bold text-content-muted uppercase text-center">{translate('Score')}</p>
+                    <p className="text-[10px] font-bold text-content-muted uppercase text-center">{translate('Accuracy')}</p>
+                    <p className="text-[10px] font-bold text-content-muted uppercase text-center">{translate('Avg Score')}</p>
                     <div />
                   </div>
                   {pagedRest.map((entry, i) => (

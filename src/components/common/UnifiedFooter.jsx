@@ -63,14 +63,14 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
   const formattedPhone = config.CONTACT.PHONE.replace(/\D/g, '');
 
   return (
-    <footer className="relative pt-4 xl:pt-8 pb-4 xl:pb-8 overflow-hidden bg-white dark:bg-black border-t border-slate-200 dark:border-slate-800/50 font-outfit before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
+    <footer className="relative pt-4 xl:pt-8 pb-4 xl:pb-8 overflow-hidden bg-background-page border-t border-border-primary font-outfit">
 
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8 mb-4 xl:mb-8">
           <section className="xl:col-span-1 space-y-8">
             <section className="space-y-2 xl:space-y-4">
               <h2 className="text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-content-primary">
-                AAJ<span className="text-primary-600 dark:text-primary-300 text-glow-primary">{translate('EXAM')}</span>
+                AAJ<span className="text-primary-600">{translate('EXAM')}</span>
               </h2>
               <div className="h-1 w-12 bg-primary-600 rounded-full" />
             </section>
@@ -89,7 +89,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={translate('Follow us on {name}', { name: social.name })}
-                  className="w-10 h-10 xl:w-11 xl:h-11 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-content-secondary hover:text-primary-600 dark:hover:text-white hover:border-primary-500/50 flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(88,204,2,0.2)] backdrop-blur-md"
+                  className="w-10 h-10 xl:w-11 xl:h-11 rounded-xl border border-border-primary text-content-secondary hover:text-primary-600 hover:border-primary-600 flex items-center justify-center transition-colors"
                 >
                   <social.icon className="w-4 h-4" />
                 </motion.a>
@@ -98,18 +98,18 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </section>
 
           <nav aria-label={translate('Explore')} className="space-y-8">
-            <h3 className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase tracking-[0.25em] flex items-center gap-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
+            <h3 className="text-xs font-bold text-primary-600 uppercase tracking-[0.08em] flex items-center gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary-600" />
               {translate('Explore')}
             </h3>
             <ul className="grid grid-cols-1 gap-4">
               {operationalLinks.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="group flex items-center gap-4 text-sm font-black text-content-secondary tracking-[0.04em] hover:text-slate-900 dark:hover:text-white transition-all">
-                    <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-background-surface-secondary border border-slate-200 dark:border-slate-800 flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-600 group-hover:border-primary-500/30 transition-all shadow-sm">
+                  <Link href={link.href} className="group flex items-center gap-4 text-sm font-bold text-content-secondary hover:text-content-primary transition-colors">
+                    <div className="w-10 h-10 rounded-xl border border-border-primary flex items-center justify-center group-hover:text-primary-600 group-hover:border-primary-600 transition-colors">
                       <link.icon className="w-4 h-4" />
                     </div>
-                    <span className="group-hover:translate-x-1 transition-transform">{translate(link.name)}</span>
+                    <span>{translate(link.name)}</span>
                   </Link>
                 </li>
               ))}
@@ -117,18 +117,18 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </nav>
 
           <nav aria-label={translate('Legal')} className="space-y-8">
-            <h3 className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase tracking-[0.25em] flex items-center gap-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
+            <h3 className="text-xs font-bold text-primary-600 uppercase tracking-[0.08em] flex items-center gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary-600" />
               {translate('Legal')}
             </h3>
             <ul className="grid grid-cols-1 gap-4">
               {legalLinksMap.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.path} className="group flex items-center gap-4 text-sm font-black text-content-secondary tracking-[0.04em] hover:text-slate-900 dark:hover:text-white transition-all">
-                    <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-background-surface-secondary border border-slate-200 dark:border-slate-800 flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-600 group-hover:border-primary-500/30 transition-all shadow-sm">
+                  <Link href={link.path} className="group flex items-center gap-4 text-sm font-bold text-content-secondary hover:text-content-primary transition-colors">
+                    <div className="w-10 h-10 rounded-xl border border-border-primary flex items-center justify-center group-hover:text-primary-600 group-hover:border-primary-600 transition-colors">
                       <link.icon className="w-4 h-4" />
                     </div>
-                    <span className="group-hover:translate-x-1 transition-transform">{translate(link.name)}</span>
+                    <span>{translate(link.name)}</span>
                   </Link>
                 </li>
               ))}
@@ -136,8 +136,8 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </nav>
 
           <section className="space-y-8">
-            <h3 className="text-xs font-black text-black dark:text-white uppercase tracking-[0.25em] flex items-center gap-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse"/>
+            <h3 className="text-xs font-bold text-content-primary uppercase tracking-[0.08em] flex items-center gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary-600"/>
               {translate('Support')}
             </h3>
             <div className="space-y-5 max-w-xs xl:max-w-none mx-auto sm:mx-0">
@@ -145,31 +145,31 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                 <a
                   href={`mailto:${config.CONTACT.EMAIL}`}
                   aria-label={translate('Send us an email')}
-                  className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
+                  className="flex items-center gap-3 group/item"
                 >
-                  <div className="w-11 h-11 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl flex items-center justify-center group-hover/item:bg-black dark:group-hover/item:bg-white group-hover/item:text-white dark:group-hover/item:text-black transition-all shadow-sm">
+                  <div className="w-11 h-11 border border-border-primary text-content-primary rounded-xl flex items-center justify-center group-hover/item:border-primary-600 group-hover/item:text-primary-600 transition-colors">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">{translate('Email support')}</p>
+                    <p className="text-xs font-bold text-content-primary mb-0.5">{translate('Email support')}</p>
                     <p className="text-xs font-bold text-content-secondary break-all line-clamp-1">{config.CONTACT.EMAIL}</p>
                   </div>
                 </a>
 
-                <div className="h-px bg-slate-200 dark:bg-white/10 w-full" />
+                <div className="h-px bg-border-primary w-full" />
 
                 <a
                   href={`https://wa.me/${formattedPhone}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={translate('Contact us on WhatsApp')}
-                  className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
+                  className="flex items-center gap-3 group/item"
                 >
-                  <div className="w-11 h-11 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-2xl flex items-center justify-center group-hover/item:bg-primary-600 group-hover/item:text-white transition-all shadow-sm">
+                  <div className="w-11 h-11 border border-border-primary text-primary-600 rounded-xl flex items-center justify-center group-hover/item:border-primary-600 transition-colors">
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-primary-600 transition-colors">{translate('WhatsApp')}</p>
+                    <p className="text-xs font-bold text-content-primary mb-0.5 group-hover/item:text-primary-600 transition-colors">{translate('WhatsApp')}</p>
                     <p className="text-xs font-bold text-content-secondary">{config.CONTACT.PHONE}</p>
                   </div>
                 </a>
@@ -177,12 +177,12 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary-600" />
                   <span className="text-[11px] font-black text-content-secondary tracking-[0.08em]">{translate('System status')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Zap className="w-3 h-3 text-black dark:text-white" />
-                  <span className="text-[11px] font-black text-primary-600 dark:text-primary-300 tracking-[0.08em]">{translate('Stable')}</span>
+                  <span className="text-[11px] font-black text-primary-600 tracking-[0.08em]">{translate('Stable')}</span>
                 </div>
               </div>
             </div>
@@ -194,7 +194,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
             <span>&copy; {new Date().getFullYear()} {config.APP_NAME}</span>
             <div className="hidden xl:block h-4 w-px bg-slate-300 dark:bg-slate-700" />
             <div className="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-white/5 rounded-full border border-slate-200 dark:border-white/10">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
+              <div className="w-1.5 h-1.5 rounded-full bg-primary-600" />
               <span>{translate('Version {version}', { version: config.APP_VERSION })}</span>
             </div>
           </div>

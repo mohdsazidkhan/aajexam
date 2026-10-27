@@ -166,7 +166,7 @@ const CommunityQuestionsPage = () => {
               <Select
                 value={filters.exam}
                 onChange={(e) => handleFilterChange('exam', e.target.value)}
-                className="w-full sm:w-44 px-3 py-2 rounded-lg xl:rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-600 transition-colors"
+                className="w-full sm:w-44 px-3 py-2 rounded-lg xl:rounded-xl border border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-600 transition-colors"
               >
                 <option value="">{hasTargets ? translate('My target exams') : translate('All Exams')}</option>
                 {hasTargets && <option value="all">{translate('All Exams')}</option>}
@@ -180,7 +180,7 @@ const CommunityQuestionsPage = () => {
               <Select
                 value={filters.sort}
                 onChange={(e) => handleFilterChange('sort', e.target.value)}
-                className="w-full sm:w-44 px-3 py-2 rounded-lg xl:rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-600 transition-colors"
+                className="w-full sm:w-44 px-3 py-2 rounded-lg xl:rounded-xl border border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-600 transition-colors"
               >
                 <option value="latest">{translate('Latest First')}</option>
                 <option value="popular">{translate('Most Popular')}</option>
@@ -204,7 +204,7 @@ const CommunityQuestionsPage = () => {
         ) : error ? (
           <Card className="text-center py-2 xl:py-4">
             <p className="text-content-muted text-sm">{error}</p>
-            <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-600 dark:text-primary-300 text-sm font-bold hover:underline">
+            <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-600 text-sm font-bold hover:underline">
               {translate('Try Again')}
             </button>
           </Card>
@@ -235,7 +235,7 @@ const CommunityQuestionsPage = () => {
                         className="w-8 h-8 rounded-full object-cover"
                       />
                     ) : (
-                      <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white text-xs font-black">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-on-primary text-xs font-bold">
                         {(q.author?.name || 'U').charAt(0).toUpperCase()}
                       </div>
                     )}
@@ -250,7 +250,7 @@ const CommunityQuestionsPage = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-1 rounded-lg bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-300 text-[10px] font-bold uppercase">
+                    <span className="px-2 py-1 rounded-lg text-primary-600 text-[10px] font-bold uppercase">
                       {q.exam?.name || q.exam?.code || translate('Exam')}
                     </span>
                   </div>
@@ -263,8 +263,8 @@ const CommunityQuestionsPage = () => {
 
                 {/* Image */}
                 {q.image && (
-                  <div className="mb-3 rounded-lg xl:rounded-xl overflow-hidden border-2 border-slate-200 dark:border-slate-800">
-                    <img src={q.image} alt="Question" className="w-full max-h-80 object-contain bg-white dark:bg-slate-900" />
+                  <div className="mb-3 rounded-lg xl:rounded-xl overflow-hidden border border-border-primary">
+                    <img src={q.image} alt="Question" className="w-full max-h-80 object-contain bg-background-surface" />
                   </div>
                 )}
 
@@ -274,9 +274,9 @@ const CommunityQuestionsPage = () => {
                     {q.options.filter(o => o.text?.trim()).map((opt, i) => (
                       <div
                         key={i}
-                        className="px-3 py-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-secondary text-sm font-semibold"
+                        className="px-3 py-2 rounded-lg xl:rounded-xl border border-border-primary bg-background-surface text-content-secondary text-sm font-semibold"
                       >
-                        <span className="font-black mr-2 text-xs">{String.fromCharCode(65 + i)}.</span>
+                        <span className="font-bold mr-2 text-xs">{String.fromCharCode(65 + i)}.</span>
                         {opt.text}
                       </div>
                     ))}
@@ -286,23 +286,23 @@ const CommunityQuestionsPage = () => {
                 {/* Open to answer CTA */}
                 <Link
                   href={`/community-questions/${q._id}`}
-                  className="flex items-center justify-between px-3 py-2 mb-3 rounded-lg xl:rounded-xl bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-600 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-colors group"
+                  className="flex items-center justify-between px-3 py-2 mb-3 rounded-lg xl:rounded-xl border border-primary-200 dark:border-primary-600 transition-colors group"
                 >
-                  <span className="text-xs font-bold text-primary-600 dark:text-primary-300 uppercase tracking-wider">
+                  <span className="text-xs font-bold text-primary-600 uppercase tracking-[0.08em]">
                     {translate('Attempt & See Explanation')}
                   </span>
-                  <ArrowRight className="w-4 h-4 text-primary-600 dark:text-primary-300 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-primary-600 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
 
                 {/* Actions */}
-                <div className="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-slate-800">
+                <div className="flex items-center justify-between pt-2 border-t border-border-primary">
                   <div className="flex items-center gap-4">
                     <button
                       onClick={() => handleLike(q._id)}
                       className={`flex items-center gap-1.5 text-xs font-bold transition-colors ${
                         isLikedByMe(q)
-                          ? 'text-black dark:text-white'
-                          : 'text-content-muted hover:text-black dark:hover:text-white'
+                          ? 'text-content-primary'
+                          : 'text-content-muted hover:text-content-primary dark:hover:text-white'
                       }`}
                     >
                       <Heart className={`w-4 h-4 ${isLikedByMe(q) ? 'fill-current' : ''}`} />
@@ -323,7 +323,7 @@ const CommunityQuestionsPage = () => {
                     <button
                       onClick={() => handleDelete(q._id)}
                       disabled={deletingId === q._id}
-                      className="flex items-center gap-1 text-xs font-bold text-content-muted hover:text-black dark:hover:text-white transition-colors disabled:opacity-50"
+                      className="flex items-center gap-1 text-xs font-bold text-content-muted hover:text-content-primary dark:hover:text-white transition-colors disabled:opacity-50"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       {deletingId === q._id ? translate('Deleting...') : translate('Delete')}

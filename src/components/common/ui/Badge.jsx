@@ -18,14 +18,15 @@ const Badge = ({
 }) => {
   // Brand system: primary (green) or stealth (neutral black/white via theme tokens)
   const variants = {
-    primary: 'bg-primary-600 text-white shadow-sm border-primary-600',
-    stealth: 'bg-background-surface-secondary text-content-secondary border-slate-200 dark:border-slate-800 shadow-sm',
+    primary: 'bg-primary-600 text-on-primary border-primary-600',
+    stealth: 'bg-background-surface text-content-secondary border-border-primary',
   };
 
   const sizes = {
-    sm: 'px-2.5 py-1 text-[8px] font-black uppercase tracking-[0.2em] rounded-lg border-b-2',
-    xl: 'px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] rounded-lg xl:rounded-xl border-b-[3px]',
-    xl: 'px-6 py-2 text-xs font-black uppercase tracking-[0.4em] rounded-2xl border-b-2',
+    sm: 'px-2.5 py-0.5 text-[11px] font-bold rounded-full',
+    md: 'px-3 py-1 text-xs font-bold rounded-full',
+    lg: 'px-4 py-1.5 text-sm font-bold rounded-full',
+    xl: 'px-4 py-1.5 text-sm font-bold rounded-full',
   };
 
   return (
@@ -34,7 +35,7 @@ const Badge = ({
       animate={pulse ? { scale: [1, 1.05, 1] } : {}}
       transition={pulse ? { duration: 2, repeat: Infinity } : {}}
       className={`
-        inline-flex items-center justify-center gap-2 font-outfit border-2
+        relative inline-flex items-center justify-center gap-1.5 font-outfit border
         ${variants[variant]} 
         ${sizes[size]} 
         ${className}
@@ -46,7 +47,7 @@ const Badge = ({
 
       {/* Active Pulse Ring */}
       {pulse && (
-        <span className="absolute inset-0 rounded-inherit ring-4 ring-current opacity-20 animate-ping" />
+        <span className="absolute inset-0 rounded-full ring-4 ring-current opacity-20 animate-ping" />
       )}
     </motion.span>
   );

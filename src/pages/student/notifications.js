@@ -88,15 +88,15 @@ const NotificationsPage = () => {
       case 'quiz_attempt':
       case 'exam_attempt':
       case 'daily_challenge':
-        return <Target className="w-5 h-5 text-primary-600 dark:text-primary-300" />;
+        return <Target className="w-5 h-5 text-primary-600" />;
       case 'referral_registration':
       case 'mentor':
-        return <Trophy className="w-5 h-5 text-primary-600 dark:text-primary-300" />;
+        return <Trophy className="w-5 h-5 text-primary-600" />;
       case 'streak':
-        return <Zap className="w-5 h-5 text-primary-600 dark:text-primary-300" />;
+        return <Zap className="w-5 h-5 text-primary-600" />;
       case 'subscription':
-        return <CircleAlert className="w-5 h-5 text-black dark:text-white" />;
-      default: return <Info className="w-5 h-5 text-black dark:text-white" />;
+        return <CircleAlert className="w-5 h-5 text-content-primary" />;
+      default: return <Info className="w-5 h-5 text-content-primary" />;
     }
   };
 
@@ -116,15 +116,15 @@ const NotificationsPage = () => {
           actions={
             <>
               <div className="relative overflow-hidden bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
-                <p className="text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{notifications.length}</p>
-                <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75">{translate('Notifications')}</p>
+                <p className="text-lg font-bold font-outfit leading-none text-primary-600">{notifications.length}</p>
+                <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Notifications')}</p>
               </div>
               <div className="relative overflow-hidden bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
-                <p className="text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{unreadCount}</p>
-                <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75">{translate('Unread')}</p>
+                <p className="text-lg font-bold font-outfit leading-none text-primary-600">{unreadCount}</p>
+                <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Unread')}</p>
               </div>
-              {unreadCount > 0 && <Button variant="primary" size="sm" className="text-[10px] font-black tracking-widest" onClick={markAllRead}>{translate('MARK ALL READ')}</Button>}
-              {notifications.length > 0 && <Button variant="secondary" size="sm" className="text-[10px] font-black tracking-widest" onClick={clearAll}>{translate('CLEAR ALL')}</Button>}
+              {unreadCount > 0 && <Button variant="primary" size="sm" className="text-[10px] font-bold tracking-[0.08em]" onClick={markAllRead}>{translate('MARK ALL READ')}</Button>}
+              {notifications.length > 0 && <Button variant="secondary" size="sm" className="text-[10px] font-bold tracking-[0.08em]" onClick={clearAll}>{translate('CLEAR ALL')}</Button>}
             </>
           }
         />
@@ -133,12 +133,12 @@ const NotificationsPage = () => {
           <AnimatePresence mode="popLayout">
             {notifications.length === 0 ? (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-4 xl:py-8 text-center space-y-3 xl:space-y-6">
-                <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
-                  <Inbox className="w-10 h-10 text-gray-400" />
+                <div className="w-24 h-24 bg-background-surface-secondary rounded-3xl flex items-center justify-center mx-auto opacity-50">
+                  <Inbox className="w-10 h-10 text-content-muted" />
                 </div>
                 <section className="space-y-2">
-                  <h2 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Inbox Empty')}</h2>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{translate('You\'re all caught up with your academic updates!')}</p>
+                  <h2 className="text-xl xl:text-2xl font-bold font-outfit">{translate('Inbox Empty')}</h2>
+                  <p className="text-xs font-bold text-content-muted uppercase tracking-[0.08em]">{translate('You\'re all caught up with your academic updates!')}</p>
                 </section>
               </motion.div>
             ) : (
@@ -148,27 +148,27 @@ const NotificationsPage = () => {
                     key={n.id || idx}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className={`group relative p-4 xl:p-6 transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex flex-col xl:flex-row gap-3 xl:gap-6 items-start ${!n.isRead ? 'bg-primary-500/5' : ''}`}
+                    className={`group relative p-4 xl:p-6 transition-all duration-300 hover:bg-background-surface-secondary flex flex-col xl:flex-row gap-3 xl:gap-6 items-start ${!n.isRead ? '' : ''}`}
                   >
-                    <div className={`shrink-0 p-3 xl:p-4 rounded-2xl bg-white dark:bg-slate-800 shadow-sm transition-transform group-hover:scale-110 ${!n.isRead ? 'border-2 border-primary-500/20 shadow-sm' : ''}`}>
+                    <div className={`shrink-0 p-3 xl:p-4 rounded-2xl bg-background-surface transition-transform group-hover:scale-110 ${!n.isRead ? 'border border-primary-500/20' : ''}`}>
                       {getIcon(n.type)}
                     </div>
 
                     <div className="flex-1 min-w-0 space-y-1">
                       <div className="flex items-center gap-2">
-                        {n.title && <h3 className={`text-sm font-black uppercase tracking-tight ${!n.isRead ? 'text-slate-900 dark:text-white' : 'text-gray-500'}`}>{n.title}</h3>}
+                        {n.title && <h3 className={`text-sm font-bold uppercase tracking-tight ${!n.isRead ? 'text-content-primary' : 'text-content-muted'}`}>{n.title}</h3>}
                         {!n.isRead && <span className="w-1.5 h-1.5 bg-primary-600 rounded-full animate-pulse shrink-0" />}
                       </div>
-                      <p className={`text-xs font-bold leading-relaxed ${!n.isRead ? 'text-gray-600 dark:text-gray-300' : 'text-gray-400'}`}>{n.description}</p>
+                      <p className={`text-xs font-bold leading-relaxed ${!n.isRead ? 'text-content-secondary' : 'text-content-muted'}`}>{n.description}</p>
                       <div className="flex items-center gap-2 pt-2 opacity-70">
                         <Clock className="w-3 h-3" />
-                        <span className="text-[10px] font-black uppercase tracking-widest">{new Date(n.createdAt).toLocaleDateString()} • {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.08em]">{new Date(n.createdAt).toLocaleDateString()} • {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-1 shrink-0">
-                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 dark:text-primary-300 hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Mark as read')}><Eye className="w-4 h-4" /></button>}
-                      <button onClick={() => deleteOne(n.id)} className="p-2 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Delete notification')}><Trash2 className="w-4 h-4" /></button>
+                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Mark as read')}><Eye className="w-4 h-4" /></button>}
+                      <button onClick={() => deleteOne(n.id)} className="p-2 text-content-primary hover:bg-black/10 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Delete notification')}><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </motion.div>
                 ))}

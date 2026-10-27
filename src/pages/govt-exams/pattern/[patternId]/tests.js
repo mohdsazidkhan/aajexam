@@ -141,20 +141,20 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       />
 
       <section className="hidden xl:flex items-center justify-end pt-4">
-        <Button variant="secondary" size="sm" onClick={() => router.back()} className="font-black">
+        <Button variant="secondary" size="sm" onClick={() => router.back()} className="font-bold">
           <ArrowLeft className="w-5 h-5" />
           {translate('GO BACK')}
         </Button>
       </section>
 
       {/* --- Pattern Quest Card --- */}
-      <Card className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10 overflow-hidden relative">
+      <Card className="text-content-primary border-none border border-border-primary overflow-hidden relative bg-background-surface">
         <header className="relative z-10 space-y-3">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
+          <div className="inline-flex items-center gap-2 text-on-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[0.08em] bg-primary-600">
             <Zap className="w-4 h-4" />
             {translate('Practice Tests')}
           </div>
-          <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight">{translateData(pattern?.title) || translate('Exam Pattern')}</h1>
+          <h1 className="text-xl xl:text-3xl font-bold font-outfit leading-tight">{translateData(pattern?.title) || translate('Exam Pattern')}</h1>
           <div className="flex gap-4">
             <div className="flex items-center gap-2 text-sm font-bold opacity-90 uppercase tracking-wide">
               <Clock className="w-4 h-4" /> {pattern?.duration || '60'}m
@@ -164,12 +164,12 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
             </div>
           </div>
         </header>
-        <Award className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-slate-900/10 dark:text-white/10 -rotate-12" />
+        <Award className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-slate-900/10 dark:text-white/10" />
       </Card>
 
       {/* --- Quests List --- */}
       <section className="space-y-6">
-        <h2 className="text-xl xl:text-2xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase px-1">{translate('Select A Quest')}</h2>
+        <h2 className="text-xl xl:text-2xl font-bold text-content-primary font-outfit px-1">{translate('Select A Quest')}</h2>
 
         <div className="space-y-2 xl:space-y-4">
           {tests.map((test, idx) => {
@@ -193,22 +193,22 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.1 }}
               >
-                <Card as="section" className={`group border-2 transition-all p-0 overflow-hidden shadow-sm ${isLocked ? 'grayscale opacity-75' : 'hover:border-black dark:hover:border-white'}`}>
+                <Card as="section" className={`group border transition-all p-0 overflow-hidden ${isLocked ? 'grayscale opacity-75' : 'hover:border-black dark:hover:border-white'}`}>
                   <div className="flex flex-col sm:flex-row items-center">
                     {/* Status Pillar */}
-                    <div className={`w-full sm:w-16 h-2 sm:h-auto self-stretch ${isCompleted ? 'bg-primary-600' : 'bg-gray-200 dark:bg-slate-700'} transition-colors`} />
+                    <div className={`w-full sm:w-16 h-2 sm:h-auto self-stretch ${isCompleted ? 'bg-primary-600' : 'bg-background-surface-secondary'} transition-colors`} />
 
                     <div className="flex-1 p-5 flex flex-col sm:flex-row items-center gap-6">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 text-primary-600' : 'bg-gray-100 text-gray-400'} transition-colors`}>
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'text-primary-600' : 'bg-background-surface-secondary text-content-muted'} transition-colors`}>
                         {isCompleted ? <Award className="w-9 h-9" /> : <Play className="w-8 h-8" />}
                       </div>
 
                       <div className="flex-1 text-center sm:text-left space-y-1">
                         <div className="flex items-center justify-center sm:justify-start gap-2">
-                          <h3 className="text-xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase line-clamp-1">{translateData(test.title)}</h3>
-                          {isLocked ? <ProBadge size="xs" /> : <Unlock className="w-4 h-4 text-primary-600 dark:text-primary-300" />}
+                          <h3 className="text-xl font-bold text-content-primary font-outfit line-clamp-1">{translateData(test.title)}</h3>
+                          {isLocked ? <ProBadge size="xs" /> : <Unlock className="w-4 h-4 text-primary-600" />}
                         </div>
-                        <p className="text-xs font-bold text-gray-400 uppercase">
+                        <p className="text-xs font-bold text-content-muted uppercase">
                           {translate('{questions} Questions • {marks} Marks', { questions: test.questionCount || 0, marks: test.totalMarks || 100 })}
                         </p>
                       </div>
@@ -241,8 +241,8 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         {tests.length === 0 && (
           <div className="py-20 text-center space-y-2 xl:space-y-4">
             <ShieldAlert className="w-20 h-20 text-gray-300 mx-auto" />
-            <h3 className="text-xl xl:text-2xl font-black text-gray-400 uppercase">{translate('No Quests Available')}</h3>
-            <p className="text-gray-400 font-bold">{translate('Check back soon for new content!')}</p>
+            <h3 className="text-xl xl:text-2xl font-bold text-content-muted">{translate('No Quests Available')}</h3>
+            <p className="text-content-muted font-bold">{translate('Check back soon for new content!')}</p>
           </div>
         )}
 

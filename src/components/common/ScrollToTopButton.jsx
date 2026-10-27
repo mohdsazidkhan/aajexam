@@ -33,11 +33,11 @@ const ScrollToTopButton = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="scroll-to-top-btn"
+          className="bg-primary-600 w-[50px] h-[50px] p-2.5 flex items-center justify-center mx-auto my-5 rounded-lg"
           aria-label={translate('Scroll to top')}
           title={translate('Scroll to top')}
         >
-          <FaArrowUp className="scroll-to-top-icon" />
+          <FaArrowUp className="text-on-primary" />
         </button>
       )}
     </>

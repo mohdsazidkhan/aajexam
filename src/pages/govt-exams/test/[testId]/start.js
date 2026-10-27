@@ -226,7 +226,7 @@ const TestStart = ({ resolvedId } = {}) => {
   if (loading) return (
     <div className="min-h-screen bg-background-page flex flex-col items-center justify-center space-y-2 xl:space-y-4">
       <Skeleton width="100px" height="100px" borderRadius="100%" />
-      <p className="text-primary-400 font-black animate-pulse uppercase tracking-widest">{translate('Preparing Your Test...')}</p>
+      <p className="text-primary-400 font-bold animate-pulse uppercase tracking-[0.08em]">{translate('Preparing Your Test...')}</p>
     </div>
   );
 
@@ -282,7 +282,7 @@ const TestStart = ({ resolvedId } = {}) => {
   };
 
   return (
-    <div className="h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 selection:bg-primary-500/30 overflow-hidden flex flex-col" style={{ height: '100dvh' }}>
+    <div className="h-screen bg-background-surface text-content-primary overflow-hidden flex flex-col" style={{ height: '100dvh' }}>
       <Seo title={`${test?.title || 'Practice Test'} – In Progress | AajExam`} description="Test in progress on AajExam." noIndex={true} />
 
       {/* --- Immersive Floating Mission Controller --- */}
@@ -290,7 +290,7 @@ const TestStart = ({ resolvedId } = {}) => {
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="relative shrink-0 z-[60] flex items-center justify-between gap-2 sm:gap-3 xl:gap-6 px-3 py-2 sm:px-4 xl:px-6 xl:py-3 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+          className="relative shrink-0 z-[60] flex items-center justify-between gap-2 sm:gap-3 xl:gap-6 px-3 py-2 sm:px-4 xl:px-6 xl:py-3 border-b border-border-primary bg-background-surface"
         >
           {/* Left: Spacer or Placeholder */}
           {/* Questions panel toggle */}
@@ -298,7 +298,7 @@ const TestStart = ({ resolvedId } = {}) => {
             onClick={() => setShowPalette(true)}
             title={translate('Questions')}
             aria-label={translate('Open questions')}
-            className="xl:hidden shrink-0 p-2.5 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 rounded-xl shadow-sm border-2 border-slate-200 dark:border-slate-800 transition-all active:scale-95"
+            className="xl:hidden shrink-0 p-2.5 bg-white/90 dark:bg-slate-900/90 text-content-muted hover:text-primary-600 rounded-xl border border-border-primary transition-all active:scale-95"
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -306,52 +306,52 @@ const TestStart = ({ resolvedId } = {}) => {
             onClick={() => setShowSidebar(v => !v)}
             title={showSidebar ? translate('Hide questions') : translate('Show questions')}
             aria-label={translate('Toggle questions panel')}
-            className={`hidden xl:flex shrink-0 p-3 rounded-xl shadow-sm border-2 transition-all active:scale-95 ${showSidebar ? "bg-primary-500/10 text-primary-600 dark:text-primary-300 border-primary-500/30" : "bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 border-slate-200 dark:border-slate-800"}`}
+            className={`hidden xl:flex shrink-0 p-3 rounded-xl border transition-all active:scale-95 ${showSidebar ? "text-primary-600 border-primary-500/30" : "bg-white/90 dark:bg-slate-900/90 text-content-muted hover:text-primary-600 border-border-primary"}`}
           >
             <LayoutGrid className="w-6 h-6" />
           </button>
-          <p className="hidden xl:block shrink-0 text-xs 2xl:text-[13px] font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap">
-            <span className="font-black uppercase tracking-widest">{translate('Status:')}</span>{" "}
-            {translate('Questions:')} <span className="text-slate-900 dark:text-white">{questions.length}</span>,{" "}
-            {translate('Answered:')} <span className="text-primary-600 dark:text-primary-300">{answeredCount}</span>,{" "}
-            {translate('Not Answered:')} <span className="text-slate-900 dark:text-white">{questions.length - answeredCount}</span>,{" "}
-            {translate('Mark For Review:')} <span className="text-slate-900 dark:text-white">{marked.size}</span>
+          <p className="hidden xl:block shrink-0 text-xs 2xl:text-[13px] font-bold text-content-muted whitespace-nowrap">
+            <span className="font-bold uppercase tracking-[0.08em]">{translate('Status:')}</span>{" "}
+            {translate('Questions:')} <span className="text-content-primary">{questions.length}</span>,{" "}
+            {translate('Answered:')} <span className="text-primary-600">{answeredCount}</span>,{" "}
+            {translate('Not Answered:')} <span className="text-content-primary">{questions.length - answeredCount}</span>,{" "}
+            {translate('Mark For Review:')} <span className="text-content-primary">{marked.size}</span>
           </p>
           <div className="flex-1 min-w-0 md:hidden xl:hidden">
-            <p className="break-words text-[11px] font-black text-slate-500 uppercase tracking-wide leading-tight">{translateData(test?.title)}</p>
-            <p className="text-xs font-black text-primary-600 dark:text-primary-300 leading-tight">Q {currentQIndex + 1} / {questions.length}</p>
+            <p className="break-words text-[11px] font-bold text-content-muted uppercase tracking-wide leading-tight">{translateData(test?.title)}</p>
+            <p className="text-xs font-bold text-primary-600 leading-tight">Q {currentQIndex + 1} / {questions.length}</p>
           </div>
           
           {/* Center: Test Progress (Minimalist) */}
-          <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-2xl px-5 py-2.5 xl:px-6 xl:py-3 shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md pointer-events-auto hidden md:block">
+          <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-2xl px-5 py-2.5 xl:px-6 xl:py-3 border border-border-primary pointer-events-auto hidden md:block">
             <div className="flex flex-col gap-2">
-              <div className="flex justify-between items-center text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none">
+              <div className="flex justify-between items-center text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] leading-none">
                 <span className="pr-4">{translateData(test?.title)}</span>
                 <span className="shrink-0">{currentQIndex + 1} / {questions.length}</span>
               </div>
-              <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <motion.div initial={{ width: 0 }} animate={{ width: `${progressPercent}%` }} className="h-full bg-primary-600 shadow-sm" />
+              <div className="h-1.5 w-full bg-background-surface-secondary rounded-full overflow-hidden">
+                <motion.div initial={{ width: 0 }} animate={{ width: `${progressPercent}%` }} className="h-full bg-primary-600" />
               </div>
             </div>
           </div>
 
           {/* Right: Timer & Tools */}
           <div className="flex items-center gap-2 xl:gap-3 pointer-events-auto shrink-0">
-            <div className={`flex items-center gap-1.5 xl:gap-3 px-3 py-2 xl:px-5 xl:py-2.5 rounded-xl shadow-sm border-2 ${timeLeft < 300 ?'bg-primary-600 text-white border-white/20 animate-pulse':'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
+            <div className={`flex items-center gap-1.5 xl:gap-3 px-3 py-2 xl:px-5 xl:py-2.5 rounded-xl border ${timeLeft < 300 ?'bg-primary-600 text-on-primary border-white/20 animate-pulse':'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
               <Clock className="w-4 h-4 text-current opacity-80" />
-              <span className="font-mono text-sm xl:text-xl font-black">{formatTime(timeLeft)}</span>
+              <span className="font-mono text-sm xl:text-xl font-bold">{formatTime(timeLeft)}</span>
             </div>
 
             <LanguageToggle
               language={language}
               onToggle={toggleLanguage}
               translating={translatingQ}
-              className="px-2.5 py-2 xl:px-4 xl:py-2.5 min-w-[44px] xl:min-w-[56px] bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 hover:text-primary-600 rounded-xl shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 font-black text-sm tracking-widest uppercase flex items-center justify-center gap-1.5"
+              className="px-2.5 py-2 xl:px-4 xl:py-2.5 min-w-[44px] xl:min-w-[56px] bg-white/90 dark:bg-slate-900/90 text-content-secondary hover:text-primary-600 rounded-xl border border-border-primary transition-all active:scale-95 font-bold text-sm tracking-[0.08em] uppercase flex items-center justify-center gap-1.5"
             />
 
             <button
               onClick={toggleFullscreen}
-              className="p-2.5 xl:p-3 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 rounded-xl shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
+              className="p-2.5 xl:p-3 bg-white/90 dark:bg-slate-900/90 text-content-muted hover:text-primary-600 rounded-xl border border-border-primary transition-all active:scale-95 group"
               title={translate('Toggle Focus Mode')}
             >
               {isFullscreen ? <Minimize className="w-5 h-5 xl:w-6 xl:h-6" /> : <Maximize className="w-5 h-5 xl:w-6 xl:h-6" />}
@@ -359,7 +359,7 @@ const TestStart = ({ resolvedId } = {}) => {
 
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="p-2.5 xl:p-3 bg-white/90 dark:bg-slate-900/90 text-slate-400 hover:text-black dark:hover:text-white rounded-xl shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
+              className="p-2.5 xl:p-3 bg-white/90 dark:bg-slate-900/90 text-content-muted hover:text-content-primary dark:hover:text-white rounded-xl border border-border-primary transition-all active:scale-95 group"
               title={translate('Exit Test')}
             >
               <X className="w-5 h-5 xl:w-6 xl:h-6 group-hover:rotate-90 transition-transform" />
@@ -377,7 +377,7 @@ const TestStart = ({ resolvedId } = {}) => {
           animate={{ width: showSidebar ? 320 : 0, opacity: showSidebar ? 1 : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
           aria-hidden={!showSidebar}
-          className="hidden xl:flex shrink-0 border-r border-slate-200 dark:border-slate-800 overflow-hidden"
+          className="hidden xl:flex shrink-0 border-r border-border-primary overflow-hidden"
         >
           <motion.div
             initial={false}
@@ -387,7 +387,7 @@ const TestStart = ({ resolvedId } = {}) => {
           >
           <div className="flex flex-col gap-6 flex-1 min-h-0">
             <div className="flex flex-col gap-2 xl:gap-4 flex-1 min-h-0">
-              <h3 className="shrink-0 text-xs font-black text-slate-400 uppercase tracking-widest">{translate('Questions')}</h3>
+              <h3 className="shrink-0 text-xs font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Questions')}</h3>
               <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain space-y-2 xl:space-y-4 pr-1 pb-6">
               {sectionNames.map((secName) => {
                 const group = sectionGroups[secName];
@@ -395,10 +395,10 @@ const TestStart = ({ resolvedId } = {}) => {
                 return (
                   <div key={secName} className="space-y-2">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest truncate">
+                      <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] truncate">
                         {secName}
                       </span>
-                      <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 shrink-0">
+                      <span className="text-[10px] font-bold text-primary-600 shrink-0">
                         {answeredInSec}/{group.length}
                       </span>
                     </div>
@@ -413,11 +413,11 @@ const TestStart = ({ resolvedId } = {}) => {
                             data-q-state={isMarked ? 'marked' : isAnswered ? 'answered' : undefined}
                             onClick={() => setCurrentQIndex(idx)}
                             className={`
-                              h-10 rounded-lg xl:rounded-xl font-black text-xs transition-all border-b-2
-                              ${isCurrent ? 'bg-primary-600 text-white border-primary-600 -translate-y-1' :
-                                isMarked ?'bg-primary-600 text-white border-primary-600':
-                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 border-primary-200 dark:border-primary-600' :
-                                    'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}
+                              h-10 rounded-lg xl:rounded-xl font-bold text-xs transition-all border-b-2
+                              ${isCurrent ? 'bg-primary-600 text-on-primary border-primary-600 -translate-y-1' :
+                                isMarked ?'bg-primary-600 text-on-primary border-primary-600':
+                                  isAnswered ? 'text-primary-600 border-primary-200 dark:border-primary-600' :
+                                    'bg-background-surface-secondary text-content-muted border-border-primary'}
                             `}
                           >
                             {idx + 1}
@@ -446,24 +446,24 @@ const TestStart = ({ resolvedId } = {}) => {
               className="mx-auto space-y-2 xl:space-y-4"
             >
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
-                <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-xs font-black text-primary-600 dark:text-primary-300 uppercase shrink-0">
+                <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold text-primary-600 uppercase shrink-0">
                   <Target className="w-3 h-3" />
                   Q {currentQIndex + 1}
                 </div>
-                <h2 className="text-lg xl:text-xl font-black font-outfit leading-snug xl:leading-tight text-slate-800 dark:text-white whitespace-pre-wrap break-words min-w-0">
+                <h2 className="text-lg xl:text-xl font-bold font-outfit leading-snug xl:leading-tight text-content-primary whitespace-pre-wrap break-words min-w-0">
                   {currentQ.questionText}
                 </h2>
               </div>
 
               {translatingQ && (
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full text-[11px] font-black text-black dark:text-white uppercase tracking-widest">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-background-surface-secondary rounded-full text-[11px] font-bold text-content-primary uppercase tracking-[0.08em]">
                   <span className="w-2 h-2 rounded-full bg-primary-600 animate-pulse"/>
                   {translate('Translating to हिंदी…')}
                 </div>
               )}
 
               {currentQ.questionImage && (
-                <img src={currentQ.questionImage} alt="" className="max-h-56 sm:max-h-72 max-w-full rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                <img src={currentQ.questionImage} alt="" className="max-h-56 sm:max-h-72 max-w-full rounded-lg xl:rounded-xl border border-border-primary object-contain bg-background-surface" />
               )}
 
               <div className="grid grid-cols-1 gap-2.5 sm:gap-4">
@@ -476,21 +476,21 @@ const TestStart = ({ resolvedId } = {}) => {
                       disabled={translatingQ}
                       onClick={() => handleAnswer(idx)}
                       className={`
-                          group relative py-2.5 px-3 sm:py-2 sm:px-5 rounded-2xl border-2 transition-all text-left flex items-center gap-3 sm:gap-4                          ${translatingQ ? 'opacity-60 cursor-not-allowed border-b-2 translate-y-0' : 'active:border-b-0 active:translate-y-1'}
+                          group relative py-2.5 px-3 sm:py-2 sm:px-5 rounded-2xl border transition-all text-left flex items-center gap-3 sm:gap-4                          ${translatingQ ? 'opacity-60 cursor-not-allowed border-b-2 translate-y-0' : 'active:border-b-0 active:translate-y-1'}
                           ${isSelected
-                          ? 'bg-primary-600 text-white border-primary-600 shadow-sm'
-                          : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}
+                          ? 'bg-primary-600 text-on-primary border-primary-600'
+                          : 'bg-background-surface border-border-primary hover:border-primary-300 dark:hover:border-primary-700'}
                         `}
                     >
                       <div className={`
-                            w-8 h-8 sm:w-10 sm:h-10 rounded-lg xl:rounded-xl flex items-center justify-center font-black text-base sm:text-lg shrink-0 transition-colors
-                            ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}
+                            w-8 h-8 sm:w-10 sm:h-10 rounded-lg xl:rounded-xl flex items-center justify-center font-bold text-base sm:text-lg shrink-0 transition-colors
+                            ${isSelected ? 'bg-white/20 text-white' : 'bg-background-surface-secondary text-content-muted'}
                          `}>
                         {String.fromCharCode(65 + idx)}
                       </div>
                       <div className="flex-1 min-w-0 flex flex-col gap-2 items-start">
                         {opt && <span className="text-sm sm:text-base font-bold leading-snug sm:leading-tight break-words max-w-full">{opt}</span>}
-                        {optImg && <img src={optImg} alt="" className="max-h-28 sm:max-h-32 max-w-full rounded-lg object-contain bg-white" />}
+                        {optImg && <img src={optImg} alt="" className="max-h-28 sm:max-h-32 max-w-full rounded-lg object-contain bg-background-surface" />}
                       </div>
                       {isSelected && <CircleCheck className="w-6 h-6 sm:w-8 sm:h-8 shrink-0 text-white animate-pop-in" />}
                     </button>
@@ -504,7 +504,7 @@ const TestStart = ({ resolvedId } = {}) => {
                   className="w-full !px-2 sm:!px-4 text-[11px] sm:text-sm"
                   onClick={toggleMark}
                 >
-                  <Flag className={`w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-black dark:text-white' : 'text-slate-400'}`} />
+                  <Flag className={`w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-content-primary' : 'text-content-muted'}`} />
                   {marked.has(currentQ._id) ? translate('MARKED') : <><span className="sm:hidden">{translate('MARK')}</span><span className="hidden sm:inline">{translate('MARK FOR REVIEW')}</span></>}
                 </Button>
                 <Button
@@ -513,7 +513,7 @@ const TestStart = ({ resolvedId } = {}) => {
                   disabled={answers[currentQ._id] === undefined}
                   onClick={clearAnswer}
                 >
-                  <Trash2 className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 text-slate-400" />
+                  <Trash2 className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 text-content-muted" />
                   <span className="sm:hidden">{translate('CLEAR')}</span><span className="hidden sm:inline">{translate('CLEAR ANSWER')}</span>
                 </Button>
               </div>
@@ -523,13 +523,13 @@ const TestStart = ({ resolvedId } = {}) => {
       </div>
 
       {/* --- Bottom Action Bar (Fixed) --- */}
-      <footer className="min-h-[4rem] sm:min-h-[5rem] xl:h-24 shrink-0 bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-3 sm:px-6 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] gap-2 flex items-center justify-between z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+      <footer className="min-h-[4rem] sm:min-h-[5rem] xl:h-24 shrink-0 bg-white/80 dark:bg-slate-900/90 border-t border-border-primary px-3 sm:px-6 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] gap-2 flex items-center justify-between z-50">
         <Button
           variant="secondary"
           size="lg"
           disabled={currentQIndex === 0}
           onClick={() => setCurrentQIndex(prev => prev - 1)}
-          className="font-black h-12 sm:h-14 !px-3 sm:!px-8 sm:min-w-[10rem]"
+          className="font-bold h-12 sm:h-14 !px-3 sm:!px-8 sm:min-w-[10rem]"
         >
           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 sm:mr-2" /> <span className="hidden sm:inline">{translate('PREVIOUS')}</span><span className="sm:hidden text-xs">{translate('PREV')}</span>
         </Button>
@@ -541,7 +541,7 @@ const TestStart = ({ resolvedId } = {}) => {
             className="h-14 !px-6 min-w-[12rem] text-sm"
             onClick={toggleMark}
           >
-            <Flag className={`w-5 h-5 mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-black dark:text-white' : 'text-slate-400'}`} />
+            <Flag className={`w-5 h-5 mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-content-primary' : 'text-content-muted'}`} />
             {marked.has(currentQ._id) ? translate('MARKED') : <>{translate('MARK FOR REVIEW')}</>}
           </Button>
           <Button
@@ -550,14 +550,14 @@ const TestStart = ({ resolvedId } = {}) => {
             disabled={answers[currentQ._id] === undefined}
             onClick={clearAnswer}
           >
-            <Trash2 className="w-5 h-5 mr-2 shrink-0 text-slate-400" />
+            <Trash2 className="w-5 h-5 mr-2 shrink-0 text-content-muted" />
             {translate('CLEAR ANSWER')}
           </Button>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-4">
           <button aria-label={translate('Open menu')}
-            className="xl:hidden p-3 sm:p-4 bg-slate-100 dark:bg-slate-800 rounded-2xl"
+            className="xl:hidden p-3 sm:p-4 bg-background-surface-secondary rounded-2xl"
             onClick={() => setShowPalette(true)}
           >
             <Menu className="w-6 h-6" />
@@ -589,11 +589,11 @@ const TestStart = ({ resolvedId } = {}) => {
       <AnimatePresence>
         {showPalette && (
           <>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowPalette(false)} className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm" />
-            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-[2rem] sm:rounded-t-[3rem] px-5 sm:px-8 pt-4 sm:pt-6 flex flex-col overflow-hidden z-50 max-h-[80vh]" style={{ maxHeight: '80dvh' }}>
-              <div className="w-12 h-1.5 shrink-0 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-4 sm:mb-6" />
-              <h3 className="shrink-0 text-lg sm:text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Questions')}</h3>
-              <p className="shrink-0 text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 pb-3 sm:pb-4 border-b border-slate-100 dark:border-slate-800 whitespace-nowrap overflow-x-auto [scrollbar-width:none]">Questions: <span className="text-slate-900 dark:text-white">{questions.length}</span>, Answered: <span className="text-primary-600 dark:text-primary-300">{answeredCount}</span>, Not Answered: <span className="text-slate-900 dark:text-white">{questions.length - answeredCount}</span>, Mark For Review: <span className="text-slate-900 dark:text-white">{marked.size}</span></p>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowPalette(false)} className="fixed inset-0 bg-black/50 z-50" />
+            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-background-surface rounded-t-[2rem] sm:rounded-t-[3rem] px-5 sm:px-8 pt-4 sm:pt-6 flex flex-col overflow-hidden z-50 max-h-[80vh]" style={{ maxHeight: '80dvh' }}>
+              <div className="w-12 h-1.5 shrink-0 bg-background-surface-secondary rounded-full mx-auto mb-4 sm:mb-6" />
+              <h3 className="shrink-0 text-lg sm:text-xl xl:text-2xl font-bold font-outfit">{translate('Questions')}</h3>
+              <p className="shrink-0 text-[10px] sm:text-xs font-bold text-content-muted pb-3 sm:pb-4 border-b border-border-primary whitespace-nowrap overflow-x-auto [scrollbar-width:none]">Questions: <span className="text-content-primary">{questions.length}</span>, Answered: <span className="text-primary-600">{answeredCount}</span>, Not Answered: <span className="text-content-primary">{questions.length - answeredCount}</span>, Mark For Review: <span className="text-content-primary">{marked.size}</span></p>
               <div className="space-y-5 flex-1 min-h-0 overflow-y-auto overscroll-contain pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
                 {sectionNames.map((secName) => {
                   const group = sectionGroups[secName];
@@ -601,10 +601,10 @@ const TestStart = ({ resolvedId } = {}) => {
                   return (
                     <div key={secName} className="space-y-3">
                       <div className="flex items-center justify-between gap-2 px-1">
-                        <span className="text-xs font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest truncate">
+                        <span className="text-xs font-bold text-content-secondary uppercase tracking-[0.08em] truncate">
                           {secName}
                         </span>
-                        <span className="text-[11px] font-black text-primary-600 dark:text-primary-300 shrink-0">
+                        <span className="text-[11px] font-bold text-primary-600 shrink-0">
                           {answeredInSec}/{group.length}
                         </span>
                       </div>
@@ -618,10 +618,10 @@ const TestStart = ({ resolvedId } = {}) => {
                               key={idx}
                               data-q-state={isMarked ? 'marked' : isAnswered ? 'answered' : undefined}
                               onClick={() => { setCurrentQIndex(idx); setShowPalette(false); }}
-                              className={`h-11 sm:h-14 rounded-xl sm:rounded-2xl font-black border-b-2 ${isCurrent ? 'bg-primary-600 text-white border-primary-600' :
-                                isMarked ?'bg-primary-600 text-white border-primary-600':
-                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 border-primary-200 dark:border-primary-600' :
-                                    'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}`}
+                              className={`h-11 sm:h-14 rounded-xl sm:rounded-2xl font-bold border-b-2 ${isCurrent ? 'bg-primary-600 text-on-primary border-primary-600' :
+                                isMarked ?'bg-primary-600 text-on-primary border-primary-600':
+                                  isAnswered ? 'text-primary-600 border-primary-200 dark:border-primary-600' :
+                                    'bg-background-surface-secondary text-content-muted border-border-primary'}`}
                             >
                               {idx + 1}
                             </button>
@@ -641,14 +641,14 @@ const TestStart = ({ resolvedId } = {}) => {
       <AnimatePresence>
         {showSubmitModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-900/80 backdrop-blur-md" onClick={() => setShowSubmitModal(false)} />
-            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-white dark:bg-slate-800 rounded-3xl sm:rounded-[2.5rem] p-5 sm:p-10 max-w-md w-full max-h-[85vh] overflow-y-auto shadow-sm border-2 border-primary-500/20">
-              <div className="w-14 h-14 sm:w-20 sm:h-20 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-900/80" onClick={() => setShowSubmitModal(false)} />
+            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-background-surface rounded-3xl sm:rounded-3xl p-5 sm:p-10 max-w-md w-full max-h-[85vh] overflow-y-auto border border-primary-500/20">
+              <div className="w-14 h-14 sm:w-20 sm:h-20 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
                 <CircleAlert className="w-7 h-7 sm:w-10 sm:h-10" />
               </div>
-              <h2 className="text-xl xl:text-2xl font-black font-outfit text-center uppercase mb-2">{translate('Ready to finish?')}</h2>
-              <p className="text-center text-slate-500 mb-5 sm:mb-8 font-bold leading-relaxed text-sm sm:text-base px-1 sm:px-4">
-                You&apos;ve answered <span className="text-primary-600 dark:text-primary-300">{answeredCount}</span> out of <span className="font-black">{questions.length}</span> questions. Once you submit, you can&apos;t go back!
+              <h2 className="text-xl xl:text-2xl font-bold font-outfit text-center mb-2">{translate('Ready to finish?')}</h2>
+              <p className="text-center text-content-muted mb-5 sm:mb-8 font-bold leading-relaxed text-sm sm:text-base px-1 sm:px-4">
+                You&apos;ve answered <span className="text-primary-600">{answeredCount}</span> out of <span className="font-bold">{questions.length}</span> questions. Once you submit, you can&apos;t go back!
               </p>
               <div className="space-y-3">
                 <Button variant="primary" fullWidth size="lg" className="py-4 sm:py-6 text-lg sm:text-xl" onClick={handleAutoSubmit} disabled={submitting}>

@@ -42,7 +42,7 @@ const Skeleton = ({
 
   return (
     <div 
-      className={`relative overflow-hidden bg-primary-500/15 dark:bg-primary-500/20 border border-primary-500/20 ${className}`}
+      className={`relative overflow-hidden bg-primary-500/15 dark:bg-primary-500/20 ${className}`}
       style={baseStyles}
     >
       {animate && (
@@ -53,9 +53,6 @@ const Skeleton = ({
           className="absolute inset-0 bg-transparent skew-x-[-20deg]"
         />
       )}
-      
-      {/* Decorative inner glow for premium feel */}
-      <div className="absolute inset-x-0 top-0 h-px bg-white/10 pointer-events-none" />
     </div>
   );
 };

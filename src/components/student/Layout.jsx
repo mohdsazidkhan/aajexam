@@ -106,15 +106,15 @@ const StudentLayout = ({ children }) => {
   const showSidebar = authenticated && user && !shouldHideSidebar;
 
   return (
-    <div className={`student-layout`}>
+    <div className="min-h-screen bg-background-page transition-colors duration-300">
       <ClientOnly>
         <StudentNavbar />
       </ClientOnly>
-      <div className="student-layout-content" style={isStartPage ? { marginTop: 0 } : undefined}>
+      <div className="relative flex min-h-[calc(100vh-64px)] mt-16" style={isStartPage ? { marginTop: 0 } : undefined}>
         {/* Mobile Overlay */}
         {isOpen && (
           <div
-            className="sidebar-overlay active"
+            className="fixed inset-0 z-[9998] bg-black/50 md:hidden"
             onClick={() => dispatch(closeSidebar())}
           />
         )}
@@ -123,7 +123,7 @@ const StudentLayout = ({ children }) => {
             <StudentSidebar />
           </ClientOnly>
         )}
-        <main className={`student-main-content ${showSidebar && isOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+        <main className={`flex-1 min-w-0 w-full min-h-[calc(100vh-64px)] overflow-x-hidden transition-[margin-left,width] duration-300 ease-in-out [&_.container]:w-full ${showSidebar && isOpen ? 'md:ml-[240px] md:w-[calc(100%-240px)]' : ''}`}>
           {children}
         </main>
       </div>

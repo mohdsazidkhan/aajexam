@@ -160,9 +160,9 @@ const AdminBlogForm = () => {
 
   if (loading && isEdit) {
     return (
-      <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+      <div className="min-h-screen font-outfit text-content-primary pb-20">
         <Sidebar />
-        <div className="adminContent w-full mx-auto">
+        <div className="py-4 w-full mx-auto">
           <div className="flex items-center justify-center h-64">
             <AdminFormSkeleton />
           </div>
@@ -172,14 +172,14 @@ const AdminBlogForm = () => {
   }
 
   return (
-    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="min-h-screen font-outfit text-content-primary pb-20">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit">
 
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
           <div className="flex items-center gap-3 mb-4">
-            <button aria-label="Back" onClick={() => router.push('/admin/blogs')} className="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-gray-700">
+            <button aria-label="Back" onClick={() => router.push('/admin/blogs')} className="p-2 rounded-lg bg-background-surface-secondary hover:bg-background-surface-secondary">
               <ArrowLeft className="w-5 h-5" />
             </button>
           </div>
@@ -187,19 +187,19 @@ const AdminBlogForm = () => {
 
         <form onSubmit={handleSubmit} className="space-y-3">
           {/* Blog Details */}
-          <section className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Blog Details</h2>
+          <section className="bg-background-surface rounded-lg p-4 border border-border-primary relative">
+            <h2 className="text-lg font-bold text-content-primary mb-4 tracking-wide">Blog Details</h2>
             <div className="grid grid-cols-1 gap-3">
               {/* Title */}
               <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Title *</label>
+                <label className="block text-xs font-bold text-content-muted mb-1 uppercase">Title *</label>
                 <input type="text" name="title" value={formData.title} onChange={handleChange} required
-                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black dark:text-white"
+                  className="w-full px-3 py-2.5 border border-border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-background-surface dark:text-white"
                   placeholder="Enter blog title" />
                 {formData.title && (
-                  <div className="mt-2 p-2 bg-primary-50/50 dark:bg-slate-700 rounded-md">
-                    <p className="text-xs text-gray-600 dark:text-gray-400">
-                      <strong>URL Slug:</strong> <code className="text-black dark:text-white">/blog/{generateSlug(formData.title)}</code>
+                  <div className="mt-2 p-2 dark:bg-slate-700 rounded-md">
+                    <p className="text-xs text-content-secondary">
+                      <strong>URL Slug:</strong> <code className="text-content-primary">/blog/{generateSlug(formData.title)}</code>
                     </p>
                   </div>
                 )}
@@ -207,7 +207,7 @@ const AdminBlogForm = () => {
 
               {/* Content */}
               <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Content *</label>
+                <label className="block text-xs font-bold text-content-muted mb-1 uppercase">Content *</label>
                 <CustomEditor
                   value={formData.content}
                   onChange={handleContentChange}
@@ -219,18 +219,18 @@ const AdminBlogForm = () => {
 
               {/* Excerpt */}
               <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Excerpt</label>
+                <label className="block text-xs font-bold text-content-muted mb-1 uppercase">Excerpt</label>
                 <textarea name="excerpt" value={formData.excerpt} onChange={handleChange} rows={3}
-                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black dark:text-white"
+                  className="w-full px-3 py-2.5 border border-border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-background-surface dark:text-white"
                   placeholder="Brief description of the blog" />
               </div>
 
               {/* Exam Selection */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Exam *</label>
+                  <label className="block text-xs font-bold text-content-muted mb-1 uppercase">Exam *</label>
                   <Select name="exam" value={formData.exam} onChange={handleChange} required
-                    className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black dark:text-white">
+                    className="w-full px-3 py-2.5 border border-border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-background-surface dark:text-white">
                     <option value="">Select an exam</option>
                     {exams.map(exam => (
                       <option key={exam._id} value={exam._id}>{exam.name} ({exam.code})</option>
@@ -238,9 +238,9 @@ const AdminBlogForm = () => {
                   </Select>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Tags</label>
+                  <label className="block text-xs font-bold text-content-muted mb-1 uppercase">Tags</label>
                   <input type="text" name="tags" value={formData.tags} onChange={handleChange}
-                    className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black dark:text-white"
+                    className="w-full px-3 py-2.5 border border-border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-background-surface dark:text-white"
                     placeholder="Tags separated by commas" />
                 </div>
               </div>
@@ -248,49 +248,49 @@ const AdminBlogForm = () => {
           </section>
 
           {/* Media & SEO */}
-          <section className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Media & SEO</h2>
+          <section className="bg-background-surface rounded-lg p-4 border border-border-primary relative">
+            <h2 className="text-lg font-bold text-content-primary mb-4 tracking-wide">Media & SEO</h2>
             <div className="grid grid-cols-1 gap-3">
               <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Featured Image</label>
+                <label className="block text-xs font-bold text-content-muted mb-1 uppercase">Featured Image</label>
                 <input type="file" accept="image/*" onChange={handleFileChange}
-                  className="w-full text-sm text-gray-900 dark:text-gray-200" />
-                <p className="text-xs text-gray-500 mt-1">Optional: You can also paste a hosted image URL below.</p>
+                  className="w-full text-sm text-content-primary" />
+                <p className="text-xs text-content-muted mt-1">Optional: You can also paste a hosted image URL below.</p>
                 <input type="url" name="featuredImage" value={formData.featuredImage} onChange={handleChange}
-                  className="mt-2 w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black dark:text-white"
+                  className="mt-2 w-full px-3 py-2.5 border border-border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-background-surface dark:text-white"
                   placeholder="https://example.com/image.jpg" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Image Alt Text</label>
+                <label className="block text-xs font-bold text-content-muted mb-1 uppercase">Image Alt Text</label>
                 <input type="text" name="featuredImageAlt" value={formData.featuredImageAlt} onChange={handleChange}
-                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black dark:text-white"
+                  className="w-full px-3 py-2.5 border border-border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-background-surface dark:text-white"
                   placeholder="Describe the image for accessibility" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Meta Title</label>
+                <label className="block text-xs font-bold text-content-muted mb-1 uppercase">Meta Title</label>
                 <input type="text" name="metaTitle" value={formData.metaTitle} onChange={handleChange} maxLength={60}
-                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black dark:text-white"
+                  className="w-full px-3 py-2.5 border border-border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-background-surface dark:text-white"
                   placeholder="SEO title (max 60 characters)" />
-                <p className="text-xs text-gray-500 mt-1">{formData.metaTitle.length}/60 characters</p>
+                <p className="text-xs text-content-muted mt-1">{formData.metaTitle.length}/60 characters</p>
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Meta Description</label>
+                <label className="block text-xs font-bold text-content-muted mb-1 uppercase">Meta Description</label>
                 <textarea name="metaDescription" value={formData.metaDescription} onChange={handleChange} maxLength={160} rows={3}
-                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black dark:text-white"
+                  className="w-full px-3 py-2.5 border border-border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-background-surface dark:text-white"
                   placeholder="SEO description (max 160 characters)" />
-                <p className="text-xs text-gray-500 mt-1">{formData.metaDescription.length}/160 characters</p>
+                <p className="text-xs text-content-muted mt-1">{formData.metaDescription.length}/160 characters</p>
               </div>
             </div>
           </section>
 
           {/* Settings */}
-          <section className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Settings</h2>
+          <section className="bg-background-surface rounded-lg p-4 border border-border-primary relative">
+            <h2 className="text-lg font-bold text-content-primary mb-4 tracking-wide">Settings</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div>
-                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Status</label>
+                <label className="block text-xs font-bold text-content-muted mb-1 uppercase">Status</label>
                 <Select name="status" value={formData.status} onChange={handleChange}
-                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black dark:text-white">
+                  className="w-full px-3 py-2.5 border border-border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-background-surface dark:text-white">
                   <option value="draft">Draft</option>
                   <option value="published">Published</option>
                   <option value="archived">Archived</option>
@@ -298,33 +298,33 @@ const AdminBlogForm = () => {
               </div>
               <div className="flex items-center">
                 <input type="checkbox" name="isFeatured" checked={formData.isFeatured} onChange={handleChange}
-                  className="h-4 w-4 text-primary-600 dark:text-primary-300 focus:ring-primary-500 border-slate-300 rounded" />
-                <label className="ml-2 text-sm text-gray-700 dark:text-gray-300 font-medium">Featured Blog</label>
+                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-border-primary rounded" />
+                <label className="ml-2 text-sm text-content-secondary font-medium">Featured Blog</label>
               </div>
               <div className="flex items-center">
                 <input type="checkbox" name="isPinned" checked={formData.isPinned} onChange={handleChange}
-                  className="h-4 w-4 text-primary-600 dark:text-primary-300 focus:ring-primary-500 border-slate-300 rounded" />
-                <label className="ml-2 text-sm text-gray-700 dark:text-gray-300 font-medium">Pinned Blog</label>
+                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-border-primary rounded" />
+                <label className="ml-2 text-sm text-content-secondary font-medium">Pinned Blog</label>
               </div>
             </div>
           </section>
 
           {/* Error */}
           {error && (
-            <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">
-              <p className="text-black dark:text-white">{error}</p>
+            <div className="bg-background-surface-secondary border border-border-primary dark:border-white rounded-md p-4">
+              <p className="text-content-primary">{error}</p>
             </div>
           )}
 
           {/* Submit */}
           <div className="flex justify-end gap-3">
             <button type="button" onClick={() => router.push('/admin/blogs')}
-              className="px-4 py-2 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 rounded-lg font-bold text-sm hover:bg-gray-200 dark:hover:bg-gray-700">
+              className="px-4 py-2 bg-background-surface-secondary text-content-secondary rounded-lg font-bold text-sm hover:bg-background-surface-secondary">
               Cancel
             </button>
             <motion.button type="submit" disabled={loading}
               whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-              className="px-5 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white rounded-lg font-bold text-sm flex items-center gap-2 disabled:opacity-50 shadow-sm">
+              className="px-5 py-2 hover:brightness-110 text-on-primary rounded-lg font-bold text-sm flex items-center gap-2 disabled:opacity-50 bg-primary-600">
               <Save className="w-4 h-4" />
               {loading ? 'Saving...' : isEdit ? 'Update Blog' : 'Create Blog'}
             </motion.button>

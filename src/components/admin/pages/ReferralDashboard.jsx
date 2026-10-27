@@ -87,12 +87,12 @@ export default function ReferralDashboard() {
       header: 'USER',
       render: (_, u) => (
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm transition-all uppercase">
+          <div className="w-10 h-10 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center font-bold text-xs transition-all uppercase bg-primary-600">
             {u.name?.[0]?.toUpperCase() || 'U'}
           </div>
           <div>
-            <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{u.name || 'Unknown'}</div>
-            <div className="text-[10px] font-bold text-slate-800 dark:text-slate-100 uppercase tracking-widest italic">{u.email}</div>
+            <div className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] leading-none mb-1">{u.name || 'Unknown'}</div>
+            <div className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] italic">{u.email}</div>
           </div>
         </div>
       )
@@ -101,7 +101,7 @@ export default function ReferralDashboard() {
       key: 'referralCode',
       header: 'REFERRAL CODE',
       render: (_, u) => (
-        <div className="px-4 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[9px] font-black text-primary-600 dark:text-primary-300 italic inline-flex items-center gap-2 tabular-nums">
+        <div className="px-4 py-1 rounded-full bg-background-surface-secondary border border-border-primary text-[9px] font-bold text-primary-600 italic inline-flex items-center gap-2 tabular-nums">
           <Zap className="w-3 h-3" /> {u.referralCode || 'N/A'}
         </div>
       )
@@ -110,7 +110,7 @@ export default function ReferralDashboard() {
       key: 'joined',
       header: 'JOINED ON',
       render: (_, u) => (
-        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{u.referredBy || 'Direct Signup'}</span>
+        <span className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{u.referredBy || 'Direct Signup'}</span>
       )
     },
     {
@@ -118,8 +118,8 @@ export default function ReferralDashboard() {
       header: 'REFERRAL REWARDS',
       render: (_, u) => (
         <div>
-          <div className="text-xl font-black italic tracking-tighter text-primary-600 dark:text-primary-300 tabular-nums">₹{u.walletBalance || 0}</div>
-          <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Referral Rewards</div>
+          <div className="text-xl font-bold italic tracking-tight text-primary-600 tabular-nums">₹{u.walletBalance || 0}</div>
+          <div className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em] italic">Referral Rewards</div>
         </div>
       )
     },
@@ -131,17 +131,17 @@ export default function ReferralDashboard() {
           {u.referralRewards?.length > 0 ? (
             <>
               {u.referralRewards.slice(0, 2).map((reward, idx) => (
-                <div key={idx} className="flex items-center gap-3 px-3 py-1 bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-lg shadow-sm">
+                <div key={idx} className="flex items-center gap-3 px-3 py-1 bg-background-surface dark:bg-white/5 border border-border-primary rounded-lg">
                   <div className="w-2 h-2 rounded-full bg-primary-600 animate-pulse" />
-                  <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{getRewardTypeLabel(reward.type)}: <span className="text-primary-600 dark:text-primary-300">₹{reward.amount}</span></span>
+                  <span className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em]">{getRewardTypeLabel(reward.type)}: <span className="text-primary-600">₹{reward.amount}</span></span>
                 </div>
               ))}
               {u.referralRewards.length > 2 && (
-                <span className="text-[8px] font-black text-slate-300 uppercase tracking-widest pl-5">+ {u.referralRewards.length - 2} more rewards</span>
+                <span className="text-[8px] font-bold text-slate-300 uppercase tracking-[0.08em] pl-5">+ {u.referralRewards.length - 2} more rewards</span>
               )}
             </>
           ) : (
-            <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest opacity-30 italic">No rewards yet</span>
+            <span className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em] opacity-30 italic">No rewards yet</span>
           )}
         </div>
       )
@@ -189,9 +189,9 @@ export default function ReferralDashboard() {
   }
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
         <div className="flex-1 min-h-0 overflow-auto flex flex-col transition-all duration-500">
 
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
@@ -204,18 +204,18 @@ export default function ReferralDashboard() {
                 key="empty"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
+                className="flex flex-col items-center justify-center py-10 xl:py-20 text-center rounded-2xl xl:rounded-3xl border border-dashed border-border-primary"
               >
                 <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 xl:mb-4" />
-                <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO REFERRALS FOUND</h3>
-                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No users with referral activity were found. Try adjusting your search.</p>
+                <h3 className="text-xl xl:text-3xl font-bold text-content-primary italic tracking-tight mb-3">NO REFERRALS FOUND</h3>
+                <p className="text-content-muted text-[10px] font-bold uppercase tracking-[0.08em]">No users with referral activity were found. Try adjusting your search.</p>
               </motion.div>
             ) : (
               <motion.div
                 key="content"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm h-auto flex flex-col"
+                className="rounded-2xl xl:rounded-3xl border border-border-primary overflow-hidden h-auto flex flex-col"
               >
                 <ResponsiveTable data={referrals} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
               </motion.div>

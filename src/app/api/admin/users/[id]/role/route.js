@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
+import { resolveUserId } from '@/lib/utils/userRef';
 import User from '@/models/User';
 import { protect, admin } from '@/middleware/auth';
 
@@ -12,18 +13,22 @@ export async function PUT(req, { params }) {
         }
 
         await dbConnect();
-        const { id } = await params;
+        const { id } = await params; // user id or username
         const { role } = await req.json();
 
         if (!['admin', 'student'].includes(role)) {
             return NextResponse.json({ message: 'Invalid role' }, { status: 400 });
         }
 
-        if (String(auth.user._id) === String(id) && role !== 'admin') {
+        const uid = await resolveUserId(id);
+        if (!uid) return NextResponse.json({ message: 'User not found' }, { status: 404 });
+
+        // compare resolved ids, so addressing yourself by username cannot slip past this guard
+        if (String(auth.user._id) === String(uid) && role !== 'admin') {
             return NextResponse.json({ message: 'You cannot remove your own admin access' }, { status: 400 });
         }
 
-        const target = await User.findById(id);
+        const target = await User.findById(uid);
         if (!target) return NextResponse.json({ message: 'User not found' }, { status: 404 });
 
         if (target.role === 'admin' && role === 'student') {

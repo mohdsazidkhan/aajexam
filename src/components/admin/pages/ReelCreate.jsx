@@ -22,15 +22,15 @@ const TYPES = [
 ];
 
 const COLOR_MAP = {
-  blue: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800',
-  purple: 'border-primary-600 bg-primary-50 dark:bg-primary-900/30',
-  amber: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800',
-  red: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800',
-  green: 'border-primary-600 bg-primary-50 dark:bg-primary-950/30',
+  blue: 'border-black dark:border-white bg-background-surface-secondary',
+  purple: 'border-primary-600',
+  amber: 'border-black dark:border-white bg-background-surface-secondary',
+  red: 'border-black dark:border-white bg-background-surface-secondary',
+  green: 'border-primary-600',
 };
 
-const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-white dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
-const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
+const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-background-surface border border-border-primary text-sm text-content-primary focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
+const labelClass = "block text-sm font-semibold text-content-secondary mb-1.5";
 
 const AdminReelCreate = () => {
   const router = useRouter();
@@ -253,11 +253,11 @@ const AdminReelCreate = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setType(t.value)}
-                    className={`p-4 sm:p-4 rounded-2xl border-2 text-left transition-all hover:shadow-sm ${COLOR_MAP[t.color]}`}
+                    className={`p-4 sm:p-4 rounded-2xl border text-left transition-all ${COLOR_MAP[t.color]}`}
                   >
                     <t.icon className="w-6 h-6 sm:w-8 sm:h-8 mb-2 sm:mb-3 opacity-80" />
-                    <h3 className="font-bold text-slate-900 dark:text-white text-sm sm:text-base">{t.label}</h3>
-                    <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1">{t.desc}</p>
+                    <h3 className="font-bold text-content-primary text-sm sm:text-base">{t.label}</h3>
+                    <p className="text-[11px] sm:text-xs text-content-muted mt-1">{t.desc}</p>
                   </motion.button>
                 ))}
               </div>
@@ -267,20 +267,20 @@ const AdminReelCreate = () => {
                 {/* Type badge + change */}
                 <div className="flex items-center gap-3">
                   <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${
-                    type === 'question' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' :
-                    type === 'fact' ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' :
-                    type === 'tip' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' :
-                    type === 'current_affairs' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' :
-                    'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400'
+                    type === 'question' ? 'bg-background-surface-secondary text-content-primary' :
+                    type === 'fact' ? 'text-primary-600' :
+                    type === 'tip' ? 'bg-background-surface-secondary text-content-primary' :
+                    type === 'current_affairs' ? 'bg-background-surface-secondary text-content-primary' :
+                    'text-primary-600'
                   }`}>
                     {type === 'current_affairs' ? 'Current Affairs' : type}
                   </span>
-                  <button type="button" onClick={() => setType('')} className="text-xs text-black dark:text-white hover:underline">Change type</button>
+                  <button type="button" onClick={() => setType('')} className="text-xs text-content-primary hover:underline">Change type</button>
                 </div>
 
                 {/* Common Fields */}
-                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                  <h3 className="font-bold text-slate-900 dark:text-white">Common Details</h3>
+                <section className="bg-background-surface rounded-2xl border border-border-primary p-4 space-y-2 xl:space-y-3 relative">
+                  <h3 className="font-bold text-content-primary">Common Details</h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
@@ -330,8 +330,8 @@ const AdminReelCreate = () => {
 
                 {/* Type-specific fields */}
                 {type === 'question' && (
-                  <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                    <h3 className="font-bold text-black dark:text-white">Question Details</h3>
+                  <section className="bg-background-surface rounded-2xl border border-border-primary dark:border-white p-4 space-y-2 xl:space-y-3 relative">
+                    <h3 className="font-bold text-content-primary">Question Details</h3>
                     <div>
                       <label className={labelClass}>Question Text *</label>
                       <textarea value={questionText} onChange={e => setQuestionText(e.target.value)} placeholder="Type the question..." rows={3} className={inputClass} required />
@@ -343,9 +343,9 @@ const AdminReelCreate = () => {
                           <button
                             type="button"
                             onClick={() => setCorrectAnswerIndex(i)}
-                            className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all ${correctAnswerIndex === i
-                              ? 'border-primary-600 bg-primary-600 text-white'
-                              : 'border-slate-300 dark:border-slate-600 text-slate-400 hover:border-primary-400'}`}
+                            className={`w-8 h-8 rounded-full border flex items-center justify-center text-xs font-bold transition-all ${correctAnswerIndex === i
+                              ? 'border-primary-600 bg-primary-600 text-on-primary'
+                              : 'border-border-primary dark:border-slate-600 text-content-muted hover:border-primary-400'}`}
                           >
                             {String.fromCharCode(65 + i)}
                           </button>
@@ -354,12 +354,12 @@ const AdminReelCreate = () => {
                             value={opt}
                             onChange={(e) => handleOptionChange(i, e.target.value)}
                             placeholder={`Option ${String.fromCharCode(65 + i)}`}
-                            className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`}
+                            className={`flex-1 border border-border-primary ${inputClass}`}
                             required
                           />
                         </div>
                       ))}
-                      <p className="text-xs text-primary-600 dark:text-primary-300">Click letter to mark correct answer. Currently: {String.fromCharCode(65 + correctAnswerIndex)}</p>
+                      <p className="text-xs text-primary-600">Click letter to mark correct answer. Currently: {String.fromCharCode(65 + correctAnswerIndex)}</p>
                     </div>
                     <div>
                       <label className={labelClass}>Explanation</label>
@@ -373,8 +373,8 @@ const AdminReelCreate = () => {
                 )}
 
                 {type === 'fact' && (
-                  <section className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                    <h3 className="font-bold text-primary-600 dark:text-primary-400">Fact Details</h3>
+                  <section className="bg-background-surface rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 relative">
+                    <h3 className="font-bold text-primary-600">Fact Details</h3>
                     <div>
                       <label className={labelClass}>Highlight Text (big centered text)</label>
                       <input type="text" value={highlightText} onChange={e => setHighlightText(e.target.value)} placeholder="e.g. 5 August 2019" className={inputClass} />
@@ -383,19 +383,19 @@ const AdminReelCreate = () => {
                       <label className={labelClass}>Key Points</label>
                       {keyPoints.map((kp, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
-                          <span className="text-xs font-bold text-slate-400 w-5">{i + 1}.</span>
-                          <input type="text" value={kp} onChange={e => handleArrayChange(setKeyPoints, keyPoints, i, e.target.value)} placeholder="Key point..." className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
-                          <button aria-label="Delete" type="button" onClick={() => removeArrayItem(setKeyPoints, keyPoints, i)} className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
+                          <span className="text-xs font-bold text-content-muted w-5">{i + 1}.</span>
+                          <input type="text" value={kp} onChange={e => handleArrayChange(setKeyPoints, keyPoints, i, e.target.value)} placeholder="Key point..." className={`flex-1 border border-border-primary ${inputClass}`} />
+                          <button aria-label="Delete" type="button" onClick={() => removeArrayItem(setKeyPoints, keyPoints, i)} className="p-1 text-content-primary hover:text-content-primary dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       ))}
-                      <button type="button" onClick={() => addArrayItem(setKeyPoints, keyPoints)} className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add point</button>
+                      <button type="button" onClick={() => addArrayItem(setKeyPoints, keyPoints)} className="text-xs text-content-primary flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add point</button>
                     </div>
                   </section>
                 )}
 
                 {type === 'tip' && (
-                  <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                    <h3 className="font-bold text-black dark:text-white">Trick / Shortcut Details</h3>
+                  <section className="bg-background-surface rounded-2xl border border-border-primary dark:border-white p-4 space-y-2 xl:space-y-3 relative">
+                    <h3 className="font-bold text-content-primary">Trick / Shortcut Details</h3>
                     <div>
                       <label className={labelClass}>Formula</label>
                       <input type="text" value={formula} onChange={e => setFormula(e.target.value)} placeholder="e.g. CP × 1.25 = SP" className={inputClass} />
@@ -404,29 +404,29 @@ const AdminReelCreate = () => {
                       <label className={labelClass}>Steps</label>
                       {steps.map((s, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
-                          <span className="text-xs font-bold text-slate-400 w-14">Step {i + 1}</span>
-                          <input type="text" value={s} onChange={e => handleArrayChange(setSteps, steps, i, e.target.value)} placeholder="Step description..." className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
-                          <button aria-label="Delete" type="button" onClick={() => removeArrayItem(setSteps, steps, i)} className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
+                          <span className="text-xs font-bold text-content-muted w-14">Step {i + 1}</span>
+                          <input type="text" value={s} onChange={e => handleArrayChange(setSteps, steps, i, e.target.value)} placeholder="Step description..." className={`flex-1 border border-border-primary ${inputClass}`} />
+                          <button aria-label="Delete" type="button" onClick={() => removeArrayItem(setSteps, steps, i)} className="p-1 text-content-primary hover:text-content-primary dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       ))}
-                      <button type="button" onClick={() => addArrayItem(setSteps, steps)} className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add step</button>
+                      <button type="button" onClick={() => addArrayItem(setSteps, steps)} className="text-xs text-content-primary flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add step</button>
                     </div>
                     <div>
                       <label className={labelClass}>Try Yourself Examples</label>
                       {tryYourself.map((t, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
-                          <input type="text" value={t} onChange={e => handleArrayChange(setTryYourself, tryYourself, i, e.target.value)} placeholder="e.g. 45² = 2025" className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
-                          <button aria-label="Delete" type="button" onClick={() => removeArrayItem(setTryYourself, tryYourself, i)} className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
+                          <input type="text" value={t} onChange={e => handleArrayChange(setTryYourself, tryYourself, i, e.target.value)} placeholder="e.g. 45² = 2025" className={`flex-1 border border-border-primary ${inputClass}`} />
+                          <button aria-label="Delete" type="button" onClick={() => removeArrayItem(setTryYourself, tryYourself, i)} className="p-1 text-content-primary hover:text-content-primary dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       ))}
-                      <button type="button" onClick={() => addArrayItem(setTryYourself, tryYourself)} className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add example</button>
+                      <button type="button" onClick={() => addArrayItem(setTryYourself, tryYourself)} className="text-xs text-content-primary flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add example</button>
                     </div>
                   </section>
                 )}
 
                 {type === 'current_affairs' && (
-                  <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                    <h3 className="font-bold text-black dark:text-white">Current Affairs Details</h3>
+                  <section className="bg-background-surface rounded-2xl border border-border-primary dark:border-white p-4 space-y-2 xl:space-y-3 relative">
+                    <h3 className="font-bold text-content-primary">Current Affairs Details</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
                         <label className={labelClass}>Date *</label>
@@ -452,12 +452,12 @@ const AdminReelCreate = () => {
                       <label className={labelClass}>Data Table (Key-Value pairs)</label>
                       {tableData.map((row, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
-                          <input type="text" value={row.key} onChange={e => handleTableChange(i, 'key', e.target.value)} placeholder="Label (e.g. Repo Rate)" className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
-                          <input type="text" value={row.value} onChange={e => handleTableChange(i, 'value', e.target.value)} placeholder="Value (e.g. 6.00%)" className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
-                          <button aria-label="Delete" type="button" onClick={() => { if (tableData.length > 1) setTableData(tableData.filter((_, j) => j !== i)); }} className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
+                          <input type="text" value={row.key} onChange={e => handleTableChange(i, 'key', e.target.value)} placeholder="Label (e.g. Repo Rate)" className={`flex-1 border border-border-primary ${inputClass}`} />
+                          <input type="text" value={row.value} onChange={e => handleTableChange(i, 'value', e.target.value)} placeholder="Value (e.g. 6.00%)" className={`flex-1 border border-border-primary ${inputClass}`} />
+                          <button aria-label="Delete" type="button" onClick={() => { if (tableData.length > 1) setTableData(tableData.filter((_, j) => j !== i)); }} className="p-1 text-content-primary hover:text-content-primary dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       ))}
-                      <button type="button" onClick={() => setTableData([...tableData, { key: '', value: '' }])} className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add row</button>
+                      <button type="button" onClick={() => setTableData([...tableData, { key: '', value: '' }])} className="text-xs text-content-primary flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add row</button>
                     </div>
                     <div>
                       <label className={labelClass}>Key Takeaway</label>
@@ -467,8 +467,8 @@ const AdminReelCreate = () => {
                 )}
 
                 {type === 'poll' && (
-                  <section className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                    <h3 className="font-bold text-primary-600 dark:text-primary-400">Poll Details</h3>
+                  <section className="bg-background-surface rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-2 xl:space-y-3 relative">
+                    <h3 className="font-bold text-primary-600">Poll Details</h3>
                     <div>
                       <label className={labelClass}>Poll Question *</label>
                       <input type="text" value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} placeholder="What do you want to ask?" className={inputClass} required />
@@ -477,36 +477,36 @@ const AdminReelCreate = () => {
                       <label className={labelClass}>Poll Options (min 2) *</label>
                       {pollOptions.map((opt, i) => (
                         <div key={i} className="flex items-center gap-2 mb-2">
-                          <span className="text-xs font-bold text-slate-400 w-5">{i + 1}.</span>
-                          <input type="text" value={opt.text} onChange={e => handlePollOptionChange(i, e.target.value)} placeholder={`Option ${i + 1}`} className={`flex-1 border border-slate-300 dark:border-slate-700 ${inputClass}`} required={i < 2} />
+                          <span className="text-xs font-bold text-content-muted w-5">{i + 1}.</span>
+                          <input type="text" value={opt.text} onChange={e => handlePollOptionChange(i, e.target.value)} placeholder={`Option ${i + 1}`} className={`flex-1 border border-border-primary ${inputClass}`} required={i < 2} />
                           {pollOptions.length > 2 && (
-                            <button aria-label="Delete" type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))} className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
+                            <button aria-label="Delete" type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))} className="p-1 text-content-primary hover:text-content-primary dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                           )}
                         </div>
                       ))}
                       {pollOptions.length < 6 && (
-                        <button type="button" onClick={() => setPollOptions([...pollOptions, { text: '' }])} className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add option</button>
+                        <button type="button" onClick={() => setPollOptions([...pollOptions, { text: '' }])} className="text-xs text-content-primary flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add option</button>
                       )}
                     </div>
                   </section>
                 )}
 
                 {/* Audio & Duration — Instagram Style */}
-                <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-4 space-y-2 xl:space-y-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                <section className="bg-background-surface rounded-2xl border border-border-primary p-4 space-y-2 xl:space-y-3 relative">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                      <Music className="w-5 h-5 text-black dark:text-white" /> Add Audio
+                    <h3 className="font-bold text-content-primary flex items-center gap-2">
+                      <Music className="w-5 h-5 text-content-primary" /> Add Audio
                     </h3>
                     {audioFile && (
                       <button type="button" onClick={() => { setAudioFile(''); if (audioPreviewRef.current) { audioPreviewRef.current.pause(); audioPreviewRef.current = null; } setAudioPlaying(null); }}
-                        className="text-xs font-bold text-black dark:text-white hover:underline">Remove</button>
+                        className="text-xs font-bold text-content-primary hover:underline">Remove</button>
                     )}
                   </div>
 
                   {/* Search */}
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                    <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder="Search audio..." className={`pl-9 border border-slate-300 dark:border-slate-700 ${inputClass}`} />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
+                    <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder="Search audio..." className={`pl-9 border border-border-primary ${inputClass}`} />
                   </div>
 
                   {/* Audio List */}
@@ -515,20 +515,20 @@ const AdminReelCreate = () => {
                       <div key={a.value}
                         onClick={() => handleAudioSelect(a.value)}
                         className={`flex items-center gap-3 p-3 rounded-lg xl:rounded-xl cursor-pointer transition-all ${audioFile === a.value
-                          ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white'
-                          : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
+                          ? 'bg-background-surface-secondary border border-border-primary dark:border-white'
+                          : 'hover:bg-background-surface-secondary border border-transparent'}`}
                       >
                         <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
                           className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${audioPlaying === a.value
-                            ?'bg-primary-600 text-white':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
+                            ?'bg-primary-600 text-on-primary':'bg-background-surface-secondary text-content-muted'}`}>
                           {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                         </button>
                         <div className="flex-1 min-w-0">
-                          <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-black dark:text-white ' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
+                          <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-content-primary' : 'text-content-primary'}`}>{a.label}</p>
                           <div className="flex items-center gap-2">
-                            <p className="text-[11px] text-slate-400 truncate">{a.artist}</p>
+                            <p className="text-[11px] text-content-muted truncate">{a.artist}</p>
                             {a.audioDuration && (
-                              <span className="text-[10px] font-medium text-slate-400 tabular-nums">{formatAudioDuration(a.audioDuration)}</span>
+                              <span className="text-[10px] font-medium text-content-muted tabular-nums">{formatAudioDuration(a.audioDuration)}</span>
                             )}
                           </div>
                         </div>
@@ -540,37 +540,37 @@ const AdminReelCreate = () => {
                       </div>
                     ))}
                     {filteredAudios.length === 0 && (
-                      <p className="text-sm text-slate-400 text-center py-2.5">No audio found</p>
+                      <p className="text-sm text-content-muted text-center py-2.5">No audio found</p>
                     )}
                   </div>
 
                   {/* Mute toggle */}
                   {audioPlaying && (
-                    <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800">
+                    <div className="flex items-center justify-between pt-3 border-t border-border-primary">
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-primary-600 animate-pulse"/>
-                        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Now Playing</span>
+                        <span className="text-xs font-semibold text-content-muted">Now Playing</span>
                       </div>
-                      <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
-                        {audioMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-black dark:text-white" />}
+                      <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-background-surface-secondary">
+                        {audioMuted ? <VolumeX className="w-4 h-4 text-content-muted" /> : <Volume2 className="w-4 h-4 text-content-primary" />}
                       </button>
                     </div>
                   )}
 
                   {/* Duration */}
-                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800">
+                  <div className="pt-3 border-t border-border-primary">
                     <label className={labelClass}>Duration (seconds)</label>
                     <div className="relative">
                       <input type="number" value={duration} onChange={e => setDuration(e.target.value)} placeholder="e.g. 15" min="5" max="120" className={inputClass} />
-                      <Clock className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                      <Clock className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted pointer-events-none" />
                     </div>
-                    <p className="text-xs text-slate-400 mt-1">Reel will auto-scroll after this time (5-120 sec)</p>
+                    <p className="text-xs text-content-muted mt-1">Reel will auto-scroll after this time (5-120 sec)</p>
                   </div>
                 </section>
 
                 {/* Submit */}
                 <div className="flex items-center justify-end gap-3 pt-2 pb-8">
-                  <button type="button" onClick={() => router.back()} className="px-4 py-2.5 rounded-lg xl:rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
+                  <button type="button" onClick={() => router.back()} className="px-4 py-2.5 rounded-lg xl:rounded-xl text-sm font-medium text-content-secondary bg-background-surface border border-border-primary hover:bg-background-surface-secondary">
                     Cancel
                   </button>
                   <Button type="submit" disabled={loading} className="sm:flex-none">

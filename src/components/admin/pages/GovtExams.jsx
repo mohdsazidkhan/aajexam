@@ -158,23 +158,23 @@ const AdminGovtExams = () => {
   const examColumns = [
     {
       key: 'code', header: 'Exam Code', render: (_, exam) => (
-        <span className="px-3 py-1 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg text-[10px] font-black">{exam.code}</span>
+        <span className="px-3 py-1 text-on-primary rounded-lg text-[10px] font-bold bg-primary-600">{exam.code}</span>
       )
     },
     {
       key: 'name', header: 'Exam Name', render: (_, exam) => (
-        <span className="font-black text-slate-900 dark:text-white uppercase italic tracking-tight">{exam.name}</span>
+        <span className="font-bold text-content-primary uppercase italic tracking-tight">{exam.name}</span>
       )
     },
     {
       key: 'category', header: 'Category', render: (_, exam) => (
-        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{exam.category?.name || 'Uncategorized'}</span>
+        <span className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{exam.category?.name || 'Uncategorized'}</span>
       )
     },
     {
       key: 'isActive', header: 'Status', align: 'center', render: (_, exam) => (
         <div className="flex justify-center">
-          <div className={`px-4 py-1.5 rounded-lg xl:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${exam.isActive ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
+          <div className={`px-4 py-1.5 rounded-lg xl:rounded-xl border text-[9px] font-bold uppercase flex items-center gap-2 ${exam.isActive ? 'text-primary-600 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-content-primary border-border-primary'}`}>
             <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-600 animate-pulse' : 'bg-primary-600'}`} />
             {exam.isActive ? 'Online' : 'Offline'}
           </div>
@@ -185,14 +185,14 @@ const AdminGovtExams = () => {
       key: 'actions', header: 'Actions', align: 'right', render: (_, exam) => (
         <div className="flex justify-end gap-3">
           <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`}>
-            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl border border-primary-500/20">
+            <motion.button whileHover={{ scale: 1.1 }} className="p-3 text-on-primary rounded-lg xl:rounded-xl border border-primary-500/20 bg-primary-600">
               <Zap className="w-4 h-4" />
             </motion.button>
           </Link>
-          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(exam)} className="p-3 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-xl">
+          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(exam)} className="p-3 text-on-primary rounded-lg xl:rounded-xl bg-primary-600">
             <Edit3 className="w-4 h-4" />
           </motion.button>
-          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(exam._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg xl:rounded-xl border border-black/20 dark:border-white/20">
+          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(exam._id)} className="p-3 bg-black/10 dark:bg-white/10 text-content-primary rounded-lg xl:rounded-xl border border-border-primary">
             <Trash2 className="w-4 h-4" />
           </motion.button>
         </div>
@@ -202,13 +202,13 @@ const AdminGovtExams = () => {
 
   const searchInput = (
     <div className="relative group w-full">
-      <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-600 transition-colors" />
+      <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted group-focus-within:text-primary-600 transition-colors" />
       <input
         type="text"
         placeholder="Search exam name or code..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full pl-10 pr-4 py-2.5 bg-slate-100 dark:bg-black border-2 focus:border-primary-500/30 rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm border-slate-300 dark:border-slate-700"
+        className="w-full pl-10 pr-4 py-2.5 bg-background-surface-secondary border focus:border-primary-500/30 rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] outline-none transition-all border-border-primary"
       />
     </div>
   );
@@ -234,10 +234,10 @@ const AdminGovtExams = () => {
           key={mode.id}
           onClick={() => setViewMode(mode.id)}
           title={mode.label}
-          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
         >
           <mode.icon className="w-4 h-4" />
-          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+          <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
         </button>
       ))}
     </div>
@@ -247,7 +247,7 @@ const AdminGovtExams = () => {
     <motion.button
       whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
       onClick={handleCreate}
-      className="w-full xl:w-auto px-4 xl:px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
+      className="w-full xl:w-auto px-4 xl:px-4 py-2.5 hover:brightness-110 text-on-primary rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] flex items-center justify-center gap-2 bg-primary-600"
     >
       <Plus className="w-4 h-4" /> ADD EXAM
     </motion.button>
@@ -281,7 +281,7 @@ const AdminGovtExams = () => {
 
   if (!isMounted) return null;
 
-  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+  return (<div className="py-4 w-full mx-auto text-content-primary font-outfit">
 
     {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
@@ -290,15 +290,15 @@ const AdminGovtExams = () => {
       {loading ? (
         <AdminTableSkeleton showHeader={false} showFilters={false} />
       ) : filteredExams.length === 0 ? (
-        <section className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
+        <section className="rounded-lg xl:rounded-xl xl:rounded-3xl border border-dashed border-border-primary p-20 text-center">
           <Building2 className="w-16 h-16 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
-          <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Records Found</h3>
-          <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">No exams match your filters. Try adjusting your search or category.</p>
+          <h3 className="text-xl xl:text-3xl font-bold text-content-primary tracking-tight mb-4 font-outfit">No Records Found</h3>
+          <p className="text-content-muted text-[10px] font-bold uppercase tracking-[0.08em]">No exams match your filters. Try adjusting your search or category.</p>
         </section>
       ) : (
         <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           {viewMode === 'table' && (
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm">
+            <div className="rounded-lg xl:rounded-xl xl:rounded-3xl border border-border-primary overflow-hidden">
               <ResponsiveTable data={pagedExams} columns={examColumns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} />
             </div>
           )}
@@ -308,35 +308,35 @@ const AdminGovtExams = () => {
               {filteredExams.map((exam, idx) => {
                 const serialNumber = idx + 1;
                 return (
-                <motion.div key={exam._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 shadow-sm relative font-outfit">
+                <motion.div key={exam._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="rounded-lg xl:rounded-xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 relative font-outfit">
                   <div className="absolute top-6 right-6">
-                    <div className={`px-4 py-1.5 rounded-lg xl:rounded-xl border-2 text-[8px] font-black uppercase tracking-widest ${exam.isActive ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
+                    <div className={`px-4 py-1.5 rounded-lg xl:rounded-xl border text-[8px] font-bold uppercase tracking-[0.08em] ${exam.isActive ? 'text-primary-600 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-content-primary border-border-primary'}`}>
                       {exam.isActive ? 'LIVE' : 'INACTIVE'}
                     </div>
                   </div>
                   <div className="flex items-center gap-3 xl:gap-3 mb-4 xl:mb-4 group">
-                    <div className="relative p-3 xl:p-4 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-2xl shadow-sm transition-transform group-hover:rotate-6 shrink-0">
+                    <div className="relative p-3 xl:p-4 text-on-primary rounded-lg xl:rounded-2xl transition-transform group-hover:rotate-6 shrink-0 bg-primary-600">
                       <Building2 className="w-4 h-4 xl:w-8 xl:h-8" />
-                      <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0A0F1E]">{serialNumber}</span>
+                      <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-[#0A0F1E]">{serialNumber}</span>
                     </div>
                     <div className="min-w-0 pr-16 xl:pr-0">
-                      <div className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest mb-1">{exam.code}</div>
-                      <h3 className="text-base xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight">{exam.name}</h3>
+                      <div className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] mb-1">{exam.code}</div>
+                      <h3 className="text-base xl:text-xl font-bold text-content-primary italic tracking-tight leading-tight">{exam.name}</h3>
                     </div>
                   </div>
                   <div className="space-y-2 xl:space-y-3 mb-4 xl:mb-4">
-                    <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border-2 border-slate-100 dark:border-white/10 flex justify-between">
-                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Category</span>
-                      <span className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-tighter">{exam.category?.name}</span>
+                    <div className="p-4 bg-background-surface-secondary rounded-2xl border border-border-primary flex justify-between">
+                      <span className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">Category</span>
+                      <span className="text-xs font-bold text-content-primary uppercase tracking-tight">{exam.category?.name}</span>
                     </div>
-                    <p className="text-[10px] font-bold text-slate-500 line-clamp-2 uppercase tracking-widest leading-none mb-2">{exam.description || 'No description provided.'}</p>
+                    <p className="text-[10px] font-bold text-content-muted line-clamp-2 uppercase tracking-[0.08em] leading-none mb-2">{exam.description || 'No description provided.'}</p>
                   </div>
-                  <div className="flex gap-3 pt-3 xl:pt-6 border-t-2 border-slate-100 dark:border-white/5">
+                  <div className="flex gap-3 pt-3 xl:pt-6 border-t-2 border-border-primary">
                     <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`} className="flex-1">
-                      <motion.button whileHover={{ scale: 1.02 }} className="w-full py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">Patterns</motion.button>
+                      <motion.button whileHover={{ scale: 1.02 }} className="w-full py-2.5 text-on-primary rounded-2xl text-[10px] font-bold uppercase tracking-[0.08em] bg-primary-600">Patterns</motion.button>
                     </Link>
-                    <motion.button onClick={() => handleEdit(exam)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg xl:rounded-xl hover:text-primary-600 transition-colors"><Edit3 className="w-5 h-5" /></motion.button>
-                    <motion.button onClick={() => handleDelete(exam._id)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg xl:rounded-xl hover:text-black dark:hover:text-white transition-colors"><Trash2 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleEdit(exam)} className="p-4 bg-background-surface-secondary text-content-muted rounded-lg xl:rounded-xl hover:text-primary-600 transition-colors"><Edit3 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleDelete(exam._id)} className="p-4 bg-background-surface-secondary text-content-muted rounded-lg xl:rounded-xl hover:text-content-primary dark:hover:text-white transition-colors"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
                 );
@@ -349,30 +349,30 @@ const AdminGovtExams = () => {
               {filteredExams.map((exam, idx) => {
                 const serialNumber = idx + 1;
                 return (
-                <motion.div key={exam._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 xl:gap-3 hover:border-primary-500/30 transition-all font-outfit shadow-sm">
+                <motion.div key={exam._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="rounded-lg xl:rounded-xl xl:rounded-3xl border border-border-primary p-3 xl:p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 xl:gap-3 hover:border-primary-500/30 transition-all font-outfit">
                   <div className="flex items-center gap-3 xl:gap-3">
-                    <div className="relative min-w-[4.5rem] h-16 px-2 shrink-0 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-2xl flex items-center justify-center text-center font-black italic shadow-sm group-hover:-rotate-3 transition-transform text-[10px] leading-tight break-words">
+                    <div className="relative min-w-[4.5rem] h-16 px-2 shrink-0 text-on-primary rounded-2xl flex items-center justify-center text-center font-bold italic transition-transform text-[10px] leading-tight break-words bg-primary-600">
                       {exam.code}
-                      <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0A0F1E]">{serialNumber}</span>
+                      <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-[#0A0F1E]">{serialNumber}</span>
                     </div>
                     <div>
-                      <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{exam.name}</h3>
+                      <h3 className="text-lg font-bold text-content-primary italic tracking-tight leading-none mb-1">{exam.name}</h3>
                       <div className="flex items-center gap-3">
-                        <div className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{exam.category?.name}</div>
+                        <div className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em]">{exam.category?.name}</div>
                         <div className="flex items-center gap-2">
                           <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ?'bg-primary-600 animate-pulse':'bg-primary-600'}`} />
-                          <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{exam.isActive ? 'Active' : 'Offline'}</span>
+                          <span className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{exam.isActive ? 'Active' : 'Offline'}</span>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`}>
-                      <motion.button whileHover={{ scale: 1.05 }} className="px-4 xl:px-5 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm">Manage Patterns</motion.button>
+                      <motion.button whileHover={{ scale: 1.05 }} className="px-4 xl:px-5 py-2 text-on-primary rounded-lg xl:rounded-xl font-bold text-[10px] uppercase tracking-[0.08em] bg-primary-600">Manage Patterns</motion.button>
                     </Link>
-                    <div className="w-px h-10 bg-slate-100 dark:bg-white/10 mx-2" />
-                    <motion.button onClick={() => handleEdit(exam)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg xl:rounded-xl hover:text-primary-600"><Edit3 className="w-5 h-5" /></motion.button>
-                    <motion.button onClick={() => handleDelete(exam._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg xl:rounded-xl hover:text-black dark:hover:text-white"><Trash2 className="w-5 h-5" /></motion.button>
+                    <div className="w-px h-10 bg-background-surface-secondary mx-2" />
+                    <motion.button onClick={() => handleEdit(exam)} className="p-3 bg-background-surface-secondary text-content-muted rounded-lg xl:rounded-xl hover:text-primary-600"><Edit3 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleDelete(exam._id)} className="p-3 bg-background-surface-secondary text-content-muted rounded-lg xl:rounded-xl hover:text-content-primary dark:hover:text-white"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
                 );
@@ -387,16 +387,16 @@ const AdminGovtExams = () => {
     <AnimatePresence>
       {showModal && (
         <div className="fixed inset-0 z-[999]">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-slate-950/60 backdrop-blur-md" />
-          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
-            <section className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-slate-950/60" />
+          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col">
+            <section className="px-4 py-2.5 border-b-2 border-border-primary flex items-center justify-between shrink-0">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl shadow-sm">
+                <div className="p-2 text-on-primary rounded-2xl bg-primary-600">
                   <Settings className="w-5 h-5" />
                 </div>
                 <section>
-                  <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingExam ? 'Edit' : 'Add'} <span className="text-primary-600 dark:text-primary-300">Exam</span></h2>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingExam ? `Editing: ${editingExam.name}` : 'Create a new exam'}</p>
+                  <h2 className="text-base xl:text-base font-bold text-content-primary uppercase italic tracking-tight">{editingExam ? 'Edit' : 'Add'} <span className="text-primary-600">Exam</span></h2>
+                  <p className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{editingExam ? `Editing: ${editingExam.name}` : 'Create a new exam'}</p>
                 </section>
               </div>
               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg xl:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
@@ -405,45 +405,45 @@ const AdminGovtExams = () => {
 <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-5 space-y-3">
               <div className="space-y-2 xl:space-y-3 xl:space-y-4">
                 <div className="space-y-2 xl:space-y-3">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Category</label>
-                  <Select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase tracking-widest outline-none appearance-none cursor-pointer border-slate-300 dark:border-slate-700">
+                  <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4 block border-l-4 border-primary-600 pl-3">Category</label>
+                  <Select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} required className="w-full px-3 xl:px-4 py-3 bg-background-surface border focus:border-primary-500/30 rounded-2xl text-xs font-bold uppercase tracking-[0.08em] outline-none appearance-none cursor-pointer border-border-primary">
                     <option value="">Select Category...</option>
                     {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>)}
                   </Select>
                 </div>
                 <div className="grid grid-cols-2 gap-3 xl:gap-3">
                   <div className="space-y-2 xl:space-y-3">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Exam Code</label>
-                    <input type="text" value={formData.code} onChange={(e) => setFormData({ ...formData, code: e.target.value.toUpperCase() })} placeholder="E.G. SSC" required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm border-slate-300 dark:border-slate-700" />
+                    <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4 block border-l-4 border-primary-600 pl-3">Exam Code</label>
+                    <input type="text" value={formData.code} onChange={(e) => setFormData({ ...formData, code: e.target.value.toUpperCase() })} placeholder="E.G. SSC" required className="w-full px-3 xl:px-4 py-3 bg-background-surface border focus:border-primary-500/30 rounded-2xl text-xs font-bold uppercase outline-none border-border-primary" />
                   </div>
                   <div className="space-y-2 xl:space-y-3">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Full Name</label>
-                    <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Exam Name" required className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm border-slate-300 dark:border-slate-700" />
+                    <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4 block border-l-4 border-primary-600 pl-3">Full Name</label>
+                    <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Exam Name" required className="w-full px-3 xl:px-4 py-3 bg-background-surface border focus:border-primary-500/30 rounded-2xl text-xs font-bold uppercase outline-none border-border-primary" />
                   </div>
                 </div>
                 <div className="space-y-2 xl:space-y-3">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Overview (Description)</label>
-                  <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} placeholder="Exam Details" rows="4" className="w-full px-4 xl:px-5 py-2 xl:py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase outline-none shadow-sm resize-none border-slate-300 dark:border-slate-700" />
+                  <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4 block border-l-4 border-primary-600 pl-3">Overview (Description)</label>
+                  <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} placeholder="Exam Details" rows="4" className="w-full px-4 xl:px-5 py-2 xl:py-3 bg-background-surface border focus:border-primary-500/30 rounded-lg xl:rounded-3xl text-xs font-bold uppercase outline-none resize-none border-border-primary" />
                 </div>
                 <div className="space-y-2 xl:space-y-3">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-600 pl-3">Logo URL</label>
-                  <input type="text" value={formData.logo} onChange={(e) => setFormData({ ...formData, logo: e.target.value })} placeholder="https://..." className="w-full px-3 xl:px-4 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm border-slate-300 dark:border-slate-700" />
+                  <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4 block border-l-4 border-primary-600 pl-3">Logo URL</label>
+                  <input type="text" value={formData.logo} onChange={(e) => setFormData({ ...formData, logo: e.target.value })} placeholder="https://..." className="w-full px-3 xl:px-4 py-3 bg-background-surface border focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none border-border-primary" />
                 </div>
-                <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-3xl flex items-center justify-between border-2 border-slate-100 dark:border-white/5">
+                <div className="p-4 bg-background-surface-secondary rounded-3xl flex items-center justify-between border border-border-primary">
                   <div className="flex items-center gap-3">
-                    <div className={`p-3 rounded-lg xl:rounded-xl ${formData.isActive ? 'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow ' : 'bg-slate-200'}`}><Zap className="w-5 h-5" /></div>
+                    <div className={`p-3 rounded-lg xl:rounded-xl ${formData.isActive ? 'text-on-primary bg-primary-600' : 'bg-background-surface-secondary'}`}><Zap className="w-5 h-5" /></div>
                     <div>
-                      <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Active Status</p>
-                      <p className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">{formData.isActive ? 'Published & Active' : 'Hidden from Students'}</p>
+                      <p className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em]">Active Status</p>
+                      <p className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em]">{formData.isActive ? 'Published & Active' : 'Hidden from Students'}</p>
                     </div>
                   </div>
-                  <input type="checkbox" checked={formData.isActive} onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })} className="w-6 h-6 rounded-lg text-primary-600 dark:text-primary-300 border-2 border-slate-300 cursor-pointer" />
+                  <input type="checkbox" checked={formData.isActive} onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })} className="w-6 h-6 rounded-lg text-primary-600 border border-border-primary cursor-pointer" />
                 </div>
               </div>
               </div>
-<div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] justify-end items-center">
- <button type="button" onClick={() => setShowModal(false)} className="px-6 py-3 bg-slate-100 dark:bg-white/5 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest">Cancel</button>
- <button type="submit" className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
+<div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-border-primary bg-background-surface justify-end items-center">
+ <button type="button" onClick={() => setShowModal(false)} className="px-6 py-3 bg-background-surface-secondary text-content-muted rounded-2xl font-bold text-[10px] uppercase tracking-[0.08em]">Cancel</button>
+ <button type="submit" className="px-6 py-3 text-on-primary rounded-2xl font-bold text-[10px] uppercase tracking-[0.08em] flex items-center justify-center gap-3 bg-primary-600">
  <CheckCircle2 className="w-5 h-5" /> {editingExam ? 'Save Changes' : 'Register Exam'}
  </button>
  </div>

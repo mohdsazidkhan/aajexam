@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
+import { resolveUserId } from '@/lib/utils/userRef';
 import User from '@/models/User';
 import { protect, admin } from '@/middleware/auth';
 
@@ -10,7 +11,7 @@ export async function POST(req, { params }) {
             return NextResponse.json({ message: 'Admin access required' }, { status: 403 });
         }
 
-        const { userId } = params;
+        const { userId } = await params; // user id or username
         const { plan, duration } = await req.json();
 
         if (!plan || !duration) {
@@ -19,7 +20,8 @@ export async function POST(req, { params }) {
 
         await dbConnect();
 
-        const student = await User.findById(userId);
+        const uid = await resolveUserId(userId);
+        const student = uid ? await User.findById(uid) : null;
         if (!student) {
             return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
         }

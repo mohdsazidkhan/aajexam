@@ -16,7 +16,7 @@ export default function SubcategoriesGone() {
         <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', textAlign: 'center', fontFamily: 'system-ui, sans-serif' }}>
             <div style={{ maxWidth: 520 }}>
                 <h1 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>{translate('This page has moved')}</h1>
-                <p className="text-slate-600 dark:text-slate-300" style={{ lineHeight: 1.6 }}>
+                <p className="text-content-secondary" style={{ lineHeight: 1.6 }}>
                     {rich('Browse our <0>topics catalogue</0> or <1>subjects catalogue</1> for the resource you were looking for.', [(c) => <Link href="/topics" style={{ color: '#58cc02', textDecoration: 'underline' }}>{c}</Link>, (c) => <Link href="/subjects" style={{ color: '#58cc02', textDecoration: 'underline' }}>{c}</Link>])}
                 </p>
             </div>

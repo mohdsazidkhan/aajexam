@@ -13,7 +13,7 @@ const Sh = ({ className = '' }) => (
 
 // ─── Reusable row skeleton (icon + 2 text lines + badges) ────────────────────
 const RowSkeleton = ({ badgeCount = 2 }) => (
-  <div className="flex items-center gap-3 p-3 xl:p-4 bg-white dark:bg-slate-800/60 rounded-2xl border border-slate-100 dark:border-slate-700/60">
+  <div className="flex items-center gap-3 p-3 xl:p-4 bg-background-surface rounded-2xl border border-border-primary">
     <Sh className="w-10 h-10 xl:w-12 xl:h-12 shrink-0 rounded-lg xl:rounded-xl" />
     <div className="flex-1 space-y-2 min-w-0">
       <Sh className="h-3.5 w-3/4 rounded-lg" />
@@ -41,7 +41,7 @@ const ListHeaderSkeleton = () => (
 
 // ─── Hero banner skeleton (gradient card) ────────────────────────────────────
 const HeroBannerSkeleton = () => (
-  <div className="rounded-2xl p-6 bg-slate-100 dark:bg-slate-800/60 space-y-3 mb-5">
+  <div className="rounded-2xl p-6 bg-background-surface-secondary space-y-3 mb-5">
     <Sh className="h-4 w-24 rounded-full" />
     <Sh className="h-8 w-48 rounded-lg xl:rounded-xl" />
     <Sh className="h-3 w-64 rounded-lg" />
@@ -54,7 +54,7 @@ const HeroBannerSkeleton = () => (
 
 // ─── Card grid skeleton (for blog / quiz cards) ───────────────────────────────
 const GridCardSkeleton = () => (
-  <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+  <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden">
     <Sh className="h-44 w-full rounded-none" />
     <div className="p-4 space-y-3">
       <Sh className="h-3 w-20 rounded-full" />
@@ -75,7 +75,7 @@ const GridCardSkeleton = () => (
 
 // ─── Exam card skeleton (for govt-exams grid) ─────────────────────────────────
 export const ExamCardSkeleton = () => (
-  <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 space-y-3">
+  <div className="bg-background-surface rounded-2xl border border-border-primary p-4 space-y-3">
     <div className="flex items-start gap-3">
       <Sh className="w-12 h-12 rounded-lg xl:rounded-xl shrink-0" />
       <div className="flex-1 space-y-2">
@@ -101,7 +101,7 @@ const QuizPreviewSkeleton = () => (
       <Sh className="h-4 w-16 rounded-full" />
     </div>
     {/* Hero card */}
-    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 xl:p-10 border border-slate-200 dark:border-slate-700 space-y-5">
+    <div className="bg-background-surface rounded-3xl p-6 xl:p-10 border border-border-primary space-y-5">
       <div className="flex items-start gap-4">
         <Sh className="w-14 h-14 rounded-2xl shrink-0" />
         <div className="flex-1 space-y-3">
@@ -115,7 +115,7 @@ const QuizPreviewSkeleton = () => (
       {/* Stats row */}
       <div className="grid grid-cols-3 gap-4 pt-2">
         {[1,2,3].map(i => (
-          <div key={i} className="bg-slate-50 dark:bg-slate-700/30 rounded-2xl p-4 space-y-2">
+          <div key={i} className="bg-background-surface-secondary rounded-2xl p-4 space-y-2">
             <Sh className="h-3 w-12 rounded-full" />
             <Sh className="h-6 w-8 rounded-lg" />
           </div>
@@ -125,7 +125,7 @@ const QuizPreviewSkeleton = () => (
       <Sh className="h-12 w-full rounded-2xl" />
     </div>
     {/* Leaderboard */}
-    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 space-y-2 xl:space-y-4">
+    <div className="bg-background-surface rounded-3xl p-6 border border-border-primary space-y-2 xl:space-y-4">
       <Sh className="h-5 w-32 rounded-lg xl:rounded-xl" />
       {[1,2,3].map(i => <RowSkeleton key={i} badgeCount={1} />)}
     </div>
@@ -163,7 +163,7 @@ const BlogDetailSkeleton = () => (
 // ─── Auth form skeleton (login / register) ────────────────────────────────────
 export const AuthFormSkeleton = () => (
   <div className="min-h-screen flex items-center justify-center bg-background-page px-4">
-    <div className="w-full max-w-md bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-8 space-y-5 animate-pulse">
+    <div className="w-full max-w-md bg-background-surface rounded-3xl border border-border-primary p-8 space-y-5 animate-pulse">
       <Sh className="h-8 w-40 mx-auto rounded-lg xl:rounded-xl" />
       <Sh className="h-3 w-56 mx-auto rounded-lg" />
       <div className="space-y-2 xl:space-y-4 pt-4">
@@ -177,7 +177,7 @@ export const AuthFormSkeleton = () => (
 
 // ─── Subject/Topic detail skeleton ────────────────────────────────────────────
 const DetailPageSkeleton = ({ color ='bg-primary-600'}) => (
-  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse">
+  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse bg-primary-500/15 dark:bg-primary-500/20">
     <div className="container mx-auto px-0 xl:px-4 py-0 xl:py-6">
       {/* Back button */}
       <Sh className="h-4 w-16 rounded-full mb-4" />
@@ -210,7 +210,7 @@ const DetailPageSkeleton = ({ color ='bg-primary-600'}) => (
 
 /** Skeleton for /topics (TopicListPage) */
 export const TopicListSkeleton = () => (
-  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse">
+  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse bg-primary-500/15 dark:bg-primary-500/20">
     <div className="container mx-auto px-0 xl:px-4 py-0 xl:py-6">
       <ListHeaderSkeleton />
       <div className="space-y-3">
@@ -222,7 +222,7 @@ export const TopicListSkeleton = () => (
 
 /** Skeleton for /subjects (SubjectListPage) */
 export const SubjectListSkeleton = () => (
-  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse">
+  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse bg-primary-500/15 dark:bg-primary-500/20">
     <div className="container mx-auto px-0 xl:px-4 py-0 xl:py-6">
       <ListHeaderSkeleton />
       <div className="space-y-3">
@@ -234,7 +234,7 @@ export const SubjectListSkeleton = () => (
 
 /** Skeleton for /quizzes (QuizListPage) */
 export const QuizListSkeleton = () => (
-  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse">
+  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse bg-primary-500/15 dark:bg-primary-500/20">
     <div className="container mx-auto px-0 xl:px-4 py-0 xl:py-6">
       <ListHeaderSkeleton />
       <div className="flex flex-col gap-2 xl:gap-3">
@@ -248,7 +248,7 @@ export const QuizListSkeleton = () => (
 export const GovtExamsListSkeleton = () => (
   <div className="space-y-8 py-10 animate-pulse">
     {/* Hero */}
-    <Sh className="h-36 w-full rounded-[2.5rem]" />
+    <Sh className="h-36 w-full rounded-3xl" />
     {/* Filter pills */}
     <div className="flex gap-3">
       <Sh className="h-10 w-24 rounded-full" />

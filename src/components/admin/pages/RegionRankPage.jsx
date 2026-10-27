@@ -65,7 +65,7 @@ const RegionRankPage = ({ kind }) => {
   const columns = [
     {
       key: 'rank', header: 'Rank', render: (_, row) => (
-        <div className={`w-8 xl:w-12 h-8 xl:h-12 rounded-lg xl:rounded-xl flex items-center justify-center font-black italic text-sm ${row.rank <= 3 ? 'bg-primary-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>
+        <div className={`w-8 xl:w-12 h-8 xl:h-12 rounded-lg xl:rounded-xl flex items-center justify-center font-bold italic text-sm ${row.rank <= 3 ? 'bg-primary-600 text-on-primary' : 'bg-background-surface-secondary text-content-muted'}`}>
           #{row.rank}
         </div>
       )
@@ -73,34 +73,34 @@ const RegionRankPage = ({ kind }) => {
     {
       key: 'name', header: 'Student', render: (_, row) => (
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-primary-600 flex items-center justify-center text-white font-black text-xs uppercase shrink-0">{row.name?.charAt(0) || 'U'}</div>
+          <div className="w-9 h-9 rounded-full bg-primary-600 flex items-center justify-center text-on-primary font-bold text-xs uppercase shrink-0">{row.name?.charAt(0) || 'U'}</div>
           <div className="min-w-0">
-            <div className="text-sm font-black text-slate-900 dark:text-white break-words">{row.name || 'Unknown'}</div>
-            <div className="text-[10px] font-bold text-slate-400 break-words">{row.username ? `@${row.username}` : '—'}</div>
+            <div className="text-sm font-bold text-content-primary break-words">{row.name || 'Unknown'}</div>
+            <div className="text-[10px] font-bold text-content-muted break-words">{row.username ? `@${row.username}` : '—'}</div>
           </div>
         </div>
       )
     },
     {
       key: 'location', header: 'Location', render: (_, row) => (
-        <div className="text-sm font-semibold text-primary-600 dark:text-primary-300">{[row.city, row.state].filter(Boolean).join(', ') || '—'}</div>
+        <div className="text-sm font-semibold text-primary-600">{[row.city, row.state].filter(Boolean).join(', ') || '—'}</div>
       )
     },
     {
       key: 'totalTimeSpent', header: 'Total Time Spent', align: 'center', render: (_, row) => (
-        <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums whitespace-nowrap">{formatTimeSpent(row.totalTimeSpent, 'exam')}</div>
+        <div className="text-sm font-bold text-content-primary tabular-nums whitespace-nowrap">{formatTimeSpent(row.totalTimeSpent, 'exam')}</div>
       )
     },
-    { key: 'totalExams', header: 'Exams', align: 'center', render: (_, row) => <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{row.totalExams}</div> },
-    { key: 'totalScore', header: 'Score', align: 'center', render: (_, row) => <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{row.totalScore}/{row.totalMarks}</div> },
+    { key: 'totalExams', header: 'Exams', align: 'center', render: (_, row) => <div className="text-sm font-bold text-content-primary tabular-nums">{row.totalExams}</div> },
+    { key: 'totalScore', header: 'Score', align: 'center', render: (_, row) => <div className="text-sm font-bold text-content-primary tabular-nums">{row.totalScore}/{row.totalMarks}</div> },
     {
       key: 'avgAccuracy', header: 'Accuracy', align: 'center', render: (_, row) => (
-        <div className="px-3 py-1 rounded-lg text-[10px] font-black uppercase inline-flex items-center bg-primary-500/10 text-primary-600 dark:text-primary-300 border border-primary-500/20">{row.avgAccuracy || 0}%</div>
+        <div className="px-3 py-1 rounded-lg text-[10px] font-bold uppercase inline-flex items-center text-primary-600 border border-primary-500/20">{row.avgAccuracy || 0}%</div>
       )
     },
     {
       key: 'subscriptionStatus', header: 'Plan', align: 'right', render: (_, row) => (
-        <span className={`inline-flex px-2 py-1 text-[10px] font-black rounded-full ${row.subscriptionStatus === 'PRO' ? 'bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200' : 'bg-gray-100 text-gray-800 dark:bg-slate-900 dark:text-gray-200'}`}>
+        <span className={`inline-flex px-2 py-1 text-[10px] font-bold rounded-full ${row.subscriptionStatus === 'PRO' ? 'text-primary-600 dark:bg-primary-600 dark:text-primary-600' : 'bg-background-surface-secondary text-content-primary'}`}>
           {row.subscriptionStatus || 'FREE'}
         </span>
       )
@@ -144,20 +144,20 @@ const RegionRankPage = ({ kind }) => {
   if (!isMounted) return null;
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
-      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
+      <div className="py-4 w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         {loading ? (
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         ) : data.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">
-            <div className="w-20 h-20 bg-primary-500/10 rounded-[2rem] flex items-center justify-center mx-auto mb-4">
+            <div className="w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-4">
               <cfg.Icon className="w-10 h-10 text-primary-500" />
             </div>
-            <h3 className="text-lg font-black text-slate-500 uppercase">No Rankings Found</h3>
-            <p className="text-sm text-slate-400 mt-2">No completed exam attempts for this {cfg.noun.toLowerCase()} yet.</p>
+            <h3 className="text-lg font-bold text-content-muted">No Rankings Found</h3>
+            <p className="text-sm text-content-muted mt-2">No completed exam attempts for this {cfg.noun.toLowerCase()} yet.</p>
           </div>
         ) : (
-          <motion.div key={value} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+          <motion.div key={value} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden flex flex-col relative">
             <ResponsiveTable data={data} columns={columns} viewModes={['table', 'grid']} currentView="table" showPagination={false} showViewToggle={false} fillHeight />
           </motion.div>
         )}

@@ -74,7 +74,7 @@ const shareLink = (c) => `${SITE_URL}/subscription?coupon=${encodeURIComponent(c
 
 const statusOf = (c) => {
   const now = Date.now();
-  if (!c.isActive) return { label: 'Disabled', cls: 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400' };
+  if (!c.isActive) return { label: 'Disabled', cls: 'bg-background-surface-secondary text-content-muted' };
   if (new Date(c.expiryDate).getTime() <= now) return { label: 'Expired', cls: 'bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400' };
   if (c.startDate && new Date(c.startDate).getTime() > now) return { label: 'Scheduled', cls: 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400' };
   if (c.usageLimit > 0 && c.usedCount >= c.usageLimit) return { label: 'Used up', cls: 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400' };
@@ -83,13 +83,13 @@ const statusOf = (c) => {
 
 const Field = ({ label, hint, children }) => (
   <label className="block">
-    <span className="text-xs font-black uppercase tracking-widest text-slate-500">{label}</span>
+    <span className="text-xs font-bold uppercase tracking-[0.08em] text-content-muted">{label}</span>
     {children}
-    {hint && <span className="block text-[11px] text-slate-400 mt-1">{hint}</span>}
+    {hint && <span className="block text-[11px] text-content-muted mt-1">{hint}</span>}
   </label>
 );
 
-const inputCls = 'mt-1 w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm';
+const inputCls = 'mt-1 w-full px-3 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm';
 
 // Live "what will the user pay" calculation, priced with the same formula the server uses at checkout.
 const rs = (n) => `₹${Number(n.toFixed(2))}`;
@@ -111,40 +111,40 @@ const PricePreview = ({ form }) => {
   };
 
   return (
-    <div className="shrink-0 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
-      <div className="px-3 py-2 text-[11px] font-black uppercase tracking-[0.14em] bg-gradient-to-r from-slate-100 via-slate-50 to-white text-primary-900 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white">Calculation - what the user will pay</div>
+    <div className="shrink-0 rounded-xl border border-border-primary overflow-hidden">
+      <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-primary-900 dark:text-white bg-background-surface">Calculation - what the user will pay</div>
       {!valid ? (
-        <p className="px-3 py-2 text-xs text-slate-500 dark:text-slate-400">Enter the discount value above to see the price of each plan.</p>
+        <p className="px-3 py-2 text-xs text-content-muted">Enter the discount value above to see the price of each plan.</p>
       ) : (
         <>
-          <div className="sm:hidden divide-y divide-slate-100 dark:divide-slate-700">
+          <div className="sm:hidden divide-y divide-border-primary">
             {plans.map((p) => {
               const { discount, finalAmount } = computeDiscount(coupon, p.price);
               const line = (k, v, cls = '') => (
                 <div className="flex items-center justify-between gap-3 text-xs">
-                  <span className="text-slate-400">{k}</span>
-                  <span className={`font-bold text-right ${cls || 'text-slate-600 dark:text-slate-300'}`}>{v}</span>
+                  <span className="text-content-muted">{k}</span>
+                  <span className={`font-bold text-right ${cls || 'text-content-secondary'}`}>{v}</span>
                 </div>
               );
               return (
                 <div key={p.id} className="px-3 py-2 space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-black text-slate-800 dark:text-slate-100">{p.label}</span>
-                    <span className="px-2.5 py-0.5 text-base font-black text-primary-800 dark:text-primary-200 bg-primary-100 dark:bg-primary-400/20" style={{ borderRadius: 999 }}>{rs(finalAmount)}</span>
+                    <span className="text-sm font-bold text-content-primary">{p.label}</span>
+                    <span className="px-2.5 py-0.5 text-base font-bold text-primary-600" style={{ borderRadius: 999 }}>{rs(finalAmount)}</span>
                   </div>
                   {line('Price', rs(p.normalPrice))}
                   {line('Normal off', p.saving > 0 ? `-${rs(p.saving)}` : '-')}
                   {line('After normal off', rs(p.price))}
                   {line('Coupon off', discount > 0 ? `-${rs(discount)}` : 'No discount', discount > 0 ? 'text-red-500' : '')}
-                  {discount > 0 && <div className="text-[10px] text-slate-400 text-right">{working(p.price, discount)}</div>}
+                  {discount > 0 && <div className="text-[10px] text-content-muted text-right">{working(p.price, discount)}</div>}
                 </div>
               );
             })}
           </div>
           <div className="hidden sm:block overflow-x-auto">
           <table className="w-full text-sm whitespace-nowrap">
-            <thead>
-              <tr className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 text-right bg-primary-50/50 dark:bg-white/5">
+            <thead className="border-b border-border-primary">
+              <tr className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted text-right dark:bg-white/5">
                 <th className="px-3 py-2 text-left">Plan</th>
                 <th className="px-3 py-2">Price</th>
                 <th className="px-3 py-2">Normal off</th>
@@ -153,31 +153,31 @@ const PricePreview = ({ form }) => {
                 <th className="px-3 py-2">Final value</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y divide-border-primary">
               {plans.map((p) => {
                 const { discount, finalAmount } = computeDiscount(coupon, p.price);
                 return (
-                  <tr key={p.id} className="border-t border-dashed border-slate-200 dark:border-slate-700 text-right align-top hover:bg-primary-50/40 dark:hover:bg-white/5 transition-colors">
-                    <td className="px-3 py-2 text-left"><span className="inline-block px-2 py-0.5 text-xs font-black text-slate-900 dark:text-white bg-gradient-to-r from-primary-100 to-primary-50 dark:from-white/10 dark:to-white/5" style={{ borderRadius: 8 }}>{p.label}</span></td>
-                    <td className="px-3 py-2 text-slate-500 dark:text-slate-400">{rs(p.normalPrice)}</td>
-                    <td className="px-3 py-2 text-slate-500 dark:text-slate-400">{p.saving > 0 ? `-${rs(p.saving)}` : '-'}</td>
-                    <td className="px-3 py-2 font-bold text-slate-700 dark:text-slate-200">{rs(p.price)}</td>
+                  <tr key={p.id} className="border-dashed border-border-primary text-right align-top dark:hover:bg-white/5 transition-colors">
+                    <td className="px-3 py-2 text-left"><span className="inline-block px-2 py-0.5 text-xs font-bold text-content-primary bg-background-surface" style={{ borderRadius: 8 }}>{p.label}</span></td>
+                    <td className="px-3 py-2 text-content-muted">{rs(p.normalPrice)}</td>
+                    <td className="px-3 py-2 text-content-muted">{p.saving > 0 ? `-${rs(p.saving)}` : '-'}</td>
+                    <td className="px-3 py-2 font-bold text-content-secondary">{rs(p.price)}</td>
                     <td className="px-3 py-2">
                       {discount > 0 ? (
                         <>
                           <div className="font-bold text-red-500">-{rs(discount)}</div>
-                          <div className="text-[10px] text-slate-400">{working(p.price, discount)}</div>
+                          <div className="text-[10px] text-content-muted">{working(p.price, discount)}</div>
                         </>
-                      ) : <span className="text-xs text-slate-400">No discount</span>}
+                      ) : <span className="text-xs text-content-muted">No discount</span>}
                     </td>
-                    <td className="px-3 py-2"><span className="inline-block px-2.5 py-0.5 text-base font-black text-primary-800 dark:text-primary-200 bg-primary-100 dark:bg-primary-400/20 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{rs(finalAmount)}</span></td>
+                    <td className="px-3 py-2"><span className="inline-block px-2.5 py-0.5 text-base font-bold text-primary-600 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{rs(finalAmount)}</span></td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
           </div>
-          <p className="px-3 py-1.5 text-[10px] text-slate-500 dark:text-slate-400 border-t border-dashed border-slate-200 dark:border-slate-700 bg-primary-50/40 dark:bg-white/5">Price - Normal off = After normal off (plan price); the coupon is applied on that. Final value = what the user pays.</p>
+          <p className="px-3 py-1.5 text-[10px] text-content-muted border-t border-dashed border-border-primary dark:bg-white/5">Price - Normal off = After normal off (plan price); the coupon is applied on that. Final value = what the user pays.</p>
         </>
       )}
     </div>
@@ -208,9 +208,9 @@ const PlansCount = ({ ids }) => {
 
 // Small label/value tile used by the list and grid views.
 const Tile = ({ label, children }) => (
-  <div className="min-w-0 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 px-3 py-2">
-    <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{label}</div>
-    <div className="mt-0.5 text-sm font-bold text-slate-800 dark:text-slate-100">{children}</div>
+  <div className="min-w-0 rounded-xl bg-background-surface-secondary border border-border-primary px-3 py-2">
+    <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted">{label}</div>
+    <div className="mt-0.5 text-sm font-bold text-content-primary">{children}</div>
   </div>
 );
 
@@ -221,7 +221,7 @@ const UsageTile = ({ c }) => {
     <Tile label="Used">
       <span className="tabular-nums">{c.usedCount}{c.usageLimit > 0 ? ` / ${c.usageLimit}` : ''}</span>
       {c.usageLimit > 0 && (
-        <div className="mt-1.5 h-1 w-full rounded-full bg-slate-200 dark:bg-white/10 overflow-hidden">
+        <div className="mt-1.5 h-1 w-full rounded-full bg-background-surface-secondary overflow-hidden">
           <div className="h-full bg-primary-600" style={{ width: `${pct}%` }} />
         </div>
       )}
@@ -246,34 +246,33 @@ const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
   ];
   return createPortal(
     <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60" onClick={onClose}>
-      <div onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-hidden relative bg-white dark:bg-slate-800 rounded-t-2xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-        <div className="shrink-0 relative isolate overflow-hidden flex items-center justify-between gap-3 px-4 py-3 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-b border-slate-200 dark:border-transparent">
-          <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
+      <div onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-hidden relative bg-background-surface rounded-t-2xl sm:rounded-2xl border border-border-primary flex flex-col relative">
+        <div className="shrink-0 relative isolate overflow-hidden flex items-center justify-between gap-3 px-4 py-3 border-b border-border-primary dark:border-transparent bg-background-surface">
           <div className="min-w-0 flex items-center gap-3">
-            <span className="w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><Tag className="w-5 h-5" /></span>
-            <span className="text-2xl font-black font-outfit tracking-[0.2em] text-primary-700 dark:text-primary-200 truncate">{c.code}</span>
+            <span className="w-10 h-10 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 12 }}><Tag className="w-5 h-5" /></span>
+            <span className="text-2xl font-bold font-outfit tracking-[0.08em] text-primary-600 truncate">{c.code}</span>
           </div>
           <div className="shrink-0 flex items-center gap-2">
             <span className={`inline-block px-2.5 py-1 rounded-full text-xs font-bold ${st.cls}`}>{st.label}</span>
-            <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"><X className="w-5 h-5" /></button>
+            <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-content-muted hover:bg-background-surface-secondary"><X className="w-5 h-5" /></button>
           </div>
         </div>
         <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-4 flex flex-col gap-3">
-        <p className="text-sm font-semibold text-slate-700 dark:text-slate-200 px-3 py-2 bg-primary-50/60 dark:bg-white/5 border border-dashed border-primary-300 dark:border-white/20" style={{ borderRadius: 10 }}>{c.description}</p>
+        <p className="text-sm font-semibold text-content-secondary px-3 py-2 dark:bg-white/5 border border-dashed border-primary-300 dark:border-white/20" style={{ borderRadius: 10 }}>{c.description}</p>
         <dl className="grid grid-cols-2 lg:grid-cols-4 gap-2 text-sm">
           {rows.map(([k, v]) => (
-            <div key={k} className="relative overflow-hidden px-2.5 py-1.5 bg-white dark:bg-white/5 ring-1 ring-primary-200 dark:ring-white/15 shadow-sm" style={{ borderRadius: 10 }}>
-              <div className="pointer-events-none absolute inset-y-1.5 left-0 w-0.5 rounded-r-full bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
-              <dt className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">{k}</dt>
-              <dd className="font-black text-primary-800 dark:text-primary-100">{v}</dd>
+            <div key={k} className="relative overflow-hidden px-2.5 py-1.5 bg-background-surface dark:bg-white/5 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 10 }}>
+              <div className="pointer-events-none absolute inset-y-1.5 left-0 w-0.5 rounded-r-full bg-primary-600" />
+              <dt className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted">{k}</dt>
+              <dd className="font-bold text-primary-600 dark:text-primary-100">{v}</dd>
             </div>
           ))}
         </dl>
         <PricePreview form={c} />
         </div>
-        <div className="shrink-0 px-4 sm:px-4 py-2 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-2">
-          <button type="button" onClick={onClose} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-black uppercase tracking-wide text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-primary-500 transition-colors">Close</button>
-          <button type="button" onClick={() => onEdit(c)} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-black uppercase tracking-wide bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white hover:brightness-110">Edit</button>
+        <div className="shrink-0 px-4 sm:px-4 py-2 border-t border-border-primary flex justify-end gap-2">
+          <button type="button" onClick={onClose} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold uppercase tracking-wide text-content-secondary border border-border-primary hover:border-primary-500 transition-colors">Close</button>
+          <button type="button" onClick={() => onEdit(c)} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold uppercase tracking-wide text-on-primary hover:brightness-110 bg-primary-600">Edit</button>
         </div>
       </div>
     </div>,
@@ -336,15 +335,15 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
   // Portal to <body>: inside the admin layout, `fixed` is clipped under the top header.
   return createPortal(
     <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60" onClick={onClose}>
-      <form onSubmit={submit} onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white dark:bg-slate-800 rounded-t-2xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 p-4 sm:p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+      <form onSubmit={submit} onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-y-auto bg-background-surface rounded-t-2xl sm:rounded-2xl border border-border-primary p-4 sm:p-4 flex flex-col gap-3 relative">
         <div className="flex items-center justify-between">
-          <h3 className="font-bold text-lg text-slate-900 dark:text-white">{editing ? `Edit ${coupon.code}` : 'New coupon'}</h3>
-          <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"><X className="w-5 h-5" /></button>
+          <h3 className="font-bold text-lg text-content-primary">{editing ? `Edit ${coupon.code}` : 'New coupon'}</h3>
+          <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-content-muted hover:bg-background-surface-secondary"><X className="w-5 h-5" /></button>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-start">
           <Field label="Coupon name (code)" hint={editing ? 'Cannot be changed after creation.' : 'Letters, numbers, - and _ (saved in capitals).'}>
-            <input className={`uppercase font-bold tracking-wide border border-slate-300 dark:border-slate-700 ${inputCls}`} value={form.code} onChange={(e) => set('code', e.target.value.toUpperCase())} disabled={editing} maxLength={30} required placeholder="DIWALI50" />
+            <input className={`uppercase font-bold tracking-wide border border-border-primary ${inputCls}`} value={form.code} onChange={(e) => set('code', e.target.value.toUpperCase())} disabled={editing} maxLength={30} required placeholder="DIWALI50" />
           </Field>
           <Field label="Total uses" hint="0 / empty = unlimited">
             <input className={inputCls} type="number" min="0" value={form.usageLimit} onChange={(e) => set('usageLimit', e.target.value)} />
@@ -391,7 +390,7 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
           <div className="mt-1 flex flex-wrap gap-2">
             {PRO_PLANS.map((p) => (
               <button type="button" key={p.id} onClick={() => togglePlan(p.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold border ${form.applicablePlans.includes(p.id) ? 'bg-primary-600 text-white border-primary-600' : 'border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300'}`}>
+                className={`px-3 py-1.5 rounded-full text-xs font-bold border ${form.applicablePlans.includes(p.id) ? 'bg-primary-600 text-on-primary border-primary-600' : 'border-border-primary dark:border-slate-600 text-content-secondary'}`}>
                 {p.label}
               </button>
             ))}
@@ -400,18 +399,18 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
 
         <PricePreview form={form} />
 
-        <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-200">
+        <label className="flex items-center gap-2 text-sm font-medium text-content-secondary">
           <input type="checkbox" checked={form.showInModal} onChange={(e) => set('showInModal', e.target.checked)} />
           Show this coupon in the offer pop-up (logged-in students and public visitors)
         </label>
-        <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-200">
+        <label className="flex items-center gap-2 text-sm font-medium text-content-secondary">
           <input type="checkbox" checked={form.isActive} onChange={(e) => set('isActive', e.target.checked)} />
           Active
         </label>
 
-        <div className="sticky bottom-0 -mx-4 sm:mx-0 -mb-4 sm:mb-0 px-4 sm:px-0 py-2 sm:py-0 sm:pt-2 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700 sm:border-0 flex justify-end gap-2">
-          <button type="button" onClick={onClose} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 sm:border-0">Cancel</button>
-          <button type="submit" disabled={saving} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white hover:brightness-110 disabled:opacity-50">
+        <div className="sticky bottom-0 -mx-4 sm:mx-0 -mb-4 sm:mb-0 px-4 sm:px-0 py-2 sm:py-0 sm:pt-2 bg-background-surface border-t border-border-primary sm:border-0 flex justify-end gap-2">
+          <button type="button" onClick={onClose} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold text-content-secondary border border-border-primary sm:border-0">Cancel</button>
+          <button type="submit" disabled={saving} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold text-on-primary hover:brightness-110 disabled:opacity-50 bg-primary-600">
             {saving ? 'Saving…' : editing ? 'Save changes' : 'Create coupon'}
           </button>
         </div>
@@ -485,7 +484,7 @@ const CouponsPage = () => {
   }, [announcing]);
 
   // Icon-only actions; the native tooltip (title) appears on hover.
-  const iconBtn = 'p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-white/5 text-slate-500 dark:text-slate-300 transition-all hover:scale-105 active:scale-95';
+  const iconBtn = 'p-2 rounded-lg border border-border-primary bg-background-surface dark:bg-white/5 text-content-muted transition-all hover:scale-105 active:scale-95';
   const hoverPrimary = 'hover:text-primary-600 hover:border-primary-500/40';
   const renderActions = (c) => (
     <div className="flex items-center gap-1.5">
@@ -506,7 +505,7 @@ const CouponsPage = () => {
   const statusBadge = (c) => { const st = statusOf(c); return <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${st.cls}`}>{st.label}</span>; };
 
   const tableColumns = [
-    { key: 'code', header: 'CODE', render: (_, c) => <span className="font-black tracking-widest text-primary-600 dark:text-primary-300 text-sm">{c.code}</span> },
+    { key: 'code', header: 'CODE', render: (_, c) => <span className="font-bold tracking-[0.08em] text-primary-600 text-sm">{c.code}</span> },
     { key: 'discount', header: 'DISCOUNT', render: (_, c) => discountText(c) },
     { key: 'status', header: 'STATUS', render: (_, c) => statusBadge(c) },
     { key: 'displayDate', header: 'DISPLAY DATE', render: (_, c) => displayText(c) },
@@ -527,16 +526,16 @@ const CouponsPage = () => {
         { icon: LayoutGrid, id: 'grid', label: 'Grid View' }
       ].map((mode) => (
         <button key={mode.id} type="button" onClick={() => setViewMode(mode.id)} title={mode.label}
-          className={`flex-1 xl:flex-none flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+          className={`flex-1 xl:flex-none flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}>
           <mode.icon className="w-4 h-4" />
-          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+          <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
         </button>
       ))}
     </div>
   );
 
   const newButton = (
-    <button onClick={() => setEditing({})} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110">
+    <button onClick={() => setEditing({})} className="w-full xl:w-auto flex items-center justify-center gap-2 text-on-primary px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110 bg-primary-600">
       <Plus className="w-4 h-4" /> New coupon
     </button>
   );
@@ -550,22 +549,22 @@ const CouponsPage = () => {
   if (!isMounted) return null;
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
+      <div className="py-4 w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         {/* Title + view toggle + New coupon live in the navbar (title/count) and the filter drawer, like the other admin pages */}
         {loading ? (
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         ) : coupons.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <Tag className="w-10 h-10 text-slate-300 mb-4" />
-            <h3 className="text-lg font-black text-slate-500 uppercase">No coupons yet</h3>
-            <p className="text-sm text-slate-400 mt-2">Create one like DIWALI50 to offer a discount on PRO plans.</p>
+            <h3 className="text-lg font-bold text-content-muted">No coupons yet</h3>
+            <p className="text-sm text-content-muted mt-2">Create one like DIWALI50 to offer a discount on PRO plans.</p>
           </div>
         ) : (
           <>
             {viewMode === 'table' && (
-              <div className="bg-white/80 dark:bg-white/5 rounded-2xl border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm flex-1 min-h-0 overflow-auto flex flex-col">
+              <div className="rounded-2xl border border-border-primary overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col">
                 <ResponsiveTable data={coupons} columns={tableColumns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
               </div>
             )}
@@ -573,19 +572,19 @@ const CouponsPage = () => {
             {viewMode === 'list' && (
               <div className="flex flex-col gap-3 pb-6">
                 {coupons.map((c) => (
-                  <div key={c._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                  <div key={c._id} className="bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 relative">
                     {/* Code + offer */}
                     <div className="xl:w-52 shrink-0">
-                      <div className="text-xl font-black tracking-widest text-primary-600 dark:text-primary-300">{c.code}</div>
-                      <div className="text-2xl font-black text-slate-900 dark:text-white leading-tight">{offerLabel(c)}</div>
+                      <div className="text-xl font-bold tracking-[0.08em] text-primary-600">{c.code}</div>
+                      <div className="text-2xl font-bold text-content-primary leading-tight">{offerLabel(c)}</div>
                       {c.discountType === 'percentage' && c.maxDiscount > 0 && (
-                        <div className="text-[11px] font-medium text-slate-400">max ₹{c.maxDiscount}</div>
+                        <div className="text-[11px] font-medium text-content-muted">max ₹{c.maxDiscount}</div>
                       )}
                     </div>
 
                     {/* Description + details */}
                     <div className="flex-1 min-w-0 space-y-2">
-                      <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-1">{c.description}</p>
+                      <p className="text-xs text-content-muted line-clamp-1">{c.description}</p>
                       <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2">
                         <Tile label="Display date">{displayText(c)}</Tile>
                         <Tile label="Starts">{startText(c)}</Tile>
@@ -599,7 +598,7 @@ const CouponsPage = () => {
                     {/* Status + actions */}
                     <div className="flex xl:flex-col items-center xl:items-end justify-between gap-3 shrink-0">
                       <div className="flex items-center gap-2">
-                        {c.showInModal && <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300">In pop-up</span>}
+                        {c.showInModal && <span className="px-2 py-1 rounded-full text-[10px] font-bold text-primary-600">In pop-up</span>}
                         {statusBadge(c)}
                       </div>
                       {renderActions(c)}
@@ -612,19 +611,19 @@ const CouponsPage = () => {
             {viewMode === 'grid' && (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 pb-6">
                 {coupons.map((c) => (
-                  <div key={c._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                  <div key={c._id} className="bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col gap-3 relative">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
-                        <div className="text-xl font-black tracking-widest text-primary-600 dark:text-primary-300 truncate">{c.code}</div>
-                        <div className="text-3xl font-black text-slate-900 dark:text-white leading-tight">{offerLabel(c)}</div>
+                        <div className="text-xl font-bold tracking-[0.08em] text-primary-600 truncate">{c.code}</div>
+                        <div className="text-3xl font-bold text-content-primary leading-tight">{offerLabel(c)}</div>
                         {c.discountType === 'percentage' && c.maxDiscount > 0 && (
-                          <div className="text-[11px] font-medium text-slate-400">max ₹{c.maxDiscount}</div>
+                          <div className="text-[11px] font-medium text-content-muted">max ₹{c.maxDiscount}</div>
                         )}
                       </div>
                       {statusBadge(c)}
                     </div>
 
-                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{c.description}</p>
+                    <p className="text-xs text-content-muted line-clamp-2">{c.description}</p>
 
                     <div className="grid grid-cols-3 gap-2">
                       <Tile label="Display">{displayText(c)}</Tile>
@@ -637,10 +636,10 @@ const CouponsPage = () => {
                       <Tile label="Plans">{plansText(c)}</Tile>
                     </div>
 
-                    <div className="pt-3 mt-auto border-t border-slate-100 dark:border-slate-700 flex items-center justify-between gap-2">
+                    <div className="pt-3 mt-auto border-t border-border-primary flex items-center justify-between gap-2">
                       {c.showInModal
-                        ? <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300">In pop-up</span>
-                        : <span className="text-[10px] font-bold text-slate-400">Not in pop-up</span>}
+                        ? <span className="px-2 py-1 rounded-full text-[10px] font-bold text-primary-600">In pop-up</span>
+                        : <span className="text-[10px] font-bold text-content-muted">Not in pop-up</span>}
                       {renderActions(c)}
                     </div>
                   </div>

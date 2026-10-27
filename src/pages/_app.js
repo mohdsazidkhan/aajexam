@@ -17,10 +17,6 @@ import PreferencesSync from '../components/common/PreferencesSync';
 import { useRouter } from 'next/router';
 import ClientOnly from '../components/common/ClientOnly';
 import ErrorBoundary from '../components/common/ErrorBoundary';
-import '../styles/App.css';
-import '../styles/couponDatepicker.css';
-import '../styles/darkMode.css';
-import '../styles/studentLayout.css';
 import * as gtag from '../lib/gtag';
 import { trackPageView } from '../lib/tracker';
 import { inter, lato } from '../lib/fonts';
@@ -235,7 +231,7 @@ function AppContent({ Component, pageProps }) {
     return (
       <div className={`min-h-screen ${promoActive ? 'pt-24' : 'pt-16'}`}>
         <PublicNavbar />
-        <main id="main-content" className="appContainer px-4 xxl:px-8">
+        <main id="main-content" className="min-h-[calc(100vh-64px)] px-4 xxl:px-8">
           {/* Every public page sits in the centred container column. The landing page ('/') is built from
               full-width bands that each carry their own inner container, so it is left unwrapped. */}
           {router.pathname === '/' ? (

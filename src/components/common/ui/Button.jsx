@@ -24,15 +24,15 @@ const Button = ({
   // primary   -> brand green bg, white text (identical in light & dark)
   // secondary -> white bg / black text with light gray border in light mode, dark bg / white border+text in dark mode (never white bg in dark mode)
   const variants = {
-    primary: 'bg-primary-600 shadow-sm border-primary-600 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    secondary: 'bg-white border-2 border-slate-200 text-black active:bg-slate-100 dark:bg-slate-800 dark:border-slate-800 dark:text-white dark:active:bg-slate-700',
+    primary: 'bg-primary-600 border-primary-600 text-on-primary hover:brightness-110 active:brightness-95',
+    secondary: 'bg-background-surface border-border-primary text-content-primary hover:bg-background-surface-secondary active:bg-background-surface-secondary',
   };
 
   const sizes = {
-    sm: 'px-4 py-2 text-xs font-black uppercase tracking-[0.08em] rounded-lg xl:rounded-xl',
-    md: 'px-6 py-2.5 text-sm font-black uppercase tracking-[0.08em] rounded-2xl',
-    lg: 'px-8 py-3',
-    xl: 'px-8 py-3 text-sm xl:px-10 xl:py-4 xl:text-lg font-black uppercase tracking-[0.12em] rounded-[2.5rem]',
+    sm: 'px-4 py-2 text-xs font-bold rounded-lg',
+    md: 'px-5 py-2.5 text-sm font-bold rounded-xl',
+    lg: 'px-7 py-3 text-base font-bold rounded-xl',
+    xl: 'px-8 py-3 text-sm xl:px-10 xl:py-4 xl:text-lg font-bold rounded-xl',
   };
 
   // One default padding per size. Padding utilities passed in className are dropped: they sat
@@ -49,8 +49,7 @@ const Button = ({
 
   return (
     <motion.button
-      whileTap={disabled ? {} : { y: 2, scale: 0.98 }}
-      whileHover={disabled ? {} : { y: -2 }}
+      whileTap={disabled ? {} : { scale: 0.98 }}
       onClick={disabled ? undefined : onClick}
       data-cta={cta}
       disabled={disabled}
@@ -58,20 +57,15 @@ const Button = ({
         ${variants[variant] || variants.primary}
         ${sizes[size]}
         ${fullWidth ? 'w-full' : 'w-fit'}
-        ${disabled ? 'opacity-40 grayscale cursor-not-allowed !shadow-none !border-none' : ''}
+        ${disabled ? 'opacity-40 cursor-not-allowed' : ''}
         relative transition-all duration-150 flex items-center justify-center gap-3
-        ${variant === 'secondary' ? 'border-b-2' : 'border-2'}
+        border
         group cursor-pointer font-outfit overflow-hidden
         ${extraClasses}
       `}
     >
-      {/* Premium Shimmer Overlay */}
-      {!disabled && (variant === 'primary' || variant === 'secondary') && (
-        <div className="absolute inset-0 bg-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
-      )}
-
       {/* Button Content */}
-      <div className="relative z-10 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+      <div className="relative z-10 flex items-center justify-center gap-3">
         {iconPosition === 'left' && <IconComponent />}
         <span className="btn-label whitespace-nowrap flex items-center gap-2">{children}</span>
         {iconPosition === 'right' && <IconComponent />}

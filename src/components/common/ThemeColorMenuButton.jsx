@@ -41,20 +41,20 @@ const TABS = [
 
 // Shared look of every selectable card in the settings panel: a ticket-style tile whose
 // selected state is outlined and tinted in the active theme colour.
-const CARD_BASE = 'relative w-full flex items-center gap-3 px-3 py-2.5 text-left border bg-white dark:bg-slate-800/60 transition-all hover:-translate-y-0.5 hover:shadow-md';
-const CARD_IDLE = 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-slate-300 dark:hover:border-slate-500';
-const CARD_ON = 'text-slate-900 dark:text-white shadow-md';
+const CARD_BASE = 'relative w-full flex items-center gap-3 px-3 py-2.5 text-left border bg-background-surface transition-all hover:-translate-y-0.5';
+const CARD_IDLE = 'border-border-primary text-content-secondary hover:border-slate-300 dark:hover:border-slate-500';
+const CARD_ON = 'text-content-primary';
 const cardStyle = (selected, hex) => (selected ? { borderColor: hex, backgroundColor: `${hex}1f`, boxShadow: `0 0 0 1px ${hex}` } : undefined);
-const IDX = 'w-5 text-[9px] font-black text-slate-400 dark:text-slate-500 flex-shrink-0 text-left tabular-nums';
+const IDX = 'w-5 text-[9px] font-bold text-content-muted flex-shrink-0 text-left tabular-nums';
 const CheckBadge = ({ hex }) => (
-  <span className="w-5 h-5 flex items-center justify-center flex-shrink-0 text-white shadow" style={{ backgroundColor: hex, borderRadius: 999 }}>
+  <span className="w-5 h-5 flex items-center justify-center flex-shrink-0 text-white" style={{ backgroundColor: hex, borderRadius: 999 }}>
     <Check className="w-3 h-3" strokeWidth={3.5} />
   </span>
 );
 // Small square tile (icon or glyph) in a colour.
 const Tile = ({ hex, children, className = '' }) => (
   <span
-    className={`w-9 h-9 flex items-center justify-center flex-shrink-0 text-white font-black shadow-sm rotate-[-4deg] ${className}`}
+    className={`w-9 h-9 flex items-center justify-center flex-shrink-0 text-white font-bold ${className}`}
     style={{ background: `linear-gradient(135deg, ${hex}, ${hex}cc)`, borderRadius: 10 }}
   >
     {children}
@@ -245,12 +245,12 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
         onClick={() => setOpen((o) => !o)}
         aria-label={translate('Theme settings')}
         aria-expanded={open}
-        className={`border-2 ${buttonClassName}`}
+        className={`border ${buttonClassName}`}
         style={{ borderColor: activeHex }}
       >
         <Settings className="w-5 h-5 xl:w-6 xl:h-6" style={{ color: activeHex }} />
         <span
-          className="absolute -bottom-1 -right-1 w-3 h-3 rounded-[4px] border-2 border-white dark:border-slate-900 shadow-sm"
+          className="absolute -bottom-1 -right-1 w-3 h-3 rounded-[4px] border border-white dark:border-slate-900"
           style={{ backgroundColor: activeHex }}
         />
       </button>
@@ -265,20 +265,20 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               exit={{ y: '100%' }}
               transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
               role="menu"
-              className="fixed inset-x-0 bottom-0 z-[170] w-full h-[75vh] xl:h-[90vh] bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-lg flex flex-col"
+              className="fixed inset-x-0 bottom-0 z-[170] w-full h-[75vh] xl:h-[90vh] bg-background-surface border-t border-border-primary rounded-t-3xl flex flex-col"
             >
               <div className="flex-shrink-0 p-4 pb-2">
-                <div className="flex items-center gap-1 mb-3 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 overflow-x-auto no-scrollbar" style={{ borderRadius: 14 }}>
+                <div className="flex items-center gap-1 mb-3 bg-background-surface-secondary border border-border-primary p-1 overflow-x-auto no-scrollbar" style={{ borderRadius: 14 }}>
                   {tabs.map((tabItem) => (
                     <button
                       key={tabItem.id}
                       type="button"
                       onClick={() => { setTab(tabItem.id); setSearch(''); }}
                       style={tab === tabItem.id ? { background: `linear-gradient(135deg, ${activeHex}, ${activeHex}d9)`, borderRadius: 10 } : { borderRadius: 10 }}
-                      className={`flex-1 flex items-center justify-center gap-1.5 whitespace-nowrap text-center text-xs font-black uppercase tracking-wide px-2.5 py-2 transition-all ${
+                      className={`flex-1 flex items-center justify-center gap-1.5 whitespace-nowrap text-center text-xs font-bold uppercase tracking-wide px-2.5 py-2 transition-all ${
                         tab === tabItem.id
-                          ? 'text-white shadow-md'
-                          : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white'
+                          ? 'text-white'
+                          : 'text-content-muted hover:text-content-primary dark:hover:text-white'
                       }`}
                     >
                       <tabItem.icon className="w-3.5 h-3.5 flex-shrink-0" />
@@ -290,13 +290,13 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                 {tab !== 'size' && tab !== 'display' && (
                   <div className="flex items-center gap-2 px-1">
                     <div className="relative flex-1 min-w-0">
-                      <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <Search className="w-4 h-4 text-content-muted absolute left-3.5 top-1/2 -translate-y-1/2" />
                       <input
                         type="text"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder={tab === 'theme' ? translate('Search theme...') : tab === 'targets' ? translate('Search exam...') : tab === 'language' ? translate('Search language...') : translate('Search font...')}
-                        className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:font-normal outline-none focus:ring-2 focus:ring-primary-500/50"
+                        className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-background-surface border border-border-primary text-content-primary placeholder:text-slate-400 placeholder:font-normal outline-none focus:ring-2 focus:ring-primary-500/50"
                       />
                     </div>
                     {tab === 'theme' && (
@@ -306,14 +306,14 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         aria-checked={followSystem}
                         onClick={() => dispatch(setFollowSystem(!followSystem))}
                         title={translate('Follow your device setting')}
-                        className="flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-black text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                        className="flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-content-secondary bg-background-surface border border-border-primary"
                       >
                         <span className="whitespace-nowrap">{translate('Auto Dark / Light')}</span>
                         <span
                           className="relative w-9 h-5 rounded-full flex-shrink-0 transition-colors"
                           style={{ backgroundColor: followSystem ? activeHex : '#94a3b8' }}
                         >
-                          <span className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform ${followSystem ? 'translate-x-4' : ''}`} />
+                          <span className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-background-surface transition-transform ${followSystem ? 'translate-x-4' : ''}`} />
                         </span>
                       </button>
                     )}
@@ -324,11 +324,11 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               {tab === 'targets' && loggedIn && (
                 <>
                   <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-4">
-                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-3 mb-3 border-b border-dashed border-slate-200 dark:border-slate-700">
+                    <p className="text-xs font-semibold text-content-muted px-1 pb-3 mb-3 border-b border-dashed border-border-primary">
                       {translate('Select the exams you are preparing for.')} {selectedExamIds.length ? translate('{count} selected.', { count: selectedExamIds.length }) : translate('Nothing selected means all exams.')}
                     </p>
                     {filteredExams.length === 0 && (
-                      <p className="text-sm text-slate-400 text-center py-4">{exams.length ? translate('No exam found') : translate('Loading exams...')}</p>
+                      <p className="text-sm text-content-muted text-center py-4">{exams.length ? translate('No exam found') : translate('Loading exams...')}</p>
                     )}
                     <div className="grid grid-cols-1 xl:grid-cols-4 gap-2">
                       {filteredExams.map((exam, index) => {
@@ -349,12 +349,12 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                       })}
                     </div>
                   </div>
-                  <div className="flex-shrink-0 flex gap-2 px-4 py-3 border-t border-slate-200 dark:border-slate-800">
+                  <div className="flex-shrink-0 flex gap-2 px-4 py-3 border-t border-border-primary">
                     <button
                       type="button"
                       onClick={() => setSelectedExamIds([])}
                       disabled={!selectedExamIds.length}
-                      className="px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wide border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 disabled:opacity-40"
+                      className="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wide border border-border-primary text-content-secondary disabled:opacity-40"
                     >
                       {translate('Clear')}
                     </button>
@@ -363,7 +363,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                       onClick={handleSaveTargets}
                       disabled={savingTargets}
                       style={{ backgroundColor: activeHex }}
-                      className="flex-1 px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wide text-white disabled:opacity-60"
+                      className="flex-1 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wide text-white disabled:opacity-60"
                     >
                       {savingTargets ? translate('Saving...') : translate('Save target exams')}
                     </button>
@@ -373,11 +373,11 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'theme' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
-                  <p className="col-span-full text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-2 mb-1 border-b border-dashed border-slate-200 dark:border-slate-700">
+                  <p className="col-span-full text-xs font-semibold text-content-muted px-1 pb-2 mb-1 border-b border-dashed border-border-primary">
                     {translate('Pick a colour with Dark or Light mode, or turn on Auto to follow your device.')}
                   </p>
                   {filteredThemeOptions.length === 0 && (
-                    <p className="col-span-full text-sm text-slate-400 text-center py-4">{translate('No theme found')}</p>
+                    <p className="col-span-full text-sm text-content-muted text-center py-4">{translate('No theme found')}</p>
                   )}
                   {filteredThemeOptions.map((option, index) => {
                     const isSelected = option.themeId === themeId && option.isDark === isDark;
@@ -391,7 +391,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                       >
                         <span className={IDX}>{index + 1}.</span>
                         <span
-                          className="relative w-10 h-10 overflow-hidden flex-shrink-0 flex items-start justify-center pt-1 ring-1 ring-black/10 dark:ring-white/10 shadow-sm"
+                          className="relative w-10 h-10 overflow-hidden flex-shrink-0 flex items-start justify-center pt-1 ring-1 ring-black/10 dark:ring-white/10"
                           style={{ background: option.isDark ? '#0f172a' : '#ffffff', borderRadius: 10 }}
                         >
                           {option.isDark ? <Moon className="w-3.5 h-3.5" style={{ color: option.hex }} /> : <Sun className="w-3.5 h-3.5" style={{ color: option.hex }} />}
@@ -407,11 +407,11 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'font' && (
                 <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-3 mb-3 border-b border-dashed border-slate-200 dark:border-slate-700">
+                  <p className="text-xs font-semibold text-content-muted px-1 pb-3 mb-3 border-b border-dashed border-border-primary">
                     {translate('Choose a font for the whole website. Picking one also switches to that language.')}
                   </p>
                   {filteredFonts.length === 0 && (
-                    <p className="text-sm text-slate-400 text-center py-4">{translate('No font found')}</p>
+                    <p className="text-sm text-content-muted text-center py-4">{translate('No font found')}</p>
                   )}
                   <div className="grid grid-cols-1 xl:grid-cols-4 gap-2">
                     {filteredFonts.map((item, index) => {
@@ -439,7 +439,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'language' && (
                 <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-3 mb-3 border-b border-dashed border-slate-200 dark:border-slate-700">
+                  <p className="text-xs font-semibold text-content-muted px-1 pb-3 mb-3 border-b border-dashed border-border-primary">
                     {translate('Choose your website language. Tests and quizzes are available in English and Hindi only.')}
                   </p>
                   <div className="grid grid-cols-1 xl:grid-cols-4 gap-2">
@@ -460,7 +460,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                               {option.native}{option.speakers ? ' - Avg. Population' : ''}
                             </span>
                             {(option.native !== option.label || option.speakers) && (
-                              <span className="block text-xs text-slate-500 dark:text-slate-400">
+                              <span className="block text-xs text-content-muted">
                                 {option.label}{option.speakers ? ` - ${option.speakers}` : ''}
                               </span>
                             )}
@@ -475,7 +475,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'display' && (
                 <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-3 mb-3 border-b border-dashed border-slate-200 dark:border-slate-700">
+                  <p className="text-xs font-semibold text-content-muted px-1 pb-3 mb-3 border-b border-dashed border-border-primary">
                     {translate('Make the site lighter, calmer and easier to read. Each switch applies right away.')}
                   </p>
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
@@ -493,8 +493,8 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         >
                           <Tile hex={on ? activeHex : '#94a3b8'}>{React.createElement(item.icon || Zap, { className: 'w-4 h-4' })}</Tile>
                           <span className="flex-1 min-w-0">
-                            <span className="block text-sm font-bold text-slate-800 dark:text-slate-100">{translate(item.label)}</span>
-                            <span className="block text-xs font-medium text-slate-500 dark:text-slate-400 leading-snug mt-0.5">
+                            <span className="block text-sm font-bold text-content-primary">{translate(item.label)}</span>
+                            <span className="block text-xs font-medium text-content-muted leading-snug mt-0.5">
                               {translate(item.hint)}
                               {item.needsDark && !isDark ? ` ${translate('Turn on a dark theme to see it.')}` : ''}
                             </span>
@@ -503,7 +503,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                             className="relative w-10 h-6 rounded-full flex-shrink-0 transition-colors"
                             style={{ backgroundColor: on ? activeHex : '#94a3b8' }}
                           >
-                            <span className={`absolute top-1 left-1 w-4 h-4 rounded-full bg-white shadow transition-transform ${on ? 'translate-x-4' : ''}`} />
+                            <span className={`absolute top-1 left-1 w-4 h-4 rounded-full bg-background-surface transition-transform ${on ? 'translate-x-4' : ''}`} />
                           </span>
                         </button>
                       );
@@ -514,7 +514,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'size' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
-                  <p className="col-span-full text-xs font-semibold text-slate-500 dark:text-slate-400 px-1 pb-2 mb-1 border-b border-dashed border-slate-200 dark:border-slate-700">
+                  <p className="col-span-full text-xs font-semibold text-content-muted px-1 pb-2 mb-1 border-b border-dashed border-border-primary">
                     {translate('Choose how large the text appears across the website.')}
                   </p>
                   {TEXT_SIZE_PRESETS.map((preset, index) => {
@@ -528,12 +528,12 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         className={`${CARD_BASE} ${isSelected ? CARD_ON : CARD_IDLE}`}
                       >
                         <span className={IDX}>{index + 1}.</span>
-                        <span className="w-12 h-10 flex items-center justify-center flex-shrink-0 font-black leading-none bg-slate-100 dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-700" style={{ fontSize: `${preset.px}px`, color: activeHex, borderRadius: 10 }}>
+                        <span className="w-12 h-10 flex items-center justify-center flex-shrink-0 font-bold leading-none bg-background-surface-secondary border border-border-primary" style={{ fontSize: `${preset.px}px`, color: activeHex, borderRadius: 10 }}>
                           {translate('Aa')}
                         </span>
                         <span className="flex-1 text-left">
                           <span className="block text-sm font-semibold">{preset.shortLabel} — {preset.label}</span>
-                          <span className="block text-xs text-slate-500 dark:text-slate-400">{preset.px}px</span>
+                          <span className="block text-xs text-content-muted">{preset.px}px</span>
                         </span>
                         {isSelected && <CheckBadge hex={activeHex} />}
                       </button>

@@ -239,7 +239,7 @@ const UserAnalytics = () => {
   const exportButton = (
     <button
       onClick={handleExport}
-      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
+      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 text-on-primary px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110 bg-primary-600"
     >
       <Download className="w-4 h-4" /> Export to CSV
     </button>
@@ -265,25 +265,25 @@ const UserAnalytics = () => {
   }
 
   return (
-    <div className="min-h-screen font-sans text-slate-900 dark:text-white pb-20">
+    <div className="min-h-screen font-sans text-content-primary pb-20">
       {isMounted && <Sidebar />}
-      <div className="adminContent w-full mx-auto">
+      <div className="py-4 w-full mx-auto">
 
         {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-12 shadow-sm overflow-hidden"
+          className="rounded-2xl xl:rounded-3xl border border-border-primary p-3 xl:p-12 overflow-hidden"
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl">
+              <div className="p-3 text-on-primary rounded-lg xl:rounded-xl bg-primary-600">
                 <LineChart className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Growth Trend</div>
-                <div className="text-xl font-black uppercase tracking-tighter italic">User Growth Over Time</div>
+                <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted mb-1">Growth Trend</div>
+                <div className="text-xl font-bold tracking-tight italic">User Growth Over Time</div>
               </div>
             </div>
           </div>
@@ -291,7 +291,7 @@ const UserAnalytics = () => {
             {userGrowthLabels.length > 0 ? <Line data={userGrowthLineData} options={baseOptions(mode)} /> : (
               <div className="h-auto flex flex-col items-center justify-center text-slate-300">
                 <LineChart className="w-16 h-16 mb-4 opacity-20" />
-                <span className="text-[10px] font-black uppercase tracking-widest">No data available</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.08em]">No data available</span>
               </div>
             )}
           </div>

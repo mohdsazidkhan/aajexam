@@ -113,7 +113,7 @@ export default function AdminContacts() {
     {
       key: 'user', header: 'USER', align: 'center', render: (_, contact) => (
         <div className="flex justify-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase">
+          <div className="w-10 h-10 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center font-bold text-xs group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase bg-primary-600">
             {contact.name?.[0].toUpperCase() || 'U'}
           </div>
         </div>
@@ -122,31 +122,31 @@ export default function AdminContacts() {
     {
       key: 'email', header: 'EMAIL', render: (_, contact) => (
         <>
-          <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{contact.name || 'Unknown'}</div>
-          <div className="text-[10px] font-bold text-slate-800 dark:text-slate-100 uppercase tracking-widest italic">{contact.email || 'No email'}</div>
+          <div className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] leading-none mb-1">{contact.name || 'Unknown'}</div>
+          <div className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] italic">{contact.email || 'No email'}</div>
         </>
       )
     },
     {
       key: 'message', header: 'MESSAGE', render: (_, contact) => (
-        <p className="text-[10px] font-black uppercase tracking-widest leading-relaxed line-clamp-2 text-slate-500 max-w-sm">{contact.message}</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.08em] leading-relaxed line-clamp-2 text-content-muted max-w-sm">{contact.message}</p>
       )
     },
     {
       key: 'date', header: 'DATE', align: 'right', render: (_, contact) => (
         <div className="flex flex-col items-end">
-          <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">{formatDate(contact.createdAt)}</div>
-          <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(contact.createdAt)}</div>
+          <div className="text-[10px] font-bold text-content-primary uppercase tracking-tight tabular-nums">{formatDate(contact.createdAt)}</div>
+          <div className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em] italic">{formatTime(contact.createdAt)}</div>
         </div>
       )
     },
     {
       key: 'actions', header: 'ACTIONS', align: 'center', render: (_, contact) => (
         <div className="flex justify-center gap-3">
-          <button aria-label="Send" onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow border-2 border-primary-500/20 rounded-lg xl:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm active:scale-95">
+          <button aria-label="Send" onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 text-on-primary border border-primary-500/20 rounded-lg xl:rounded-xl hover:bg-primary-700 hover:text-white transition-all active:scale-95 bg-primary-600">
             <Send className="w-4 h-4" />
           </button>
-          <button aria-label="Delete" onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg xl:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-sm active:scale-95">
+          <button aria-label="Delete" onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-content-primary border border-border-primary rounded-lg xl:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-95">
             <Trash2 className="w-4 h-4" />
           </button>
         </div>
@@ -156,13 +156,13 @@ export default function AdminContacts() {
 
   const searchInput = (
     <div className="relative w-full">
-      <MessageSquare className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <MessageSquare className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
       <input
         type="text"
         value={searchTerm}
         onChange={(e) => handleSearch(e.target.value)}
         placeholder="Search messages..."
-        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -178,10 +178,10 @@ export default function AdminContacts() {
           key={mode.id}
           onClick={() => setViewMode(mode.id)}
           title={mode.label}
-          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
         >
           <mode.icon className="w-4 h-4" />
-          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+          <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
         </button>
       ))}
     </div>
@@ -220,9 +220,9 @@ export default function AdminContacts() {
   }
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
         {isMounted && <Sidebar />}
-        <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col">
+        <div className="py-4 w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col">
 
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
@@ -234,13 +234,13 @@ export default function AdminContacts() {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
+                 className="flex flex-col items-center justify-center py-10 xl:py-20 text-center rounded-2xl xl:rounded-3xl border border-dashed border-border-primary"
                >
-                 <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 xl:mb-4 shadow-sm">
+                 <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 xl:mb-4">
                    <Mail className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
-                 <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Messages Found</h3>
-                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No contact messages yet. Messages will appear here when users submit the contact form.</p>
+                 <h3 className="text-xl xl:text-3xl font-bold text-content-primary italic tracking-tight mb-3">No Messages Found</h3>
+                 <p className="text-content-muted text-[10px] font-bold uppercase tracking-[0.08em]">No contact messages yet. Messages will appear here when users submit the contact form.</p>
                </motion.div>
              ) : (
                <motion.div
@@ -250,7 +250,7 @@ export default function AdminContacts() {
                  className="h-auto flex flex-col"
                >
                 {viewMode === 'table' && (
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                  <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col relative">
                     <ResponsiveTable
                       data={contacts}
                       columns={contactTableColumns}
@@ -271,30 +271,30 @@ export default function AdminContacts() {
                          initial={{ opacity: 0, y: 20 }}
                          animate={{ opacity: 1, y: 0 }}
                          transition={{ delay: i * 0.05 }}
-                         className="group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary-500/30 transition-all flex flex-col items-center text-center shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
+                         className="group bg-background-surface rounded-2xl border border-border-primary p-4 hover:border-primary-500/30 transition-all flex flex-col items-center text-center relative"
                        >
-                          <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl flex items-center justify-center mb-3 uppercase font-black text-sm">
+                          <div className="relative w-10 h-10 text-on-primary rounded-xl flex items-center justify-center mb-3 uppercase font-bold text-sm bg-primary-600">
                              {contact.name?.[0].toUpperCase() || 'U'}
-                             <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + i + 1}</span>
+                             <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + i + 1}</span>
                           </div>
 
-                          <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-tight mb-0.5">{contact.name || 'Unknown'}</h3>
-                          <div className="text-[10px] font-bold text-primary-600 dark:text-primary-300 mb-3">{contact.email || 'No email'}</div>
+                          <h3 className="text-sm font-bold text-content-primary leading-tight mb-0.5">{contact.name || 'Unknown'}</h3>
+                          <div className="text-[10px] font-bold text-primary-600 mb-3">{contact.email || 'No email'}</div>
 
-                          <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-xl border border-slate-100 dark:border-white/5 w-full mb-3">
-                             <p className="text-[10px] font-medium leading-relaxed text-slate-500 dark:text-slate-400 line-clamp-3">{contact.message}</p>
+                          <div className="p-3 bg-background-surface-secondary rounded-xl border border-border-primary w-full mb-3">
+                             <p className="text-[10px] font-medium leading-relaxed text-content-muted line-clamp-3">{contact.message}</p>
                           </div>
 
-                          <div className="w-full flex items-center justify-between pt-3 border-t border-slate-100 dark:border-white/5 mt-auto">
+                          <div className="w-full flex items-center justify-between pt-3 border-t border-border-primary mt-auto">
                              <div className="flex items-center gap-1.5">
-                                <Clock className="w-3 h-3 text-slate-400" />
-                                <span className="text-[10px] font-bold text-slate-400">{formatDate(contact.createdAt)}</span>
+                                <Clock className="w-3 h-3 text-content-muted" />
+                                <span className="text-[10px] font-bold text-content-muted">{formatDate(contact.createdAt)}</span>
                              </div>
                              <div className="flex gap-1">
-                                <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg hover:bg-primary-700 hover:text-white transition-all" title="Reply">
+                                <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-1.5 text-on-primary rounded-lg hover:bg-primary-700 hover:text-white transition-all bg-primary-600" title="Reply">
                                    <Send className="w-3.5 h-3.5" />
                                 </button>
-                                <button onClick={() => handleDelete(contact._id)} className="p-1.5 bg-slate-100 dark:bg-slate-700 text-black dark:text-white rounded-lg hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all" title="Delete">
+                                <button onClick={() => handleDelete(contact._id)} className="p-1.5 bg-background-surface-secondary text-content-primary rounded-lg hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all" title="Delete">
                                    <Trash2 className="w-3.5 h-3.5" />
                                 </button>
                              </div>
@@ -312,40 +312,40 @@ export default function AdminContacts() {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="group bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary-500/30 transition-all flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
+                        className="group bg-background-surface rounded-xl border border-border-primary p-4 hover:border-primary-500/30 transition-all flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 relative"
                       >
-                         <div className="relative w-10 h-10 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-700 group-hover:text-white transition-all">
+                         <div className="relative w-10 h-10 bg-background-surface-secondary text-content-muted rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-700 group-hover:text-white transition-all">
                             <User className="w-5 h-5" />
-                            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + i + 1}</span>
+                            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + i + 1}</span>
                          </div>
 
                          <div className="flex-1 space-y-1.5">
                             <div className="flex flex-wrap items-center gap-2">
-                               <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{contact.name || 'Unknown'}</h3>
-                               <span className="px-2 py-0.5 rounded-lg text-[10px] font-bold text-slate-400 border border-slate-100 dark:border-white/10">{contact.email || 'No email'}</span>
+                               <h3 className="text-sm font-bold text-content-primary group-hover:text-primary-600 transition-colors">{contact.name || 'Unknown'}</h3>
+                               <span className="px-2 py-0.5 rounded-lg text-[10px] font-bold text-content-muted border border-border-primary">{contact.email || 'No email'}</span>
                                <div className="flex items-center gap-1.5">
                                   <Calendar className="w-3.5 h-3.5 text-primary-500/60" />
-                                  <span className="text-[10px] font-bold text-slate-400">{formatDate(contact.createdAt)} @ {formatTime(contact.createdAt)}</span>
+                                  <span className="text-[10px] font-bold text-content-muted">{formatDate(contact.createdAt)} @ {formatTime(contact.createdAt)}</span>
                                </div>
                                <div className="flex items-center gap-1.5">
                                   <ShieldCheck className="w-3.5 h-3.5 text-primary-500/60" />
-                                  <span className="text-[10px] font-bold text-slate-400">Verified</span>
+                                  <span className="text-[10px] font-bold text-content-muted">Verified</span>
                                </div>
                             </div>
-                            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{contact.message}</p>
+                            <p className="text-xs text-content-muted leading-relaxed">{contact.message}</p>
                          </div>
 
                          <div className="flex items-center gap-1.5 shrink-0">
                             <button
                                onClick={() => window.open(`mailto:${contact.email}`, '_blank')}
-                               className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg hover:bg-primary-700 hover:text-white transition-all"
+                               className="p-2 text-on-primary rounded-lg hover:bg-primary-700 hover:text-white transition-all bg-primary-600"
                                title="Reply"
                             >
                                <Send className="w-4 h-4" />
                             </button>
                             <button
                                onClick={() => handleDelete(contact._id)}
-                               className="p-2 bg-slate-100 dark:bg-slate-700 text-black dark:text-white rounded-lg hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"
+                               className="p-2 bg-background-surface-secondary text-content-primary rounded-lg hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"
                                title="Delete"
                             >
                                <Trash2 className="w-4 h-4" />

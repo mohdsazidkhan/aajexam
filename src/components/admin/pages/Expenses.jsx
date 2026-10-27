@@ -168,15 +168,15 @@ const AdminExpenses = () => {
         {
             key: 'expense', header: 'Expense', render: (_, expense) => (
                 <>
-                    <div className="font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors leading-none mb-2">{expense.title}</div>
-                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1 max-w-xs">{expense.description || 'No description'}</div>
+                    <div className="font-bold text-content-primary uppercase tracking-tight group-hover:text-primary-600 transition-colors leading-none mb-2">{expense.title}</div>
+                    <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] line-clamp-1 max-w-xs">{expense.description || 'No description'}</div>
                 </>
             )
         },
         {
             key: 'category', header: 'Category', render: (_, expense) => (
                 <div className="text-center">
-                    <span className="px-4 py-1.5 rounded-lg xl:rounded-xl bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white text-[9px] font-black uppercase tracking-widest shadow-sm">
+                    <span className="px-4 py-1.5 rounded-lg xl:rounded-xl text-on-primary text-[9px] font-bold uppercase tracking-[0.08em] bg-primary-600">
                         {expense.category}
                     </span>
                 </div>
@@ -184,7 +184,7 @@ const AdminExpenses = () => {
         },
         {
             key: 'amount', header: 'Amount', render: (_, expense) => (
-                <div className="text-right tabular-nums font-black text-black dark:text-white italic tracking-tighter text-lg">
+                <div className="text-right tabular-nums font-bold text-content-primary italic tracking-tight text-lg">
                     {formatAmount(expense.amount)}
                 </div>
             )
@@ -192,8 +192,8 @@ const AdminExpenses = () => {
         {
             key: 'date', header: 'Date', render: (_, expense) => (
                 <>
-                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">{new Date(expense.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
-                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{new Date(expense.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                    <div className="text-[10px] font-bold text-content-primary uppercase tracking-tight tabular-nums leading-none mb-1">{new Date(expense.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
+                    <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em]">{new Date(expense.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
                 </>
             )
         },
@@ -203,14 +203,14 @@ const AdminExpenses = () => {
                     <motion.button
                         whileHover={{ scale: 1.1 }}
                         onClick={() => handleOpenModal(expense)}
-                        className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm"
+                        className="p-3 text-on-primary rounded-lg xl:rounded-xl hover:bg-primary-700 hover:text-white transition-all bg-primary-600"
                     >
                         <Edit3 className="w-4 h-4" />
                     </motion.button>
                     <motion.button
                         whileHover={{ scale: 1.1 }}
                         onClick={() => handleDelete(expense._id)}
-                        className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg xl:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-sm"
+                        className="p-3 bg-black/10 dark:bg-white/10 text-content-primary rounded-lg xl:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"
                     >
                         <Trash2 className="w-4 h-4" />
                     </motion.button>
@@ -220,24 +220,24 @@ const AdminExpenses = () => {
     ];
 
     const totalExpensesCard = (
-        <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 w-full xl:w-fit mb-4 shrink-0 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-            <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0"><IndianRupee className="w-4 h-4" /></div>
+        <div className="flex items-center gap-2 p-3 bg-background-surface rounded-xl xl:rounded-2xl border border-border-primary w-full xl:w-fit mb-4 shrink-0 relative">
+            <div className="p-2 text-on-primary rounded-lg shrink-0 bg-primary-600"><IndianRupee className="w-4 h-4" /></div>
             <div className="min-w-0">
-                <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{formatAmount(summary.totalAmount)}</div>
-                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Expenses</div>
+                <div className="text-sm xl:text-base font-bold text-content-primary tabular-nums tracking-tight truncate">{formatAmount(summary.totalAmount)}</div>
+                <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] truncate">Total Expenses</div>
             </div>
         </div>
     );
 
     const searchInput = (
         <form onSubmit={handleSearch} className="relative w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
             <input
                 type="text"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 placeholder="Search by title..."
-                className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+                className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm"
             />
         </form>
     );
@@ -255,7 +255,7 @@ const AdminExpenses = () => {
         <button
             onClick={() => { setSearch(''); setCategory(''); fetchExpenses(1); }}
             title="Reset filters"
-            className="p-2 rounded-lg xl:rounded-xl bg-white dark:bg-black border border-slate-300 dark:border-slate-700 text-slate-500 hover:text-primary-600 shrink-0"
+            className="p-2 rounded-lg xl:rounded-xl bg-background-surface border border-border-primary text-content-muted hover:text-primary-600 shrink-0"
         >
             <RotateCcw className="w-4 h-4" />
         </button>
@@ -264,7 +264,7 @@ const AdminExpenses = () => {
     const addExpenseButton = (
         <button
             onClick={() => handleOpenModal()}
-            className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
+            className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 text-on-primary px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110 bg-primary-600"
         >
             <PlusCircle className="w-4 h-4" /> Add Expense
         </button>
@@ -299,22 +299,22 @@ const AdminExpenses = () => {
     if (!isMounted) return null;
 
     return (
-        <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
+        <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-content-primary font-sans">
             {userInfo?.role === 'admin' && <Sidebar />}
 
-            <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+            <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
                 {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
                 {totalExpensesCard}
 
                 {/* Stats bar */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-2 xl:gap-0 xl:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 xl:p-0 p-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-2 xl:gap-0 xl:divide-x divide-border-primary mb-4 shrink-0 bg-background-surface rounded-xl border border-border-primary xl:p-0 p-2">
                     {summary?.categories?.map((cat) => (
                         <div key={cat._id} className="flex items-center gap-2 px-3 py-2">
-                            <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0 uppercase font-black text-[10px] w-7 h-7 flex items-center justify-center">{cat._id.charAt(0)}</div>
+                            <div className="p-1.5 text-on-primary rounded-lg shrink-0 uppercase font-bold text-[10px] w-7 h-7 flex items-center justify-center bg-primary-600">{cat._id.charAt(0)}</div>
                             <div className="min-w-0">
-                                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{formatAmount(cat.totalAmount)}</div>
-                                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate capitalize">{cat._id}</div>
+                                <div className="text-sm font-bold text-content-primary tabular-nums tracking-tight truncate">{formatAmount(cat.totalAmount)}</div>
+                                <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] truncate capitalize">{cat._id}</div>
                             </div>
                         </div>
                     ))}
@@ -326,13 +326,13 @@ const AdminExpenses = () => {
                     {loading ? (
                         <AdminTableSkeleton showHeader={false} showFilters={false} />
                     ) : expenses.length === 0 ? (
-                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center shadow-sm">
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="rounded-2xl xl:rounded-3xl border border-dashed border-border-primary p-24 text-center">
                             <PieChart className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
-                            <h3 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Expenses Recorded</h3>
-                            <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">Start by adding your first expense to track platform spending.</p>
+                            <h3 className="text-2xl xl:text-3xl font-bold text-content-primary tracking-tight mb-4 font-outfit">No Expenses Recorded</h3>
+                            <p className="text-content-muted text-[10px] font-bold uppercase tracking-[0.08em] leading-none">Start by adding your first expense to track platform spending.</p>
                         </motion.div>
                     ) : (
-                        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                        <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden h-auto flex flex-col relative">
                             <ResponsiveTable
                                 data={expenses}
                                 columns={expenseTableColumns}
@@ -355,7 +355,7 @@ const AdminExpenses = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                className="absolute inset-0 bg-slate-900/60 backdrop-blur-3xl"
+                                className="absolute inset-0 bg-slate-900/60"
                                 onClick={() => setShowModal(false)}
                             />
                             <motion.div
@@ -363,14 +363,14 @@ const AdminExpenses = () => {
                                 animate={{ x: 0 }}
                                 exit={{ x: '100%' }}
                                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-                                className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-slate-900 xl:rounded-l-2xl shadow-2xl overflow-hidden flex flex-col border-l-2 border-slate-100 dark:border-white/10"
+                                className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface xl:rounded-l-2xl overflow-hidden flex flex-col border-l-2 border-border-primary"
                             >
-                                <section className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5 shrink-0">
+                                <section className="px-4 py-2.5 border-b-2 border-border-primary flex items-center justify-between shrink-0">
                                     <div className="flex items-center gap-2.5">
-                                        <div className="p-2 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl"><Receipt className="w-5 h-5" /></div>
+                                        <div className="p-2 text-on-primary rounded-xl bg-primary-600"><Receipt className="w-5 h-5" /></div>
                                         <section>
-                                            <h2 className="text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{isEditing ? 'Edit Expense' : 'Add Expense'}</h2>
-                                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mt-1">Enter the expense details below</p>
+                                            <h2 className="text-base font-bold text-content-primary uppercase italic tracking-tight leading-none">{isEditing ? 'Edit Expense' : 'Add Expense'}</h2>
+                                            <p className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] leading-none mt-1">Enter the expense details below</p>
                                         </section>
                                     </div>
                                     <button aria-label="Close" onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg text-red-600 dark:text-red-400 transition-colors shrink-0">
@@ -381,79 +381,79 @@ const AdminExpenses = () => {
                                 <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
 <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-5 space-y-3">
                                     <div className="space-y-2 xl:space-y-3">
-                                        <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Title</label>
+                                        <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4">Title</label>
                                         <div className="relative group/field">
-                                            <Tag className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-600 transition-colors" />
+                                            <Tag className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted group-focus-within/field:text-primary-600 transition-colors" />
                                             <input
                                                 required
                                                 type="text"
                                                 value={formData.title}
                                                 onChange={e => setFormData({ ...formData, title: e.target.value })}
                                                 placeholder="TITLE E.G. META ADS - AUG 2024"
-                                                className="w-full pl-14 pr-6 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all border-slate-300 dark:border-slate-700"
+                                                className="w-full pl-14 pr-6 py-3 bg-background-surface border focus:border-primary-500/20 rounded-lg xl:rounded-3xl text-xs font-bold uppercase tracking-[0.08em] outline-none transition-all border-border-primary"
                                             />
                                         </div>
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 xl:gap-4">
                                         <div className="space-y-2 xl:space-y-3">
-                                            <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Amount</label>
+                                            <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4">Amount</label>
                                             <div className="relative group/field">
-                                                <IndianRupee className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-600 transition-colors" />
+                                                <IndianRupee className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted group-focus-within/field:text-primary-600 transition-colors" />
                                                 <input
                                                     required
                                                     type="number"
                                                     value={formData.amount}
                                                     onChange={e => setFormData({ ...formData, amount: e.target.value })}
                                                     placeholder="0.00"
-                                                    className="w-full pl-14 pr-6 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all tabular-nums border-slate-300 dark:border-slate-700"
+                                                    className="w-full pl-14 pr-6 py-3 bg-background-surface border focus:border-primary-500/20 rounded-lg xl:rounded-3xl text-xs font-bold uppercase tracking-[0.08em] outline-none transition-all tabular-nums border-border-primary"
                                                 />
                                             </div>
                                         </div>
                                         <div className="space-y-2 xl:space-y-3">
-                                            <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Date</label>
+                                            <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4">Date</label>
                                             <div className="relative group/field">
-                                                <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-600 transition-colors" />
+                                                <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted group-focus-within/field:text-primary-600 transition-colors" />
                                                 <input
                                                     required
                                                     type="date"
                                                     value={formData.date}
                                                     onChange={e => setFormData({ ...formData, date: e.target.value })}
-                                                    className="w-full pl-14 pr-6 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all border-slate-300 dark:border-slate-700"
+                                                    className="w-full pl-14 pr-6 py-3 bg-background-surface border focus:border-primary-500/20 rounded-lg xl:rounded-3xl text-xs font-bold uppercase tracking-[0.08em] outline-none transition-all border-border-primary"
                                                 />
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="space-y-2 xl:space-y-3">
-                                        <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Category</label>
+                                        <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4">Category</label>
                                         <Select
                                             value={formData.category}
                                             onChange={e => setFormData({ ...formData, category: e.target.value })}
-                                            className="w-full px-4 xl:px-5 py-3 bg-white dark:bg-black border-2 focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all cursor-pointer shadow-sm border-slate-300 dark:border-slate-700"
+                                            className="w-full px-4 xl:px-5 py-3 bg-background-surface border focus:border-primary-500/20 rounded-lg xl:rounded-3xl text-xs font-bold uppercase tracking-[0.08em] outline-none transition-all cursor-pointer border-border-primary"
                                         >
                                             {expenseCategories.map(cat => <option key={cat.id} value={cat.id}>{cat.label}</option>)}
                                         </Select>
                                     </div>
 
                                     <div className="space-y-2 xl:space-y-3">
-                                        <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Description</label>
+                                        <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4">Description</label>
                                         <textarea
                                             value={formData.description}
                                             onChange={e => setFormData({ ...formData, description: e.target.value })}
                                             rows="3"
-                                            className="w-full px-4 xl:px-5 py-2 xl:py-3 bg-white dark:bg-black border-2 focus:border-primary-500/20 rounded-lg xl:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all resize-none border-slate-300 dark:border-slate-700"
+                                            className="w-full px-4 xl:px-5 py-2 xl:py-3 bg-background-surface border focus:border-primary-500/20 rounded-lg xl:rounded-3xl text-xs font-bold uppercase tracking-[0.08em] outline-none transition-all resize-none border-border-primary"
                                             placeholder="ADD A NOTE ABOUT THIS EXPENSE..."
                                         />
                                     </div>
 
                                     </div>
-<div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] justify-end items-center">
+<div className="flex gap-3 shrink-0 px-4 xl:px-5 py-2.5 border-t border-border-primary bg-background-surface justify-end items-center">
  <motion.button
  whileHover={{ x: -5 }}
  type="button"
  onClick={() => setShowModal(false)}
- className="px-6 py-3 rounded-lg xl:rounded-[2rem] bg-slate-100 dark:bg-white/5 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-[0.2em] hover:bg-slate-200 transition-all border-2 border-transparent"
+ className="px-6 py-3 rounded-lg xl:rounded-3xl bg-background-surface-secondary text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] hover:bg-background-surface-secondary transition-all border border-transparent"
  >
  CANCEL
  </motion.button>
@@ -461,7 +461,7 @@ const AdminExpenses = () => {
  whileHover={{ x: 5 }}
  type="submit"
  disabled={formLoading}
- className="px-6 py-3 rounded-lg xl:rounded-[2rem] bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-sm disabled:opacity-50"
+ className="px-6 py-3 rounded-lg xl:rounded-3xl text-on-primary text-[10px] font-bold uppercase tracking-[0.08em] disabled:opacity-50 bg-primary-600"
  >
  {formLoading ? 'SAVING...' : (isEditing ? 'SAVE CHANGES' : 'ADD EXPENSE')}
  </motion.button>

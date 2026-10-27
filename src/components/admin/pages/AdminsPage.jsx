@@ -64,13 +64,13 @@ export default function AdminsPage() {
 
   const searchInput = (
     <div className="relative w-full">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
       <input
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search admins by name or email..."
-        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -90,9 +90,9 @@ export default function AdminsPage() {
   }
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       {isMounted && <Sidebar />}
-      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
+      <div className="py-4 w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         {/* Title + filters live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
         <div className="flex-1 min-h-0 overflow-auto">
@@ -102,12 +102,12 @@ export default function AdminsPage() {
                 key="empty"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
+                className="flex flex-col items-center justify-center py-10 xl:py-20 text-center rounded-2xl xl:rounded-3xl border border-dashed border-border-primary"
               >
-                <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 xl:mb-4 shadow-sm">
+                <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 xl:mb-4">
                   <ShieldCheck className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                 </div>
-                <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Admins Found</h3>
+                <h3 className="text-xl xl:text-3xl font-bold text-content-primary italic tracking-tight mb-3">No Admins Found</h3>
               </motion.div>
             ) : (
               <motion.div key="content" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-3">
@@ -119,17 +119,17 @@ export default function AdminsPage() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: Math.min(i, 10) * 0.03 }}
-                      className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex items-center gap-3 flex-wrap sm:flex-nowrap shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
+                      className="bg-background-surface rounded-xl border border-border-primary p-4 flex items-center gap-3 flex-wrap sm:flex-nowrap relative"
                     >
                       <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center shrink-0">
                         <ShieldCheck className="w-5 h-5 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate flex items-center gap-2">
+                        <h3 className="text-sm font-bold text-content-primary truncate flex items-center gap-2">
                           {a.name || 'Unnamed'}
-                          {isSelf && <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase">You</span>}
+                          {isSelf && <span className="text-[10px] font-bold text-primary-600 uppercase">You</span>}
                         </h3>
-                        <div className="flex items-center gap-3 text-[11px] font-bold text-slate-400 flex-wrap">
+                        <div className="flex items-center gap-3 text-[11px] font-bold text-content-muted flex-wrap">
                           <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5" /> {a.email}</span>
                           {a.phone && <span className="flex items-center gap-1"><Phone className="w-3.5 h-3.5" /> {a.phone}</span>}
                           <span>Admin since {formatDate(a.createdAt)}</span>
@@ -140,7 +140,7 @@ export default function AdminsPage() {
                           disabled={busyId === a._id}
                           onClick={() => handleDemote(a)}
                           title="Remove admin access"
-                          className="p-2 bg-black/5 dark:bg-white/10 text-black dark:text-white rounded-lg hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all disabled:opacity-50 shrink-0"
+                          className="p-2 bg-black/5 dark:bg-white/10 text-content-primary rounded-lg hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all disabled:opacity-50 shrink-0"
                         >
                           <ShieldOff className="w-4 h-4" />
                         </button>

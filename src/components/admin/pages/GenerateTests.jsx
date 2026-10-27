@@ -588,9 +588,9 @@ const AdminGenerateTests = () => {
   });
 
   if (loadingInit) return (
-    <div className="gt-root min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="gt-root min-h-screen font-outfit text-content-primary pb-20">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit">
         <AdminTableSkeleton />
       </div>
     </div>
@@ -600,7 +600,7 @@ const AdminGenerateTests = () => {
   const totalExpected = selectedPattern?.sections.reduce((acc, s) => acc + (s.totalQuestions || 0), 0) || 0;
 
   return (
-    <div className="gt-root min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="gt-root min-h-screen font-outfit text-content-primary pb-20">
       <style>{`
         @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
         @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.2)} }
@@ -611,7 +611,7 @@ const AdminGenerateTests = () => {
 
       <Sidebar />
 
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit">
 
         {/* Title now lives in the navbar; "Start Over" moves into the filter drawer */}
 

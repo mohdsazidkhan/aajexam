@@ -71,59 +71,56 @@ export default function TopicPractice({
 
       <div className="min-h-screen pb-12 font-outfit">
         <div className="py-4 xl:py-6 space-y-8">
-          <nav aria-label={translate('Breadcrumb')} className="pt-3 xl:pt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
-            <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
-            <span className="text-slate-400">/</span>
-            <Link href="/govt-exams" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Government Exams')}</Link>
+          <nav aria-label={translate('Breadcrumb')} className="pt-3 xl:pt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.08em] flex-wrap">
+            <Link href="/" className="text-primary-600 hover:text-primary-600">{translate('Home')}</Link>
+            <span className="text-content-muted">/</span>
+            <Link href="/govt-exams" className="text-primary-600 hover:text-primary-600">{translate('Government Exams')}</Link>
             {exam?.slug && (
               <>
-                <span className="text-slate-400">/</span>
-                <Link href={`/govt-exams/exam/${exam.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translateData(examName)}</Link>
+                <span className="text-content-muted">/</span>
+                <Link href={`/govt-exams/exam/${exam.slug}`} className="text-primary-600 hover:text-primary-600">{translateData(examName)}</Link>
               </>
             )}
-            <span className="text-slate-400">/</span>
-            <Link href={subjectUrl} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translateData(subjectName)}</Link>
-            <span className="text-slate-400">/</span>
-            <span className="text-slate-600 dark:text-slate-400">{translateData(topicName)}</span>
+            <span className="text-content-muted">/</span>
+            <Link href={subjectUrl} className="text-primary-600 hover:text-primary-600">{translateData(subjectName)}</Link>
+            <span className="text-content-muted">/</span>
+            <span className="text-content-secondary">{translateData(topicName)}</span>
           </nav>
 
-          <header className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-3 md:p-6 xl:p-8" style={{ borderRadius: 16 }}>
-            <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-            <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-            <div className="pointer-events-none absolute -bottom-28 right-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+          <header className="relative overflow-hidden border border-border-primary p-3 md:p-6 xl:p-8 bg-background-surface" style={{ borderRadius: 16 }}>
             <div className="relative">
-            <span className="block text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest mb-2">
+            <span className="block text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] mb-2">
               {translateData(examName)} · {translateData(subjectName)}
             </span>
-            <h1 className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
+            <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold text-content-primary tracking-tight mb-3">
               {heading}
             </h1>
-            <p className="text-md xl:text-lg font-bold text-slate-600 dark:text-white/80 leading-relaxed max-w-3xl mb-5">
+            <p className="text-md xl:text-lg font-bold text-content-secondary dark:text-white/80 leading-relaxed max-w-3xl mb-5">
               {totalQuestions} {translateData(topicName)} questions for {translateData(examName)}, split into {quizCount} timed practice set{quizCount === 1 ? '' : 's'} — every question with its answer and explanation.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-center">
-              <div className="bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 p-3">
-                <div className="text-lg font-black text-slate-900 dark:text-white">{totalQuestions}</div>
-                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Questions')}</div>
+              <div className="border border-border-primary p-3">
+                <div className="text-lg font-bold text-content-primary">{totalQuestions}</div>
+                <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Questions')}</div>
               </div>
-              <div className="bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 p-3">
-                <div className="text-lg font-black text-slate-900 dark:text-white">{quizCount}</div>
-                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Practice sets')}</div>
+              <div className="border border-border-primary p-3">
+                <div className="text-lg font-bold text-content-primary">{quizCount}</div>
+                <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Practice sets')}</div>
               </div>
-              <div className="bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 p-3">
-                <div className="text-lg font-black text-primary-600 dark:text-primary-300">{translate('FREE')}</div>
-                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Access')}</div>
+              <div className="border border-border-primary p-3">
+                <div className="text-lg font-bold text-primary-600">{translate('FREE')}</div>
+                <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Access')}</div>
               </div>
             </div>
           </div>
           </header>
 
           {aboutText && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
-              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-3xl px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                 {translate('About {exam} {topic}', { exam: translateData(examName), topic: translateData(topicName) })}
               </h2>
-              <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
+              <div className="prose prose-slate dark:prose-invert max-w-none text-content-secondary font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                 {aboutText}
               </div>
             </section>
@@ -144,37 +141,37 @@ export default function TopicPractice({
             />
           )}
 
-          <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
-            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">
+          <section className="rounded-3xl px-0 py-4 xl:py-8">
+            <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-4 tracking-tight">
               {translate('Keep going')}
             </h2>
             <div className="flex flex-wrap gap-3">
               {exam?.slug && (
-                <Link href={`/govt-exams/exam/${exam.slug}`} className="bg-primary-600 text-white px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors">
+                <Link href={`/govt-exams/exam/${exam.slug}`} className="bg-primary-600 text-on-primary px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors">
                   {translateData(examName)} syllabus &amp; pattern
                 </Link>
               )}
               {hasPyq && exam?.slug && (
-                <Link href={`/pyq/${exam.slug}`} className="bg-white dark:bg-slate-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+                <Link href={`/pyq/${exam.slug}`} className="bg-background-surface text-primary-600 border border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
                   {translate('Full {exam} question papers', { exam: translateData(examName) })}
                 </Link>
               )}
-              <Link href={subjectUrl} className="bg-white dark:bg-slate-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+              <Link href={subjectUrl} className="bg-background-surface text-primary-600 border border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
                 {translate('All {exam} {subject} practice', { exam: translateData(examName), subject: translateData(subjectName) })}
               </Link>
             </div>
           </section>
 
           {faqs.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
-              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-3xl px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                 {translate('Frequently Asked Questions')}
               </h2>
               <div className="space-y-2 xl:space-y-4">
                 {faqs.map((f, i) => (
-                  <details key={i} className="group bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-5 cursor-pointer">
-                    <summary className="font-black text-slate-900 dark:text-white text-base xl:text-lg uppercase tracking-tight">{f.question}</summary>
-                    <p className="mt-3 text-slate-600 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
+                  <details key={i} className="group bg-background-surface-secondary rounded-2xl border border-border-primary p-5 cursor-pointer">
+                    <summary className="font-bold text-content-primary text-base xl:text-lg tracking-tight">{f.question}</summary>
+                    <p className="mt-3 text-content-secondary font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
                   </details>
                 ))}
               </div>

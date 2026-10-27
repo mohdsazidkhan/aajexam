@@ -20,12 +20,12 @@ export default function LinkIndexSection({ title, intro, groups = [], columns = 
   if (usable.length === 0) return null;
 
   return (
-    <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
-      <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight">
+    <section className="rounded-3xl px-0 py-4 xl:py-8">
+      <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-3 tracking-tight">
         {title}
       </h2>
       {intro && (
-        <p className="text-sm xl:text-base font-medium text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-4xl">
+        <p className="text-sm xl:text-base font-medium text-content-secondary leading-relaxed mb-8 max-w-4xl">
           {intro}
         </p>
       )}
@@ -34,9 +34,9 @@ export default function LinkIndexSection({ title, intro, groups = [], columns = 
         {usable.map((group, gi) => (
           <div key={group.heading || gi}>
             {group.heading && (
-              <h3 className="text-sm xl:text-base font-black text-slate-900 dark:text-white mb-4 uppercase tracking-widest">
+              <h3 className="text-sm xl:text-base font-bold text-content-primary mb-4 uppercase tracking-[0.08em]">
                 {group.href
-                  ? <Link href={group.href} className="hover:text-primary-600 dark:hover:text-primary-400">{group.heading}</Link>
+                  ? <Link href={group.href} className="hover:text-primary-600 dark:hover:text-primary-600">{group.heading}</Link>
                   : group.heading}
               </h3>
             )}
@@ -45,13 +45,13 @@ export default function LinkIndexSection({ title, intro, groups = [], columns = 
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="block rounded-2xl border-2 border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 px-4 py-3 hover:border-primary-300 dark:hover:border-primary-700 transition"
+                    className="block rounded-2xl border border-border-primary bg-background-surface-secondary px-4 py-3 hover:border-primary-300 dark:hover:border-primary-700 transition"
                   >
-                    <span className="block text-sm font-bold text-slate-900 dark:text-white leading-snug line-clamp-2">
+                    <span className="block text-sm font-bold text-content-primary leading-snug line-clamp-2">
                       {item.name}
                     </span>
                     {item.meta && (
-                      <span className="block text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">
+                      <span className="block text-xs font-medium text-content-muted mt-1">
                         {item.meta}
                       </span>
                     )}

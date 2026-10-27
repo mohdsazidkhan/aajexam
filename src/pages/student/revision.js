@@ -106,10 +106,10 @@ const RevisionPage = () => {
               const isActive = activeTab === tab.key;
               return (
                 <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                  className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg xl:rounded-xl text-[11px] font-black transition ${isActive ? 'bg-primary-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
+                  className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg xl:rounded-xl text-[11px] font-bold transition ${isActive ? 'bg-primary-600 text-on-primary' : 'bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary'}`}>
                   <Icon className="w-3.5 h-3.5" />
                   <span>{translate(tab.label)}</span>
-                  <span className={`px-1.5 py-0.5 rounded-full text-[9px] ${isActive ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>{count}</span>
+                  <span className={`px-1.5 py-0.5 rounded-full text-[9px] ${isActive ? 'bg-white/20' : 'bg-background-surface-secondary'}`}>{count}</span>
                 </button>
               );
             })}
@@ -119,35 +119,35 @@ const RevisionPage = () => {
           {currentItem ? (
             <Card radius="2xl" className="space-y-3 xl:space-y-4 xl:p-5">
               <div className="flex justify-between items-center">
-                <span className="text-[10px] font-bold text-slate-400">{translate('Card {current} of {total}', { current: currentIdx + 1, total: dueItems.length })}</span>
-                <span className="text-[10px] font-bold text-slate-400">{translate('Reviews: {count}', { count: currentItem.totalReviews || 0 })}</span>
+                <span className="text-[10px] font-bold text-content-muted">{translate('Card {current} of {total}', { current: currentIdx + 1, total: dueItems.length })}</span>
+                <span className="text-[10px] font-bold text-content-muted">{translate('Reviews: {count}', { count: currentItem.totalReviews || 0 })}</span>
               </div>
-              <div className="h-1 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+              <div className="h-1 w-full bg-background-surface-secondary rounded-full overflow-hidden">
                 <div className="h-full bg-primary-600 rounded-full transition-all duration-300" style={{ width: `${Math.round(((currentIdx + 1) / Math.max(1, dueItems.length)) * 100)}%` }} />
               </div>
 
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300">{(currentItem.source || '').replace('_', ' ')}</span>
-                {currentItem.sourceTitle && <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 truncate max-w-[70%]">{currentItem.sourceTitle}</span>}
+                <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded text-primary-600">{(currentItem.source || '').replace('_', ' ')}</span>
+                {currentItem.sourceTitle && <span className="text-[10px] font-bold text-content-muted truncate max-w-[70%]">{currentItem.sourceTitle}</span>}
               <LanguageToggle
                 language={language}
                 onToggle={toggleLanguage}
                 translating={translating}
-                className="ml-auto flex shrink-0 items-center justify-center gap-1.5 min-w-[40px] px-2.5 py-1 rounded-lg font-bold text-[11px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                className="ml-auto flex shrink-0 items-center justify-center gap-1.5 min-w-[40px] px-2.5 py-1 rounded-lg font-bold text-[11px] bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-slate-600 transition-colors"
               />
               </div>
-              <h3 className="text-base xl:text-lg font-black text-slate-900 dark:text-white leading-relaxed">{getHindi(currentItem.questionRef)?.questionText || currentItem.questionSnapshot?.questionText}</h3>
+              <h3 className="text-base xl:text-lg font-bold text-content-primary leading-relaxed">{getHindi(currentItem.questionRef)?.questionText || currentItem.questionSnapshot?.questionText}</h3>
 
               {!showAnswer ? (
                 <div className="space-y-3">
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-3">
                   {currentItem.questionSnapshot?.options?.map((opt, i) => (
-                    <div key={i} className="px-4 py-3 rounded-lg xl:rounded-xl text-sm font-bold border-2 border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-                      <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(currentItem.questionRef)?.optionTexts?.[i] || opt}
+                    <div key={i} className="px-4 py-3 rounded-lg xl:rounded-xl text-sm font-bold border border-border-primary text-content-secondary">
+                      <span className="font-bold mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(currentItem.questionRef)?.optionTexts?.[i] || opt}
                     </div>
                   ))}
                   </div>
-                  <button onClick={() => setShowAnswer(true)} className="w-full py-3 bg-primary-600 hover:bg-primary-600 transition text-white rounded-lg xl:rounded-xl text-sm font-bold mt-2">{translate('Show Answer')}</button>
+                  <button onClick={() => setShowAnswer(true)} className="w-full py-3 bg-primary-600 hover:bg-primary-600 transition text-on-primary rounded-lg xl:rounded-xl text-sm font-bold mt-2">{translate('Show Answer')}</button>
                 </div>
               ) : (
                 <div className="space-y-2 xl:space-y-4">
@@ -155,21 +155,21 @@ const RevisionPage = () => {
                     {currentItem.questionSnapshot?.options?.map((opt, i) => {
                       const isCorrect = i === currentItem.questionSnapshot?.correctAnswerIndex;
                       return (
-                        <div key={i} className={`px-4 py-3 rounded-lg xl:rounded-xl text-sm font-bold border-2 ${isCorrect ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/20' : 'border-slate-100 dark:border-slate-800'}`}>
-                          <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(currentItem.questionRef)?.optionTexts?.[i] || opt} {isCorrect && <CheckCircle className="w-4 h-4 inline text-primary-600 dark:text-primary-300 ml-2" />}
+                        <div key={i} className={`px-4 py-3 rounded-lg xl:rounded-xl text-sm font-bold border ${isCorrect ? 'border-primary-600' : 'border-border-primary'}`}>
+                          <span className="font-bold mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(currentItem.questionRef)?.optionTexts?.[i] || opt} {isCorrect && <CheckCircle className="w-4 h-4 inline text-primary-600 ml-2" />}
                         </div>
                       );
                     })}
                   </div>
                   {currentItem.questionSnapshot?.explanation && (
-                    <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl text-xs leading-relaxed text-black dark:text-white">{currentItem.questionSnapshot.explanation}</div>
+                    <div className="p-4 bg-background-surface-secondary rounded-lg xl:rounded-xl text-xs leading-relaxed text-content-primary">{currentItem.questionSnapshot.explanation}</div>
                   )}
-                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider text-center">{translate('How well did you know this?')}</p>
+                  <div className="pt-4 border-t border-border-primary space-y-3">
+                    <p className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] text-center">{translate('How well did you know this?')}</p>
                     <div className="grid grid-cols-3 gap-3">
-                      <button onClick={() => submitReview(1)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><XCircle className="w-4 h-4 mx-auto mb-1" />{translate('Wrong')}</button>
-                      <button onClick={() => submitReview(3)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><Brain className="w-4 h-4 mx-auto mb-1" />{translate('Hard')}</button>
-                      <button onClick={() => submitReview(5)} disabled={reviewing} className="py-3 bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 rounded-lg xl:rounded-xl text-xs font-bold hover:bg-primary-100 dark:hover:bg-primary-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><CheckCircle className="w-4 h-4 mx-auto mb-1" />{translate('Easy')}</button>
+                      <button onClick={() => submitReview(1)} disabled={reviewing} className="py-3 bg-background-surface-secondary text-content-primary rounded-lg xl:rounded-xl text-xs font-bold hover:bg-background-surface-secondary transition disabled:opacity-50 disabled:cursor-not-allowed"><XCircle className="w-4 h-4 mx-auto mb-1" />{translate('Wrong')}</button>
+                      <button onClick={() => submitReview(3)} disabled={reviewing} className="py-3 bg-background-surface-secondary text-content-primary rounded-lg xl:rounded-xl text-xs font-bold hover:bg-background-surface-secondary transition disabled:opacity-50 disabled:cursor-not-allowed"><Brain className="w-4 h-4 mx-auto mb-1" />{translate('Hard')}</button>
+                      <button onClick={() => submitReview(5)} disabled={reviewing} className="py-3 text-primary-600 rounded-lg xl:rounded-xl text-xs font-bold transition disabled:opacity-50 disabled:cursor-not-allowed"><CheckCircle className="w-4 h-4 mx-auto mb-1" />{translate('Easy')}</button>
                     </div>
                   </div>
                 </div>
@@ -177,9 +177,9 @@ const RevisionPage = () => {
             </Card>
           ) : (
             <Card as="section" radius="2xl" className="text-center space-y-2 xl:space-y-3">
-              <Zap className="w-12 h-12 text-primary-600 dark:text-primary-300 mx-auto" />
-              <h2 className="text-xl font-black text-slate-900 dark:text-white">{activeTab === 'all' ? translate('All Caught Up!') : translate('No items here')}</h2>
-              <p className="text-sm text-slate-400 leading-relaxed">
+              <Zap className="w-12 h-12 text-primary-600 mx-auto" />
+              <h2 className="text-xl font-bold text-content-primary">{activeTab === 'all' ? translate('All Caught Up!') : translate('No items here')}</h2>
+              <p className="text-sm text-content-muted leading-relaxed">
                 {activeTab === 'all'
                   ? translate('No reviews pending. Questions you get wrong in quizzes, tests, daily challenges, or reels will appear here automatically.')
                   : translate('No wrong answers in this category ({name}) yet.', { name: translate(SOURCE_TABS.find(s => s.key === activeTab)?.label || '') })}

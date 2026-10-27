@@ -116,13 +116,13 @@ const PayuFailure = () => {
       <MobileAppWrapper title={translate('Checking payment')}>
         <Seo title="Checking Payment Status - AajExam" description="We are checking your failed payment attempt." noIndex={true} />
         <div className="min-h-screen flex items-center justify-center p-6">
-          <div className="max-w-md w-full text-center relative overflow-hidden bg-background-surface p-6 xl:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
-            <div className="w-20 h-20 rounded-[2rem] bg-black/10 dark:bg-white/10 text-black dark:text-white flex items-center justify-center mx-auto">
+          <div className="max-w-md w-full text-center relative overflow-hidden bg-background-surface p-6 xl:p-8 border border-border-primary space-y-5">
+            <div className="w-20 h-20 rounded-3xl bg-black/10 dark:bg-white/10 text-content-primary flex items-center justify-center mx-auto">
               <LoaderCircle className="w-10 h-10 animate-spin" />
             </div>
             <div className="space-y-2">
-              <h1 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">{translate('Checking your payment')}</h1>
-              <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
+              <h1 className="text-xl xl:text-2xl font-bold font-outfit tracking-tight text-content-primary">{translate('Checking your payment')}</h1>
+              <p className="text-sm font-medium text-content-secondary">
                 {translate('We are gathering the latest payment details so you know what happened.')}
               </p>
             </div>
@@ -141,35 +141,35 @@ const PayuFailure = () => {
       />
       <div className="min-h-screen py-8">
         <div className="max-w-3xl mx-auto">
-          <section className="relative overflow-hidden bg-background-surface p-6 xl:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
+          <section className="relative overflow-hidden bg-background-surface p-6 xl:p-8 border border-border-primary space-y-6">
             <div className="text-center space-y-2 xl:space-y-4">
-              <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
+              <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto bg-background-surface-secondary text-content-primary">
                 <CircleAlert className="w-12 h-12" />
               </div>
               <div className="space-y-2">
-                <h1 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">{translate('Payment failed')}</h1>
-                <p className="text-base font-medium text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+                <h1 className="text-xl md:text-2xl xl:text-3xl font-bold font-outfit tracking-tight text-content-primary">{translate('Payment failed')}</h1>
+                <p className="text-base font-medium text-content-secondary max-w-xl mx-auto">
                   {error || translate('The payment could not be completed. Please try again or use a different payment method.')}
                 </p>
               </div>
             </div>
 
             {detailRows.length > 0 && (
-              <section className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 xl:p-8 space-y-2 xl:space-y-4">
-                <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">{translate('Payment details')}</h2>
+              <section className="rounded-3xl border border-border-primary p-4 xl:p-8 space-y-2 xl:space-y-4">
+                <h2 className="text-xl font-bold font-outfit tracking-tight text-content-primary">{translate('Payment details')}</h2>
                 <div className="space-y-3">
                   {detailRows.map((item) => (
-                    <div key={item.label} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-3 border-b border-slate-200 dark:border-slate-800 last:border-b-0">
-                      <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">{item.label}</span>
-                      <span className="text-sm font-semibold text-slate-900 dark:text-white break-all sm:text-right">{item.value}</span>
+                    <div key={item.label} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-3 border-b border-border-primary last:border-b-0">
+                      <span className="text-sm font-semibold text-content-muted">{item.label}</span>
+                      <span className="text-sm font-semibold text-content-primary break-all sm:text-right">{item.value}</span>
                     </div>
                   ))}
                 </div>
               </section>
             )}
 
-            <section className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 xl:p-8 space-y-2 xl:space-y-4">
-              <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">{translate('What to try next')}</h2>
+            <section className="rounded-3xl border border-border-primary p-4 xl:p-8 space-y-2 xl:space-y-4">
+              <h2 className="text-xl font-bold font-outfit tracking-tight text-content-primary">{translate('What to try next')}</h2>
               <ul className="space-y-3">
                 {[
                   'Check that your card or bank account has enough balance.',
@@ -177,7 +177,7 @@ const PayuFailure = () => {
                   'Use a different payment option if the same method keeps failing.',
                   'Contact support if you were charged but the plan was not activated.',
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm font-medium text-slate-600 dark:text-slate-400">
+                  <li key={item} className="flex items-start gap-3 text-sm font-medium text-content-secondary">
                     <span className="mt-2 h-2 w-2 rounded-full bg-primary-600 shrink-0" />
                     <span>{item}</span>
                   </li>
@@ -188,21 +188,21 @@ const PayuFailure = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 onClick={() => router.push('/student/subscription')}
-                className="w-full bg-primary-600 hover:bg-primary-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-sm flex items-center justify-center gap-3"
+                className="w-full bg-primary-600 hover:bg-primary-600 text-on-primary py-4 px-6 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-3"
               >
                 <RefreshCcw className="w-5 h-5" />
                 {translate('Try again')}
               </button>
               <button
                 onClick={() => router.push('/')}
-                className="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-3"
+                className="w-full bg-background-surface-secondary hover:bg-background-surface-secondary text-content-primary py-4 px-6 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-3"
               >
                 <ArrowLeft className="w-5 h-5" />
                 {translate('Go home')}
               </button>
             </div>
 
-            <div className="rounded-2xl bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-600 p-4">
+            <div className="rounded-2xl border border-primary-200 dark:border-primary-600 p-4">
               <p className="text-sm font-medium text-primary-600 dark:text-primary-100">
                 {translate('If the amount was deducted but your plan was not activated, keep the transaction ID handy and contact support.')}
               </p>

@@ -9,7 +9,7 @@ import useTranslate from '../../hooks/useTranslate';
 import { trackPrompt } from '../../lib/tracker';
 import { useFreePromoActive } from '../../lib/freePromo';
 
-const BTN = 'inline-flex items-center gap-2 px-4 py-2.5 text-[11px] font-black uppercase tracking-widest bg-[#fff] text-primary-800 shadow-lg hover:bg-primary-50 transition-colors disabled:opacity-70';
+const BTN = 'inline-flex items-center gap-2 px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.08em] bg-[#fff] text-primary-600 transition-colors disabled:opacity-70';
 
 const GoogleIcon = () => (
   <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -59,7 +59,7 @@ const GoogleButton = () => {
       className={BTN}
       style={{ borderRadius: 8 }}
     >
-      {busy ? <span className="w-4 h-4 border-2 border-primary-800 border-t-transparent rounded-full animate-spin" /> : <GoogleIcon />}
+      {busy ? <span className="w-4 h-4 border border-primary-800 border-t-transparent rounded-full animate-spin" /> : <GoogleIcon />}
       {busy ? translate('Signing in...') : translate(promoActive ? 'Get PRO Free Now' : 'Claim Free Account')}
     </button>
   );

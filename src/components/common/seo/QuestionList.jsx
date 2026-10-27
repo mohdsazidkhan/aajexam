@@ -20,12 +20,12 @@ export default function QuestionList({ questions = [], title = 'Questions with s
   if (questions.length === 0) return null;
 
   return (
-    <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
-      <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight">
+    <section className="rounded-3xl px-0 py-4 xl:py-8">
+      <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-3 tracking-tight">
         {title}
       </h2>
       {intro && (
-        <p className="text-sm xl:text-base font-medium text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-4xl">
+        <p className="text-sm xl:text-base font-medium text-content-secondary leading-relaxed mb-8 max-w-4xl">
           {intro}
         </p>
       )}
@@ -34,22 +34,22 @@ export default function QuestionList({ questions = [], title = 'Questions with s
         {questions.map((q, qi) => {
           const correctIndex = (q.options || []).findIndex((o) => o.isCorrect);
           return (
-            <li key={q._id || qi} className="rounded-2xl border-2 border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 p-5">
-              <h3 className="text-base xl:text-lg font-black text-slate-900 dark:text-white leading-snug mb-1">
-                <span className="text-primary-600 dark:text-primary-300 mr-2">Q{qi + 1}.</span>
+            <li key={q._id || qi} className="rounded-2xl border border-border-primary bg-background-surface-secondary p-5">
+              <h3 className="text-base xl:text-lg font-bold text-content-primary leading-snug mb-1">
+                <span className="text-primary-600 mr-2">Q{qi + 1}.</span>
                 {q.questionText}
               </h3>
 
               {q.image && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={q.image} alt={translate('Figure for question {n}', { n: qi + 1 })} loading="lazy" decoding="async"
-                  className="my-3 max-h-72 w-auto rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-700" />
+                  className="my-3 max-h-72 w-auto rounded-lg xl:rounded-xl border border-border-primary" />
               )}
 
               <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 list-none p-0">
                 {(q.options || []).map((opt, oi) => (
-                  <li key={opt._id || oi} className="text-sm font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 rounded-lg xl:rounded-xl border-2 border-slate-100 dark:border-slate-800 px-3 py-2">
-                    <span className="font-black text-slate-500 dark:text-slate-500 mr-2">{LABELS[oi] || oi + 1}.</span>
+                  <li key={opt._id || oi} className="text-sm font-medium text-content-secondary bg-background-surface rounded-lg xl:rounded-xl border border-border-primary px-3 py-2">
+                    <span className="font-bold text-content-muted mr-2">{LABELS[oi] || oi + 1}.</span>
                     {opt.text}
                   </li>
                 ))}
@@ -57,14 +57,14 @@ export default function QuestionList({ questions = [], title = 'Questions with s
 
               {correctIndex > -1 && (
                 <details className="mt-3 group">
-                  <summary className="cursor-pointer text-xs font-black uppercase tracking-widest text-primary-600 dark:text-primary-400">
+                  <summary className="cursor-pointer text-xs font-bold uppercase tracking-[0.08em] text-primary-600">
                     {translate('Show answer')}
                   </summary>
-                  <p className="mt-2 text-sm font-bold text-primary-600 dark:text-primary-400">
+                  <p className="mt-2 text-sm font-bold text-primary-600">
                     {translate('Answer:')} {LABELS[correctIndex] || correctIndex + 1}. {q.options[correctIndex]?.text}
                   </p>
                   {q.explanation && (
-                    <p className="mt-1 text-sm font-medium text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p className="mt-1 text-sm font-medium text-content-secondary leading-relaxed">
                       {q.explanation}
                     </p>
                   )}

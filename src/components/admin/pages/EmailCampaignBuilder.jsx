@@ -322,7 +322,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
     if (next && !recipients) loadRecipients(1);
   };
 
-  const inputClass = "w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-black text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:opacity-60 disabled:cursor-not-allowed";
+  const inputClass = "w-full px-3 py-2 border border-border-primary rounded-lg bg-background-surface text-content-primary focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:opacity-60 disabled:cursor-not-allowed";
   const pct = campaign && campaign.totalTargeted
     ? Math.min(100, Math.round((campaign.processed / campaign.totalTargeted) * 100))
     : 0;
@@ -333,23 +333,21 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
   if (!isMounted || isLoading) return <div className="p-4 xl:p-5"><AdminFormSkeleton fields={6} /></div>;
 
   return (
-    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
-      <div className="adminContent w-full mx-auto">
+    <div className="min-h-screen font-outfit text-content-primary pb-20">
+      <div className="py-4 w-full mx-auto">
         {/* ===== Header: back link + step indicator in one row ===== */}
-        <div className="relative isolate overflow-hidden mb-3 px-3 py-2.5 flex flex-wrap items-center justify-between gap-3 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-lg" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-          <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <Link href="/admin/email-campaigns" className="inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-black text-slate-900 dark:text-white bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/20 ring-1 ring-slate-200 dark:ring-white/20 transition-colors" style={{ borderRadius: 999 }}>
+        <div className="relative isolate overflow-hidden mb-3 px-3 py-2.5 flex flex-wrap items-center justify-between gap-3 border border-border-primary bg-background-surface" style={{ borderRadius: 16 }}>
+          <Link href="/admin/email-campaigns" className="inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-bold text-content-primary bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/20 border border-border-primary transition-colors" style={{ borderRadius: 999 }}>
             ← All campaigns
           </Link>
 
           <div className="flex items-center gap-1.5 overflow-x-auto max-w-full">
             {STEPS.map((s, i) => (
               <React.Fragment key={s.key}>
-                <div className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-black whitespace-nowrap transition-all ${
-                  i < activeStep ? 'bg-primary-100 text-primary-800 ring-1 ring-primary-300 dark:bg-primary-400/20 dark:text-primary-200 dark:ring-white/15'
-                    : i === activeStep ? 'bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white shadow-md'
-                    : 'bg-white/70 text-slate-500 ring-1 ring-primary-200/70 dark:bg-white/5 dark:text-slate-400 dark:ring-white/10'
+                <div className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold whitespace-nowrap transition-all ${
+                  i < activeStep ? 'text-primary-600 ring-1 ring-primary-300 dark:text-primary-600 dark:ring-white/15'
+                    : i === activeStep ? 'text-on-primary bg-primary-600'
+                    : 'bg-white/70 text-content-muted ring-1 ring-primary-200/70 dark:bg-white/5 dark:ring-white/10'
                 }`} style={{ borderRadius: 999 }}>
                   {i + 1}. {s.label}
                   {i === activeStep && status === 'paused' && ' (paused)'}
@@ -360,19 +358,19 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
           </div>
         </div>
 
-        <section className="relative overflow-hidden bg-background-surface shadow-md p-4 border border-slate-200 dark:border-white/10" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+        <section className="relative overflow-hidden bg-background-surface p-4 border border-border-primary" style={{ borderRadius: 16 }}>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
           <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
             <section>
-              <h2 className="text-xl font-black font-outfit uppercase tracking-tight flex items-center gap-2.5">
-                <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
+              <h2 className="text-xl font-bold font-outfit tracking-tight flex items-center gap-2.5">
+                <span className="w-9 h-9 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
               </h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+              <p className="text-sm text-content-muted mt-1">
                 The platform logo &amp; footer are added automatically.
               </p>
             </section>
             {campaign && (
-              <span className="text-[10px] font-mono text-slate-400" title={campaign.campaignId}>
+              <span className="text-[10px] font-mono text-content-muted" title={campaign.campaignId}>
                 ID: #{String(campaign.campaignId || '').slice(-6)}
               </span>
             )}
@@ -382,7 +380,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             {/* --- Editor --- */}
             <div className="space-y-2 xl:space-y-3">
               {!canEditFields && (
-                <div className="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
+                <div className="p-3 rounded-lg bg-background-surface-secondary border border-border-primary dark:border-white text-xs text-content-primary">
                   {isPublished
                     ? 'Published — fields are locked. Use "Back to Draft" to edit.'
                     : isCompleted
@@ -392,21 +390,21 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               )}
 
               <div>
-                <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200 mb-1">Subject *</label>
+                <label className="block text-[11px] font-bold uppercase tracking-[0.08em] text-primary-600 mb-1">Subject *</label>
                 <input type="text" disabled={!canEditFields} placeholder="e.g. New PYQ Papers Added This Week!" value={subject} onChange={(e) => setSubject(e.target.value)} className={inputClass} />
               </div>
 
               <div>
-                <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200 mb-1">Heading</label>
+                <label className="block text-[11px] font-bold uppercase tracking-[0.08em] text-primary-600 mb-1">Heading</label>
                 <input type="text" disabled={!canEditFields} placeholder="Big title shown under the logo" value={heading} onChange={(e) => setHeading(e.target.value)} className={inputClass} />
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200">Content *</label>
-                  <div className="flex rounded-lg overflow-hidden border border-slate-300 dark:border-white/10 text-xs">
-                    <button type="button" disabled={!canEditFields} onClick={() => setMode('simple')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'simple' ? 'bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white font-black' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>Simple</button>
-                    <button type="button" disabled={!canEditFields} onClick={() => setMode('html')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'html' ? 'bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white font-black' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>HTML</button>
+                  <label className="block text-[11px] font-bold uppercase tracking-[0.08em] text-primary-600">Content *</label>
+                  <div className="flex rounded-lg overflow-hidden border border-border-primary text-xs">
+                    <button type="button" disabled={!canEditFields} onClick={() => setMode('simple')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'simple' ? 'text-on-primary font-bold bg-primary-600' : 'bg-background-surface-secondary text-content-secondary'}`}>Simple</button>
+                    <button type="button" disabled={!canEditFields} onClick={() => setMode('html')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'html' ? 'text-on-primary font-bold bg-primary-600' : 'bg-background-surface-secondary text-content-secondary'}`}>HTML</button>
                   </div>
                 </div>
                 <textarea
@@ -415,25 +413,25 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                   placeholder={mode === 'html' ? 'Paste raw HTML for the email body...' : 'Write your message. Line breaks are preserved. Basic HTML like <b>bold</b> works too.'}
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  className={`font-mono text-sm border border-slate-300 dark:border-slate-700 ${inputClass}`}
+                  className={`font-mono text-sm border border-border-primary ${inputClass}`}
                 />
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs text-content-muted mt-1">
                   {mode === 'html' ? 'Raw HTML mode — content is used verbatim inside the branded shell.' : 'Simple mode — newlines become line breaks; basic inline HTML allowed.'}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">
-                  Personalise with <code className="px-1 rounded bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200">{'{{name}}'}</code> and{' '}
-                  <code className="px-1 rounded bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200">{'{{email}}'}</code> — filled per recipient from the database
+                <p className="text-xs text-content-muted mt-1">
+                  Personalise with <code className="px-1 rounded bg-background-surface-secondary text-content-secondary">{'{{name}}'}</code> and{' '}
+                  <code className="px-1 rounded bg-background-surface-secondary text-content-secondary">{'{{email}}'}</code> — filled per recipient from the database
                   (a missing name becomes &ldquo;there&rdquo;). Works in the subject too.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200 mb-1">Button Text</label>
+                  <label className="block text-[11px] font-bold uppercase tracking-[0.08em] text-primary-600 mb-1">Button Text</label>
                   <input type="text" disabled={!canEditFields} placeholder="e.g. Start Practicing" value={ctaText} onChange={(e) => setCtaText(e.target.value)} className={inputClass} />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200 mb-1">Button URL</label>
+                  <label className="block text-[11px] font-bold uppercase tracking-[0.08em] text-primary-600 mb-1">Button URL</label>
                   <input type="text" disabled={!canEditFields} placeholder="https://..." value={ctaUrl} onChange={(e) => setCtaUrl(e.target.value)} className={inputClass} />
                 </div>
               </div>
@@ -448,19 +446,19 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
               {/* ---- Step 2: Send a test (while still a draft) ---- */}
               {isDraft && campaign && (
-                <div className="border-t border-slate-100 dark:border-white/10 pt-4">
-                  <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200 mb-1">
+                <div className="border-t border-border-primary pt-4">
+                  <label className="block text-[11px] font-bold uppercase tracking-[0.08em] text-primary-600 mb-1">
                     Send Test Email
-                    {campaign.testSentAt && <span className="ml-2 text-[10px] text-primary-600 dark:text-primary-300">✓ sent to {campaign.testSentTo}</span>}
+                    {campaign.testSentAt && <span className="ml-2 text-[10px] text-primary-600">✓ sent to {campaign.testSentTo}</span>}
                   </label>
                   <div className="flex gap-2">
                     <input type="email" placeholder="admin@example.com" value={testEmail} onChange={(e) => setTestEmail(e.target.value)} className={inputClass} />
                     <button onClick={sendTest} disabled={isTesting}
-                      className="whitespace-nowrap px-4 py-2 bg-slate-200 dark:bg-white/10 text-slate-800 dark:text-white rounded-lg hover:bg-slate-300 dark:hover:bg-white/20 disabled:opacity-50">
+                      className="whitespace-nowrap px-4 py-2 bg-background-surface-secondary text-content-primary rounded-lg hover:bg-background-surface-secondary dark:hover:bg-white/20 disabled:opacity-50">
                       {isTesting ? 'Sending…' : 'Send Test'}
                     </button>
                   </div>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-content-muted mt-1">
                     Sends the saved draft exactly as users will receive it. Save your edits first.
                   </p>
                 </div>
@@ -469,26 +467,26 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {/* ---- Step 3: Publish ---- */}
               {isDraft && campaign && (
                 <button onClick={publishNow} disabled={busyAction}
-                  className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white shadow-sm disabled:opacity-50">
+                  className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium hover:brightness-110 text-on-primary disabled:opacity-50 bg-primary-600">
                   🚀 Publish Now
                 </button>
               )}
               {isDraft && campaign && !campaign.testSentAt && (
-                <p className="text-xs text-center text-black dark:text-white -mt-2">
+                <p className="text-xs text-center text-content-primary -mt-2">
                   Tip: send yourself a test before publishing.
                 </p>
               )}
 
               {/* ---- Step 4: Send to all ---- */}
               {isPublished && (
-                <div className="space-y-3 border-t border-slate-100 dark:border-white/10 pt-4">
+                <div className="space-y-3 border-t border-border-primary pt-4">
                   <button onClick={sendToAll} disabled={busyAction}
-                    className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:bg-primary-600 text-white shadow-sm disabled:opacity-50">
+                    className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium hover:bg-primary-600 text-on-primary disabled:opacity-50 bg-primary-600">
                     <Send size={20} /> Send To All Users
                   </button>
 
                   <button onClick={backToDraft} disabled={busyAction}
-                    className="w-full py-2 px-4 rounded-lg text-sm bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10 disabled:opacity-50">
+                    className="w-full py-2 px-4 rounded-lg text-sm bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary disabled:opacity-50">
                     ← Back to Draft (edit or re-test)
                   </button>
                 </div>
@@ -498,7 +496,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             {/* --- Right column: preview + campaign progress --- */}
             <aside className="space-y-2 xl:space-y-3">
               {campaign && (
-                <section className="border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl p-4 bg-slate-50 dark:bg-white/5">
+                <section className="border border-border-primary rounded-lg xl:rounded-xl p-4 bg-background-surface-secondary">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-sm font-bold">
                       {isDraft && '📝 Draft'}
@@ -507,96 +505,96 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                       {status === 'paused' && '⏸️ Paused'}
                       {isCompleted && '🎉 Completed'}
                     </h3>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[45%]" title={campaign.subject}>{campaign.subject}</span>
+                    <span className="text-xs text-content-muted truncate max-w-[45%]" title={campaign.subject}>{campaign.subject}</span>
                   </div>
 
                   {(isSendingPhase || isCompleted) && (
                     <>
-                      <div className="w-full bg-slate-200 dark:bg-white/10 rounded-full h-3 overflow-hidden">
+                      <div className="w-full bg-background-surface-secondary rounded-full h-3 overflow-hidden">
                         <div className="bg-primary-600 h-3 transition-all duration-500" style={{ width: `${pct}%` }} />
                       </div>
-                      <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400 mt-1">
+                      <div className="flex justify-between text-xs text-content-muted mt-1">
                         <span>{campaign.processed} / {campaign.totalTargeted} processed ({pct}%)</span>
                         <span>Today: {campaign.sentToday}/{campaign.dailyLimit}</span>
                       </div>
 
                       <div className="grid grid-cols-3 gap-2 mt-3 text-center text-sm">
-                        <div className="p-2 rounded-lg bg-white dark:bg-white/5">
-                          <div className="text-primary-600 dark:text-primary-300 font-bold">{campaign.sentCount}</div>
-                          <div className="text-[10px] text-slate-500 uppercase">Sent</div>
+                        <div className="p-2 rounded-lg bg-background-surface dark:bg-white/5">
+                          <div className="text-primary-600 font-bold">{campaign.sentCount}</div>
+                          <div className="text-[10px] text-content-muted uppercase">Sent</div>
                         </div>
-                        <div className="p-2 rounded-lg bg-white dark:bg-white/5">
-                          <div className="text-black dark:text-white font-bold">{campaign.failedCount}</div>
-                          <div className="text-[10px] text-slate-500 uppercase">Failed</div>
+                        <div className="p-2 rounded-lg bg-background-surface dark:bg-white/5">
+                          <div className="text-content-primary font-bold">{campaign.failedCount}</div>
+                          <div className="text-[10px] text-content-muted uppercase">Failed</div>
                         </div>
-                        <div className="p-2 rounded-lg bg-white dark:bg-white/5">
-                          <div className="text-black dark:text-white font-bold">{Math.max(0, campaign.totalTargeted - campaign.processed)}</div>
-                          <div className="text-[10px] text-slate-500 uppercase">Left</div>
+                        <div className="p-2 rounded-lg bg-background-surface dark:bg-white/5">
+                          <div className="text-content-primary font-bold">{Math.max(0, campaign.totalTargeted - campaign.processed)}</div>
+                          <div className="text-[10px] text-content-muted uppercase">Left</div>
                         </div>
                       </div>
 
                       <div className="flex flex-wrap gap-2 mt-3">
                         {isSendingPhase && isRunning && (
-                          <button onClick={pauseDriver} className="flex-1 py-2 px-3 rounded-lg text-sm bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white">Pause</button>
+                          <button onClick={pauseDriver} className="flex-1 py-2 px-3 rounded-lg text-sm hover:brightness-110 text-on-primary bg-primary-600">Pause</button>
                         )}
                         {isSendingPhase && !isRunning && (
-                          <button onClick={continueDriver} disabled={busyAction} className="flex-1 py-2 px-3 rounded-lg text-sm bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:bg-primary-600 text-white disabled:opacity-50">
+                          <button onClick={continueDriver} disabled={busyAction} className="flex-1 py-2 px-3 rounded-lg text-sm hover:bg-primary-600 text-on-primary disabled:opacity-50 bg-primary-600">
                             {campaign.remainingToday > 0 ? 'Continue Sending' : 'Continue (quota resets tomorrow)'}
                           </button>
                         )}
                       </div>
 
                       {campaign.remainingToday <= 0 && !isCompleted && (
-                        <p className="text-xs text-black dark:text-white mt-2">Daily limit reached. Continue tomorrow after the quota resets.</p>
+                        <p className="text-xs text-content-primary mt-2">Daily limit reached. Continue tomorrow after the quota resets.</p>
                       )}
                     </>
                   )}
 
                   {!isSendingPhase && !isCompleted && (
-                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                    <p className="text-xs text-content-muted">
                       Targeting <strong>{campaign.totalTargeted}</strong> users · {campaign.dailyLimit}/day
                       {isDraft && ' · nothing is sent until you publish and start.'}
                     </p>
                   )}
 
                   <div className="flex flex-wrap gap-2 mt-3">
-                    <button onClick={toggleRecipients} className="flex-1 py-2 px-3 rounded-lg text-sm bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-white/20">
+                    <button onClick={toggleRecipients} className="flex-1 py-2 px-3 rounded-lg text-sm bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-white/20">
                       {showRecipients ? 'Hide sent list' : '👥 View sent list'}
                     </button>
-                    <button onClick={deleteCampaign} disabled={isRunning || busyAction} className="py-2 px-3 rounded-lg text-sm bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-white/20 disabled:opacity-50">
+                    <button onClick={deleteCampaign} disabled={isRunning || busyAction} className="py-2 px-3 rounded-lg text-sm bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-white/20 disabled:opacity-50">
                       {isCompleted ? 'Dismiss' : 'Delete'}
                     </button>
                   </div>
 
                   {/* --- Who this campaign has gone to --- */}
                   {showRecipients && (
-                    <div className="mt-3 border-t border-slate-200 dark:border-white/10 pt-3">
+                    <div className="mt-3 border-t border-border-primary pt-3">
                       {loadingRecipients && !recipients ? (
-                        <p className="text-xs text-slate-500">Loading…</p>
+                        <p className="text-xs text-content-muted">Loading…</p>
                       ) : recipients ? (
                         <>
                           <div className="flex items-center justify-between mb-2">
-                            <p className="text-xs text-slate-600 dark:text-slate-300">
-                              Sent to <strong className="text-primary-600 dark:text-primary-300">{recipients.counts.sent}</strong>
-                              {recipients.counts.failed > 0 && (<> · failed <strong className="text-black dark:text-white">{recipients.counts.failed}</strong></>)}
+                            <p className="text-xs text-content-secondary">
+                              Sent to <strong className="text-primary-600">{recipients.counts.sent}</strong>
+                              {recipients.counts.failed > 0 && (<> · failed <strong className="text-content-primary">{recipients.counts.failed}</strong></>)}
                             </p>
-                            <button onClick={() => loadRecipients(recipPage)} disabled={loadingRecipients} className="text-[10px] text-black dark:text-white hover:underline disabled:opacity-50">Refresh</button>
+                            <button onClick={() => loadRecipients(recipPage)} disabled={loadingRecipients} className="text-[10px] text-content-primary hover:underline disabled:opacity-50">Refresh</button>
                           </div>
 
                           {recipients.recipients.length === 0 ? (
-                            <p className="text-xs text-slate-400">Nobody yet.</p>
+                            <p className="text-xs text-content-muted">Nobody yet.</p>
                           ) : (
-                            <div className="max-h-56 overflow-y-auto rounded-lg border border-slate-200 dark:border-white/10">
+                            <div className="max-h-56 overflow-y-auto rounded-lg border border-border-primary">
                               {recipients.recipients.map((r) => (
-                                <div key={r._id} className="flex items-center justify-between gap-2 px-2 py-1.5 text-xs border-b border-slate-100 dark:border-white/5 last:border-0">
+                                <div key={r._id} className="flex items-center justify-between gap-2 px-2 py-1.5 text-xs border-b border-border-primary last:border-0">
                                   <div className="min-w-0">
-                                    <div className="truncate text-slate-800 dark:text-slate-200">{r.email}</div>
-                                    {r.user?.name && <div className="truncate text-[10px] text-slate-400">{r.user.name}</div>}
+                                    <div className="truncate text-content-primary">{r.email}</div>
+                                    {r.user?.name && <div className="truncate text-[10px] text-content-muted">{r.user.name}</div>}
                                   </div>
                                   <span className={`shrink-0 px-1.5 py-0.5 rounded text-[10px] font-semibold ${
                                     r.status === 'sent'
-                                      ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300'
-                                      : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '
+                                      ? 'text-primary-600'
+                                      : 'bg-background-surface-secondary text-content-primary'
                                   }`} title={r.error || ''}>{r.status}</span>
                                 </div>
                               ))}
@@ -605,9 +603,9 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
                           {recipients.pagination.totalPages > 1 && (
                             <div className="flex items-center justify-between mt-2 text-xs">
-                              <button onClick={() => loadRecipients(recipPage - 1)} disabled={recipPage <= 1 || loadingRecipients} className="px-2 py-1 rounded bg-slate-200 dark:bg-white/10 disabled:opacity-40">Prev</button>
-                              <span className="text-slate-500">Page {recipients.pagination.page} / {recipients.pagination.totalPages}</span>
-                              <button onClick={() => loadRecipients(recipPage + 1)} disabled={recipPage >= recipients.pagination.totalPages || loadingRecipients} className="px-2 py-1 rounded bg-slate-200 dark:bg-white/10 disabled:opacity-40">Next</button>
+                              <button onClick={() => loadRecipients(recipPage - 1)} disabled={recipPage <= 1 || loadingRecipients} className="px-2 py-1 rounded bg-background-surface-secondary disabled:opacity-40">Prev</button>
+                              <span className="text-content-muted">Page {recipients.pagination.page} / {recipients.pagination.totalPages}</span>
+                              <button onClick={() => loadRecipients(recipPage + 1)} disabled={recipPage >= recipients.pagination.totalPages || loadingRecipients} className="px-2 py-1 rounded bg-background-surface-secondary disabled:opacity-40">Next</button>
                             </div>
                           )}
                         </>
@@ -619,13 +617,13 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="block text-[11px] font-black uppercase tracking-[0.14em] text-primary-800 dark:text-primary-200">Live Preview</label>
+                  <label className="block text-[11px] font-bold uppercase tracking-[0.08em] text-primary-600">Live Preview</label>
                   <button onClick={openPreviewTab}
-                    className="flex items-center gap-1 text-xs font-black px-2.5 py-1 bg-primary-100 dark:bg-primary-400/20 text-primary-800 dark:text-primary-200 hover:brightness-95 transition-all" style={{ borderRadius: 999 }}>
+                    className="flex items-center gap-1 text-xs font-bold px-2.5 py-1 text-primary-600 hover:brightness-95 transition-all" style={{ borderRadius: 999 }}>
                     <ExternalLink size={12} /> Open in new tab
                   </button>
                 </div>
-                <div className="border border-dashed border-primary-300 dark:border-white/20 overflow-hidden bg-primary-50/60 dark:bg-slate-900 p-3 h-[420px] overflow-y-auto" style={{ borderRadius: 12 }}>
+                <div className="border border-dashed border-primary-300 dark:border-white/20 overflow-hidden dark:bg-slate-900 p-3 h-[420px] overflow-y-auto" style={{ borderRadius: 12 }}>
                   <div dangerouslySetInnerHTML={{ __html: previewHtml }} />
                 </div>
               </div>

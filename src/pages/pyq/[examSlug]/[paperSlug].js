@@ -34,8 +34,8 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
         return (
             <div className="min-h-screen flex items-center justify-center px-4">
                 <div className="text-center">
-                    <h1 className="text-2xl font-black text-slate-800 dark:text-white mb-4">{translate('PYQ Paper Not Found')}</h1>
-                    <Link href="/pyq" className="text-primary-600 dark:text-primary-300 hover:text-primary-600 font-bold">{translate('← Browse all PYQs')}</Link>
+                    <h1 className="text-2xl font-bold text-content-primary mb-4">{translate('PYQ Paper Not Found')}</h1>
+                    <Link href="/pyq" className="text-primary-600 hover:text-primary-600 font-bold">{translate('← Browse all PYQs')}</Link>
                 </div>
             </div>
         );
@@ -102,67 +102,62 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
             />
 
             <div className="py-4 xl:py-8 min-h-screen font-outfit relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="py-0 xl:py-6 relative">
                     {/* Breadcrumb */}
-                    <nav aria-label={translate('Breadcrumb')} className="pt-3 xl:pt-4 mb-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
-                        <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
-                        <span className="text-slate-400">/</span>
-                        <Link href="/pyq" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('PYQ')}</Link>
-                        <span className="text-slate-400">/</span>
-                        <Link href={`/pyq/${exam.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translateData(examName)}</Link>
-                        <span className="text-slate-400">/</span>
-                        <span className="text-slate-600 dark:text-slate-400 truncate max-w-[60%]">{translateData(paper.title)}</span>
+                    <nav aria-label={translate('Breadcrumb')} className="pt-3 xl:pt-4 mb-6 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.08em] flex-wrap">
+                        <Link href="/" className="text-primary-600 hover:text-primary-600">{translate('Home')}</Link>
+                        <span className="text-content-muted">/</span>
+                        <Link href="/pyq" className="text-primary-600 hover:text-primary-600">{translate('PYQ')}</Link>
+                        <span className="text-content-muted">/</span>
+                        <Link href={`/pyq/${exam.slug}`} className="text-primary-600 hover:text-primary-600">{translateData(examName)}</Link>
+                        <span className="text-content-muted">/</span>
+                        <span className="text-content-secondary truncate max-w-[60%]">{translateData(paper.title)}</span>
                     </nav>
 
                     {/* Hero */}
-                    <header className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-6 md:p-6 xl:p-8 mb-10" style={{ borderRadius: 16 }}>
-            <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-            <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-            <div className="pointer-events-none absolute -bottom-28 right-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+                    <header className="relative overflow-hidden border border-border-primary p-6 md:p-6 xl:p-8 mb-10 bg-background-surface" style={{ borderRadius: 16 }}>
             <div className="relative">
                         <div className="flex items-center gap-3 flex-wrap mb-6">
-                            <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{translate('PYQ {year}', { year: paper.pyqYear || '' })}</span>
-                            {paper.pyqShift && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{paper.pyqShift}</span>}
-                            <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{translateData(examName)}</span>
-                            {paper.accessLevel === 'FREE' && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest">{translate('Free')}</span>}
+                            <span className="px-3 py-1 rounded-full text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em]">{translate('PYQ {year}', { year: paper.pyqYear || '' })}</span>
+                            {paper.pyqShift && <span className="px-3 py-1 bg-background-surface-secondary rounded-full text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">{paper.pyqShift}</span>}
+                            <span className="px-3 py-1 rounded-full text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em]">{translateData(examName)}</span>
+                            {paper.accessLevel === 'FREE' && <span className="px-3 py-1 bg-background-surface-secondary rounded-full text-[10px] font-bold text-content-primary uppercase tracking-[0.08em]">{translate('Free')}</span>}
                         </div>
 
-                        <h1 className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">
+                        <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold text-content-primary tracking-tight mb-4">
                             {translateData(paper.title)}
                         </h1>
-                        <p className="text-md xl:text-lg font-bold text-slate-600 dark:text-white/80 mb-8 leading-relaxed max-w-4xl">
+                        <p className="text-md xl:text-lg font-bold text-content-secondary dark:text-white/80 mb-8 leading-relaxed max-w-4xl">
                             {translate('Attempt the official {name} previous year question paper{label} as a free, timed mock test on AajExam. Get instant scoring, sectional analysis, and detailed solutions for every question.', { name: translateData(examName), label: `${yearLabel}${shiftLabel}` })}
                         </p>
 
                         <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6 mb-8">
-                            <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaListOl className="text-xl text-primary-600 dark:text-primary-300 mx-auto mb-2" />
-                                <div className="text-xl font-black text-slate-900 dark:text-white">{paper.questionCount || 0}</div>
-                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Questions')}</div>
+                            <div className="bg-background-surface-secondary rounded-2xl p-4 text-center border border-border-primary">
+                                <FaListOl className="text-xl text-primary-600 mx-auto mb-2" />
+                                <div className="text-xl font-bold text-content-primary">{paper.questionCount || 0}</div>
+                                <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Questions')}</div>
                             </div>
-                            <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaTrophy className="text-xl text-primary-600 dark:text-primary-300 mx-auto mb-2" />
-                                <div className="text-xl font-black text-slate-900 dark:text-white">{paper.totalMarks}</div>
-                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Total Marks')}</div>
+                            <div className="bg-background-surface-secondary rounded-2xl p-4 text-center border border-border-primary">
+                                <FaTrophy className="text-xl text-primary-600 mx-auto mb-2" />
+                                <div className="text-xl font-bold text-content-primary">{paper.totalMarks}</div>
+                                <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Total Marks')}</div>
                             </div>
-                            <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaClock className="text-xl text-primary-600 dark:text-primary-300 mx-auto mb-2" />
-                                <div className="text-xl font-black text-slate-900 dark:text-white">{paper.duration}</div>
-                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Minutes')}</div>
+                            <div className="bg-background-surface-secondary rounded-2xl p-4 text-center border border-border-primary">
+                                <FaClock className="text-xl text-primary-600 mx-auto mb-2" />
+                                <div className="text-xl font-bold text-content-primary">{paper.duration}</div>
+                                <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Minutes')}</div>
                             </div>
-                            <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaCalendar className="text-xl text-black dark:text-white mx-auto mb-2" />
-                                <div className="text-md font-black text-slate-900 dark:text-white">{paper.pyqYear || '—'}</div>
-                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Year')}</div>
+                            <div className="bg-background-surface-secondary rounded-2xl p-4 text-center border border-border-primary">
+                                <FaCalendar className="text-xl text-content-primary mx-auto mb-2" />
+                                <div className="text-md font-bold text-content-primary">{paper.pyqYear || '—'}</div>
+                                <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Year')}</div>
                             </div>
                         </div>
 
                         <button
                             onClick={handleStart}
-                            className="w-full bg-primary-600 hover:bg-primary-600 text-white px-8 py-5 rounded-2xl transition-all font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0"
+                            className="w-full bg-primary-600 hover:bg-primary-600 text-on-primary px-8 py-5 rounded-2xl transition-all font-bold uppercase tracking-[0.08em] text-sm flex items-center justify-center border-b-2 border-primary-600 active:translate-y-1 active:border-b-0"
                         >
                             <FaPlay className="mr-3 text-xs" /> Start Free Mock Test
                         </button>
@@ -170,38 +165,38 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
           </header>
 
                     {/* About this paper — long-form intro for SEO */}
-                    <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
-                        <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
-                            <FaBookOpen className="text-primary-600 dark:text-primary-300 mr-3" /> About This Paper
+                    <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                        <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight flex items-center">
+                            <FaBookOpen className="text-primary-600 mr-3" /> About This Paper
                         </h2>
-                        <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
+                        <div className="prose prose-slate dark:prose-invert max-w-none text-content-secondary font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                             {intro}
                         </div>
                     </section>
 
                     {/* Section breakdown */}
                     {pattern?.sections?.length > 0 && (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
-                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                        <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                            <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('Exam Pattern & Sections')}
                             </h2>
-                            <div className="overflow-x-auto rounded-2xl border-2 border-slate-200 dark:border-slate-700">
+                            <div className="overflow-x-auto rounded-2xl border border-border-primary">
                                 <table className="w-full text-left">
-                                    <thead className="bg-slate-100 dark:bg-slate-800">
+                                    <thead className="bg-background-surface-secondary border-b border-border-primary">
                                         <tr>
-                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300">{translate('Section')}</th>
-                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 text-center">{translate('Questions')}</th>
-                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 text-center">{translate('Marks/Q')}</th>
-                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 text-center">{translate('Negative')}</th>
+                                            <th className="px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-content-secondary">{translate('Section')}</th>
+                                            <th className="px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-content-secondary text-center">{translate('Questions')}</th>
+                                            <th className="px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-content-secondary text-center">{translate('Marks/Q')}</th>
+                                            <th className="px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-content-secondary text-center">{translate('Negative')}</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody className="divide-y divide-border-primary">
                                         {pattern.sections.map((s, i) => (
-                                            <tr key={i} className="border-t border-slate-200 dark:border-slate-700">
-                                                <td className="px-4 py-3 font-bold text-slate-900 dark:text-white">{translateData(s.name)}</td>
-                                                <td className="px-4 py-3 text-center font-bold text-slate-700 dark:text-slate-300">{s.totalQuestions}</td>
-                                                <td className="px-4 py-3 text-center font-bold text-slate-700 dark:text-slate-300">{s.marksPerQuestion}</td>
-                                                <td className="px-4 py-3 text-center font-bold text-slate-700 dark:text-slate-300">{s.negativePerQuestion || 0}</td>
+                                            <tr key={i}>
+                                                <td className="px-4 py-3 font-bold text-content-primary">{translateData(s.name)}</td>
+                                                <td className="px-4 py-3 text-center font-bold text-content-secondary">{s.totalQuestions}</td>
+                                                <td className="px-4 py-3 text-center font-bold text-content-secondary">{s.marksPerQuestion}</td>
+                                                <td className="px-4 py-3 text-center font-bold text-content-secondary">{s.negativePerQuestion || 0}</td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -212,24 +207,24 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                     {/* Sample questions */}
                     {sampleQuestions?.length > 0 && (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
-                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">
+                        <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                            <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-2 tracking-tight">
                                 {translate('Sample Questions with Answers')}
                             </h2>
-                            <p className="text-sm font-bold text-slate-500 dark:text-slate-400 mb-8">
+                            <p className="text-sm font-bold text-content-muted mb-8">
                                 {translate('Showing {shown} of {total} questions. Start the mock test to attempt all questions in timed mode.', { shown: sampleQuestions.length, total: paper.questionCount || 0 })}
                             </p>
                             <div className="space-y-6">
                                 {sampleQuestions.map((q, idx) => (
-                                    <article key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 xl:p-6 border-2 border-slate-100 dark:border-slate-800">
+                                    <article key={idx} className="bg-background-surface-secondary rounded-2xl p-5 xl:p-6 border border-border-primary">
                                         <div className="flex items-start gap-3 mb-4">
-                                            <span className="flex-shrink-0 w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-black text-sm">{idx + 1}</span>
+                                            <span className="flex-shrink-0 w-8 h-8 bg-primary-600 text-on-primary rounded-full flex items-center justify-center font-bold text-sm">{idx + 1}</span>
                                             <div className="flex-1 space-y-2">
-                                                {q.section && <span className="inline-block px-2 py-0.5 text-[9px] font-black uppercase tracking-widest bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 rounded">{q.section}</span>}
-                                                <p className="text-base font-bold text-slate-900 dark:text-white whitespace-pre-line">{q.questionText}</p>
+                                                {q.section && <span className="inline-block px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-primary-600 rounded">{q.section}</span>}
+                                                <p className="text-base font-bold text-content-primary whitespace-pre-line">{q.questionText}</p>
                                                 {q.questionImage && (
                                                     /* eslint-disable-next-line @next/next/no-img-element */
-                                                    <img src={q.questionImage} alt={`Question ${idx + 1}`} loading="lazy" className="max-w-full rounded-lg border border-slate-200 dark:border-slate-700" />
+                                                    <img src={q.questionImage} alt={`Question ${idx + 1}`} loading="lazy" className="max-w-full rounded-lg border border-border-primary" />
                                                 )}
                                             </div>
                                         </div>
@@ -237,25 +232,25 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                             {q.options.map((opt, oi) => {
                                                 const isCorrect = oi === q.correctAnswerIndex;
                                                 return (
-                                                    <li key={oi} className={`px-4 py-2 rounded-lg border-2 font-medium text-sm ${isCorrect ? 'border-primary-300 bg-primary-50 dark:bg-primary-900/20 dark:border-primary-600 text-primary-600 dark:text-primary-300' : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}`}>
-                                                        <span className="font-black mr-2">{String.fromCharCode(65 + oi)}.</span>
+                                                    <li key={oi} className={`px-4 py-2 rounded-lg border font-medium text-sm ${isCorrect ? 'border-primary-300 dark:border-primary-600 text-primary-600' : 'border-border-primary text-content-secondary'}`}>
+                                                        <span className="font-bold mr-2">{String.fromCharCode(65 + oi)}.</span>
                                                         {opt}
                                                         {q.optionImages?.[oi] && (
                                                             /* eslint-disable-next-line @next/next/no-img-element */
-                                                            <img src={q.optionImages[oi]} alt={`Option ${String.fromCharCode(65 + oi)}`} loading="lazy" className="max-w-full mt-2 rounded border border-slate-200 dark:border-slate-700" />
+                                                            <img src={q.optionImages[oi]} alt={`Option ${String.fromCharCode(65 + oi)}`} loading="lazy" className="max-w-full mt-2 rounded border border-border-primary" />
                                                         )}
-                                                        {isCorrect && <FaCheckCircle className="inline ml-2 text-primary-600 dark:text-primary-300" />}
+                                                        {isCorrect && <FaCheckCircle className="inline ml-2 text-primary-600" />}
                                                     </li>
                                                 );
                                             })}
                                         </ol>
                                         {(q.explanation || q.explanationImage) && (
-                                            <div className="ml-11 mt-3 px-4 py-3 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-primary-600">
-                                                <p className="text-xs font-black text-primary-600 dark:text-primary-400 uppercase tracking-widest mb-1">{translate('Explanation')}</p>
-                                                {q.explanation && <p className="text-sm font-medium text-slate-700 dark:text-slate-300 whitespace-pre-line">{q.explanation}</p>}
+                                            <div className="ml-11 mt-3 px-4 py-3 bg-background-surface rounded-lg border-l-4 border-primary-600">
+                                                <p className="text-xs font-bold text-primary-600 uppercase tracking-[0.08em] mb-1">{translate('Explanation')}</p>
+                                                {q.explanation && <p className="text-sm font-medium text-content-secondary whitespace-pre-line">{q.explanation}</p>}
                                                 {q.explanationImage && (
                                                     /* eslint-disable-next-line @next/next/no-img-element */
-                                                    <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-w-full mt-2 rounded border border-slate-200 dark:border-slate-700" />
+                                                    <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-w-full mt-2 rounded border border-border-primary" />
                                                 )}
                                             </div>
                                         )}
@@ -263,17 +258,16 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                 ))}
                             </div>
                             {/* ── Register Gate CTA ── */}
-                            <section className="mt-8 relative overflow-hidden rounded-[2rem] border-2 border-primary-500/30 bg-primary-50 dark:bg-slate-900 p-6 xl:p-10 text-slate-900 dark:text-white">
-                                <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] pointer-events-none" />
+                            <section className="mt-8 relative overflow-hidden rounded-3xl border border-primary-500/30 dark:bg-slate-900 p-6 xl:p-10 text-content-primary">
                                 <div className="relative z-10 flex flex-col xl:flex-row items-start xl:items-center gap-6">
                                     <div className="flex-1 space-y-3">
-                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black text-primary-700 dark:text-primary-400 uppercase tracking-wider">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-primary-500/20 rounded-full text-xs font-bold text-primary-600 uppercase tracking-[0.08em]">
                                             <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse" /> {translate('Free account required')}
                                         </div>
-                                        <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight">
+                                        <h3 className="text-xl xl:text-3xl font-bold font-outfit tracking-tight">
                                             {translate('Attempt All {count} Questions', { count: paper.questionCount || 0 })}
                                         </h3>
-                                        <p className="text-sm font-bold text-slate-600 dark:text-slate-400 max-w-lg">
+                                        <p className="text-sm font-bold text-content-secondary max-w-lg">
                                             {translate("You've seen {count} sample questions. Create a free account in 30 seconds to attempt the full paper with timer, scoring, and detailed solutions.", { count: sampleQuestions.length })}
                                         </p>
                                         <div className="flex flex-wrap gap-3 pt-1">
@@ -284,20 +278,20 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                                 'Instant Results',
                                                 'Free to attempt',
                                             ].map((tag) => (
-                                                <span key={tag} className="px-3 py-1 bg-primary-600/10 dark:bg-white/5 border border-primary-300 dark:border-white/10 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider">{tag}</span>
+                                                <span key={tag} className="px-3 py-1 dark:bg-white/5 border border-primary-300 dark:border-white/10 rounded-full text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">{tag}</span>
                                             ))}
                                         </div>
                                     </div>
                                     <div className="flex flex-col gap-3 w-full xl:w-auto xl:min-w-[220px]">
                                         <button
                                             onClick={() => router.push(`/register?next=${encodeURIComponent(router.asPath)}`)}
-                                            className="w-full px-8 py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm transition-all text-sm border-b-2 border-primary-600 active:translate-y-0.5"
+                                            className="w-full px-8 py-4 bg-primary-600 hover:bg-primary-600 text-on-primary font-bold uppercase tracking-[0.08em] rounded-2xl transition-all text-sm border-b-2 border-primary-600 active:translate-y-0.5"
                                         >
                                             {translate('Create Free Account →')}
                                         </button>
                                         <button
                                             onClick={() => router.push(`/login?next=${encodeURIComponent(router.asPath)}`)}
-                                            className="w-full px-8 py-4 bg-primary-600/10 dark:bg-white/5 hover:bg-white/10 text-slate-700 dark:text-slate-300 font-black uppercase tracking-widest rounded-2xl border border-primary-300 dark:border-white/10 transition-all text-sm"
+                                            className="w-full px-8 py-4 dark:bg-white/5 hover:bg-white/10 text-content-secondary font-bold uppercase tracking-[0.08em] rounded-2xl border border-primary-300 dark:border-white/10 transition-all text-sm"
                                         >
                                             {translate('Already have account? Log in')}
                                         </button>
@@ -308,16 +302,16 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     )}
 
                     {/* ── Sticky bottom CTA (mobile) ── */}
-                    <div className="fixed bottom-0 left-0 right-0 z-40 xl:hidden bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-t-2 border-slate-200 dark:border-slate-800 p-4 flex gap-3 shadow-sm">
+                    <div className="fixed bottom-0 left-0 right-0 z-40 xl:hidden bg-white/95 dark:bg-slate-950/95 border-t-2 border-border-primary p-4 flex gap-3">
                         <button
                             onClick={() => router.push(`/register?next=${encodeURIComponent(router.asPath)}`)}
-                            className="flex-1 py-3 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-lg xl:rounded-xl text-xs shadow-sm transition-all"
+                            className="flex-1 py-3 bg-primary-600 hover:bg-primary-600 text-on-primary font-bold uppercase tracking-[0.08em] rounded-lg xl:rounded-xl text-xs transition-all"
                         >
                             {translate('Attempt Free →')}
                         </button>
                         <button
                             onClick={() => router.push(`/login?next=${encodeURIComponent(router.asPath)}`)}
-                            className="px-4 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-black uppercase tracking-widest rounded-lg xl:rounded-xl text-xs transition-all"
+                            className="px-4 py-3 bg-background-surface-secondary text-content-secondary font-bold uppercase tracking-[0.08em] rounded-lg xl:rounded-xl text-xs transition-all"
                         >
                             {translate('Log In')}
                         </button>
@@ -326,17 +320,17 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     {/* FAQ */}
                     {faqs?.length > 0 && (
 
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
-                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                        <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                            <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('Frequently Asked Questions')}
                             </h2>
                             <div className="space-y-2 xl:space-y-4">
                                 {faqs.map((f, i) => (
-                                    <details key={i} className="group bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-5 cursor-pointer">
-                                        <summary className="font-black text-slate-900 dark:text-white text-base xl:text-lg uppercase tracking-tight">
+                                    <details key={i} className="group bg-background-surface-secondary rounded-2xl border border-border-primary p-5 cursor-pointer">
+                                        <summary className="font-bold text-content-primary text-base xl:text-lg tracking-tight">
                                             {f.question}
                                         </summary>
-                                        <p className="mt-3 text-slate-600 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-line">
+                                        <p className="mt-3 text-content-secondary font-medium leading-relaxed whitespace-pre-line">
                                             {f.answer}
                                         </p>
                                     </details>
@@ -347,24 +341,24 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                     {/* Related papers */}
                     {related?.length > 0 && (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
-                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                        <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                            <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('More {name} PYQ Papers', { name: translateData(examName) })}
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                                 {related.map((r) => (
-                                    <Link key={r._id} href={`/pyq/${exam.slug}/${r.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
+                                    <Link key={r._id} href={`/pyq/${exam.slug}/${r.slug}`} className="group block bg-background-surface-secondary rounded-2xl p-5 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition">
                                         <div className="flex items-center gap-2 mb-2 flex-wrap">
-                                            {r.pyqYear && <span className="px-2 py-0.5 bg-primary-100 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{r.pyqYear}</span>}
-                                            {r.pyqShift && <span className="text-[9px] font-bold text-slate-600 dark:text-slate-400">{r.pyqShift}</span>}
+                                            {r.pyqYear && <span className="px-2 py-0.5 rounded text-[9px] font-bold text-primary-600 uppercase tracking-[0.08em]">{r.pyqYear}</span>}
+                                            {r.pyqShift && <span className="text-[9px] font-bold text-content-secondary">{r.pyqShift}</span>}
                                         </div>
-                                        <h3 className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-2 line-clamp-2">{translateData(r.title)}</h3>
-                                        <p className="text-[11px] font-bold text-slate-500">{translate('{duration} min · {marks} marks', { duration: r.duration, marks: r.totalMarks })}</p>
+                                        <h3 className="text-sm font-bold text-content-primary group-hover:text-primary-600 transition mb-2 line-clamp-2">{translateData(r.title)}</h3>
+                                        <p className="text-[11px] font-bold text-content-muted">{translate('{duration} min · {marks} marks', { duration: r.duration, marks: r.totalMarks })}</p>
                                     </Link>
                                 ))}
                             </div>
                             <div className="mt-6 text-center">
-                                <Link href={`/pyq/${exam.slug}`} className="inline-flex items-center text-sm font-black text-primary-600 dark:text-primary-300 hover:text-primary-600 uppercase tracking-widest">
+                                <Link href={`/pyq/${exam.slug}`} className="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-600 uppercase tracking-[0.08em]">
                                     {translate('View all {name} PYQs', { name: translateData(examName) })} <FaArrowRight className="ml-2" />
                                 </Link>
                             </div>

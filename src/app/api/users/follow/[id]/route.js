@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
+import { resolveUserId } from '@/lib/utils/userRef';
 import User from '@/models/User';
 import Follow from '@/models/Follow';
 import { protect } from '@/middleware/auth';
@@ -11,9 +12,11 @@ export async function POST(req, { params }) {
         if (!auth.authenticated) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
 
         const followerId = auth.user.id;
-        const { id } = await params;
+        const { id: userRef } = await params; // user id or username
+        const id = await resolveUserId(userRef);
+        if (!id) return NextResponse.json({ message: 'User not found' }, { status: 404 });
 
-        if (followerId === id) return NextResponse.json({ message: 'You cannot follow yourself' }, { status: 400 });
+        if (String(followerId) === String(id)) return NextResponse.json({ message: 'You cannot follow yourself' }, { status: 400 });
 
         const userToFollow = await User.findById(id).select('status').lean();
         if (!userToFollow) return NextResponse.json({ message: 'User not found' }, { status: 404 });

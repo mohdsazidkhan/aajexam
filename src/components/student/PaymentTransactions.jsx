@@ -127,18 +127,18 @@ const PaymentTransactions = () => {
     switch (status) {
       case 'paid':
       case 'success':
-        return <FaCheckCircle className="text-primary-600 dark:text-primary-300" />;
+        return <FaCheckCircle className="text-primary-600" />;
       case 'failed':
       case 'failure':
-        return <FaTimesCircle className="text-black dark:text-white" />;
+        return <FaTimesCircle className="text-content-primary" />;
       case 'created':
       case 'authorized':
       case 'pending':
         return <FaClock className="text-amber-600 dark:text-amber-400" />;
       case 'refunded':
-        return <FaExclamationTriangle className="text-primary-600 dark:text-primary-300" />;
+        return <FaExclamationTriangle className="text-primary-600" />;
       default:
-        return <FaExclamationTriangle className="text-slate-700 dark:text-gray-400" />;
+        return <FaExclamationTriangle className="text-content-secondary" />;
     }
   };
 
@@ -146,27 +146,27 @@ const PaymentTransactions = () => {
     switch (status) {
       case 'paid':
       case 'success':
-        return 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300';
+        return 'text-primary-600';
       case 'failed':
       case 'failure':
-        return 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ';
+        return 'bg-background-surface-secondary text-content-primary';
       case 'created':
       case 'authorized':
       case 'pending':
-        return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-primary-300';
+        return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-primary-600';
       case 'refunded':
-        return 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300';
+        return 'text-primary-600';
       default:
-        return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
+        return 'bg-background-surface-secondary text-content-primary';
     }
   };
 
   const getSourceIcon = (source) => {
     switch (source) {
       case 'payment_order':
-        return <FaCreditCard className="text-primary-600 dark:text-primary-300" />;
+        return <FaCreditCard className="text-primary-600" />;
       default:
-        return <FaCreditCard className="text-primary-600 dark:text-primary-300" />;
+        return <FaCreditCard className="text-primary-600" />;
     }
   };
 
@@ -180,10 +180,10 @@ const PaymentTransactions = () => {
   };
 
   const getTypeColor = (type, source) => {
-    if (type === 'credit') return 'text-primary-600 dark:text-primary-300';
+    if (type === 'credit') return 'text-primary-600';
     if (type === 'debit') return 'text-primary-600 dark:text-white';
-    if (source === 'payment_order') return 'text-primary-600 dark:text-primary-400';
-    return 'text-gray-600 dark:text-gray-400';
+    if (source === 'payment_order') return 'text-primary-600';
+    return 'text-content-secondary';
   };
 
   // Search + filters are applied server-side; the list is already the filtered page.
@@ -203,29 +203,29 @@ const PaymentTransactions = () => {
 
   if (loading) {
     return (
-      <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl xl:rounded-3xl shadow-sm p-4 xl:p-6 border border-white/30">
+      <div className="bg-white/90 dark:bg-gray-800/90 rounded-2xl xl:rounded-3xl p-4 xl:p-6 border border-white/30">
         <ListSkeleton rows={4} />
       </div>
     );
   }
 
   return (
-    <div className="relative bg-background-surface shadow-md border border-slate-200 dark:border-slate-800 overflow-hidden font-outfit mb-4 xl:mb-6" style={{ borderRadius: 16 }}>
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 z-10 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+    <div className="relative bg-background-surface border border-border-primary overflow-hidden font-outfit mb-4 xl:mb-6" style={{ borderRadius: 16 }}>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 z-10 bg-primary-600" />
       {/* Header */}
-      <section className="bg-gradient-to-r from-slate-100 via-slate-50 to-white text-slate-900 border-b border-slate-200 dark:border-transparent dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white p-3 xl:p-4 pt-4 relative overflow-hidden group">
+      <section className="text-content-primary border-b border-border-primary dark:border-transparent p-3 xl:p-4 pt-4 relative overflow-hidden group bg-background-surface">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-white/10 transition-colors"></div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 xl:gap-4 relative z-10">
           <section>
-            <h2 className="text-lg xl:text-2xl font-black uppercase tracking-tight">{rich('Payment <0>History</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
+            <h2 className="text-lg xl:text-2xl font-bold tracking-tight">{rich('Payment <0>History</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
           </section>
           <div className="flex items-center w-full sm:w-auto">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="w-full sm:w-auto bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] hover:brightness-105 px-3 py-2 xl:px-4 xl:py-2 rounded-lg xl:rounded-xl transition-all active:translate-y-0.5 flex items-center justify-center space-x-2 xl:space-x-3 shadow-md"
+              className="w-full sm:w-auto text-on-primary hover:brightness-105 px-3 py-2 xl:px-4 xl:py-2 rounded-lg xl:rounded-xl transition-all active:translate-y-0.5 flex items-center justify-center space-x-2 xl:space-x-3 bg-primary-600"
             >
               <FaFilter className="text-xs xl:text-sm" />
-              <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest">{translate('Filters')}</span>
+              <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em]">{translate('Filters')}</span>
             </button>
           </div>
         </div>
@@ -233,43 +233,43 @@ const PaymentTransactions = () => {
 
       {/* Summary Cards */}
       {summary && (
-        <div className="p-2 xl:p-3 bg-white dark:bg-slate-900/50">
+        <div className="p-2 xl:p-3 bg-background-surface">
           <div className="grid grid-cols-3 gap-2 xl:gap-3">
-            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
+            <div className="relative overflow-hidden dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-border-primary transition-all group">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Total Investment')}</p>
-                  <p className="text-base xl:text-2xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
+                  <p className="text-[9px] xl:text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] mb-0.5">{translate('Total Investment')}</p>
+                  <p className="text-base xl:text-2xl font-bold text-content-primary tracking-tight group-hover:text-primary-600 transition-colors">
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 text-on-primary rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0 bg-primary-600">
                   <FaRupeeSign className="text-xs xl:text-lg" />
                 </div>
               </div>
             </div>
-            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
+            <div className="relative overflow-hidden dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-border-primary transition-all group">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Total Transactions')}</p>
-                  <p className="text-base xl:text-2xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
+                  <p className="text-[9px] xl:text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] mb-0.5">{translate('Total Transactions')}</p>
+                  <p className="text-base xl:text-2xl font-bold text-content-primary tracking-tight group-hover:text-primary-600 transition-colors">
                     {summary.totalTransactions || 0}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 text-on-primary rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0 bg-primary-600">
                   <FaReceipt className="text-xs xl:text-lg" />
                 </div>
               </div>
             </div>
-            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
+            <div className="relative overflow-hidden dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-border-primary transition-all group">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Successful Clear')}</p>
-                  <p className="text-base xl:text-2xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
+                  <p className="text-[9px] xl:text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] mb-0.5">{translate('Successful Clear')}</p>
+                  <p className="text-base xl:text-2xl font-bold text-content-primary tracking-tight group-hover:text-primary-600 transition-colors">
                     {summary.paymentOrders?.completed || 0}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 text-on-primary rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0 bg-primary-600">
                   <FaCheckCircle className="text-xs xl:text-lg" />
                 </div>
               </div>
@@ -280,17 +280,17 @@ const PaymentTransactions = () => {
 
       {/* Filters */}
       {showFilters && (
-        <div className="p-2 xl:p-3 bg-white dark:bg-slate-900/50 border-b-2 border-slate-100 dark:border-slate-800">
+        <div className="p-2 xl:p-3 bg-background-surface border-b-2 border-border-primary">
           <div className="grid grid-cols-1 xl:grid-cols-4 gap-2 xl:gap-3 mb-2 xl:mb-3">
             {/* Search */}
             <div className="relative">
-              <FaSearch className="absolute left-3 xl:left-4 top-1/2 transform -translate-y-1/2 text-slate-600 dark:text-slate-400 text-xs xl:text-base" />
+              <FaSearch className="absolute left-3 xl:left-4 top-1/2 transform -translate-y-1/2 text-content-secondary text-xs xl:text-base" />
               <input
                 type="text"
                 placeholder={translate('Search history...')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 xl:pl-12 pr-3 xl:pr-4 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-white dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
+                className="w-full pl-9 xl:pl-12 pr-3 xl:pr-4 py-2 xl:py-2.5 border border-border-primary rounded-lg xl:rounded-xl xl:rounded-2xl bg-background-surface text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
               />
             </div>
 
@@ -298,7 +298,7 @@ const PaymentTransactions = () => {
             <Select
               value={filters.month}
               onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-white dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 xl:px-6 py-2 xl:py-2.5 border border-border-primary rounded-lg xl:rounded-xl xl:rounded-2xl bg-background-surface text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value={1}>{translate('January')}</option>
               <option value={2}>{translate('February')}</option>
@@ -318,7 +318,7 @@ const PaymentTransactions = () => {
             <Select
               value={filters.year}
               onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-white dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 xl:px-6 py-2 xl:py-2.5 border border-border-primary rounded-lg xl:rounded-xl xl:rounded-2xl bg-background-surface text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               {filterOptions.years?.map(year => (
                 <option key={year.value || year} value={year.value || year}>{year.label || year}</option>
@@ -329,7 +329,7 @@ const PaymentTransactions = () => {
             <Select
               value={filters.status}
               onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-white dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 xl:px-6 py-2 xl:py-2.5 border border-border-primary rounded-lg xl:rounded-xl xl:rounded-2xl bg-background-surface text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value="all">{translate('All Status')}</option>
               <option value="paid">{translate('Paid')}</option>
@@ -344,7 +344,7 @@ const PaymentTransactions = () => {
           <div className="flex justify-end">
             <button
               onClick={clearFilters}
-              className="px-5 xl:px-8 py-2 xl:py-3 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg xl:rounded-xl text-[9px] xl:text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-slate-200 dark:border-slate-600 active:translate-y-1 transition-all"
+              className="px-5 xl:px-8 py-2 xl:py-3 bg-background-surface-secondary text-content-secondary rounded-lg xl:rounded-xl text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] border border-border-primary dark:border-slate-600 active:translate-y-1 transition-all"
             >
               {translate('Clear All')}
             </button>
@@ -356,44 +356,44 @@ const PaymentTransactions = () => {
       <div className="p-2 xl:p-3">
         {error ? (
           <div className="text-center py-6 xl:py-10">
-            <div className="w-12 h-12 xl:w-16 xl:h-16 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center mx-auto mb-2 xl:mb-3 shadow-sm border-2 border-white">
-              <FaExclamationTriangle className="text-black dark:text-white text-base xl:text-2xl" />
+            <div className="w-12 h-12 xl:w-16 xl:h-16 bg-background-surface-secondary rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center mx-auto mb-2 xl:mb-3 border border-white">
+              <FaExclamationTriangle className="text-content-primary text-base xl:text-2xl" />
             </div>
-            <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{error}</p>
+            <p className="text-[9px] xl:text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">{error}</p>
           </div>
         ) : filteredTransactions.length === 0 ? (
           <div className="text-center py-6 xl:py-10">
-            <div className="w-12 h-12 xl:w-16 xl:h-16 bg-slate-100 rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center mx-auto mb-2 xl:mb-3 shadow-sm border-2 border-white">
-              <FaReceipt className="text-slate-600 dark:text-slate-400 text-base xl:text-2xl" />
+            <div className="w-12 h-12 xl:w-16 xl:h-16 bg-background-surface-secondary rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center mx-auto mb-2 xl:mb-3 border border-white">
+              <FaReceipt className="text-content-secondary text-base xl:text-2xl" />
             </div>
-            <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{translate('No records found')}</p>
+            <p className="text-[9px] xl:text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">{translate('No records found')}</p>
           </div>
         ) : (
           <div className="space-y-2 xl:space-y-3">
             {filteredTransactions.map((transaction) => (
-              <div key={transaction.id} className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl xl:rounded-xl shadow-sm xl:shadow-sm border-2 border-slate-100 dark:border-slate-700 overflow-hidden transition-all hover:-translate-y-1">
+              <div key={transaction.id} className="bg-background-surface rounded-lg xl:rounded-xl xl:rounded-xl border border-border-primary overflow-hidden transition-all hover:-translate-y-1">
                 {/* Transaction Header */}
-                <div className="p-3 xl:p-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                <div className="p-3 xl:p-4 hover:bg-background-surface-secondary transition-colors">
                   <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 xl:gap-6">
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 xl:gap-4 mb-2 xl:mb-4">
-                        <div className={`text-base xl:text-3xl font-black tracking-tighter ${getTypeColor(transaction.type, transaction.source)}`}>
+                        <div className={`text-base xl:text-3xl font-bold tracking-tight ${getTypeColor(transaction.type, transaction.source)}`}>
                           {formatCurrency(transaction.amount)}
                         </div>
-                        <div className={`px-2.5 xl:px-4 py-1 xl:py-1.5 rounded-lg xl:rounded-xl text-[11px] xl:text-[13px] font-black uppercase tracking-widest border-2 flex items-center gap-1.5 xl:gap-2 ${getStatusColor(transaction.paymentStatus || transaction.status)}`}>
+                        <div className={`px-2.5 xl:px-4 py-1 xl:py-1.5 rounded-lg xl:rounded-xl text-[11px] xl:text-[13px] font-bold uppercase tracking-[0.08em] border flex items-center gap-1.5 xl:gap-2 ${getStatusColor(transaction.paymentStatus || transaction.status)}`}>
                           {getStatusIcon(transaction.paymentStatus || transaction.status)}
                           {transaction.paymentStatus || transaction.status}
                         </div>
                       </div>
 
                       <div className="flex items-center gap-2.5 xl:gap-4 mb-2 xl:mb-4">
-                        <div className="w-7 h-7 xl:w-10 xl:h-10 bg-slate-100 dark:bg-slate-700 rounded-lg xl:rounded-xl flex items-center justify-center shadow-sm border-1 border-white/50 flex-shrink-0">
+                        <div className="w-7 h-7 xl:w-10 xl:h-10 bg-background-surface-secondary rounded-lg xl:rounded-xl flex items-center justify-center border-1 border-white/50 flex-shrink-0">
                           {getSourceIcon(transaction.source)}
                         </div>
-                        <p className="text-[10px] xl:text-xs font-black text-slate-800 dark:text-white uppercase tracking-widest">{transaction.paymentDesc || transaction.description}</p>
+                        <p className="text-[10px] xl:text-xs font-bold text-content-primary uppercase tracking-[0.08em]">{transaction.paymentDesc || transaction.description}</p>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-2.5 xl:gap-6 text-[8px] xl:text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest">
+                      <div className="flex flex-wrap items-center gap-2.5 xl:gap-6 text-[8px] xl:text-[9px] font-bold text-content-secondary uppercase tracking-[0.08em]">
                         <div className="flex items-center gap-1.5 xl:gap-2">
                           <FaCalendar className="text-slate-300" />
                           <span>{formatDate(transaction.date || transaction.createdAt)}</span>
@@ -413,7 +413,7 @@ const PaymentTransactions = () => {
 
                     <button aria-label={translate('Toggle visibility')}
                       onClick={() => toggleTransactionDetails(transaction.id)}
-                      className="self-end xl:self-auto p-2.5 xl:p-4 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg xl:rounded-xl xl:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 active:translate-y-1 transition-all"
+                      className="self-end xl:self-auto p-2.5 xl:p-4 bg-background-surface-secondary text-content-secondary rounded-lg xl:rounded-xl xl:rounded-2xl border border-border-primary dark:border-slate-600 active:translate-y-1 transition-all"
                     >
                       {expandedTransaction === transaction.id ? <FaEyeSlash /> : <FaEye />}
                     </button>
@@ -422,23 +422,23 @@ const PaymentTransactions = () => {
 
                 {/* Expanded Details */}
                 {expandedTransaction === transaction.id && (
-                  <section className="border-t-2 border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-3 xl:p-4">
+                  <section className="border-t-2 border-border-primary bg-background-surface-secondary p-3 xl:p-4">
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-4">
                       {/* Payment Details */}
-                      <section className="bg-white dark:bg-slate-800 p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
-                        <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-2 xl:mb-3 flex items-center gap-2 xl:gap-3">
-                          <FaCreditCard className="text-primary-600 dark:text-primary-300" />
+                      <section className="bg-background-surface p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border border-border-primary">
+                        <h3 className="text-[9px] xl:text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] mb-2 xl:mb-3 flex items-center gap-2 xl:gap-3">
+                          <FaCreditCard className="text-primary-600" />
                           {translate('Payment Details')}
                         </h3>
                         <div className="space-y-2 xl:space-y-4">
                           {transaction.subscriptionName && (
-                            <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-black tracking-widest">
-                              <span className="text-slate-600 dark:text-slate-400">{translate('Subscription')}</span>
-                              <span className="text-slate-800 dark:text-white">{transaction.subscriptionName}</span>
+                            <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-bold tracking-[0.08em]">
+                              <span className="text-content-secondary">{translate('Subscription')}</span>
+                              <span className="text-content-primary">{transaction.subscriptionName}</span>
                             </div>
                           )}
-                          <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-black tracking-widest">
-                            <span className="text-slate-600 dark:text-slate-400">{translate('Status')}</span>
+                          <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-bold tracking-[0.08em]">
+                            <span className="text-content-secondary">{translate('Status')}</span>
                             <span className={`px-2.5 xl:px-3 py-0.5 xl:py-1 rounded-lg ${getStatusColor(transaction.paymentStatus || transaction.status)}`}>
                               {transaction.paymentStatus || transaction.status}
                             </span>
@@ -447,19 +447,19 @@ const PaymentTransactions = () => {
                       </section>
 
                       {/* Info Details */}
-                      <section className="bg-white dark:bg-slate-800 p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
-                        <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-2 xl:mb-3 flex items-center gap-2 xl:gap-3">
-                          <FaReceipt className="text-primary-600 dark:text-primary-300" />
+                      <section className="bg-background-surface p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border border-border-primary">
+                        <h3 className="text-[9px] xl:text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] mb-2 xl:mb-3 flex items-center gap-2 xl:gap-3">
+                          <FaReceipt className="text-primary-600" />
                           {translate('Transaction Details')}
                         </h3>
                         <div className="space-y-2 xl:space-y-4">
-                          <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-black tracking-widest">
-                            <span className="text-slate-600 dark:text-slate-400">{translate('Type')}</span>
-                            <span className="text-slate-800 dark:text-white">{transaction.type}</span>
+                          <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-bold tracking-[0.08em]">
+                            <span className="text-content-secondary">{translate('Type')}</span>
+                            <span className="text-content-primary">{transaction.type}</span>
                           </div>
-                          <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-black tracking-widest">
-                            <span className="text-slate-600 dark:text-slate-400">{translate('Order ID')}</span>
-                            <span className="text-slate-800 dark:text-white font-mono break-all text-right">{transaction.orderId}</span>
+                          <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-bold tracking-[0.08em]">
+                            <span className="text-content-secondary">{translate('Order ID')}</span>
+                            <span className="text-content-primary font-mono break-all text-right">{transaction.orderId}</span>
                           </div>
                         </div>
                       </section>

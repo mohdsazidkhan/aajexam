@@ -32,7 +32,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
   }, [isMounted, dispatch]);
 
   if (!isMounted) {
-    return <div className="min-h-screen animate-pulse" />;
+    return <div className="min-h-screen animate-pulse bg-primary-500/15 dark:bg-primary-500/20" />;
   }
 
   const toggleTheme = () => dispatch(toggleDarkMode());
@@ -66,19 +66,19 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
   return (
     <div className={`min-h-screen bg-background-page transition-colors duration-500 font-outfit`}>
       {showHeader && (
-        <header className="fixed top-0 left-0 right-0 z-[110] xl:hidden h-16 xl:h-20 bg-white/90 dark:bg-[#0A0F1E]/80 backdrop-blur-2xl border-b border-slate-200 dark:border-white/5 shadow-sm px-4 flex items-center justify-between overflow-hidden">
+        <header className="fixed top-0 left-0 right-0 z-[110] xl:hidden h-16 xl:h-20 bg-white/90 dark:bg-[#0A0F1E]/80 border-b border-border-primary px-4 flex items-center justify-between overflow-hidden">
           {/* Decorative Pattern */}
           <div className="absolute inset-0 bg-grid-slate-900/[0.04] dark:bg-grid-slate-100/[0.04] pointer-events-none" />
 
           <div className="flex items-center gap-3 relative z-10 transition-transform active:scale-95">
-            <Link href="/admin/dashboard" className="w-10 h-10 rounded-lg xl:rounded-xl bg-primary-600 p-0.5 shadow-sm">
-              <div className="w-full h-full bg-slate-950 rounded-lg flex items-center justify-center text-white text-sm font-black italic">A</div>
+            <Link href="/admin/dashboard" className="w-10 h-10 rounded-lg xl:rounded-xl bg-primary-600 p-0.5">
+              <div className="w-full h-full bg-slate-950 rounded-lg flex items-center justify-center text-white text-sm font-bold italic">A</div>
             </Link>
             <div className="flex flex-col">
-              <h1 className="text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white leading-none">
+              <h1 className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-primary leading-none">
                 {getPageName()}
               </h1>
-              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-primary-500/60 leading-none mt-1">Admin Panel</span>
+              <span className="text-[7px] font-bold uppercase tracking-[0.08em] text-primary-500/60 leading-none mt-1">Admin Panel</span>
             </div>
           </div>
 
@@ -87,7 +87,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
             <motion.button
               whileTap={{ scale: 0.9, y: 1 }}
               onClick={toggleTheme}
-              className={`w-10 h-10 flex items-center justify-center rounded-lg xl:rounded-xl border-b-2 transition-all ${darkMode ? 'bg-slate-800/50 border-slate-700 text-black dark:text-white' : 'bg-slate-100 border-slate-300 text-slate-600'
+              className={`w-10 h-10 flex items-center justify-center rounded-lg xl:rounded-xl border-b-2 transition-all ${darkMode ? 'bg-slate-800/50 border-slate-700 text-content-primary' : 'bg-background-surface-secondary border-border-primary text-content-secondary'
                 }`}
             >
               {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -98,7 +98,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
               <motion.button
                 whileTap={{ scale: 0.9, y: 1 }}
                 onClick={() => secureLogout(router)}
-                className="w-10 h-10 flex items-center justify-center rounded-lg xl:rounded-xl bg-red-500 border-b-2 border-red-600 text-white shadow-sm"
+                className="w-10 h-10 flex items-center justify-center rounded-lg xl:rounded-xl bg-red-500 border-b-2 border-red-600 text-white"
               >
                 <LogOut className="w-4 h-4" />
               </motion.button>
@@ -109,7 +109,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
               whileTap={{ scale: 0.9, y: 1 }}
               onClick={() => dispatch(toggleSidebar())}
               className={`w-10 h-10 flex items-center justify-center rounded-lg xl:rounded-xl border-b-2 transition-all ${isOpen ? 'bg-primary-600 border-primary-600' : 'bg-primary-600 border-primary-600'
-                } text-white shadow-sm`}
+                } text-white`}
             >
               {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </motion.button>

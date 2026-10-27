@@ -63,14 +63,13 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* About */}
-                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
+                    <section className="bg-background-surface rounded-3xl p-4 md:p-8 xl:p-12 mb-12 border border-border-primary relative overflow-hidden">
 
-                        <h2 className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
+                        <h2 className="text-xl xl:text-4xl font-bold text-content-primary mb-8 tracking-tight flex items-center gap-4">
                             <div className="w-2 h-10 bg-primary-600 rounded-full" />
                             {translate('About the Founder')}
                         </h2>
-                        <div className="space-y-6 text-slate-600 dark:text-slate-400 text-md xl:text-xl font-bold leading-relaxed">
+                        <div className="space-y-6 text-content-secondary text-md xl:text-xl font-bold leading-relaxed">
                             <p>
                                 {translate('Mohd Sazid Khan is the founder and driving force behind AajExam, India\'s innovative government exam preparation platform. With a strong background in full-stack web development and a passion for educational technology, Sazid has dedicated his career to making quality exam preparation accessible to students across India.')}
                             </p>
@@ -84,12 +83,12 @@ export default function AboutAuthor() {
                     </section>
 
                     {/* Expertise */}
-                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800">
+                    <section className="bg-background-surface rounded-3xl p-4 md:p-8 xl:p-12 mb-12 border border-border-primary">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-600 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-600">
+                            <div className="w-14 h-14 bg-primary-600 rounded-2xl flex items-center justify-center border-b-2 border-primary-600">
                                 <FaCode className="text-white text-2xl" />
                             </div>
-                            <h2 className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('Technical Expertise')}</h2>
+                            <h2 className="text-xl xl:text-4xl font-bold text-content-primary tracking-tight">{translate('Technical Expertise')}</h2>
                         </div>
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                             {[
@@ -98,42 +97,41 @@ export default function AboutAuthor() {
                                 { title:'System Architecture', desc:'Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.', color:'bg-primary-600'},
                                 { title: 'Data Analytics', desc: 'Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize outcomes.', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <article key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-4 mlgp-8 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
-                                    <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-3">
+                                <article key={idx} className="bg-background-surface-secondary rounded-3xl p-4 mlgp-8 border border-border-primary hover:border-primary-500/30 transition-all">
+                                    <h3 className="text-sm xl:text-xl font-bold text-content-primary mb-3 tracking-tight flex items-center gap-3">
                                         <div className={`w-2 h-6 ${item.color} rounded-full`} />
                                         {translate(item.title)}
                                     </h3>
-                                    <p className="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">{translate(item.desc)}</p>
+                                    <p className="text-content-muted font-bold leading-relaxed">{translate(item.desc)}</p>
                                 </article>
                             ))}
                         </div>
                     </section>
 
                     {/* Vision & Mission */}
-                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
+                    <section className="bg-background-surface rounded-3xl p-4 md:p-8 xl:p-12 mb-16 border border-border-primary relative overflow-hidden">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-600 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-600">
+                            <div className="w-14 h-14 bg-primary-600 rounded-2xl flex items-center justify-center border-b-2 border-primary-600">
                                 <FaTrophy className="text-white text-2xl" />
                             </div>
-                            <h2 className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('Vision & Mission')}</h2>
+                            <h2 className="text-xl xl:text-4xl font-bold text-content-primary tracking-tight">{translate('Vision & Mission')}</h2>
                         </div>
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 relative z-10">
                             <div>
-                                <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+                                <h3 className="text-sm xl:text-xl font-bold text-content-primary mb-4 tracking-tight flex items-center gap-3">
                                     <div className="w-2 h-6 bg-primary-600 rounded-full" />
                                     {translate('Vision')}
                                 </h3>
-                                <p className="text-slate-600 dark:text-slate-400 text-lg font-bold leading-relaxed">
+                                <p className="text-content-secondary text-lg font-bold leading-relaxed">
                                     {translate('To become India\'s most trusted and comprehensive government exam preparation platform, empowering millions of students to achieve their career goals in public service through innovative technology and quality educational content.')}
                                 </p>
                             </div>
                             <div>
-                                <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+                                <h3 className="text-sm xl:text-xl font-bold text-content-primary mb-4 tracking-tight flex items-center gap-3">
                                     <div className="w-2 h-6 bg-primary-600 rounded-full" />
                                     {translate('Mission')}
                                 </h3>
-                                <p className="text-slate-600 dark:text-slate-400 text-lg font-bold leading-relaxed">
+                                <p className="text-content-secondary text-lg font-bold leading-relaxed">
                                     {translate('To provide accessible, affordable, and effective exam preparation resources that combine cutting-edge technology with proven pedagogical methods. We aim to bridge the gap between traditional coaching and modern digital learning.')}
                                 </p>
                             </div>
@@ -141,12 +139,12 @@ export default function AboutAuthor() {
                     </section>
 
                     {/* Achievements */}
-                    <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 xl:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800">
+                    <section className="bg-background-surface rounded-3xl p-4 md:p-8 xl:p-12 mb-16 border border-border-primary">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-600 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-600">
+                            <div className="w-14 h-14 bg-primary-600 rounded-2xl flex items-center justify-center border-b-2 border-primary-600">
                                 <FaChalkboardTeacher className="text-white text-2xl" />
                             </div>
-                            <h2 className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('Key Achievements')}</h2>
+                            <h2 className="text-xl xl:text-4xl font-bold text-content-primary tracking-tight">{translate('Key Achievements')}</h2>
                         </div>
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                             {[
@@ -155,13 +153,13 @@ export default function AboutAuthor() {
                                 { title:'Content Curation', desc:'Curated thousands of exam questions across multiple subjects.', color:'bg-primary-600'},
                                 { title: 'User Growth', desc: 'Onboarded thousands of students across India.', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <section key={idx} className="flex items-start gap-5 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800">
-                                    <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 text-white font-black shadow-sm border-b-2 border-black/20`}>
+                                <section key={idx} className="flex items-start gap-5 p-6 bg-background-surface-secondary rounded-3xl border border-border-primary">
+                                    <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold border-b-2 border-black/20`}>
                                         ✓
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{translate(item.title)}</h3>
-                                        <p className="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">{translate(item.desc)}</p>
+                                        <h3 className="text-lg font-bold text-content-primary mb-1 tracking-tight">{translate(item.title)}</h3>
+                                        <p className="text-content-muted font-bold leading-relaxed">{translate(item.desc)}</p>
                                     </div>
                                 </section>
                             ))}
@@ -169,11 +167,10 @@ export default function AboutAuthor() {
                     </section>
 
                     {/* Philosophy */}
-                    <section className="bg-primary-50 dark:bg-slate-950 p-4 md:p-8 xl:p-10 mb-10 xl:mb-12 ring-1 ring-primary-200 dark:ring-slate-800 shadow-xl relative overflow-hidden" style={{ borderRadius: 16 }}>
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 dark:bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
-                        <h2 className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight relative z-10">{translate('Educational Philosophy')}</h2>
-                        <div className="space-y-5 text-slate-700 dark:text-slate-400 text-base xl:text-lg font-bold leading-relaxed relative z-10">
+                    <section className="dark:bg-slate-950 p-4 md:p-8 xl:p-10 mb-10 xl:mb-12 ring-1 ring-primary-200 dark:ring-slate-800 relative overflow-hidden" style={{ borderRadius: 16 }}>
+                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
+                        <h2 className="text-xl xl:text-4xl font-bold text-content-primary mb-6 tracking-tight relative z-10">{translate('Educational Philosophy')}</h2>
+                        <div className="space-y-5 text-content-secondary text-base xl:text-lg font-bold leading-relaxed relative z-10">
                             <p>
                                 {translate('Sazid believes that effective exam preparation requires more than just access to questions, it requires a structured, progressive learning path that builds confidence and competence systematically.')}
                             </p>
@@ -184,19 +181,16 @@ export default function AboutAuthor() {
                     </section>
 
                     {/* Contact */}
-                    <section className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-4 xl:p-8 mb-8" style={{ borderRadius: 16 }}>
-                        <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-                        <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-                        <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
+                    <section className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-8 mb-8 bg-background-surface" style={{ borderRadius: 16 }}>
 
                         <div className="flex items-center gap-3 mb-5 xl:mb-6">
-                            <div className="w-11 h-11 xl:w-12 xl:h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+                            <div className="w-11 h-11 xl:w-12 xl:h-12 text-on-primary flex items-center justify-center bg-primary-600" style={{ borderRadius: 12 }}>
                                 <FaEnvelope className="text-lg xl:text-xl" />
                             </div>
-                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('Connect with Sazid')}</h2>
+                            <h2 className="text-xl xl:text-3xl font-bold text-content-primary tracking-tight">{translate('Connect with Sazid')}</h2>
                         </div>
 
-                        <address className="not-italic grid grid-cols-1 sm:grid-cols-3 gap-3 xl:gap-4 pt-4 border-t border-dashed border-slate-300 dark:border-white/25">
+                        <address className="not-italic grid grid-cols-1 sm:grid-cols-3 gap-3 xl:gap-4 pt-4 border-t border-dashed border-border-primary">
                             {[
                                 { href: `mailto:${config.CONTACT.EMAIL}`, icon: FaEnvelope, label: translate('Email'), external: false },
                                 { href: 'https://www.linkedin.com/in/mohd-sazid-khan', icon: FaLinkedin, label: translate('LinkedIn'), external: true },
@@ -206,14 +200,14 @@ export default function AboutAuthor() {
                                     key={c.label}
                                     href={c.href}
                                     {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                                    className="group relative flex items-center gap-3 px-4 py-3.5 bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 hover:-translate-y-1 hover:shadow-lg transition-all"
+                                    className="group relative flex items-center gap-3 px-4 py-3.5 bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary hover:-translate-y-1 transition-all"
                                     style={{ borderRadius: 12 }}
                                 >
-                                    <span className="w-10 h-10 shrink-0 bg-gradient-to-br from-primary-600 to-primary-800 text-white flex items-center justify-center shadow group-hover:rotate-[-4deg] transition-transform" style={{ borderRadius: 10 }}>
+                                    <span className="w-10 h-10 shrink-0 text-on-primary flex items-center justify-center transition-transform bg-primary-600" style={{ borderRadius: 10 }}>
                                         <c.icon className="text-xl" />
                                     </span>
-                                    <span className="font-black text-sm xl:text-base text-slate-900 dark:text-white">{c.label}</span>
-                                    <span className="ml-auto text-primary-600 dark:text-primary-300 font-black group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+                                    <span className="font-bold text-sm xl:text-base text-content-primary">{c.label}</span>
+                                    <span className="ml-auto text-primary-600 font-bold group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
                                 </a>
                             ))}
                         </address>
@@ -221,16 +215,16 @@ export default function AboutAuthor() {
 
                     {/* CTA */}
                     <div className="text-center mt-16">
-                        <section className="bg-primary-600 rounded-[3rem] p-4 md:p-8 xl:p-12 border-b-[12px] border-primary-600 shadow-sm">
-                            <h2 className="text-2xl xl:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
+                        <section className="bg-primary-600 rounded-3xl p-4 md:p-8 xl:p-12 border-primary-600">
+                            <h2 className="text-2xl xl:text-5xl font-bold mb-6 text-white tracking-tight">
                                 {translate('Join Thousands of Successful Students')}
                             </h2>
-                            <p className="text-md md:text-xl xl:text-2xl font-bold mb-10 text-white uppercase tracking-widest text-xs">
+                            <p className="text-md md:text-xl xl:text-2xl font-bold mb-10 text-white tracking-[0.08em] text-xs">
                                 {translate('Start your government exam preparation journey today')}
                             </p>
                             <button
                                 onClick={() => router.push('/')}
-                                className="bg-white text-primary-600 dark:text-primary-300 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-sm active:translate-y-1 active:shadow-none"
+                                className="bg-background-surface text-primary-600 px-12 py-5 rounded-2xl font-bold uppercase tracking-[0.08em] text-xs hover:bg-background-surface-secondary transition-all active:translate-y-1"
                             >
                                 {translate('Get Started Now')}
                             </button>

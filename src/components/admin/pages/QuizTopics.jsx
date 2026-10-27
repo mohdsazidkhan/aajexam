@@ -82,23 +82,23 @@ const AdminQuizTopics = () => {
   const columns = [
     {
       key: 'name', header: 'Name', render: (_, t) => (
-        <span className="font-bold text-slate-900 dark:text-white">{t.name}</span>
+        <span className="font-bold text-content-primary">{t.name}</span>
       )
     },
     {
       key: 'subject', header: 'Subject', render: (_, t) => (
-        <span className="text-slate-500">{t.subject?.name || '-'}</span>
+        <span className="text-content-muted">{t.subject?.name || '-'}</span>
       )
     },
     {
       key: 'status', header: 'Status', render: (_, t) => (
-        <span className={`inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full ring-1 ${t.isActive ? 'bg-primary-100 text-primary-800 ring-primary-200 dark:bg-primary-400/20 dark:text-primary-200 dark:ring-white/15' : 'bg-slate-100 text-slate-600 ring-slate-200 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10'}`}><span className="w-1.5 h-1.5 rounded-full bg-current" />{t.isActive ? 'Active' : 'Inactive'}</span>
+        <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.08em] px-2.5 py-1 rounded-full ring-1 ${t.isActive ? 'text-primary-600 ring-primary-200 dark:text-primary-600 dark:ring-white/15' : 'bg-background-surface-secondary text-content-secondary ring-slate-200 dark:bg-white/10 dark:ring-white/10'}`}><span className="w-1.5 h-1.5 rounded-full bg-current" />{t.isActive ? 'Active' : 'Inactive'}</span>
       )
     },
     {
       key: 'actions', header: 'Actions', align: 'right', render: (_, t) => (
         <div className="text-right">
-          <button aria-label="Edit" onClick={() => openEdit(t)} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-400/10 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-400/20 transition-colors"><Edit3 className="w-4 h-4" /></button>
+          <button aria-label="Edit" onClick={() => openEdit(t)} className="p-1.5 rounded-lg text-primary-600 transition-colors"><Edit3 className="w-4 h-4" /></button>
           <button aria-label="Delete" onClick={() => handleDelete(t._id)} className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors"><Trash2 className="w-4 h-4" /></button>
         </div>
       )
@@ -107,8 +107,8 @@ const AdminQuizTopics = () => {
 
   const searchInput = (
     <div className="relative w-full">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-      <input type="text" placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
+      <input type="text" placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm" />
     </div>
   );
 
@@ -132,17 +132,17 @@ const AdminQuizTopics = () => {
           key={mode.id}
           onClick={() => setViewMode(mode.id)}
           title={mode.label}
-          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
         >
           <mode.icon className="w-4 h-4" />
-          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+          <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
         </button>
       ))}
     </div>
   );
 
   const addTopicButton = (
-    <button onClick={openCreate} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"><Plus className="w-4 h-4"/> Add Topic</button>
+    <button onClick={openCreate} className="w-full xl:w-auto flex items-center justify-center gap-2 text-on-primary px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110 bg-primary-600"><Plus className="w-4 h-4"/> Add Topic</button>
   );
 
   const paginationControl = (
@@ -174,60 +174,60 @@ const AdminQuizTopics = () => {
   if (!isMounted) return null;
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 
       {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
       <div className="flex-1 min-h-0 overflow-auto">
       {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : viewMode === 'table' ? (
-        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden h-auto flex flex-col hover:-translate-y-0.5 transition-all relative">
           <ResponsiveTable data={pagedTopics} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} emptyMessage="No topics found" fillHeight />
         </div>
       ) : viewMode === 'grid' ? (
         <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
           {filtered.map((t, idx) => (
-            <div key={t._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+            <div key={t._id} className="bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col gap-3 hover:-translate-y-0.5 transition-all relative">
               <div className="flex items-start justify-between gap-2">
-                <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
+                <div className="relative w-10 h-10 rounded-xl text-on-primary flex items-center justify-center shrink-0 bg-primary-600">
                   <Layers className="w-5 h-5" />
-                  <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{idx + 1}</span>
+                  <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{idx + 1}</span>
                 </div>
-                <span className={`inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full ring-1 ${t.isActive ? 'bg-primary-100 text-primary-800 ring-primary-200 dark:bg-primary-400/20 dark:text-primary-200 dark:ring-white/15' : 'bg-slate-100 text-slate-600 ring-slate-200 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10'}`}><span className="w-1.5 h-1.5 rounded-full bg-current" />{t.isActive ? 'Active' : 'Inactive'}</span>
+                <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.08em] px-2.5 py-1 rounded-full ring-1 ${t.isActive ? 'text-primary-600 ring-primary-200 dark:text-primary-600 dark:ring-white/15' : 'bg-background-surface-secondary text-content-secondary ring-slate-200 dark:bg-white/10 dark:ring-white/10'}`}><span className="w-1.5 h-1.5 rounded-full bg-current" />{t.isActive ? 'Active' : 'Inactive'}</span>
               </div>
               <div>
-                <h3 className="font-bold text-slate-900 dark:text-white">{t.name}</h3>
-                <p className="text-xs text-slate-400">{t.subject?.name || 'No subject'}</p>
+                <h3 className="font-bold text-content-primary">{t.name}</h3>
+                <p className="text-xs text-content-muted">{t.subject?.name || 'No subject'}</p>
               </div>
-              <div className="flex gap-2 mt-auto pt-2 border-t border-slate-100 dark:border-slate-700">
-                <button onClick={() => openEdit(t)} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-primary-600 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-3.5 h-3.5" /> Edit</button>
-                <button onClick={() => handleDelete(t._id)} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-3.5 h-3.5" /> Delete</button>
+              <div className="flex gap-2 mt-auto pt-2 border-t border-border-primary">
+                <button onClick={() => openEdit(t)} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-primary-600 rounded-lg"><Edit3 className="w-3.5 h-3.5" /> Edit</button>
+                <button onClick={() => handleDelete(t._id)} className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-content-primary hover:bg-background-surface-secondary rounded-lg"><Trash2 className="w-3.5 h-3.5" /> Delete</button>
               </div>
             </div>
           ))}
-          {filtered.length === 0 && <div className="col-span-full py-4 text-center text-slate-400">No topics found</div>}
+          {filtered.length === 0 && <div className="col-span-full py-4 text-center text-content-muted">No topics found</div>}
         </div>
       ) : (
         <div className="h-full overflow-auto space-y-2">
           {filtered.map((t, idx) => (
-            <section key={t._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow flex items-center justify-center shrink-0">
+            <section key={t._id} className="bg-background-surface rounded-xl border border-border-primary p-3 flex items-center gap-3 hover:-translate-y-0.5 transition-all relative">
+              <div className="relative w-10 h-10 rounded-xl text-on-primary flex items-center justify-center shrink-0 bg-primary-600">
                 <Layers className="w-5 h-5" />
-                <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{idx + 1}</span>
+                <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{idx + 1}</span>
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-bold text-slate-900 dark:text-white truncate">{t.name}</h3>
-                <p className="text-xs text-slate-400 truncate">{t.subject?.name || 'No subject'}</p>
+                <h3 className="font-bold text-content-primary truncate">{t.name}</h3>
+                <p className="text-xs text-content-muted truncate">{t.subject?.name || 'No subject'}</p>
               </div>
-              <span className={`inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full ring-1 shrink-0 ${t.isActive ? 'bg-primary-100 text-primary-800 ring-primary-200 dark:bg-primary-400/20 dark:text-primary-200 dark:ring-white/15' : 'bg-slate-100 text-slate-600 ring-slate-200 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10'}`}><span className="w-1.5 h-1.5 rounded-full bg-current" />{t.isActive ? 'Active' : 'Inactive'}</span>
+              <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.08em] px-2.5 py-1 rounded-full ring-1 shrink-0 ${t.isActive ? 'text-primary-600 ring-primary-200 dark:text-primary-600 dark:ring-white/15' : 'bg-background-surface-secondary text-content-secondary ring-slate-200 dark:bg-white/10 dark:ring-white/10'}`}><span className="w-1.5 h-1.5 rounded-full bg-current" />{t.isActive ? 'Active' : 'Inactive'}</span>
               <div className="flex gap-1 shrink-0">
-                <button aria-label="Edit" onClick={() => openEdit(t)} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-400/10 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-400/20 transition-colors"><Edit3 className="w-4 h-4" /></button>
+                <button aria-label="Edit" onClick={() => openEdit(t)} className="p-1.5 rounded-lg text-primary-600 transition-colors"><Edit3 className="w-4 h-4" /></button>
                 <button aria-label="Delete" onClick={() => handleDelete(t._id)} className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors"><Trash2 className="w-4 h-4" /></button>
               </div>
             </section>
           ))}
-          {filtered.length === 0 && <div className="py-4 text-center text-slate-400">No topics found</div>}
+          {filtered.length === 0 && <div className="py-4 text-center text-content-muted">No topics found</div>}
         </div>
       )}
       </div>
@@ -236,23 +236,23 @@ const AdminQuizTopics = () => {
       {showModal && (
         <div className="fixed inset-0 z-[999]">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-black/50" />
-          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
+          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-background-surface overflow-hidden flex flex-col">
           <div className="w-full h-full flex flex-col">
-<section className="shrink-0 flex justify-between items-center px-4 py-2.5 border-b border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><h2 className="text-base font-black uppercase tracking-tight text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Topic</h2></div>
+<section className="shrink-0 flex justify-between items-center px-4 py-2.5 border-b border-border-primary">
+              <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><h2 className="text-base font-bold uppercase tracking-tight text-content-primary">{editing ? 'Edit' : 'Create'} Topic</h2></div>
               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </section>
             <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
 <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-5 space-y-3">
-              <Select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm">
+              <Select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} className="w-full px-3 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm">
                 <option value="">Select Subject</option>
                 {subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
               </Select>
-              <input required placeholder="Topic Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
-              <input placeholder="Description" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
-              <input type="number" placeholder="Order" value={form.order} onChange={e => setForm({ ...form, order: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+              <input required placeholder="Topic Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm" />
+              <input placeholder="Description" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm" />
+              <input type="number" placeholder="Order" value={form.order} onChange={e => setForm({ ...form, order: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm" />
               </div>
-<div className="flex shrink-0 px-4 xl:px-5 py-2.5 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_-6px_12px_rgba(0,0,0,0.05)] justify-end items-center"><button type="submit"className="px-6 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white py-2.5 rounded-lg xl:rounded-xl font-bold hover:brightness-110">{editing ?'Update':'Create'}</button></div>
+<div className="flex shrink-0 px-4 xl:px-5 py-2.5 border-t border-border-primary bg-background-surface justify-end items-center"><button type="submit"className="px-6 text-on-primary py-2.5 rounded-lg xl:rounded-xl font-bold hover:brightness-110 bg-primary-600">{editing ?'Update':'Create'}</button></div>
             </form>
           </div>
           </motion.div>

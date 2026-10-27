@@ -10,7 +10,7 @@ const BackButton = ({ onClick, children, className = '' }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`inline-flex items-center gap-1.5 px-3 py-1.5 bg-background-surface border border-slate-200 dark:border-slate-700 shadow-sm text-xs font-black uppercase tracking-wider text-primary-700 dark:text-primary-300 hover:bg-primary-500/5 hover:-translate-y-0.5 transition-all ${className}`}
+    className={`inline-flex items-center gap-1.5 px-3 py-1.5 bg-background-surface border border-slate-200 dark:border-slate-700 shadow-sm text-xs font-black uppercase tracking-wider text-primary-600 hover:bg-primary-500/5 hover:-translate-y-0.5 transition-all ${className}`}
     style={{ borderRadius: 10 }}
   >
     {children}

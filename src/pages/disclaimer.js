@@ -23,8 +23,6 @@ export default function Disclaimer() {
 
             <div className="min-h-screen font-outfit relative overflow-hidden">
                 {/* Background atmosphere */}
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="container mx-auto pt-2 xl:pt-4">
                     <PageHero
@@ -34,8 +32,7 @@ export default function Disclaimer() {
                     />
                 </div>
                 <div className="py-0 xl:py-6 my-4">
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] shadow-sm p-4 md:p-8 xl:p-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
+                    <div className="bg-background-surface rounded-3xl p-4 md:p-8 xl:p-12 border border-border-primary relative overflow-hidden">
 
 
                         <div className="space-y-12 relative z-10">
@@ -55,40 +52,40 @@ export default function Disclaimer() {
                             ].map((section, idx) => (section &&
                                 <section key={idx}>
                                     <div className="flex items-center gap-4 mb-6">
-                                        <div className={`w-10 h-10 ${section.color} rounded-lg xl:rounded-xl flex items-center justify-center shadow-sm text-white`}>
+                                        <div className={`w-10 h-10 ${section.color} rounded-lg xl:rounded-xl flex items-center justify-center text-white`}>
                                             <section.icon className="text-xl" />
                                         </div>
-                                        <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{section.title}</h2>
+                                        <h2 className="text-md md:text-xl xl:text-2xl font-bold text-content-primary tracking-tight">{section.title}</h2>
                                     </div>
-                                    <p className="text-slate-600 dark:text-slate-400 text-lg font-bold leading-relaxed">
+                                    <p className="text-content-secondary text-lg font-bold leading-relaxed">
                                         {section.content}
                                     </p>
                                 </section>
                             ))}
 
                             <section className="py-2">
-                                <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">External Links Disclaimer</h2>
-                                <p className="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">
+                                <h2 className="text-md md:text-xl xl:text-2xl font-bold text-content-primary mb-4 tracking-tight">External Links Disclaimer</h2>
+                                <p className="text-content-muted font-bold leading-relaxed">
                                     Our platform may contain links to external websites that are not provided or maintained by or in any way affiliated with AajExam. Please note that AajExam does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.
                                 </p>
                             </section>
 
                             <section>
-                                <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">Errors and Omissions Disclaimer</h2>
-                                <p className="text-slate-600 dark:text-slate-400 text-lg font-bold leading-relaxed">
+                                <h2 className="text-md md:text-xl xl:text-2xl font-bold text-content-primary mb-4 tracking-tight">Errors and Omissions Disclaimer</h2>
+                                <p className="text-content-secondary text-lg font-bold leading-relaxed">
                                     While we have made every attempt to ensure that the information contained in this site has been obtained from reliable sources, AajExam is not responsible for any errors or omissions, or for the results obtained from the use of this information.
                                 </p>
                             </section>
 
-                            <section className="text-center pt-8 border-t border-slate-100 dark:border-slate-800">
-                                <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">Contact Us</h2>
-                                <p className="text-slate-500 dark:text-slate-400 font-bold mb-8">
+                            <section className="text-center pt-8 border-t border-border-primary">
+                                <h2 className="text-md md:text-xl xl:text-2xl font-bold text-content-primary mb-4 tracking-tight">Contact Us</h2>
+                                <p className="text-content-muted font-bold mb-8">
                                     If you have any questions regarding this disclaimer, please contact us at:<br />
-                                    <strong className="text-primary-600 dark:text-primary-300 block mt-2 text-xl">{config.CONTACT.EMAIL}</strong>
+                                    <strong className="text-primary-600 block mt-2 text-xl">{config.CONTACT.EMAIL}</strong>
                                 </p>
                                 <button
                                     onClick={() => (window.location.href = '/')}
-                                    className="bg-primary-600 hover:bg-primary-600 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 transition-all"
+                                    className="bg-primary-600 hover:bg-primary-600 text-on-primary px-10 py-4 rounded-2xl font-bold uppercase tracking-[0.08em] text-xs border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 transition-all"
                                 >
                                     Back to Home
                                 </button>

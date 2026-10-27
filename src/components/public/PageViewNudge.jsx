@@ -58,9 +58,8 @@ const NudgeInner = ({ onClose }) => {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className="fixed bottom-0 left-0 right-0 z-50 flex justify-center p-0 sm:p-4 pointer-events-none"
     >
-      <section className="pointer-events-auto w-full max-w-4xl relative bg-slate-900 text-white sm:rounded-3xl shadow-sm border-t sm:border-2 border-primary-500/30 overflow-hidden flex flex-col md:flex-row items-center gap-4 md:gap-6 p-4 md:p-5 pr-12 md:pr-14">
+      <section className="pointer-events-auto w-full max-w-4xl relative bg-slate-900 text-white sm:rounded-3xl border-t sm:border border-primary-500/30 overflow-hidden flex flex-col md:flex-row items-center gap-4 md:gap-6 p-4 md:p-5 pr-12 md:pr-14">
         {/* background glow */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
         
         {/* close button */}
         <button aria-label={translate('Close')} 
@@ -72,11 +71,11 @@ const NudgeInner = ({ onClose }) => {
 
         {/* Content */}
         <div className="flex-1 flex items-start sm:items-center gap-4">
-           <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary-500/20 rounded-lg xl:rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 border border-primary-500/30">
+           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg xl:rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 border border-primary-500/30">
               <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-primary-400" />
            </div>
            <div>
-              <h3 className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-primary-400 mb-0.5">
+              <h3 className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.08em] text-primary-400 mb-0.5">
                  {translate('You\'re on fire! 🔥')}
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 font-medium leading-snug">
@@ -89,10 +88,10 @@ const NudgeInner = ({ onClose }) => {
         <button
            onClick={() => { trackPrompt('nudge', 'click'); googleSignup(); }}
            disabled={isGoogleLoading}
-           className="w-full md:w-auto shrink-0 px-6 py-3.5 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest text-xs rounded-lg xl:rounded-xl shadow-sm border-b-2 border-primary-600 active:border-b-0 active:translate-y-1 transition-all disabled:opacity-70 flex items-center justify-center gap-2 z-10"
+           className="w-full md:w-auto shrink-0 px-6 py-3.5 bg-primary-600 hover:bg-primary-600 text-on-primary font-bold uppercase tracking-[0.08em] text-xs rounded-lg xl:rounded-xl border-b-2 border-primary-600 active:border-b-0 active:translate-y-1 transition-all disabled:opacity-70 flex items-center justify-center gap-2 z-10"
         >
            {isGoogleLoading ? (
-               <div className="w-4 h-4 border-2 border-white/50 border-t-white rounded-full animate-spin" />
+               <div className="w-4 h-4 border border-white/50 border-t-white rounded-full animate-spin" />
            ) : translate('Save Progress Free')}
            {!isGoogleLoading && <ArrowRight className="w-4 h-4" />}
         </button>

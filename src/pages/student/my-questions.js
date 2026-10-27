@@ -30,9 +30,9 @@ import Pagination from '../../components/common/Pagination';
 import useTranslate from '../../hooks/useTranslate';
 
 const STATUS_CONFIG = {
-   approved: { label: 'Approved', icon: CheckCircle, color: 'text-primary-600 dark:text-primary-300', bg: 'bg-primary-50 dark:bg-primary-900/20' },
-   pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
-   rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   approved: { label: 'Approved', icon: CheckCircle, color: 'text-primary-600', bg: '' },
+   pending: { label: 'Pending', icon: Clock, color: 'text-content-primary', bg: 'bg-background-surface-secondary' },
+   rejected: { label: 'Rejected', icon: XCircle, color: 'text-content-primary', bg: 'bg-background-surface-secondary' },
 };
 
 const MyQuestionsPage = () => {
@@ -108,11 +108,11 @@ const MyQuestionsPage = () => {
                {/* Questions Grid */}
                {questions.length === 0 ? (
                   <div className="py-4 xl:py-8 text-center space-y-3 xl:space-y-6">
-                     <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
-                        <MessageSquare className="w-10 h-10 text-gray-400" />
+                     <div className="w-24 h-24 bg-background-surface-secondary rounded-3xl flex items-center justify-center mx-auto opacity-50">
+                        <MessageSquare className="w-10 h-10 text-content-muted" />
                      </div>
-                     <h2 className="text-xl xl:text-2xl font-black font-outfit">{translate('No questions yet')}</h2>
-                     <p className="text-sm font-bold text-gray-400">{translate('Ask your first question to the community!')}</p>
+                     <h2 className="text-xl xl:text-2xl font-bold font-outfit">{translate('No questions yet')}</h2>
+                     <p className="text-sm font-bold text-content-muted">{translate('Ask your first question to the community!')}</p>
                      <Button variant="primary" className="mx-auto" onClick={() => router.push('/community-questions/ask')}>{translate('Post Question')}</Button>
                   </div>
                ) : (
@@ -124,18 +124,18 @@ const MyQuestionsPage = () => {
 
                         return (
                            <motion.div key={q._id || idx} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
-                              <Card className="group hover:shadow-sm transition-all duration-500 border-2 flex flex-col h-full cursor-pointer"
+                              <Card className="group transition-all duration-500 border flex flex-col h-full cursor-pointer"
                                  onClick={() => router.push(`/community-questions/${q._id}`)}>
                                  <div className="space-y-2 xl:space-y-4 flex-1">
                                     {/* Top: Status + Delete */}
                                     <div className="flex items-center justify-between">
-                                       <div className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-black uppercase ${statusConfig.bg} ${statusConfig.color}`}>
+                                       <div className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase ${statusConfig.bg} ${statusConfig.color}`}>
                                           <StatusIcon className="w-3 h-3" />
                                           {statusConfig.label}
                                        </div>
                                        <button
                                           onClick={(e) => { e.stopPropagation(); handleDelete(q._id); }}
-                                          className="p-1.5 text-gray-400 hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors"
+                                          className="p-1.5 text-content-muted hover:text-content-primary dark:hover:text-white hover:bg-background-surface-secondary rounded-lg xl:rounded-xl transition-colors"
                                           title={translate('Delete question')}
                                        >
                                           <Trash2 className="w-4 h-4" />
@@ -145,7 +145,7 @@ const MyQuestionsPage = () => {
                                     {/* Exam badge */}
                                     {q.exam && (
                                        <div className="flex items-center gap-1.5">
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-300 uppercase">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold text-primary-600 uppercase">
                                              <GraduationCap className="w-3 h-3 inline mr-1" />
                                              {translateData(q.exam.name) || q.exam.code || translate('Exam')}
                                           </span>
@@ -153,11 +153,11 @@ const MyQuestionsPage = () => {
                                     )}
 
                                     {/* Question Text */}
-                                    <p className="font-black text-sm xl:text-base line-clamp-3 leading-snug">{q.question}</p>
+                                    <p className="font-bold text-sm xl:text-base line-clamp-3 leading-snug">{q.question}</p>
 
                                     {/* Image indicator */}
                                     {q.image && (
-                                       <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400">
+                                       <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-muted">
                                           <ImageIcon className="w-3 h-3" /> Has image
                                        </div>
                                     )}
@@ -166,12 +166,12 @@ const MyQuestionsPage = () => {
                                     {hasOptions && (
                                        <div className="space-y-1.5">
                                           {q.options.slice(0, 4).map((opt, i) => (
-                                             <div key={i} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg xl:rounded-xl text-[11px] font-bold ${opt.isCorrect ? 'bg-primary-50 dark:bg-primary-900/10 text-primary-600 dark:text-primary-300' : 'bg-slate-50 dark:bg-slate-800 text-content-secondary'}`}>
-                                                <span className="w-4 h-4 rounded-full border-2 flex items-center justify-center text-[8px] font-black flex-shrink-0 border-current">
+                                             <div key={i} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg xl:rounded-xl text-[11px] font-bold ${opt.isCorrect ? 'text-primary-600' : 'bg-background-surface-secondary text-content-secondary'}`}>
+                                                <span className="w-4 h-4 rounded-full border flex items-center justify-center text-[8px] font-bold flex-shrink-0 border-current">
                                                    {String.fromCharCode(65 + i)}
                                                 </span>
                                                 <span className="line-clamp-1">{opt.text}</span>
-                                                {opt.isCorrect && <CheckCircle className="w-3 h-3 text-primary-600 dark:text-primary-300 flex-shrink-0 ml-auto" />}
+                                                {opt.isCorrect && <CheckCircle className="w-3 h-3 text-primary-600 flex-shrink-0 ml-auto" />}
                                              </div>
                                           ))}
                                        </div>
@@ -179,7 +179,7 @@ const MyQuestionsPage = () => {
                                  </div>
 
                                  {/* Footer: Stats + Date */}
-                                 <footer className="flex items-center justify-between text-[9px] font-black text-gray-400 pt-3 mt-3 border-t-2 border-slate-50 dark:border-slate-800">
+                                 <footer className="flex items-center justify-between text-[9px] font-bold text-content-muted pt-3 mt-3 border-t-2 border-border-primary dark:border-slate-800">
                                     <div className="flex items-center gap-3">
                                        <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{q.views || 0}</span>
                                        <span className="flex items-center gap-1"><Heart className="w-3 h-3" />{q.likes || 0}</span>

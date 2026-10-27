@@ -142,12 +142,12 @@ const AdminBlogs = () => {
 
   const getStatusBadge = (status) => {
     const cfg = {
-      published: 'bg-primary-100 text-primary-800 ring-primary-200 dark:bg-primary-400/20 dark:text-primary-200 dark:ring-white/15',
-      draft: 'bg-slate-100 text-slate-600 ring-slate-200 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10',
+      published: 'text-primary-600 ring-primary-200 dark:text-primary-600 dark:ring-white/15',
+      draft: 'bg-background-surface-secondary text-content-secondary ring-slate-200 dark:bg-white/10 dark:ring-white/10',
       archived: 'bg-amber-100 text-amber-800 ring-amber-200 dark:bg-amber-500/20 dark:text-amber-300 dark:ring-white/10'
     };
     return (
-      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ring-1 ${cfg[status] || cfg.draft}`}>
+      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] ring-1 ${cfg[status] || cfg.draft}`}>
         <span className="w-1.5 h-1.5 rounded-full bg-current" />
         {status?.charAt(0).toUpperCase() + status?.slice(1)}
       </span>
@@ -161,12 +161,12 @@ const AdminBlogs = () => {
         <div className="flex items-center">
           <img className="h-10 w-10 rounded-lg object-cover" src={blog.featuredImage || '/default_banner.png'} alt={blog.title} />
           <div className="ml-3 max-w-xs">
-            <div className="text-sm font-medium text-gray-900 dark:text-white truncate" title={blog.title}>
+            <div className="text-sm font-medium text-content-primary truncate" title={blog.title}>
               {blog.title}
-              {blog.isFeatured && <Star className="inline w-3 h-3 ml-1 text-black dark:text-white fill-black dark:fill-white" />}
-              {blog.isPinned && <Pin className="inline w-3 h-3 ml-1 text-black dark:text-white fill-black dark:fill-white" />}
+              {blog.isFeatured && <Star className="inline w-3 h-3 ml-1 text-content-primary fill-black dark:fill-white" />}
+              {blog.isPinned && <Pin className="inline w-3 h-3 ml-1 text-content-primary fill-black dark:fill-white" />}
             </div>
-            <div className="text-xs text-black dark:text-white mt-0.5 max-w-[220px] truncate" title={`/blog/${blog.slug}`}><code>/blog/{blog.slug}</code></div>
+            <div className="text-xs text-content-primary mt-0.5 max-w-[220px] truncate" title={`/blog/${blog.slug}`}><code>/blog/{blog.slug}</code></div>
           </div>
         </div>
       )
@@ -191,18 +191,18 @@ const AdminBlogs = () => {
     {
       key: 'actions', header: 'Actions', render: (_, blog) => (
         <div className="flex items-center gap-2">
-          <Link href={`/admin/blogs/${blog._id}/edit`} aria-label="Edit" className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-400/10 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-400/20 transition-colors">
+          <Link href={`/admin/blogs/${blog._id}/edit`} aria-label="Edit" className="p-1.5 rounded-lg text-primary-600 transition-colors">
             <Edit3 className="w-4 h-4" />
           </Link>
           {blog.status === 'published' ? (
-            <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Unpublish</button>
+            <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] bg-background-surface-secondary text-content-secondary border border-border-primary hover:bg-background-surface-secondary transition-all">Unpublish</button>
           ) : (
-            <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
+            <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] text-on-primary hover:brightness-110 transition-all bg-primary-600">Publish</button>
           )}
-          <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured" className={`${blog.isFeatured ? 'p-1.5 rounded-lg bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200 transition-colors' : 'p-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-400 hover:text-primary-600 transition-colors'}`}>
+          <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured" className={`${blog.isFeatured ? 'p-1.5 rounded-lg text-primary-600 transition-colors' : 'p-1.5 rounded-lg bg-background-surface-secondary text-content-muted hover:text-primary-600 transition-colors'}`}>
             <Star className={`w-4 h-4 ${blog.isFeatured ? 'fill-current' : ''}`} />
           </button>
-          <button onClick={() => handleTogglePinned(blog._id)} title="Toggle Pinned" className={`${blog.isPinned ? 'p-1.5 rounded-lg bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200 transition-colors' : 'p-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-400 hover:text-primary-600 transition-colors'}`}>
+          <button onClick={() => handleTogglePinned(blog._id)} title="Toggle Pinned" className={`${blog.isPinned ? 'p-1.5 rounded-lg text-primary-600 transition-colors' : 'p-1.5 rounded-lg bg-background-surface-secondary text-content-muted hover:text-primary-600 transition-colors'}`}>
             <Pin className={`w-4 h-4 ${blog.isPinned ? 'fill-current' : ''}`} />
           </button>
           <button aria-label="Delete" onClick={() => handleDelete(blog._id)} className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors">
@@ -214,7 +214,7 @@ const AdminBlogs = () => {
   ];
 
   const renderTableView = () => (
-    <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+    <div className="bg-background-surface rounded-lg border border-border-primary overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col hover:-translate-y-0.5 transition-all relative">
       <ResponsiveTable
         data={blogs}
         columns={blogTableColumns}
@@ -232,32 +232,32 @@ const AdminBlogs = () => {
       {blogs.map((blog, idx) => {
         const serialNumber = (currentPage - 1) * itemsPerPage + idx + 1;
         return (
-        <section key={blog._id} className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <section key={blog._id} className="bg-background-surface rounded-lg xl:rounded-xl border border-border-primary p-4 hover:-translate-y-0.5 transition-all relative">
           <div className="relative mb-3">
             <img src={blog.featuredImage || '/default_banner.png'} alt={blog.title} className="w-full h-40 rounded-lg object-cover" />
-            <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
+            <span className="absolute top-2 left-2 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 bg-primary-600">{serialNumber}</span>
           </div>
           <div className="flex items-start justify-between gap-2">
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2">{blog.title}</h3>
+            <h3 className="text-sm font-semibold text-content-primary line-clamp-2">{blog.title}</h3>
             {getStatusBadge(blog.status)}
           </div>
-          <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center gap-3">
+          <div className="mt-2 text-xs text-content-muted flex items-center gap-3">
             <span>{blog.exam?.name || 'N/A'}</span>
             <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {blog.views || 0}</span>
             <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {blog.likes || 0}</span>
           </div>
-          <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">{formatDate(blog.createdAt)}</div>
+          <div className="mt-1 text-xs text-content-muted">{formatDate(blog.createdAt)}</div>
           <div className="mt-3 flex items-center gap-2">
-            <Link href={`/admin/blogs/${blog._id}/edit`} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-400/10 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-400/20 transition-colors text-[10px] font-black uppercase tracking-wider px-2.5">Edit</Link>
+            <Link href={`/admin/blogs/${blog._id}/edit`} className="p-1.5 rounded-lg text-primary-600 transition-colors text-[10px] font-bold uppercase tracking-[0.08em] px-2.5">Edit</Link>
             {blog.status === 'published' ? (
-              <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Unpublish</button>
+              <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] bg-background-surface-secondary text-content-secondary border border-border-primary hover:bg-background-surface-secondary transition-all">Unpublish</button>
             ) : (
-              <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
+              <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] text-on-primary hover:brightness-110 transition-all bg-primary-600">Publish</button>
             )}
-            <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured" className={`${blog.isFeatured ? 'p-1.5 rounded-lg bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200 transition-colors' : 'p-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-400 hover:text-primary-600 transition-colors'}`}>
+            <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured" className={`${blog.isFeatured ? 'p-1.5 rounded-lg text-primary-600 transition-colors' : 'p-1.5 rounded-lg bg-background-surface-secondary text-content-muted hover:text-primary-600 transition-colors'}`}>
             <Star className={`w-4 h-4 ${blog.isFeatured ? 'fill-current' : ''}`} />
           </button>
-            <button onClick={() => handleTogglePinned(blog._id)} title="Toggle Pinned" className={`${blog.isPinned ? 'p-1.5 rounded-lg bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200 transition-colors' : 'p-1.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-400 hover:text-primary-600 transition-colors'}`}>
+            <button onClick={() => handleTogglePinned(blog._id)} title="Toggle Pinned" className={`${blog.isPinned ? 'p-1.5 rounded-lg text-primary-600 transition-colors' : 'p-1.5 rounded-lg bg-background-surface-secondary text-content-muted hover:text-primary-600 transition-colors'}`}>
             <Pin className={`w-4 h-4 ${blog.isPinned ? 'fill-current' : ''}`} />
           </button>
             <button aria-label="Delete" onClick={() => handleDelete(blog._id)} className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors">
@@ -275,33 +275,33 @@ const AdminBlogs = () => {
       {blogs.map((blog, idx) => {
         const serialNumber = (currentPage - 1) * itemsPerPage + idx + 1;
         return (
-        <section key={blog._id} className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 flex items-start gap-3 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+        <section key={blog._id} className="bg-background-surface rounded-lg border border-border-primary p-4 flex items-start gap-3 hover:-translate-y-0.5 transition-all relative">
           <div className="relative w-16 h-16 flex-shrink-0">
             <img src={blog.featuredImage || '/default_banner.png'} alt={blog.title} className="w-16 h-16 rounded-lg object-cover" />
-            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
+            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 bg-primary-600">{serialNumber}</span>
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-white truncate">{blog.title}</h3>
+              <h3 className="text-sm font-semibold text-content-primary truncate">{blog.title}</h3>
               {getStatusBadge(blog.status)}
-              {blog.isFeatured && <Star className="w-3 h-3 text-black dark:text-white fill-black dark:fill-white" />}
-              {blog.isPinned && <Pin className="w-3 h-3 text-black dark:text-white fill-black dark:fill-white" />}
+              {blog.isFeatured && <Star className="w-3 h-3 text-content-primary fill-black dark:fill-white" />}
+              {blog.isPinned && <Pin className="w-3 h-3 text-content-primary fill-black dark:fill-white" />}
             </div>
-            <div className="mt-0.5 text-xs text-black dark:text-white break-all"><code>/blog/{blog.slug}</code></div>
-            <div className="mt-1 text-xs text-gray-500 dark:text-gray-400 flex gap-3">
+            <div className="mt-0.5 text-xs text-content-primary break-all"><code>/blog/{blog.slug}</code></div>
+            <div className="mt-1 text-xs text-content-muted flex gap-3">
               <span>{blog.exam?.name || 'N/A'}</span>
               <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {blog.views || 0}</span>
               <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {blog.likes || 0}</span>
               <span>{formatDate(blog.createdAt)}</span>
             </div>
             <div className="mt-2 flex items-center gap-3">
-              <Link href={`/admin/blogs/${blog._id}/edit`} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-400/10 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-400/20 transition-colors text-[10px] font-black uppercase tracking-wider px-2.5">Edit</Link>
+              <Link href={`/admin/blogs/${blog._id}/edit`} className="p-1.5 rounded-lg text-primary-600 transition-colors text-[10px] font-bold uppercase tracking-[0.08em] px-2.5">Edit</Link>
               {blog.status === 'published' ? (
-                <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-white/10 hover:bg-slate-200 dark:hover:bg-white/20 transition-all">Unpublish</button>
+                <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] bg-background-surface-secondary text-content-secondary border border-border-primary hover:bg-background-surface-secondary transition-all">Unpublish</button>
               ) : (
-                <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 text-white shadow-sm hover:brightness-110 transition-all">Publish</button>
+                <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] text-on-primary hover:brightness-110 transition-all bg-primary-600">Publish</button>
               )}
-              <button onClick={() => handleDelete(blog._id)} className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors text-[10px] font-black uppercase tracking-wider px-2.5">Delete</button>
+              <button onClick={() => handleDelete(blog._id)} className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors text-[10px] font-bold uppercase tracking-[0.08em] px-2.5">Delete</button>
             </div>
           </div>
         </section>
@@ -312,7 +312,7 @@ const AdminBlogs = () => {
 
   const searchInput = (
     <input type="text" name="search" value={filters.search} onChange={handleFilterChange} placeholder="Search blogs..."
-      className="px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm w-full" />
+      className="px-3 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm w-full" />
   );
 
   const statusSelect = (
@@ -372,7 +372,7 @@ const AdminBlogs = () => {
     <motion.button
       whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
       onClick={() => router.push('/admin/blogs/create')}
-      className="w-full px-4 xl:px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
+      className="w-full px-4 xl:px-4 py-2.5 hover:brightness-110 text-on-primary rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] flex items-center justify-center gap-2 bg-primary-600"
     >
       <Plus className="w-4 h-4" /> NEW BLOG
     </motion.button>
@@ -410,9 +410,9 @@ const AdminBlogs = () => {
   if (!isMounted) return null;
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 
 
         {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
@@ -423,7 +423,7 @@ const AdminBlogs = () => {
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         ) : blogs.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-lg font-medium text-gray-500 dark:text-gray-400">No blogs found</p>
+            <p className="text-lg font-medium text-content-muted">No blogs found</p>
           </div>
         ) : (
           <div className="flex-1 min-h-0 overflow-auto flex flex-col">
@@ -434,8 +434,8 @@ const AdminBlogs = () => {
         )}
 
         {error && (
-          <div className="shrink-0 mt-4 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">
-            <p className="text-black dark:text-white">{error}</p>
+          <div className="shrink-0 mt-4 bg-background-surface-secondary border border-border-primary dark:border-white rounded-md p-4">
+            <p className="text-content-primary">{error}</p>
           </div>
         )}
         </div>

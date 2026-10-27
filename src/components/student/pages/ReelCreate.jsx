@@ -18,15 +18,15 @@ import {
 import useTranslate from '../../../hooks/useTranslate';
 
 const TYPES = [
-  { value: 'question', label: 'Question', icon: HelpCircle, color: 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-500', desc: 'MCQ with explanation' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, color: 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-500', desc: 'Quick fact or one-liner' },
-  { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-500', desc: 'Shortcut or formula' },
-  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-500', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-500', desc: 'Community poll' },
+  { value: 'question', label: 'Question', icon: HelpCircle, color: 'border-border-primary bg-background-surface hover:border-primary-500', desc: 'MCQ with explanation' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, color: 'border-border-primary bg-background-surface hover:border-primary-500', desc: 'Quick fact or one-liner' },
+  { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'border-border-primary bg-background-surface hover:border-primary-500', desc: 'Shortcut or formula' },
+  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'border-border-primary bg-background-surface hover:border-primary-500', desc: 'Daily CA card' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-border-primary bg-background-surface hover:border-primary-500', desc: 'Community poll' },
 ];
 
-const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-white dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 outline-none placeholder:text-slate-400";
-const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
+const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-background-surface border border-border-primary text-sm text-content-primary focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 outline-none placeholder:text-slate-400";
+const labelClass = "block text-sm font-semibold text-content-secondary mb-1.5";
 
 const ReelCreate = () => {
   const { translate } = useTranslate();
@@ -176,8 +176,8 @@ const ReelCreate = () => {
       <MobileAppWrapper>
         <div className="min-h-screen flex items-center justify-center bg-background-page px-4">
           <div className="text-center">
-            <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">{translate('Login required to create reels')}</p>
-            <Link href="/login"className="px-6 py-2.5 rounded-lg xl:rounded-xl bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow text-sm font-black uppercase">{translate('Login')}</Link>
+            <p className="text-lg font-bold text-content-secondary mb-3">{translate('Login required to create reels')}</p>
+            <Link href="/login"className="px-6 py-2.5 rounded-lg xl:rounded-xl text-on-primary text-sm font-bold uppercase bg-primary-600">{translate('Login')}</Link>
           </div>
         </div>
       </MobileAppWrapper>
@@ -214,28 +214,28 @@ const ReelCreate = () => {
               <div className="grid grid-cols-2 xl:grid-cols-5 gap-3">
                 {TYPES.map(rt => (
                   <motion.button key={rt.value} onClick={() => setType(rt.value)}
-                    style={{ borderRadius: 14 }} className={`relative overflow-hidden p-2.5 xl:p-5 border text-left shadow-md hover:shadow-xl hover:-translate-y-1 transition-all ${rt.color}`}>
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-                    <span className="w-11 h-11 mb-3 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><rt.icon className="w-6 h-6" /></span>
-                    <h2 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm">{translate(rt.label)}</h2>
-                    <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-medium">{translate(rt.desc)}</p>
+                    style={{ borderRadius: 14 }} className={`relative overflow-hidden p-2.5 xl:p-5 border text-left hover:-translate-y-1 transition-all ${rt.color}`}>
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
+                    <span className="w-11 h-11 mb-3 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 12 }}><rt.icon className="w-6 h-6" /></span>
+                    <h2 className="font-bold text-content-primary uppercase tracking-tight text-sm">{translate(rt.label)}</h2>
+                    <p className="text-[10px] text-content-muted mt-1 font-medium">{translate(rt.desc)}</p>
                   </motion.button>
                 ))}
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="flex items-center justify-between bg-background-surface p-3 border border-slate-200 dark:border-slate-800 shadow-md" style={{ borderRadius: 14 }}>
+              <div className="flex items-center justify-between bg-background-surface p-3 border border-border-primary" style={{ borderRadius: 14 }}>
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 text-[10px] font-black bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow uppercase tracking-widest" style={{ borderRadius: 999 }}>{type === 'current_affairs' ? 'CA' : type}</span>
-                  <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">{translate('New Reel')}</p>
+                  <span className="px-3 py-1 text-[10px] font-bold text-on-primary uppercase tracking-[0.08em] bg-primary-600" style={{ borderRadius: 999 }}>{type === 'current_affairs' ? 'CA' : type}</span>
+                  <p className="text-xs font-bold text-content-muted uppercase">{translate('New Reel')}</p>
                 </div>
-                <button type="button" onClick={() => setType('')} className="text-[10px] font-black text-primary-600 dark:text-primary-300 hover:text-primary-600 uppercase tracking-widest bg-primary-50 dark:bg-primary-950/30 px-3 py-1 rounded-lg">{translate('Change Type')}</button>
+                <button type="button" onClick={() => setType('')} className="text-[10px] font-bold text-primary-600 hover:text-primary-600 uppercase tracking-[0.08em] px-3 py-1 rounded-lg">{translate('Change Type')}</button>
               </div>
 
               {/* Common */}
-              <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+              <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                 <div className="grid grid-cols-2 gap-3">
                   <div><label className={labelClass}>{translate('Exam')}</label>
                     <Select value={examType} onChange={e => { setExamType(e.target.value); setSubject(''); setTopic(''); }} className={inputClass}>
@@ -266,14 +266,14 @@ const ReelCreate = () => {
 
               {/* Question */}
               {type === 'question' && (
-                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                   <div><label className={labelClass}>{translate('Question *')}</label><textarea value={questionText} onChange={e => setQuestionText(e.target.value)} rows={3} className={inputClass} required /></div>
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
                     {options.map((o, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <button type="button" onClick={() => setCorrectAnswerIndex(i)}
-                          className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-400 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow' : 'border-slate-300 text-slate-400'}`}>
+                          className={`w-7 h-7 rounded-full border text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-400 text-on-primary bg-primary-600' : 'border-border-primary text-content-muted'}`}>
                           {String.fromCharCode(65 + i)}
                         </button>
                         <input value={o} onChange={e => { const n = [...options]; n[i] = e.target.value; setOptions(n); }} placeholder={translate('Option {letter}', { letter: String.fromCharCode(65 + i) })} className={`flex-1 ${inputClass}`} required />
@@ -287,8 +287,8 @@ const ReelCreate = () => {
 
               {/* Fact */}
               {type === 'fact' && (
-                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                   <div><label className={labelClass}>{translate('Highlight Text')}</label><input value={highlightText} onChange={e => setHighlightText(e.target.value)} className={inputClass} /></div>
                   <div><label className={labelClass}>{translate('Content')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
                   <div>
@@ -296,76 +296,76 @@ const ReelCreate = () => {
                     {keyPoints.map((kp, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <input value={kp} onChange={e => { const n = [...keyPoints]; n[i] = e.target.value; setKeyPoints(n); }} className={`flex-1 ${inputClass}`} />
-                        {keyPoints.length > 1 && <button aria-label={translate('Delete')} type="button" onClick={() => setKeyPoints(keyPoints.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
+                        {keyPoints.length > 1 && <button aria-label={translate('Delete')} type="button" onClick={() => setKeyPoints(keyPoints.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-content-primary" /></button>}
                       </div>
                     ))}
-                    <button type="button" onClick={() => setKeyPoints([...keyPoints, ''])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add')}</button>
+                    <button type="button" onClick={() => setKeyPoints([...keyPoints, ''])} className="text-xs text-content-primary flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add')}</button>
                   </div>
                 </div>
               )}
 
               {/* Tip */}
               {type === 'tip' && (
-                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                   <div><label className={labelClass}>{translate('Formula')}</label><input value={formula} onChange={e => setFormula(e.target.value)} className={inputClass} /></div>
                   <div><label className={labelClass}>{translate('Content')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
                   <div>
                     <label className={labelClass}>{translate('Steps')}</label>
                     {steps.map((s, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
-                        <span className="text-xs text-slate-400 w-10">{translate('Step {n}', { n: i + 1 })}</span>
+                        <span className="text-xs text-content-muted w-10">{translate('Step {n}', { n: i + 1 })}</span>
                         <input value={s} onChange={e => { const n = [...steps]; n[i] = e.target.value; setSteps(n); }} className={`flex-1 ${inputClass}`} />
-                        {steps.length > 1 && <button aria-label={translate('Delete')} type="button" onClick={() => setSteps(steps.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
+                        {steps.length > 1 && <button aria-label={translate('Delete')} type="button" onClick={() => setSteps(steps.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-content-primary" /></button>}
                       </div>
                     ))}
-                    <button type="button" onClick={() => setSteps([...steps, ''])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add')}</button>
+                    <button type="button" onClick={() => setSteps([...steps, ''])} className="text-xs text-content-primary flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add')}</button>
                   </div>
                 </div>
               )}
 
               {/* Poll */}
               {type === 'poll' && (
-                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                   <div><label className={labelClass}>{translate('Poll Question *')}</label><input value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} className={inputClass} required /></div>
                   <div>
                     {pollOptions.map((o, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <input value={o.text} onChange={e => { const n = [...pollOptions]; n[i] = { text: e.target.value }; setPollOptions(n); }} placeholder={translate('Option {n}', { n: i + 1 })} className={`flex-1 ${inputClass}`} required={i < 2} />
-                        {pollOptions.length > 2 && <button aria-label={translate('Delete')} type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
+                        {pollOptions.length > 2 && <button aria-label={translate('Delete')} type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-content-primary" /></button>}
                       </div>
                     ))}
-                    {pollOptions.length < 6 && <button type="button" onClick={() => setPollOptions([...pollOptions, { text: '' }])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add option')}</button>}
+                    {pollOptions.length < 6 && <button type="button" onClick={() => setPollOptions([...pollOptions, { text: '' }])} className="text-xs text-content-primary flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add option')}</button>}
                   </div>
                 </div>
               )}
 
               {/* CA */}
               {type === 'current_affairs' && (
-                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                   <div><label className={labelClass}>{translate('Title *')}</label><input value={title} onChange={e => setTitle(e.target.value)} className={inputClass} required /></div>
                   <div><label className={labelClass}>{translate('Content *')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={4} className={inputClass} required /></div>
                 </div>
               )}
 
               {/* Audio & Duration — Instagram Style */}
-              <section style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+              <section style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                 <section className="flex items-center justify-between">
-                  <h2 className="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
-                    <Music className="w-4 h-4 text-black dark:text-white" /> Add Audio
+                  <h2 className="text-sm font-bold text-content-secondary flex items-center gap-2">
+                    <Music className="w-4 h-4 text-content-primary" /> Add Audio
                   </h2>
                   {audioFile && (
                     <button type="button" onClick={() => { setAudioFile(''); if (audioPreviewRef.current) { audioPreviewRef.current.pause(); audioPreviewRef.current = null; } setAudioPlaying(null); }}
-                      className="text-[10px] font-bold text-black dark:text-white uppercase tracking-wider">{translate('Remove')}</button>
+                      className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em]">{translate('Remove')}</button>
                   )}
                 </section>
 
                 {/* Search */}
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
                   <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder={translate('Search audio...')} className={`${inputClass} pl-9`} />
                 </div>
 
@@ -375,59 +375,59 @@ const ReelCreate = () => {
                     <div key={a.value}
                       onClick={() => handleAudioSelect(a.value)}
                       className={`flex items-center gap-3 p-2.5 rounded-lg xl:rounded-xl cursor-pointer transition-all ${audioFile === a.value
-                        ? 'bg-primary-50 dark:bg-white/10 border border-primary-300 dark:border-white/30'
-                        : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
+                        ? 'dark:bg-white/10 border border-primary-300 dark:border-white/30'
+                        : 'hover:bg-background-surface-secondary border border-transparent'}`}
                     >
                       {/* Play/Pause */}
                       <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
                         className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${audioPlaying === a.value
-                          ?'bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
+                          ?'text-on-primary bg-primary-600':'bg-background-surface-secondary text-content-muted'}`}>
                         {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                       </button>
                       {/* Info */}
                       <div className="flex-1 min-w-0">
-                        <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-black dark:text-white ' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
+                        <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-content-primary' : 'text-content-primary'}`}>{a.label}</p>
                         <div className="flex items-center gap-2">
-                          <p className="text-[12px] text-slate-400 truncate">{a.artist}</p>
+                          <p className="text-[12px] text-content-muted truncate">{a.artist}</p>
                           {a.audioDuration && (
-                            <span className="text-[10px] font-medium text-slate-400 tabular-nums">{formatAudioDuration(a.audioDuration)}</span>
+                            <span className="text-[10px] font-medium text-content-muted tabular-nums">{formatAudioDuration(a.audioDuration)}</span>
                           )}
                         </div>
                       </div>
                       {/* Selected check */}
                       {audioFile === a.value && (
-                        <div className="w-5 h-5 rounded-full bg-gradient-to-br from-primary-300 to-primary-400 flex items-center justify-center shrink-0">
-                          <span className="text-primary-950 text-[10px] font-bold">✓</span>
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-primary-600">
+                          <span className="text-on-primary text-[10px] font-bold">✓</span>
                         </div>
                       )}
                     </div>
                   ))}
                   {filteredAudios.length === 0 && (
-                    <p className="text-xs text-slate-400 text-center py-3">{translate('No audio found')}</p>
+                    <p className="text-xs text-content-muted text-center py-3">{translate('No audio found')}</p>
                   )}
                 </div>
 
                 {/* Mute toggle (when playing) */}
                 {audioPlaying && (
-                  <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center justify-between pt-2 border-t border-border-primary">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-primary-600 animate-pulse"/>
-                      <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">{translate('Now Playing')}</span>
+                      <span className="text-[11px] font-semibold text-content-muted">{translate('Now Playing')}</span>
                     </div>
-                    <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
-                      {audioMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-black dark:text-white" />}
+                    <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-background-surface-secondary">
+                      {audioMuted ? <VolumeX className="w-4 h-4 text-content-muted" /> : <Volume2 className="w-4 h-4 text-content-primary" />}
                     </button>
                   </div>
                 )}
 
                 {/* Duration */}
-                <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
+                <div className="pt-2 border-t border-border-primary">
                   <label className={labelClass}>{translate('Duration (seconds)')}</label>
                   <div className="relative">
                     <input type="number" value={duration} onChange={e => setDuration(e.target.value)} placeholder={translate('e.g. 15')} min="5" max="120" className={inputClass} />
-                    <Clock className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                    <Clock className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted pointer-events-none" />
                   </div>
-                  <p className="text-[10px] text-slate-400 mt-1">{translate('Reel will auto-scroll after this time (5-120 sec)')}</p>
+                  <p className="text-[10px] text-content-muted mt-1">{translate('Reel will auto-scroll after this time (5-120 sec)')}</p>
                 </div>
               </section>
 

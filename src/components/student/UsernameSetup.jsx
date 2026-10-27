@@ -92,37 +92,37 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
   const canSave = isValid && (username === currentUsername || available === true);
 
   return (
-    <section className="username-setup bg-white dark:bg-slate-800 rounded-[2rem] p-5 xl:p-10 border-2 border-slate-100 dark:border-slate-700 shadow-sm max-w-[500px] mx-auto font-outfit">
-      <h3 className="m-0 mb-2 text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">{translate('Set Your Username')}</h3>
-      <p className="username-info m-0 mb-8 text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">
+    <section className="username-setup bg-background-surface rounded-3xl p-5 xl:p-10 border border-border-primary max-w-[500px] mx-auto font-outfit">
+      <h3 className="m-0 mb-2 text-md md:text-xl xl:text-2xl font-bold text-content-primary tracking-tight">{translate('Set Your Username')}</h3>
+      <p className="username-info m-0 mb-8 text-content-secondary text-[10px] font-bold uppercase tracking-[0.08em] leading-relaxed">
         {translate('Choose a unique username that others can use to find and follow you.')}
       </p>
 
-      <div className="username-input-group flex items-center border-2 border-slate-100 dark:border-slate-700 rounded-2xl p-4 bg-white dark:bg-slate-900 transition-all relative focus-within:border-primary-700 shadow-sm">
-        <div className="username-prefix text-lg font-black text-slate-600 dark:text-slate-400 mr-2">@</div>
+      <div className="username-input-group flex items-center border border-border-primary rounded-2xl p-4 bg-background-surface transition-all relative focus-within:border-primary-700">
+        <div className="username-prefix text-lg font-bold text-content-secondary mr-2">@</div>
         <input
           type="text"
           value={username}
           onChange={handleUsernameChange}
           placeholder={translate('username')}
           maxLength={20}
-          className={`username-input flex-1 border-none outline-none text-base font-black bg-transparent text-slate-900 dark:text-white placeholder:text-slate-300 ${username && username !== currentUsername
-            ? (available === true ? 'text-primary-600 dark:text-primary-300' : available === false ? 'text-primary-600 dark:text-primary-300' : '')
+          className={`username-input flex-1 border-none outline-none text-base font-bold bg-transparent text-content-primary placeholder:text-slate-300 ${username && username !== currentUsername
+            ? (available === true ? 'text-primary-600' : available === false ? 'text-primary-600' : '')
             : ''
             }`}
         />
         {checking && (
-          <span className="checking-spinner w-6 h-6 border-2 border-slate-200 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin ml-3"></span>
+          <span className="checking-spinner w-6 h-6 border border-border-primary border-t-primary-500 rounded-full animate-spin ml-3"></span>
         )}
         {available === true && username !== currentUsername && (
-          <span className="status-icon success ml-3 text-xl xl:text-2xl font-black text-primary-600 dark:text-primary-300">✓</span>
+          <span className="status-icon success ml-3 text-xl xl:text-2xl font-bold text-primary-600">✓</span>
         )}
         {available === false && (
-          <span className="status-icon error ml-3 text-xl xl:text-2xl font-black text-primary-600 dark:text-primary-300">✗</span>
+          <span className="status-icon error ml-3 text-xl xl:text-2xl font-bold text-primary-600">✗</span>
         )}
       </div>
 
-      <div className="username-rules my-6 p-5 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-loose shadow-sm">
+      <div className="username-rules my-6 p-5 bg-background-surface border border-border-primary rounded-2xl text-content-secondary text-[10px] font-bold uppercase tracking-[0.08em] leading-loose">
         <ul className="list-none p-0 m-0 space-y-1">
           <li>{translate('• 3-20 characters')}</li>
           <li>{translate('• Letters, numbers, underscores')}</li>
@@ -132,10 +132,10 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
 
       {message && (
         <div className={`username-message p-2.5 px-4 rounded-md my-4 text-sm ${available === true
-          ? 'bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border border-primary-300 dark:border-primary-600'
+          ? 'text-primary-600 border border-primary-300 dark:border-primary-600'
           : available === false
-            ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white border border-slate-200 dark:border-slate-800 dark:border-white'
-            : 'bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border border-primary-300 dark:border-primary-600'
+            ? 'bg-background-surface-secondary text-content-primary border border-border-primary dark:border-white'
+            : 'text-primary-600 border border-primary-300 dark:border-primary-600'
           }`}>
           {message}
         </div>
@@ -144,7 +144,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
       <button
         onClick={handleSave}
         disabled={!canSave || saving}
-        className="save-username-btn w-full p-5 bg-primary-600 text-white rounded-2xl text-xs font-black uppercase tracking-widest cursor-pointer transition-all active:translate-y-1 shadow-sm disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
+        className="save-username-btn w-full p-5 bg-primary-600 text-on-primary rounded-2xl text-xs font-bold uppercase tracking-[0.08em] cursor-pointer transition-all active:translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {saving ? translate('Saving student...') : translate('Save Student Identity')}
       </button>

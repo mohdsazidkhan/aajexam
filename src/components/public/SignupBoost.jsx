@@ -179,18 +179,18 @@ const Inner = () => {
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           className="fixed bottom-16 xl:bottom-0 left-0 right-0 z-40 flex justify-center px-3 pb-2 xl:pb-4 pointer-events-none"
         >
-          <div className="pointer-events-auto w-full max-w-3xl relative bg-slate-900 text-white rounded-2xl border-2 border-primary-500/40 shadow-lg flex items-center gap-3 py-3 pl-3 pr-10 sm:pl-4">
-            <div className="hidden sm:flex w-10 h-10 shrink-0 rounded-xl bg-primary-500/20 border border-primary-500/30 items-center justify-center">
+          <div className="pointer-events-auto w-full max-w-3xl relative bg-slate-900 text-white rounded-2xl border border-primary-500/40 flex items-center gap-3 py-3 pl-3 pr-10 sm:pl-4">
+            <div className="hidden sm:flex w-10 h-10 shrink-0 rounded-xl border border-primary-500/30 items-center justify-center">
               <Gift className="w-5 h-5 text-primary-400" />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-xs sm:text-sm font-black leading-snug truncate sm:whitespace-normal">{headline}</p>
+              <p className="text-xs sm:text-sm font-bold leading-snug truncate sm:whitespace-normal">{headline}</p>
               {meta ? <p className="text-[10px] sm:text-xs font-bold text-primary-300 mt-0.5 truncate sm:whitespace-normal">{meta}</p> : null}
             </div>
             <button
               onClick={() => { trackPrompt('sticky', 'click'); googleSignup(); }}
               disabled={busy}
-              className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-500 text-white text-[11px] font-black uppercase tracking-widest disabled:opacity-70"
+              className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-500 text-on-primary text-[11px] font-bold uppercase tracking-[0.08em] disabled:opacity-70"
             >
               {busy ? '...' : translate('Sign up free')}
               {!busy && <ArrowRight className="w-3.5 h-3.5" />}

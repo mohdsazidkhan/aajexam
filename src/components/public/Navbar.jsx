@@ -105,9 +105,9 @@ const PublicNavbar = () => {
     <>
       {promoActive && <PromoTopBar />}
       <header
-        className={`fixed ${promoActive ? 'top-8' : 'top-0'} left-0 right-0 z-[100] transition-all duration-500 pointer-events-none ${scrolled
-          ? 'py-2.5 bg-white dark:bg-black border-b border-slate-100 dark:border-slate-800 shadow-md after:content-[""] after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-primary-500 after:via-primary-300 after:to-primary-500'
-          : 'py-2.5 bg-white dark:bg-black border-b border-slate-100 dark:border-slate-800 shadow-md after:content-[""] after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-primary-500 after:via-primary-300 after:to-primary-500'
+        className={`fixed ${promoActive ? 'top-8' : 'top-0'} left-0 right-0 z-[100] pointer-events-none ${scrolled
+          ? 'py-2.5 bg-background-page border-b border-border-primary'
+          : 'py-2.5 bg-background-page border-b border-border-primary'
           }`}
       >
         <div className="container mx-auto px-4 xxl:px-0 pointer-events-auto">
@@ -115,12 +115,11 @@ const PublicNavbar = () => {
 
             {/* --- Logo --- */}
             <Link href="/" className="flex gap-2 group items-center relative z-10">
-              <div className="absolute -inset-2 bg-primary-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative flex flex-col leading-none">
-                <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                  AAJ<span className="text-primary-600 dark:text-primary-300 text-glow-primary">{translate('EXAM')}</span>
+                <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-content-primary">
+                  AAJ<span className="text-primary-600">{translate('EXAM')}</span>
                 </span>
-                <span className="hidden sm:block text-[9px] xl:text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
+                <span className="hidden sm:block text-[9px] xl:text-[10px] font-bold text-content-muted tracking-[0.1em] uppercase mt-0.5">
                   {translate('Prepare Your Exam Today')}
                 </span>
               </div>
@@ -133,9 +132,9 @@ const PublicNavbar = () => {
                   const isActive = router.pathname === link.href;
                   return (
                     <Link title={translate(link.title)} key={link.href} href={link.href}>
-                      <button className={`relative px-2.5 py-2 rounded-lg xl:rounded-xl text-sm font-black uppercase tracking-[0.06em] transition-all group ${isActive ? 'text-white' : 'text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
+                      <button className={`relative px-3 py-2 rounded-lg text-sm font-bold transition-colors group ${isActive ? 'text-primary-600' : 'text-content-secondary hover:text-content-primary'}`}>
                         {isActive && (
-                          <motion.div layoutId="nav-glow" className="absolute inset-0 bg-primary-600 rounded-lg xl:rounded-xl shadow-sm" />
+                          <motion.div layoutId="nav-glow" className="absolute inset-0 bg-background-surface-secondary rounded-lg" />
                         )}
                         <span className="relative z-10 flex items-center gap-2">
                           {translate(link.label)}
@@ -149,10 +148,10 @@ const PublicNavbar = () => {
 
             {/* --- Actions --- */}
             <div className="flex items-center gap-3 relative z-10">
-              <ThemeColorMenuButton buttonClassName="w-10 h-10 rounded-2xl bg-white/50 dark:bg-slate-800/50 flex items-center justify-center text-slate-700 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 shadow-sm transition-all" />
+              <ThemeColorMenuButton buttonClassName="w-10 h-10 rounded-xl border border-border-primary flex items-center justify-center text-content-secondary hover:text-primary-600 dark:hover:text-primary-600 transition-colors" />
 
               <Link href="/login" data-cta="navbar_get_started">
-                <Button variant="primary" size="sm" className="px-6 py-2 sm:py-3 rounded-2xl font-black uppercase tracking-widest text-xs">{translate('Get Started')}</Button>
+                <Button variant="primary" size="md" className="h-10 rounded-xl font-bold text-sm">{translate('Get Started')}</Button>
               </Link>
             </div>
           </div>

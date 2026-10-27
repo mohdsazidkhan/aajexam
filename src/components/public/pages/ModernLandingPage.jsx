@@ -5,25 +5,17 @@ import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import Link from '@/components/common/AppLink';
 import {
    Trophy,
-   Star,
    Brain,
    Target,
    Zap,
-   ChevronRight,
    Users,
    Flame,
    ShieldCheck,
    ArrowRight,
-   Sparkles,
-   Rocket,
    Medal,
    BookOpen,
    Layers,
    Gamepad2,
-   GraduationCap,
-   Pencil,
-   Lightbulb,
-   Award,
    Check,
    X,
    RotateCcw,
@@ -32,12 +24,12 @@ import { m as motion } from 'framer-motion';
 import MobileAppWrapper from "../../common/MobileAppWrapper";
 import API from '../../../lib/api';
 import Button from '../../common/ui/Button';
-import Card from '../../common/ui/Card';
 import dynamic from 'next/dynamic';
 
 // Google's sign-in script only loads once the visitor reaches the end of the hero quiz.
 const HeroGoogleSignup = dynamic(() => import('../HeroGoogleSignup'), { ssr: false });
 import useTranslate from '../../../hooks/useTranslate';
+import HERO_QUESTIONS from '../../../data/heroQuestions.json';
 
 
 const POPULAR_PYQ_EXAMS = [
@@ -68,11 +60,10 @@ const POPULAR_PYQ_EXAMS = [
 ];
 
 // Hero mini-quiz: a playable 5-question round so a visitor feels the product before signing up.
-// Questions are real: one random question from each of five random published quizzes, fetched on every
-// load (see /api/public/sample-quiz?quiz=1). The answer key never reaches the browser up front: the
-// picked option is checked server-side. If the request fails the card falls back to numeric sums.
-// Every label reuses an existing translation key. Radii are inline because styles/index.css flattens
-// every rounded-* class.
+// Questions are real: src/data/heroQuestions.json holds 100 of them (5 from each of 20 quizzes spread across
+// exams, subjects and topics; rebuild it with `node scripts/buildHeroQuestions.js --write`). Each load and
+// each "Try Again" shows 5 random ones, preferring different quizzes, so the card needs no API call.
+// Every label reuses an existing translation key.
 const HERO_FALLBACK = [
    { q: '12 × 8 = ?', opts: ['86', '92', '96', '98'], a: 2 },
    { q: '25% of 200 = ?', opts: ['50', '40', '25', '75'], a: 0 },
@@ -85,25 +76,33 @@ const HERO_SECS = 20;
 const HERO_NEXT_MS = 1200;
 const HERO_RING = 2 * Math.PI * 15;
 
-const heroCheck = async (id, choice) => {
-   const res = await fetch('/api/public/sample-quiz', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, choice, hero: true }),
-   });
-   const d = await res.json();
-   if (!d.success) throw new Error('check failed');
-   return d;
+const pickRound = () => {
+   const pool = [...HERO_QUESTIONS];
+   for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+   }
+   const out = [];
+   const quizzes = new Set();
+   for (const r of pool) {
+      if (out.length === HERO_COUNT) break;
+      if (!quizzes.has(r.quiz)) { quizzes.add(r.quiz); out.push(r); }
+   }
+   for (const r of pool) {
+      if (out.length === HERO_COUNT) break;
+      if (!out.includes(r)) out.push(r);
+   }
+   const rows = out.map((r) => ({ q: r.q, opts: r.o, a: r.a, title: r.quiz }));
+   return [...rows, ...HERO_FALLBACK].slice(0, HERO_COUNT);
 };
 
 const HeroQuizCard = () => {
    const { translate, translateData } = useTranslate();
-   const [items, setItems] = useState(null); // null while the round is loading
+   const [items, setItems] = useState(null); // null until the first round is picked (client only)
    const [loadKey, setLoadKey] = useState(0);
    const [idx, setIdx] = useState(0);
    const [chosen, setChosen] = useState(null); // option index, -1 = ran out of time
    const [result, setResult] = useState(null); // null until the answer is known, then true / false
-   const [rightIdx, setRightIdx] = useState(null);
    const [secs, setSecs] = useState(HERO_SECS);
    const [started, setStarted] = useState(false); // the clock only runs once the visitor has played
    const [marks, setMarks] = useState([]);
@@ -113,25 +112,13 @@ const HeroQuizCard = () => {
 
    // fresh random round on every page load and every "Try Again"
    useEffect(() => {
-      let alive = true;
-      setItems(null);
-      (async () => {
-         let rows = [];
-         try {
-            const res = await fetch('/api/public/sample-quiz?quiz=1', { cache: 'no-store' });
-            const d = await res.json();
-            if (d.success) rows = d.data.map((r) => ({ id: r.id, q: r.text, opts: r.options, title: r.quiz?.title || '' }));
-         } catch { /* keep the fallback below */ }
-         if (alive) setItems([...rows, ...HERO_FALLBACK].slice(0, HERO_COUNT));
-      })();
-      return () => { alive = false; };
+      setItems(pickRound());
    }, [loadKey]);
 
    const total = HERO_COUNT;
    const done = idx >= total;
    const q = items ? items[Math.min(idx, total - 1)] : null;
-   const local = q && q.a !== undefined; // fallback sums carry their own answer
-   const correctAt = local ? q.a : rightIdx;
+   const correctAt = q ? q.a : null;
    const locked = chosen !== null;
    const score = marks.filter(Boolean).length;
 
@@ -149,18 +136,11 @@ const HeroQuizCard = () => {
       }
    };
 
-   const answer = async (i) => {
+   const answer = (i) => {
       if (locked || done || !q) return;
       setStarted(true);
       setChosen(i);
-      if (local) { settle(i === q.a); return; }
-      try {
-         const d = await heroCheck(q.id, i);
-         setRightIdx(d.correctIndex);
-         settle(d.correct);
-      } catch {
-         settle(false);
-      }
+      settle(i === q.a);
    };
 
    // countdown (paused until the first answer, so an idle visitor never sees the round end by itself)
@@ -173,7 +153,6 @@ const HeroQuizCard = () => {
    useEffect(() => {
       if (!items || !started || done || locked || secs > 0) return;
       setChosen(-1);
-      if (!local) heroCheck(q.id, 0).then((d) => setRightIdx(d.correctIndex)).catch(() => {});
       settle(false);
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [secs, items, started, done, locked]);
@@ -185,14 +164,13 @@ const HeroQuizCard = () => {
          setIdx((i) => i + 1);
          setChosen(null);
          setResult(null);
-         setRightIdx(null);
          setSecs(HERO_SECS);
       }, HERO_NEXT_MS);
       return () => clearTimeout(t);
    }, [result]);
 
    const restart = () => {
-      setIdx(0); setChosen(null); setResult(null); setRightIdx(null); setSecs(HERO_SECS); setStarted(false);
+      setIdx(0); setChosen(null); setResult(null); setSecs(HERO_SECS); setStarted(false);
       setMarks([]); setStreak(0); setPoints(0); setGain(0);
       setLoadKey((k) => k + 1);
    };
@@ -205,44 +183,44 @@ const HeroQuizCard = () => {
 
    return (
       <>
-         <div className="relative flex items-center justify-between gap-3 px-5 py-3.5 bg-black/25 border-b border-white/15">
+         <div className="flex items-center justify-between gap-3 px-5 py-3.5 border-b border-border-primary">
             <div className="flex items-center gap-3 min-w-0">
                <div className="relative w-10 h-10 shrink-0">
                   <svg viewBox="0 0 36 36" className="w-10 h-10 -rotate-90" aria-hidden="true">
-                     <circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="3" />
+                     <circle cx="18" cy="18" r="15" fill="none" strokeWidth="3" style={{ stroke: 'var(--border-primary)' }} />
                      <circle
                         cx="18" cy="18" r="15" fill="none" strokeWidth="3" strokeLinecap="round"
-                        className={low ? 'stroke-red-300' : 'stroke-primary-300'}
+                        className={low ? 'stroke-red-500' : 'stroke-primary-600'}
                         style={{ strokeDasharray: HERO_RING, strokeDashoffset: HERO_RING * (1 - (done ? 0 : secs / HERO_SECS)), transition: 'stroke-dashoffset 1s linear' }}
                      />
                   </svg>
-                  <span className="absolute inset-0 flex items-center justify-center text-sm font-black tabular-nums">{done ? '✓' : secs}</span>
+                  <span className="absolute inset-0 flex items-center justify-center text-sm font-bold tabular-nums">{done ? '✓' : secs}</span>
                </div>
-               <span className="text-xs xl:text-sm font-black uppercase tracking-[0.2em] truncate">{translate('Question')} {Math.min(idx + 1, total)}/{total}</span>
+               <span className="text-xs xl:text-sm font-bold uppercase tracking-[0.08em] truncate">{translate('Question')} {Math.min(idx + 1, total)}/{total}</span>
             </div>
             <div className="flex items-center gap-3 shrink-0">
-               <span className="flex items-center gap-1.5 text-base font-black tabular-nums">
-                  <Flame className={`w-5 h-5 ${(done ? bestStreak : streak) > 0 ? 'text-orange-300' : 'text-white/50'}`} /> {done ? bestStreak : streak}
+               <span className="flex items-center gap-1.5 text-base font-bold tabular-nums">
+                  <Flame className={`w-5 h-5 ${(done ? bestStreak : streak) > 0 ? 'text-orange-500' : 'text-content-muted'}`} /> {done ? bestStreak : streak}
                </span>
-               <span className="flex items-center gap-1.5 text-base font-black tabular-nums">
-                  <Trophy className="w-5 h-5 text-primary-300" /> {points}
+               <span className="flex items-center gap-1.5 text-base font-bold tabular-nums">
+                  <Trophy className="w-5 h-5 text-primary-600" /> {points}
                </span>
             </div>
          </div>
 
-         <div className="relative flex h-2 gap-1.5 px-5 pt-3">
+         <div className="flex h-2 gap-1.5 px-5 pt-3">
             {Array.from({ length: total }, (_, i) => {
                const m = marks[i];
-               const cls = m === true ? 'bg-primary-300' : m === false ? 'bg-red-400' : i === idx && !done ? 'bg-[#fff]' : 'bg-white/20';
-               return <span key={i} className={`flex-1 h-1 ${cls}`} style={{ borderRadius: 4 }} />;
+               const cls = m === true ? 'bg-primary-600' : m === false ? 'bg-red-500' : i === idx && !done ? 'bg-content-primary' : 'bg-background-surface-secondary';
+               return <span key={i} className={`flex-1 h-1 rounded ${cls}`} />;
             })}
          </div>
 
          {done ? (
-            <div className="relative p-5 xl:p-6 pt-6 space-y-5 text-center">
+            <div className="p-5 xl:p-6 pt-6 space-y-5 text-center">
                <div>
-                  <p className="text-5xl xl:text-6xl font-black font-outfit leading-none">{score}<span className="text-white/60">/{total}</span></p>
-                  <p className="mt-2 text-[11px] font-black uppercase tracking-[0.25em] text-white/80">{translate('Correct')}</p>
+                  <p className="text-5xl xl:text-6xl font-extrabold font-outfit leading-none">{score}<span className="text-content-muted">/{total}</span></p>
+                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.08em] text-content-secondary">{translate('Correct')}</p>
                </div>
                <div className="grid grid-cols-3 gap-2">
                   {[
@@ -250,32 +228,32 @@ const HeroQuizCard = () => {
                      { l: translate('Score'), v: points, I: Trophy },
                      { l: translate('Streak'), v: bestStreak, I: Flame },
                   ].map(({ l, v, I }) => (
-                     <div key={l} className="bg-white/10 ring-1 ring-white/20 px-2 py-2.5" style={{ borderRadius: 10 }}>
-                        <I className="w-4 h-4 mx-auto mb-1 text-primary-300" />
-                        <p className="text-lg font-black font-outfit leading-none tabular-nums">{v}</p>
-                        <p className="mt-1 text-[10px] font-black uppercase tracking-[0.12em] text-white/80">{l}</p>
+                     <div key={l} className="border border-border-primary rounded-xl px-2 py-2.5">
+                        <I className="w-4 h-4 mx-auto mb-1 text-primary-600" />
+                        <p className="text-lg font-extrabold font-outfit leading-none tabular-nums">{v}</p>
+                        <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.06em] text-content-secondary">{l}</p>
                      </div>
                   ))}
                </div>
                <div className="flex items-center justify-center gap-2 pt-1">
-                  <button type="button" onClick={restart} className="inline-flex items-center gap-1.5 px-4 py-2.5 text-[11px] font-black uppercase tracking-widest text-white ring-1 ring-white/40 hover:bg-white/10 transition-colors" style={{ borderRadius: 8 }}>
+                  <button type="button" onClick={restart} className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold border border-border-primary text-content-primary hover:bg-background-surface-secondary transition-colors rounded-lg">
                      <RotateCcw className="w-3.5 h-3.5" /> {translate('Try Again')}
                   </button>
                   <HeroGoogleSignup />
                </div>
             </div>
          ) : !q ? (
-            <div className="relative p-4 xl:p-5 space-y-3.5 animate-pulse" aria-busy="true">
+            <div className="p-4 xl:p-5 space-y-3.5 animate-pulse" aria-busy="true">
                <div className="h-10" />
-               <div className="h-[116px] bg-white/10 ring-1 ring-white/20" style={{ borderRadius: 12 }} />
+               <div className="h-[116px] bg-background-surface-secondary rounded-xl" />
                <div className="grid grid-cols-2 gap-2">
-                  {[0, 1, 2, 3].map((i) => <div key={i} className="h-[60px] bg-white/10 ring-1 ring-white/20" style={{ borderRadius: 10 }} />)}
+                  {[0, 1, 2, 3].map((i) => <div key={i} className="h-[60px] bg-background-surface-secondary rounded-xl" />)}
                </div>
-               <div className="h-[40px] border-t border-dashed border-white/30" />
+               <div className="h-[40px] border-t border-dashed border-border-primary" />
             </div>
          ) : (
-            <div className="relative p-4 xl:p-5 space-y-3.5">
-               <p className="min-h-[2.5rem] text-xs font-black uppercase tracking-[0.1em] leading-snug text-primary-200">
+            <div className="p-4 xl:p-5 space-y-3.5">
+               <p className="min-h-[2.5rem] text-xs font-bold uppercase tracking-[0.08em] leading-snug text-primary-600">
                   {q.title ? translateData(q.title) : ''}
                </p>
                <motion.div
@@ -283,13 +261,12 @@ const HeroQuizCard = () => {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.25 }}
-                  className="flex items-center justify-center min-h-[116px] bg-white/10 ring-1 ring-white/20 px-4 py-4 text-center"
-                  style={{ borderRadius: 12 }}
+                  className="flex items-center justify-center min-h-[116px] border border-border-primary rounded-xl px-4 py-4 text-center"
                >
-                  <p className={`${qSize} font-black font-outfit tracking-tight leading-snug`}>{q.q}</p>
+                  <p className={`${qSize} font-bold font-outfit tracking-tight leading-snug`}>{q.q}</p>
                </motion.div>
 
-               <div className="relative grid grid-cols-2 gap-3">
+               <div className="grid grid-cols-2 gap-3">
                   {q.opts.map((val, i) => {
                      const known = result !== null;
                      const isRight = known && i === correctAt;
@@ -305,15 +282,15 @@ const HeroQuizCard = () => {
                            animate={isWrong ? { x: [0, -7, 7, -5, 5, 0] } : { x: 0 }}
                            transition={{ duration: 0.4 }}
                            whileTap={locked ? undefined : { scale: 0.97 }}
-                           className={`relative flex items-center gap-2.5 px-3 py-2.5 min-h-[60px] text-left ring-1 transition-colors duration-200 ${isRight ? 'bg-[#fff] text-primary-800 ring-white shadow-lg' : isWrong ? 'bg-red-500 text-white ring-red-300' : pending ? 'bg-white/25 text-white ring-white' : dim ? 'bg-white/5 text-white/60 ring-white/15' : 'bg-white/10 text-white ring-white/30 hover:bg-white/20 hover:ring-white/60 cursor-pointer'} ${!started && !locked ? 'hero-quiz-pulse' : ''}`}
-                           style={{ borderRadius: 10 }}
+                           className={`relative flex items-center gap-2.5 px-3 py-2.5 min-h-[60px] text-left border rounded-xl transition-colors duration-200 ${isRight ? 'border-green-600 text-content-primary' : isWrong ? 'border-red-500 text-content-primary' : pending ? 'border-primary-600 text-content-primary' : dim ? 'border-border-primary text-content-muted' : 'border-border-primary text-content-primary hover:border-primary-600 cursor-pointer'} ${!started && !locked ? 'animate-hero-pulse motion-reduce:animate-none' : ''}`}
+                           style={{ animationDelay: `${i * 0.25}s` }}
                         >
-                           <span className={`w-7 h-7 shrink-0 flex items-center justify-center text-xs font-black ${isRight ? 'bg-primary-600 text-white' : isWrong ? 'bg-[#fff] text-red-600' : 'bg-primary-300 text-[#000]'}`} style={{ borderRadius: 6 }}>
+                           <span className={`w-7 h-7 shrink-0 flex items-center justify-center text-xs font-bold rounded-md border ${isRight ? 'bg-green-600 border-green-600 text-white' : isWrong ? 'bg-red-500 border-red-500 text-white' : 'border-border-primary'}`}>
                               {String.fromCharCode(65 + i)}
                            </span>
-                           <span className="min-w-0 flex-1 text-sm xl:text-base font-black font-outfit leading-tight line-clamp-3 break-words">{val}</span>
-                           {isRight && <Check className="w-4 h-4 shrink-0 text-primary-700" strokeWidth={4} />}
-                           {isWrong && <X className="w-4 h-4 shrink-0" strokeWidth={4} />}
+                           <span className="min-w-0 flex-1 text-sm xl:text-base font-bold font-outfit leading-tight line-clamp-3 break-words">{val}</span>
+                           {isRight && <Check className="w-4 h-4 shrink-0 text-green-600" strokeWidth={3} />}
+                           {isWrong && <X className="w-4 h-4 shrink-0 text-red-500" strokeWidth={3} />}
                            {isRight && chosen === i && [0, 1, 2, 3, 4, 5, 6, 7].map((p) => (
                               <motion.span
                                  key={p}
@@ -321,8 +298,7 @@ const HeroQuizCard = () => {
                                  initial={{ opacity: 1, x: 0, y: 0, scale: 1 }}
                                  animate={{ opacity: 0, x: Math.cos((p / 8) * Math.PI * 2) * 46, y: Math.sin((p / 8) * Math.PI * 2) * 30, scale: 0.4 }}
                                  transition={{ duration: 0.7, ease: 'easeOut' }}
-                                 className="absolute right-6 top-1/2 w-1.5 h-1.5 bg-primary-400 pointer-events-none"
-                                 style={{ borderRadius: '50%' }}
+                                 className="absolute right-6 top-1/2 w-1.5 h-1.5 bg-primary-600 rounded-full pointer-events-none"
                               />
                            ))}
                         </motion.button>
@@ -330,23 +306,23 @@ const HeroQuizCard = () => {
                   })}
                </div>
 
-               <div className="relative flex items-center justify-between min-h-[40px] pt-3 border-t border-dashed border-white/30" aria-live="polite">
+               <div className="flex items-center justify-between min-h-[40px] pt-3 border-t border-dashed border-border-primary" aria-live="polite">
                   {result !== null ? (
                      <motion.span
                         key={`fb-${idx}`}
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex items-center gap-2 text-base font-black uppercase tracking-widest"
+                        className="flex items-center gap-2 text-base font-bold"
                      >
                         {result
-                           ? <><Check className="w-4 h-4 text-primary-300" strokeWidth={4} /> {translate('Correct')} <span className="text-primary-300 tabular-nums">+{gain}</span></>
-                           : <><X className="w-4 h-4 text-red-300" strokeWidth={4} /> {translate('Wrong')}</>}
+                           ? <><Check className="w-4 h-4 text-green-600" strokeWidth={3} /> {translate('Correct')} <span className="text-green-600 tabular-nums">+{gain}</span></>
+                           : <><X className="w-4 h-4 text-red-500" strokeWidth={3} /> {translate('Wrong')}</>}
                      </motion.span>
                   ) : (
-                     <span className="text-[11px] font-black uppercase tracking-[0.2em] text-white/70">{translate('Question')} {idx + 1}</span>
+                     <span className="text-xs font-bold uppercase tracking-[0.08em] text-content-secondary">{translate('Question')} {idx + 1}</span>
                   )}
-                  <span className="flex items-center gap-1 text-[11px] font-black uppercase tracking-widest text-white/80">
-                     <Zap className="w-3.5 h-3.5 text-primary-300" /> {translate('Correct')} {score}/{total}
+                  <span className="flex items-center gap-1 text-xs font-bold uppercase tracking-[0.06em] text-content-secondary">
+                     <Zap className="w-3.5 h-3.5 text-primary-600" /> {translate('Correct')} {score}/{total}
                   </span>
                </div>
             </div>
@@ -414,57 +390,32 @@ const ModernLandingPage = () => {
       return () => clearInterval(iv);
    }, []);
 
+   const TICKER = [
+      { n: stats.registeredLast30Days, l: 'Registered Users (Last 30 Days)' },
+      { n: stats.practiceTestAttemptsLast30Days, l: 'Practice Test Attempts (Last 30 Days)' },
+      { n: stats.pyqAttemptsLast30Days, l: "PYQ's Attempts (Last 30 Days)" },
+      { n: stats.quizAttemptsLast30Days, l: 'Quiz Attempts (Last 30 Days)' },
+   ];
+
    return (
       <MobileAppWrapper showHeader={true} title={translate('Home')}>
-         <div className="xl:min-h-[calc(100vh-4rem)] xl:flex xl:flex-col">
-         <section className="relative overflow-hidden -mx-4 xl:-mx-8 xl:flex-1 xl:flex xl:items-center bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-primary-900 dark:via-slate-950 dark:to-black text-slate-900 dark:text-white">
-            <div className="pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-            <div className="pointer-events-none absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)', backgroundSize: '8px 8px' }} />
-            <div className="pointer-events-none absolute -top-32 -left-24 w-96 h-96 bg-primary-300/30 dark:bg-primary-500/20 blur-3xl" style={{ borderRadius: '50%' }} />
-            <div className="pointer-events-none absolute -bottom-40 right-10 w-[28rem] h-[28rem] bg-primary-300/25 dark:bg-primary-300/10 blur-3xl" style={{ borderRadius: '50%' }} />
-
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden text-primary-600/20 dark:text-primary-300/15">
-               {[
-                  { Icon: BookOpen, pos: 'top-[8%] left-[44%]', size: 'w-9 h-9', dur: 6, rot: 12 },
-                  { Icon: Brain, pos: 'top-[18%] left-[3%]', size: 'w-12 h-12', dur: 7, rot: -10 },
-                  { Icon: Target, pos: 'bottom-[14%] left-[40%]', size: 'w-10 h-10', dur: 8, rot: 360 },
-                  { Icon: Rocket, pos: 'top-[10%] right-[4%]', size: 'w-12 h-12', dur: 6.5, rot: 8 },
-                  { Icon: Star, pos: 'top-[46%] left-[47%]', size: 'w-6 h-6', dur: 5, rot: 180 },
-                  { Icon: Medal, pos: 'bottom-[10%] right-[3%]', size: 'w-10 h-10', dur: 7.5, rot: -12 },
-                  { Icon: Layers, pos: 'bottom-[8%] left-[4%]', size: 'w-9 h-9', dur: 9, rot: 10 },
-                  { Icon: Zap, pos: 'top-[36%] right-[46%]', size: 'w-7 h-7', dur: 5.5, rot: -15 },
-               ].map(({ Icon, pos, size, dur, rot }, i) => (
-                  <motion.span
-                     key={i}
-                     className={`absolute ${pos}`}
-                     animate={{ y: [0, -18, 0], x: [0, 8, 0], rotate: [0, rot, 0] }}
-                     transition={{ duration: dur, repeat: Infinity, ease: 'easeInOut', delay: i * 0.4 }}
-                  >
-                     <Icon className={size} strokeWidth={1.5} />
-                  </motion.span>
-               ))}
-            </div>
-
-            <div className="container mx-auto px-3 xl:px-6 relative z-10 w-full">
-               <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] items-center gap-6 xl:gap-10 py-5 xl:py-10">
+         <div className="xl:min-h-[calc(100vh-5.5rem)] xl:flex xl:flex-col">
+         <section className="-mx-4 xl:-mx-8 xl:flex-1 xl:flex xl:items-center bg-background-page text-content-primary">
+            <div className="container mx-auto px-4 xl:px-6 w-full">
+               <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] items-center gap-8 xl:gap-12 py-8 xl:py-4">
                   {/* Copy */}
                   <div className="space-y-5 xl:space-y-7 text-center xl:text-left">
-                     <div className="inline-flex uppercase items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-[10px] xl:text-xs font-black tracking-[0.15em] shadow-[0_4px_20px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
-                        <Sparkles className="w-4 h-4" />
+                     <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border-primary text-content-secondary text-xs font-bold rounded-full">
+                        <span className="w-2 h-2 rounded-full bg-primary-600" />
                         {translate('Trusted by students across India')}
                      </div>
 
-                     <h1 className="text-3xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-[1.05]">
+                     <h1 className="text-4xl xl:text-6xl font-extrabold font-outfit tracking-tight leading-[1.08]">
                         {translate('Prepare Today.')}
-                        <span className="relative inline-block text-primary-600 dark:text-primary-300">
-                           {translate('Succeed Tomorrow.')}
-                           <svg aria-hidden="true" viewBox="0 0 300 12" preserveAspectRatio="none" className="absolute left-0 -bottom-1.5 w-full h-2.5 text-primary-400 dark:text-primary-300">
-                              <path d="M2 8 C 50 2, 100 11, 150 6 S 250 3, 298 7" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                           </svg>
-                        </span>
+                        <span className="block text-primary-600">{translate('Succeed Tomorrow.')}</span>
                      </h1>
 
-                     <p className="text-base xl:text-xl text-slate-700 dark:text-slate-300 font-bold max-w-xl mx-auto xl:mx-0 leading-relaxed">
+                     <p className="text-base xl:text-xl text-content-secondary font-medium max-w-xl mx-auto xl:mx-0 leading-relaxed">
                         {translate('Practice smarter. Prepare better. Crack your exam.')}
                      </p>
 
@@ -485,103 +436,52 @@ const ModernLandingPage = () => {
                            size="xl"
                            icon={Zap}
                            iconPosition="right"
-                           className="w-full sm:w-auto font-outfit tracking-[0.08em] text-sm py-3 xl:py-6"
+                           className="w-full sm:w-auto"
                            onClick={() => router.push('/govt-exams-preparation')}
                         >
                            {translate('Browse exams')}
                         </Button>
                      </div>
 
-                     <div className="flex flex-wrap items-center justify-center xl:justify-start gap-x-6 gap-y-2 pt-3 border-t border-dashed border-primary-300 dark:border-white/20">
+                     <div className="flex flex-wrap items-center justify-center xl:justify-start gap-x-6 gap-y-2 pt-4 border-t border-border-primary">
                         {[
                            { icon: ShieldCheck, label: 'Questions by experts' },
                            { icon: Flame, label: 'Thousands of questions' },
                            { icon: Trophy, label: 'Practice with topic-wise quizzes' },
                         ].map((t) => (
-                           <div key={t.label} className="flex items-center gap-2 font-black text-[11px] xl:text-xs tracking-[0.06em] text-slate-700 dark:text-slate-300">
-                              <t.icon className="w-4 h-4 text-primary-600 dark:text-primary-300" /> {translate(t.label)}
+                           <div key={t.label} className="flex items-center gap-2 font-bold text-xs text-content-secondary">
+                              <t.icon className="w-4 h-4 text-primary-600" /> {translate(t.label)}
                            </div>
                         ))}
                      </div>
                   </div>
 
                   {/* Playable mini-quiz: visitors answer five quick questions right in the hero */}
-                  <div className="relative mx-auto w-full max-w-lg">
-                  {[
-                     { Icon: GraduationCap, cls: '-top-5 -left-5 xl:-left-8', d: 0 },
-                     { Icon: Lightbulb, cls: '-top-5 -right-3 xl:-right-6', d: 0.6 },
-                     { Icon: Pencil, cls: '-bottom-5 -left-5 xl:-left-8', d: 1.2 },
-                     { Icon: Award, cls: '-bottom-5 -right-3 xl:-right-6', d: 1.8 },
-                  ].map(({ Icon, cls, d }) => (
-                     <motion.span
-                        key={cls}
-                        aria-hidden="true"
-                        animate={{ y: [0, -8, 0] }}
-                        transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut', delay: d }}
-                        className={`hidden sm:flex absolute z-20 w-11 h-11 items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-lg ring-2 ring-white dark:ring-slate-900 ${cls}`}
-                        style={{ borderRadius: 14 }}
-                     >
-                        <Icon className="w-5 h-5" />
-                     </motion.span>
-                  ))}
                   <motion.div
-                     initial={{ opacity: 0, y: 24, rotate: 0 }}
-                     animate={{ opacity: 1, y: 0, rotate: 0 }}
-                     transition={{ duration: 0.5 }}
-                     className="relative w-full overflow-hidden text-white shadow-2xl ring-1 ring-white/10 bg-gradient-to-br from-primary-700 via-primary-800 to-primary-950"
-                     style={{ borderRadius: 16 }}
+                     initial={{ opacity: 0, y: 16 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.4 }}
+                     className="mx-auto w-full max-w-lg overflow-hidden border border-border-primary bg-background-surface text-content-primary rounded-3xl"
                   >
-                     <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '16px 16px' }} />
-                     <div className="pointer-events-none absolute -top-16 -right-10 w-56 h-56 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
-
                      <HeroQuizCard />
                   </motion.div>
-                  </div>
                </div>
             </div>
          </section>
 
          {/* ── Ticker Stats ── */}
-         <section className="border-y border-slate-200 dark:border-white/10 text-slate-800 dark:text-white overflow-hidden relative flex px-0 py-3 xl:py-5">
-            <style>{`
-               @keyframes marquee {
-                  0% { transform: translateX(0); }
-                  100% { transform: translateX(-50%); }
-               }
-               .animate-marquee {
-                  animation: marquee 25s linear infinite;
-                  display: flex;
-                  white-space: nowrap;
-               }
-               .animate-marquee:hover {
-                  animation-play-state: paused;
-               }
-            `}</style>
-
-            <div className="animate-marquee w-max">
-               {/* Repeat content twice for seamless loop */}
+         <section aria-label="Last 30 days activity" className="border-y border-border-primary text-content-secondary overflow-hidden flex">
+            <div className="flex w-max hover:[animation-play-state:paused]" style={{ animation: 'marquee 32s linear infinite' }}>
+               {/* Repeat content twice for a seamless loop */}
                {[0, 1].map((iteration) => (
-                  <div key={iteration} className="flex items-center gap-12 pr-12">
-                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-500 dark:bg-primary-300 animate-pulse"></span>
-                        <span className="text-primary-700 dark:text-primary-300 font-bold text-lg">🔥 {stats.registeredLast30Days}</span>
-                        {translate('Registered Users (Last 30 Days)')}
-                     </div>
-                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-500 dark:bg-primary-300 animate-pulse"></span>
-                        <span className="text-primary-700 dark:text-primary-300 font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
-                        {translate('Practice Test Attempts (Last 30 Days)')}
-                     </div>
-                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-500 dark:bg-primary-300 animate-pulse"></span>
-                        <span className="text-primary-700 dark:text-primary-300 font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
-                        {translate("PYQ's Attempts (Last 30 Days)")}
-                     </div>
-                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-500 dark:bg-primary-300 animate-pulse"></span>
-                        <span className="text-primary-700 dark:text-primary-300 font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
-                        {translate('Quiz Attempts (Last 30 Days)')}
-                     </div>
+                  <div key={iteration} className="flex items-center gap-12 pr-12 py-3 xl:py-4 whitespace-nowrap font-bold" aria-hidden={iteration === 1 ? 'true' : undefined}>
+                     {TICKER.map((t) => (
+                        <div key={t.l} className="flex items-center gap-2">
+                           <span className="w-2 h-2 rounded-full bg-primary-600" />
+                           <span className="text-content-primary font-extrabold font-outfit text-lg tabular-nums">{t.n}</span>
+                           {translate(t.l)}
+                        </div>
+                     ))}
                   </div>
                ))}
             </div>
@@ -589,80 +489,65 @@ const ModernLandingPage = () => {
          </div>
 
          {/* ── 3-Step How It Works ── */}
-         <section className="px-0 py-3 xl:py-5">
+         <section className="py-6 xl:py-10">
             <div className="container mx-auto px-3 xl:px-0">
-               <div className="w-full">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 xl:gap-6 relative">
-                     {[
-                        { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Police, Banking etc.", icon: Target, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-400" },
-                        { step: 2, title: "Practice Daily", desc: "Take Subject or Topic wise quizzes and tests.", icon: Zap, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-400" },
-                        { step: 3, title: "Track & Get Job", desc: "Analyze performance and get your dream job.", icon: Trophy, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-400" }
-                     ].map((item, i) => (
-                        <div key={i} className="relative flex flex-col overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all" style={{ borderRadius: 16 }}>
-                           <div className="h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-                           <div className="flex-1 flex flex-col items-center text-center p-4 xl:p-6">
-                              <div className={`w-16 h-16 ${item.bg} flex items-center justify-center mb-3 xl:mb-4 shadow-lg rotate-[-4deg]`} style={{ borderRadius: 14 }}>
-                                 <item.icon className={`w-8 h-8 ${item.color}`} />
-                              </div>
-                              <h2 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2">
-                                 {translate('Step {step}: {title}', { step: item.step, title: translate(item.title) })}
-                              </h2>
-                              <p className="text-sm font-bold text-slate-600 dark:text-slate-400">
-                                 {translate(item.desc)}
-                              </p>
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 xl:gap-6">
+                  {[
+                     { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Police, Banking etc.", icon: Target },
+                     { step: 2, title: "Practice Daily", desc: "Take Subject or Topic wise quizzes and tests.", icon: Zap },
+                     { step: 3, title: "Track & Get Job", desc: "Analyze performance and get your dream job.", icon: Trophy },
+                  ].map((item) => (
+                     <div key={item.step} className="border border-border-primary bg-background-surface rounded-2xl p-5 xl:p-6 hover:border-primary-600 transition-colors">
+                        <div className="flex items-start justify-between">
+                           <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600">
+                              <item.icon className="w-6 h-6" />
                            </div>
-                           <div className="relative border-t-2 border-dashed border-primary-500/30 bg-primary-600/5 py-2 flex items-center justify-center">
-                              <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
-                              <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
-                              <span className="text-2xl font-black font-outfit text-primary-700 dark:text-primary-300/50 leading-none">0{item.step}</span>
-                           </div>
+                           <span className="text-sm font-bold font-outfit text-content-muted">0{item.step}</span>
                         </div>
-                     ))}
-                  </div>
+                        <h2 className="mt-4 text-lg font-bold font-outfit text-content-primary">
+                           {translate('Step {step}: {title}', { step: item.step, title: translate(item.title) })}
+                        </h2>
+                        <p className="mt-2 text-sm font-medium text-content-secondary">{translate(item.desc)}</p>
+                     </div>
+                  ))}
                </div>
             </div>
          </section>
 
-
-         <section className="px-0 py-3 xl:py-5">
+         {/* ── Counts ── */}
+         <section className="py-3 xl:py-5">
             <div className="container mx-auto px-3 xl:px-0">
-               <div className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-primary-800 dark:via-primary-900 dark:to-primary-950 ring-1 ring-slate-200 dark:ring-white/10 shadow-xl p-3 xl:p-6" style={{ borderRadius: 16 }}>
-                  <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-                  <div className="relative grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2 xl:gap-4">
-                     {[
-                        { label: 'Students', val: stats.activeStudents, icon: Users },
-                        { label: 'Exams', val: stats.totalExams, icon: Target },
-                        { label: 'Quizzes', val: stats.totalQuizzes, icon: Gamepad2 },
-                        { label: 'Subjects', val: stats.totalSubjects, icon: BookOpen },
-                        { label: 'Topics', val: stats.totalTopics, icon: Layers },
-                        { label: 'Questions', val: stats.totalQuestions, icon: Brain }
-                     ].map((stat, index) => (
-                        <div key={index} className="relative overflow-hidden bg-white/80 hover:bg-white ring-1 ring-primary-200 dark:bg-white/10 dark:hover:bg-white/15 dark:ring-white/20 px-3 py-4 transition-colors" style={{ borderRadius: 12 }}>
-                           <stat.icon className="absolute -right-2 -bottom-2 w-14 h-14 text-primary-600/10 dark:text-white/10" />
-                           <div className="relative text-2xl xl:text-4xl font-black font-outfit text-primary-700 dark:text-primary-200 leading-none">{stat.val}</div>
-                           <div className="relative mt-1.5 text-[10px] xl:text-xs font-black tracking-[0.12em] uppercase text-slate-600 dark:text-white/75">{translate(stat.label)}</div>
-                        </div>
-                     ))}
-                  </div>
+               <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-px border border-border-primary rounded-2xl overflow-hidden bg-border-primary">
+                  {[
+                     { label: 'Students', val: stats.activeStudents, icon: Users },
+                     { label: 'Exams', val: stats.totalExams, icon: Target },
+                     { label: 'Quizzes', val: stats.totalQuizzes, icon: Gamepad2 },
+                     { label: 'Subjects', val: stats.totalSubjects, icon: BookOpen },
+                     { label: 'Topics', val: stats.totalTopics, icon: Layers },
+                     { label: 'Questions', val: stats.totalQuestions, icon: Brain }
+                  ].map((stat) => (
+                     <div key={stat.label} className="p-4 xl:p-5 bg-background-surface">
+                        <stat.icon className="w-5 h-5 mb-3 text-primary-600" />
+                        <div className="text-2xl xl:text-3xl font-extrabold font-outfit leading-none tabular-nums">{stat.val}</div>
+                        <div className="mt-2 text-xs font-bold tracking-[0.08em] uppercase text-content-secondary">{translate(stat.label)}</div>
+                     </div>
+                  ))}
                </div>
             </div>
          </section>
 
          {/* ── PYQ Section ── */}
-         <section className="bg-background-page relative overflow-hidden px-0 py-3 xl:py-6">
-            <div className="absolute inset-0 pointer-events-none">
-               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-primary-500/10 blur-[80px] opacity-60" />
-            </div>
-            <div className="container mx-auto px-3 xl:px-0 relative z-10">
-               <div className="text-center space-y-2 xl:space-y-3 mb-5 xl:mb-6">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow-[0_4px_20px_rgba(251,191,36,0.35)] rounded-full text-xs font-black tracking-[0.1em] uppercase">
-                     <span className="w-2 h-2 rounded-full bg-amber-950 animate-pulse" />
+         <section className="py-8 xl:py-12">
+            <div className="container mx-auto px-3 xl:px-0">
+               <div className="text-center space-y-3 mb-6 xl:mb-8">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border-primary text-xs font-bold rounded-full text-primary-600">
+                     <span className="w-2 h-2 rounded-full bg-primary-600" />
                      {translate('Last Year PYQ — Always Free')}
                   </div>
-                  <h2 className="text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
-                     {rich('Practice with <0>Real Papers</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
+                  <h2 className="text-3xl xl:text-5xl font-extrabold font-outfit tracking-tight leading-tight">
+                     {rich('Practice with <0>Real Papers</0>', [(c) => <span className="text-primary-600">{c}</span>])}
                   </h2>
-                  <p className="text-base xl:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                  <p className="text-base xl:text-lg font-medium text-content-secondary max-w-2xl mx-auto">
                      {stats.totalPyqPapers > 0
                         ? translate('{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.', { count: stats.totalPyqPapers })
                         : translate('Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.')}
@@ -670,225 +555,156 @@ const ModernLandingPage = () => {
                </div>
 
                {/* Exam tiles */}
-               <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 mb-5 xl:mb-6">
-                  {stats.examStats && stats.examStats.length > 0 ? stats.examStats.map((exam, idx) => (
+               <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 mb-6">
+                  {stats.examStats && stats.examStats.length > 0 ? stats.examStats.map((exam) => (
                      <motion.div
                         key={exam._id}
-                        whileHover={{ y: -6 }}
-                        className="relative cursor-pointer flex flex-col overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl transition-shadow group"
-                        style={{ borderRadius: 14 }}
+                        whileHover={{ y: -3 }}
+                        className="relative cursor-pointer flex flex-col border border-border-primary bg-background-surface rounded-2xl hover:border-primary-600 transition-colors"
                      >
-                        <Link href={exam.slug ? `/pyq/${exam.slug}` : '/pyq'} className="absolute inset-0 z-10" aria-label={`${exam.name} Previous Year Question Papers`} />
-                        <div className="h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-
-                        <div className="flex-1 p-3 xl:p-4 flex flex-col items-center text-center gap-2.5">
-                           <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
-                              <BookOpen className="w-4 h-4" />
-                           </span>
-                           <span className="text-sm xl:text-base font-black text-slate-900 dark:text-white leading-tight">{exam.name}</span>
-                           <div className="w-full grid gap-1.5">
+                        <Link href={exam.slug ? `/pyq/${exam.slug}` : '/pyq'} className="absolute inset-0 z-10 rounded-2xl" aria-label={`${exam.name} Previous Year Question Papers`} />
+                        <div className="flex-1 p-3 xl:p-4 flex flex-col gap-3">
+                           <div className="flex items-center gap-2.5">
+                              <span className="w-9 h-9 shrink-0 flex items-center justify-center border border-border-primary rounded-lg text-primary-600">
+                                 <BookOpen className="w-4 h-4" />
+                              </span>
+                              <span className="text-sm xl:text-base font-bold leading-tight text-content-primary">{exam.name}</span>
+                           </div>
+                           <div className="grid gap-1.5">
                               {[
                                  { icon: BookOpen, text: translate('{count} PYQs', { count: exam.pyqCount }) },
                                  { icon: Target, text: translate('{count} Practice Tests', { count: exam.practiceTestCount }) },
                                  { icon: Gamepad2, text: translate('{count} Quizzes', { count: exam.quizCount }) },
                               ].map((row, i) => (
-                                 <span key={i} className="flex items-center gap-1.5 px-2 py-1 bg-primary-500/5 dark:bg-white/5 text-[10px] xl:text-[11px] font-bold text-slate-700 dark:text-slate-300" style={{ borderRadius: 8 }}>
-                                    <row.icon className="w-3 h-3 shrink-0 text-primary-600 dark:text-primary-300" />
+                                 <span key={i} className="flex items-center gap-1.5 px-2 py-1 border border-border-primary rounded-lg text-xs font-medium text-content-secondary">
+                                    <row.icon className="w-3 h-3 shrink-0 text-primary-600" />
                                     <span className="truncate">{row.text}</span>
                                  </span>
                               ))}
                            </div>
-                        </div>
-
-                        <div className="relative border-t-2 border-dashed border-primary-500/30 bg-primary-600/5 py-2 text-center">
-                           <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
-                           <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
-                           <span className="inline-block px-2.5 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-[10px] font-black uppercase tracking-wider shadow" style={{ borderRadius: 999 }}>{translate('Latest Free')}</span>
+                           <span className="self-start px-2.5 py-0.5 border border-primary-600 text-primary-600 text-[11px] font-bold rounded-full">{translate('Latest Free')}</span>
                         </div>
                      </motion.div>
                   )) : null}
                </div>
 
                {/* Crawlable PYQ links (server-rendered, one per exam) */}
-               <nav aria-label="Previous year papers by exam" className="flex flex-wrap items-center justify-center gap-2 mb-5 xl:mb-6">
+               <nav aria-label="Previous year papers by exam" className="flex flex-wrap items-center justify-center gap-2 mb-6">
                   {POPULAR_PYQ_EXAMS.map((e) => (
-                     <Link key={e.slug} href={`/pyq/${e.slug}`} className="group inline-flex items-center gap-2 px-3 py-1.5 bg-background-surface border-2 border-dashed border-primary-500/30 text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary-700 dark:hover:text-primary-200 hover:border-primary-600 hover:bg-primary-500/5 hover:-translate-y-0.5 transition-all" style={{ borderRadius: 10 }}>
-                        <span className="w-1.5 h-1.5 bg-amber-400 group-hover:scale-150 transition-transform" style={{ borderRadius: '50%' }} />
+                     <Link key={e.slug} href={`/pyq/${e.slug}`} className="inline-flex items-center px-3 py-1.5 border border-border-primary text-xs xl:text-sm font-medium text-content-secondary hover:text-content-primary hover:border-primary-600 transition-colors rounded-full">
                         {e.name} {translate('Previous Year Papers')}
                      </Link>
                   ))}
                </nav>
 
                {/* CTA row */}
-               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <motion.button
-                     whileHover={{ scale: 1.03 }}
-                     whileTap={{ scale: 0.97 }}
-                     data-cta="landing_pyq_start"
-                     onClick={() => router.push('/register')}
-                     className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] hover:brightness-105 font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-sm"
-                  >
+               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto" cta="landing_pyq_start" onClick={() => router.push('/register')}>
                      {translate('Start Free PYQ Practice →')}
-                  </motion.button>
-                  <button
-                     onClick={() => router.push('/pyq')}
-                     className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-800 hover:brightness-110 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-sm"
-                  >
+                  </Button>
+                  <Button variant="secondary" size="lg" className="w-full sm:w-auto" onClick={() => router.push('/pyq')}>
                      {translate('Browse All PYQs')}
-                  </button>
+                  </Button>
                </div>
             </div>
          </section>
 
          {/* ── Features Section ── */}
-         <section id="features" className="py-6 xl:py-12 border-t-2 border-b-2 border-slate-100 dark:border-slate-800">
-            <div className="container mx-auto px-3 xl:px-0 space-y-5 xl:space-y-8">
-               <section className="text-center space-y-6 max-w-3xl mx-auto">
-                  <h2 className="text-xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">{translate('Study Smart.')} <br /> {translate('Pass Your Exam.')}</h2>
-                  <p className="text-xl font-bold text-slate-700 dark:text-slate-400 px-4">{translate('Everything you need to prepare for government exams, all in one place.')}</p>
+         <section id="features" className="py-8 xl:py-12 border-t border-border-primary">
+            <div className="container mx-auto px-3 xl:px-0 space-y-6 xl:space-y-8">
+               <div className="text-center space-y-3 max-w-3xl mx-auto">
+                  <h2 className="text-3xl xl:text-5xl font-extrabold font-outfit tracking-tight leading-tight">{translate('Study Smart.')} <br /> {translate('Pass Your Exam.')}</h2>
+                  <p className="text-base xl:text-lg font-medium text-content-secondary">{translate('Everything you need to prepare for government exams, all in one place.')}</p>
+               </div>
 
-               </section>
-
-               <div className="grid grid-cols-1 xl:grid-cols-12 gap-3 xl:gap-5">
-                  <Card as="section" className="xl:col-span-8 p-5 xl:p-8 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 border-none shadow-xl text-slate-900 dark:text-white flex flex-col justify-between group overflow-hidden relative rounded-[2rem] xl:rounded-[4rem]">
-                     <div className="space-y-6 relative z-10 max-w-xl">
-                        <div className="p-4 xl:p-5 bg-white/80 dark:bg-white/20 backdrop-blur-md rounded-3xl xl:rounded-[2.5rem] w-fit shadow-sm border-2 border-slate-200 dark:border-white/20">
-                           <Trophy className="w-10 h-10 xl:w-12 xl:h-12" />
-                        </div>
-                        <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-[0.95]">{translate('See your progress')}</h3>
-                        <p className="text-base xl:text-md xl:text-xl font-bold opacity-80 leading-relaxed">{translate('Know how well you are doing. Get a clear report after every exam and move up as you improve.')}</p>
-                        <div className="pt-4 xl:pt-8">
-                           <Button variant="secondary" size="lg" className="rounded-[1.5rem] xl:rounded-[2rem] px-6 xl:px-8 font-black tracking-[0.08em] text-sm py-4 xl:py-6" cta="landing_progress_card" onClick={() => router.push('/register')}>
-                              {translate('Check your progress')}
-                           </Button>
-                        </div>
+               <div className="grid grid-cols-1 xl:grid-cols-12 gap-3 xl:gap-4">
+                  <section className="xl:col-span-8 p-5 xl:p-8 border border-border-primary bg-background-surface rounded-3xl flex flex-col justify-between gap-6 min-h-[260px]">
+                     <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600"><Trophy className="w-6 h-6" /></div>
+                     <div className="space-y-3 max-w-xl">
+                        <h3 className="text-2xl xl:text-3xl font-bold font-outfit">{translate('See your progress')}</h3>
+                        <p className="text-base xl:text-lg font-medium text-content-secondary leading-relaxed">{translate('Know how well you are doing. Get a clear report after every exam and move up as you improve.')}</p>
                      </div>
-                     <Rocket className="absolute -right-16 -bottom-16 w-[300px] xl:w-[400px] h-[300px] xl:h-[400px] opacity-10 rotate-12 group-hover:rotate-45 transition-transform duration-1000" />
-                     <div className="absolute top-0 right-0 w-full h-full bg-white/80 dark:bg-white/10 pointer-events-none" />
-                  </Card>
-
-                  <Card as="section" className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] xl:rounded-[4rem] shadow-sm">
-                     <div className="space-y-2 xl:space-y-4">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] w-fit rounded-2xl">
-                           <Flame className="w-8 h-8 xl:w-10 xl:h-10" />
-                        </div>
-                        <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('Practice every day')}</h3>
-                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400">{translate('Practice a little every day. This helps you remember more and climb higher on the student list.')}</p>
+                     <div>
+                        <Button variant="primary" size="lg" cta="landing_progress_card" onClick={() => router.push('/register')}>
+                           {translate('Check your progress')}
+                        </Button>
                      </div>
-                     <div className="space-y-3 xl:space-y-4 pt-4 xl:pt-5">
-                        {[80, 60, 95].map((width, index) => (
-                           <div key={index} className="h-2 xl:h-3 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                              <motion.div
-                                 initial={{ width: 0 }}
-                                 whileInView={{ width: `${width}%` }}
-                                 className="h-full bg-gradient-to-r from-primary-500 via-primary-600 to-primary-300 shadow-sm"
-                              />
+                  </section>
+
+                  <section className="xl:col-span-4 p-5 xl:p-6 border border-border-primary bg-background-surface rounded-3xl flex flex-col gap-4">
+                     <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600"><Flame className="w-6 h-6" /></div>
+                     <h3 className="text-xl xl:text-2xl font-bold font-outfit">{translate('Practice every day')}</h3>
+                     <p className="text-base font-medium text-content-secondary">{translate('Practice a little every day. This helps you remember more and climb higher on the student list.')}</p>
+                     <div className="space-y-3 mt-auto pt-2">
+                        {[80, 60, 95].map((width) => (
+                           <div key={width} className="h-2 w-full bg-background-surface-secondary rounded-full overflow-hidden">
+                              <motion.div initial={{ width: 0 }} whileInView={{ width: `${width}%` }} className="h-full bg-primary-600 rounded-full" />
                            </div>
                         ))}
                      </div>
-                  </Card>
+                  </section>
 
-                  <Card as="section" className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] xl:rounded-[4rem] shadow-sm">
-                     <div className="space-y-2 xl:space-y-4">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] w-fit rounded-2xl">
-                           <Zap className="w-8 h-8 xl:w-10 xl:h-10" />
-                        </div>
-                        <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('See your test results')}</h3>
-                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400">{translate('After every test, see how many you got right and which topics need more practice.')}</p>
+                  <section className="xl:col-span-4 p-5 xl:p-6 border border-border-primary bg-background-surface rounded-3xl flex flex-col gap-4">
+                     <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600"><Zap className="w-6 h-6" /></div>
+                     <h3 className="text-xl xl:text-2xl font-bold font-outfit">{translate('See your test results')}</h3>
+                     <p className="text-base font-medium text-content-secondary">{translate('After every test, see how many you got right and which topics need more practice.')}</p>
+                     <div className="flex items-end gap-3 h-20 mt-auto pt-2">
+                        {['h-2/5', 'h-3/5', 'h-[90%]'].map((h) => (
+                           <div key={h} className={`flex-1 ${h} bg-primary-600 opacity-90 rounded-t-lg`} />
+                        ))}
                      </div>
-                     <div className="flex gap-3 xl:gap-4 pt-4 xl:pt-5">
-                        <div className="flex-1 h-16 xl:h-20 bg-slate-50 dark:bg-slate-800/50 rounded-2xl xl:rounded-3xl relative overflow-hidden border-2 border-slate-100 dark:border-slate-800">
-                           <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary-500/40 to-amber-300/30 h-1/2" />
-                        </div>
-                        <div className="flex-1 h-16 xl:h-20 bg-slate-50 dark:bg-slate-800/50 rounded-2xl xl:rounded-3xl relative overflow-hidden border-2 border-slate-100 dark:border-slate-800">
-                           <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary-500/50 to-amber-300/40 h-3/4" />
-                        </div>
-                        <div className="flex-1 h-16 xl:h-20 bg-slate-50 dark:bg-slate-800/50 rounded-2xl xl:rounded-3xl relative overflow-hidden border-2 border-slate-100 dark:border-slate-800">
-                           <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary-600/70 to-amber-300/60 h-[90%]" />
-                        </div>
-                     </div>
-                  </Card>
+                  </section>
 
-                  <Card as="section" className="xl:col-span-8 p-4 xl:p-8 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-sm flex flex-col xl:flex-row items-center gap-6 xl:gap-10 overflow-hidden group rounded-[2rem] xl:rounded-[4rem]">
-                     <div className="flex-1 space-y-2 xl:space-y-4 relative z-10 text-center xl:text-left">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] w-fit rounded-2xl mx-auto xl:mx-0">
-                           <Medal className="w-10 h-10 xl:w-12 xl:h-12" />
-                        </div>
-                        <h3 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">{translate('Refer & Earn')}</h3>
-                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 xl:px-0">{translate('Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.')}</p>
-                        <div className="pt-2 xl:pt-4">
-                           <Button variant="primary" size="lg" className="w-full xl:w-auto shadow-sm rounded-lg xl:rounded-xl xl:rounded-2xl px-8 xl:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 xl:py-6" cta="landing_referral_card" onClick={() => router.push('/login')}>
-                              {translate('Start referring')}
-                           </Button>
-                        </div>
+                  <section className="xl:col-span-8 p-5 xl:p-8 border border-border-primary bg-background-surface rounded-3xl flex flex-col justify-between gap-6">
+                     <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600"><Medal className="w-6 h-6" /></div>
+                     <div className="space-y-3 max-w-xl">
+                        <h3 className="text-2xl xl:text-3xl font-bold font-outfit">{translate('Refer & Earn')}</h3>
+                        <p className="text-base xl:text-lg font-medium text-content-secondary">{translate('Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.')}</p>
                      </div>
-                  </Card>
+                     <div>
+                        <Button variant="primary" size="lg" cta="landing_referral_card" onClick={() => router.push('/login')}>
+                           {translate('Start referring')}
+                        </Button>
+                     </div>
+                  </section>
                </div>
             </div>
          </section>
 
-         <section className="overflow-hidden relative px-0 py-3 xl:py-6">
-            <div className="container mx-auto px-3 xl:px-0 relative z-10">
-               <div className="flex flex-col gap-5 xl:gap-8">
-                  <div className="space-y-5 xl:space-y-8 text-center w-full">
-                     <motion.h2
-                        initial={{ y: 20 }}
-                        whileInView={{ y: 0 }}
-                        className="text-3xl xl:text-6xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-[0.8] mb-8 xl:mb-12"
-                     >
-                        {translate('Study with')} <br /><span className="text-primary-600 dark:text-primary-300">{translate('Confidence.')}</span>
-                     </motion.h2>
+         <section className="py-8 xl:py-12">
+            <div className="container mx-auto px-3 xl:px-0 space-y-6 xl:space-y-8">
+               <h2 className="text-center text-3xl xl:text-5xl font-extrabold font-outfit tracking-tight leading-tight">
+                  {translate('Study with')} <br /><span className="text-primary-600">{translate('Confidence.')}</span>
+               </h2>
 
-                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-5">
-                        {[
-                           { title: "Daily Goals", desc: "Set a small goal for each day and complete it. Small steps lead to big results.", icon: Target },
-                           { title: "Study with Others", desc: "Study with thousands of students who want to pass the same exams as you.", icon: Users },
-                           { title: "Detailed Solutions", desc: "Get in-depth explanations for every question to understand concepts better.", icon: BookOpen }
-                        ].map((item, index) => (
-                           <div key={index} className="relative flex flex-col overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all group" style={{ borderRadius: 16 }}>
-                              <div className="h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-                              <div className="flex flex-col items-center p-4 xl:p-6">
-                                 <div className="w-14 h-14 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] flex items-center justify-center mb-3 shadow-lg rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 14 }}>
-                                    <item.icon className="w-8 h-8" />
-                                 </div>
-                                 <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-2">{translate(item.title)}</h3>
-                                 <p className="text-sm font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-xs mx-auto text-center px-4">{translate(item.desc)}</p>
-                              </div>
-                           </div>
-                        ))}
+               <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-4">
+                  {[
+                     { title: "Daily Goals", desc: "Set a small goal for each day and complete it. Small steps lead to big results.", icon: Target },
+                     { title: "Study with Others", desc: "Study with thousands of students who want to pass the same exams as you.", icon: Users },
+                     { title: "Detailed Solutions", desc: "Get in-depth explanations for every question to understand concepts better.", icon: BookOpen }
+                  ].map((item) => (
+                     <div key={item.title} className="border border-border-primary bg-background-surface rounded-2xl p-5 xl:p-6 hover:border-primary-600 transition-colors">
+                        <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600">
+                           <item.icon className="w-6 h-6" />
+                        </div>
+                        <h3 className="mt-4 text-xl font-bold font-outfit text-content-primary">{translate(item.title)}</h3>
+                        <p className="mt-2 text-sm font-medium text-content-secondary leading-relaxed">{translate(item.desc)}</p>
                      </div>
-                  </div>
-
-                  <div className="relative w-full mx-auto px-0 xl:px-4 xl:px-0">
-                     <div className="absolute -inset-20 bg-primary-500/10 blur-[120px] rounded-full opacity-50" />
-                  </div>
+                  ))}
                </div>
             </div>
          </section>
 
-         <section className="container mx-auto px-3 xl:px-0 py-3 xl:py-6">
-            <div className="relative overflow-hidden text-white shadow-2xl ring-1 ring-white/10 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-950 p-6 xl:p-10 text-center" style={{ borderRadius: 20 }}>
-               <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '20px 20px' }} />
-               <div className="pointer-events-none absolute -top-24 -left-20 w-80 h-80 bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-               <div className="pointer-events-none absolute -bottom-32 right-10 w-96 h-96 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
-               <Trophy className="pointer-events-none absolute right-6 top-6 w-40 h-40 xl:w-56 xl:h-56 text-white/5 rotate-12" />
-               <div className="relative z-10 space-y-3 xl:space-y-5">
-                  <motion.h2
-                     whileInView={{ scale: [0.95, 1] }}
-                     className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-[0.98]"
-                  >
-                     {translate('Your Dream Job')} <br /><span className="text-primary-300">{translate('Is Waiting.')}</span>
-                  </motion.h2>
-                  <p className="text-base md:text-xl font-bold text-white/85 max-w-3xl mx-auto leading-relaxed">{translate('Start today. Join AajExam, practice every day, and get the government job you want.')}</p>
-                  <div className="pt-2 xl:pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-                     <button
-                        data-cta="landing_final_cta"
-                        onClick={() => router.push('/register')}
-                        className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] font-outfit font-black uppercase tracking-[0.1em] text-sm shadow-xl hover:brightness-105 active:scale-95 transition-all"
-                     >
-                        {translate('Join Now For Free')} <ArrowRight className="w-5 h-5" />
-                     </button>
-                  </div>
+         <section className="container mx-auto px-3 xl:px-0 pb-8 xl:pb-12">
+            <div className="border border-border-primary bg-background-surface rounded-3xl p-8 xl:p-14 text-center space-y-4 xl:space-y-5">
+               <h2 className="text-3xl xl:text-5xl font-extrabold font-outfit tracking-tight leading-tight">
+                  {translate('Your Dream Job')} <br /><span className="text-primary-600">{translate('Is Waiting.')}</span>
+               </h2>
+               <p className="text-base xl:text-lg font-medium text-content-secondary max-w-3xl mx-auto leading-relaxed">{translate('Start today. Join AajExam, practice every day, and get the government job you want.')}</p>
+               <div className="pt-2 flex justify-center">
+                  <Button variant="primary" size="xl" icon={ArrowRight} iconPosition="right" className="w-full sm:w-auto" cta="landing_final_cta" onClick={() => router.push('/register')}>
+                     {translate('Join Now For Free')}
+                  </Button>
                </div>
             </div>
          </section>
@@ -897,5 +713,3 @@ const ModernLandingPage = () => {
 };
 
 export default ModernLandingPage;
-
-

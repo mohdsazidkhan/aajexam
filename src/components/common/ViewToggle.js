@@ -27,12 +27,12 @@ const ViewToggle = ({ currentView, onViewChange, views = ['table', 'list', 'grid
             onClick={() => onViewChange(view)}
             title={translate('{view} View', { view: translate(viewLabels[view]) })}
             className={`${fullWidth ? 'flex-1 flex items-center justify-center gap-1.5' : ''} p-2 rounded-lg transition-all ${isActive
-                ? 'bg-primary-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'
+                ? 'bg-primary-600 text-on-primary'
+                : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'
               }`}
           >
             <Icon className="w-4 h-4" />
-            {fullWidth && <span className="text-[9px] font-black uppercase tracking-widest">{translate(viewLabels[view])}</span>}
+            {fullWidth && <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{translate(viewLabels[view])}</span>}
           </button>
         );
       })}

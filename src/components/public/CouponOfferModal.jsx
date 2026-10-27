@@ -33,9 +33,9 @@ const Countdown = ({ expiry, translate }) => {
   return (
     <div className="grid grid-cols-4 gap-2">
       {parts.map((p) => (
-        <div key={p.label} className="rounded-xl bg-slate-100 dark:bg-slate-800 py-2 text-center">
-          <div className="text-xl xl:text-2xl font-black font-outfit tabular-nums text-slate-900 dark:text-white leading-none">{pad(p.value)}</div>
-          <div className="mt-1 text-[9px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">{p.label}</div>
+        <div key={p.label} className="rounded-xl bg-background-surface-secondary py-2 text-center">
+          <div className="text-xl xl:text-2xl font-bold font-outfit tabular-nums text-content-primary leading-none">{pad(p.value)}</div>
+          <div className="mt-1 text-[9px] font-bold uppercase tracking-[0.08em] text-content-muted">{p.label}</div>
         </div>
       ))}
     </div>
@@ -130,15 +130,15 @@ const CouponOfferModal = () => {
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/60 backdrop-blur-md" onClick={close} />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/60" onClick={close} />
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="relative w-full max-w-md xl:max-w-lg max-h-[92vh] overflow-y-auto bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-primary-500/20"
+          className="relative w-full max-w-md xl:max-w-lg max-h-[92vh] overflow-y-auto bg-background-surface rounded-3xl border border-primary-500/20"
         >
           {/* Hero */}
-          <div className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-600 to-primary-800 px-6 pt-8 pb-10 xl:pt-10 xl:pb-12 text-center text-white">
+          <div className="relative overflow-hidden px-6 pt-8 pb-10 xl:pt-10 xl:pb-12 text-center text-on-primary bg-primary-600">
             {/* Soft glow instead of shapes: the site forces every rounded element to a flat 8px radius, so circles render as squares. */}
             <div
               className="pointer-events-none absolute inset-0"
@@ -147,33 +147,33 @@ const CouponOfferModal = () => {
             <button aria-label={translate('Close')} onClick={close} className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/25 text-white transition">
               <X className="w-4 h-4" />
             </button>
-            <span className="relative inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-[10px] xl:text-xs font-black uppercase tracking-widest">
+            <span className="relative inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em]">
               <Sparkles className="w-3.5 h-3.5" /> {translate(upcoming ? 'Coming soon' : 'Limited time offer')}
             </span>
-            <p className="relative mt-4 text-6xl xl:text-7xl font-black font-outfit leading-none tracking-tight drop-shadow-sm">{offerText}</p>
+            <p className="relative mt-4 text-6xl xl:text-7xl font-bold font-outfit leading-none tracking-tight">{offerText}</p>
             <p className="relative mt-3 text-sm xl:text-base font-medium text-white/90 max-w-xs mx-auto">{coupon.description}</p>
           </div>
 
           <div className="space-y-4 p-5 xl:p-7">
             {/* Code */}
             {upcoming ? (
-              <div className="w-full flex flex-col items-center justify-center gap-1 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800/60 px-4 py-3.5 text-slate-500 dark:text-slate-400">
-                <div className="flex items-center gap-2 text-xl xl:text-2xl font-black font-outfit tracking-[0.3em]">
+              <div className="w-full flex flex-col items-center justify-center gap-1 rounded-2xl border border-dashed border-border-primary dark:border-slate-600 bg-background-surface-secondary px-4 py-3.5 text-content-muted">
+                <div className="flex items-center gap-2 text-xl xl:text-2xl font-bold font-outfit tracking-[0.08em]">
                   <Lock className="w-5 h-5" /> ••••••••
                 </div>
-                <p className="text-[11px] xl:text-xs font-bold uppercase tracking-widest">
+                <p className="text-[11px] xl:text-xs font-bold uppercase tracking-[0.08em]">
                   {translate('Coupon code unlocks on {date}', { date: fmtDay(coupon.startDate) })}
                 </p>
               </div>
             ) : (
-              <button type="button" onClick={copy} className="w-full flex items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-primary-500/60 bg-primary-500/5 hover:bg-primary-500/10 px-4 py-3.5 text-2xl xl:text-3xl font-black font-outfit tracking-[0.25em] text-primary-600 dark:text-primary-300 transition">
+              <button type="button" onClick={copy} className="w-full flex items-center justify-center gap-3 rounded-2xl border border-dashed border-primary-500/60 px-4 py-3.5 text-2xl xl:text-3xl font-bold font-outfit tracking-[0.08em] text-primary-600 transition">
                 <Tag className="w-5 h-5" /> {coupon.code} <Copy className="w-4 h-4" />
               </button>
             )}
 
             {/* Countdown */}
             <div className="space-y-2">
-              <p className="flex items-center justify-center gap-1.5 text-[11px] xl:text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              <p className="flex items-center justify-center gap-1.5 text-[11px] xl:text-xs font-bold uppercase tracking-[0.08em] text-content-muted">
                 <Clock className="w-3.5 h-3.5" /> {translate(upcoming ? 'Offer starts in' : 'Offer ends in')}
               </p>
               <Countdown expiry={upcoming ? coupon.startDate : coupon.expiryDate} translate={translate} />
@@ -185,15 +185,15 @@ const CouponOfferModal = () => {
             </div>
 
             {upcoming ? (
-              <button type="button" onClick={close} className="w-full rounded-2xl bg-primary-600 hover:bg-primary-700 py-4 text-base xl:text-lg font-black text-white shadow-lg shadow-primary-600/30 transition">
+              <button type="button" onClick={close} className="w-full rounded-2xl bg-primary-600 hover:bg-primary-700 py-4 text-base xl:text-lg font-bold text-on-primary shadow-primary-600/30 transition">
                 {translate('Got it')}
               </button>
             ) : (
               <>
-                <button type="button" onClick={useNow} className="w-full flex items-center justify-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-700 py-4 text-base xl:text-lg font-black text-white shadow-lg shadow-primary-600/30 transition">
+                <button type="button" onClick={useNow} className="w-full flex items-center justify-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-700 py-4 text-base xl:text-lg font-bold text-on-primary shadow-primary-600/30 transition">
                   {translate('Use this coupon')} <ArrowRight className="w-5 h-5" />
                 </button>
-                <button type="button" onClick={close} className="w-full text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition">
+                <button type="button" onClick={close} className="w-full text-xs font-bold text-content-muted hover:text-content-primary dark:hover:text-slate-200 transition">
                   {translate('Maybe later')}
                 </button>
               </>

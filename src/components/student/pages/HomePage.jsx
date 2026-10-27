@@ -43,19 +43,19 @@ const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) 
    return (
    <div className="flex items-center justify-between mb-4 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15">
       <div className="flex items-center gap-2.5">
-         <div className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+         <div className="w-9 h-9 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
             <IconComp className="w-[18px] h-[18px]" />
          </div>
-         <h2 className="text-base xl:text-lg font-black text-slate-900 dark:text-white tracking-tight uppercase">
+         <h2 className="text-base xl:text-lg font-bold text-content-primary tracking-tight">
             {translate(title)}
          </h2>
       </div>
       <button
          onClick={onViewAll}
-         className="flex items-center gap-0.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow hover:brightness-105 transition-all"
+         className="flex items-center gap-0.5 px-3 py-1.5 rounded-full text-on-primary hover:brightness-105 transition-all bg-primary-600"
       >
-         <span className="text-xs font-extrabold text-primary-950">{translate('View All')}</span>
-         <ChevronRight className="w-3.5 h-3.5 text-primary-950" />
+         <span className="text-xs font-extrabold text-on-primary">{translate('View All')}</span>
+         <ChevronRight className="w-3.5 h-3.5 text-on-primary" />
       </button>
    </div>
    );
@@ -70,18 +70,18 @@ const GovtExamCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
       style={{ borderRadius: 14 }}
    >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
+      <div className="w-12 h-12 text-on-primary flex items-center justify-center bg-primary-600" style={{ borderRadius: 12 }}>
          <GraduationCap className="w-6 h-6" />
       </div>
-      <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
+      <p className="text-[13px] font-extrabold text-content-primary leading-tight line-clamp-2">
          {translateData(item.name)}
       </p>
       {item.code && (
-         <p className="text-[11px] font-semibold text-slate-400">{item.code}</p>
+         <p className="text-[11px] font-semibold text-content-muted">{item.code}</p>
       )}
    </div>
    );
@@ -93,17 +93,17 @@ const QuizCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[160px] xl:min-w-0 p-3.5 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col gap-2"
+      className="min-w-[160px] xl:min-w-0 p-3.5 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all flex flex-col gap-2"
       style={{ borderRadius: 14 }}
    >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
+      <div className="w-10 h-10 text-on-primary flex items-center justify-center bg-primary-600" style={{ borderRadius: 12 }}>
          <Brain className="w-5 h-5" />
       </div>
-      <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
+      <p className="text-[13px] font-extrabold text-content-primary leading-tight line-clamp-2">
          {translateData(item.title || item.name)}
       </p>
-      <div className="flex items-center gap-1 text-[11px] font-semibold text-slate-400">
+      <div className="flex items-center gap-1 text-[11px] font-semibold text-content-muted">
          {item.totalQuestions > 0 && <span>{item.totalQuestions} {translate('Q')}</span>}
          {item.totalQuestions > 0 && item.duration > 0 && <span>·</span>}
          {item.duration > 0 && <span>{translate('{count} min', { count: item.duration })}</span>}
@@ -118,18 +118,18 @@ const SubjectCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
       style={{ borderRadius: 14 }}
    >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
+      <div className="w-12 h-12 text-on-primary flex items-center justify-center bg-primary-600" style={{ borderRadius: 12 }}>
          <BookOpen className="w-6 h-6" />
       </div>
-      <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
+      <p className="text-[13px] font-extrabold text-content-primary leading-tight line-clamp-2">
          {translateData(item.name)}
       </p>
       {(item.quizCount > 0 || item.topicCount > 0) && (
-         <p className="text-[11px] font-semibold text-slate-400">
+         <p className="text-[11px] font-semibold text-content-muted">
             {item.topicCount > 0 ? translate('{count} Topics', { count: item.topicCount }) : translate('{count} Quizzes', { count: item.quizCount })}
          </p>
       )}
@@ -143,18 +143,18 @@ const TopicCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
       style={{ borderRadius: 14 }}
    >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
+      <div className="w-10 h-10 text-on-primary flex items-center justify-center bg-primary-600" style={{ borderRadius: 12 }}>
          <Layers className="w-5 h-5" />
       </div>
-      <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
+      <p className="text-[13px] font-extrabold text-content-primary leading-tight line-clamp-2">
          {translateData(item.name)}
       </p>
       {item.quizCount > 0 && (
-         <p className="text-[11px] font-semibold text-slate-400">{translate('{count} Quizzes', { count: item.quizCount })}</p>
+         <p className="text-[11px] font-semibold text-content-muted">{translate('{count} Quizzes', { count: item.quizCount })}</p>
       )}
    </div>
    );
@@ -162,22 +162,22 @@ const TopicCard = ({ item, onClick }) => {
 
 // ─── Reel Card ───
 const REEL_TYPE_CONFIG = {
-   question: { icon: HelpCircle, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Question' },
-   fact: { icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Fact' },
-   tip: { icon: Lightbulb, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Tip' },
-   current_affairs: { icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Current Affairs' },
-   poll: { icon: BarChart3, color: 'text-primary-600 dark:text-primary-300', bg: 'bg-primary-500/10', label: 'Poll' },
+   question: { icon: HelpCircle, color: 'text-content-primary', bg: 'bg-black/10 dark:bg-white/10', label: 'Question' },
+   fact: { icon: BookOpen, color: 'text-content-primary', bg: 'bg-black/10 dark:bg-white/10', label: 'Fact' },
+   tip: { icon: Lightbulb, color: 'text-content-primary', bg: 'bg-black/10 dark:bg-white/10', label: 'Tip' },
+   current_affairs: { icon: Newspaper, color: 'text-content-primary', bg: 'bg-black/10 dark:bg-white/10', label: 'Current Affairs' },
+   poll: { icon: BarChart3, color: 'text-primary-600', bg: '', label: 'Poll' },
 };
 
 // ─── Blog Card ───
 const BlogCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-0 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all overflow-hidden flex flex-col"
+      className="min-w-0 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all overflow-hidden flex flex-col"
       style={{ borderRadius: 14 }}
    >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-      <div className="w-full h-24 bg-slate-100 dark:bg-slate-800 overflow-hidden">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
+      <div className="w-full h-24 bg-background-surface-secondary overflow-hidden">
          {/* eslint-disable-next-line @next/next/no-img-element */}
          <img
             src={item.featuredImage || '/default_banner.png'}
@@ -186,13 +186,13 @@ const BlogCard = ({ item, onClick }) => (
          />
       </div>
       <div className="p-3.5 flex flex-col gap-1.5">
-         <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
+         <p className="text-[13px] font-extrabold text-content-primary leading-tight line-clamp-2">
             {item.title}
          </p>
          {item.excerpt && (
-            <p className="text-[11px] font-semibold text-slate-400 leading-snug line-clamp-2">{item.excerpt}</p>
+            <p className="text-[11px] font-semibold text-content-muted leading-snug line-clamp-2">{item.excerpt}</p>
          )}
-         <div className="flex items-center gap-3 mt-0.5 text-[11px] font-black text-slate-500 dark:text-slate-400">
+         <div className="flex items-center gap-3 mt-0.5 text-[11px] font-bold text-content-muted">
             <span className="flex items-center gap-1"><Eye className="w-3.5 h-3.5" /> {item.views || 0}</span>
             <span className="flex items-center gap-1"><Heart className="w-3.5 h-3.5" /> {item.likes || 0}</span>
          </div>
@@ -208,18 +208,18 @@ const ReelCard = ({ item, onClick }) => {
    return (
       <div
          onClick={onClick}
-         className="min-w-0 p-3.5 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col gap-2"
+         className="min-w-0 p-3.5 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all flex flex-col gap-2"
       style={{ borderRadius: 14 }}
       >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
-         <div className="flex items-center gap-1.5 self-start px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow rounded-lg">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
+         <div className="flex items-center gap-1.5 self-start px-2.5 py-1 text-on-primary rounded-lg bg-primary-600">
             <TypeIcon className="w-3.5 h-3.5" />
             <span className="text-[10px] font-extrabold uppercase tracking-wide">{translate(cfg.label)}</span>
          </div>
-         <p className="text-xs font-bold text-slate-900 dark:text-white leading-[1.4] line-clamp-3">
+         <p className="text-xs font-bold text-content-primary leading-[1.4] line-clamp-3">
             {item.questionText || item.factText || item.tipText || item.newsContent || item.pollQuestion || translate('Reel')}
          </p>
-         <div className="flex items-center gap-3 mt-auto text-slate-400">
+         <div className="flex items-center gap-3 mt-auto text-content-muted">
             <div className="flex items-center gap-1">
                <Heart className="w-3.5 h-3.5" />
                <span className="text-[11px] font-semibold">{item.likes || 0}</span>
@@ -355,30 +355,27 @@ const HomePage = () => {
    const totalTimeSpentSeconds = performanceReport?.totalTimeSpentSeconds ?? 0;
 
    return (
-      <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-2 xl:mt-4">
+      <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-4 xl:mt-6">
             {/* ── Scorecard hero ── */}
             <section className="px-0 py-2 xl:py-3">
-               <div className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-3 xl:p-5" style={{ borderRadius: 16 }}>
-                  <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-                  <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-                  <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
+               <div className="relative isolate overflow-hidden border border-border-primary p-3 xl:p-5 bg-background-surface" style={{ borderRadius: 16 }}>
 
                   <div className="grid grid-cols-1 xl:grid-cols-[240px_minmax(0,1fr)] gap-3 xl:gap-4">
                      {/* Readiness */}
-                     <div className="relative overflow-hidden flex flex-col justify-center gap-2 px-4 py-3 bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20" style={{ borderRadius: 12 }}>
+                     <div className="relative overflow-hidden flex flex-col justify-center gap-2 px-4 py-3 border border-border-primary" style={{ borderRadius: 12 }}>
                         <TrendingUp className="absolute -right-3 -bottom-3 w-20 h-20 text-primary-600/10 dark:text-white/10" />
                         <div className="relative flex items-center justify-between gap-2">
-                           <span className="text-[10px] xl:text-xs font-black uppercase tracking-[0.2em] text-slate-600 dark:text-white/75">{translate('Readiness')}</span>
+                           <span className="text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Readiness')}</span>
                            {streakCount > 0 && (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow" style={{ borderRadius: 999 }}>
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-on-primary bg-primary-600" style={{ borderRadius: 999 }}>
                                  <Flame className="w-3.5 h-3.5 fill-current" />
-                                 <span className="text-xs font-black">{streakCount}</span>
+                                 <span className="text-xs font-bold">{streakCount}</span>
                               </span>
                            )}
                         </div>
-                        <p className="relative text-4xl xl:text-5xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{overallReadiness}%</p>
-                        <div className="relative h-2 bg-primary-600/15 dark:bg-white/15 overflow-hidden" style={{ borderRadius: 999 }}>
-                           <div className="h-full bg-gradient-to-r from-primary-500 via-primary-300 to-primary-400" style={{ width: `${Math.min(100, Math.max(0, overallReadiness))}%` }} />
+                        <p className="relative text-4xl xl:text-5xl font-bold font-outfit leading-none text-primary-600">{overallReadiness}%</p>
+                        <div className="relative h-2 dark:bg-white/15 overflow-hidden" style={{ borderRadius: 999 }}>
+                           <div className="h-full bg-primary-600" style={{ width: `${Math.min(100, Math.max(0, overallReadiness))}%` }} />
                         </div>
                      </div>
 
@@ -394,10 +391,10 @@ const HomePage = () => {
                            { icon: Flame, value: formatSecondsSpent(dailyChallengeTimeSpentSeconds), label: 'Challenge Time' },
                            { icon: Film, value: formatSecondsSpent(reelTimeSpentSeconds), label: 'Reels Time' },
                         ].map(({ icon: Icon, value, label }, idx) => (
-                           <div key={idx} className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-slate-200 dark:ring-white/20 px-3 py-2.5 transition-colors" style={{ borderRadius: 10 }}>
+                           <div key={idx} className="relative overflow-hidden bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary px-3 py-2.5 transition-colors" style={{ borderRadius: 10 }}>
                               <Icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-primary-600/10 dark:text-white/10" />
-                              <p className="relative text-base xl:text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200 truncate">{value}</p>
-                              <p className="relative mt-1 text-[9px] xl:text-[10px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 leading-tight truncate">{translate(label)}</p>
+                              <p className="relative text-base xl:text-lg font-bold font-outfit leading-none text-primary-600 truncate">{value}</p>
+                              <p className="relative mt-1 text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 leading-tight truncate">{translate(label)}</p>
                            </div>
                         ))}
                      </div>
@@ -419,15 +416,15 @@ const HomePage = () => {
                      <button
                         key={path}
                         onClick={() => router.push(path)}
-                        className="group relative overflow-hidden flex items-center gap-2.5 p-2.5 xl:p-3 text-left bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] transition-all"
+                        className="group relative overflow-hidden flex items-center gap-2.5 p-2.5 xl:p-3 text-left bg-background-surface border border-border-primary hover:-translate-y-1 active:scale-[0.98] transition-all"
                         style={{ borderRadius: 12 }}
                      >
-                        <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
-                        <span className="ml-1 w-9 h-9 xl:w-10 xl:h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
+                        <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-primary-600" />
+                        <span className="ml-1 w-9 h-9 xl:w-10 xl:h-10 shrink-0 flex items-center justify-center text-on-primary group-hover:rotate-0 transition-transform bg-primary-600" style={{ borderRadius: 10 }}>
                            <Icon className="w-4 h-4 xl:w-5 xl:h-5" />
                         </span>
-                        <p className="flex-1 min-w-0 text-slate-900 dark:text-white text-[11px] xl:text-xs font-black uppercase tracking-wide leading-tight">{translate(label)}</p>
-                        <ChevronRight className="w-4 h-4 shrink-0 text-primary-600 dark:text-primary-300 group-hover:translate-x-0.5 transition-transform" />
+                        <p className="flex-1 min-w-0 text-content-primary text-[11px] xl:text-xs font-bold uppercase tracking-wide leading-tight">{translate(label)}</p>
+                        <ChevronRight className="w-4 h-4 shrink-0 text-primary-600 group-hover:translate-x-0.5 transition-transform" />
                      </button>
                   ))}
                </div>
@@ -438,7 +435,7 @@ const HomePage = () => {
                <SectionHeader
                   title={translate('Govt. Exams')}
                   icon={GraduationCap}
-                  iconColor="text-black dark:text-white"
+                  iconColor="text-content-primary"
                   iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/govt-exams')}
                />
@@ -454,7 +451,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No exams available')}</p>
+                     <p className="text-sm font-semibold text-content-muted text-center py-8">{translate('No exams available')}</p>
                   )
                }
             </section>
@@ -464,7 +461,7 @@ const HomePage = () => {
                <SectionHeader
                   title={translate('Quizzes')}
                   icon={Brain}
-                  iconColor="text-black dark:text-white"
+                  iconColor="text-content-primary"
                   iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/quizzes')}
                />
@@ -480,7 +477,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No quizzes available')}</p>
+                     <p className="text-sm font-semibold text-content-muted text-center py-8">{translate('No quizzes available')}</p>
                   )
                }
             </section>
@@ -490,7 +487,7 @@ const HomePage = () => {
                <SectionHeader
                   title={translate('Subjects')}
                   icon={BookOpen}
-                  iconColor="text-black dark:text-white"
+                  iconColor="text-content-primary"
                   iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/subjects')}
                />
@@ -506,7 +503,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No subjects available')}</p>
+                     <p className="text-sm font-semibold text-content-muted text-center py-8">{translate('No subjects available')}</p>
                   )
                }
             </section>
@@ -516,7 +513,7 @@ const HomePage = () => {
                <SectionHeader
                   title={translate('Topics')}
                   icon={Layers}
-                  iconColor="text-black dark:text-white"
+                  iconColor="text-content-primary"
                   iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/topics')}
                />
@@ -532,7 +529,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No topics available')}</p>
+                     <p className="text-sm font-semibold text-content-muted text-center py-8">{translate('No topics available')}</p>
                   )
                }
             </section>
@@ -542,7 +539,7 @@ const HomePage = () => {
                <SectionHeader
                   title={translate('Reels')}
                   icon={PlayCircle}
-                  iconColor="text-black dark:text-white"
+                  iconColor="text-content-primary"
                   iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/reels')}
                />
@@ -558,7 +555,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No reels available')}</p>
+                     <p className="text-sm font-semibold text-content-muted text-center py-8">{translate('No reels available')}</p>
                   )
                }
             </section>
@@ -568,7 +565,7 @@ const HomePage = () => {
                <SectionHeader
                   title={translate('Blogs')}
                   icon={FileText}
-                  iconColor="text-black dark:text-white"
+                  iconColor="text-content-primary"
                   iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/blog')}
                />
@@ -584,7 +581,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No blogs available')}</p>
+                     <p className="text-sm font-semibold text-content-muted text-center py-8">{translate('No blogs available')}</p>
                   )
                }
             </section>

@@ -11,7 +11,7 @@ import useTranslate from '../../hooks/useTranslate';
 
 const ContentLoading = () => {
   const { translate, translateData } = useTranslate();
-  return <div className="py-10 text-center text-sm font-bold text-slate-400">{translate('Loading topic content…')}</div>;
+  return <div className="py-10 text-center text-sm font-bold text-content-muted">{translate('Loading topic content…')}</div>;
 };
 
 const TopicDetailPage = dynamic(() => import('../../components/public/pages/TopicDetailPage'), {
@@ -73,41 +73,36 @@ export default function TopicDetail({
       />
 
       <div className="min-h-screen pb-12 font-outfit relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="py-4 xl:py-6 relative space-y-8">
           {/* Breadcrumb */}
-          <nav aria-label={translate('Breadcrumb')} className="pt-3 xl:pt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
-            <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
-            <span className="text-slate-400">/</span>
-            <Link href="/topics" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Topics')}</Link>
+          <nav aria-label={translate('Breadcrumb')} className="pt-3 xl:pt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.08em] flex-wrap">
+            <Link href="/" className="text-primary-600 hover:text-primary-600">{translate('Home')}</Link>
+            <span className="text-content-muted">/</span>
+            <Link href="/topics" className="text-primary-600 hover:text-primary-600">{translate('Topics')}</Link>
             {subjectName && topic?.subject?.slug && (
               <>
-                <span className="text-slate-400">/</span>
-                <Link href={`/subjects/${topic.subject.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translateData(subjectName)}</Link>
+                <span className="text-content-muted">/</span>
+                <Link href={`/subjects/${topic.subject.slug}`} className="text-primary-600 hover:text-primary-600">{translateData(subjectName)}</Link>
               </>
             )}
-            <span className="text-slate-400">/</span>
-            <span className="text-slate-600 dark:text-slate-400 truncate max-w-[60%]">{translateData(topicName)}</span>
+            <span className="text-content-muted">/</span>
+            <span className="text-content-secondary truncate max-w-[60%]">{translateData(topicName)}</span>
           </nav>
 
           {/* Hero — server-rendered for crawlers */}
-          <header className="relative overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-3 md:p-6 xl:p-8" style={{ borderRadius: 16 }}>
-            <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-            <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-            <div className="pointer-events-none absolute -bottom-28 right-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+          <header className="relative overflow-hidden border border-border-primary p-3 md:p-6 xl:p-8 bg-background-surface" style={{ borderRadius: 16 }}>
             <div className="relative">
-            <span className="block text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest mb-2">{subjectName ? translate('Topic · {name}', { name: translateData(subjectName) }) : translate('Topic')}</span>
+            <span className="block text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] mb-2">{subjectName ? translate('Topic · {name}', { name: translateData(subjectName) }) : translate('Topic')}</span>
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
-                <h1 className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
+                <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold text-content-primary tracking-tight mb-3">
                   {translateData(topicName)}
                 </h1>
               </div>
               <BookmarkButton type="topic" id={topic?._id || topic?.slug} variant="pill" className="shrink-0" />
             </div>
-            <p className="text-md xl:text-lg font-bold text-slate-600 dark:text-white/80 leading-relaxed max-w-3xl">
+            <p className="text-md xl:text-lg font-bold text-content-secondary dark:text-white/80 leading-relaxed max-w-3xl">
               {topic?.description ? topic.description.slice(0, 220) : `Free ${topicName} practice MCQs and study notes for government competitive exams.`}
             </p>
           </div>
@@ -115,11 +110,11 @@ export default function TopicDetail({
 
           {/* About — long-form intro server-side */}
           {aboutText && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
-              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-3xl px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                 {translate('About {name}', { name: translateData(topicName) })}
               </h2>
-              <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
+              <div className="prose prose-slate dark:prose-invert max-w-none text-content-secondary font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                 {aboutText}
               </div>
             </section>
@@ -130,15 +125,15 @@ export default function TopicDetail({
 
           {/* FAQ — server-rendered for SEO + schema */}
           {faqs.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
-              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-3xl px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                 {translate('Frequently Asked Questions')}
               </h2>
               <div className="space-y-2 xl:space-y-4">
                 {faqs.map((f, i) => (
-                  <details key={i} className="group bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-5 cursor-pointer">
-                    <summary className="font-black text-slate-900 dark:text-white text-base xl:text-lg uppercase tracking-tight">{f.question}</summary>
-                    <p className="mt-3 text-slate-600 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
+                  <details key={i} className="group bg-background-surface-secondary rounded-2xl border border-border-primary p-5 cursor-pointer">
+                    <summary className="font-bold text-content-primary text-base xl:text-lg tracking-tight">{f.question}</summary>
+                    <p className="mt-3 text-content-secondary font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
                   </details>
                 ))}
               </div>
@@ -148,14 +143,14 @@ export default function TopicDetail({
           {/* Practice quizzes — server-rendered so quiz pages get real inbound
               links instead of existing only in the sitemap. */}
           {relatedQuizzes.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
-              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-3xl px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                 {translate('{name} Practice Quizzes', { name: translateData(topicName) })}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {relatedQuizzes.map((q) => (
-                  <Link key={q.slug} href={`/quiz/${q.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
-                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-snug">{translateData(q.title)}</div>
+                  <Link key={q.slug} href={`/quiz/${q.slug}`} className="group block bg-background-surface-secondary rounded-2xl p-4 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition">
+                    <div className="text-sm font-bold text-content-primary group-hover:text-primary-600 transition leading-snug">{translateData(q.title)}</div>
                   </Link>
                 ))}
               </div>
@@ -164,14 +159,14 @@ export default function TopicDetail({
 
           {/* Sibling topics — internal linking */}
           {siblingTopics.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
-              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-3xl px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                 {translate('More {name} Topics', { name: translateData(subjectName) || translate('Related') })}
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
                 {siblingTopics.map((t) => (
-                  <Link key={t.slug} href={`/topics/${t.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
-                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-tight">{translateData(t.name)}</div>
+                  <Link key={t.slug} href={`/topics/${t.slug}`} className="group block bg-background-surface-secondary rounded-2xl p-4 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition">
+                    <div className="text-sm font-bold text-content-primary group-hover:text-primary-600 transition leading-tight">{translateData(t.name)}</div>
                   </Link>
                 ))}
               </div>

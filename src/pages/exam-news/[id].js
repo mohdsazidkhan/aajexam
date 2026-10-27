@@ -74,42 +74,39 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
       <div className="py-0 xl:py-6 space-y-3 xl:space-y-4">
         <div className="flex justify-end"><BackButton onClick={() => router.push('/exam-news')}><ArrowLeft className="w-4 h-4" /> {translate('Back')}</BackButton></div>
 
-        <header className="z-auto relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-4 xl:p-6 space-y-2" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-          <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 space-y-2 bg-background-surface" style={{ borderRadius: 16 }}>
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-[9px] font-black text-black dark:text-white uppercase">{news.type?.replace('_', ' ')}</span>
-            {news.exam?.name && <span className="text-[10px] font-bold text-slate-500 dark:text-white/60">{news.exam.name}</span>}
-            <span className="text-[10px] text-slate-500 dark:text-white/60"><Eye className="w-3 h-3 inline" /> {news.views}</span>
+            <span className="px-2 py-0.5 bg-background-surface-secondary rounded text-[9px] font-bold text-content-primary uppercase">{news.type?.replace('_', ' ')}</span>
+            {news.exam?.name && <span className="text-[10px] font-bold text-content-muted dark:text-white/60">{news.exam.name}</span>}
+            <span className="text-[10px] text-content-muted dark:text-white/60"><Eye className="w-3 h-3 inline" /> {news.views}</span>
           </div>
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0 flex-1">
-              <h1 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white">{news.title}</h1>
+              <h1 className="text-2xl xl:text-3xl font-bold text-content-primary">{news.title}</h1>
             </div>
             <BookmarkButton type="news" id={news._id || news.slug} variant="pill" className="shrink-0" />
           </div>
         </header>
 
         {news.importantDates?.length > 0 && (
-          <Card as="section" className="space-y-2 bg-slate-100 dark:bg-slate-800">
-            <h2 className="text-sm font-black text-black dark:text-white">{translate('Important Dates')}</h2>
+          <Card as="section" className="space-y-2 bg-background-surface-secondary">
+            <h2 className="text-sm font-bold text-content-primary">{translate('Important Dates')}</h2>
             {news.importantDates.map((d, i) => (
               <div key={i} className="flex justify-between text-xs">
-                <span className="font-bold text-slate-600">{d.label}</span>
-                <span className="font-black text-black dark:text-white">{new Date(d.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                <span className="font-bold text-content-secondary">{d.label}</span>
+                <span className="font-bold text-content-primary">{new Date(d.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
               </div>
             ))}
           </Card>
         )}
 
         <Card className="">
-          <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">{news.content}</p>
+          <p className="text-sm text-content-secondary leading-relaxed whitespace-pre-line">{news.content}</p>
         </Card>
 
         {news.officialLink && (
           <a href={news.officialLink} target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-bold text-primary-600 dark:text-primary-300 hover:underline">
+            className="flex items-center gap-2 text-sm font-bold text-primary-600 hover:underline">
             <ExternalLink className="w-4 h-4" /> Official Website
           </a>
         )}

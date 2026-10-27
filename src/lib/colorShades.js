@@ -87,7 +87,7 @@ const SHADE_WEIGHTS = {
   300: 0.55,
   400: 0.28,
   500: 0,
-  600: 0.13,
+  600: 0, // the exact theme colour; 700+ darken from here (hover / pressed)
   700: 0.28,
   800: 0.42,
   900: 0.55,
@@ -168,11 +168,16 @@ export function generatePrimaryShades(baseHex, enforceContrast = false, whiteTex
 export function applyPrimaryColor(hex, enforceContrast = false, whiteTextOnly = false) {
   if (typeof document === 'undefined') return;
   const root = document.documentElement;
+  // Text that sits on a solid primary fill: white, except on very light colours (yellow, lime ...)
+  // where white would be unreadable.
+  const rgb = hexToRgb(hex);
+  root.style.setProperty('--on-primary', contrastOnWhite(rgb) < 2.2 ? '#09090b' : '#ffffff');
   Object.entries(generatePrimaryShades(hex, enforceContrast, whiteTextOnly)).forEach(([stop, value]) => {
     root.style.setProperty(`--color-primary-${stop}`, value);
   });
 }
 
 export function applyThemeForMode(themeId, isDark) {
-  applyPrimaryColor(getThemeHex(themeId, isDark), !isDark, isDark);
+  // exact theme colour in both modes (no contrast darkening); text on fills uses --on-primary
+  applyPrimaryColor(getThemeHex(themeId, isDark), false, false);
 }

@@ -219,57 +219,57 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Back */}
       <section className="hidden xl:flex items-center justify-end pt-4">
-        <Button variant="primary" size="sm" onClick={() => router.back()} className="font-black">
+        <Button variant="primary" size="sm" onClick={() => router.back()} className="font-bold">
           <ArrowLeft className="w-5 h-5" /> GO BACK
         </Button>
       </section>
 
       {/* Exam Hero */}
-      <Card className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10 overflow-hidden relative">
+      <Card className="text-content-primary border-none border border-border-primary overflow-hidden relative bg-background-surface">
         <header className="relative z-10 space-y-3">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
+          <div className="inline-flex items-center gap-2 text-on-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[0.08em] bg-primary-600">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
           </div>
-          <h1 className="text-xl md:text-2xl xl:text-4xl font-black uppercase tracking-tight">{translate('{name} Preparation', { name: translateData(examName) })}</h1>
-          {exam?.code && <p className="text-slate-600 dark:text-primary-100 font-black text-lg opacity-80">{translate('Code: {code}', { code: exam.code })}</p>}
+          <h1 className="text-xl md:text-2xl xl:text-4xl font-bold tracking-tight">{translate('{name} Preparation', { name: translateData(examName) })}</h1>
+          {exam?.code && <p className="text-content-secondary dark:text-primary-100 font-bold text-lg opacity-80">{translate('Code: {code}', { code: exam.code })}</p>}
           <div className="flex flex-wrap gap-2 pt-2">
             {subjects.length > 0 && (
-              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
+              <span className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg">
                 <BookOpen className="w-3.5 h-3.5" /> {translate('{count} Subjects', { count: subjects.length })}
               </span>
             )}
             {topics.length > 0 && (
-              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
+              <span className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg">
                 <FolderOpen className="w-3.5 h-3.5" /> {translate('{count} Topics', { count: topics.length })}
               </span>
             )}
-            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
+            <span className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg">
               <FileText className="w-3.5 h-3.5" /> {translate('{count} Tests', { count: practiceTests.length })}
             </span>
-            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
+            <span className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg">
               <History className="w-3.5 h-3.5" /> {pyqs.length} PYQ&apos;s
             </span>
-            <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
+            <span className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg">
               <BrainCircuit className="w-3.5 h-3.5" /> {translate('{count} Quizzes', { count: quizzes.length })}
             </span>
             {questionCount > 0 && (
-              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/80 dark:bg-white/20 px-3 py-1.5 rounded-lg">
+              <span className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg">
                 <ListChecks className="w-3.5 h-3.5" /> {translate('{count} Questions', { count: questionCount })}
               </span>
             )}
           </div>
         </header>
-        <Target className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-slate-900/10 dark:text-white/10 -rotate-12" />
+        <Target className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-slate-900/10 dark:text-white/10" />
       </Card>
 
       {/* About / SEO long-form intro — server-rendered for crawlers */}
       {aboutText && (
-        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
-          <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <FileText className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+        <Card as="section" className="border border-border-primary">
+          <h2 className="text-lg xl:text-2xl font-bold text-content-primary mb-4 tracking-tight flex items-center gap-3">
+            <FileText className="w-5 h-5 text-primary-600" />
             {translate('About {name}', { name: translateData(examName) })}
           </h2>
-          <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-sm xl:text-base whitespace-pre-line">
+          <div className="prose prose-slate dark:prose-invert max-w-none text-content-secondary font-medium leading-relaxed text-sm xl:text-base whitespace-pre-line">
             {aboutText}
           </div>
         </Card>
@@ -277,29 +277,29 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Exam Information — eligibility, age limit, selection process, salary */}
       {facts && (
-        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
-          <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight flex items-center gap-3">
-            <Info className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+        <Card as="section" className="border border-border-primary">
+          <h2 className="text-lg xl:text-2xl font-bold text-content-primary mb-1 tracking-tight flex items-center gap-3">
+            <Info className="w-5 h-5 text-primary-600" />
             {translate('{name} Exam Information', { name: translateData(examName) })}
           </h2>
-          <p className="text-[11px] font-bold text-black dark:text-white mb-4 uppercase tracking-wide">
+          <p className="text-[11px] font-bold text-content-primary mb-4 uppercase tracking-wide">
             {translate('Sourced {date} — verify against the official notification before relying on this to apply', { date: EXAM_FACTS_SOURCED_DATE })}
           </p>
           <dl className="grid sm:grid-cols-2 gap-4 text-sm">
             <div>
-              <dt className="font-black text-content-muted text-xs uppercase mb-1">{translate('Age Limit')}</dt>
+              <dt className="font-bold text-content-muted text-xs uppercase mb-1">{translate('Age Limit')}</dt>
               <dd className="font-medium text-content-primary">{facts.age}</dd>
             </div>
             <div>
-              <dt className="font-black text-content-muted text-xs uppercase mb-1">{translate('Eligibility / Qualification')}</dt>
+              <dt className="font-bold text-content-muted text-xs uppercase mb-1">{translate('Eligibility / Qualification')}</dt>
               <dd className="font-medium text-content-primary">{facts.qualification}</dd>
             </div>
             <div>
-              <dt className="font-black text-content-muted text-xs uppercase mb-1">{translate('Selection Process')}</dt>
+              <dt className="font-bold text-content-muted text-xs uppercase mb-1">{translate('Selection Process')}</dt>
               <dd className="font-medium text-content-primary">{facts.selection}</dd>
             </div>
             <div>
-              <dt className="font-black text-content-muted text-xs uppercase mb-1">{translate('Salary')}</dt>
+              <dt className="font-bold text-content-muted text-xs uppercase mb-1">{translate('Salary')}</dt>
               <dd className="font-medium text-content-primary">{facts.salary}</dd>
             </div>
           </dl>
@@ -308,22 +308,22 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Exam Pattern - straight from the exam's real test patterns */}
       {patterns.length > 0 && (
-        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
-          <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <Clock className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+        <Card as="section" className="border border-border-primary">
+          <h2 className="text-lg xl:text-2xl font-bold text-content-primary mb-4 tracking-tight flex items-center gap-3">
+            <Clock className="w-5 h-5 text-primary-600" />
             {translate('{name} Exam Pattern', { name: translateData(examName) })}
           </h2>
           <div className="space-y-6">
             {patterns.map((pt) => (
               <article key={pt._id} className="space-y-2">
-                <h3 className="text-base font-black text-content-primary">{pt.title}</h3>
+                <h3 className="text-base font-bold text-content-primary">{pt.title}</h3>
                 <p className="text-sm font-medium text-content-muted">
                   {pt.duration} min · {pt.totalMarks} marks · {pt.negativeMarking > 0 ? `${pt.negativeMarking} negative marking per wrong answer` : 'no negative marking'}
                 </p>
                 {pt.sections?.length > 0 && (
                   <div className="overflow-x-auto">
-                    <table className="w-full text-sm text-left border border-slate-200 dark:border-slate-800">
-                      <thead className="bg-slate-50 dark:bg-slate-800/50 text-xs uppercase">
+                    <table className="w-full text-sm text-left border border-border-primary">
+                      <thead className="bg-background-surface-secondary text-xs uppercase border-b border-border-primary">
                         <tr>
                           <th className="p-2">Section</th>
                           <th className="p-2">Questions</th>
@@ -332,9 +332,9 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                           <th className="p-2">Time</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody className="divide-y divide-border-primary">
                         {pt.sections.map((sec, i) => (
-                          <tr key={i} className="border-t border-slate-200 dark:border-slate-800">
+                          <tr key={i}>
                             <td className="p-2 font-bold">{sec.name}</td>
                             <td className="p-2">{sec.totalQuestions}</td>
                             <td className="p-2">{sec.marksPerQuestion}</td>
@@ -354,15 +354,15 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Latest updates and important dates - from published exam news */}
       {examNews.length > 0 && (
-        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
-          <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <Newspaper className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+        <Card as="section" className="border border-border-primary">
+          <h2 className="text-lg xl:text-2xl font-bold text-content-primary mb-4 tracking-tight flex items-center gap-3">
+            <Newspaper className="w-5 h-5 text-primary-600" />
             {translate('{name} Latest Updates', { name: translateData(examName) })}
           </h2>
           <ul className="space-y-4">
             {examNews.map((n) => (
               <li key={n.slug} className="space-y-1">
-                <Link href={`/exam-news/${n.slug}`} className="text-sm font-black text-primary-600 dark:text-primary-300 hover:underline">{n.title}</Link>
+                <Link href={`/exam-news/${n.slug}`} className="text-sm font-bold text-primary-600 hover:underline">{n.title}</Link>
                 <p className="text-[11px] font-bold text-content-muted uppercase">{n.type.replace('_', ' ')} · {new Date(n.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}</p>
                 {n.importantDates?.length > 0 && (
                   <ul className="text-xs font-medium text-content-primary flex flex-wrap gap-x-4 gap-y-1">
@@ -379,19 +379,19 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Previous year papers by year */}
       {pyqYears.length > 0 && exam?.slug && (
-        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
-          <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <History className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+        <Card as="section" className="border border-border-primary">
+          <h2 className="text-lg xl:text-2xl font-bold text-content-primary mb-4 tracking-tight flex items-center gap-3">
+            <History className="w-5 h-5 text-primary-600" />
             {translate('{name} Previous Year Papers', { name: translateData(examName) })}
           </h2>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm text-left border border-slate-200 dark:border-slate-800">
-              <thead className="bg-slate-50 dark:bg-slate-800/50 text-xs uppercase">
+            <table className="w-full text-sm text-left border border-border-primary">
+              <thead className="bg-background-surface-secondary text-xs uppercase border-b border-border-primary">
                 <tr><th className="p-2">{translate('Year')}</th><th className="p-2">{translate('Papers / shifts')}</th><th className="p-2">{translate('Questions')}</th></tr>
               </thead>
-              <tbody>
+              <tbody className="divide-y divide-border-primary">
                 {pyqYears.map((y) => (
-                  <tr key={y.year} className="border-t border-slate-200 dark:border-slate-800">
+                  <tr key={y.year}>
                     <td className="p-2 font-bold">{y.year}</td>
                     <td className="p-2">{y.papers}</td>
                     <td className="p-2">{y.questions}</td>
@@ -400,7 +400,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               </tbody>
             </table>
           </div>
-          <Link href={`/pyq/${exam.slug}`} className="inline-block mt-3 text-sm font-black text-primary-600 dark:text-primary-300 hover:underline">
+          <Link href={`/pyq/${exam.slug}`} className="inline-block mt-3 text-sm font-bold text-primary-600 hover:underline">
             {translate('View all {name} PYQ papers →', { name: translateData(examName) })}
           </Link>
         </Card>
@@ -408,34 +408,34 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Syllabus & Subjects */}
       {subjectAreas.length > 0 && (
-        <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
-          <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <ListChecks className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+        <Card as="section" className="border border-border-primary">
+          <h2 className="text-lg xl:text-2xl font-bold text-content-primary mb-4 tracking-tight flex items-center gap-3">
+            <ListChecks className="w-5 h-5 text-primary-600" />
             {translate('{name} Syllabus & Subjects', { name: translateData(examName) })}
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {subjects.length > 0 ? subjects.map((subject) => (
-              <div key={subject._id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3 p-3 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+              <div key={subject._id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3 p-3 rounded-lg xl:rounded-xl bg-background-surface-secondary border border-border-primary">
                 <span className="text-sm font-bold text-content-primary">{translateData(subject.name)}</span>
                 {subject.slug ? (
                   <button
                     onClick={() => router.push(subject.hasSeries ? `/practice/${exam.slug}/${subject.slug}` : `/subjects/${subject.slug}`)}
-                    className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
+                    className="text-[10px] font-bold text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
                   >
                     {translate('Practice {name} Questions →', { name: translateData(subject.name) })}
                   </button>
                 ) : (
-                  <button onClick={() => setActiveTab('quizzes')} className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap">
+                  <button onClick={() => setActiveTab('quizzes')} className="text-[10px] font-bold text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap">
                     {translate('Practice Questions →')}
                   </button>
                 )}
               </div>
             )) : subjectAreas.map((subject) => (
-              <div key={subject} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3 p-3 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+              <div key={subject} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3 p-3 rounded-lg xl:rounded-xl bg-background-surface-secondary border border-border-primary">
                 <span className="text-sm font-bold text-content-primary">{subject}</span>
                 <button
                   onClick={() => setActiveTab('quizzes')}
-                  className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
+                  className="text-[10px] font-bold text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
                 >
                   {translate('Practice {name} Questions →', { name: subject })}
                 </button>
@@ -446,20 +446,20 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       )}
 
       {/* Tabs */}
-      <div className="flex gap-2 overflow-x-auto no-scrollbar sticky top-16 xl:top-20 z-20 backdrop-blur-xl py-3 -mx-4 px-4 border-b border-slate-100 dark:border-slate-800/50">
+      <div className="flex gap-2 overflow-x-auto no-scrollbar sticky top-16 xl:top-20 z-20 py-3 -mx-4 px-4 border-b border-border-primary">
         {tabs.map(tab => (
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 shrink-0 ${
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-bold uppercase text-xs whitespace-nowrap transition-all border-b-2 shrink-0 ${
               activeTab === tab.key
-                ? 'bg-primary-600 text-white border-primary-600'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700'
+                ? 'bg-primary-600 text-on-primary border-primary-600'
+                : 'bg-background-surface-secondary text-content-secondary border-border-primary'
             }`}
           >
             <tab.icon className="w-3.5 h-3.5" />
             {translate(tab.label)}
-            <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-black/20' : 'bg-slate-200 dark:bg-slate-700 dark:text-slate-200'}`}>
+            <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-black/20' : 'bg-background-surface-secondary dark:text-slate-200'}`}>
               {tab.count}
             </span>
           </button>
@@ -472,7 +472,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           {subjects.length === 0 ? (
             <div className="col-span-full py-16 text-center space-y-3">
               <BookOpen className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
-              <p className="text-sm font-bold text-slate-400">{translate('No subjects available yet')}</p>
+              <p className="text-sm font-bold text-content-muted">{translate('No subjects available yet')}</p>
             </div>
           ) : (
             paged(subjects).map((subject, idx) => (
@@ -483,18 +483,18 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     if (!subject.slug) return setActiveTab('quizzes');
                     router.push(subject.hasSeries ? `/practice/${exam.slug}/${subject.slug}` : `/subjects/${subject.slug}`);
                   }}
-                  className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
+                  className="group h-full border border-border-primary hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">{sno(idx)}</div>
+                    <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 text-on-primary text-xs xl:text-base font-bold tabular-nums">{sno(idx)}</div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(subject.name)}</h3>
+                      <h3 className="text-sm font-bold text-content-primary uppercase truncate">{translateData(subject.name)}</h3>
                       <p className="text-xs font-bold text-content-muted">
                         {subject.quizCount} {subject.quizCount === 1 ? 'set' : 'sets'} · {subject.questionCount} Qs
                       </p>
                     </div>
                   </div>
-                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
+                  <span className="mt-auto text-center text-[10px] font-bold text-primary-600 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
                     {translate('Practice {name} →', { name: translateData(subject.name) })}
                   </span>
                 </Card>
@@ -509,7 +509,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           {topics.length === 0 ? (
             <div className="col-span-full py-16 text-center space-y-3">
               <FolderOpen className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
-              <p className="text-sm font-bold text-slate-400">{translate('No topics available yet')}</p>
+              <p className="text-sm font-bold text-content-muted">{translate('No topics available yet')}</p>
             </div>
           ) : (
             paged(topics).map((topic, idx) => (
@@ -520,17 +520,17 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     if (!topic.slug) return setActiveTab('quizzes');
                     router.push(topic.hasSeries && topic.subjectSlug ? `/practice/${exam.slug}/${topic.subjectSlug}/${topic.slug}` : `/topics/${topic.slug}`);
                   }}
-                  className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
+                  className="group h-full border border-border-primary hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">{sno(idx)}</div>
+                    <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 text-on-primary text-xs xl:text-base font-bold tabular-nums">{sno(idx)}</div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(topic.name)}</h3>
+                      <h3 className="text-sm font-bold text-content-primary uppercase truncate">{translateData(topic.name)}</h3>
                       <p className="text-xs font-bold text-content-muted truncate">{topic.subjectName}</p>
                     </div>
                   </div>
                   <p className="text-xs font-bold text-content-muted">{topic.quizCount} {topic.quizCount === 1 ? translate('set') : translate('sets')} · {topic.questionCount} {translate('Qs')}</p>
-                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
+                  <span className="mt-auto text-center text-[10px] font-bold text-primary-600 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
                     {translate('Practice {name} →', { name: translateData(topic.name) })}
                   </span>
                 </Card>
@@ -550,7 +550,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
             {list.length === 0 ? (
               <div className="col-span-full py-16 text-center space-y-3">
                 <EmptyIcon className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
-                <p className="text-sm font-bold text-slate-400">{emptyText}</p>
+                <p className="text-sm font-bold text-content-muted">{emptyText}</p>
               </div>
             ) : (
               paged(list).map((test, idx) => {
@@ -558,11 +558,11 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 const pyqMeta = isPyqTab && (test.pyqYear || test.pyqShift || test.pyqExamName);
                 return (
                   <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
-                    <Card as="section" className={`group h-full border-2 transition-all p-4 overflow-hidden flex flex-col gap-3 ${isCompleted ? 'border-primary-200 dark:border-primary-600' : 'border-slate-200 dark:border-slate-800 hover:border-primary-700'}`}>
+                    <Card as="section" className={`group h-full border transition-all p-4 overflow-hidden flex flex-col gap-3 ${isCompleted ? 'border-primary-200 dark:border-primary-600' : 'border-border-primary hover:border-primary-700'}`}>
                       <div className="flex items-center gap-3">
-                        <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">{sno(idx)}</div>
+                        <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 text-on-primary text-xs xl:text-base font-bold tabular-nums">{sno(idx)}</div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(test.title)}</h3>
+                          <h3 className="text-sm font-bold text-content-primary uppercase truncate">{translateData(test.title)}</h3>
                           <p className="text-xs font-bold text-content-muted">
                             {test.questionCount || 0} Q · {test.totalMarks || 0} marks · {formatDuration(test.duration || 60)}
                           </p>
@@ -573,12 +573,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                           <p className="text-xs font-bold text-content-muted truncate">{test.examPattern.title}</p>
                         )}
                         {pyqMeta && (
-                          <p className="text-[10px] font-black text-black dark:text-white uppercase">
+                          <p className="text-[10px] font-bold text-content-primary uppercase">
                             {[test.pyqExamName, test.pyqYear, test.pyqShift].filter(Boolean).join(' · ')}
                           </p>
                         )}
                         {isCompleted && test.userAttempt && (
-                          <p className="text-xs font-bold text-primary-600 dark:text-primary-300">
+                          <p className="text-xs font-bold text-primary-600">
                             {translate('Score: {score} · Accuracy: {accuracy}%', { score: fmtNum(test.userAttempt.score), accuracy: Math.round(test.userAttempt.accuracy || 0) })}
                           </p>
                         )}
@@ -586,12 +586,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                       <div className="flex gap-2">
                         {isCompleted && (
                           <button onClick={() => router.push(`/govt-exams/test/${test.slug}/result?attempt=${test.userAttempt._id}`)}
-                            className="flex-1 text-[10px] font-black text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
+                            className="flex-1 text-[10px] font-bold text-primary-600 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
                             {translate('Results')}
                           </button>
                         )}
                         <button onClick={() => router.push(`/govt-exams/test/${test.slug || test._id}/start`)}
-                          className={`flex-1 text-[10px] font-black px-4 py-2 rounded-lg xl:rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-600'}`}>
+                          className={`flex-1 text-[10px] font-bold px-4 py-2 rounded-lg xl:rounded-xl uppercase ${isCompleted ? 'text-content-secondary bg-background-surface-secondary' : 'text-on-primary bg-primary-600'}`}>
                           {isCompleted ? translate('Retake') : translate('Start')}
                         </button>
                       </div>
@@ -609,22 +609,22 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           {quizzes.length === 0 ? (
             <div className="col-span-full py-16 text-center space-y-3">
               <BrainCircuit className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
-              <p className="text-sm font-bold text-slate-400">{translate('No quizzes available yet')}</p>
+              <p className="text-sm font-bold text-content-muted">{translate('No quizzes available yet')}</p>
             </div>
           ) : (
             paged(quizzes).map((quiz, idx) => {
-              const diffColor = quiz.difficulty === 'easy' ? 'text-primary-600 bg-primary-50' : quiz.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800';
+              const diffColor = quiz.difficulty === 'easy' ? 'text-primary-600' : quiz.difficulty === 'hard' ? 'text-content-primary bg-background-surface-secondary' : 'text-content-primary bg-background-surface-secondary';
               return (
                 <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                   <Card as="section"
                     hoverable
                     onClick={() => router.push(`/quiz/${quiz.slug}`)}
-                    className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
+                    className="group h-full border border-border-primary hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">{sno(idx)}</div>
+                      <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 text-on-primary text-xs xl:text-base font-bold tabular-nums">{sno(idx)}</div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(quiz.title)}</h3>
+                        <h3 className="text-sm font-bold text-content-primary uppercase truncate">{translateData(quiz.title)}</h3>
                         <p className="text-xs font-bold text-content-muted truncate">
                           {translateData(quiz.subject?.name) || ''}{quiz.topic?.name ? ` · ${translateData(quiz.topic.name)}` : ''}
                         </p>
@@ -632,8 +632,8 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     </div>
                     <p className="text-xs font-bold text-content-muted">{translate('{duration} min · {marks} marks', { duration: quiz.duration, marks: quiz.totalMarks })}</p>
                     <div className="flex items-center gap-2 mt-auto">
-                        <span className={`text-[10px] font-black px-2 py-1 rounded-lg capitalize ${diffColor}`}>{quiz.difficulty}</span>
-                        <span className="flex-1 text-center text-[10px] font-black text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">{translate('Start')}</span>
+                        <span className={`text-[10px] font-bold px-2 py-1 rounded-lg capitalize ${diffColor}`}>{quiz.difficulty}</span>
+                        <span className="flex-1 text-center text-[10px] font-bold text-primary-600 px-3 py-2 rounded-lg xl:rounded-xl uppercase">{translate('Start')}</span>
                       </div>
                   </Card>
                 </motion.div>
@@ -648,9 +648,9 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       )}
 
       {/* How to Prepare */}
-      <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
-        <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-          <GraduationCap className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+      <Card as="section" className="border border-border-primary">
+        <h2 className="text-lg xl:text-2xl font-bold text-content-primary mb-4 tracking-tight flex items-center gap-3">
+          <GraduationCap className="w-5 h-5 text-primary-600" />
           {translate('How to Prepare for {name}', { name: translateData(examName) })}
         </h2>
         <ol className="space-y-2 text-sm font-medium text-content-primary list-decimal list-inside">
@@ -666,9 +666,9 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </Card>
 
       {/* Related Searches */}
-      <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
-        <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-          <Search className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+      <Card as="section" className="border border-border-primary">
+        <h2 className="text-lg xl:text-2xl font-bold text-content-primary mb-4 tracking-tight flex items-center gap-3">
+          <Search className="w-5 h-5 text-primary-600" />
           {translate('Related Searches')}
         </h2>
         <p className="text-sm font-medium text-content-muted leading-relaxed">
@@ -684,15 +684,15 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </Card>
 
       {/* FAQ — rendered visibly to match the FAQ structured data above */}
-      <Card as="section" className="border-2 border-slate-100 dark:border-slate-800">
-        <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-          <HelpCircle className="w-5 h-5 text-primary-600 dark:text-primary-300" />
+      <Card as="section" className="border border-border-primary">
+        <h2 className="text-lg xl:text-2xl font-bold text-content-primary mb-4 tracking-tight flex items-center gap-3">
+          <HelpCircle className="w-5 h-5 text-primary-600" />
           {translate('Frequently Asked Questions')}
         </h2>
         <div className="space-y-2 xl:space-y-4">
           {faqItems.map((item) => (
-            <div key={item.question} className="border-b border-slate-100 dark:border-slate-800 pb-4 last:border-0 last:pb-0">
-              <p className="text-sm font-black text-content-primary mb-1">{item.tq || item.question}</p>
+            <div key={item.question} className="border-b border-border-primary pb-4 last:border-0 last:pb-0">
+              <p className="text-sm font-bold text-content-primary mb-1">{item.tq || item.question}</p>
               <p className="text-sm font-medium text-content-muted leading-relaxed">{item.ta || item.answer}</p>
             </div>
           ))}
@@ -701,15 +701,15 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Contextual registration CTA — only for logged-out visitors */}
       {!isAuthenticated() && (
-        <Card as="section" className="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white border-none shadow-xl ring-1 ring-slate-200 dark:ring-white/10">
+        <Card as="section" className="text-content-primary border-none border border-border-primary bg-background-surface">
           <div className="flex items-start gap-4">
             <UserPlus className="w-8 h-8 shrink-0" />
             <div>
-              <h3 className="text-base xl:text-lg font-black uppercase tracking-tight mb-1">{translate('Want to save your progress?')}</h3>
-              <p className="text-sm font-medium text-slate-700 dark:text-white/90 mb-4">
+              <h3 className="text-base xl:text-lg font-bold tracking-tight mb-1">{translate('Want to save your progress?')}</h3>
+              <p className="text-sm font-medium text-content-secondary dark:text-white/90 mb-4">
                 {translate('Create a free AajExam account to save your {name} practice history, track your accuracy over time, and pick up any test where you left off.', { name: translateData(examName) })}
               </p>
-              <Button variant="secondary" size="sm" onClick={() => router.push('/register')} className="font-black">
+              <Button variant="secondary" size="sm" onClick={() => router.push('/register')} className="font-bold">
                 {translate('Create Free Account')}
               </Button>
             </div>

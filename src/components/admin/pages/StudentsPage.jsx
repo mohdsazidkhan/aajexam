@@ -212,10 +212,10 @@ const StudentsPage = () => {
 
   const getStatusBadge = (status) => {
     const statusConfig = {
-      FREE: 'bg-gray-100 text-gray-800 dark:bg-slate-900 dark:text-gray-200',
-      PRO: 'bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200'
+      FREE: 'bg-background-surface-secondary text-content-primary',
+      PRO: 'text-primary-600 dark:bg-primary-600 dark:text-primary-600'
     };
-    return statusConfig[status] || 'bg-gray-100 text-gray-800 dark:bg-slate-900 dark:text-gray-200';
+    return statusConfig[status] || 'bg-background-surface-secondary text-content-primary';
   };
 
   const filterOptions = {
@@ -238,7 +238,7 @@ const StudentsPage = () => {
         const studentIndex = students?.findIndex(s => s?._id === student?._id);
         const serialNumber = studentIndex >= 0 ? ((currentPage - 1) * itemsPerPage) + studentIndex + 1 : 1;
         return (
-          <div className="text-sm text-gray-600 dark:text-gray-300">
+          <div className="text-sm text-content-secondary">
             {serialNumber}
           </div>
         );
@@ -257,11 +257,11 @@ const StudentsPage = () => {
             </div>
           </div>
           <div className="ml-3 sm:ml-4">
-            <div className="text-sm font-medium text-gray-900 dark:text-white">
+            <div className="text-sm font-medium text-content-primary">
               {student.name}
             </div>
             {student.username && (
-              <div className="text-xs text-slate-700 dark:text-gray-400">
+              <div className="text-xs text-content-secondary">
                 @{student.username}
               </div>
             )}
@@ -273,7 +273,7 @@ const StudentsPage = () => {
       key: 'walletBalance',
       header: 'Referral Rewards',
       render: (_, student) => (
-        <div className="text-sm font-semibold text-primary-600 dark:text-primary-400">
+        <div className="text-sm font-semibold text-primary-600">
           {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(student.walletBalance || 0)}
         </div>
       )
@@ -283,8 +283,8 @@ const StudentsPage = () => {
       header: 'Contact',
       render: (_, student) => (
         <div>
-          <div className="text-sm text-gray-900 dark:text-white">{student.email}</div>
-          <div className="text-sm text-slate-700 dark:text-gray-400 dark:text-gray-300">{student.phone || 'Not provided'}</div>
+          <div className="text-sm text-content-primary">{student.email}</div>
+          <div className="text-sm text-content-secondary">{student.phone || 'Not provided'}</div>
         </div>
       )
     },
@@ -294,10 +294,10 @@ const StudentsPage = () => {
       render: (_, student) => (
         <button
           onClick={(e) => { e.stopPropagation(); openCityEditor(student); }}
-          className="flex items-center gap-1.5 text-sm font-semibold text-primary-600 dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-400 transition-colors"
+          className="flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700 dark:hover:text-primary-600 transition-colors"
           title="Set city"
         >
-          <MapPin className="w-3.5 h-3.5 text-primary-500 dark:text-primary-300" />
+          <MapPin className="w-3.5 h-3.5 text-primary-600" />
           {student.city || 'Add city'}
         </button>
       )
@@ -307,10 +307,10 @@ const StudentsPage = () => {
       header: 'Status',
       render: (_, student) => (
         <div>
-          <div className="text-sm text-gray-900 dark:text-white">
+          <div className="text-sm text-content-primary">
             Student
           </div>
-          <div className="text-sm text-slate-700 dark:text-gray-400 dark:text-gray-300">
+          <div className="text-sm text-content-secondary">
             {'Active'}
           </div>
         </div>
@@ -320,7 +320,7 @@ const StudentsPage = () => {
       key: 'referralCode',
       header: 'Referral Code',
       render: (_, student) => (
-        <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200">
+        <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full text-primary-600 dark:bg-primary-600 dark:text-primary-600">
           {student.referralCode || 'N/A'}
         </div>
       )
@@ -331,32 +331,32 @@ const StudentsPage = () => {
       render: (_, student) => {
         if (student.status === 'active') {
           return (
-            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200">
+            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full text-primary-600 dark:bg-primary-600 dark:text-primary-600">
               {student.status || 'N/A'}
             </div>
           )
         } else if (student.status === 'suspended') {
           return (
-            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
+            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-background-surface-secondary text-content-primary">
               {student.status || 'N/A'}
             </div>
           )
         } else if (student.status === 'banned') {
           return (
-            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-slate-900 dark:text-gray-200">
+            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-background-surface-secondary text-content-primary">
               {student.status || 'N/A'}
             </div>
           )
         }
         else if (student.status === 'inactive') {
           return (
-            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200">
+            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full text-primary-600 dark:bg-primary-600 dark:text-primary-600">
               {student.status || 'N/A'}
             </div>
           )
         }
         return (
-          <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-slate-900 dark:text-gray-200">
+          <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-background-surface-secondary text-content-primary">
             {student.status || 'N/A'}
           </div>
         );
@@ -367,7 +367,7 @@ const StudentsPage = () => {
       key: 'referralCount',
       header: 'Referrals',
       render: (_, student) => (
-        <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-slate-900 dark:text-white">
+        <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-background-surface-secondary text-content-primary">
           {student.referralCount || 0}
         </div>
       )
@@ -385,7 +385,7 @@ const StudentsPage = () => {
       key: 'joined',
       header: 'Date Joined',
       render: (_, student) => (
-        <div className="text-sm text-slate-700 dark:text-gray-400 dark:text-gray-300">
+        <div className="text-sm text-content-secondary">
           {formatDate(student.createdAt)}
         </div>
       )
@@ -404,7 +404,7 @@ const StudentsPage = () => {
       <Select
         value={student.subscriptionStatus || 'FREE'}
         onChange={(e) => handleStatusChange(student._id, { subscriptionStatus: e.target.value })}
-        className="text-xs border border-slate-300 dark:border-slate-700 rounded px-2 py-1 bg-white dark:bg-black text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
+        className="text-xs border border-border-primary rounded px-2 py-1 bg-background-surface text-content-primary hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
         title="Change subscription plan"
       >
         <option value="FREE">FREE</option>
@@ -417,7 +417,7 @@ const StudentsPage = () => {
           e.stopPropagation();
           openCityEditor(student);
         }}
-        className="text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-600 p-1.5 sm:p-2 rounded-md transition-colors"
         title={student.city ? `City: ${student.city}` : 'Set city'}
       >
         <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -427,9 +427,9 @@ const StudentsPage = () => {
       <button
         onClick={(e) => {
           e.stopPropagation();
-          router.push(`/admin/user-details/${student._id}`);
+          router.push(`/admin/user-details/${student.username || student._id}`);
         }}
-        className="text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-600 p-1.5 sm:p-2 rounded-md transition-colors"
         title="View student details"
       >
         <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -441,7 +441,7 @@ const StudentsPage = () => {
           e.stopPropagation();
           router.push(`/admin/students/${student._id}`);
         }}
-        className="text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-600 p-1.5 sm:p-2 rounded-md transition-colors"
         title="Edit student"
       >
         <Edit3 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -453,7 +453,7 @@ const StudentsPage = () => {
           e.stopPropagation();
           handlePromoteToAdmin(student);
         }}
-        className="text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-600 p-1.5 sm:p-2 rounded-md transition-colors"
         title="Promote to admin"
       >
         <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -465,7 +465,7 @@ const StudentsPage = () => {
           e.stopPropagation();
           handleDelete(student._id);
         }}
-        className="text-black dark:text-white hover:text-black dark:hover:text-white p-1.5 sm:p-2 rounded-md hover:bg-slate-100 dark:hover:bg-white/20 transition-colors"
+        className="text-content-primary hover:text-content-primary dark:hover:text-white p-1.5 sm:p-2 rounded-md hover:bg-background-surface-secondary transition-colors"
         title="Remove student"
       >
         <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -477,13 +477,13 @@ const StudentsPage = () => {
 
   const searchInput = (
     <div className="relative w-full">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
       <input
         type="text"
         value={searchTerm}
         onChange={(e) => handleSearch(e.target.value)}
         placeholder="Search students by name or email..."
-        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -498,11 +498,11 @@ const StudentsPage = () => {
         <button
           key={mode.id}
           onClick={() => setViewMode(mode.id)}
-          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
           title={mode.label}
         >
           <mode.icon className="w-4 h-4" />
-          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+          <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
         </button>
       ))}
     </div>
@@ -511,7 +511,7 @@ const StudentsPage = () => {
   const newProButton = (
     <button
       onClick={() => setShowCreateModal(true)}
-      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
+      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 text-on-primary px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110 bg-primary-600"
     >
       <UserPlus className="w-4 h-4" /> New PRO
     </button>
@@ -543,9 +543,9 @@ const StudentsPage = () => {
   });
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 
         {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
@@ -554,19 +554,19 @@ const StudentsPage = () => {
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : students.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-20 h-20 bg-slate-100 dark:bg-slate-900 rounded-[2rem] flex items-center justify-center mx-auto mb-4">
+              <div className="w-20 h-20 bg-background-surface-secondary rounded-3xl flex items-center justify-center mx-auto mb-4">
                 <Users className="w-10 h-10 text-slate-300" />
               </div>
-              <h3 className="text-lg font-black text-slate-500 uppercase">No Students Found</h3>
-              <p className="text-sm text-slate-400 mt-2">No students have registered yet.</p>
+              <h3 className="text-lg font-bold text-content-muted">No Students Found</h3>
+              <p className="text-sm text-content-muted mt-2">No students have registered yet.</p>
             </div>
           ) : (
             <>
               <div className="flex-1 min-h-0 overflow-auto">
                 {/* View Render Logic */}
                 {viewMode === "table" && (
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                    <ResponsiveTable data={students} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} onRowClick={(student) => router.push(`/admin/user-details/${student._id}`)} fillHeight />
+                  <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden h-auto flex flex-col relative">
+                    <ResponsiveTable data={students} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} onRowClick={(student) => router.push(`/admin/user-details/${student.username || student._id}`)} fillHeight />
                   </div>
                 )}
 
@@ -579,19 +579,19 @@ const StudentsPage = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        onClick={() => router.push(`/admin/user-details/${student._id}`)}
-                        className="group relative bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary-500/30 transition-all flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 cursor-pointer shadow-md before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
+                        onClick={() => router.push(`/admin/user-details/${student.username || student._id}`)}
+                        className="group relative bg-background-surface rounded-xl border border-border-primary p-4 hover:border-primary-500/30 transition-all flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 cursor-pointer"
                       >
-                        <div className="relative w-20 h-20 bg-primary-600 rounded-lg xl:rounded-[2rem] flex items-center justify-center text-white text-xl xl:text-3xl font-black shadow-sm group-hover:scale-110 transition-transform shrink-0">
+                        <div className="relative w-20 h-20 bg-primary-600 rounded-lg xl:rounded-3xl flex items-center justify-center text-on-primary text-xl xl:text-3xl font-bold group-hover:scale-110 transition-transform shrink-0">
                           {student.name?.charAt(0).toUpperCase()}
-                          <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(currentPage - 1) * itemsPerPage + i + 1}</span>
+                          <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full text-on-primary text-[10px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{(currentPage - 1) * itemsPerPage + i + 1}</span>
                         </div>
 
                         <div className="flex-1 space-y-2 xl:space-y-3">
                           <div className="flex flex-wrap items-center gap-3">
-                            <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-600 transition-colors">{student.name}</Link>
-                            {student.username && <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-bold text-slate-400 hover:text-primary-600 transition-colors">@{student.username}</Link>}
-                            <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-primary-500/20 bg-primary-500/10 text-primary-600 ${student.subscriptionStatus === 'PRO' ? 'border-black/20 dark:border-white/20 bg-black/10 dark:bg-white/10 text-black dark:text-white' : ''}`}>
+                            <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-md md:text-xl xl:text-2xl font-bold text-content-primary italic tracking-tight leading-none hover:text-primary-600 transition-colors">{student.name}</Link>
+                            {student.username && <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-bold text-content-muted hover:text-primary-600 transition-colors">@{student.username}</Link>}
+                            <div className={`px-3 py-1 rounded-lg text-[8px] font-bold uppercase tracking-[0.08em] border border-primary-500/20 text-primary-600 ${student.subscriptionStatus === 'PRO' ? 'border-border-primary bg-black/10 dark:bg-white/10 text-content-primary' : ''}`}>
                               {student.subscriptionStatus || 'FREE'}
                             </div>
                           </div>
@@ -599,24 +599,24 @@ const StudentsPage = () => {
                           <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
                             <div className="flex items-center gap-2">
                               <Mail className="w-4 h-4 text-black/50 dark:text-white/50" />
-                              <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{student.email}</span>
+                              <span className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{student.email}</span>
                             </div>
                             <div className="flex items-center gap-2">
                               <Wallet className="w-4 h-4 text-primary-500/50" />
-                              <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 tabular-nums uppercase tracking-widest">₹{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
+                              <span className="text-[10px] font-bold text-primary-600 tabular-nums uppercase tracking-[0.08em]">₹{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
                             </div>
                             <div className="flex items-center gap-2">
                               <Crown className="w-4 h-4 text-black/50 dark:text-white/50" />
-                              <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Student</span>
+                              <span className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">Student</span>
                             </div>
                             <div className="flex items-center gap-2">
                               <Calendar className="w-4 h-4 text-primary-500/50" />
-                              <span className="text-[10px] font-black text-slate-400">{formatDate(student.createdAt)}</span>
+                              <span className="text-[10px] font-bold text-content-muted">{formatDate(student.createdAt)}</span>
                             </div>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-3 pl-0 xl:pl-10 xl:border-l-2 border-slate-100 dark:border-white/5">
+                        <div className="flex items-center gap-3 pl-0 xl:pl-10 xl:border-l-2 border-border-primary">
                           {renderStudentActions(student)}
                         </div>
                       </motion.div>
@@ -633,44 +633,44 @@ const StudentsPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        onClick={() => router.push(`/admin/user-details/${student._id}`)}
-                        className="group relative bg-[#0D1225]/5 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-5 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center cursor-pointer overflow-hidden"
+                        onClick={() => router.push(`/admin/user-details/${student.username || student._id}`)}
+                        className="group relative bg-[#0D1225]/5 dark:bg-white/5 rounded-2xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 hover:border-primary-500/30 transition-all flex flex-col items-center text-center cursor-pointer overflow-hidden"
                       >
                         <div className="absolute top-0 left-0 w-full h-2 bg-primary-600" />
 
                         <div className="mt-4 mb-4 relative">
-                          <div className="w-24 h-24 bg-primary-600 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                          <div className="w-24 h-24 bg-primary-600 rounded-lg xl:rounded-xl xl:rounded-3xl flex items-center justify-center text-on-primary text-4xl font-bold group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
-                          <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{(currentPage - 1) * itemsPerPage + i + 1}</span>
-                          <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-lg xl:rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-sm">
-                            <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'PRO' ? 'text-black dark:text-white' : 'text-slate-300'}`} />
+                          <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full text-on-primary text-[10px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-[#0D1225] bg-primary-600">{(currentPage - 1) * itemsPerPage + i + 1}</span>
+                          <div className="absolute -bottom-2 -right-2 p-2 bg-background-surface dark:bg-[#0D1225] rounded-lg xl:rounded-xl border border-border-primary">
+                            <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'PRO' ? 'text-content-primary' : 'text-slate-300'}`} />
                           </div>
                         </div>
 
-                        <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1 hover:text-primary-600 transition-colors block">{student.name}</Link>
-                        <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 hover:text-primary-600 transition-colors block">{student.username ? `@${student.username}` : 'No username set'}</Link>
+                        <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-sm xl:text-xl font-bold text-content-primary italic tracking-tight leading-none mb-2 limit-text-1 hover:text-primary-600 transition-colors block">{student.name}</Link>
+                        <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-4 hover:text-primary-600 transition-colors block">{student.username ? `@${student.username}` : 'No username set'}</Link>
 
                         <div className="grid grid-cols-2 gap-3 w-full mb-4 xl:mb-4">
-                          <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
-                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Level</div>
-                            <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums tracking-tighter">{0}</div>
+                          <div className="p-4 rounded-2xl border border-border-primary">
+                            <div className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1">Level</div>
+                            <div className="text-sm font-bold text-primary-600 tabular-nums tracking-tight">{0}</div>
                           </div>
-                          <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
-                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Balance</div>
-                            <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums tracking-tighter">₹{student.walletBalance || 0}</div>
+                          <div className="p-4 rounded-2xl border border-border-primary">
+                            <div className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1">Balance</div>
+                            <div className="text-sm font-bold text-primary-600 tabular-nums tracking-tight">₹{student.walletBalance || 0}</div>
                           </div>
                         </div>
-                        <div className="w-full p-3 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 mb-4 flex items-center gap-2">
+                        <div className="w-full p-3 rounded-2xl border border-border-primary mb-4 flex items-center gap-2">
                           <Calendar className="w-3 h-3 text-primary-500/50 shrink-0" />
-                          <div className="text-[8px] font-black text-slate-400">{formatDate(student.createdAt)}</div>
+                          <div className="text-[8px] font-bold text-content-muted">{formatDate(student.createdAt)}</div>
                         </div>
 
                         <div className="w-full flex items-center gap-3">
                           <Link href={`/@${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="flex-1">
                           <motion.button
                             whileHover={{ scale: 1.05 }}
-                            className="w-full py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  rounded-lg xl:rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-sm"
+                            className="w-full py-2.5 text-on-primary rounded-lg xl:rounded-2xl text-[9px] font-bold uppercase tracking-[0.08em] bg-primary-600"
                           >
                             VIEW PROFILE
                           </motion.button>
@@ -698,7 +698,7 @@ const StudentsPage = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setShowCreateModal(false)}
-                className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-3xl"
+                className="absolute inset-0 bg-[#0A0F1E]/90"
               />
 
               <motion.div
@@ -706,19 +706,19 @@ const StudentsPage = () => {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-                className="absolute inset-y-0 right-0 left-0 w-full bg-white dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-sans"
+                className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col font-sans"
               >
-                <section className="px-4 py-2.5 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5 shrink-0">
+                <section className="px-4 py-2.5 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50 dark:bg-white/5 shrink-0">
                   <div className="flex items-center gap-3 xl:gap-3">
-                    <div className="p-4 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-lg xl:rounded-[1.5rem] shadow-sm">
+                    <div className="p-4 text-primary-600 rounded-lg xl:rounded-2xl">
                       <Zap className="w-8 h-8 fill-current" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-[0.4em]">Subscription</span>
+                        <span className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em]">Subscription</span>
                       </div>
-                      <h2 className="text-base xl:text-base font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
-                        CREATE <span className="text-primary-600 dark:text-primary-300">SUBSCRIPTION</span>
+                      <h2 className="text-base xl:text-base font-bold text-content-primary uppercase italic tracking-tight leading-none">
+                        CREATE <span className="text-primary-600">SUBSCRIPTION</span>
                       </h2>
                     </div>
                   </div>
@@ -726,7 +726,7 @@ const StudentsPage = () => {
                     whileHover={{ scale: 1.1, rotate: 90 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setShowCreateModal(false)}
-                    className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-2xl transition-colors"
+                    className="p-4 bg-background-surface-secondary text-content-muted hover:text-content-primary dark:hover:text-white rounded-2xl transition-colors"
                   >
                     <X className="w-6 h-6" />
                   </motion.button>
@@ -735,22 +735,22 @@ const StudentsPage = () => {
                 <div className="flex-1 p-4 xl:p-10 overflow-y-auto">
                   <form onSubmit={handleCreateSubscription} className="space-y-2 xl:space-y-3 xl:space-y-4">
                     <div className="space-y-2 xl:space-y-3">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Student Email</label>
+                      <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4 italic">Student Email</label>
                       <div className="relative group">
-                        <Mail className="absolute left-8 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-600 transition-colors" />
+                        <Mail className="absolute left-8 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted group-focus-within:text-primary-600 transition-colors" />
                         <input
                           type="email"
                           required
                           value={createFormData.email}
                           onChange={(e) => setCreateFormData({ ...createFormData, email: e.target.value })}
-                          className="w-full pl-16 pr-8 py-2 xl:py-3 bg-white dark:bg-black border-2 focus:border-primary-500/50 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all shadow-sm border-slate-300 dark:border-slate-700"
+                          className="w-full pl-16 pr-8 py-2 xl:py-3 bg-background-surface border focus:border-primary-500/50 rounded-3xl text-sm font-bold uppercase tracking-[0.08em] outline-none transition-all border-border-primary"
                           placeholder="ENTER STUDENT EMAIL ADDRESS..."
                         />
                       </div>
                     </div>
 
                     <div className="space-y-3 xl:space-y-3">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Choose a Plan</label>
+                      <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4 italic">Choose a Plan</label>
                       <div className="grid grid-cols-1 gap-3">
                         {[
                           { id: 'PRO', label: 'Pro Plan', price: '₹99', icon: Crown, color: 'primary' }
@@ -759,24 +759,24 @@ const StudentsPage = () => {
                             key={tier.id}
                             whileHover={{ x: 10 }}
                             onClick={() => setCreateFormData({ ...createFormData, planId: tier.id })}
-                            className={`p-4 rounded-3xl border-2 cursor-pointer transition-all flex items-center justify-between group ${createFormData.planId === tier.id ? 'bg-primary-500/10 border-primary-500/30 shadow-sm' : 'bg-slate-50 dark:bg-white/5 border-transparent opacity-60 hover:opacity-100'}`}
+                            className={`p-4 rounded-3xl border cursor-pointer transition-all flex items-center justify-between group ${createFormData.planId === tier.id ? 'border-primary-500/30' : 'bg-background-surface-secondary border-transparent opacity-60 hover:opacity-100'}`}
                           >
                             <div className="flex items-center gap-3">
                               <div className={`p-3 rounded-lg xl:rounded-xl bg-${tier.color}-500/10 text-${tier.color}-500`}>
                                 <tier.icon className="w-5 h-5" />
                               </div>
                               <div>
-                                <div className="text-xs font-black uppercase italic tracking-tighter">{tier.label}</div>
-                                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tier.price}/month</div>
+                                <div className="text-xs font-bold uppercase italic tracking-tight">{tier.label}</div>
+                                <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em]">{tier.price}/month</div>
                               </div>
                             </div>
-                            <div className="text-sm xl:text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{tier.price}</div>
+                            <div className="text-sm xl:text-xl font-bold text-content-primary tabular-nums tracking-tight">{tier.price}</div>
                           </motion.div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3 pt-6 text-[10px] font-black uppercase tracking-widest text-slate-400 italic">
+                    <div className="flex items-center gap-3 pt-6 text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted italic">
                       <Info className="w-4 h-4" />
                       The subscription will be active for 30 days from the date of creation.
                     </div>
@@ -787,7 +787,7 @@ const StudentsPage = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setShowCreateModal(false)}
-                        className="flex-1 py-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all"
+                        className="flex-1 py-3 bg-background-surface-secondary text-content-muted hover:text-content-primary dark:hover:text-white rounded-2xl text-[10px] font-bold uppercase tracking-[0.08em] transition-all"
                       >
                         Cancel
                       </motion.button>
@@ -796,7 +796,7 @@ const StudentsPage = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         disabled={createLoading}
-                        className="flex-1 py-3 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                        className="flex-1 py-3 hover:brightness-110 text-on-primary rounded-2xl text-[10px] font-bold uppercase tracking-[0.08em] transition-all flex items-center justify-center gap-3 disabled:opacity-50 bg-primary-600"
                       >
                         {createLoading ? (
                           <RefreshCcw className="w-4 h-4 animate-spin" />
@@ -823,7 +823,7 @@ const StudentsPage = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setCityEditStudent(null)}
-                className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-3xl"
+                className="absolute inset-0 bg-[#0A0F1E]/90"
               />
 
               <motion.div
@@ -831,16 +831,16 @@ const StudentsPage = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ type: 'tween', duration: 0.2 }}
-                className="relative w-full max-w-md bg-white dark:bg-[#0A0F1E] rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden"
+                className="relative w-full max-w-md bg-background-surface dark:bg-[#0A0F1E] rounded-3xl border border-border-primary overflow-hidden"
               >
-                <section className="p-4 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+                <section className="p-4 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <div className="flex items-center gap-3">
-                    <div className="p-3 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl shadow-sm">
+                    <div className="p-3 text-on-primary rounded-xl bg-primary-600">
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-[0.3em] mb-1">City</div>
-                      <h2 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
+                      <div className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] mb-1">City</div>
+                      <h2 className="text-lg font-bold text-content-primary italic tracking-tight leading-none">
                         {cityEditStudent.name || cityEditStudent.email}
                       </h2>
                     </div>
@@ -849,14 +849,14 @@ const StudentsPage = () => {
                     whileHover={{ scale: 1.1, rotate: 90 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setCityEditStudent(null)}
-                    className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-xl transition-colors"
+                    className="p-3 bg-background-surface-secondary text-content-muted hover:text-content-primary dark:hover:text-white rounded-xl transition-colors"
                   >
                     <X className="w-5 h-5" />
                   </motion.button>
                 </section>
 
                 <div className="p-4 space-y-3">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 italic">Set City</label>
+                  <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-1 italic">Set City</label>
                   <SearchableDropdown
                     type="city"
                     value={cityDraft}
@@ -870,7 +870,7 @@ const StudentsPage = () => {
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                       onClick={() => setCityEditStudent(null)}
-                      className="flex-1 py-2.5 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all"
+                      className="flex-1 py-2.5 bg-background-surface-secondary text-content-muted hover:text-content-primary dark:hover:text-white rounded-2xl text-[10px] font-bold uppercase tracking-[0.08em] transition-all"
                     >
                       Cancel
                     </motion.button>
@@ -880,7 +880,7 @@ const StudentsPage = () => {
                       whileTap={{ scale: 0.97 }}
                       disabled={cityLoading}
                       onClick={handleSaveCity}
-                      className="flex-1 py-2.5 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md hover:brightness-110 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="flex-1 py-2.5 hover:brightness-110 text-on-primary rounded-2xl text-[10px] font-bold uppercase tracking-[0.08em] transition-all flex items-center justify-center gap-2 disabled:opacity-50 bg-primary-600"
                     >
                       {cityLoading ? <RefreshCcw className="w-4 h-4 animate-spin" /> : 'Save'}
                     </motion.button>

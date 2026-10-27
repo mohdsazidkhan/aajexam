@@ -39,7 +39,7 @@ const ReadinessSkeleton = () => (
       <Card key={i} className="space-y-3">
         <Sh className="h-4 w-40" />
         {[1, 2, 3].map(j => (
-          <div key={j} className="flex items-center justify-between px-3 py-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
+          <div key={j} className="flex items-center justify-between px-3 py-3 bg-background-surface-secondary rounded-lg">
             <Sh className="h-3 w-28 bg-white/60 dark:bg-slate-700" />
             <Sh className="h-3 w-8 bg-white/60 dark:bg-slate-700" />
           </div>
@@ -98,12 +98,12 @@ const ReadinessPage = () => {
             actions={
           <div className="flex flex-col xl:flex-row gap-3 xl:gap-5 w-full xl:w-auto">
             <Select value={selectedExam} onChange={e => setSelectedExam(e.target.value)}
-              className="w-full xl:flex-1 px-3 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none">
+              className="w-full xl:flex-1 px-3 py-2.5 bg-background-surface-secondary border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none">
               <option value="">{translate('Select Exam')}</option>
               {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
             </Select>
             <button onClick={analyzeReadiness} disabled={!selectedExam || analyzing}
-              className="w-full xl:w-auto px-6 py-2.5 bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+              className="w-full xl:w-auto px-6 py-2.5 bg-primary-600 text-on-primary rounded-lg xl:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
               {analyzing ? translate('Analyzing...') : translate('Analyze')}
             </button>
           </div>
@@ -114,31 +114,31 @@ const ReadinessPage = () => {
             <div className="space-y-5">
               {/* Main Score */}
               <Card className={`p-8 text-center bg-${readinessColor(readiness.readiness)}-50 dark:bg-${readinessColor(readiness.readiness)}-900/20`}>
-                <p className={`text-6xl font-black text-${readinessColor(readiness.readiness)}-500`}>{readiness.readiness}%</p>
-                <p className="text-sm font-bold text-slate-500">{translate('Exam Readiness Score')}</p>
+                <p className={`text-6xl font-bold text-${readinessColor(readiness.readiness)}-500`}>{readiness.readiness}%</p>
+                <p className="text-sm font-bold text-content-muted">{translate('Exam Readiness Score')}</p>
                 <div className="flex items-center justify-center gap-1 mt-2">
-                  {readiness.trend > 0 ? <TrendingUp className="w-4 h-4 text-primary-600 dark:text-primary-300" /> : <TrendingDown className="w-4 h-4 text-black dark:text-white" />}
-                  <span className={`text-xs font-bold ${readiness.trend > 0 ? 'text-primary-600' : 'text-black dark:text-white'}`}>{translate('{value}% trend', { value: `${readiness.trend > 0 ? '+' : ''}${readiness.trend}` })}</span>
+                  {readiness.trend > 0 ? <TrendingUp className="w-4 h-4 text-primary-600" /> : <TrendingDown className="w-4 h-4 text-content-primary" />}
+                  <span className={`text-xs font-bold ${readiness.trend > 0 ? 'text-primary-600' : 'text-content-primary'}`}>{translate('{value}% trend', { value: `${readiness.trend > 0 ? '+' : ''}${readiness.trend}` })}</span>
                 </div>
-                <p className="text-xs text-slate-500 mt-3">{readiness.recommendation}</p>
+                <p className="text-xs text-content-muted mt-3">{readiness.recommendation}</p>
               </Card>
 
               {/* Stats */}
               <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
-                <Card className="text-center space-y-1"><p className="text-xl font-black text-slate-700 dark:text-white">{readiness.totalAttempts}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('Total Attempts')}</p></Card>
-                <Card className="text-center space-y-1"><p className="text-xl font-black text-black dark:text-white">{readiness.avgQuizScore}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('Avg Quiz')}</p></Card>
-                <Card className="text-center space-y-1"><p className="text-xl font-black text-black dark:text-white">{readiness.avgTestScore}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('Avg Test')}</p></Card>
-                <Card className="text-center space-y-1"><p className="text-xl font-black text-slate-600 dark:text-slate-300">{readiness.totalQuizAttempts + readiness.totalTestAttempts}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('Tests Done')}</p></Card>
+                <Card className="text-center space-y-1"><p className="text-xl font-bold text-content-secondary">{readiness.totalAttempts}</p><p className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Total Attempts')}</p></Card>
+                <Card className="text-center space-y-1"><p className="text-xl font-bold text-content-primary">{readiness.avgQuizScore}%</p><p className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Avg Quiz')}</p></Card>
+                <Card className="text-center space-y-1"><p className="text-xl font-bold text-content-primary">{readiness.avgTestScore}%</p><p className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Avg Test')}</p></Card>
+                <Card className="text-center space-y-1"><p className="text-xl font-bold text-content-secondary">{readiness.totalQuizAttempts + readiness.totalTestAttempts}</p><p className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Tests Done')}</p></Card>
               </div>
 
               {/* Weak Subjects */}
               {readiness.weakSubjects?.length > 0 && (
                 <Card as="section" className="space-y-3">
-                  <h3 className="text-sm font-black text-black dark:text-white flex items-center gap-1"><AlertTriangle className="w-4 h-4" /> {translate('Weak Subjects (Below 50%)')}</h3>
+                  <h3 className="text-sm font-bold text-content-primary flex items-center gap-1"><AlertTriangle className="w-4 h-4" /> {translate('Weak Subjects (Below 50%)')}</h3>
                   {readiness.weakSubjects.map((s, i) => (
-                    <div key={i} className="flex items-center justify-between px-3 py-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                      <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{s.subject}</span>
-                      <span className="text-xs font-black text-black dark:text-white">{s.accuracy}%</span>
+                    <div key={i} className="flex items-center justify-between px-3 py-3 bg-background-surface-secondary rounded-lg">
+                      <span className="text-xs font-bold text-content-secondary">{s.subject}</span>
+                      <span className="text-xs font-bold text-content-primary">{s.accuracy}%</span>
                     </div>
                   ))}
                 </Card>
@@ -147,11 +147,11 @@ const ReadinessPage = () => {
               {/* Strong Subjects */}
               {readiness.strongSubjects?.length > 0 && (
                 <Card as="section" className="space-y-3">
-                  <h3 className="text-sm font-black text-primary-600 dark:text-primary-300 flex items-center gap-1"><CheckCircle className="w-4 h-4" /> {translate('Strong Subjects (Above 70%)')}</h3>
+                  <h3 className="text-sm font-bold text-primary-600 flex items-center gap-1"><CheckCircle className="w-4 h-4" /> {translate('Strong Subjects (Above 70%)')}</h3>
                   {readiness.strongSubjects.map((s, i) => (
-                    <div key={i} className="flex items-center justify-between px-3 py-3 bg-primary-50 dark:bg-primary-900/10 rounded-lg">
-                      <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{s.subject}</span>
-                      <span className="text-xs font-black text-primary-600 dark:text-primary-300">{s.accuracy}%</span>
+                    <div key={i} className="flex items-center justify-between px-3 py-3 rounded-lg">
+                      <span className="text-xs font-bold text-content-secondary">{s.subject}</span>
+                      <span className="text-xs font-bold text-primary-600">{s.accuracy}%</span>
                     </div>
                   ))}
                 </Card>
@@ -164,8 +164,8 @@ const ReadinessPage = () => {
           {!readiness && !analyzing && (
             <Card as="section" className="text-center space-y-2 xl:space-y-4">
               <BarChart3 className="w-12 h-12 text-slate-300 mx-auto" />
-              <h2 className="text-xl font-black text-slate-400">{translate('Select an Exam')}</h2>
-              <p className="text-sm text-slate-400">{translate('Choose your target exam to see your readiness score based on your quiz and test history.')}</p>
+              <h2 className="text-xl font-bold text-content-muted">{translate('Select an Exam')}</h2>
+              <p className="text-sm text-content-muted">{translate('Choose your target exam to see your readiness score based on your quiz and test history.')}</p>
             </Card>
           )}
         </SubscriptionGuard>

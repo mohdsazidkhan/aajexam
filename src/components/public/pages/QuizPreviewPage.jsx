@@ -79,16 +79,15 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background-page">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">{translate('Quiz Not Found')}</h1>
-          <Link href="/search" className="text-primary-600 dark:text-primary-300 hover:text-primary-600">{translate('← Back to Search')}</Link>
+          <h1 className="text-2xl font-bold text-content-primary mb-4">{translate('Quiz Not Found')}</h1>
+          <Link href="/search" className="text-primary-600 hover:text-primary-600">{translate('← Back to Search')}</Link>
         </div>
       </div>
     );
   }
 
-  const difficultyColor = quiz.difficulty === 'easy' ? 'text-primary-600 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30' :
-    quiz.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800' :
-      'text-black dark:text-white bg-slate-100 dark:bg-slate-800';
+  const difficultyColor = quiz.difficulty === 'easy' ? 'text-primary-600' :
+    'text-content-primary';
 
   return (
     <div className="bg-background-page">
@@ -96,79 +95,76 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Breadcrumb */}
         <div className="mb-6 flex items-center gap-2 text-sm">
-          <button onClick={() => router.back()} className="flex items-center gap-1 text-primary-600 dark:text-primary-300 hover:underline">
+          <button onClick={() => router.back()} className="flex items-center gap-1 text-primary-600 hover:underline">
             <ArrowLeft className="w-4 h-4" /> Back
           </button>
           {quiz.applicableExams?.length > 0 && (
             <>
-              <span className="text-slate-400">·</span>
-              <span className="text-slate-500 dark:text-slate-400">{quiz.applicableExams.map(e => e.name).join(', ')}</span>
+              <span className="text-content-muted">·</span>
+              <span className="text-content-muted">{quiz.applicableExams.map(e => e.name).join(', ')}</span>
             </>
           )}
           {quiz.subject && (
             <>
-              <span className="text-slate-400">·</span>
-              <span className="text-slate-500 dark:text-slate-400">{translateData(quiz.subject.name)}</span>
+              <span className="text-content-muted">·</span>
+              <span className="text-content-muted">{translateData(quiz.subject.name)}</span>
             </>
           )}
           {quiz.topic && (
             <>
-              <span className="text-slate-400">·</span>
-              <span className="text-slate-500 dark:text-slate-400">{translateData(quiz.topic.name)}</span>
+              <span className="text-content-muted">·</span>
+              <span className="text-content-muted">{translateData(quiz.topic.name)}</span>
             </>
           )}
         </div>
 
         {/* Quiz Header Card */}
-        <header className="z-auto relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-5 xl:p-8 mb-6" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-          <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-5 xl:p-8 mb-6 bg-background-surface" style={{ borderRadius: 16 }}>
           <div className="flex items-center mb-4">
-            <div className="w-8 xl:w-12 h-8 xl:h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] flex items-center justify-center mr-4 shrink-0" style={{ borderRadius: 12 }}>
+            <div className="w-8 xl:w-12 h-8 xl:h-12 text-on-primary flex items-center justify-center mr-4 shrink-0 bg-primary-600" style={{ borderRadius: 12 }}>
               <BrainCircuit className="w-5 xl:w-6 h-5 xl:h-6" />
             </div>
-            <h1 className="text-xl xl:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+            <h1 className="text-xl xl:text-3xl font-bold text-content-primary flex items-center gap-3">
               {translateData(quiz.title)}
               {(quiz.accessLevel || '').toUpperCase() === 'PRO' && <ProBadge />}
             </h1>
           </div>
           {quiz.description && (
-            <p className="text-slate-600 dark:text-slate-300 mb-6 text-base">{quiz.description}</p>
+            <p className="text-content-secondary mb-6 text-base">{quiz.description}</p>
           )}
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-            <div className="bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl p-3 text-center">
-              <HelpCircle className="w-6 h-6 text-black dark:text-white mx-auto mb-1" />
-              <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.questions?.length || 0}</div>
-              <div className="text-xs text-slate-500">{translate('Questions')}</div>
+            <div className="border border-border-primary rounded-xl p-3 text-center">
+              <HelpCircle className="w-6 h-6 text-content-primary mx-auto mb-1" />
+              <div className="text-xl font-bold text-content-primary">{quiz.questions?.length || 0}</div>
+              <div className="text-xs text-content-muted">{translate('Questions')}</div>
             </div>
-            <div className="bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl p-3 text-center">
-              <Clock className="w-6 h-6 text-black dark:text-white mx-auto mb-1" />
-              <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.duration}</div>
-              <div className="text-xs text-slate-500">{translate('Minutes')}</div>
+            <div className="border border-border-primary rounded-xl p-3 text-center">
+              <Clock className="w-6 h-6 text-content-primary mx-auto mb-1" />
+              <div className="text-xl font-bold text-content-primary">{quiz.duration}</div>
+              <div className="text-xs text-content-muted">{translate('Minutes')}</div>
             </div>
-            <div className={`rounded-lg xl:rounded-xl p-3 text-center ${difficultyColor}`}>
+            <div className={`border border-border-primary rounded-xl p-3 text-center ${difficultyColor}`}>
               <BarChart3 className="w-6 h-6 mx-auto mb-1" />
-              <div className="text-xl font-bold text-slate-900 dark:text-white capitalize">{quiz.difficulty}</div>
-              <div className="text-xs text-slate-500">{translate('Difficulty')}</div>
+              <div className="text-xl font-bold text-content-primary capitalize">{quiz.difficulty}</div>
+              <div className="text-xs text-content-muted">{translate('Difficulty')}</div>
             </div>
-            <div className="bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl p-3 text-center">
-              <Trophy className="w-6 h-6 text-primary-600 dark:text-primary-300 mx-auto mb-1" />
-              <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.totalMarks}</div>
-              <div className="text-xs text-slate-500">{translate('Total Marks')}</div>
+            <div className="border border-border-primary rounded-xl p-3 text-center">
+              <Trophy className="w-6 h-6 text-primary-600 mx-auto mb-1" />
+              <div className="text-xl font-bold text-content-primary">{quiz.totalMarks}</div>
+              <div className="text-xs text-content-muted">{translate('Total Marks')}</div>
             </div>
           </div>
 
           {/* Marks Info */}
           {(quiz.marksPerQuestion > 0 || quiz.negativeMarking > 0) && (
             <div className="flex flex-wrap gap-3 mb-6 text-sm">
-              <span className="px-3 py-1.5 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 rounded-lg font-medium">
+              <span className="px-3 py-1.5 text-primary-600 rounded-lg font-medium">
                 {translate('+{marks} per correct', { marks: quiz.marksPerQuestion })}
               </span>
               {quiz.negativeMarking > 0 && (
-                <span className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg font-medium">
+                <span className="px-3 py-1.5 border border-border-primary text-content-primary rounded-lg font-medium">
                   {translate('-{marks} per wrong', { marks: quiz.negativeMarking })}
                 </span>
               )}
@@ -178,10 +174,10 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
           {/* Start Button */}
           <button
             onClick={handleStartQuiz}
-            className={`w-full px-8 py-4 rounded-lg xl:rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-sm ${
+            className={`w-full px-8 py-4 rounded-lg xl:rounded-xl transition-all font-bold text-lg flex items-center justify-center ${
               isLocked
-                ?'bg-primary-600 text-white hover:bg-primary-700'
-                : 'bg-primary-600 text-white hover:bg-primary-700'
+                ?'bg-primary-600 text-on-primary hover:bg-primary-700'
+                : 'bg-primary-600 text-on-primary hover:bg-primary-700'
             }`}
           >
             {isLocked ? (
@@ -198,19 +194,19 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Quiz Stats */}
         {quiz.totalAttempts > 0 && (
-          <section className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
+          <section className="bg-background-surface rounded-lg xl:rounded-xl p-4 xl:p-6 mb-6 border border-border-primary">
             <div className="flex items-center gap-2 mb-4">
-              <Users className="w-5 h-5 text-primary-600 dark:text-primary-300" />
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">{translate('Quiz Statistics')}</h2>
+              <Users className="w-5 h-5 text-primary-600" />
+              <h2 className="text-lg font-bold text-content-primary">{translate('Quiz Statistics')}</h2>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary-600 dark:text-primary-300">{quiz.totalAttempts}</div>
-                <div className="text-xs text-slate-500">{translate('Total Attempts')}</div>
+                <div className="text-2xl font-bold text-primary-600">{quiz.totalAttempts}</div>
+                <div className="text-xs text-content-muted">{translate('Total Attempts')}</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary-600 dark:text-primary-300">{Math.round(quiz.avgScore)}%</div>
-                <div className="text-xs text-slate-500">{translate('Average Score')}</div>
+                <div className="text-2xl font-bold text-primary-600">{Math.round(quiz.avgScore)}%</div>
+                <div className="text-xs text-content-muted">{translate('Average Score')}</div>
               </div>
             </div>
           </section>
@@ -218,14 +214,14 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Tags */}
         {quiz.tags?.length > 0 && (
-          <section className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
+          <section className="bg-background-surface rounded-lg xl:rounded-xl p-4 xl:p-6 mb-6 border border-border-primary">
             <div className="flex items-center gap-2 mb-3">
-              <Tag className="w-5 h-5 text-slate-500" />
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">{translate('Tags')}</h2>
+              <Tag className="w-5 h-5 text-content-muted" />
+              <h2 className="text-lg font-bold text-content-primary">{translate('Tags')}</h2>
             </div>
             <div className="flex flex-wrap gap-2">
               {quiz.tags.map((tag, i) => (
-                <span key={i} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full text-sm">
+                <span key={i} className="px-3 py-1 bg-background-surface-secondary text-content-secondary rounded-full text-sm">
                   #{tag}
                 </span>
               ))}
@@ -235,25 +231,25 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Leaderboard */}
         {leaderboard.length > 0 && (
-          <section className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm border border-slate-100 dark:border-slate-700">
+          <section className="bg-background-surface rounded-lg xl:rounded-xl p-4 xl:p-6 border border-border-primary">
             <div className="flex items-center gap-2 mb-4">
-              <Trophy className="w-5 h-5 text-black dark:text-white" />
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">{translate('Leaderboard')}</h2>
+              <Trophy className="w-5 h-5 text-content-primary" />
+              <h2 className="text-lg font-bold text-content-primary">{translate('Leaderboard')}</h2>
             </div>
             <div className="space-y-2">
               {leaderboard.slice(0, 10).map((entry, i) => (
-                <div key={entry._id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                <div key={entry._id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-background-surface-secondary">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold ${
-                    i === 0 ?'bg-primary-600': i === 1 ?'bg-slate-400': i === 2 ?'bg-primary-600':'bg-slate-300 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
+                    i === 0 ?'bg-primary-600': i === 1 ?'bg-border-secondary': i === 2 ?'bg-primary-600':'bg-border-primary dark:bg-slate-600 text-content-secondary'
                   }`}>
                     {i + 1}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{entry.user?.name || translate('Anonymous')}</p>
+                    <p className="text-sm font-semibold text-content-primary truncate">{entry.user?.name || translate('Anonymous')}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-bold text-slate-900 dark:text-white">{Math.round(entry.percentage || 0)}%</p>
-                    <p className="text-[10px] text-slate-400">{translate('{value}% accuracy', { value: entry.accuracy?.toFixed(0) })}</p>
+                    <p className="text-sm font-bold text-content-primary">{Math.round(entry.percentage || 0)}%</p>
+                    <p className="text-[10px] text-content-muted">{translate('{value}% accuracy', { value: entry.accuracy?.toFixed(0) })}</p>
                   </div>
                 </div>
               ))}

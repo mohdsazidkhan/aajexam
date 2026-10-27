@@ -69,29 +69,27 @@ const ResetPasswordPage = () => {
     <MobileAppWrapper showHeader={true} title={translate('Reset Password')}>
       <div className="flex-1 flex items-center justify-center p-6 relative overflow-hidden">
         {/* Background Decorative Elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl translate-y-1/2 translate-x-1/2" />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="w-full max-w-md relative z-10"
         >
-          <Card as="section" className="p-6 xl:p-8 border-none shadow-xl space-y-6">
+          <Card as="section" className="p-6 xl:p-8 border-none space-y-6">
 
             {/* Header */}
             <div className="text-center space-y-2 xl:space-y-4">
               <motion.div
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
-                className="w-20 h-20 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10"
+                className="w-20 h-20 text-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-6 border border-primary-500/10"
               >
                 <RefreshCw className="w-10 h-10" />
               </motion.div>
-              <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">
-                {rich('New <0>Password</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
+              <h2 className="text-xl xl:text-3xl font-bold font-outfit tracking-tight text-content-primary leading-none">
+                {rich('New <0>Password</0>', [(c) => <span className="text-primary-600">{c}</span>])}
               </h2>
-              <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none px-4">{translate('Please enter your new password below.')}</p>
+              <p className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] leading-none px-4">{translate('Please enter your new password below.')}</p>
             </div>
 
             <AnimatePresence mode="wait">
@@ -102,15 +100,15 @@ const ResetPasswordPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 text-center space-y-8"
                 >
-                  <div className="w-16 h-16 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 text-primary-600 rounded-full flex items-center justify-center mx-auto">
                     <CircleCheck className="w-8 h-8" />
                   </div>
                   <div className="space-y-2 xl:space-y-4">
-                    <h3 className="text-lg font-black font-outfit uppercase text-primary-600 dark:text-primary-300">{translate('Password Updated')}</h3>
-                    <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
+                    <h3 className="text-lg font-bold font-outfit text-primary-600">{translate('Password Updated')}</h3>
+                    <p className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] leading-relaxed">
                       {translate('Your password has been reset. Redirecting to login...')}
                     </p>
-                    <div className="h-1.5 bg-slate-100 dark:bg-slate-900 rounded-full overflow-hidden w-32 mx-auto mt-4 border border-slate-200 dark:border-slate-800">
+                    <div className="h-1.5 bg-background-surface-secondary rounded-full overflow-hidden w-32 mx-auto mt-4 border border-border-primary">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: '100%' }}
@@ -129,21 +127,21 @@ const ResetPasswordPage = () => {
                   className="space-y-8"
                 >
                   {!token && (
-                    <div className="p-4 bg-primary-500/10 border border-primary-500/20 rounded-2xl flex items-center gap-4">
-                      <ShieldAlert className="w-6 h-6 text-primary-600 dark:text-primary-300 flex-shrink-0" />
-                      <p className="text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest leading-tight">
+                    <div className="p-4 border border-primary-500/20 rounded-2xl flex items-center gap-4">
+                      <ShieldAlert className="w-6 h-6 text-primary-600 flex-shrink-0" />
+                      <p className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] leading-tight">
                         {translate('Warning: Reset token not found. Please request a new link.')}
                       </p>
                     </div>
                   )}
 
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-[0.2em] ml-2">{translate('New Password')}</label>
+                    <label className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] ml-2">{translate('New Password')}</label>
                     <div className="relative group">
                       <Lock className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-600 transition-colors" />
                       <input
                         type={showPassword ? 'text' : 'password'}
-                        className="w-full bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-2xl p-6 pl-16 pr-16 text-sm font-bold placeholder:text-slate-300 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:font-bold"
+                        className="w-full bg-background-surface-secondary border border-border-primary rounded-2xl p-6 pl-16 pr-16 text-sm font-bold placeholder:text-slate-300 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:font-bold"
                         placeholder={translate('Minimum 6 characters...')}
                         value={newPassword}
                         onChange={e => setNewPassword(e.target.value)}
@@ -154,7 +152,7 @@ const ResetPasswordPage = () => {
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                        className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-300 hover:text-content-primary dark:hover:text-slate-200 transition-colors"
                         tabIndex={-1}
                       >
                         {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -168,11 +166,11 @@ const ResetPasswordPage = () => {
                       variant="primary"
                       fullWidth
                       disabled={isLoading || !token}
-                      className="py-6 rounded-2xl text-xs font-black uppercase"
+                      className="py-6 rounded-2xl text-xs font-bold uppercase"
                     >
                       {isLoading ? (
                         <span className="flex items-center gap-2">
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <div className="w-4 h-4 border border-white border-t-transparent rounded-full animate-spin" />
                           {translate('UPDATING...')}
                         </span>
                       ) : (
@@ -182,7 +180,7 @@ const ResetPasswordPage = () => {
                       )}
                     </Button>
 
-                    <Link href="/login" className="flex items-center justify-center gap-2 text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-widest hover:text-primary-600 transition-colors font-outfit">
+                    <Link href="/login" className="flex items-center justify-center gap-2 text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] hover:text-primary-600 transition-colors font-outfit">
                       <ArrowLeft className="w-3 h-3" /> {translate('BACK TO LOGIN')}
                     </Link>
                   </div>

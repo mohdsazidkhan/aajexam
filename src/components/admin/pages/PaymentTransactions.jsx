@@ -207,20 +207,20 @@ const AdminPaymentTransactions = () => {
 
     if (items.length === 0) {
       return (
-        <div className="px-4 py-2.5 xl:px-4 bg-white dark:bg-black/20 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+        <div className="px-4 py-2.5 xl:px-4 bg-background-surface text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">
           No additional payment details available
         </div>
       );
     }
 
     return (
-      <div className="px-4 py-2.5 xl:px-4 xl:py-3 bg-white dark:bg-black/20 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
+      <div className="px-4 py-2.5 xl:px-4 xl:py-3 bg-background-surface grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
         {items.map((item) => (
           <div key={item.label} className="min-w-0">
-            <div className="flex items-center gap-1.5 text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">
+            <div className="flex items-center gap-1.5 text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1">
               {item.icon} {item.label}
             </div>
-            <div className="text-xs font-bold text-slate-800 dark:text-slate-100 truncate" title={item.value}>{item.value}</div>
+            <div className="text-xs font-bold text-content-primary truncate" title={item.value}>{item.value}</div>
           </div>
         ))}
       </div>
@@ -239,11 +239,11 @@ const AdminPaymentTransactions = () => {
 
   const getStatusColor = (status) => {
     switch (status?.toLowerCase()) {
-      case 'completed': case 'success': return 'bg-primary-500/10 text-primary-600 dark:text-primary-300 border-primary-500/20';
-      case 'failed': case 'failure': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
+      case 'completed': case 'success': return 'text-primary-600 border-primary-500/20';
+      case 'failed': case 'failure': return 'bg-black/10 dark:bg-white/10 text-content-primary border-border-primary';
       case 'pending': case 'created': case 'authorized': return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20';
-      case 'refunded': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
-      default: return 'bg-slate-500/10 text-slate-500 border-slate-500/20';
+      case 'refunded': return 'bg-black/10 dark:bg-white/10 text-content-primary border-border-primary';
+      default: return 'bg-slate-500/10 text-content-muted border-slate-500/20';
     }
   };
 
@@ -269,8 +269,8 @@ const AdminPaymentTransactions = () => {
   };
 
   const SortIcon = ({ field }) => {
-    if (sortField !== field) return <ArrowUpDown className="w-3.5 h-3.5 text-slate-400" />;
-    return sortOrder === 'asc' ? <ArrowUp className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" /> : <ArrowDown className="w-3.5 h-3.5 text-primary-600 dark:text-primary-300" />;
+    if (sortField !== field) return <ArrowUpDown className="w-3.5 h-3.5 text-content-muted" />;
+    return sortOrder === 'asc' ? <ArrowUp className="w-3.5 h-3.5 text-primary-600" /> : <ArrowDown className="w-3.5 h-3.5 text-primary-600" />;
   };
 
   const transactionColumns = [
@@ -281,8 +281,8 @@ const AdminPaymentTransactions = () => {
       ),
       render: (_, t) => (
         <>
-          <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">{formatDate(t.createdAt)}</div>
-          <div className="text-[9px] font-bold text-slate-400 uppercase">{new Date(t.createdAt).toLocaleTimeString()}</div>
+          <div className="text-sm font-bold text-content-primary uppercase tracking-tight">{formatDate(t.createdAt)}</div>
+          <div className="text-[9px] font-bold text-content-muted uppercase">{new Date(t.createdAt).toLocaleTimeString()}</div>
         </>
       )
     },
@@ -293,27 +293,27 @@ const AdminPaymentTransactions = () => {
       ),
       render: (_, t) => (
         <>
-          <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight truncate max-w-[200px]">{t.user?.name || 'Unknown User'}</div>
-          <div className="text-[9px] font-bold text-slate-400 uppercase truncate max-w-[200px]">{t.user?.email || 'N/A'}</div>
+          <div className="text-sm font-bold text-content-primary uppercase tracking-tight truncate max-w-[200px]">{t.user?.name || 'Unknown User'}</div>
+          <div className="text-[9px] font-bold text-content-muted uppercase truncate max-w-[200px]">{t.user?.email || 'N/A'}</div>
         </>
       )
     },
     {
       key: 'planId', header: 'Plan', render: (_, t) => (
-        <span className="px-3 py-1 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-lg text-[10px] font-black uppercase border border-primary-500/20">{t.planId || 'N/A'}</span>
+        <span className="px-3 py-1 text-primary-600 rounded-lg text-[10px] font-bold uppercase border border-primary-500/20">{t.planId || 'N/A'}</span>
       )
     },
     {
       key: 'amount', header: 'Amount', render: (_, t) => (
-        <div className="text-right tabular-nums font-black text-slate-900 dark:text-white">
-          {formatCurrency(t.amount)} <span className="text-[9px] font-bold text-slate-400">{t.currency || 'INR'}</span>
+        <div className="text-right tabular-nums font-bold text-content-primary">
+          {formatCurrency(t.amount)} <span className="text-[9px] font-bold text-content-muted">{t.currency || 'INR'}</span>
         </div>
       )
     },
     {
       key: 'status', header: 'Status', align: 'center', render: (_, t) => (
         <div className="flex justify-center">
-          <div className={`px-4 py-1.5 rounded-lg xl:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 shadow-sm ${getStatusColor(t.payuStatus || t.status)}`}>
+          <div className={`px-4 py-1.5 rounded-lg xl:rounded-xl border text-[9px] font-bold uppercase flex items-center gap-2 ${getStatusColor(t.payuStatus || t.status)}`}>
             {getStatusIcon(t.payuStatus || t.status)}
             {t.payuStatus || t.status || 'Unknown'}
           </div>
@@ -345,13 +345,13 @@ const AdminPaymentTransactions = () => {
 
   const searchInput = (
     <div className="relative w-full">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
       <input
         type="text"
         placeholder="Search by order ID or username..."
         value={filters.search}
         onChange={(e) => handleFilterChange('search', e.target.value)}
-        className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -406,10 +406,10 @@ const AdminPaymentTransactions = () => {
           key={mode.id}
           onClick={() => setViewMode(mode.id)}
           title={mode.label}
-          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
         >
           <mode.icon className="w-4 h-4" />
-          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+          <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
         </button>
       ))}
     </div>
@@ -418,7 +418,7 @@ const AdminPaymentTransactions = () => {
   const exportButton = (
     <button
       onClick={exportToCSV}
-      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110"
+      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 text-on-primary px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:brightness-110 bg-primary-600"
     >
       <Download className="w-4 h-4" /> Export to CSV
     </button>
@@ -454,22 +454,22 @@ const AdminPaymentTransactions = () => {
   });
 
   if (loading && transactions.length === 0) {
-    return (<div className="adminContent w-full flex items-center justify-center">
+    return (<div className="py-4 w-full flex items-center justify-center">
       <AdminTableSkeleton />
     </div>
     );
   }
 
   return (
-    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+      <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 
 
         {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
         {/* Stats bar */}
-        <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-0 xl:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 xl:p-0 p-2">
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-0 xl:divide-x divide-border-primary mb-4 shrink-0 bg-background-surface rounded-xl border border-border-primary xl:p-0 p-2">
           {[
             { label: 'Total Revenue', val: summary.totalRevenue || 0, icon: IndianRupee, isCurrency: true },
             { label: 'Monthly Revenue', val: summary.periodRevenue || 0, icon: TrendingUp, isCurrency: true },
@@ -477,10 +477,10 @@ const AdminPaymentTransactions = () => {
             { label: 'Paying Users', val: summary.activeUsers || 0, icon: Users }
           ].map((stat) => (
             <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-              <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+              <div className="p-1.5 text-on-primary rounded-lg shrink-0 bg-primary-600"><stat.icon className="w-3.5 h-3.5" /></div>
               <div className="min-w-0">
-                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.isCurrency ? formatCurrency(stat.val) : stat.val.toLocaleString()}</div>
-                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
+                <div className="text-sm font-bold text-content-primary tabular-nums tracking-tight truncate">{stat.isCurrency ? formatCurrency(stat.val) : stat.val.toLocaleString()}</div>
+                <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] truncate">{stat.label}</div>
               </div>
             </div>
           ))}
@@ -490,21 +490,21 @@ const AdminPaymentTransactions = () => {
         <div className="flex-1 min-h-0 overflow-auto flex flex-col">
         <AnimatePresence mode="wait">
           {error ? (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 p-3 xl:p-5 rounded-3xl text-center">
-              <AlertTriangle className="w-12 h-12 text-black dark:text-white mx-auto mb-4" />
-              <div className="text-black dark:text-white font-black uppercase tracking-widest">{error}</div>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-black/10 dark:bg-white/10 border border-border-primary p-3 xl:p-5 rounded-3xl text-center">
+              <AlertTriangle className="w-12 h-12 text-content-primary mx-auto mb-4" />
+              <div className="text-content-primary font-bold uppercase tracking-[0.08em]">{error}</div>
             </motion.div>
           ) : transactions.length === 0 ? (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center shadow-sm">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="rounded-lg xl:rounded-xl xl:rounded-3xl border border-dashed border-border-primary p-20 text-center">
               <ReceiptText className="w-16 h-16 text-slate-300 dark:text-slate-700 mx-auto mb-4 xl:mb-4 opacity-20" />
-              <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Transactions Found</h3>
-              <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your filters or search terms to find transactions.</p>
+              <h3 className="text-xl xl:text-3xl font-bold text-content-primary tracking-tight mb-4 font-outfit">No Transactions Found</h3>
+              <p className="text-content-muted text-[10px] font-bold uppercase tracking-[0.08em]">Try adjusting your filters or search terms to find transactions.</p>
             </motion.div>
           ) : (
             <>
             <div className="flex-1 min-h-0 overflow-auto">
               {viewMode === 'table' && (
-                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden h-auto flex flex-col relative">
                   <ResponsiveTable
                     data={transactions}
                     columns={transactionColumns}
@@ -520,26 +520,26 @@ const AdminPaymentTransactions = () => {
               {viewMode === 'grid' && (
                 <div className="grid content-start grid-cols-1 sm:grid-cols-2 gap-3 items-start">
                   {transactions.map((t, idx) => (
-                    <div key={t._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 overflow-hidden shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                    <div key={t._id} className="bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col gap-3 overflow-hidden relative">
                       <div className="flex items-center justify-between gap-2">
                         <div className="flex items-center gap-1.5">
-                          <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 text-[9px] font-black flex items-center justify-center">{(pagination.currentPage - 1) * filters.limit + idx + 1}</span>
-                          <div className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase flex items-center gap-1.5 ${getStatusColor(t.payuStatus || t.status)}`}>
+                          <span className="shrink-0 w-5 h-5 rounded-full bg-background-surface-secondary text-content-muted text-[9px] font-bold flex items-center justify-center">{(pagination.currentPage - 1) * filters.limit + idx + 1}</span>
+                          <div className={`px-2.5 py-1 rounded-lg border text-[9px] font-bold uppercase flex items-center gap-1.5 ${getStatusColor(t.payuStatus || t.status)}`}>
                             {getStatusIcon(t.payuStatus || t.status)}
                             {t.payuStatus || t.status || 'Unknown'}
                           </div>
                         </div>
                         <div className="flex items-center gap-2 shrink-0">
-                          <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{formatCurrency(t.amount)}</div>
-                          <div className="px-2 py-1 bg-primary-500/10 rounded-lg text-primary-600 dark:text-primary-300 font-black text-[10px] uppercase">{t.planId || 'N/A'}</div>
+                          <div className="text-sm font-bold text-content-primary tabular-nums">{formatCurrency(t.amount)}</div>
+                          <div className="px-2 py-1 rounded-lg text-primary-600 font-bold text-[10px] uppercase">{t.planId || 'N/A'}</div>
                         </div>
                       </div>
-                      <div className="pt-2 border-t border-slate-100 dark:border-slate-700 flex items-start justify-between gap-2">
+                      <div className="pt-2 border-t border-border-primary flex items-start justify-between gap-2">
                         <div className="min-w-0">
-                          <div className="text-sm font-bold text-slate-900 dark:text-white truncate">{t.user?.name || 'Unknown User'}</div>
-                          <div className="text-[10px] text-slate-400 truncate">{t.user?.email || 'N/A'}</div>
+                          <div className="text-sm font-bold text-content-primary truncate">{t.user?.name || 'Unknown User'}</div>
+                          <div className="text-[10px] text-content-muted truncate">{t.user?.email || 'N/A'}</div>
                         </div>
-                        <div className="shrink-0 text-right text-[9px] font-bold text-slate-400 space-y-0.5">
+                        <div className="shrink-0 text-right text-[9px] font-bold text-content-muted space-y-0.5">
                           <div className="flex items-center justify-end gap-1"><Calendar className="w-3 h-3" />{formatDateTime(t.createdAt)}</div>
                           <div className="flex items-center justify-end gap-1"><Wallet className="w-3 h-3" />{t.paymentMethod || 'Online'}</div>
                         </div>
@@ -555,26 +555,26 @@ const AdminPaymentTransactions = () => {
               {viewMode === 'list' && (
                 <div className="h-full overflow-auto space-y-3">
                   {transactions.map((t, idx) => (
-                    <div key={t._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+                    <div key={t._id} className="bg-background-surface rounded-xl border border-border-primary overflow-hidden">
                       <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 xl:gap-3">
                       <div className="flex items-center gap-3">
                         <div className={`relative p-2.5 rounded-xl border ${getStatusColor(t.payuStatus || t.status)}`}>
                           {getStatusIcon(t.payuStatus || t.status)}
-                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-gradient-to-r from-primary-600 to-primary-800 shadow-md dark:from-primary-300 dark:to-primary-500 dark:text-primary-950 text-white  text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(pagination.currentPage - 1) * filters.limit + idx + 1}</span>
+                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{(pagination.currentPage - 1) * filters.limit + idx + 1}</span>
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-slate-900 dark:text-white">{t.user?.name || 'Unknown User'}</div>
-                          <div className="text-[10px] text-slate-400">{formatDateTime(t.createdAt)}</div>
+                          <div className="text-sm font-bold text-content-primary">{t.user?.name || 'Unknown User'}</div>
+                          <div className="text-[10px] text-content-muted">{formatDateTime(t.createdAt)}</div>
                         </div>
                       </div>
                       <div className="flex flex-wrap items-center gap-3 shrink-0">
                         <div className="text-right">
-                          <div className="text-[9px] font-bold text-slate-400 uppercase">Plan</div>
-                          <div className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase">{t.planId || 'N/A'}</div>
+                          <div className="text-[9px] font-bold text-content-muted uppercase">Plan</div>
+                          <div className="text-xs font-bold text-primary-600 uppercase">{t.planId || 'N/A'}</div>
                         </div>
                         <div className="text-right min-w-[90px]">
-                          <div className="text-[9px] font-bold text-slate-400 uppercase">Amount</div>
-                          <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{formatCurrency(t.amount)}</div>
+                          <div className="text-[9px] font-bold text-content-muted uppercase">Amount</div>
+                          <div className="text-sm font-bold text-content-primary tabular-nums">{formatCurrency(t.amount)}</div>
                         </div>
                       </div>
                       </div>

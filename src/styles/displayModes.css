@@ -62,8 +62,8 @@ html.dark[data-pure-black="1"] {
   --bg-page: #000000;
   --bg-surface: #000000;
   --bg-surface-secondary: #0a0a0a;
-  --border-primary: #1a1a1a;
-  --border-secondary: #2e2e2e;
+  --border-primary: #3f3f46;
+  --border-secondary: #52525b;
 }
 
 html.dark[data-pure-black="1"],

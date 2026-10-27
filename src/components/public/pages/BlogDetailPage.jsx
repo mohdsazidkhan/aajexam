@@ -130,11 +130,11 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
   if (error || !blog) {
     return (
       <div className="min-h-screen bg-background-page">
-        <div className="py-8 text-gray-900 dark:text-white text-center">
+        <div className="py-8 text-content-primary text-center">
           <div className="text-6xl mb-4">📝</div>
           <h1 className="text-2xl font-bold mb-2">{translate('Blog Not Found')}</h1>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">{translate('The blog you\'re looking for doesn\'t exist or has been removed.')}</p>
-          <Link href="/blog" className="bg-primary-600 text-white px-6 py-3 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
+          <p className="text-content-secondary mb-6">{translate('The blog you\'re looking for doesn\'t exist or has been removed.')}</p>
+          <Link href="/blog" className="bg-primary-600 text-on-primary px-6 py-3 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
             {translate('Browse All Blogs')}
           </Link>
         </div>
@@ -143,9 +143,9 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
   }
 
   // Radii are inline throughout: styles/index.css forces every [class*="rounded"] to 8px !important.
-  const panel = 'relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md';
-  const topLine = <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />;
-  const outlineLink = 'flex items-center justify-between gap-2 px-4 py-2.5 bg-background-surface-secondary border border-slate-200 dark:border-slate-700 text-primary-700 dark:text-primary-300 font-bold text-sm hover:border-primary-500 hover:-translate-y-0.5 transition-all';
+  const panel = 'relative overflow-hidden bg-background-surface border border-border-primary';
+  const topLine = <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />;
+  const outlineLink = 'flex items-center justify-between gap-2 px-4 py-2.5 bg-background-surface-secondary border border-border-primary text-primary-600 font-bold text-sm hover:border-primary-500 hover:-translate-y-0.5 transition-all';
   const related = (relatedBlogs || []).filter(r => r._id !== blog._id).slice(0, 6);
 
   return (
@@ -154,12 +154,12 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         {/* Breadcrumb + back (back sits at the right end like every detail page) */}
         <div className="flex items-center justify-between gap-3 pt-3 xl:pt-4 mb-4">
           <nav className="min-w-0 flex-1">
-            <ol className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-              <li><Link href="/" className="hover:text-primary-600 dark:hover:text-primary-400">{translate('Home')}</Link></li>
+            <ol className="flex items-center gap-2 text-sm text-content-muted">
+              <li><Link href="/" className="hover:text-primary-600 dark:hover:text-primary-600">{translate('Home')}</Link></li>
               <li>•</li>
-              <li><Link href="/blog" className="hover:text-primary-600 dark:hover:text-primary-400">{translate('Blog')}</Link></li>
+              <li><Link href="/blog" className="hover:text-primary-600 dark:hover:text-primary-600">{translate('Blog')}</Link></li>
               <li>•</li>
-              <li className="text-gray-900 dark:text-white truncate max-w-[120px] sm:max-w-[240px] md:max-w-none">{blog.title}</li>
+              <li className="text-content-primary truncate max-w-[120px] sm:max-w-[240px] md:max-w-none">{blog.title}</li>
             </ol>
           </nav>
           <BackButton onClick={() => router.push('/blog')} className="shrink-0">
@@ -171,28 +171,25 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
           {/* ───────────── Main column ───────────── */}
           <div className="min-w-0 space-y-4 xl:space-y-5">
             {/* Header */}
-            <header className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 shadow-xl ring-1 ring-slate-200 dark:ring-white/10 p-4 xl:p-6" style={{ borderRadius: 16 }}>
-              <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-              <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-              <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+            <header className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 bg-background-surface" style={{ borderRadius: 16 }}>
 
               <div className="flex items-center gap-2 flex-wrap mb-3">
                 {blog.isFeatured && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-xs font-black uppercase tracking-wider shadow" style={{ borderRadius: 999 }}>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 text-on-primary text-xs font-bold uppercase tracking-[0.08em] bg-primary-600" style={{ borderRadius: 999 }}>
                     <Star className="w-3.5 h-3.5 fill-current" /> {translate('Featured')}
                   </span>
                 )}
                 {blog.isPinned && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-white/90 dark:bg-white/15 text-primary-700 dark:text-white ring-1 ring-primary-200 dark:ring-white/25 text-xs font-black uppercase tracking-wider" style={{ borderRadius: 999 }}>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 text-primary-600 dark:text-white ring-1 ring-primary-200 dark:ring-white/25 text-xs font-bold uppercase tracking-[0.08em]" style={{ borderRadius: 999 }}>
                     <Pin className="w-3.5 h-3.5 fill-current" /> {translate('Pinned')}
                   </span>
                 )}
-                <span className="text-primary-700 dark:text-primary-300 text-xs font-black uppercase tracking-wider">{formatDate(blog.publishedAt || blog.createdAt)}</span>
+                <span className="text-primary-600 text-xs font-bold uppercase tracking-[0.08em]">{formatDate(blog.publishedAt || blog.createdAt)}</span>
               </div>
 
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 flex-1">
-                  <h1 className="text-xl md:text-2xl xl:text-4xl font-black text-gray-900 dark:text-gray-100 mb-3 leading-tight">
+                  <h1 className="text-xl md:text-2xl xl:text-4xl font-bold text-content-primary mb-3 leading-tight">
                     {blog.title}
                   </h1>
                 </div>
@@ -200,17 +197,17 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
               </div>
 
               {blog.excerpt && (
-                <p className="text-base xl:text-lg text-slate-600 dark:text-white/80 mb-5 leading-relaxed">{blog.excerpt}</p>
+                <p className="text-base xl:text-lg text-content-secondary dark:text-white/80 mb-5 leading-relaxed">{blog.excerpt}</p>
               )}
 
-              <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-dashed border-slate-300 dark:border-white/25">
+              <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-dashed border-border-primary">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow-lg rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
-                    <span className="font-black text-sm">{blog.author?.name?.charAt(0) || 'A'}</span>
+                  <div className="w-10 h-10 text-on-primary flex items-center justify-center bg-primary-600" style={{ borderRadius: 12 }}>
+                    <span className="font-bold text-sm">{blog.author?.name?.charAt(0) || 'A'}</span>
                   </div>
                   <div>
-                    <p className="font-bold text-gray-900 dark:text-gray-100 text-sm">{blog.author?.name || translate('AajExam Team')}</p>
-                    <p className="text-xs text-slate-500 dark:text-white/60">{translate('Author')}</p>
+                    <p className="font-bold text-content-primary text-sm">{blog.author?.name || translate('AajExam Team')}</p>
+                    <p className="text-xs text-content-muted dark:text-white/60">{translate('Author')}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -219,7 +216,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                     { icon: Heart, v: blog.likes || 0 },
                     { icon: Clock, v: translate('{count} min', { count: blog.readingTime || 5 }) },
                   ].map((m, i) => (
-                    <span key={i} className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20 text-xs font-bold text-slate-700 dark:text-white/80" style={{ borderRadius: 10 }}>
+                    <span key={i} className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-border-primary text-xs font-bold text-content-secondary dark:text-white/80" style={{ borderRadius: 10 }}>
                       <m.icon className="w-3.5 h-3.5" /> {m.v}
                     </span>
                   ))}
@@ -228,16 +225,16 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
             </header>
 
             {/* Featured image */}
-            <div className="relative overflow-hidden shadow-xl ring-1 ring-slate-200 dark:ring-white/10" style={{ borderRadius: 16 }}>
+            <div className="relative overflow-hidden border border-border-primary" style={{ borderRadius: 16 }}>
               <img src={optimizedImage(blog.featuredImage) || '/default_banner.png'} alt={blog.featuredImageAlt || blog.title}
                 width={1200} height={630} fetchPriority="high" decoding="async"
                 className="w-full h-48 md:h-72 xl:h-96 object-cover" />
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
             </div>
 
             {/* Content */}
-            <article className="prose prose-lg max-w-none bg-white dark:bg-black text-black dark:text-white p-4 xl:p-8 border border-slate-200 dark:border-slate-800 shadow-md [&_*:not(a)]:!text-black dark:[&_*:not(a)]:!text-white [&_img]:max-w-full [&_table]:block [&_table]:overflow-x-auto [&_pre]:overflow-x-auto" style={{ borderRadius: 16 }}>
-              <div className="text-black dark:text-white leading-relaxed"
+            <article className="prose prose-lg max-w-none bg-background-surface text-content-primary p-4 xl:p-8 border border-border-primary [&_*:not(a)]:!text-black dark:[&_*:not(a)]:!text-white [&_img]:max-w-full [&_table]:block [&_table]:overflow-x-auto [&_pre]:overflow-x-auto" style={{ borderRadius: 16 }}>
+              <div className="text-content-primary leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: renderContent(blog.content) }} />
             </article>
 
@@ -245,10 +242,10 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
             {blog.tags && blog.tags.length > 0 && (
               <div className={`${panel} p-4 xl:p-5`} style={{ borderRadius: 16 }}>
                 {topLine}
-                <h3 className="text-lg font-black text-gray-900 dark:text-white mb-3 uppercase tracking-tight">{translate('Tags')}</h3>
+                <h3 className="text-lg font-bold text-content-primary mb-3 tracking-tight">{translate('Tags')}</h3>
                 <div className="flex flex-wrap gap-2">
                   {blog.tags.map((tag, index) => (
-                    <span key={index} className="inline-flex items-center gap-1.5 bg-primary-500/5 border-2 border-dashed border-primary-500/30 text-slate-700 dark:text-slate-200 text-sm px-3 py-1 font-bold" style={{ borderRadius: 10 }}>
+                    <span key={index} className="inline-flex items-center gap-1.5 border border-dashed border-primary-500/30 text-content-secondary text-sm px-3 py-1 font-bold" style={{ borderRadius: 10 }}>
                       <span className="w-1.5 h-1.5 bg-amber-400" style={{ borderRadius: '50%' }} />#{tag}
                     </span>
                   ))}
@@ -265,8 +262,8 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
               <div className="flex flex-wrap items-center gap-3">
                 <button onClick={handleLike} disabled={liked}
                   className={`flex items-center gap-2 px-4 py-2 font-bold text-sm transition-colors ${liked
-                    ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000]'
-                    : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-primary-500/10'}`}
+                    ? 'text-on-primary bg-primary-600'
+                    : 'bg-background-surface-secondary text-content-secondary'}`}
                   style={{ borderRadius: 10 }}>
                   <Heart className={`w-4 h-4 ${liked ? 'fill-current' : ''}`} />
                   {liked ? translate('Liked') : translate('Like')}
@@ -274,25 +271,25 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
 
                 {canNativeShare ? (
                   <button onClick={handleNativeShare}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white font-bold text-sm hover:bg-primary-700" style={{ borderRadius: 10 }}>
+                    className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-on-primary font-bold text-sm hover:bg-primary-700" style={{ borderRadius: 10 }}>
                     <Share2 className="w-4 h-4" /> Share
                   </button>
                 ) : (
                   <div className="flex items-center gap-3">
-                    <a href={`https://wa.me/?text=${encodedText}%0A${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-300 text-xl"><FaWhatsapp /></a>
-                    <a href={`https://t.me/share/url?text=${encodeURIComponent(`${shareText}\n\n${pageUrl}`)}`} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white text-xl"><FaTelegramPlane /></a>
-                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white text-xl"><FaFacebook /></a>
-                    <a href={`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white text-xl"><FaTwitter /></a>
-                    <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white text-xl"><FaLinkedin /></a>
+                    <a href={`https://wa.me/?text=${encodedText}%0A${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-primary-600 text-xl"><FaWhatsapp /></a>
+                    <a href={`https://t.me/share/url?text=${encodeURIComponent(`${shareText}\n\n${pageUrl}`)}`} target="_blank" rel="noopener noreferrer" className="text-content-primary text-xl"><FaTelegramPlane /></a>
+                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-content-primary text-xl"><FaFacebook /></a>
+                    <a href={`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-content-primary text-xl"><FaTwitter /></a>
+                    <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-content-primary text-xl"><FaLinkedin /></a>
                   </div>
                 )}
               </div>
 
               {blog.exam && (
                 <div className="flex items-center gap-2 pt-3 border-t border-dashed border-primary-300 dark:border-white/20">
-                  <span className="text-sm text-gray-500 dark:text-gray-400">{translate('Exam:')}</span>
+                  <span className="text-sm text-content-muted">{translate('Exam:')}</span>
                   <Link href={blog.exam.slug ? `/govt-exams/exam/${blog.exam.slug}` : '/govt-exams'}
-                    className="bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] text-sm px-3 py-1 font-black shadow hover:brightness-105" style={{ borderRadius: 999 }}>
+                    className="text-on-primary text-sm px-3 py-1 font-bold hover:brightness-105 bg-primary-600" style={{ borderRadius: 999 }}>
                     {blog.exam.name}
                   </Link>
                 </div>
@@ -302,17 +299,17 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
             {/* Next steps — contextual internal links */}
             <section className={`${panel} p-4 xl:p-5`} style={{ borderRadius: 16 }}>
               {topLine}
-              <h2 className="text-lg font-black text-gray-900 dark:text-white mb-2 uppercase tracking-tight">
+              <h2 className="text-lg font-bold text-content-primary mb-2 tracking-tight">
                 {translate('Prepare for {name} on AajExam', { name: blog.exam?.name || translate('this exam') })}
               </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+              <p className="text-sm text-content-secondary mb-4 leading-relaxed">
                 Reading the notification is step one. Start free practice with topic-wise quizzes,
                 previous-year papers and full-length mock tests built for this exam.
               </p>
               <div className="flex flex-col gap-2">
                 {blog.exam?.slug && (
                   <Link href={`/govt-exams/exam/${blog.exam.slug}`}
-                    className="flex items-center justify-between gap-2 px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold text-sm hover:brightness-110 transition-all" style={{ borderRadius: 10 }}>
+                    className="flex items-center justify-between gap-2 px-4 py-2.5 text-on-primary font-bold text-sm hover:brightness-110 transition-all bg-primary-600" style={{ borderRadius: 10 }}>
                     {blog.exam.name} syllabus & pattern <ArrowRight className="w-4 h-4 shrink-0" />
                   </Link>
                 )}
@@ -340,17 +337,17 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
               <section key={g.key} className={`${panel} p-4 xl:p-5`} style={{ borderRadius: 16 }}>
                 {topLine}
                 <div className="flex items-center gap-2.5 mb-3">
-                  <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+                  <span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
                     <g.icon className="w-4 h-4" />
                   </span>
-                  <h3 className="text-base font-black text-gray-900 dark:text-white uppercase tracking-tight">{g.title}</h3>
+                  <h3 className="text-base font-bold text-content-primary uppercase tracking-tight">{g.title}</h3>
                 </div>
                 <ul className="space-y-1.5">
                   {sideLists[g.key].map((item) => (
                     <li key={item._id}>
-                      <Link href={g.href(item)} className="group flex items-center justify-between gap-2 px-3 py-2 bg-background-surface-secondary border border-slate-200 dark:border-slate-700 text-sm font-bold text-slate-700 dark:text-slate-200 hover:border-primary-500 hover:text-primary-700 dark:hover:text-primary-300 transition-all" style={{ borderRadius: 10 }}>
+                      <Link href={g.href(item)} className="group flex items-center justify-between gap-2 px-3 py-2 bg-background-surface-secondary border border-border-primary text-sm font-bold text-content-secondary hover:border-primary-500 hover:text-primary-700 dark:hover:text-primary-600 transition-all" style={{ borderRadius: 10 }}>
                         <span className="truncate">{g.label(item)}</span>
-                        <ArrowRight className="w-3.5 h-3.5 shrink-0 text-primary-600 dark:text-primary-300 group-hover:translate-x-0.5 transition-transform" />
+                        <ArrowRight className="w-3.5 h-3.5 shrink-0 text-primary-600 group-hover:translate-x-0.5 transition-transform" />
                       </Link>
                     </li>
                   ))}
@@ -363,11 +360,11 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         {/* Related Blogs */}
         {related.length > 0 && (
           <div className="mt-8 xl:mt-10">
-            <h3 className="text-xl xl:text-2xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">{translate('Related Blogs')}</h3>
+            <h3 className="text-xl xl:text-2xl font-bold text-content-primary mb-4 tracking-tight">{translate('Related Blogs')}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
               {related.map((rel) => (
                 <Link key={rel._id} href={`/blog/${rel.slug}`}
-                  className="group relative flex flex-col overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all" style={{ borderRadius: 16 }}>
+                  className="group relative flex flex-col overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 transition-all" style={{ borderRadius: 16 }}>
                   {topLine}
                   {!liteMode && (
                     <img src={optimizedImage(rel.featuredImage, 480) || '/default_banner.png'} alt={rel.title}
@@ -375,14 +372,14 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                       className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300" />
                   )}
                   <div className="flex-1 p-4">
-                    <h4 className="text-base font-black text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-300 mb-2 line-clamp-2 transition-colors">
+                    <h4 className="text-base font-bold text-content-primary group-hover:text-primary-600 dark:group-hover:text-primary-600 mb-2 line-clamp-2 transition-colors">
                       {rel.title}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
+                    <p className="text-content-secondary text-sm line-clamp-2">
                       {rel.excerpt || rel.content?.replace(/<[^>]*>/g, '').substring(0, 100) + '...'}
                     </p>
                   </div>
-                  <div className="relative flex items-center justify-between gap-3 px-4 py-2.5 border-t-2 border-dashed border-primary-500/30 bg-primary-600/5 text-xs font-bold text-slate-500 dark:text-slate-400">
+                  <div className="relative flex items-center justify-between gap-3 px-4 py-2.5 border-t-2 border-dashed border-primary-500/30 text-xs font-bold text-content-muted">
                     <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
                     <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
                     <span>{formatDate(rel.publishedAt || rel.createdAt)}</span>

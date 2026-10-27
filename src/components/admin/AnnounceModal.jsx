@@ -103,7 +103,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[200] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-slate-950/60 z-[200] flex items-center justify-center p-4"
           onClick={handleClose}
         >
           <motion.div
@@ -111,20 +111,20 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl xl:rounded-[2rem] border-2 border-slate-200 dark:border-slate-800 p-4 xl:p-5 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70"
+            className="w-full max-w-md bg-background-surface rounded-2xl xl:rounded-3xl border border-border-primary p-4 xl:p-5 relative"
           >
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg xl:text-2xl font-black uppercase italic tracking-tighter flex items-center gap-2">
-                <Megaphone className="w-5 h-5 text-primary-600 dark:text-primary-300" /> Announce
+              <h3 className="text-lg xl:text-2xl font-bold italic tracking-tight flex items-center gap-2">
+                <Megaphone className="w-5 h-5 text-primary-600" /> Announce
               </h3>
-              <button aria-label="Close" onClick={handleClose} className="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors">
+              <button aria-label="Close" onClick={handleClose} className="p-2 hover:bg-background-surface-secondary rounded-lg transition-colors">
                 <XIcon className="w-4 h-4" />
               </button>
             </div>
 
             <form onSubmit={handleSendBroadcast} className="space-y-3">
               <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Send to</label>
+                <label className="block text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1.5">Send to</label>
                 <Select
                   value={composeForm.target}
                   onChange={(e) => {
@@ -133,7 +133,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
                     setSpecificUser(null);
                     setSelectedUsers([]);
                   }}
-                  className="w-full px-3 py-2.5 border-2 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600 border-slate-300"
+                  className="w-full px-3 py-2.5 border rounded-lg xl:rounded-xl text-sm font-bold bg-background-surface text-content-primary outline-none focus:border-primary-600 border-border-primary"
                 >
                   <option value="all">All users</option>
                   <option value="pro">PRO subscribers only</option>
@@ -144,61 +144,61 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
               </div>
               {GROUP_TARGETS.includes(composeForm.target) && (
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Profile condition</label>
+                  <label className="block text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1.5">Profile condition</label>
                   <Select
                     value={composeForm.condition}
                     onChange={(e) => setComposeForm((f) => ({ ...f, condition: e.target.value }))}
-                    className="w-full px-3 py-2.5 border-2 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600 border-slate-300"
+                    className="w-full px-3 py-2.5 border rounded-lg xl:rounded-xl text-sm font-bold bg-background-surface text-content-primary outline-none focus:border-primary-600 border-border-primary"
                   >
                     <option value="">No condition (everyone in this group)</option>
                     {ANNOUNCE_CONDITIONS.map((c) => (
                       <option key={c.key} value={c.key}>{c.label}</option>
                     ))}
                   </Select>
-                  <p className="mt-1 text-[11px] font-bold text-primary-700 dark:text-primary-300">
+                  <p className="mt-1 text-[11px] font-bold text-primary-600">
                     {audienceCount === null ? 'Counting...' : `Will be sent to ${audienceCount} student${audienceCount === 1 ? '' : 's'}`}
                   </p>
                 </div>
               )}
               {composeForm.target === 'specific' && (
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">User</label>
+                  <label className="block text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1.5">User</label>
                   <UserSearchPicker value={specificUser} onChange={setSpecificUser} placeholder="Search by name or email..." />
                 </div>
               )}
               {composeForm.target === 'selected' && (
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Users</label>
+                  <label className="block text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1.5">Users</label>
                   <UserSearchPicker multiple value={selectedUsers} onChange={setSelectedUsers} placeholder="Search by name or email..." />
                 </div>
               )}
               <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Title</label>
+                <label className="block text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1.5">Title</label>
                 <input
                   type="text"
                   value={composeForm.title}
                   onChange={(e) => setComposeForm((f) => ({ ...f, title: e.target.value }))}
                   maxLength={200}
                   placeholder="e.g. New PYQ papers added!"
-                  className="w-full px-3 py-2.5 border-2 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600 border-slate-300"
+                  className="w-full px-3 py-2.5 border rounded-lg xl:rounded-xl text-sm bg-background-surface text-content-primary outline-none focus:border-primary-600 border-border-primary"
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Message</label>
+                <label className="block text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1.5">Message</label>
                 <textarea
                   value={composeForm.description}
                   onChange={(e) => setComposeForm((f) => ({ ...f, description: e.target.value }))}
                   maxLength={5000}
                   rows={8}
                   placeholder="What do you want to tell them?"
-                  className="w-full px-3 py-2.5 border-2 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-white dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600 border-slate-300"
+                  className="w-full px-3 py-2.5 border rounded-lg xl:rounded-xl text-sm bg-background-surface text-content-primary outline-none focus:border-primary-600 border-border-primary"
                 />
-                <p className="mt-1 text-right text-[10px] font-bold text-slate-400 tabular-nums">{composeForm.description.length}/5000</p>
+                <p className="mt-1 text-right text-[10px] font-bold text-content-muted tabular-nums">{composeForm.description.length}/5000</p>
               </div>
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-950 shadow-md text-white rounded-lg xl:rounded-xl font-black uppercase text-xs tracking-widest hover:brightness-110 transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 px-4 py-2 text-on-primary rounded-lg xl:rounded-xl font-bold uppercase text-xs tracking-[0.08em] hover:brightness-110 transition-all disabled:opacity-50 bg-primary-600"
               >
                 <Send className="w-4 h-4" /> {sending ? 'Sending...' : 'Send Announcement'}
               </button>

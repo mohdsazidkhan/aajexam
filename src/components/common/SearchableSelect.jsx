@@ -29,32 +29,32 @@ const SearchableSelect = ({ value, onChange, options = [], placeholder = 'Search
   return (
     <div className="relative w-full min-w-0" ref={ref}>
       <div
-        className={`flex items-center gap-2 w-full h-10 px-3 text-sm rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black text-slate-900 dark:text-white focus-within:border-primary-700 transition-all cursor-text ${className}`}
+        className={`flex items-center gap-2 w-full h-10 px-3 text-sm rounded-xl border border-border-primary bg-background-surface-secondary text-content-primary focus-within:border-primary-700 transition-all cursor-text ${className}`}
         onClick={!isOpen ? open : undefined}
       >
-        {Icon && <Icon className="w-4 h-4 shrink-0 text-primary-600 dark:text-primary-300" />}
-        {prefix && <span className="hidden sm:inline shrink-0 text-[10px] font-black uppercase tracking-wide text-primary-700 dark:text-primary-300 whitespace-nowrap">{prefix}</span>}
+        {Icon && <Icon className="w-4 h-4 shrink-0 text-primary-600" />}
+        {prefix && <span className="hidden sm:inline shrink-0 text-[10px] font-bold uppercase tracking-wide text-primary-600 whitespace-nowrap">{prefix}</span>}
         <input
           type="text"
-          className="w-full min-w-0 bg-transparent outline-none border-none p-0 font-bold truncate placeholder:text-slate-400 dark:placeholder:text-slate-600"
+          className="w-full min-w-0 bg-transparent outline-none border-none p-0 font-bold truncate placeholder:text-content-muted"
           placeholder={placeholder}
           value={isOpen ? searchTerm : (selected?.label || '')}
           onChange={(e) => { setSearchTerm(e.target.value); if (!isOpen) setIsOpen(true); }}
           onFocus={() => { if (!isOpen) open(); }}
         />
-        <button type="button" aria-label={translate('Search...')} onClick={() => (isOpen ? setIsOpen(false) : open())} className="shrink-0 text-slate-400">
+        <button type="button" aria-label={translate('Search...')} onClick={() => (isOpen ? setIsOpen(false) : open())} className="shrink-0 text-content-muted">
           <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
       </div>
 
       {isOpen && (
-        <div className="absolute z-50 w-full min-w-[240px] max-w-[85vw] mt-1 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl shadow-sm max-h-60 overflow-y-auto">
+        <div className="absolute z-50 w-full min-w-[240px] max-w-[85vw] mt-1 bg-background-surface-secondary border border-border-primary rounded-2xl max-h-60 overflow-y-auto">
           {filtered.length > 0 ? (
             <ul className="py-1">
               {filtered.map((o) => (
                 <li
                   key={o.value}
-                  className={`px-4 py-2.5 text-sm font-semibold cursor-pointer transition-colors ${o.value === value ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+                  className={`px-4 py-2.5 text-sm font-semibold cursor-pointer transition-colors ${o.value === value ? 'text-primary-600' : 'text-content-secondary hover:bg-background-surface-secondary'}`}
                   onClick={() => pick(o)}
                 >
                   {o.label}
@@ -62,7 +62,7 @@ const SearchableSelect = ({ value, onChange, options = [], placeholder = 'Search
               ))}
             </ul>
           ) : (
-            <div className="p-4 text-center text-sm font-semibold text-slate-400">{translate('No results found')}</div>
+            <div className="p-4 text-center text-sm font-semibold text-content-muted">{translate('No results found')}</div>
           )}
         </div>
       )}

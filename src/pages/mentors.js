@@ -70,40 +70,40 @@ const MentorsPage = () => {
             eyebrow={translate('Mentors')}
             title={translate('Mentors')}
             center={
-              <div className="flex items-center gap-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-xl px-3 h-10">
-                <Search className="w-4 h-4 text-slate-400 shrink-0" />
+              <div className="flex items-center gap-2 bg-background-surface border border-border-primary rounded-xl px-3 h-10">
+                <Search className="w-4 h-4 text-content-muted shrink-0" />
                 <input type="text" placeholder={translate('Search by exam name...')} value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
-                  className="flex-1 min-w-0 bg-transparent outline-none text-sm text-slate-700 dark:text-slate-300" />
+                  className="flex-1 min-w-0 bg-transparent outline-none text-sm text-content-secondary" />
               </div>
             }
             actions={
-              <button onClick={() => router.push('/mentor/apply')} className="px-4 h-10 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow rounded-xl text-xs font-black shrink-0 hover:brightness-105 transition-all">{translate('Become Mentor')}</button>
+              <button onClick={() => router.push('/mentor/apply')} className="px-4 h-10 text-on-primary rounded-xl text-xs font-bold shrink-0 hover:brightness-105 transition-all bg-primary-600">{translate('Become Mentor')}</button>
             }
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
             {mentors.map((mentor, i) => (
-              <Card as="article" key={mentor._id || i} className="hover:shadow-sm transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700"
+              <Card as="article" key={mentor._id || i} className="transition-all cursor-pointer border border-border-primary hover:border-primary-700"
                 onClick={() => router.push(`/mentor/${mentor._id}`)}>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-300 font-black text-sm">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-primary-600 font-bold text-sm">
                       {mentor.user?.name?.charAt(0) || 'M'}
                     </div>
                     <section className="flex-1">
-                      <h2 className="text-sm font-black text-slate-900 dark:text-white">{mentor.user?.name || translate('Mentor')}</h2>
-                      {mentor.isVerified && <span className="text-[9px] font-bold text-primary-600 dark:text-primary-300 flex items-center gap-1"><Shield className="w-3 h-3" /> {translate('Verified')}</span>}
+                      <h2 className="text-sm font-bold text-content-primary">{mentor.user?.name || translate('Mentor')}</h2>
+                      {mentor.isVerified && <span className="text-[9px] font-bold text-primary-600 flex items-center gap-1"><Shield className="w-3 h-3" /> {translate('Verified')}</span>}
                     </section>
                     <div className="flex items-center gap-1">
-                      <Star className="w-3 h-3 text-black dark:text-white fill-black dark:fill-white" />
-                      <span className="text-xs font-black text-slate-600">{mentor.rating?.toFixed(1) || '0.0'}</span>
+                      <Star className="w-3 h-3 text-content-primary fill-black dark:fill-white" />
+                      <span className="text-xs font-bold text-content-secondary">{mentor.rating?.toFixed(1) || '0.0'}</span>
                     </div>
                   </div>
 
                   {mentor.examsCleared?.length > 0 && (
                     <div className="flex flex-wrap gap-1">
                       {mentor.examsCleared.map((exam, j) => (
-                        <span key={j} className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 rounded text-[9px] font-bold text-primary-600 dark:text-primary-300">
+                        <span key={j} className="px-2 py-0.5 rounded text-[9px] font-bold text-primary-600">
                           <Award className="w-3 h-3 inline mr-0.5" />{exam.examName} {exam.year}
                         </span>
                       ))}
@@ -113,21 +113,21 @@ const MentorsPage = () => {
                   {mentor.specialization?.length > 0 && (
                     <div className="flex flex-wrap gap-1">
                       {mentor.specialization.map((spec, j) => (
-                        <span key={j} className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-[9px] font-bold text-slate-500">{spec}</span>
+                        <span key={j} className="px-2 py-0.5 bg-background-surface-secondary rounded text-[9px] font-bold text-content-muted">{spec}</span>
                       ))}
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between text-[10px] text-slate-400 font-bold pt-1">
+                  <div className="flex items-center justify-between text-[10px] text-content-muted font-bold pt-1">
                     <span><MessageCircle className="w-3 h-3 inline" /> {translate('{count} helped', { count: mentor.helpedStudents || 0 })}</span>
-                    <span className="text-primary-600 dark:text-primary-300 flex items-center gap-1">View Profile <ChevronRight className="w-3 h-3" /></span>
+                    <span className="text-primary-600 flex items-center gap-1">View Profile <ChevronRight className="w-3 h-3" /></span>
                   </div>
                 </div>
               </Card>
             ))}
           </div>
 
-          {mentors.length === 0 && <div className="text-center py-12"><Users className="w-12 h-12 text-slate-300 mx-auto mb-4" /><p className="text-slate-400 font-bold">{translate('No mentors yet. Be the first!')}</p></div>}
+          {mentors.length === 0 && <div className="text-center py-12"><Users className="w-12 h-12 text-slate-300 mx-auto mb-4" /><p className="text-content-muted font-bold">{translate('No mentors yet. Be the first!')}</p></div>}
 
           <div className="pt-6"><Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
         </SubscriptionGuard>

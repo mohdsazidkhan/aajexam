@@ -62,25 +62,25 @@ const ResetPasswordPage = () => {
         <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden py-4 xl:py-8">
           {/* --- Background Decorative Icons --- */}
           <div className="absolute top-20 right-20 opacity-5 rotate-12 hidden xl:block"><ShieldCheck className="w-64 h-64" /></div>
-          <div className="absolute bottom-20 left-20 opacity-5 -rotate-12 hidden xl:block"><Rocket className="w-64 h-64 text-primary-600 dark:text-primary-300" /></div>
+          <div className="absolute bottom-20 left-20 opacity-5 -rotate-12 hidden xl:block"><Rocket className="w-64 h-64 text-primary-600" /></div>
 
-          <Card as="section" className="w-full max-w-md p-5 xl:p-10 border-2 shadow-sm relative z-10 space-y-8">
+          <Card as="section" className="w-full max-w-md p-5 xl:p-10 border relative z-10 space-y-8">
             <div className="text-center space-y-2">
-              <div className="w-16 h-16 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 text-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
                 <Lock className="w-8 h-8" />
               </div>
-              <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight">Reset Password</h1>
+              <h1 className="text-xl xl:text-3xl font-bold font-outfit tracking-tight">Reset Password</h1>
             </div>
 
             <AnimatePresence mode="wait">
               {success ? (
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="py-10 text-center space-y-6">
-                  <div className="w-20 h-20 bg-primary-500/10 text-primary-600 dark:text-primary-300 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-20 h-20 text-primary-600 rounded-full flex items-center justify-center mx-auto">
                     <ShieldCheck className="w-10 h-10" />
                   </div>
                   <section className="space-y-2">
-                    <h2 className="text-xl font-black uppercase">Success!</h2>
-                    <p className="text-sm font-bold text-gray-500">Your security credentials have been updated. Redirecting you to the login gateway...</p>
+                    <h2 className="text-xl font-bold">Success!</h2>
+                    <p className="text-sm font-bold text-content-muted">Your security credentials have been updated. Redirecting you to the login gateway...</p>
                   </section>
                 </motion.div>
               ) : (
@@ -90,12 +90,12 @@ const ResetPasswordPage = () => {
                   onSubmit={handleSubmit} className="space-y-6"
                 >
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">New Master Password</label>
+                    <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] px-1">New Master Password</label>
                     <div className="relative group">
                       <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 group-focus-within:text-primary-600 transition-colors" />
                       <input
                         type={showPassword ? "text" : "password"} required
-                        className="w-full pl-12 pr-12 py-4 rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold outline-none focus:border-primary-700 transition-all"
+                        className="w-full pl-12 pr-12 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary font-bold outline-none focus:border-primary-700 transition-all"
                         placeholder="••••••••"
                         value={newPassword} onChange={e => setNewPassword(e.target.value)}
                       />
@@ -103,15 +103,15 @@ const ResetPasswordPage = () => {
                         {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                       </button>
                     </div>
-                    <p className="text-[8px] font-black text-gray-400 uppercase tracking-widest px-2">Minimum 6 characters required for high-level security</p>
+                    <p className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em] px-2">Minimum 6 characters required for high-level security</p>
                   </div>
 
-                  <Button variant="primary" fullWidth size="lg" className="py-5 text-sm font-black" type="submit" disabled={isLoading}>
+                  <Button variant="primary" fullWidth size="lg" className="py-5 text-sm font-bold" type="submit" disabled={isLoading}>
                     {isLoading ? 'UPDATING...' : 'UPDATE PASSWORD'}
                   </Button>
 
                   <div className="text-center pt-2">
-                    <Link href="/login" className="text-xs font-black text-primary-600 dark:text-primary-300 flex items-center justify-center gap-2 hover:translate-x-[-4px] transition-transform">
+                    <Link href="/login" className="text-xs font-bold text-primary-600 flex items-center justify-center gap-2 hover:translate-x-[-4px] transition-transform">
                       <ArrowLeft className="w-4 h-4" /> BACK TO LOGIN
                     </Link>
                   </div>

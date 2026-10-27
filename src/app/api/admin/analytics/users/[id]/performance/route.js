@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
+import { resolveUserId } from '@/lib/utils/userRef';
 import User from '@/models/User';
 import { protect, admin } from '@/middleware/auth';
 
@@ -10,10 +11,11 @@ export async function GET(req, { params }) {
             return NextResponse.json({ message: 'Admin access required' }, { status: 403 });
         }
 
-        const { id } = params;
+        const { id } = await params; // user id or username
         await dbConnect();
 
-        const user = await User.findById(id).select('name level subscriptionStatus');
+        const uid = await resolveUserId(id);
+        const user = uid ? await User.findById(uid).select('name level subscriptionStatus') : null;
         if (!user) return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
 
         return NextResponse.json({

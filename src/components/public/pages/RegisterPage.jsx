@@ -135,26 +135,23 @@ const RegisterPageInner = () => {
   };
 
   const passwordStrengthLabel = passwordStrength < 40 ? translate('Weak') : passwordStrength < 80 ? translate('Good') : translate('Strong');
-  const passwordStrengthColor = passwordStrength < 40 ? 'text-black dark:text-white' : passwordStrength < 80 ? 'text-black dark:text-white' : 'text-primary-600 dark:text-primary-300';
+  const passwordStrengthColor = passwordStrength < 40 ? 'text-content-primary' : passwordStrength < 80 ? 'text-content-primary' : 'text-primary-600';
   const passwordBarColor = passwordStrength < 40 ? 'red-500' : passwordStrength < 80 ? 'amber-500' : 'primary-500';
 
   return (
     <MobileAppWrapper showHeader={true} title={translate('Register')}>
       <div className="flex-1 flex flex-col xl:flex-row items-stretch">
         {/* Left panel */}
-        <div className="hidden xl:flex w-1/2 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-primary-800 dark:via-primary-900 dark:to-primary-950 p-16 flex-col justify-center items-start relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '20px 20px' }} />
-          <div className="pointer-events-none absolute -top-24 -left-20 w-80 h-80 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="pointer-events-none absolute -bottom-28 right-10 w-96 h-96 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+        <div className="hidden xl:flex w-1/2 p-16 flex-col justify-center items-start relative overflow-hidden bg-background-surface">
           <div className="space-y-4 xl:space-y-8 relative z-10">
             <div className="space-y-2 xl:space-y-4">
               {freePromoActive && (
-                <span className="inline-block text-xs font-black uppercase tracking-widest text-[#000] bg-gradient-to-r from-primary-300 to-primary-400 shadow px-3 py-1.5 rounded-full">
+                <span className="inline-block text-xs font-bold uppercase tracking-[0.08em] text-on-primary px-3 py-1.5 rounded-full bg-primary-600">
                   {translate('🎁 Register now — Get PRO Free till 31 Dec 2026')}
                 </span>
               )}
-              <h1 className="text-2xl md:text-3xl xl:text-4xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
-                {rich('Join the <0>community</0>.', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
+              <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold font-outfit tracking-tight leading-none text-content-primary">
+                {rich('Join the <0>community</0>.', [(c) => <span className="text-primary-600">{c}</span>])}
               </h1>
             </div>
 
@@ -164,11 +161,11 @@ const RegisterPageInner = () => {
                 { icon: Brain, text: 'Attempt 500+ Previous Year Papers free' },
                 { icon: ShieldCheck, text: 'See your score and rank anytime' }
               ].map((item, index) => (
-                <div key={index} className="flex items-center gap-4 text-slate-700 dark:text-white font-bold">
-                  <div className="p-2 bg-primary-500/10 dark:bg-white/15 rounded-lg xl:rounded-xl">
-                    <item.icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                <div key={index} className="flex items-center gap-4 text-content-secondary font-bold">
+                  <div className="p-2 dark:bg-white/15 rounded-lg xl:rounded-xl">
+                    <item.icon className="w-5 h-5 text-primary-600" />
                   </div>
-                  <span className="text-sm font-black tracking-[0.04em]">{pyqCount ? translate(item.text).replace(/500\+/, String(pyqCount)) : translate(item.text)}</span>
+                  <span className="text-sm font-bold tracking-[0.04em]">{pyqCount ? translate(item.text).replace(/500\+/, String(pyqCount)) : translate(item.text)}</span>
                 </div>
               ))}
             </div>
@@ -178,10 +175,10 @@ const RegisterPageInner = () => {
 
         {/* Right panel — form */}
         <div className="flex-1 flex items-center justify-center overflow-y-auto py-4 xl:py-8">
-          <Card as="section" className="w-full max-w-md p-5 xl:p-8 shadow-xl space-y-5">
+          <Card as="section" className="w-full max-w-md p-5 xl:p-8 space-y-5">
             <section className="text-center space-y-3">
-              <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">{translate('Register')}</h2>
-              <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
+              <h2 className="text-xl xl:text-3xl font-bold font-outfit tracking-tight text-content-primary">{translate('Register')}</h2>
+              <p className="text-sm font-bold text-content-secondary tracking-[0.04em]">
                 {translate('Fill in your details to create your free account.')}
               </p>
             </section>
@@ -192,10 +189,10 @@ const RegisterPageInner = () => {
                 type="button"
                 onClick={() => googleSignup()}
                 disabled={isGoogleLoading}
-                className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-600 font-black text-sm uppercase tracking-wide hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm group disabled:opacity-60"
+                className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-border-primary dark:border-slate-600 font-bold text-sm uppercase tracking-wide hover:bg-background-surface-secondary transition-all group disabled:opacity-60"
               >
                 {isGoogleLoading ? (
-                  <span className="text-slate-500 normal-case">{translate('Connecting to Google...')}</span>
+                  <span className="text-content-muted normal-case">{translate('Connecting to Google...')}</span>
                 ) : (
                   <>
                     <img src="/google.svg" alt="Google" className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -205,23 +202,23 @@ const RegisterPageInner = () => {
               </button>
 
               <div className="relative flex items-center">
-                <div className="flex-grow border-t-2 border-slate-100 dark:border-slate-800" />
-                <span className="flex-shrink mx-4 text-xs font-black text-slate-500 dark:text-slate-400 tracking-[0.08em]">
+                <div className="flex-grow border-t-2 border-border-primary" />
+                <span className="flex-shrink mx-4 text-xs font-bold text-content-muted tracking-[0.08em]">
                   {translate('Or register with email')}
                 </span>
-                <div className="flex-grow border-t-2 border-slate-100 dark:border-slate-800" />
+                <div className="flex-grow border-t-2 border-border-primary" />
               </div>
             </div>
 
             <form onSubmit={handleRegister} className="space-y-5">
               <div className="space-y-2">
-                <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">{translate('Full name')}</label>
+                <label className="text-xs font-bold text-content-secondary tracking-[0.08em] px-1">{translate('Full name')}</label>
                 <div className="relative">
                   <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300" />
                   <input
                     type="text"
                     required
-                    className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                    className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                     placeholder={translate('Enter your full name')}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -231,13 +228,13 @@ const RegisterPageInner = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">{translate('Email')}</label>
+                  <label className="text-xs font-bold text-content-secondary tracking-[0.08em] px-1">{translate('Email')}</label>
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300" />
                     <input
                       type="email"
                       required
-                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
                       placeholder={translate('Email')}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -246,7 +243,7 @@ const RegisterPageInner = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">{translate('Phone')}</label>
+                  <label className="text-xs font-bold text-content-secondary tracking-[0.08em] px-1">{translate('Phone')}</label>
                   <div className="relative">
                     <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300" />
                     <input
@@ -255,7 +252,7 @@ const RegisterPageInner = () => {
                       pattern="[0-9]*"
                       maxLength={10}
                       required
-                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
                       placeholder={translate('10 digits')}
                       value={phone}
                       onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
@@ -265,13 +262,13 @@ const RegisterPageInner = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">{translate('Password')}</label>
+                <label className="text-xs font-bold text-content-secondary tracking-[0.08em] px-1">{translate('Password')}</label>
                 <div className="relative">
                   <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     required
-                    className="w-full pl-12 pr-12 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                    className="w-full pl-12 pr-12 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                     placeholder={translate('Create a password')}
                     value={password}
                     onChange={handlePasswordChange}
@@ -280,7 +277,7 @@ const RegisterPageInner = () => {
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     aria-label={showPassword ? translate('Hide password') : translate('Show password')}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-700 dark:text-slate-400"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-content-muted hover:text-content-primary"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -289,8 +286,8 @@ const RegisterPageInner = () => {
                 {password && (
                   <div className="px-2 pt-1">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 tracking-[0.08em]">{translate('Password strength')}</span>
-                      <span className={`text-[10px] font-black ${passwordStrengthColor}`}>
+                      <span className="text-[10px] font-bold text-content-secondary tracking-[0.08em]">{translate('Password strength')}</span>
+                      <span className={`text-[10px] font-bold ${passwordStrengthColor}`}>
                         {passwordStrengthLabel}
                       </span>
                     </div>
@@ -300,12 +297,12 @@ const RegisterPageInner = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">{translate('Referral code (optional)')}</label>
+                <label className="text-xs font-bold text-content-secondary tracking-[0.08em] px-1">{translate('Referral code (optional)')}</label>
                 <div className="relative group">
                   <Hash className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary-600 dark:group-focus-within:text-primary-600 transition-colors" />
                   <input
                     type="text"
-                    className="w-full pl-11 pr-4 py-4 border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black rounded-2xl outline-none focus:border-primary-700 focus:border-solid transition-all font-black tracking-[0.08em] text-sm placeholder:font-bold placeholder:text-slate-300"
+                    className="w-full pl-11 pr-4 py-4 border border-dashed border-border-primary bg-background-surface-secondary rounded-2xl outline-none focus:border-primary-700 focus:border-solid transition-all font-bold tracking-[0.08em] text-sm placeholder:font-bold placeholder:text-slate-300"
                     placeholder={translate('Referral code')}
                     value={referralCode}
                     onChange={(e) => setReferralCode(e.target.value.toUpperCase())}
@@ -317,7 +314,7 @@ const RegisterPageInner = () => {
                 variant="primary"
                 fullWidth
                 size="lg"
-                className="py-5 rounded-2xl shadow-sm"
+                className="py-5 rounded-2xl"
                 type="submit"
                 disabled={isLoading || passwordStrength < 60}
               >
@@ -326,9 +323,9 @@ const RegisterPageInner = () => {
             </form>
 
             <div className="text-center">
-              <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
+              <p className="text-sm font-bold text-content-secondary tracking-[0.04em]">
                 {translate('Already have an account?')}{' '}
-                <Link href="/login" className="text-primary-600 dark:text-primary-300 hover:underline font-black">
+                <Link href="/login" className="text-primary-600 hover:underline font-bold">
                   {translate('LOGIN')}
                 </Link>
               </p>

@@ -210,7 +210,7 @@ const FAQ = () => {
                                     <div className="w-12 h-12 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center">
                                         <Icon className="text-white text-xl" />
                                     </div>
-                                    <h2 className="text-2xl xl:text-3xl font-bold text-gray-800 dark:text-white">
+                                    <h2 className="text-2xl xl:text-3xl font-bold text-content-primary">
                                         {translate(category.category)}
                                     </h2>
                                 </div>
@@ -219,14 +219,14 @@ const FAQ = () => {
                                     {category.questions.map((faq, qIndex) => (
                                         <article
                                             key={qIndex}
-                                            className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 xl:p-6 border border-white/20 hover:shadow-sm transition-all duration-300"
+                                            className="bg-white/90 dark:bg-gray-800/90 rounded-2xl p-4 xl:p-6 border border-white/20 transition-all duration-300"
                                         >
-                                            <h3 className="text-lg xl:text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-start gap-3">
-                                                <span className="text-primary-600 dark:text-primary-300 flex-shrink-0">{translate('Q:')}</span>
+                                            <h3 className="text-lg xl:text-xl font-semibold text-content-primary mb-3 flex items-start gap-3">
+                                                <span className="text-primary-600 flex-shrink-0">{translate('Q:')}</span>
                                                 <span>{translate(faq.q)}</span>
                                             </h3>
-                                            <p className="text-md xl:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-8">
-                                                <span className="text-primary-600 dark:text-primary-300 font-semibold">{translate('A:')}</span> {translate(faq.a)}
+                                            <p className="text-md xl:text-lg text-content-secondary leading-relaxed pl-8">
+                                                <span className="text-primary-600 font-semibold">{translate('A:')}</span> {translate(faq.a)}
                                             </p>
                                         </article>
                                     ))}
@@ -237,11 +237,11 @@ const FAQ = () => {
 
                     {/* Contact Section */}
                     <div className="text-center mt-12">
-                        <section className="bg-primary-100 dark:bg-primary-600 rounded-3xl p-4 xl:p-8">
-                            <h2 className="text-2xl xl:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
+                        <section className="dark:bg-primary-600 rounded-3xl p-4 xl:p-8">
+                            <h2 className="text-2xl xl:text-3xl font-bold mb-4 text-content-primary">
                                 Still Have Questions?
                             </h2>
-                            <p className="text-lg mb-6 text-gray-700 dark:text-white">
+                            <p className="text-lg mb-6 text-content-secondary">
                                 {translate('Can\'t find the answer you\'re looking for? Our support team is here to help!')}
                             </p>
                             <button
@@ -257,7 +257,7 @@ const FAQ = () => {
                     <AuthorBio />
 
                     {/* Last Updated */}
-                    <footer className="text-sm text-gray-500 dark:text-gray-400 mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                    <footer className="text-sm text-content-muted mt-8 pt-4 border-t border-border-primary text-center">
                         {translate('Last Updated: March 19, 2026')}
                     </footer>
 

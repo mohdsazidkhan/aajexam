@@ -160,19 +160,19 @@ const AdminReferralAnalytics = () => {
         {
             key: 'user', header: 'User', render: (_, user) => (
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:bg-primary-700 transition-all uppercase">
+                    <div className="w-10 h-10 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center font-bold text-xs group-hover:bg-primary-700 transition-all uppercase bg-primary-600">
                         {user.name?.[0]?.toUpperCase()}
                     </div>
                     <div>
-                        <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{user.name}</div>
-                        <div className="text-[10px] font-bold text-slate-800 dark:text-slate-100 uppercase tracking-widest italic">{user.email}</div>
+                        <div className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] leading-none mb-1">{user.name}</div>
+                        <div className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] italic">{user.email}</div>
                     </div>
                 </div>
             )
         },
         {
             key: 'referralCode', header: 'Referral Code', render: (_, user) => (
-                <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-[9px] font-black text-primary-600 dark:text-primary-300 italic">
+                <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-background-surface-secondary border border-border-primary text-[9px] font-bold text-primary-600 italic">
                     <Hash className="w-3 h-3" /> {user.referralCode}
                 </div>
             )
@@ -180,35 +180,35 @@ const AdminReferralAnalytics = () => {
         {
             key: 'totalReferrals', header: 'Total Referrals', align: 'center', render: (_, user) => (
                 <div>
-                    <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.totalReferrals}</div>
-                    <div className="text-[9px] font-bold text-slate-400 uppercase">All Time</div>
+                    <div className="text-sm font-bold text-primary-600 tabular-nums">{user.totalReferrals}</div>
+                    <div className="text-[9px] font-bold text-content-muted uppercase">All Time</div>
                 </div>
             )
         },
         {
             key: 'monthlyReferrals', header: 'Monthly Growth', align: 'center', render: (_, user) => (
                 <div>
-                    <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.monthlyReferrals}</div>
-                    <div className="text-[9px] font-bold text-slate-400 uppercase">{selectedMonth === 'all' ? 'All Months' : months[parseInt(selectedMonth) - 1]}</div>
+                    <div className="text-sm font-bold text-primary-600 tabular-nums">{user.monthlyReferrals}</div>
+                    <div className="text-[9px] font-bold text-content-muted uppercase">{selectedMonth === 'all' ? 'All Months' : months[parseInt(selectedMonth) - 1]}</div>
                 </div>
             )
         },
         {
             key: 'joined', header: 'Joined', align: 'right', render: (_, user) => (
-                <span className="text-[10px] font-bold text-slate-400">{new Date(user.createdAt).toLocaleDateString()}</span>
+                <span className="text-[10px] font-bold text-content-muted">{new Date(user.createdAt).toLocaleDateString()}</span>
             )
         }
     ];
 
     const searchInput = (
         <div className="relative w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
             <input
                 type="text"
                 placeholder="Search users..."
                 value={searchTerm}
                 onChange={handleSearch}
-                className="w-full pl-9 pr-4 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+                className="w-full pl-9 pr-4 py-2 bg-background-surface border border-border-primary rounded-lg xl:rounded-xl text-sm"
             />
         </div>
     );
@@ -248,10 +248,10 @@ const AdminReferralAnalytics = () => {
                     key={mode.id}
                     onClick={() => setViewMode(mode.id)}
                     title={mode.label}
-                    className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+                    className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
                 >
                     <mode.icon className="w-4 h-4" />
-                    <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+                    <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
                 </button>
             ))}
         </div>
@@ -261,7 +261,7 @@ const AdminReferralAnalytics = () => {
         <button
             onClick={exportToCSV}
             disabled={analytics.length === 0}
-            className="w-full flex items-center justify-center gap-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300 px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm shrink-0 disabled:opacity-30"
+            className="w-full flex items-center justify-center gap-2 text-primary-600 px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm shrink-0 disabled:opacity-30"
         >
             <Download className="w-4 h-4" /> Export to CSV
         </button>
@@ -303,15 +303,15 @@ const AdminReferralAnalytics = () => {
     }
 
     return (
-        <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+        <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-content-primary">
             <Sidebar />
-            <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+            <div className="py-4 w-full mx-auto text-content-primary font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
                 <div className="flex-1 min-h-0 overflow-auto flex flex-col transition-all duration-500">
 
                     {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
                     {/* Summary Visualization */}
-                    <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-0 xl:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 xl:p-0 p-2">
+                    <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-0 xl:divide-x divide-border-primary mb-4 shrink-0 bg-background-surface rounded-xl border border-border-primary xl:p-0 p-2">
                         {[
                             { label: "Total Users", value: pagination.total, icon: Users },
                             { label: "Active Referrers", value: summary.usersWithReferrals, icon: UserPlus },
@@ -319,10 +319,10 @@ const AdminReferralAnalytics = () => {
                             { label: "This Month", value: summary.monthlyReferralsSum, icon: Zap }
                         ].map((stat) => (
                             <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-                                <div className="p-1.5 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+                                <div className="p-1.5 text-on-primary rounded-lg shrink-0 bg-primary-600"><stat.icon className="w-3.5 h-3.5" /></div>
                                 <div className="min-w-0">
-                                    <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">{stat.value}</div>
-                                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
+                                    <div className="text-sm font-bold text-content-primary tabular-nums tracking-tight">{stat.value}</div>
+                                    <div className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] truncate">{stat.label}</div>
                                 </div>
                             </div>
                         ))}
@@ -336,11 +336,11 @@ const AdminReferralAnalytics = () => {
                                 key="empty"
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
+                                className="flex flex-col items-center justify-center py-10 xl:py-20 text-center rounded-2xl xl:rounded-3xl border border-dashed border-border-primary"
                             >
                                 <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 xl:mb-4" />
-                                <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO DATA FOUND</h3>
-                                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No referral data found for the selected filters.</p>
+                                <h3 className="text-xl xl:text-3xl font-bold text-content-primary italic tracking-tight mb-3">NO DATA FOUND</h3>
+                                <p className="text-content-muted text-[10px] font-bold uppercase tracking-[0.08em]">No referral data found for the selected filters.</p>
                             </motion.div>
                         ) : (
                             <motion.div
@@ -354,29 +354,29 @@ const AdminReferralAnalytics = () => {
                                 {viewMode === 'grid' && (
                                     <div className="grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                                         {analytics.map((user, i) => (
-                                            <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                                            <div key={user._id || i} className="bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col gap-3 relative">
                                                 <div className="flex items-start justify-between gap-2">
-                                                    <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl flex items-center justify-center font-black text-sm">
+                                                    <div className="relative w-10 h-10 text-on-primary rounded-xl flex items-center justify-center font-bold text-sm bg-primary-600">
                                                         {user.name?.[0]?.toUpperCase() || 'U'}
-                                                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{i + 1 + (pagination.page - 1) * pagination.limit}</span>
+                                                        <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800">{i + 1 + (pagination.page - 1) * pagination.limit}</span>
                                                     </div>
-                                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300 text-[10px] font-black"><Hash className="w-3 h-3" />{user.referralCode}</span>
+                                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-primary-600 text-[10px] font-bold"><Hash className="w-3 h-3" />{user.referralCode}</span>
                                                 </div>
                                                 <div>
-                                                    <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{user.name || 'Unknown'}</h3>
-                                                    <p className="text-[10px] text-slate-400 truncate">{user.email || 'No email'}</p>
+                                                    <h3 className="text-sm font-bold text-content-primary truncate">{user.name || 'Unknown'}</h3>
+                                                    <p className="text-[10px] text-content-muted truncate">{user.email || 'No email'}</p>
                                                 </div>
                                                 <div className="grid grid-cols-2 gap-2 text-center">
-                                                    <div className="p-2 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5">
-                                                        <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.totalReferrals}</div>
-                                                        <div className="text-[9px] font-bold text-slate-400 uppercase">Total</div>
+                                                    <div className="p-2 bg-background-surface-secondary rounded-lg border border-border-primary">
+                                                        <div className="text-sm font-bold text-primary-600 tabular-nums">{user.totalReferrals}</div>
+                                                        <div className="text-[9px] font-bold text-content-muted uppercase">Total</div>
                                                     </div>
-                                                    <div className="p-2 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5">
-                                                        <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.monthlyReferrals}</div>
-                                                        <div className="text-[9px] font-bold text-slate-400 uppercase">Monthly</div>
+                                                    <div className="p-2 bg-background-surface-secondary rounded-lg border border-border-primary">
+                                                        <div className="text-sm font-bold text-primary-600 tabular-nums">{user.monthlyReferrals}</div>
+                                                        <div className="text-[9px] font-bold text-content-muted uppercase">Monthly</div>
                                                     </div>
                                                 </div>
-                                                <div className="text-[10px] text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-700">Joined {new Date(user.createdAt).toLocaleDateString()}</div>
+                                                <div className="text-[10px] text-content-muted pt-2 border-t border-border-primary">Joined {new Date(user.createdAt).toLocaleDateString()}</div>
                                             </div>
                                         ))}
                                     </div>
@@ -386,29 +386,29 @@ const AdminReferralAnalytics = () => {
                                 {viewMode === 'list' && (
                                     <div className="h-full overflow-auto space-y-3">
                                         {analytics.map((user, i) => (
-                                            <section key={user._id || i} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
-                                                <div className="relative w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow rounded-xl flex items-center justify-center shrink-0 font-black text-sm">
+                                            <section key={user._id || i} className="bg-background-surface rounded-xl border border-border-primary p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-3 relative">
+                                                <div className="relative w-10 h-10 text-on-primary rounded-xl flex items-center justify-center shrink-0 font-bold text-sm bg-primary-600">
                                                     {user.name?.[0]?.toUpperCase() || 'U'}
-                                                    <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{i + 1 + (pagination.page - 1) * pagination.limit}</span>
+                                                    <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800">{i + 1 + (pagination.page - 1) * pagination.limit}</span>
                                                 </div>
                                                 <div className="flex-1 min-w-0 space-y-1">
                                                     <div className="flex flex-wrap items-center gap-2">
-                                                        <h3 className="text-sm font-bold text-slate-900 dark:text-white">{user.name || 'Unknown'}</h3>
-                                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-300 text-[10px] font-black"><Hash className="w-3 h-3" />{user.referralCode}</span>
+                                                        <h3 className="text-sm font-bold text-content-primary">{user.name || 'Unknown'}</h3>
+                                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-primary-600 text-[10px] font-bold"><Hash className="w-3 h-3" />{user.referralCode}</span>
                                                     </div>
-                                                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-slate-400">
+                                                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-content-muted">
                                                         <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5" /> {user.email}</span>
                                                         <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> Joined {new Date(user.createdAt).toLocaleDateString()}</span>
                                                     </div>
                                                 </div>
                                                 <div className="flex gap-2 shrink-0">
-                                                    <div className="px-3 py-1.5 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 text-center min-w-[90px]">
-                                                        <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.totalReferrals}</div>
-                                                        <div className="text-[9px] font-bold text-slate-400 uppercase">Total</div>
+                                                    <div className="px-3 py-1.5 bg-background-surface-secondary rounded-lg border border-border-primary text-center min-w-[90px]">
+                                                        <div className="text-sm font-bold text-primary-600 tabular-nums">{user.totalReferrals}</div>
+                                                        <div className="text-[9px] font-bold text-content-muted uppercase">Total</div>
                                                     </div>
-                                                    <div className="px-3 py-1.5 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 text-center min-w-[90px]">
-                                                        <div className="text-sm font-black text-primary-600 dark:text-primary-300 tabular-nums">{user.monthlyReferrals}</div>
-                                                        <div className="text-[9px] font-bold text-slate-400 uppercase">Monthly</div>
+                                                    <div className="px-3 py-1.5 bg-background-surface-secondary rounded-lg border border-border-primary text-center min-w-[90px]">
+                                                        <div className="text-sm font-bold text-primary-600 tabular-nums">{user.monthlyReferrals}</div>
+                                                        <div className="text-[9px] font-bold text-content-muted uppercase">Monthly</div>
                                                     </div>
                                                 </div>
                                             </section>
@@ -418,7 +418,7 @@ const AdminReferralAnalytics = () => {
 
                                 {/* Table Visualization */}
                                 {viewMode === 'table' && (
-                                    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+                                    <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden h-auto flex flex-col relative">
                                         <ResponsiveTable data={analytics} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} emptyMessage="No referral data found" fillHeight />
                                     </div>
                                 )}

@@ -56,6 +56,7 @@ export async function GET(req) {
                             $project: {
                                 _id: 1,
                                 name: 1,
+                                username: 1,
                                 email: 1,
                                 subscriptionStatus: 1,
                                 walletBalance: 1,

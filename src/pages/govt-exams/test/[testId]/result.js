@@ -139,13 +139,13 @@ const TestResult = ({ resolvedId } = {}) => {
             animate={{ scale: 1, opacity: 1 }}
             className="absolute -top-12 -left-12 z-20 pointer-events-none"
           >
-            <Trophy className="w-20 xl:w-32 h-20 xl:h-32 text-primary-500 dark:text-primary-200 rotate-[-15deg] drop-shadow-sm" />
+            <Trophy className="w-20 xl:w-32 h-20 xl:h-32 text-primary-600" />
           </motion.div>
         )}
 
         <Card className={`
-          relative overflow-hidden text-center py-8 px-5 xl:py-12 xl:px-8 border-none shadow-sm
-          ${isGreat ? 'bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white shadow-xl ring-1 ring-slate-200 dark:ring-white/10' : 'bg-background-surface'}
+          relative overflow-hidden text-center py-8 px-5 xl:py-12 xl:px-8 border-none 
+          ${isGreat ? 'text-content-primary border border-border-primary bg-background-surface' : 'bg-background-surface'}
         `}>
           <header className="relative z-10 space-y-6">
             <motion.div
@@ -153,29 +153,29 @@ const TestResult = ({ resolvedId } = {}) => {
               animate={{ y: 0, opacity: 1 }}
               className="space-y-2"
             >
-              <h1 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tight">
+              <h1 className="text-2xl xl:text-5xl font-bold font-outfit tracking-tight">
                 {isGreat ? translate('Excellent Result!') : translate('Good Effort!')}
               </h1>
-              <p className="text-xl font-bold opacity-80 uppercase tracking-widest">
+              <p className="text-xl font-bold opacity-80 tracking-[0.08em]">
                 {translate('Test: {title}', { title: result?.testTitle })}
               </p>
             </motion.div>
 
             <div className="flex justify-center items-center gap-6 xl:gap-12 py-4">
               <div className="flex flex-col items-center">
-                <span className="text-xl xl:text-5xl font-black font-outfit tracking-tighter">{fmtNum(result?.score)}</span>
-                <span className="text-sm font-black uppercase opacity-60">{translate('Score')}</span>
+                <span className="text-xl xl:text-5xl font-bold font-outfit tracking-tight">{fmtNum(result?.score)}</span>
+                <span className="text-sm font-bold uppercase opacity-60">{translate('Score')}</span>
               </div>
               <div className="h-20 w-1 bg-primary-300/60 dark:bg-white/20 rounded-full" />
               <div className="flex flex-col items-center">
-                <span className="text-xl xl:text-5xl font-black font-outfit tracking-tighter">{accuracy.toFixed(0)}%</span>
-                <span className="text-sm font-black uppercase opacity-60">{translate('Accuracy')}</span>
+                <span className="text-xl xl:text-5xl font-bold font-outfit tracking-tight">{accuracy.toFixed(0)}%</span>
+                <span className="text-sm font-bold uppercase opacity-60">{translate('Accuracy')}</span>
               </div>
             </div>
 
             <div className="max-w-md mx-auto">
               <ProgressBar progress={accuracy} color="white" height="h-4" />
-              <p className="mt-4 text-sm font-black uppercase tracking-widest opacity-80">
+              <p className="mt-4 text-sm font-bold uppercase tracking-[0.08em] opacity-80">
                 {accuracy >= 90 ? translate('Outstanding Performance') : accuracy >= 80 ? translate('Strong Performance') : translate('Keep Practicing')}
               </p>
             </div>
@@ -185,13 +185,13 @@ const TestResult = ({ resolvedId } = {}) => {
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="mt-6 inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-slate-200 dark:ring-white/20"
+                className="mt-6 inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-full border border-border-primary"
               >
-                <span className="text-base xl:text-lg font-black tracking-wide">
-                  {translate('All India Rank')} <span className="text-primary-700 dark:text-primary-200">#{result.rank}</span> {translate('of {total}', { total: lbStats.totalParticipants.toLocaleString('en-IN') })}
+                <span className="text-base xl:text-lg font-bold tracking-wide">
+                  {translate('All India Rank')} <span className="text-primary-600">#{result.rank}</span> {translate('of {total}', { total: lbStats.totalParticipants.toLocaleString('en-IN') })}
                 </span>
                 <span className="hidden sm:inline h-5 w-px bg-primary-300 dark:bg-white/30" />
-                <span className="text-xs xl:text-sm font-black uppercase tracking-widest px-3 py-1 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow">
+                <span className="text-xs xl:text-sm font-bold uppercase tracking-[0.08em] px-3 py-1 rounded-full text-on-primary bg-primary-600">
                   {translate('{band} · Beat {pct}% candidates', { band: translate(percentileBand), pct: beatPct })}
                 </span>
               </motion.div>
@@ -237,27 +237,27 @@ const TestResult = ({ resolvedId } = {}) => {
             color: ''
           }
         ].map((item, idx) => (
-          <Card as="article" key={idx} className="flex flex-col items-center text-center gap-1.5 hover:-translate-y-0.5 hover:shadow-xl transition-all">
-            <div className="w-14 h-14 shrink-0 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-400 text-[#000] shadow" style={{ borderRadius: 16 }}>
+          <Card as="article" key={idx} className="flex flex-col items-center text-center gap-1.5 hover:-translate-y-0.5 transition-all">
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 16 }}>
               <item.icon className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
-            <span className="text-xl xl:text-2xl font-black font-outfit">{item.value}</span>
-            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{translate(item.label)}</span>
-            {item.sub && <span className="text-[10px] font-bold text-gray-500 dark:text-gray-400">{item.sub}</span>}
+            <span className="text-xl xl:text-2xl font-bold font-outfit">{item.value}</span>
+            <span className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate(item.label)}</span>
+            {item.sub && <span className="text-[10px] font-bold text-content-muted">{item.sub}</span>}
           </Card>
         ))}
       </section>
 
       {/* --- Section Tabs --- */}
       <section className="space-y-6">
-        <div className="flex gap-4 p-2 bg-gray-100 dark:bg-slate-800 rounded-[2rem] w-fit mx-auto xl:mx-0">
+        <div className="flex gap-4 p-2 bg-background-surface-secondary rounded-3xl w-fit mx-auto xl:mx-0">
           {['summary', 'review'].map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`
-                 px-8 py-3 rounded-full font-black uppercase text-sm transition-all
-                 ${activeTab === tab ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-[#000] shadow' : 'text-gray-400 hover:text-gray-600'}
+                 px-8 py-3 rounded-full font-bold uppercase text-sm transition-all
+                 ${activeTab === tab ? 'text-on-primary bg-primary-600' : 'text-content-muted hover:text-content-primary'}
                `}
             >
               {translate(tab)}
@@ -277,56 +277,56 @@ const TestResult = ({ resolvedId } = {}) => {
               {/* Leaderboard */}
               <div className="space-y-2 xl:space-y-4">
                 <section className="flex items-end justify-between px-2 gap-2 flex-wrap">
-                  <h2 className="text-xl font-black font-outfit uppercase">{translate('Leaderboard')}</h2>
+                  <h2 className="text-xl font-bold font-outfit">{translate('Leaderboard')}</h2>
                   {lbStats.totalParticipants > 0 && (
-                    <span className="text-[11px] font-black text-gray-500 uppercase tracking-widest">
+                    <span className="text-[11px] font-bold text-content-muted uppercase tracking-[0.08em]">
                       {lbStats.totalParticipants.toLocaleString('en-IN')} candidates · Top {Math.min(leaderboard.length, lbStats.totalParticipants)}
                     </span>
                   )}
                 </section>
                 <Card padded={false} className="overflow-hidden">
                   <table className="w-full">
-                    <thead className="bg-gradient-to-r from-slate-100 via-slate-50 to-white text-primary-900 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 dark:text-white text-xs font-black uppercase border-b border-slate-200 dark:border-transparent">
+                    <thead className="text-primary-900 dark:text-white text-xs font-bold uppercase border-b border-border-primary bg-background-surface">
                       <tr>
                         <th className="px-6 py-4 text-left">{translate('Player')}</th>
                         <th className="px-6 py-4 text-center">{translate('Score')}</th>
                         <th className="px-6 py-4 text-right">{translate('Rank')}</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="divide-y divide-border-primary">
                       {leaderboard.map((entry, idx) => {
                         const isUser = entry.user?._id === user?.id;
                         const displayRank = entry.rank || idx + 1;
                         return (
-                          <tr key={idx} className={`border-b dark:border-slate-700 last:border-0 ${isUser ? 'bg-primary-500/10' : ''}`}>
+                          <tr key={idx} className={`border-b dark:border-slate-700 last:border-0 ${isUser ? '' : ''}`}>
                             <td className="px-6 py-4">
                               <div className="flex items-center gap-3">
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs ${displayRank === 1 ? 'bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow' : 'bg-gray-100 dark:bg-slate-700'}`}>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${displayRank === 1 ? 'text-amber-950 bg-amber-600' : 'bg-background-surface-secondary'}`}>
                                   {displayRank === 1 ? <Crown className="w-4 h-4" /> : displayRank}
                                 </div>
                                 <span className="font-bold text-sm">{entry.user?.name || translate('Anonymous Player')}</span>
-                                {isUser && <span className="text-[10px] bg-primary-600 text-white px-2 py-0.5 rounded-full font-black uppercase">{translate('YOU')}</span>}
+                                {isUser && <span className="text-[10px] bg-primary-600 text-on-primary px-2 py-0.5 rounded-full font-bold uppercase">{translate('YOU')}</span>}
                               </div>
                             </td>
-                            <td className="px-6 py-4 text-center font-black">{fmtNum(entry.score)}</td>
-                            <td className="px-6 py-4 text-right font-bold text-gray-400">#{displayRank}</td>
+                            <td className="px-6 py-4 text-center font-bold">{fmtNum(entry.score)}</td>
+                            <td className="px-6 py-4 text-right font-bold text-content-muted">#{displayRank}</td>
                           </tr>
                         );
                       })}
 
                       {result?.rank && result.rank > leaderboard.length && (
-                        <tr className="border-t-2 border-primary-500/30 bg-primary-500/10">
+                        <tr className="border-t-2 border-primary-500/30">
                           <td className="px-6 py-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-full flex items-center justify-center font-black text-xs bg-primary-600 text-white">
+                              <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs bg-primary-600 text-on-primary">
                                 {result.rank}
                               </div>
                               <span className="font-bold text-sm">{user?.name || translate('You')}</span>
-                              <span className="text-[10px] bg-primary-600 text-white px-2 py-0.5 rounded-full font-black uppercase">{translate('YOUR POSITION')}</span>
+                              <span className="text-[10px] bg-primary-600 text-on-primary px-2 py-0.5 rounded-full font-bold uppercase">{translate('YOUR POSITION')}</span>
                             </div>
                           </td>
-                          <td className="px-6 py-4 text-center font-black">{fmtNum(result.score)}</td>
-                          <td className="px-6 py-4 text-right font-bold text-primary-600 dark:text-primary-300">#{result.rank}</td>
+                          <td className="px-6 py-4 text-center font-bold">{fmtNum(result.score)}</td>
+                          <td className="px-6 py-4 text-right font-bold text-primary-600">#{result.rank}</td>
                         </tr>
                       )}
                     </tbody>
@@ -336,19 +336,19 @@ const TestResult = ({ resolvedId } = {}) => {
 
               {/* Section breakdown */}
               <section className="space-y-2 xl:space-y-4">
-                <h2 className="text-xl font-black font-outfit uppercase px-2">{translate('Section Performance')}</h2>
+                <h2 className="text-xl font-bold font-outfit px-2">{translate('Section Performance')}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                   {Object.entries(result?.sectionWiseScore || {}).map(([name, stats], idx) => (
                     <Card as="article" key={idx}>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="font-black text-xs uppercase tracking-wider">{name}</span>
-                        <span className="font-black text-primary-600 dark:text-primary-300">{translate('{score} pts', { score: fmtNum(stats.score) })}</span>
+                        <span className="font-bold text-xs uppercase tracking-[0.08em]">{name}</span>
+                        <span className="font-bold text-primary-600">{translate('{score} pts', { score: fmtNum(stats.score) })}</span>
                       </div>
-                      <div className="flex gap-1 h-3 rounded-full overflow-hidden bg-gray-100 dark:bg-slate-700">
+                      <div className="flex gap-1 h-3 rounded-full overflow-hidden bg-background-surface-secondary">
                         <div className="bg-primary-600 h-full" style={{ width: `${(stats.correct / (stats.correct + stats.wrong || 1)) * 100}%` }} />
                         <div className="bg-red-500/70 h-full flex-1"/>
                       </div>
-                      <div className="flex justify-between text-[10px] font-black mt-2 text-gray-400 uppercase">
+                      <div className="flex justify-between text-[10px] font-bold mt-2 text-content-muted uppercase">
                         <span>{translate('{count} Correct', { count: stats.correct })}</span>
                         <span>{translate('{count} Wrong', { count: stats.wrong })}</span>
                       </div>
@@ -371,20 +371,20 @@ const TestResult = ({ resolvedId } = {}) => {
                 const isSkipped = attempt?.selectedIndex === -1 || !attempt;
 
                 return (
-                  <Card as="section" key={idx} className={`p-0 overflow-hidden border-2 ${isCorrect ? 'border-primary-500/20' : isSkipped ? 'border-gray-200' : 'border-red-300 dark:border-red-500/40'}`}>
-                    <section className={`p-3 xl:p-6 border-b flex justify-between items-start ${isCorrect ? 'bg-primary-500/5' : isSkipped ? 'bg-gray-50' : 'bg-red-50 dark:bg-red-500/10'}`}>
+                  <Card as="section" key={idx} className={`p-0 overflow-hidden border ${isCorrect ? 'border-primary-500/20' : isSkipped ? 'border-border-primary' : 'border-red-300 dark:border-red-500/40'}`}>
+                    <section className={`p-3 xl:p-6 border-b flex justify-between items-start ${isCorrect ? '' : isSkipped ? 'bg-background-surface-secondary' : 'bg-red-50 dark:bg-red-500/10'}`}>
                       <div className="space-y-1">
-                        <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-primary-600' : isSkipped ? 'text-gray-400' : 'text-red-600 dark:text-red-400'}`}>
+                        <span className={`text-[10px] font-bold uppercase tracking-[0.08em] ${isCorrect ? 'text-primary-600' : isSkipped ? 'text-content-muted' : 'text-red-600 dark:text-red-400'}`}>
                           {isCorrect ? translate('PERFECT') : isSkipped ? translate('SKIPPED') : translate('INCORRECT')}
                         </span>
                         <h3 className="text-lg font-bold leading-tight whitespace-pre-wrap">{q.questionText}</h3>
                       </div>
-                      {isCorrect ? <CircleCheck className="text-primary-600 dark:text-primary-300 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-red-600 dark:text-red-400 w-8 h-8" />}
+                      {isCorrect ? <CircleCheck className="text-primary-600 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-red-600 dark:text-red-400 w-8 h-8" />}
                     </section>
 
                     <div className="p-3 xl:p-6 space-y-2 xl:space-y-4">
                       {q.questionImage && (
-                        <img src={q.questionImage} alt="" className="max-h-72 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                        <img src={q.questionImage} alt="" className="max-h-72 rounded-lg xl:rounded-xl border border-border-primary object-contain bg-background-surface" />
                       )}
                       <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
                         {q.options.map((opt, oIdx) => {
@@ -394,17 +394,17 @@ const TestResult = ({ resolvedId } = {}) => {
 
                           return (
                             <div key={oIdx} data-opt-state={isAnswer ? 'correct' : isSelected ? 'wrong' : undefined} className={`
-                                  p-3 rounded-2xl flex items-center gap-3 border-2 text-sm
-                                  ${isAnswer ? 'bg-primary-100 dark:bg-primary-900/20 border-primary-600 text-primary-600 dark:text-primary-400' :
+                                  p-3 rounded-2xl flex items-center gap-3 border text-sm
+                                  ${isAnswer ? 'border-primary-600 text-primary-600' :
                                 isSelected ? 'bg-red-50 dark:bg-red-900/20 border-red-400 dark:border-red-600 text-red-700 dark:text-red-400' :
-                                  'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 text-slate-400'}
+                                  'bg-background-surface border-border-primary text-content-muted'}
                                 `}>
-                              <div className={`w-8 h-8 rounded-lg xl:rounded-xl flex items-center justify-center font-black shrink-0 ${isAnswer ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
+                              <div className={`w-8 h-8 rounded-lg xl:rounded-xl flex items-center justify-center font-bold shrink-0 ${isAnswer ? 'bg-primary-600 text-on-primary' : 'bg-background-surface-secondary text-content-muted'}`}>
                                 {String.fromCharCode(65 + oIdx)}
                               </div>
                               <div className="flex-1 flex flex-col gap-2">
                                 {opt && <span className="font-bold">{opt}</span>}
-                                {optImg && <img src={optImg} alt="" className="max-h-32 rounded-lg object-contain bg-white" />}
+                                {optImg && <img src={optImg} alt="" className="max-h-32 rounded-lg object-contain bg-background-surface" />}
                               </div>
                             </div>
                           );
@@ -412,11 +412,11 @@ const TestResult = ({ resolvedId } = {}) => {
                       </div>
 
                       {(q.explanation || q.explanationImage) && (
-                        <div className="p-4 bg-primary-100/50 dark:bg-primary-900/10 rounded-2xl border-l-4 border-primary-600">
-                          <p className="text-xs font-black text-primary-600 dark:text-primary-300 uppercase mb-1">{translate('Explanation')}</p>
+                        <div className="p-4 rounded-2xl border-l-4 border-primary-600">
+                          <p className="text-xs font-bold text-primary-600 uppercase mb-1">{translate('Explanation')}</p>
                           {q.explanation && <p className="text-sm font-medium leading-relaxed">{q.explanation}</p>}
                           {q.explanationImage && (
-                            <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-h-72 mt-2 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                            <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-h-72 mt-2 rounded-lg xl:rounded-xl border border-border-primary object-contain bg-background-surface" />
                           )}
                         </div>
                       )}
@@ -438,10 +438,10 @@ const TestResult = ({ resolvedId } = {}) => {
       {/* --- Share Result --- */}
       {mounted && result && (
         <section className="px-0 py-4 xl:py-8">
-          <Card as="section" className="bg-primary-50 dark:bg-slate-800">
+          <Card as="section" className="dark:bg-slate-800">
             <section className="text-center space-y-2 mb-4">
-              <h2 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Flex your result')}</h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+              <h2 className="text-xl xl:text-2xl font-bold font-outfit">{translate('Flex your result')}</h2>
+              <p className="text-sm text-content-secondary max-w-md mx-auto">
                 {result.rank && lbStats.totalParticipants > 0
                   ? translate('Share your All India Rank #{rank} of {total} with friends', { rank: result.rank, total: lbStats.totalParticipants.toLocaleString('en-IN') })
                   : translate('Share your score and challenge friends to beat it')}

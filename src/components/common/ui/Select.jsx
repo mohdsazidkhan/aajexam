@@ -158,10 +158,10 @@ const Select = ({
         <div
           ref={listRef}
           style={{ position: 'fixed', left: pos.left, width: pos.width, top: pos.top, bottom: pos.bottom, maxHeight: pos.maxHeight }}
-          className="z-[9999] flex flex-col bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl shadow-xl overflow-hidden font-outfit"
+          className="z-[9999] flex flex-col bg-background-surface border border-border-primary rounded-xl overflow-hidden font-outfit"
         >
-          <div className="relative shrink-0 border-b-2 border-slate-200 dark:border-slate-800 p-2">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
+          <div className="relative shrink-0 border-b border-border-primary p-2">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-content-muted pointer-events-none" />
             <input
               ref={searchRef}
               type="text"
@@ -169,7 +169,7 @@ const Select = ({
               onChange={(e) => setTerm(e.target.value)}
               onKeyDown={onKeyDown}
               placeholder={translate('Search...')}
-              className="w-full pl-8 pr-2 py-1.5 bg-transparent outline-none text-sm font-bold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600"
+              className="w-full pl-8 pr-2 py-1.5 bg-transparent outline-none text-sm font-medium text-content-primary placeholder:text-content-muted"
             />
           </div>
           <ul role="listbox" className="py-1 overflow-y-auto">
@@ -178,20 +178,20 @@ const Select = ({
               if (grouped) lastGroup = o.group;
               return (
                 <React.Fragment key={`${o.value}-${i}`}>
-                  {header && <li className="px-4 pt-2 pb-1 text-[10px] font-black uppercase tracking-widest text-slate-400">{header}</li>}
+                  {header && <li className="px-4 pt-2 pb-1 text-xs font-bold uppercase tracking-[0.08em] text-content-muted">{header}</li>}
                   <li
                     role="option"
                     aria-selected={o.value === current}
                     onMouseEnter={() => setActive(i)}
                     onClick={() => pick(o)}
-                    className={`px-4 py-2.5 text-sm font-semibold transition-colors ${o.disabled ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'} ${o.value === current ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400' : 'text-slate-700 dark:text-slate-300'} ${i === active && !o.disabled && o.value !== current ? 'bg-slate-100 dark:bg-slate-800' : ''}`}
+                    className={`px-4 py-2.5 text-sm font-medium transition-colors ${o.disabled ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'} ${o.value === current ? 'bg-background-surface-secondary text-primary-600' : 'text-content-primary'} ${i === active && !o.disabled && o.value !== current ? 'bg-background-surface-secondary' : ''}`}
                   >
                     {o.label || ' '}
                   </li>
                 </React.Fragment>
               );
             }) : (
-              <li className="p-4 text-center text-sm font-semibold text-slate-400">{translate('No results found')}</li>
+              <li className="p-4 text-center text-sm font-medium text-content-muted">{translate('No results found')}</li>
             )}
           </ul>
         </div>,

@@ -79,13 +79,13 @@ const SearchableDropdown = ({
   return (
     <div className="relative w-full" ref={dropdownRef}>
       <div
-        className={`flex items-center justify-between w-full ${compact ? 'h-10 px-3 text-sm rounded-xl' : 'px-4 py-4 rounded-2xl'} border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black focus-within:border-primary-700 focus-within:bg-primary-500/5 transition-all ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-text'} ${className}`}
+        className={`flex items-center justify-between w-full ${compact ? 'h-10 px-3 text-sm rounded-xl' : 'px-4 py-4 rounded-2xl'} border border-border-primary bg-background-surface-secondary focus-within:border-primary-700 transition-all ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-text'} ${className}`}
         onClick={!isOpen ? handleOpen : undefined}
       >
         <input
           type="text"
           disabled={disabled}
-          className="w-full bg-slate-50 dark:bg-black outline-none border-none p-0 font-bold placeholder:text-slate-300 dark:placeholder:text-slate-600 disabled:cursor-not-allowed"
+          className="w-full bg-background-surface-secondary outline-none border-none p-0 font-bold placeholder:text-slate-300 dark:placeholder:text-slate-600 disabled:cursor-not-allowed"
           placeholder={placeholder}
           value={isOpen ? searchTerm : (value || '')}
           onChange={(e) => {
@@ -94,9 +94,9 @@ const SearchableDropdown = ({
           }}
           onFocus={() => { if (!isOpen) handleOpen(); }}
         />
-        <div className="flex items-center gap-2 text-slate-400 flex-shrink-0">
+        <div className="flex items-center gap-2 text-content-muted flex-shrink-0">
           {value && !disabled && (
-            <button aria-label={translate('Close')} type="button" onClick={handleClear} className="hover:text-slate-600 dark:hover:text-slate-200">
+            <button aria-label={translate('Close')} type="button" onClick={handleClear} className="hover:text-content-primary dark:hover:text-slate-200">
               <X className="w-4 h-4" />
             </button>
           )}
@@ -107,15 +107,15 @@ const SearchableDropdown = ({
       </div>
 
       {isOpen && !disabled && (
-        <div className="absolute z-50 w-full mt-1 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl shadow-sm max-h-60 overflow-y-auto">
+        <div className="absolute z-50 w-full mt-1 bg-background-surface-secondary border border-border-primary rounded-2xl max-h-60 overflow-y-auto">
           {loading ? (
-            <div className="p-4 text-center text-sm font-semibold text-slate-400">{translate('Loading...')}</div>
+            <div className="p-4 text-center text-sm font-semibold text-content-muted">{translate('Loading...')}</div>
           ) : options.length > 0 ? (
             <ul className="py-1">
               {options.map((option, idx) => (
                 <li
                   key={idx}
-                  className={`px-4 py-2.5 text-sm font-semibold cursor-pointer transition-colors ${value === option ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'}`}
+                  className={`px-4 py-2.5 text-sm font-semibold cursor-pointer transition-colors ${value === option ? 'text-primary-600' : 'text-content-secondary hover:bg-background-surface-secondary'}`}
                   onClick={() => handleSelect(option)}
                 >
                   {option}
@@ -123,7 +123,7 @@ const SearchableDropdown = ({
               ))}
             </ul>
           ) : (
-            <div className="p-4 text-center text-sm font-semibold text-slate-400">{translate('No results found')}</div>
+            <div className="p-4 text-center text-sm font-semibold text-content-muted">{translate('No results found')}</div>
           )}
         </div>
       )}
