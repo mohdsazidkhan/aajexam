@@ -21,6 +21,9 @@ import {
   LogOut,
   FileText,
   Globe,
+  Award,
+  Map as MapIcon,
+  Building2,
   Contact2,
   Bug,
   Activity,
@@ -125,6 +128,9 @@ const Sidebar = () => {
       items: [
         { path: '/admin/daily-challenge', icon: Target, label: 'Daily Challenge', key: 'daily-challenge' },
         { path: '/admin/streak', icon: Flame, label: 'Streaks', key: 'streak' },
+        { path: '/admin/all-india-rank', icon: Award, label: 'All India Rank', key: 'all-india-rank', isPro: true },
+        { path: '/admin/state-rank', icon: MapIcon, label: 'State Rank', key: 'state-rank', isPro: true },
+        { path: '/admin/city-rank', icon: Building2, label: 'City Rank', key: 'city-rank', isPro: true },
         { path: '/admin/revision', icon: RotateCcw, label: 'Revision Queue', key: 'revision', isPro: true },
         { path: '/admin/study-plan', icon: CalendarDays, label: 'Study Plans', key: 'study-plan', isPro: true },
       ]

@@ -13,6 +13,8 @@ import {
   User,
   LogOut,
   Globe,
+  Map as MapIcon,
+  Building2,
   ShieldCheck,
   History,
   Settings,
@@ -145,6 +147,9 @@ const StudentSidebar = () => {
     {
       title: 'PROGRESS',
       items: [
+        { path: '/student/all-india-rank', icon: Globe, label: 'All India Rank', isPro: true },
+        { path: '/student/state-rank', icon: MapIcon, label: 'State Rank', isPro: true },
+        { path: '/student/city-rank', icon: Building2, label: 'City Rank', isPro: true },
         { path: '/student/my-analytics', icon: TrendingUp, label: 'Performance', isPro: true },
         { path: '/student/readiness', icon: Target, label: 'Exam Readiness', isPro: true },
         { path: '/student/exam-history', icon: History, label: 'Exam History', isPro: true },
