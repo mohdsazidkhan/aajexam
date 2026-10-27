@@ -283,6 +283,7 @@ export default function UserFullDetail() {
               {p.city || p.state ? <span className="inline-flex items-center gap-1"><MapPin className="w-3.5 h-3.5" />{[p.city, p.state].filter(Boolean).join(', ')}</span> : null}
               <span className="inline-flex items-center gap-1"><Calendar className="w-3.5 h-3.5" />Joined {fmt(p.createdAt)}</span>
               <span>Last login {fmt(p.lastLoginDate)}</span>
+              {p.subscriptionStatus === 'PRO' ? <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400"><Crown className="w-3.5 h-3.5" />PRO expires {p.subscriptionExpiry ? fmt(p.subscriptionExpiry) : 'never'}</span> : null}
             </div>
           </div>
         </div>
