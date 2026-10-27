@@ -217,8 +217,6 @@ const AllIndiaRankPage = () => {
 
         {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
-        <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wide text-primary-700 dark:text-primary-300"><Trophy className="w-3.5 h-3.5 shrink-0" />Top 100 Student Rankings</p>
-
         <div className="flex-1 min-h-0 overflow-auto flex flex-col">
           {loading ? (
             <AdminTableSkeleton showHeader={false} showFilters={false} />

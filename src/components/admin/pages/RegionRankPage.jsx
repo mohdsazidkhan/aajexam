@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { m as motion } from 'framer-motion';
-import { Trophy, Map as MapIcon, Building2, Users, Target } from 'lucide-react';
+import { Map as MapIcon, Building2, Target } from 'lucide-react';
 import API from '../../../lib/api';
 import { toast } from 'react-hot-toast';
 import ResponsiveTable from '../../common/ResponsiveTable';
@@ -20,7 +20,6 @@ const KINDS = {
   city: { title: 'City Rank', noun: 'City', Icon: Building2, fetch: (p) => API.getAdminCityRank(p) },
 };
 
-const LIMITS = [10, 25, 50, 100].map((n) => ({ value: String(n), label: `TOP ${n}` }));
 
 const RegionRankPage = ({ kind }) => {
   const cfg = KINDS[kind];
@@ -31,8 +30,6 @@ const RegionRankPage = ({ kind }) => {
   const [exams, setExams] = useState([]);
   const [examId, setExamId] = useState('all');
   const [sort, setSort] = useState('time');
-  const [limit, setLimit] = useState('100');
-  const [place, setPlace] = useState('');
   const [totalUsers, setTotalUsers] = useState(0);
   const [loading, setLoading] = useState(true);
 
@@ -50,10 +47,9 @@ const RegionRankPage = ({ kind }) => {
   const load = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await cfg.fetch({ limit, ...(value && { value }), ...(examId !== 'all' && { examId }), ...(sort !== 'time' && { sort }) });
+      const res = await cfg.fetch({ limit: 100, ...(value && { value }), ...(examId !== 'all' && { examId }), ...(sort !== 'time' && { sort }) });
       setOptions(res.options || []);
       setData(res.data || []);
-      setPlace(res.place || '');
       setTotalUsers(res.totalUsers || 0);
       if (!value && res.value) setValue(res.value);
     } catch (error) {
@@ -62,7 +58,7 @@ const RegionRankPage = ({ kind }) => {
     } finally {
       setLoading(false);
     }
-  }, [cfg, kind, limit, value, examId, sort]);
+  }, [cfg, kind, value, examId, sort]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -116,7 +112,7 @@ const RegionRankPage = ({ kind }) => {
       icon={cfg.Icon}
       value={value}
       onChange={setValue}
-      options={options.map((o) => ({ value: o.value, label: `${o.label.toUpperCase()} (${o.count})` }))}
+      options={[...options].sort((a, b) => a.label.localeCompare(b.label)).map((o) => ({ value: o.value, label: `${o.label.toUpperCase()} (${o.count})` }))}
       placeholder={`Select ${cfg.noun}`}
       className="w-full"
     />
@@ -138,12 +134,11 @@ const RegionRankPage = ({ kind }) => {
       className="w-full"
     />
   );
-  const limitSelect = <StyledSelect icon={Trophy} value={limit} onChange={setLimit} options={LIMITS} className="w-full" />;
 
   useAdminMobileHeader({
     title: cfg.title,
     count: totalUsers,
-    filters: (<>{placeSelect}{examSelect}{sortSelect}{limitSelect}</>),
+    filters: (<>{placeSelect}{examSelect}{sortSelect}</>),
   });
 
   if (!isMounted) return null;
@@ -151,19 +146,6 @@ const RegionRankPage = ({ kind }) => {
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
-        <div className="hidden md:grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr_1fr_auto] gap-2 items-center">
-          {placeSelect}
-          {examSelect}
-          {sortSelect}
-          {limitSelect}
-          <div className="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2">
-            <span className="flex items-center gap-1.5 text-xs font-black text-primary-600 dark:text-primary-300"><Users className="w-4 h-4" />{totalUsers} ranked</span>
-            <span className="flex items-center gap-1.5 text-xs font-black text-slate-500"><cfg.Icon className="w-4 h-4" />{place || '—'}</span>
-          </div>
-        </div>
-
-        <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wide text-primary-700 dark:text-primary-300"><Trophy className="w-3.5 h-3.5 shrink-0" />Top 100 Student Rankings</p>
-
         {loading ? (
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         ) : data.length === 0 ? (
@@ -175,7 +157,7 @@ const RegionRankPage = ({ kind }) => {
             <p className="text-sm text-slate-400 mt-2">No completed exam attempts for this {cfg.noun.toLowerCase()} yet.</p>
           </div>
         ) : (
-          <motion.div key={`${value}-${limit}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
+          <motion.div key={value} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col shadow-md relative before:content-[''] before:absolute before:inset-x-3 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-primary-500/70 before:via-primary-300/70 before:to-primary-500/70">
             <ResponsiveTable data={data} columns={columns} viewModes={['table', 'grid']} currentView="table" showPagination={false} showViewToggle={false} fillHeight />
           </motion.div>
         )}

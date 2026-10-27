@@ -18,7 +18,7 @@ export async function GET(req) {
         const examId = searchParams.get('examId') || null;
         const sort = normalizeRankSort(searchParams.get('sort'));
         const options = await listPlaces('city');
-        const value = (searchParams.get('value') || '').trim() || options[0]?.value || '';
+        const value = (searchParams.get('value') || '').trim() || options.find((o) => o.value === 'south east delhi')?.value || options[0]?.value || '';
 
         const result = value ? await rankPlace({ field: 'city', value, limit, examId, sort }) : { place: '', totalUsers: 0, data: [] };
         return NextResponse.json({ success: true, options, value, ...result });
