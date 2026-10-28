@@ -426,10 +426,10 @@ const TestStart = ({ resolvedId } = {}) => {
                 return (
                   <div key={secName} className="space-y-2">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] font-bold text-content-secondary break-words">
+                      <span className="text-xs font-bold text-content-secondary break-words">
                         {secName}
                       </span>
-                      <span className="text-[10px] font-bold text-primary-600 shrink-0">
+                      <span className="text-xs font-bold text-primary-600 shrink-0">
                         {answeredInSec}/{group.length}
                       </span>
                     </div>
