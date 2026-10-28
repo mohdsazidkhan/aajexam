@@ -514,7 +514,7 @@ const PublicProfilePage = ({ username: ssrUsername, profile: ssrProfile, seo }) 
                           </span>
                           <p className="text-xs sm:text-[13px] font-bold text-white leading-snug line-clamp-5">{displayTitle || translate('Untitled')}</p>
                         </div>
-                        <div className="absolute bottom-0 inset-x-0 px-3.5 pb-2.5 pt-7 bg-slate-950">
+                        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent px-3.5 pb-2.5 pt-7">
                           <span className="inline-flex items-center gap-1 text-[11px] font-bold text-white/90"><Eye className="w-3 h-3" />{compact(reel.viewsCount)}</span>
                         </div>
                       </div>

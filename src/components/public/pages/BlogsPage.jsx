@@ -147,14 +147,13 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
       {blogs.map((blog) => (
         <Link key={blog._id} href={`/blog/${blog.slug}`} className={`${cardBase} flex-col`} style={{ borderRadius: 'var(--radius)' }}>
           <div className="relative w-full h-44 sm:h-48 bg-center bg-cover" style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }}>
-            <div className="absolute inset-0 bg-slate-950" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             <div className="absolute top-3 left-3 flex items-center gap-1.5"><FlagPills blog={blog} /></div>
             {blog.exam && (
               <span className="absolute bottom-3 left-3 max-w-[85%] truncate px-2.5 py-1 text-on-primary text-[11px] font-bold bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                 {blog.exam.name}
               </span>
             )}
-            <div className="absolute inset-x-0 top-0 h-1 bg-primary-600" />
           </div>
           <div className="flex-1 p-4 xl:p-5">
             <span className="text-primary-600 text-[11px] font-bold uppercase tracking-[0.08em]">{formatDate(blog.publishedAt || blog.createdAt)}</span>
@@ -176,9 +175,8 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
       {blogs.map((blog) => (
         <Link key={blog._id} href={`/blog/${blog.slug}`} className={`${cardBase} flex-col md:flex-row`} style={{ borderRadius: 'var(--radius)' }}>
           <div className="relative md:w-72 w-full h-44 md:h-auto flex-shrink-0 bg-cover bg-center" style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }}>
-            <div className="absolute inset-0 md:bg-gradient-to-r bg-slate-950" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:bg-gradient-to-r" />
             <div className="absolute top-3 left-3 flex items-center gap-1.5"><FlagPills blog={blog} /></div>
-            <div className="absolute inset-x-0 top-0 h-1 bg-primary-600" />
           </div>
           <div className="flex-1 flex flex-col min-w-0">
             <div className="flex-1 p-4 xl:p-5">
