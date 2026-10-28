@@ -186,7 +186,7 @@ const PaymentHistoryPage = () => {
                key={mode.id}
                onClick={() => setViewMode(mode.id)}
                title={mode.label}
-               className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg transition-all ${viewMode === mode.id ? 'text-on-primary bg-primary-600' : 'text-content-muted dark:hover:bg-white/10'}`}
+               className={`border border-primary-600 flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg transition-all ${viewMode === mode.id ? 'text-on-primary bg-primary-600' : 'text-content-muted dark:hover:bg-white/10'}`}
             >
                <mode.icon className="w-4 h-4" />
                <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label}</span>

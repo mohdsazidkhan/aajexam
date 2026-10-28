@@ -70,7 +70,7 @@ const MentorsPage = () => {
             eyebrow={translate('Mentors')}
             title={translate('Mentors')}
             center={
-              <div className="flex items-center gap-2 bg-background-surface border border-border-primary rounded-xl px-3 h-10">
+              <div className="flex items-center gap-2 bg-background-surface border border-primary-600 rounded-xl px-3 h-10">
                 <Search className="w-4 h-4 text-content-muted shrink-0" />
                 <input type="text" placeholder={translate('Search by exam name...')} value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
                   className="flex-1 min-w-0 bg-transparent outline-none text-sm text-content-secondary" />

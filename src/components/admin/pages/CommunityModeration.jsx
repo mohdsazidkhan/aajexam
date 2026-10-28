@@ -209,7 +209,7 @@ export default function CommunityModeration() {
         { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
       ].map(({ mode, icon: Icon, label }) => (
         <button key={mode} onClick={() => setViewMode(mode)} title={label}
-          className={`flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}>
+          className={`border border-primary-600 flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}>
           <Icon className="w-4 h-4" />
         </button>
       ))}

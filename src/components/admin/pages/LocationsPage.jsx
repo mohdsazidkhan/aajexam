@@ -226,7 +226,7 @@ const LocationsPage = () => {
         <button
           key={tab.id}
           onClick={() => setActiveTab(tab.id)}
-          className={`flex-1 xl:flex-none flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === tab.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary dark:hover:text-white'}`}
+          className={`border border-primary-600 flex-1 xl:flex-none flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === tab.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary dark:hover:text-white'}`}
         >
           <tab.icon className="w-3.5 h-3.5" /> {tab.label}
         </button>
@@ -244,7 +244,7 @@ const LocationsPage = () => {
         <button
           key={mode.id}
           onClick={() => setViewMode(mode.id)}
-          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
+          className={`border border-primary-600 flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
           title={mode.label}
         >
           <mode.icon className="w-4 h-4" />

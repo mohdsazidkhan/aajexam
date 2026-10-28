@@ -55,7 +55,7 @@ const UserSearch = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={translate('Search students by name or username...')}
-          className="search-input w-full p-5 pr-14 text-sm font-bold uppercase tracking-[0.08em] border border-border-primary rounded-2xl outline-none transition-all text-content-primary dark:white focus:border-primary-700"
+          className="search-input w-full p-5 pr-14 text-sm font-bold uppercase tracking-[0.08em] border rounded-2xl outline-none transition-all text-content-primary dark:white focus:border-primary-700 border-primary-600"
         />
         {loading && (
           <span className="search-spinner absolute right-5 top-1/2 -translate-y-1/2 w-6 h-6 border border-border-primary border-t-primary-500 rounded-[50%] animate-spin"></span>

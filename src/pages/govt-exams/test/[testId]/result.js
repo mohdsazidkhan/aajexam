@@ -255,10 +255,7 @@ const TestResult = ({ resolvedId } = {}) => {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`
-                 px-8 py-3 rounded-full font-bold uppercase text-sm transition-all
-                 ${activeTab === tab ? 'text-on-primary bg-primary-600' : 'text-content-muted hover:text-content-primary'}
-               `}
+              className={`border border-primary-600 px-8 py-3 rounded-full font-bold uppercase text-sm transition-all ${activeTab === tab ? 'text-on-primary bg-primary-600' : 'text-content-muted hover:text-content-primary'} `}
             >
               {translate(tab)}
             </button>

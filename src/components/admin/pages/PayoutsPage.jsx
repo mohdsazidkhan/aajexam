@@ -26,7 +26,7 @@ export default function PayoutsPage() {
             href={t.href}
             replace
             scroll={false}
-            className={`px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] transition-all ${active === t.id ? 'text-on-primary bg-primary-600' : 'text-content-secondary dark:hover:bg-white/10'}`}
+            className={`border border-primary-600 px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] transition-all ${active === t.id ? 'text-on-primary bg-primary-600' : 'text-content-secondary dark:hover:bg-white/10'}`}
           >
             {t.label}
           </Link>

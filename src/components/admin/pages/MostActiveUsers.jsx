@@ -242,7 +242,7 @@ const AdminMostActiveUsers = () => {
                     key={mode.id}
                     onClick={() => setViewMode(mode.id)}
                     title={mode.label}
-                    className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
+                    className={`border border-primary-600 flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
                 >
                     <mode.icon className="w-4 h-4" />
                     <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
@@ -320,7 +320,7 @@ const AdminMostActiveUsers = () => {
                                 <button
                                     key={t.id}
                                     onClick={() => setDetailTab(t.id)}
-                                    className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${detailTab === t.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
+                                    className={`border border-primary-600 flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${detailTab === t.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
                                 >
                                     <t.icon className="w-4 h-4" />
                                     <span className="text-[10px] font-bold uppercase tracking-[0.08em]">{t.label} ({t.count})</span>

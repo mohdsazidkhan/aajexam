@@ -523,7 +523,7 @@ const SearchPage = () => {
                         autoFocus
                         enterKeyHint="search"
                         inputMode="search"
-                        className="w-full bg-background-surface rounded-lg xl:rounded-xl py-2.5 xl:py-3.5 pl-12 xl:pl-14 pr-8 text-sm xl:text-base font-bold text-content-primary placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 border border-border-primary transition-all"
+                        className="w-full bg-background-surface rounded-lg xl:rounded-xl py-2.5 xl:py-3.5 pl-12 xl:pl-14 pr-8 text-sm xl:text-base font-bold text-content-primary placeholder:text-slate-400 outline-none focus:border-primary-500 border transition-all border-primary-600"
                         placeholder={translate('Search')}
                         value={query}
                         onFocus={() => setIsFocused(true)}
@@ -567,10 +567,10 @@ const SearchPage = () => {
                         key={tab.key}
                         onClick={() => handleTabChange(tab.key)}
                         style={{ borderRadius: 'var(--radius-sm)' }}
-                        className={`flex-shrink-0 whitespace-nowrap flex items-center justify-center gap-1.5 px-4 py-2 text-[11px] xl:text-xs font-bold uppercase tracking-[0.08em] transition-all border ${
+                        className={`border border-primary-600 flex-shrink-0 whitespace-nowrap flex items-center justify-center gap-1.5 px-4 py-2 text-[11px] xl:text-xs font-bold uppercase tracking-[0.08em] transition-all ${
                            activeTab === tab.key
-                              ? 'text-on-primary border-transparent bg-primary-600'
-                              : 'bg-background-surface text-content-secondary border-border-primary hover:border-primary-400 hover:text-primary-700 dark:hover:text-primary-600'
+                              ? 'text-on-primary bg-primary-600'
+                              : 'bg-background-surface text-content-secondary hover:border-primary-400 hover:text-primary-700 dark:hover:text-primary-600'
                         }`}
                      >
                         <tab.icon className="w-3.5 h-3.5" />

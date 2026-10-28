@@ -162,7 +162,7 @@ export const LeaderboardRow = ({ entry, index, currentUserId }) => {
       <Link href={entry.username ? `/@${entry.username}` : '#'}>
         {/* ── Desktop: table row ── */}
         <div className={`hidden xl:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border transition-all group cursor-pointer
-          ${isTop3 ? rc.rowBg : isMe ? 'border-violet-500 bg-violet-50 dark:bg-violet-500/15 shadow-violet-500/20' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'} ${isTop3 ? `border-l-4 ${rc.accent}` : ''} ${isMe && isTop3 ? 'ring-2 ring-violet-500' : ''}`}>
+          ${isTop3 ? rc.rowBg : isMe ? 'border-violet-500 bg-violet-50 dark:bg-violet-500/15' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'} ${isTop3 ? `border-l-4 ${rc.accent}` : ''} ${isMe && isTop3 ? 'ring-2 ring-violet-500' : ''}`}>
           {rankBadge}
           <div className="flex items-center gap-2.5 min-w-0">
             <Avatar entry={entry} size="md" />
@@ -184,7 +184,7 @@ export const LeaderboardRow = ({ entry, index, currentUserId }) => {
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
         <div className={`flex xl:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border transition-all group cursor-pointer
-          ${isTop3 ? rc.rowBg : isMe ? 'border-violet-500 bg-violet-50 dark:bg-violet-500/15 shadow-violet-500/20' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'} ${isTop3 ? `border-l-4 ${rc.accent}` : ''} ${isMe && isTop3 ? 'ring-2 ring-violet-500' : ''}`}>
+          ${isTop3 ? rc.rowBg : isMe ? 'border-violet-500 bg-violet-50 dark:bg-violet-500/15' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'} ${isTop3 ? `border-l-4 ${rc.accent}` : ''} ${isMe && isTop3 ? 'ring-2 ring-violet-500' : ''}`}>
           <div className="flex items-center gap-3">
             {rankBadge}
             <Avatar entry={entry} size="md" />

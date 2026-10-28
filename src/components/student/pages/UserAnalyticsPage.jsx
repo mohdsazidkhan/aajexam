@@ -236,7 +236,7 @@ const MyAnalyticsPage = () => {
             <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1.5 max-w-full p-1.5 bg-background-surface border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
                {TABS.map(tab => (
                   <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                     style={{ borderRadius: 'var(--radius-sm)' }} className={`flex-shrink-0 whitespace-nowrap flex items-center gap-1.5 px-4 py-2 font-bold text-[11px] xl:text-xs uppercase tracking-wide transition-all ${activeTab === tab.key ? 'text-on-primary bg-primary-600' : 'text-content-secondary hover:text-primary-700 dark:hover:text-primary-600 dark:hover:bg-white/10'}`}>
+                     style={{ borderRadius: 'var(--radius-sm)' }} className={`border border-primary-600 flex-shrink-0 whitespace-nowrap flex items-center gap-1.5 px-4 py-2 font-bold text-[11px] xl:text-xs uppercase tracking-wide transition-all ${activeTab === tab.key ? 'text-on-primary bg-primary-600' : 'text-content-secondary hover:text-primary-700 dark:hover:text-primary-600 dark:hover:bg-white/10'}`}>
                      <tab.icon className="w-3.5 h-3.5" />
                      {translate(tab.label)}
                   </button>
@@ -629,7 +629,7 @@ const MyAnalyticsPage = () => {
                                     <Card as="article" key={r._id || idx} padded={false} className="p-3 h-full flex flex-col gap-2">
                                        <div className="flex items-center justify-between gap-2">
                                           <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase text-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>{translate(r.type === 'current_affairs' ? 'Current Affairs' : r.type === 'tip' ? 'Tip' : r.type === 'fact' ? 'Fact' : r.type === 'poll' ? 'Poll' : 'Question')}</span>
-                                          <span className={`px-2.5 py-0.5 text-[10px] font-bold uppercase ${r.status === 'published' ? 'bg-primary-500 text-on-primary' : r.status === 'rejected' ? 'bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300' : 'bg-background-surface-secondary text-content-secondary'}`} style={{ borderRadius: 'var(--radius-sm)' }}>{translate(r.status === 'published' ? 'Published' : r.status === 'pending' ? 'Pending' : r.status === 'rejected' ? 'Rejected' : r.status === 'archived' ? 'Archived' : 'Draft')}</span>
+                                          <span className={`border border-primary-600 px-2.5 py-0.5 text-[10px] font-bold uppercase ${r.status === 'published' ? 'bg-primary-500 text-on-primary' : r.status === 'rejected' ? 'bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300' : 'bg-background-surface-secondary text-content-secondary'}`} style={{ borderRadius: 'var(--radius-sm)' }}>{translate(r.status === 'published' ? 'Published' : r.status === 'pending' ? 'Pending' : r.status === 'rejected' ? 'Rejected' : r.status === 'archived' ? 'Archived' : 'Draft')}</span>
                                        </div>
                                        <p className="flex-1 font-bold text-sm line-clamp-3 leading-snug">{getReelTitle(r)}</p>
                                        <div className="flex items-center justify-between text-[10px] font-bold text-content-secondary pt-2 border-t border-border-primary">

@@ -194,7 +194,7 @@ const BookmarksPage = () => {
                            role="tab"
                            aria-selected={active}
                            onClick={() => switchTab(tab.id)}
-                           className={`flex items-center gap-2 px-3 sm:px-4 py-2.5 font-bold uppercase text-[10px] xl:text-[11px] tracking-[0.08em] transition-all whitespace-nowrap flex-shrink-0 ${active ? 'bg-primary-600 text-on-primary dark:bg-white dark:text-primary-700' : 'text-content-secondary dark:text-white/90 dark:hover:bg-white/15'}`}
+                           className={`border border-primary-600 flex items-center gap-2 px-3 sm:px-4 py-2.5 font-bold uppercase text-[10px] xl:text-[11px] tracking-[0.08em] transition-all whitespace-nowrap flex-shrink-0 ${active ? 'bg-primary-600 text-on-primary dark:bg-white dark:text-primary-700' : 'text-content-secondary dark:text-white/90 dark:hover:bg-white/15'}`}
                            style={{ borderRadius: 'var(--radius)' }}
                         >
                            <tab.icon className={`w-3.5 h-3.5 ${active ? 'text-white dark:text-primary-600' : 'text-primary-600'}`} />

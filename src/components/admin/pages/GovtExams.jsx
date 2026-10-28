@@ -234,7 +234,7 @@ const AdminGovtExams = () => {
           key={mode.id}
           onClick={() => setViewMode(mode.id)}
           title={mode.label}
-          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
+          className={`border border-primary-600 flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
         >
           <mode.icon className="w-4 h-4" />
           <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
@@ -431,7 +431,7 @@ const AdminGovtExams = () => {
                 </div>
                 <div className="p-4 rounded-3xl flex items-center justify-between border border-border-primary">
                   <div className="flex items-center gap-3">
-                    <div className={`p-3 rounded-lg xl:rounded-xl ${formData.isActive ? 'text-on-primary bg-primary-600' : 'bg-background-surface-secondary'}`}><Zap className="w-5 h-5" /></div>
+                    <div className={`border border-primary-600 p-3 rounded-lg xl:rounded-xl ${formData.isActive ? 'text-on-primary bg-primary-600' : 'bg-background-surface-secondary'}`}><Zap className="w-5 h-5" /></div>
                     <div>
                       <p className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em]">Active Status</p>
                       <p className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em]">{formData.isActive ? 'Published & Active' : 'Hidden from Students'}</p>

@@ -443,7 +443,7 @@ const ProfilePage = () => {
             <button
               key={tab.id}
               onClick={() => setActiveSubTab(tab.id)}
-              className={`flex flex-1 sm:flex-none items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-5 py-2.5 font-bold uppercase text-[10px] xl:text-[11px] tracking-[0.08em] transition-all whitespace-nowrap min-w-0 ${activeSubTab === tab.id ? 'bg-primary-600 text-on-primary dark:bg-white dark:text-primary-700' : 'text-content-secondary dark:text-white/90 dark:hover:bg-white/15'}`}
+              className={`border border-primary-600 flex flex-1 sm:flex-none items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-5 py-2.5 font-bold uppercase text-[10px] xl:text-[11px] tracking-[0.08em] transition-all whitespace-nowrap min-w-0 ${activeSubTab === tab.id ? 'bg-primary-600 text-on-primary dark:bg-white dark:text-primary-700' : 'text-content-secondary dark:text-white/90 dark:hover:bg-white/15'}`}
             >
               <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white dark:text-primary-600' : 'text-primary-600'}`} />
               {translate(tab.label)}

@@ -221,7 +221,7 @@ const EmailCampaignsListPage = () => {
     <div className="flex flex-wrap gap-1">
       {FILTERS.map((f) => (
         <button key={f} onClick={() => { setFilter(f); setPage(1); }}
-          className={`px-3 py-1 rounded-full text-xs font-medium capitalize ${
+          className={`border border-primary-600 px-3 py-1 rounded-full text-xs font-medium capitalize ${
             filter === f ? 'bg-primary-600 text-on-primary' : 'bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary'
           }`}>
           {f === 'completed' ? 'Sent to all' : f}
@@ -234,7 +234,7 @@ const EmailCampaignsListPage = () => {
     <div className="flex items-center gap-1 w-full">
       {VIEWS.map((v) => (
         <button key={v.key} onClick={() => changeView(v.key)} title={`${v.label} View`}
-          className={`flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${
+          className={`border border-primary-600 flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${
             view === v.key ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'
           }`}>
           <v.icon size={16} />

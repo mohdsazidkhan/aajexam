@@ -177,7 +177,7 @@ const VIEWS = [
 const ViewSwitch = ({ view, setView, className = '' }) => (
   <div className={`flex shrink-0 gap-1 bg-background-surface-secondary p-1 rounded-xl ${className}`}>
     {VIEWS.map(({ id: vid, label, Icon }) => (
-      <button key={vid} onClick={() => setView(vid)} title={`${label} view`} aria-label={`${label} view`} className={`p-1.5 rounded-lg transition ${view === vid ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:bg-background-surface dark:hover:bg-white/10'}`}>
+      <button key={vid} onClick={() => setView(vid)} title={`${label} view`} aria-label={`${label} view`} className={`border border-primary-600 p-1.5 rounded-lg transition ${view === vid ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:bg-background-surface dark:hover:bg-white/10'}`}>
         <Icon className="w-4 h-4" />
       </button>
     ))}
@@ -301,7 +301,7 @@ export default function UserFullDetail() {
       <div className="flex shrink-0 items-center gap-2">
         <div className="flex gap-1 overflow-x-auto min-w-0 flex-1 bg-background-surface-secondary p-1 rounded-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {TABS.map(({ id: tid, label, Icon }) => (
-            <button key={tid} onClick={() => setTab(tid)} className={`shrink-0 inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.08em] transition ${tab === tid ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:bg-background-surface dark:hover:bg-white/10'}`}>
+            <button key={tid} onClick={() => setTab(tid)} className={`border border-primary-600 shrink-0 inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.08em] transition ${tab === tid ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:bg-background-surface dark:hover:bg-white/10'}`}>
               <Icon className="w-3.5 h-3.5" /> {label}
             </button>
           ))}

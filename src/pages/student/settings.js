@@ -162,7 +162,7 @@ const SettingsPage = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex flex-1 sm:flex-none items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 xl:px-4 py-2 rounded-lg text-[10px] uppercase font-bold tracking-[0.08em] transition-all duration-300 whitespace-nowrap min-w-0 ${activeTab === tab.id
+                  className={`border border-primary-600 flex flex-1 sm:flex-none items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 xl:px-4 py-2 rounded-lg text-[10px] uppercase font-bold tracking-[0.08em] transition-all duration-300 whitespace-nowrap min-w-0 ${activeTab === tab.id
                     ? 'bg-primary-600 text-on-primary'
                     : 'text-content-secondary hover:text-primary-600 hover:bg-background-surface-secondary'
                     }`}

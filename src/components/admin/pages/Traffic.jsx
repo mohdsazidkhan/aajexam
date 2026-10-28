@@ -267,7 +267,7 @@ export default function Traffic() {
                 aria-selected={segment === s.id}
                 title={s.hint}
                 onClick={() => setSegment(s.id)}
-                style={{ borderRadius: 'var(--radius-sm)' }} className={`px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] whitespace-nowrap transition-all ${segment === s.id ? 'text-on-primary bg-primary-600' : 'text-content-muted dark:hover:bg-white/10 hover:text-content-primary dark:hover:text-white'}`}
+                style={{ borderRadius: 'var(--radius-sm)' }} className={`border border-primary-600 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] whitespace-nowrap transition-all ${segment === s.id ? 'text-on-primary bg-primary-600' : 'text-content-muted dark:hover:bg-white/10 hover:text-content-primary dark:hover:text-white'}`}
               >
                 {s.label}
               </button>

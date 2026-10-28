@@ -120,7 +120,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
         <div className="flex gap-2 mb-5 sticky top-16 z-20 py-3 -mx-4 px-4 border-b border-border-primary overflow-x-auto no-scrollbar">
           {tabs.map(tab => (
             <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-bold uppercase text-xs border-b-2 shrink-0 ${activeTab === tab.key ?'bg-primary-600 text-on-primary border-primary-600':'bg-background-surface-secondary text-content-muted border-border-primary'}`}>
+              className={`border border-primary-600 flex items-center gap-2 px-5 py-2.5 rounded-full font-bold uppercase text-xs shrink-0 ${activeTab === tab.key ?'bg-primary-600 text-on-primary ':'bg-background-surface-secondary text-content-muted '}`}>
               <tab.icon className="w-3.5 h-3.5" /> {translate(tab.label)} <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-black/20' : 'bg-background-surface-secondary dark:text-slate-200'}`}>{tab.count}</span>
             </button>
           ))}

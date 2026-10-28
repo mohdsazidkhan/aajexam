@@ -171,7 +171,7 @@ const RegionRankPage = ({ kind }) => {
                   { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, tile: 'bg-sky-50 text-sky-600 dark:bg-sky-500/15 dark:text-sky-300' },
                   { label: selectedExamId ? 'Time Spent On This Exam' : 'Total Time Spent', value: formatSecondsExact(totalTimeSpentSeconds), icon: Clock, tile: 'bg-violet-50 text-violet-600 dark:bg-violet-500/15 dark:text-violet-300' },
                 ].map((stat, i) => (
-                  <div key={i} className="flex items-center gap-3 px-3 py-3 rounded-2xl bg-background-surface border border-border-primary transition-shadow min-w-0">
+                  <div key={i} className="flex items-center gap-3 px-3 py-3 rounded-2xl bg-background-surface border border-border-primary min-w-0">
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${stat.tile}`}>
                       <stat.icon className="w-5 h-5" />
                     </div>

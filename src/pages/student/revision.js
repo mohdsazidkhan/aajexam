@@ -106,7 +106,7 @@ const RevisionPage = () => {
               const isActive = activeTab === tab.key;
               return (
                 <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                  className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg xl:rounded-xl text-[11px] font-bold transition ${isActive ? 'bg-primary-600 text-on-primary' : 'bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary'}`}>
+                  className={`border border-primary-600 flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg xl:rounded-xl text-[11px] font-bold transition ${isActive ? 'bg-primary-600 text-on-primary' : 'bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary'}`}>
                   <Icon className="w-3.5 h-3.5" />
                   <span>{translate(tab.label)}</span>
                   <span className={`px-1.5 py-0.5 rounded-full text-[9px] ${isActive ? 'bg-white/20' : 'bg-background-surface-secondary'}`}>{count}</span>

@@ -249,7 +249,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
         <div className="flex flex-wrap gap-2">
           <div className="flex gap-1 bg-background-surface-secondary p-1 rounded-xl max-w-full overflow-x-auto no-scrollbar">
             {STATUS_TABS.map((t) => (
-              <button key={t.id} onClick={() => { setStatus(t.id); setPage(1); }} className={`shrink-0 px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-[0.08em] transition ${status === t.id ? 'text-on-primary bg-primary-600' : 'text-content-muted hover:bg-background-surface dark:hover:bg-white/10'}`}>{t.label}</button>
+              <button key={t.id} onClick={() => { setStatus(t.id); setPage(1); }} className={`border border-primary-600 shrink-0 px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-[0.08em] transition ${status === t.id ? 'text-on-primary bg-primary-600' : 'text-content-muted hover:bg-background-surface dark:hover:bg-white/10'}`}>{t.label}</button>
             ))}
           </div>
           <div className="flex gap-1 bg-background-surface-secondary p-1 rounded-xl max-w-full overflow-x-auto no-scrollbar">
@@ -277,7 +277,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2.5 items-start pb-4">
               {items.map((e) => (
-                <div key={e._id} className="bg-background-surface rounded-xl border border-border-primary p-3 flex flex-col gap-2 transition-shadow relative">
+                <div key={e._id} className="bg-background-surface rounded-xl border border-border-primary p-3 flex flex-col gap-2 relative">
                   <div className="flex items-center justify-between gap-2">
                     <OriginBadge origin={e.origin} />
                     <span className="text-sm font-bold tabular-nums">×{e.count}</span>

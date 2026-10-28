@@ -329,7 +329,7 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
                 <button
                   key={s}
                   onClick={() => { setSort(s); load(s); }}
-                  className={`px-2 py-0.5 rounded uppercase tracking-[0.08em] ${sort === s ? 'bg-primary-600 text-on-primary' : 'bg-background-surface-secondary text-content-muted'}`}
+                  className={`border border-primary-600 px-2 py-0.5 rounded uppercase tracking-[0.08em] ${sort === s ? 'bg-primary-600 text-on-primary' : 'bg-background-surface-secondary text-content-muted'}`}
                 >
                   {s === 'top' ? translate('Top') : translate('Newest')}
                 </button>

@@ -325,7 +325,7 @@ const PublicProfilePage = ({ username: ssrUsername, profile: ssrProfile, seo }) 
                     <span className="px-2.5 py-0.5 bg-background-surface-secondary text-content-secondary ring-1 ring-slate-300 dark:ring-white/30 text-[10px] font-bold uppercase tracking-[0.08em]" style={{ borderRadius: 'var(--radius-sm)' }}>{translate('FREE')}</span>
                   )}
                   {(profile.badges || []).map((badge, index) => (
-                    <span key={index} className="inline-flex items-center gap-1 pl-1 pr-2.5 py-0.5 ring-1 ring-slate-200 text-content-primary dark:ring-white/30 text-[10px] font-bold uppercase tracking-[0.08em] shadow-primary-500/50 bg-background-surface" style={{ borderRadius: 'var(--radius-sm)' }}>
+                    <span key={index} className="inline-flex items-center gap-1 pl-1 pr-2.5 py-0.5 ring-1 ring-slate-200 text-content-primary dark:ring-white/30 text-[10px] font-bold uppercase tracking-[0.08em] bg-background-surface" style={{ borderRadius: 'var(--radius-sm)' }}>
                       <span className="flex items-center justify-center w-4 h-4 border border-primary-600 text-primary-600 dark:bg-white dark:text-primary-700" style={{ borderRadius: 'var(--radius-sm)' }}><Award className="w-2.5 h-2.5" /></span>
                       {badge}
                     </span>

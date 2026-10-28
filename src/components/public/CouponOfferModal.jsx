@@ -185,12 +185,12 @@ const CouponOfferModal = () => {
             </div>
 
             {upcoming ? (
-              <button type="button" onClick={close} className="w-full rounded-2xl bg-primary-600 hover:bg-primary-700 py-4 text-base xl:text-lg font-bold text-on-primary shadow-primary-600/30 transition">
+              <button type="button" onClick={close} className="w-full rounded-2xl bg-primary-600 hover:bg-primary-700 py-4 text-base xl:text-lg font-bold text-on-primary transition">
                 {translate('Got it')}
               </button>
             ) : (
               <>
-                <button type="button" onClick={useNow} className="w-full flex items-center justify-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-700 py-4 text-base xl:text-lg font-bold text-on-primary shadow-primary-600/30 transition">
+                <button type="button" onClick={useNow} className="w-full flex items-center justify-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-700 py-4 text-base xl:text-lg font-bold text-on-primary transition">
                   {translate('Use this coupon')} <ArrowRight className="w-5 h-5" />
                 </button>
                 <button type="button" onClick={close} className="w-full text-xs font-bold text-content-muted hover:text-content-primary dark:hover:text-slate-200 transition">

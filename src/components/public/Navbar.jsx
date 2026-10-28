@@ -38,7 +38,7 @@ const PromoTopBar = () => {
     </span>
   );
   return (
-    <div role="status" className="fixed top-0 left-0 right-0 z-[101] h-8 bg-red-600 text-white flex items-center overflow-hidden border-b border-white/10 shadow-md">
+    <div role="status" className="fixed top-0 left-0 right-0 z-[101] h-8 bg-red-600 text-white flex items-center overflow-hidden border-b border-white/10">
       {/* moving light sweep */}
       <span aria-hidden="true" className="promo-shine pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-transparent via-white/25 to-transparent" style={{ animation: 'promoShine 4s ease-in-out infinite' }} />
 
@@ -46,7 +46,7 @@ const PromoTopBar = () => {
         {/* desktop: gift, the line, a small gap, then the Login Now link */}
         <div className="hidden sm:flex items-center justify-center gap-3 px-3">
           {gift}
-          <p className="text-xs font-black uppercase tracking-widest truncate drop-shadow">{text}</p>
+          <p className="text-xs font-black uppercase tracking-widest truncate">{text}</p>
         </div>
         {/* phones: the same line scrolls, with the link right after each copy of the text */}
         <div className="sm:hidden flex w-max whitespace-nowrap" style={{ animation: 'marquee 18s linear infinite' }}>
@@ -90,7 +90,7 @@ const PublicNavbar = () => {
   const navLinks = [
     { label: 'Home', title: 'Home', href: '/', icon: Compass },
     { label: 'Features', title: 'Features', href: '/features', icon: Sparkles },
-    { label: 'Exams', title: 'Exams', href: '/exams', icon: GraduationCap },
+    { label: 'Govt. Exams', title: 'Govt. Exams', href: '/exams', icon: GraduationCap },
     { label: 'Subjects', title: 'Subjects', href: '/subjects', icon: BookOpen },
     { label: 'Topics', title: 'Topics', href: '/topics', icon: FolderOpen },
     { label: 'Quizzes', title: 'Quizzes', href: '/quizzes', icon: Gamepad2 },

@@ -451,10 +451,10 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-bold uppercase text-xs whitespace-nowrap transition-all border-b-2 shrink-0 ${
+            className={`border border-primary-600 flex items-center gap-2 px-5 py-2.5 rounded-full font-bold uppercase text-xs whitespace-nowrap transition-all shrink-0 ${
               activeTab === tab.key
-                ? 'bg-primary-600 text-on-primary border-primary-600'
-                : 'bg-background-surface-secondary text-content-secondary border-border-primary'
+                ? 'bg-primary-600 text-on-primary '
+                : 'bg-background-surface-secondary text-content-secondary '
             }`}
           >
             <tab.icon className="w-3.5 h-3.5" />

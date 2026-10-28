@@ -275,10 +275,10 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                       key={tabItem.id}
                       type="button"
                       onClick={() => { setTab(tabItem.id); setSearch(''); }}
-                      style={tab === tabItem.id ? { background: `linear-gradient(135deg, ${activeHex}, ${activeHex}d9)`, borderRadius: 'var(--radius)' } : { borderRadius: 'var(--radius)' }}
-                      className={`flex-1 flex items-center justify-center gap-1.5 whitespace-nowrap text-center text-xs font-bold uppercase tracking-wide px-2.5 py-2 transition-all ${
+                      style={tab === tabItem.id ? { background: activeHex, borderRadius: 'var(--radius)' } : { borderRadius: 'var(--radius)' }}
+                      className={`border border-primary-600 flex-1 flex items-center justify-center gap-1.5 whitespace-nowrap text-center text-xs font-bold uppercase tracking-wide px-2.5 py-2 transition-all ${
                         tab === tabItem.id
-                          ? 'text-white'
+                          ? 'text-on-primary'
                           : 'text-content-muted hover:text-content-primary dark:hover:text-white'
                       }`}
                     >
@@ -297,7 +297,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder={tab === 'theme' ? translate('Search theme...') : tab === 'targets' ? translate('Search exam...') : tab === 'language' ? translate('Search language...') : translate('Search font...')}
-                        className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-background-surface border border-border-primary text-content-primary placeholder:text-slate-400 placeholder:font-normal outline-none focus:ring-2 focus:ring-primary-500/50"
+                        className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-background-surface border text-content-primary placeholder:text-slate-400 placeholder:font-normal outline-none border-primary-600"
                       />
                     </div>
                     {tab === 'theme' && (

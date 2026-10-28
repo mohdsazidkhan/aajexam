@@ -173,7 +173,7 @@ const CityPromptModal = () => {
                 <button
                   type="button"
                   onClick={() => setSelectedExamIds([])}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${selectedExamIds.length === 0 ? 'bg-primary-600 border-primary-600 text-on-primary' : 'border-border-primary text-content-secondary hover:border-primary-500'}`}
+                  className={`border border-primary-600 flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold transition-all ${selectedExamIds.length === 0 ? 'bg-primary-600 text-on-primary' : ' text-content-secondary hover:border-primary-500'}`}
                 >
                   {selectedExamIds.length === 0 && <Check className="w-3 h-3" />}
                   All Exams
@@ -185,7 +185,7 @@ const CityPromptModal = () => {
                       key={exam._id}
                       type="button"
                       onClick={() => toggleExam(exam._id)}
-                      className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${active ? 'bg-primary-600 border-primary-600 text-on-primary' : 'border-border-primary text-content-secondary hover:border-primary-500'}`}
+                      className={`border border-primary-600 flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold transition-all ${active ? 'bg-primary-600 text-on-primary' : ' text-content-secondary hover:border-primary-500'}`}
                     >
                       {active && <Check className="w-3 h-3" />}
                       {translateData(exam.name)}

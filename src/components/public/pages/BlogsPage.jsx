@@ -216,7 +216,7 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
           center={
             <form onSubmit={handleSearch} className="relative w-full">
               <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder={translate('Search blogs...')}
-                className="w-full pl-4 pr-12 py-2 border border-border-primary dark:border-slate-600 rounded-lg text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 bg-background-surface text-content-primary placeholder:text-slate-400" />
+                className="w-full pl-4 pr-12 py-2 border rounded-lg text-sm font-semibold focus:outline-none bg-background-surface text-content-primary placeholder:text-slate-400 border-primary-600" />
               <button aria-label={translate('Search')} type="submit" className="absolute right-0 top-0 h-full w-10 flex items-center justify-center bg-primary-600 text-on-primary rounded-r-lg">
                 <Search className="w-4 h-4" />
               </button>
@@ -227,11 +227,11 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
               {/* View Toggle */}
               <div className="flex items-center gap-1">
                 <button onClick={() => setViewMode('grid')}
-                  className={`px-3 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all border-b-2 ${viewMode === 'grid' ? 'text-on-primary border-primary-500 bg-primary-600' : 'bg-background-surface text-content-secondary border-border-primary'}`}>
+                  className={`border border-primary-600 px-3 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all ${viewMode === 'grid' ? 'text-on-primary bg-primary-600' : 'bg-background-surface text-content-secondary '}`}>
                   {translate('Grid')}
                 </button>
                 <button onClick={() => setViewMode('list')}
-                  className={`px-3 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all border-b-2 ${viewMode === 'list' ? 'text-on-primary border-primary-500 bg-primary-600' : 'bg-background-surface text-content-secondary border-border-primary'}`}>
+                  className={`border border-primary-600 px-3 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all ${viewMode === 'list' ? 'text-on-primary bg-primary-600' : 'bg-background-surface text-content-secondary '}`}>
                   {translate('List')}
                 </button>
               </div>

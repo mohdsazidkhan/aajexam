@@ -127,7 +127,7 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1, initialT
             <div className="w-full xl:w-56 relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
               <input type="text" placeholder={translate('Search current affairs...')} value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} autoFocus
-                className="w-full bg-background-surface rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-border-primary dark:border-slate-600" />
+                className="w-full bg-background-surface rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none border border-primary-600" />
             </div>
             <div className="relative flex gap-2 mt-2 xl:mt-0">
               <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted pointer-events-none z-10" />
@@ -153,10 +153,10 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1, initialT
         <div className="flex gap-1.5 overflow-x-auto no-scrollbar max-w-full">
             {filterPills.map(f => (
               <button key={f.id} onClick={() => { setCategory(f.id); setPage(1); }}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-full font-bold uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
+                className={`border border-primary-600 flex items-center gap-2 px-3 py-1.5 rounded-full font-bold uppercase text-[11px] whitespace-nowrap transition-all active:translate-y-0.5 ${
                   category === f.id
-                    ? 'text-on-primary border-primary-500 bg-primary-600'
-                    : 'bg-background-surface text-content-secondary border-border-primary'
+                    ? 'text-on-primary bg-primary-600'
+                    : 'bg-background-surface text-content-secondary '
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {translate(f.label)}
               </button>

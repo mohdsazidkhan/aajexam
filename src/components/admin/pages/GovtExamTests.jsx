@@ -323,7 +323,7 @@ const AdminGovtExamTests = () => {
                key={mode.id}
                onClick={() => setViewMode(mode.id)}
                title={mode.label}
-               className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
+               className={`border border-primary-600 flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
             >
                <mode.icon className="w-4 h-4" />
                <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
@@ -337,7 +337,7 @@ const AdminGovtExamTests = () => {
          whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
          onClick={handleCreate}
          disabled={selectedPattern === 'all'}
-         className={`w-full xl:w-auto px-4 xl:px-4 py-2.5 rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] flex items-center justify-center gap-2 ${selectedPattern === 'all' ? 'bg-background-surface-secondary text-content-muted cursor-not-allowed' : 'bg-primary-600 text-on-primary'}`}
+         className={`border border-primary-600 w-full xl:w-auto px-4 xl:px-4 py-2.5 rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] flex items-center justify-center gap-2 ${selectedPattern === 'all' ? 'bg-background-surface-secondary text-content-muted cursor-not-allowed' : 'bg-primary-600 text-on-primary'}`}
       >
          <Plus className="w-4 h-4" /> ADD TEST
       </motion.button>
@@ -479,7 +479,7 @@ const AdminGovtExamTests = () => {
                               </section>
                            </div>
                            <div className="flex items-center gap-3">
-                              <button onClick={() => setUploadMode(!uploadMode)} className={`px-3 xl:px-4 py-2 rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] border transition-all ${uploadMode ? 'bg-primary-600 text-on-primary border-primary-600' : 'bg-background-surface-secondary text-content-muted border-transparent hover:border-primary-500/30'}`}>
+                              <button onClick={() => setUploadMode(!uploadMode)} className={`border border-primary-600 px-3 xl:px-4 py-2 rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] transition-all ${uploadMode ? 'bg-primary-600 text-on-primary ' : 'bg-background-surface-secondary text-content-muted hover:border-primary-500/30'}`}>
                                  {uploadMode ? 'Manual Entry' : 'Bulk JSON Upload'}
                               </button>
                               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg xl:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
@@ -542,7 +542,7 @@ const AdminGovtExamTests = () => {
                                              return secs.length > 1 ? (
                                                 <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
                                                    {['all', ...secs].map(sec => (
-                                                      <button key={sec} type="button" onClick={() => setQSection(sec)} className={`shrink-0 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.08em] transition-all ${qSection === sec ? 'text-on-primary bg-primary-600' : 'bg-background-surface-secondary text-content-secondary dark:hover:bg-white/20'}`}>{sec === 'all' ? 'All' : sec}</button>
+                                                      <button key={sec} type="button" onClick={() => setQSection(sec)} className={`border border-primary-600 shrink-0 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.08em] transition-all ${qSection === sec ? 'text-on-primary bg-primary-600' : 'bg-background-surface-secondary text-content-secondary dark:hover:bg-white/20'}`}>{sec === 'all' ? 'All' : sec}</button>
                                                    ))}
                                                 </div>
                                              ) : null;

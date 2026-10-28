@@ -158,7 +158,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                 placeholder={translate('Search exams...')}
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full bg-background-surface rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-border-primary dark:border-slate-600"
+                className="w-full bg-background-surface rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none border border-primary-600"
               />
             </div>
           </div>
@@ -167,10 +167,10 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
           <div className="flex gap-1.5 overflow-x-auto no-scrollbar max-w-full">
             {filters.map(f => (
               <button key={f.id} onClick={() => setActiveFilter(f.id)}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-full font-bold uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
+                className={`border border-primary-600 flex items-center gap-2 px-3 py-1.5 rounded-full font-bold uppercase text-[11px] whitespace-nowrap transition-all active:translate-y-0.5 ${
                   activeFilter === f.id
-                    ? 'text-on-primary border-primary-600 bg-primary-600'
-                    : 'bg-background-surface text-content-secondary border-border-primary dark:border-slate-500'
+                    ? 'text-on-primary bg-primary-600'
+                    : 'bg-background-surface text-content-secondary dark:border-slate-500'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {translate(f.label)}
               </button>

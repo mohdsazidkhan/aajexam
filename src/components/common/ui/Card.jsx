@@ -21,8 +21,8 @@ const Card = ({
 }) => {
   const variants = {
     white: 'bg-background-surface text-content-primary border-border-primary',
- dark: 'bg-slate-950 border-slate-800 text-white shadow-sm',
-    primary: 'bg-primary-600 border-primary-600 shadow-sm text-on-primary',
+ dark: 'bg-slate-950 border-slate-800 text-white',
+    primary: 'bg-primary-600 border-primary-600 text-on-primary',
     none: '',
   };
 

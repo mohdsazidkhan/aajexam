@@ -402,8 +402,8 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                 <div className="flex items-center justify-between mb-1">
                   <label className="block text-[11px] font-bold uppercase tracking-[0.08em] text-primary-600">Content *</label>
                   <div className="flex rounded-lg overflow-hidden border border-border-primary text-xs">
-                    <button type="button" disabled={!canEditFields} onClick={() => setMode('simple')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'simple' ? 'text-on-primary font-bold bg-primary-600' : 'bg-background-surface-secondary text-content-secondary'}`}>Simple</button>
-                    <button type="button" disabled={!canEditFields} onClick={() => setMode('html')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'html' ? 'text-on-primary font-bold bg-primary-600' : 'bg-background-surface-secondary text-content-secondary'}`}>HTML</button>
+                    <button type="button" disabled={!canEditFields} onClick={() => setMode('simple')} className={`border border-primary-600 px-3 py-1 disabled:opacity-50 ${mode === 'simple' ? 'text-on-primary font-bold bg-primary-600' : 'bg-background-surface-secondary text-content-secondary'}`}>Simple</button>
+                    <button type="button" disabled={!canEditFields} onClick={() => setMode('html')} className={`border border-primary-600 px-3 py-1 disabled:opacity-50 ${mode === 'html' ? 'text-on-primary font-bold bg-primary-600' : 'bg-background-surface-secondary text-content-secondary'}`}>HTML</button>
                   </div>
                 </div>
                 <textarea

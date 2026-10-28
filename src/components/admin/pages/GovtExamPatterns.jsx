@@ -286,7 +286,7 @@ const AdminGovtExamPatterns = () => {
           key={mode.id}
           onClick={() => setViewMode(mode.id)}
           title={mode.label}
-          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
+          className={`border border-primary-600 flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-on-primary' : 'text-content-muted hover:text-content-primary hover:bg-background-surface-secondary'}`}
         >
           <mode.icon className="w-4 h-4" />
           <span className="text-[9px] font-bold uppercase tracking-[0.08em]">{mode.label.replace(' View', '')}</span>
@@ -300,7 +300,7 @@ const AdminGovtExamPatterns = () => {
       whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
       onClick={handleCreate}
       disabled={selectedExam === 'all'}
-      className={`w-full xl:w-auto px-4 xl:px-4 py-2.5 rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] flex items-center justify-center gap-2 ${selectedExam === 'all' ? 'bg-background-surface-secondary text-content-muted cursor-not-allowed' : 'bg-primary-600 text-on-primary'}`}
+      className={`border border-primary-600 w-full xl:w-auto px-4 xl:px-4 py-2.5 rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] flex items-center justify-center gap-2 ${selectedExam === 'all' ? 'bg-background-surface-secondary text-content-muted cursor-not-allowed' : 'bg-primary-600 text-on-primary'}`}
     >
       <Plus className="w-4 h-4" /> New Pattern
     </motion.button>

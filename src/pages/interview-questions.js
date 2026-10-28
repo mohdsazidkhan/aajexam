@@ -163,7 +163,7 @@ const InterviewQuestionsPage = ({ initialCategories = [], initialTotal = 0 } = {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
               <input type="text" placeholder={translate('Search categories or questions...')} value={search} onChange={e => { setSearch(e.target.value); setQPage(1); }}
-                className="w-full bg-background-surface rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-border-primary dark:border-slate-600" />
+                className="w-full bg-background-surface rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none border border-primary-600" />
             </div>
           </div>
         }
@@ -171,10 +171,10 @@ const InterviewQuestionsPage = ({ initialCategories = [], initialTotal = 0 } = {
           <div className="flex gap-1.5 overflow-x-auto no-scrollbar max-w-full">
         {Object.entries(typeConfig).map(([id, c]) => (
           <button key={id} onClick={() => setType(id)}
-            className={`flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full font-bold uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
+            className={`border border-primary-600 flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full font-bold uppercase text-[11px] whitespace-nowrap transition-all active:translate-y-0.5 ${
               type === id
-                ? 'text-on-primary border-primary-500 bg-primary-600'
-                : 'bg-background-surface text-content-secondary border-border-primary'
+                ? 'text-on-primary bg-primary-600'
+                : 'bg-background-surface text-content-secondary '
             }`}>
             <c.icon className="w-4 h-4 shrink-0" /> {c.label}
           </button>

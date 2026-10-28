@@ -82,7 +82,7 @@ const IndiaOnlyNotice = () => {
         <div className="px-6 pt-7 pb-6 text-center">
           <div className="relative mx-auto mb-4 flex h-20 w-20 items-center justify-center">
             <span className="absolute inset-0 rounded-full bg-amber-500/25 animate-ping" aria-hidden="true" />
-            <span className="relative flex h-20 w-20 items-center justify-center rounded-full shadow-rose-500/30 bg-amber-600">
+            <span className="relative flex h-20 w-20 items-center justify-center rounded-full bg-amber-600">
               <AlertTriangle className="h-10 w-10 text-white" strokeWidth={2.5} />
             </span>
           </div>
@@ -105,7 +105,7 @@ const IndiaOnlyNotice = () => {
             <button type="button" onClick={handleClose} className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-rose-500/40 px-4 py-3 text-sm font-bold text-rose-600 transition hover:bg-rose-500/10 dark:text-rose-400">
               <LogOut className="h-4 w-4" /> Close website
             </button>
-            <button type="button" onClick={handleContinue} className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary-600 px-4 py-3 text-sm font-bold text-on-primary shadow-primary-600/30 transition hover:bg-primary-700">
+            <button type="button" onClick={handleContinue} className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary-600 px-4 py-3 text-sm font-bold text-on-primary transition hover:bg-primary-700">
               Continue anyway <ArrowRight className="h-4 w-4" />
             </button>
           </div>
