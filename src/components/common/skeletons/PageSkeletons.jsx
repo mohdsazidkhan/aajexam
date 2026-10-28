@@ -123,7 +123,7 @@ const SectionHeaderSkeleton = () => (
 // ─── Student home / dashboard ───────────────────────────────────────────────
 
 export const HomeDashboardSkeleton = () => (
-  <div className="space-y-4 xl:space-y-6 font-outfit mt-4 xl:mt-6">
+  <div className="space-y-4 xl:space-y-6 font-outfit mt-2 xl:mt-6">
     {/* 9 stat chips: 2 / 3 / 9 columns */}
     <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-9 gap-1.5 md:gap-2 xl:gap-3">
       {Array.from({ length: 9 }).map((_, i) => (

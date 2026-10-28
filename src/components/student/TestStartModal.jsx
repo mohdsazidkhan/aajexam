@@ -55,14 +55,15 @@ const TestStartModal = ({
     <div className="fixed inset-0 bg-slate-950/40 flex items-end sm:items-center justify-center z-[9999] p-2 sm:p-4 font-outfit">
       <div className="relative bg-background-surface p-4 sm:p-6 xl:p-10 max-w-lg w-full border border-border-primary max-h-[92vh] overflow-y-auto scrollbar-none animate-bounce-in" style={{ maxHeight: '92dvh', borderRadius: 'var(--radius)' }}>
         <div className="text-center">
-          {/* Header */}
-          <div className="w-10 xl:w-20 h-10 xl:h-20 text-primary-600 flex items-center justify-center mx-auto mb-6 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
-            <FaSchool className="text-xl xl:text-3xl" />
+          {/* Header: icon on the left, title on the right */}
+          <div className="flex items-center justify-center gap-3 mb-3 xl:mb-6">
+            <div className="w-10 xl:w-12 h-10 xl:h-12 shrink-0 text-primary-600 flex items-center justify-center border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
+              <FaSchool className="text-xl xl:text-2xl" />
+            </div>
+            <h2 className="text-md md:text-xl xl:text-2xl font-bold text-content-primary tracking-tight">
+              {rich('Exam <0>Practice</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+            </h2>
           </div>
-
-          <h2 className="text-md md:text-xl xl:text-2xl font-bold text-content-primary mb-3 xl:mb-6 tracking-tight">
-            {rich('Exam <0>Practice</0>', [(c) => <span className="text-primary-600">{c}</span>])}
-          </h2>
 
           {/* Test Info */}
           <section className="dark:bg-background-surface-secondary p-3 xl:p-6 mb-3 xl:mb-6 border border-dashed border-primary-300 dark:border-slate-700" style={{ borderRadius: 'var(--radius)' }}>
@@ -91,48 +92,48 @@ const TestStartModal = ({
               )}
             </div>
 
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              <div className="flex flex-col items-center gap-2">
+            <div className="grid grid-cols-4 gap-1.5 sm:grid-cols-2 sm:gap-6">
+              <div className="flex flex-col items-center gap-2 min-w-0">
                 <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                   <BookOpen className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{translateData(categoryName)}</span>
+                <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center break-words max-w-full">{translateData(categoryName)}</span>
               </div>
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-2 min-w-0">
                 <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                   <GraduationCap className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{translateData(examTitle)}</span>
+                <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center break-words max-w-full">{translateData(examTitle)}</span>
               </div>
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-2 min-w-0">
                 <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                   <Clock className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{durationText}</span>
+                <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center break-words max-w-full">{durationText}</span>
               </div>
               {pattern?.totalMarks && (
-                <div className="flex flex-col items-center gap-2">
+                <div className="flex flex-col items-center gap-2 min-w-0">
                   <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                     <Trophy className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{translate('{count} Marks', { count: pattern.totalMarks })}</span>
+                  <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center break-words max-w-full">{translate('{count} Marks', { count: pattern.totalMarks })}</span>
                 </div>
               )}
               {pattern?.negativeMarking > 0 ? (
-                <div className="flex flex-col items-center gap-2 col-span-2">
+                <div className="flex flex-col items-center gap-2 min-w-0 col-span-4 sm:col-span-2">
                   <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                     <Info className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] text-center">
+                  <span className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] text-center break-words max-w-full">
                     {translate('Negative Marking: -{marks} per wrong answer', { marks: pattern.negativeMarking })}
                   </span>
                 </div>
               ) : (
-                <div className="flex flex-col items-center gap-2 col-span-2">
+                <div className="flex flex-col items-center gap-2 min-w-0 col-span-4 sm:col-span-2">
                   <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] text-center">
+                  <span className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] text-center break-words max-w-full">
                     {translate('No Negative Marking')}
                   </span>
                 </div>
@@ -145,7 +146,7 @@ const TestStartModal = ({
             <div className="bg-background-surface p-3 xl:p-6 mb-3 xl:mb-6 border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
               <h4 className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-6 text-center flex items-center justify-center gap-2">
                 <FaList className="w-3 h-3" />
-                Exam Stages ({sections.length})
+                Exam Sections ({sections.length})
               </h4>
               <div className="space-y-3">
                 {sections.map((section, index) => (
@@ -153,7 +154,7 @@ const TestStartModal = ({
                     key={index}
                     className="p-4 rounded-2xl border border-border-primary text-left group hover:border-primary-500/50 transition-all"
                   >
-                    <p className="text-sm font-bold text-content-primary uppercase tracking-[0.08em] leading-none mb-2">
+                    <p className="text-sm font-bold text-content-primary leading-none mb-2">
                       {section.name}
                     </p>
                     <div className="flex gap-4 text-[9px] font-bold text-content-secondary uppercase tracking-[0.1em]">

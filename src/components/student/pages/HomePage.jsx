@@ -349,7 +349,7 @@ const HomePage = () => {
    const totalTimeSpentSeconds = performanceReport?.totalTimeSpentSeconds ?? 0;
 
    return (
-      <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-4 xl:mt-6">
+      <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-2 xl:mt-6">
             {/* ── Scorecard hero ── */}
             <section className="px-0 py-2 xl:py-3">
                <div className="relative isolate overflow-hidden border border-border-primary bg-background-surface p-3 xl:p-5" style={{ borderRadius: 'var(--radius)' }}>

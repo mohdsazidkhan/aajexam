@@ -17,7 +17,6 @@ import {
   Target,
   CircleCheck,
   CircleAlert,
-  Menu,
   X,
   LayoutGrid
 } from "lucide-react";
@@ -290,25 +289,17 @@ const TestStart = ({ resolvedId } = {}) => {
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="relative shrink-0 z-[60] flex items-center justify-between gap-2 sm:gap-3 xl:gap-6 px-3 py-2 sm:px-4 xl:px-6 xl:py-3 border-b border-border-primary bg-background-surface"
+          className="relative shrink-0 z-[60] flex flex-col md:flex-row md:items-center md:justify-between gap-2 sm:gap-3 xl:gap-6 px-3 py-2 sm:px-4 xl:px-6 xl:py-3 border-b border-border-primary bg-background-surface"
         >
           {/* Left: Spacer or Placeholder */}
-          {/* Questions panel toggle */}
+          {/* Questions panel toggle (desktop: side panel; phones: question palette drawer) */}
           <button
-            onClick={() => setShowPalette(true)}
-            title={translate('Questions')}
-            aria-label={translate('Open questions')}
-            className="xl:hidden shrink-0 p-2.5 dark:bg-slate-900/90 text-content-muted hover:text-primary-600 rounded-xl border border-border-primary transition-all active:scale-95"
-          >
-            <Menu className="w-5 h-5" />
-          </button>
-          <button
-            onClick={() => setShowSidebar(v => !v)}
+            onClick={() => (window.matchMedia('(min-width: 1280px)').matches ? setShowSidebar(v => !v) : setShowPalette(true))}
             title={showSidebar ? translate('Hide questions') : translate('Show questions')}
             aria-label={translate('Toggle questions panel')}
-            className={`hidden xl:flex shrink-0 p-3 rounded-xl border transition-all active:scale-95 ${showSidebar ? "text-primary-600 border-primary-500/30" : "bg-white/90 dark:bg-slate-900/90 text-content-muted hover:text-primary-600 border-border-primary"}`}
+            className={`hidden md:flex shrink-0 p-2 xl:p-3 rounded-xl border transition-all active:scale-95 ${showSidebar ? "text-primary-600 border-primary-500/30" : "bg-white/90 dark:bg-slate-900/90 text-content-muted hover:text-primary-600 border-border-primary"}`}
           >
-            <LayoutGrid className="w-6 h-6" />
+            <LayoutGrid className="w-5 h-5 xl:w-6 xl:h-6" />
           </button>
           <p className="hidden xl:block shrink-0 text-xs 2xl:text-[13px] font-bold text-content-muted whitespace-nowrap">
             <span className="font-bold uppercase tracking-[0.08em]">{translate('Status:')}</span>{" "}
@@ -317,11 +308,51 @@ const TestStart = ({ resolvedId } = {}) => {
             {translate('Not Answered:')} <span className="text-content-primary">{questions.length - answeredCount}</span>,{" "}
             {translate('Mark For Review:')} <span className="text-content-primary">{marked.size}</span>
           </p>
-          <div className="flex-1 min-w-0 md:hidden xl:hidden">
+          {/* Phones: row 1 = full exam name; row 2 = questions icon | counter + timer |  language, fullscreen, close */}
+          <div className="md:hidden">
             <p className="break-words text-[11px] font-bold text-content-muted uppercase tracking-wide leading-tight">{translateData(test?.title)}</p>
-            <p className="text-xs font-bold text-primary-600 leading-tight">Q {currentQIndex + 1} / {questions.length}</p>
+            <div className="mt-2 grid grid-cols-[1fr_auto_1fr] items-center gap-1.5">
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => setShowPalette(true)}
+                  aria-label={translate('Toggle questions panel')}
+                  className="shrink-0 p-1.5 rounded-lg border border-primary-600 text-primary-600 active:scale-95 transition-all"
+                >
+                  <LayoutGrid className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-primary-600 whitespace-nowrap">Q {currentQIndex + 1} / {questions.length}</span>
+                <div className={`flex items-center gap-1 px-2 py-1 rounded-lg border ${timeLeft < 300 ?'bg-primary-600 text-on-primary border-primary-600 animate-pulse':'bg-background-surface text-primary-600 border-primary-600'} transition-all`}>
+                  <Clock className="w-3.5 h-3.5 text-current opacity-80" />
+                  <span className="font-mono text-xs font-bold">{formatTime(timeLeft)}</span>
+                </div>
+              </div>
+              <div className="justify-self-end flex items-center gap-1.5">
+                <LanguageToggle
+                  language={language}
+                  onToggle={toggleLanguage}
+                  translating={translatingQ}
+                  className="px-2 py-1 min-w-[36px] text-content-secondary rounded-lg border border-border-primary active:scale-95 font-bold text-xs tracking-[0.08em] uppercase flex items-center justify-center gap-1"
+                />
+                <button
+                  onClick={toggleFullscreen}
+                  className="p-1.5 text-content-muted rounded-lg border border-border-primary active:scale-95 transition-all"
+                  title={translate('Toggle Focus Mode')}
+                >
+                  {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}
+                </button>
+                <button
+                  onClick={() => setShowSubmitModal(true)}
+                  className="p-1.5 text-content-muted rounded-lg border border-border-primary active:scale-95 transition-all"
+                  title={translate('Exit Test')}
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
-          
+
           {/* Center: Test Progress (Minimalist) */}
           <div className="flex-1 max-w-xl dark:bg-slate-900/90 rounded-2xl px-5 py-2.5 xl:px-6 xl:py-3 border border-border-primary pointer-events-auto hidden md:block">
             <div className="flex flex-col gap-2">
@@ -336,8 +367,8 @@ const TestStart = ({ resolvedId } = {}) => {
           </div>
 
           {/* Right: Timer & Tools */}
-          <div className="flex items-center gap-2 xl:gap-3 pointer-events-auto shrink-0">
-            <div className={`flex items-center gap-1.5 xl:gap-3 px-3 py-2 xl:px-5 xl:py-2.5 rounded-xl border ${timeLeft < 300 ?'bg-primary-600 text-on-primary border-white/20 animate-pulse':'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
+          <div className="hidden md:flex items-center gap-2 xl:gap-3 pointer-events-auto shrink-0">
+            <div className={`flex items-center gap-1.5 xl:gap-3 px-3 py-2 xl:px-5 xl:py-2.5 rounded-xl border ${timeLeft < 300 ?'bg-primary-600 text-on-primary border-primary-600 animate-pulse':'bg-background-surface text-primary-600 border-primary-600'} backdrop-blur-md transition-all`}>
               <Clock className="w-4 h-4 text-current opacity-80" />
               <span className="font-mono text-sm xl:text-xl font-bold">{formatTime(timeLeft)}</span>
             </div>
@@ -450,7 +481,7 @@ const TestStart = ({ resolvedId } = {}) => {
                   <Target className="w-3 h-3" />
                   Q {currentQIndex + 1}
                 </div>
-                <h2 className="text-lg xl:text-xl font-bold font-outfit leading-snug xl:leading-tight text-content-primary whitespace-pre-wrap break-words min-w-0">
+                <h2 className="text-[15px] xl:text-xl font-bold font-outfit leading-snug xl:leading-tight text-content-primary whitespace-pre-wrap break-words min-w-0">
                   {currentQ.questionText}
                 </h2>
               </div>
@@ -523,6 +554,9 @@ const TestStart = ({ resolvedId } = {}) => {
       </div>
 
       {/* --- Bottom Action Bar (Fixed) --- */}
+      <p className="shrink-0 border-t border-border-primary bg-background-surface px-3 sm:px-6 py-1.5 text-[11px] font-bold text-content-muted">
+        <span className="text-content-primary">{translate('Note')}:</span> {translate('Questions marked for review are shown in orange')}
+      </p>
       <footer className="min-h-[4rem] sm:min-h-[5rem] xl:h-24 shrink-0 dark:bg-slate-900/90 border-t border-border-primary px-3 sm:px-6 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] gap-2 flex items-center justify-between z-50">
         <Button
           variant="secondary"
@@ -556,13 +590,6 @@ const TestStart = ({ resolvedId } = {}) => {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-4">
-          <button aria-label={translate('Open menu')}
-            className="xl:hidden p-3 sm:p-4 bg-background-surface-secondary rounded-2xl"
-            onClick={() => setShowPalette(true)}
-          >
-            <Menu className="w-6 h-6" />
-          </button>
-
           {currentQIndex === questions.length - 1 ? (
             <Button
               variant="primary"
@@ -570,7 +597,7 @@ const TestStart = ({ resolvedId } = {}) => {
               className="bg-primary-600 hover:bg-primary-600 h-12 sm:h-14 !px-4 sm:!px-12 sm:min-w-[10rem] text-xs sm:text-base"
               onClick={() => setShowSubmitModal(true)}
             >
-              {translate('FINISH')} <span className="hidden sm:inline">&nbsp;{translate('TEST')}</span> <Send className="w-5 h-5 sm:w-6 sm:h-6 ml-1.5 sm:ml-2" />
+              {translate('Submit Test')} <Send className="w-5 h-5 sm:w-6 sm:h-6 ml-1.5 sm:ml-2" />
             </Button>
           ) : (
             <Button
@@ -590,8 +617,7 @@ const TestStart = ({ resolvedId } = {}) => {
         {showPalette && (
           <>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowPalette(false)} className="fixed inset-0 bg-black/50 z-50" />
-            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-background-surface rounded-t-[2rem] sm:rounded-t-[3rem] px-5 sm:px-8 pt-4 sm:pt-6 flex flex-col overflow-hidden z-50 max-h-[80vh]" style={{ maxHeight: '80dvh' }}>
-              <div className="w-12 h-1.5 shrink-0 bg-background-surface-secondary rounded-full mx-auto mb-4 sm:mb-6" />
+            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-background-surface border-t-2 border-primary-600 rounded-t-[8px] px-5 sm:px-8 pt-4 sm:pt-6 flex flex-col overflow-hidden z-50 max-h-[70vh]" style={{ maxHeight: '70dvh' }}>
               <h3 className="shrink-0 text-lg sm:text-xl xl:text-2xl font-bold font-outfit">{translate('Questions')}</h3>
               <p className="shrink-0 text-[10px] sm:text-xs font-bold text-content-muted pb-3 sm:pb-4 border-b border-border-primary whitespace-nowrap overflow-x-auto [scrollbar-width:none]">Questions: <span className="text-content-primary">{questions.length}</span>, Answered: <span className="text-primary-600">{answeredCount}</span>, Not Answered: <span className="text-content-primary">{questions.length - answeredCount}</span>, Mark For Review: <span className="text-content-primary">{marked.size}</span></p>
               <div className="space-y-5 flex-1 min-h-0 overflow-y-auto overscroll-contain pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
@@ -601,14 +627,14 @@ const TestStart = ({ resolvedId } = {}) => {
                   return (
                     <div key={secName} className="space-y-3">
                       <div className="flex items-center justify-between gap-2 px-1">
-                        <span className="text-xs font-bold text-content-secondary uppercase tracking-[0.08em] truncate">
+                        <span className="text-xs font-bold text-content-secondary break-words">
                           {secName}
                         </span>
                         <span className="text-[11px] font-bold text-primary-600 shrink-0">
                           {answeredInSec}/{group.length}
                         </span>
                       </div>
-                      <div className="grid grid-cols-5 sm:grid-cols-6 gap-2 sm:gap-3">
+                      <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 sm:gap-3">
                         {group.map(({ q, idx }) => {
                           const isAnswered = answers[q._id] !== undefined;
                           const isMarked = marked.has(q._id);
@@ -618,10 +644,7 @@ const TestStart = ({ resolvedId } = {}) => {
                               key={idx}
                               data-q-state={isMarked ? 'marked' : isAnswered ? 'answered' : undefined}
                               onClick={() => { setCurrentQIndex(idx); setShowPalette(false); }}
-                              className={`h-11 sm:h-14 rounded-xl sm:rounded-2xl font-bold border-b-2 ${isCurrent ? 'bg-primary-600 text-on-primary border-primary-600' :
-                                isMarked ?'bg-primary-600 text-on-primary border-primary-600':
-                                  isAnswered ? 'text-primary-600 border-primary-200 dark:border-primary-600' :
-                                    'bg-background-surface-secondary text-content-muted border-border-primary'}`}
+                              className={`h-11 sm:h-14 rounded-xl sm:rounded-2xl font-bold ${isCurrent ? 'border-2 border-content-primary' : isMarked ? 'border border-orange-500' : isAnswered ? 'border border-primary-600' : 'border border-border-primary'} ${isMarked ? 'bg-orange-500 text-white' : isAnswered ? 'bg-primary-600 text-on-primary' : `bg-background-page ${isCurrent ? 'text-content-primary' : 'text-content-muted'}`}`}
                             >
                               {idx + 1}
                             </button>
