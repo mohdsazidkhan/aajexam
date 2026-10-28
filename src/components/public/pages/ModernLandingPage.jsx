@@ -399,8 +399,9 @@ const ModernLandingPage = () => {
 
    return (
       <MobileAppWrapper showHeader={true} title={translate('Home')}>
-         <div className="xl:min-h-[calc(100vh-5.5rem)] xl:flex xl:flex-col">
-         <section className="-mx-4 xl:-mx-8 xl:flex-1 xl:flex xl:items-center bg-background-surface border border-border-primary text-content-primary">
+         <div className="container mx-auto px-3 xl:px-4 py-3 xl:py-4 space-y-3 xl:space-y-4">
+         <div className="xl:min-h-[calc(100vh-7.5rem)] flex flex-col gap-3 xl:gap-4">
+         <section className="xl:flex-1 xl:flex xl:items-center bg-background-surface border border-border-primary text-content-primary">
             <div className="container mx-auto px-4 xl:px-6 w-full">
                <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] items-center gap-8 xl:gap-12 py-8 xl:py-4">
                   {/* Copy */}
@@ -470,7 +471,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Ticker Stats ── */}
-         <section aria-label="Last 30 days activity" className="border-y border-border-primary bg-background-surface text-content-secondary overflow-hidden flex">
+         <section aria-label="Last 30 days activity" className="border border-border-primary bg-background-surface text-content-secondary overflow-hidden flex">
             <div className="flex w-max hover:[animation-play-state:paused]" style={{ animation: 'marquee 32s linear infinite' }}>
                {/* Repeat content twice for a seamless loop */}
                {[0, 1].map((iteration) => (
@@ -489,8 +490,8 @@ const ModernLandingPage = () => {
          </div>
 
          {/* ── 3-Step How It Works ── */}
-         <section className="bg-background-surface border border-border-primary py-6 xl:py-10">
-            <div className="container mx-auto px-3 xl:px-0">
+         <section className="bg-background-surface border border-border-primary p-4 xl:p-6">
+            <div className="w-full">
                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 xl:gap-6">
                   {[
                      { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Police, Banking etc.", icon: Target },
@@ -515,9 +516,9 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Counts ── */}
-         <section className="bg-background-surface border border-border-primary py-3 xl:py-5">
-            <div className="container mx-auto px-3 xl:px-0">
-               <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-px border border-border-primary rounded-2xl overflow-hidden bg-border-primary">
+         <section className="bg-background-surface border border-border-primary p-4 xl:p-6">
+            <div className="w-full">
+               <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-px rounded-2xl overflow-hidden bg-border-primary">
                   {[
                      { label: 'Students', val: stats.activeStudents, icon: Users },
                      { label: 'Exams', val: stats.totalExams, icon: Target },
@@ -537,8 +538,8 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── PYQ Section ── */}
-         <section className="bg-background-surface border border-border-primary py-8 xl:py-12">
-            <div className="container mx-auto px-3 xl:px-0">
+         <section className="bg-background-surface border border-border-primary p-4 xl:p-6">
+            <div className="w-full">
                <div className="text-center space-y-3 mb-6 xl:mb-8">
                   <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border-primary text-xs font-bold rounded-full text-primary-600">
                      <span className="w-2 h-2 rounded-full bg-primary-600" />
@@ -610,8 +611,8 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Features Section ── */}
-         <section id="features" className="bg-background-surface py-8 xl:py-12 border-t border-border-primary">
-            <div className="container mx-auto px-3 xl:px-0 space-y-6 xl:space-y-8">
+         <section id="features" className="bg-background-surface p-4 xl:p-6 border border-border-primary">
+            <div className="w-full space-y-6 xl:space-y-8">
                <div className="text-center space-y-3 max-w-3xl mx-auto">
                   <h2 className="text-3xl xl:text-5xl font-extrabold font-outfit tracking-tight leading-tight">{translate('Study Smart.')} <br /> {translate('Pass Your Exam.')}</h2>
                   <p className="text-base xl:text-lg font-medium text-content-secondary">{translate('Everything you need to prepare for government exams, all in one place.')}</p>
@@ -671,8 +672,8 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
-         <section className="bg-background-surface border border-border-primary py-8 xl:py-12">
-            <div className="container mx-auto px-3 xl:px-0 space-y-6 xl:space-y-8">
+         <section className="bg-background-surface border border-border-primary p-4 xl:p-6">
+            <div className="w-full space-y-6 xl:space-y-8">
                <h2 className="text-center text-3xl xl:text-5xl font-extrabold font-outfit tracking-tight leading-tight">
                   {translate('Study with')} <br /><span className="text-primary-600">{translate('Confidence.')}</span>
                </h2>
@@ -695,7 +696,7 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
-         <section className="container mx-auto px-3 xl:px-0 pb-8 xl:pb-12">
+         <section>
             <div className="border border-border-primary bg-background-surface rounded-3xl p-8 xl:p-14 text-center space-y-4 xl:space-y-5">
                <h2 className="text-3xl xl:text-5xl font-extrabold font-outfit tracking-tight leading-tight">
                   {translate('Your Dream Job')} <br /><span className="text-primary-600">{translate('Is Waiting.')}</span>
@@ -708,6 +709,7 @@ const ModernLandingPage = () => {
                </div>
             </div>
          </section>
+         </div>
       </MobileAppWrapper>
    );
 };

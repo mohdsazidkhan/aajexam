@@ -95,7 +95,7 @@ const PublicNavbar = () => {
     { label: 'Topics', title: 'Topics', href: '/topics', icon: FolderOpen },
     { label: 'Quizzes', title: 'Quizzes', href: '/quizzes', icon: Gamepad2 },
     { label: 'CA', title: 'Current Affairs', href: '/current-affairs', icon: Newspaper },
-    { label: 'News', title: 'News', href: '/exam-news', icon: Newspaper },
+    { label: 'News', title: 'Exam News', href: '/exam-news', icon: Newspaper },
     { label: 'Notes', title: 'Notes', href: '/notes', icon: Layers },
     { label: 'IQs', title: 'Interview Questions', href: '/interview-questions', icon: MessageCircleQuestion },
     { label: 'Blog', title: 'Blog', href: '/blog', icon: Layers },
@@ -132,12 +132,18 @@ const PublicNavbar = () => {
                   const isActive = router.pathname === link.href;
                   return (
                     <Link title={translate(link.title)} key={link.href} href={link.href}>
-                      <button className={`relative px-3 py-2 rounded-lg text-sm font-bold transition-colors group ${isActive ? 'text-primary-600' : 'text-content-secondary hover:text-content-primary'}`}>
+                      <button className={`relative px-2 min-[1536px]:px-3 py-2 rounded-lg text-sm font-bold transition-colors group ${isActive ? 'text-primary-600' : 'text-content-secondary hover:text-content-primary'}`}>
                         {isActive && (
                           <motion.div layoutId="nav-glow" className="absolute inset-0 bg-background-surface-secondary rounded-lg" />
                         )}
                         <span className="relative z-10 flex items-center gap-2">
-                          {translate(link.label)}
+                          {link.label === link.title ? translate(link.label) : (
+                            <>
+                              {/* full name where there is room (1440px+), the short label below that so 11 links still fit */}
+                              <span className="min-[1440px]:hidden">{translate(link.label)}</span>
+                              <span className="hidden min-[1440px]:inline">{translate(link.title)}</span>
+                            </>
+                          )}
                         </span>
                       </button>
                     </Link>
