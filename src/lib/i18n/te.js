@@ -1428,6 +1428,7 @@ const TE = {
   'Shortcuts': 'షార్ట్‌కట్‌లు',
   'Tables': 'పట్టికలు',
   'Note': 'నోట్',
+  'Try Free Now': 'ఇప్పుడే ఉచితంగా ప్రయత్నించండి',
   'Questions marked for review are shown in orange': 'రివ్యూ కోసం మార్క్ చేసిన ప్రశ్నలు నారింజ రంగులో కనిపిస్తాయి.',
   'All Subjects': 'అన్ని సబ్జెక్టులు',
   'All Topics': 'అన్ని టాపిక్స్',

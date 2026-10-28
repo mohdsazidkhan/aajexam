@@ -1428,6 +1428,7 @@ const BN = {
   'Shortcuts': 'শর্টকাট',
   'Tables': 'সারণি',
   'Note': 'নোট',
+  'Try Free Now': 'এখনই বিনামূল্যে চেষ্টা করুন',
   'Questions marked for review are shown in orange': 'রিভিউয়ের জন্য চিহ্নিত প্রশ্নগুলো কমলা রঙে দেখানো হয়।',
   'All Subjects': 'সব বিষয়',
   'All Topics': 'সব টপিক',

@@ -1428,6 +1428,7 @@ const KS = {
   'Shortcuts': 'شارٹ کٹس',
   'Tables': 'جداول',
   'Note': 'نوٹ',
+  'Try Free Now': 'اَبھی مفت آزماو',
   'Questions marked for review are shown in orange': 'جائزے خاطرٕ نشان لگاوتھ سوال نارنجی رنگس منٛز چھ ظاہر گژھان۔',
   'All Subjects': 'تمام مضامین',
   'All Topics': 'تمام ٹاپکس',

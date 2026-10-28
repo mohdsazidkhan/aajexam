@@ -1428,6 +1428,7 @@ const SD = {
   'Shortcuts': 'शॉर्टकट',
   'Tables': 'जदवल',
   'Note': 'नोट',
+  'Try Free Now': 'हाणे मुफ़्त आज़माइयो',
   'Questions marked for review are shown in orange': 'जाइज़े लाइ निशानु लॻाइण वारा सवाल नारंगी रंगु में ॾेखारिजनि था।',
   'All Subjects': 'सभ विषय',
   'All Topics': 'सभ टॉपिक',

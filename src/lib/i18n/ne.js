@@ -1428,6 +1428,7 @@ const NE = {
   'Shortcuts': 'सर्टकट',
   'Tables': 'तालिका',
   'Note': 'नोट',
+  'Try Free Now': 'अहिले नै निःशुल्क प्रयास गर्नुहोस्',
   'Questions marked for review are shown in orange': 'समीक्षाका लागि चिन्ह लगाइएका प्रश्नहरू सुन्तला रङमा देखाइन्छ।',
   'All Subjects': 'सबै विषय',
   'All Topics': 'सबै टपिक',

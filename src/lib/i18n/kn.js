@@ -1428,6 +1428,7 @@ const KN = {
   'Shortcuts': 'ಶಾರ್ಟ್‌ಕಟ್‌ಗಳು',
   'Tables': 'ಕೋಷ್ಟಕಗಳು',
   'Note': 'ಟಿಪ್ಪಣಿ',
+  'Try Free Now': 'ಈಗಲೇ ಉಚಿತವಾಗಿ ಪ್ರಯತ್ನಿಸಿ',
   'Questions marked for review are shown in orange': 'ಪರಿಶೀಲನೆಗಾಗಿ ಗುರುತಿಸಿದ ಪ್ರಶ್ನೆಗಳು ಕಿತ್ತಳೆ ಬಣ್ಣದಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ.',
   'All Subjects': 'ಎಲ್ಲಾ ವಿಷಯಗಳು',
   'All Topics': 'ಎಲ್ಲಾ ಟಾಪಿಕ್‌ಗಳು',

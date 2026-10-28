@@ -1428,6 +1428,7 @@ const SA = {
   'Shortcuts': 'लघुमार्गाः',
   'Tables': 'सारण्यः',
   'Note': 'टिप्पणी',
+  'Try Free Now': 'अधुना निःशुल्कं प्रयतस्व',
   'Questions marked for review are shown in orange': 'पुनरावलोकनाय चिह्निताः प्रश्नाः नारङ्गवर्णेन दृश्यन्ते।',
   'All Subjects': 'सर्वे विषयाः',
   'All Topics': 'सर्वे प्रसङ्गाः',

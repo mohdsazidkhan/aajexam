@@ -1428,6 +1428,7 @@ const ML = {
   'Shortcuts': 'കുറുക്കുവഴികൾ',
   'Tables': 'പട്ടികകൾ',
   'Note': 'നോട്ട്',
+  'Try Free Now': 'ഇപ്പോൾ സൗജന്യമായി പരീക്ഷിക്കൂ',
   'Questions marked for review are shown in orange': 'പുനഃപരിശോധനയ്ക്ക് അടയാളപ്പെടുത്തിയ ചോദ്യങ്ങൾ ഓറഞ്ച് നിറത്തിൽ കാണിക്കുന്നു.',
   'All Subjects': 'എല്ലാ വിഷയങ്ങളും',
   'All Topics': 'എല്ലാ ടോപ്പിക്കുകളും',

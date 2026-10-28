@@ -1441,6 +1441,7 @@ const HI = {
   'Shortcuts': 'शॉर्टकट',
   'Tables': 'तालिकाएँ',
   'Note': 'नोट',
+  'Try Free Now': 'अभी मुफ़्त आज़माएँ',
   'Questions marked for review are shown in orange': 'समीक्षा के लिए चिह्नित प्रश्न नारंगी रंग में दिखाए जाते हैं।',
   'All Subjects': 'सभी विषय',
   'All Topics': 'सभी टॉपिक',

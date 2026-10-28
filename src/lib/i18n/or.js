@@ -1428,6 +1428,7 @@ const OR_ = {
   'Shortcuts': 'ସର୍ଟକଟ୍',
   'Tables': 'ସାରଣୀ',
   'Note': 'ଟିପ୍ପଣୀ',
+  'Try Free Now': 'ବର୍ତ୍ତମାନ ମାଗଣାରେ ଚେଷ୍ଟା କରନ୍ତୁ',
   'Questions marked for review are shown in orange': 'ସମୀକ୍ଷା ପାଇଁ ଚିହ୍ନିତ ପ୍ରଶ୍ନଗୁଡ଼ିକ କମଳା ରଙ୍ଗରେ ଦେଖାଯାଏ।',
   'All Subjects': 'ସମସ୍ତ ବିଷୟ',
   'All Topics': 'ସମସ୍ତ ଟପିକ୍',

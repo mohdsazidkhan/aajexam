@@ -1428,6 +1428,7 @@ const AS = {
   'Shortcuts': 'চৰ্টকাট',
   'Tables': 'তালিকা',
   'Note': 'টোকা',
+  'Try Free Now': 'এতিয়াই বিনামূল্যে চেষ্টা কৰক',
   'Questions marked for review are shown in orange': 'পুনৰীক্ষণৰ বাবে চিহ্নিত কৰা প্ৰশ্নবোৰ কমলা ৰঙত দেখুওৱা হয়।',
   'All Subjects': 'সকলো বিষয়',
   'All Topics': 'সকলো টপিক',

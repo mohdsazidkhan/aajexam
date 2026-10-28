@@ -1428,6 +1428,7 @@ const DogriDict = {
   'Shortcuts': 'शॉर्टकट',
   'Tables': 'सारणियां',
   'Note': 'नोट',
+  'Try Free Now': 'हुन्नै मुफ्त आजमाओ',
   'Questions marked for review are shown in orange': 'समीक्षा लेई निशान लाए दे सुआल नारंगी रंग च दिक्खे जंदे न।',
   'All Subjects': 'सारे विशे',
   'All Topics': 'सारे टॉपिक',

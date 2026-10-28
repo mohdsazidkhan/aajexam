@@ -1428,6 +1428,7 @@ const MR = {
   'Shortcuts': 'शॉर्टकट',
   'Tables': 'तक्ते',
   'Note': 'नोंद',
+  'Try Free Now': 'आत्ताच मोफत वापरून पहा',
   'Questions marked for review are shown in orange': 'पुनरावलोकनासाठी चिन्हांकित केलेले प्रश्न नारिंगी रंगात दिसतात.',
   'All Subjects': 'सर्व विषय',
   'All Topics': 'सर्व टॉपिक्स',

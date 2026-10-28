@@ -1434,6 +1434,7 @@ const HINGLISH = {
   'Shortcuts': 'Shortcuts',
   'Tables': 'Tables',
   'Note': 'Note',
+  'Try Free Now': 'Abhi Free Try Karein',
   'Questions marked for review are shown in orange': 'Review ke liye mark kiye gaye questions orange color mein dikhte hain.',
   'All Subjects': 'Saare Subjects',
   'All Topics': 'Saare Topics',

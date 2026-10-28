@@ -1428,6 +1428,7 @@ const SAT = {
   'Shortcuts': 'ᱥᱚᱨᱴᱠᱟᱴ',
   'Tables': 'ᱴᱮᱵᱷᱞ',
   'Note': 'ᱱᱚᱴ',
+  'Try Free Now': 'ᱱᱤᱛᱚᱜ ᱯᱷᱨᱤ ᱪᱮᱥᱴᱟ ᱢᱮ',
   'Questions marked for review are shown in orange': 'ᱯᱩᱱᱟᱹ ᱧᱮᱞ ᱞᱟᱹᱜᱤᱫ ᱪᱤᱱᱦᱟᱹ ᱟᱠᱟᱱ ᱠᱩᱞᱤᱠᱚ ᱚᱨᱮᱱᱡ ᱨᱚᱝ ᱨᱮ ᱢᱮᱱᱮᱛᱟᱭ।',
   'All Subjects': 'ᱡᱷᱚᱛᱚ ᱵᱤᱥᱚᱭ',
   'All Topics': 'ᱡᱷᱚᱛᱚ ᱴᱚᱯᱤᱠ',

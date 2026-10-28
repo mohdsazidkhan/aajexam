@@ -1428,6 +1428,7 @@ const UrduDict = {
   'Shortcuts': 'شارٹ کٹس',
   'Tables': 'جدولیں',
   'Note': 'نوٹ',
+  'Try Free Now': 'ابھی مفت آزمائیں',
   'Questions marked for review are shown in orange': 'جائزے کے لیے نشان زد سوالات نارنجی رنگ میں دکھائے جاتے ہیں۔',
   'All Subjects': 'تمام مضامین',
   'All Topics': 'تمام ٹاپکس',

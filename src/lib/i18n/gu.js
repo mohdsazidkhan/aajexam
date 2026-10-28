@@ -1428,6 +1428,7 @@ const GU = {
   'Shortcuts': 'શૉર્ટકટ્સ',
   'Tables': 'કોષ્ટકો',
   'Note': 'નોંધ',
+  'Try Free Now': 'હમણાં જ મફત અજમાવો',
   'Questions marked for review are shown in orange': 'સમીક્ષા માટે ચિહ્નિત કરેલા પ્રશ્નો નારંગી રંગમાં દેખાય છે.',
   'All Subjects': 'બધા વિષયો',
   'All Topics': 'બધા ટોપિક્સ',

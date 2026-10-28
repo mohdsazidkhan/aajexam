@@ -1428,6 +1428,7 @@ const KOK = {
   'Shortcuts': 'शॉर्टकट',
   'Tables': 'कोश्टक',
   'Note': 'नोट',
+  'Try Free Now': 'आतां फुकट वापरून पळयात',
   'Questions marked for review are shown in orange': 'पुनरावलोकना खातीर खूण केल्ले प्रस्न नारंगी रंगांत दिसतात.',
   'All Subjects': 'सगळे विशय',
   'All Topics': 'सगळे टॉपिक',

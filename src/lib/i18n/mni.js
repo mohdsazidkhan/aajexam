@@ -1428,6 +1428,7 @@ const MANIPURI = {
   'Shortcuts': 'ꯁꯔꯇꯀꯠꯁ',
   'Tables': 'ꯇꯦꯕꯜꯁ',
   'Note': 'ꯅꯣꯠ',
+  'Try Free Now': 'ꯍꯧꯖꯤꯛ ꯐ꯭ꯔꯤ ꯇ꯭ꯔꯥꯏ ꯇꯧꯕꯤꯌꯨ',
   'Questions marked for review are shown in orange': 'ꯔꯤꯕꯤꯌꯨ ꯒꯤ ꯊꯛ ꯃꯥꯔꯛ ꯇꯧꯈꯤꯕꯥ ꯁꯣꯟꯗꯕꯁꯤꯡ ꯑꯣꯔꯦꯟꯖ ꯑꯣꯏꯅꯥ ꯎꯕꯥ ꯐꯪꯏ꯫',
   'All Subjects': 'ꯄꯨꯝꯅꯃꯛ ꯁꯕꯖꯦꯛꯇꯁ',
   'All Topics': 'ꯄꯨꯝꯅꯃꯛ ꯇꯣꯄꯤꯛꯁ',

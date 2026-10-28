@@ -1428,6 +1428,7 @@ const PA = {
   'Shortcuts': 'ਸ਼ਾਰਟਕੱਟ',
   'Tables': 'ਸਾਰਣੀਆਂ',
   'Note': 'ਨੋਟ',
+  'Try Free Now': 'ਹੁਣੇ ਮੁਫ਼ਤ ਅਜ਼ਮਾਓ',
   'Questions marked for review are shown in orange': 'ਸਮੀਖਿਆ ਲਈ ਨਿਸ਼ਾਨ ਲਗਾਏ ਸਵਾਲ ਸੰਤਰੀ ਰੰਗ ਵਿੱਚ ਦਿਖਾਏ ਜਾਂਦੇ ਹਨ।',
   'All Subjects': 'ਸਾਰੇ ਵਿਸ਼ੇ',
   'All Topics': 'ਸਾਰੇ ਟਾਪਿਕ',

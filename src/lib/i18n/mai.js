@@ -1428,6 +1428,7 @@ const MAI = {
   'Shortcuts': 'शॉर्टकट',
   'Tables': 'तालिका',
   'Note': 'नोट',
+  'Try Free Now': 'अखनहि मुफ्त आजमाउ',
   'Questions marked for review are shown in orange': 'समीक्षा लेल चिन्हित प्रश्न नारंगी रंग मे देखाओल जाइत अछि।',
   'All Subjects': 'सभ विषय',
   'All Topics': 'सभ टॉपिक',

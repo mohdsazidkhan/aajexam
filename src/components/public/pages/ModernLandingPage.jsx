@@ -185,6 +185,7 @@ const HeroQuizCard = () => {
       <>
          <div className="flex items-center justify-between gap-3 px-5 py-3.5 border-b border-border-primary">
             <div className="flex items-center gap-3 min-w-0">
+               <h3 className="shrink-0 text-lg xl:text-2xl font-bold tracking-tight text-primary-600">{translate('Try Free Now')}</h3>
                <div className="relative w-10 h-10 shrink-0">
                   <svg viewBox="0 0 36 36" className="w-10 h-10 -rotate-90" aria-hidden="true">
                      <circle cx="18" cy="18" r="15" fill="none" strokeWidth="3" style={{ stroke: 'var(--border-primary)' }} />
@@ -244,7 +245,7 @@ const HeroQuizCard = () => {
             </div>
          ) : !q ? (
             <div className="p-4 xl:p-5 space-y-3.5 animate-pulse" aria-busy="true">
-               <div className="h-10" />
+               <div className="h-5" />
                <div className="h-[116px] bg-background-surface-secondary rounded-xl" />
                <div className="grid grid-cols-2 gap-2">
                   {[0, 1, 2, 3].map((i) => <div key={i} className="h-[60px] bg-background-surface-secondary rounded-xl" />)}
@@ -253,7 +254,7 @@ const HeroQuizCard = () => {
             </div>
          ) : (
             <div className="p-4 xl:p-5 space-y-3.5">
-               <p className="min-h-[2.5rem] text-xs font-bold uppercase tracking-[0.08em] leading-snug text-primary-600">
+               <p className="min-h-[1.25rem] text-xs font-bold uppercase tracking-[0.08em] leading-snug text-primary-600">
                   {q.title ? translateData(q.title) : ''}
                </p>
                <motion.div
@@ -406,7 +407,7 @@ const ModernLandingPage = () => {
                <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] items-center gap-8 xl:gap-12 py-8 xl:py-4">
                   {/* Copy */}
                   <div className="space-y-5 xl:space-y-7 text-center xl:text-left">
-                     <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border-primary text-content-secondary text-xs font-bold rounded-full">
+                     <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border-primary text-primary-600 text-sm font-bold uppercase tracking-[0.08em] rounded-full">
                         <span className="w-2 h-2 rounded-full bg-primary-600" />
                         {translate('Trusted by students across India')}
                      </div>

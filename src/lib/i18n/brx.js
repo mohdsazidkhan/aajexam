@@ -1428,6 +1428,7 @@ const BODO = {
   'Shortcuts': 'सर्टकट',
   'Tables': 'सारणीफोर',
   'Note': 'नोट',
+  'Try Free Now': 'दानो फ्री आजमाय',
   'Questions marked for review are shown in orange': 'नायफिननो मार्क खालामनाय सोंलुफोरखौ नारंगी रंआव देखाहोयो।',
   'All Subjects': 'गासै बुंसो',
   'All Topics': 'गासै टपिक',
