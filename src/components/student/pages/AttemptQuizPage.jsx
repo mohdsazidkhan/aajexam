@@ -454,7 +454,7 @@ const AttemptQuizPage = () => {
           </div>
         )}
 
-        <div className="pt-6 pb-8">
+        <div className="px-2 xl:px-0 pt-2 xl:pt-6 pb-8">
           {/* Result Card */}
           <div className="text-center mb-6">
             <section className="relative isolate overflow-hidden border border-border-primary p-5 xl:p-8 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
