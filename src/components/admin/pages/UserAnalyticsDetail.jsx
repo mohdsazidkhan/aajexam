@@ -170,7 +170,7 @@ const AdminUserAnalyticsDetail = () => {
                             animate={{ opacity: 1, scale: 1 }}
                             className="max-w-2xl mx-auto bg-black/10 dark:bg-white/10 border border-border-primary rounded-2xl xl:rounded-3xl p-4 xl:p-12 text-center"
                         >
-                            <div className="w-20 h-20 bg-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-4 xl:mb-4">
+                            <div className="w-20 h-20 bg-primary-600 rounded-md flex items-center justify-center mx-auto mb-4 xl:mb-4">
                                 <Zap className="w-10 h-10 text-white" />
                             </div>
                             <h3 className="text-md md:text-xl xl:text-2xl font-bold text-content-primary italic tracking-tight mb-4">Failed to load data. Please try again.</h3>

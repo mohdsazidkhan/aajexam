@@ -499,7 +499,7 @@ const ModernLandingPage = () => {
                   ].map((item) => (
                      <div key={item.step} className="border border-border-primary bg-background-surface rounded-2xl p-5 xl:p-6 hover:border-primary-600 transition-colors">
                         <div className="flex items-start justify-between">
-                           <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600">
+                           <div className="w-12 h-12 flex items-center justify-center border border-primary-600 rounded-md text-primary-600">
                               <item.icon className="w-6 h-6" />
                            </div>
                            <span className="text-sm font-bold font-outfit text-content-muted">0{item.step}</span>
@@ -565,7 +565,7 @@ const ModernLandingPage = () => {
                         <Link href={exam.slug ? `/pyq/${exam.slug}` : '/pyq'} className="absolute inset-0 z-10 rounded-2xl" aria-label={`${exam.name} Previous Year Question Papers`} />
                         <div className="flex-1 p-3 xl:p-4 flex flex-col gap-3">
                            <div className="flex items-center gap-2.5">
-                              <span className="w-9 h-9 shrink-0 flex items-center justify-center border border-border-primary rounded-lg text-primary-600">
+                              <span className="w-9 h-9 shrink-0 flex items-center justify-center border border-primary-600 rounded-md text-primary-600">
                                  <BookOpen className="w-4 h-4" />
                               </span>
                               <span className="text-sm xl:text-base font-bold leading-tight text-content-primary">{exam.name}</span>
@@ -619,7 +619,7 @@ const ModernLandingPage = () => {
 
                <div className="grid grid-cols-1 xl:grid-cols-12 gap-3 xl:gap-4">
                   <section className="xl:col-span-8 p-5 xl:p-8 border border-border-primary bg-background-surface rounded-3xl flex flex-col justify-between gap-6 min-h-[260px]">
-                     <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600"><Trophy className="w-6 h-6" /></div>
+                     <div className="w-12 h-12 flex items-center justify-center border border-primary-600 rounded-md text-primary-600"><Trophy className="w-6 h-6" /></div>
                      <div className="space-y-3 max-w-xl">
                         <h3 className="text-2xl xl:text-3xl font-bold font-outfit">{translate('See your progress')}</h3>
                         <p className="text-base xl:text-lg font-medium text-content-secondary leading-relaxed">{translate('Know how well you are doing. Get a clear report after every exam and move up as you improve.')}</p>
@@ -632,7 +632,7 @@ const ModernLandingPage = () => {
                   </section>
 
                   <section className="xl:col-span-4 p-5 xl:p-6 border border-border-primary bg-background-surface rounded-3xl flex flex-col gap-4">
-                     <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600"><Flame className="w-6 h-6" /></div>
+                     <div className="w-12 h-12 flex items-center justify-center border border-primary-600 rounded-md text-primary-600"><Flame className="w-6 h-6" /></div>
                      <h3 className="text-xl xl:text-2xl font-bold font-outfit">{translate('Practice every day')}</h3>
                      <p className="text-base font-medium text-content-secondary">{translate('Practice a little every day. This helps you remember more and climb higher on the student list.')}</p>
                      <div className="space-y-3 mt-auto pt-2">
@@ -645,7 +645,7 @@ const ModernLandingPage = () => {
                   </section>
 
                   <section className="xl:col-span-4 p-5 xl:p-6 border border-border-primary bg-background-surface rounded-3xl flex flex-col gap-4">
-                     <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600"><Zap className="w-6 h-6" /></div>
+                     <div className="w-12 h-12 flex items-center justify-center border border-primary-600 rounded-md text-primary-600"><Zap className="w-6 h-6" /></div>
                      <h3 className="text-xl xl:text-2xl font-bold font-outfit">{translate('See your test results')}</h3>
                      <p className="text-base font-medium text-content-secondary">{translate('After every test, see how many you got right and which topics need more practice.')}</p>
                      <div className="flex items-end gap-3 h-20 mt-auto pt-2">
@@ -656,7 +656,7 @@ const ModernLandingPage = () => {
                   </section>
 
                   <section className="xl:col-span-8 p-5 xl:p-8 border border-border-primary bg-background-surface rounded-3xl flex flex-col justify-between gap-6">
-                     <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600"><Medal className="w-6 h-6" /></div>
+                     <div className="w-12 h-12 flex items-center justify-center border border-primary-600 rounded-md text-primary-600"><Medal className="w-6 h-6" /></div>
                      <div className="space-y-3 max-w-xl">
                         <h3 className="text-2xl xl:text-3xl font-bold font-outfit">{translate('Refer & Earn')}</h3>
                         <p className="text-base xl:text-lg font-medium text-content-secondary">{translate('Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.')}</p>
@@ -684,7 +684,7 @@ const ModernLandingPage = () => {
                      { title: "Detailed Solutions", desc: "Get in-depth explanations for every question to understand concepts better.", icon: BookOpen }
                   ].map((item) => (
                      <div key={item.title} className="border border-border-primary bg-background-surface rounded-2xl p-5 xl:p-6 hover:border-primary-600 transition-colors">
-                        <div className="w-12 h-12 flex items-center justify-center border border-border-primary rounded-xl text-primary-600">
+                        <div className="w-12 h-12 flex items-center justify-center border border-primary-600 rounded-md text-primary-600">
                            <item.icon className="w-6 h-6" />
                         </div>
                         <h3 className="mt-4 text-xl font-bold font-outfit text-content-primary">{translate(item.title)}</h3>

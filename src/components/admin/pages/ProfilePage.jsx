@@ -58,12 +58,12 @@ const AdminProfilePage = () => {
   return (
     <div className="space-y-3 mt-3 xl:mt-4 mb-6">
       {/* Admin hero */}
-      <section className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 bg-background-surface" style={{ borderRadius: 16 }}>
+      <section className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
         <ShieldCheck className="pointer-events-none absolute right-6 top-3 -z-10 w-28 h-28 xl:w-36 xl:h-36 text-primary-600/10 dark:text-white/5 rotate-12" />
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="flex items-center gap-4 min-w-0">
-            <div className="w-16 h-16 xl:w-20 xl:h-20 shrink-0 flex items-center justify-center text-on-primary text-3xl font-bold bg-primary-600" style={{ borderRadius: 22 }}>
+            <div className="w-16 h-16 xl:w-20 xl:h-20 shrink-0 flex items-center justify-center text-on-primary text-3xl font-bold bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
               {user?.name?.charAt(0) || 'A'}
             </div>
             <div className="min-w-0 space-y-1.5">
@@ -97,7 +97,7 @@ const AdminProfilePage = () => {
       {/* Change password */}
       <section className="relative overflow-hidden bg-background-surface rounded-2xl border border-border-primary">
         <section className="relative flex items-center gap-3 px-4 py-2.5 text-content-primary border-b border-border-primary dark:border-transparent bg-background-surface">
-          <span className="relative w-9 h-9 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Lock className="w-4 h-4" /></span>
+          <span className="relative w-9 h-9 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Lock className="w-4 h-4" /></span>
           <section className="relative min-w-0">
             <h2 className="text-sm font-bold uppercase tracking-[0.08em] leading-tight">Change password</h2>
             <p className="text-[11px] font-bold text-primary-800/70 dark:text-white/70 leading-tight">Use a strong password to keep your account safe.</p>

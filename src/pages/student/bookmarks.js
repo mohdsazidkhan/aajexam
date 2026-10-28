@@ -176,7 +176,7 @@ const BookmarksPage = () => {
                   eyebrow={translate('My Bookmarks')}
                   title={translate('My Bookmarks')}
                   actions={
-                     <div className="ring-1 ring-slate-200 dark:ring-white/20 px-4 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
+                     <div className="ring-1 ring-slate-200 dark:ring-white/20 px-4 py-1.5 min-w-[96px]" style={{ borderRadius: 'var(--radius)' }}>
                         <p className="text-lg font-bold font-outfit leading-none text-primary-600">{total}</p>
                         <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Saved')}</p>
                      </div>
@@ -184,7 +184,7 @@ const BookmarksPage = () => {
                />
 
                {/* Tabs */}
-               <div ref={tabsRef} role="tablist" className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-background-surface ring-1 ring-primary-200 dark:ring-0 dark:bg-gradient-to-r dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 w-full" style={{ borderRadius: 12 }}>
+               <div ref={tabsRef} role="tablist" className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-background-surface ring-1 ring-primary-200 dark:ring-0 dark:bg-gradient-to-r dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 w-full" style={{ borderRadius: 'var(--radius)' }}>
                   {TABS.map((tab) => {
                      const active = activeTab === tab.id;
                      const n = counts[tab.id] || 0;
@@ -195,11 +195,11 @@ const BookmarksPage = () => {
                            aria-selected={active}
                            onClick={() => switchTab(tab.id)}
                            className={`flex items-center gap-2 px-3 sm:px-4 py-2.5 font-bold uppercase text-[10px] xl:text-[11px] tracking-[0.08em] transition-all whitespace-nowrap flex-shrink-0 ${active ? 'bg-primary-600 text-on-primary dark:bg-white dark:text-primary-700' : 'text-content-secondary dark:text-white/90 dark:hover:bg-white/15'}`}
-                           style={{ borderRadius: 9 }}
+                           style={{ borderRadius: 'var(--radius)' }}
                         >
                            <tab.icon className={`w-3.5 h-3.5 ${active ? 'text-white dark:text-primary-600' : 'text-primary-600'}`} />
                            {translate(tab.label)}
-                           <span className={`min-w-[1.25rem] px-1.5 py-0.5 text-[9px] leading-none text-center ${active ? 'bg-white/25' : 'text-primary-600'}`} style={{ borderRadius: 999 }}>{n}</span>
+                           <span className={`min-w-[1.25rem] px-1.5 py-0.5 text-[9px] leading-none text-center ${active ? 'bg-white/25' : 'text-primary-600'}`} style={{ borderRadius: 'var(--radius-sm)' }}>{n}</span>
                         </button>
                      );
                   })}
@@ -306,9 +306,9 @@ const BookmarksPage = () => {
                         const TabIcon = activeDef?.icon || Bookmark;
                         return (
                            <motion.div key={item.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Math.min(idx * 0.04, 0.4) }}>
-                              <div className="group relative flex items-center gap-3 p-3 bg-background-surface border border-border-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all" style={{ borderRadius: 16 }}>
+                              <div className="group relative flex items-center gap-3 p-3 bg-background-surface border border-border-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all" style={{ borderRadius: 'var(--radius)' }}>
                                  <Link href={item.href} className="flex flex-1 min-w-0 items-center gap-3">
-                                    <span className="w-10 h-10 shrink-0 flex items-center justify-center text-primary-600" style={{ borderRadius: 12 }}>
+                                    <span className="w-10 h-10 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                                        <TabIcon className="w-5 h-5" />
                                     </span>
                                     <span className="min-w-0 flex-1">
@@ -320,7 +320,7 @@ const BookmarksPage = () => {
                                  <button
                                     onClick={() => handleUnbookmark(item)}
                                     className="p-2 shrink-0 text-primary-600 transition-colors"
-                                    style={{ borderRadius: 12 }}
+                                    style={{ borderRadius: 'var(--radius)' }}
                                     title={translate('Remove bookmark')}
                                     aria-label={translate('Remove bookmark')}
                                  >

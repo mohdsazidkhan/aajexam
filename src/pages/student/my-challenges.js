@@ -79,7 +79,7 @@ const MyChallengesPage = () => {
                   eyebrow={translate('My Challenges')}
                   title={translate('My Challenges')}
                   actions={
-                     <div className="ring-1 ring-slate-200 dark:ring-white/20 px-4 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
+                     <div className="ring-1 ring-slate-200 dark:ring-white/20 px-4 py-1.5 min-w-[96px]" style={{ borderRadius: 'var(--radius)' }}>
                         <p className="text-lg font-bold font-outfit leading-none text-primary-600">{challenges.length}</p>
                         <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 whitespace-nowrap">{translate('My Challenges')}</p>
                      </div>
@@ -89,7 +89,7 @@ const MyChallengesPage = () => {
                {/* Results */}
                {challenges.length === 0 ? (
                   <div className="py-16 text-center space-y-2 xl:space-y-4">
-                     <div className="w-20 h-20 bg-background-surface-secondary rounded-2xl flex items-center justify-center mx-auto">
+                     <div className="w-20 h-20 bg-background-surface-secondary rounded-md flex items-center justify-center mx-auto border border-primary-600">
                         <Swords className="w-10 h-10 text-slate-300" />
                      </div>
                      <h2 className="text-xl font-bold text-content-muted">{translate('No challenges created yet')}</h2>

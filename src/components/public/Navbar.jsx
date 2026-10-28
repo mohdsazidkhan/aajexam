@@ -148,7 +148,7 @@ const PublicNavbar = () => {
 
             {/* --- Actions --- */}
             <div className="flex items-center gap-3 relative z-10">
-              <ThemeColorMenuButton buttonClassName="w-10 h-10 rounded-xl border border-border-primary flex items-center justify-center text-content-secondary hover:text-primary-600 dark:hover:text-primary-600 transition-colors" />
+              <ThemeColorMenuButton buttonClassName="w-10 h-10 rounded-md border border-primary-600 flex items-center justify-center text-primary-600 transition-colors" />
 
               <Link href="/login" data-cta="navbar_get_started">
                 <Button variant="primary" size="md" className="h-10 rounded-xl font-bold text-sm">{translate('Get Started')}</Button>

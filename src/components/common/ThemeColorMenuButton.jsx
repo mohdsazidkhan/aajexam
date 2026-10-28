@@ -47,7 +47,7 @@ const CARD_ON = 'text-content-primary';
 const cardStyle = (selected, hex) => (selected ? { borderColor: hex, backgroundColor: `${hex}1f`, boxShadow: `0 0 0 1px ${hex}` } : undefined);
 const IDX = 'w-5 text-[9px] font-bold text-content-muted flex-shrink-0 text-left tabular-nums';
 const CheckBadge = ({ hex }) => (
-  <span className="w-5 h-5 flex items-center justify-center flex-shrink-0 text-white" style={{ backgroundColor: hex, borderRadius: 999 }}>
+  <span className="w-5 h-5 flex items-center justify-center flex-shrink-0 text-white" style={{ backgroundColor: hex, borderRadius: 'var(--radius-sm)' }}>
     <Check className="w-3 h-3" strokeWidth={3.5} />
   </span>
 );
@@ -55,7 +55,7 @@ const CheckBadge = ({ hex }) => (
 const Tile = ({ hex, children, className = '' }) => (
   <span
     className={`w-9 h-9 flex items-center justify-center flex-shrink-0 text-white font-bold ${className}`}
-    style={{ background: `linear-gradient(135deg, ${hex}, ${hex}cc)`, borderRadius: 10 }}
+    style={{ background: `linear-gradient(135deg, ${hex}, ${hex}cc)`, borderRadius: 'var(--radius)' }}
   >
     {children}
   </span>
@@ -167,7 +167,8 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
   const filteredExams = useMemo(() => {
     const query = search.trim().toLowerCase();
     if (!query) return exams;
-    return exams.filter((e) => e.name.toLowerCase().includes(query));
+    // the category (Central, State ...) is searchable too
+    return exams.filter((e) => e.name.toLowerCase().includes(query) || (e.category?.name || '').toLowerCase().includes(query));
   }, [exams, search]);
 
   const handleSelectTheme = (option) => {
@@ -268,13 +269,13 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               className="fixed inset-x-0 bottom-0 z-[170] w-full h-[75vh] xl:h-[90vh] bg-background-surface border-t border-border-primary rounded-t-3xl flex flex-col"
             >
               <div className="flex-shrink-0 p-4 pb-2">
-                <div className="flex items-center gap-1 mb-3 border border-border-primary p-1 overflow-x-auto no-scrollbar" style={{ borderRadius: 14 }}>
+                <div className="flex items-center gap-1 mb-3 border border-border-primary p-1 overflow-x-auto no-scrollbar" style={{ borderRadius: 'var(--radius)' }}>
                   {tabs.map((tabItem) => (
                     <button
                       key={tabItem.id}
                       type="button"
                       onClick={() => { setTab(tabItem.id); setSearch(''); }}
-                      style={tab === tabItem.id ? { background: `linear-gradient(135deg, ${activeHex}, ${activeHex}d9)`, borderRadius: 10 } : { borderRadius: 10 }}
+                      style={tab === tabItem.id ? { background: `linear-gradient(135deg, ${activeHex}, ${activeHex}d9)`, borderRadius: 'var(--radius)' } : { borderRadius: 'var(--radius)' }}
                       className={`flex-1 flex items-center justify-center gap-1.5 whitespace-nowrap text-center text-xs font-bold uppercase tracking-wide px-2.5 py-2 transition-all ${
                         tab === tabItem.id
                           ? 'text-white'
@@ -342,7 +343,10 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                             className={`${CARD_BASE} text-xs font-bold ${active ? CARD_ON : CARD_IDLE}`}
                           >
                             <span className={IDX}>{index + 1}.</span>
-                            <span className="flex-1 text-left truncate">{exam.name}</span>
+                            <span className="flex-1 min-w-0 text-left truncate">{exam.name}</span>
+                            {exam.category?.name && (
+                              <span className="flex-shrink-0 px-1.5 py-0.5 border border-border-primary rounded-md text-[9px] font-bold uppercase tracking-[0.08em] text-content-muted">{exam.category.name}</span>
+                            )}
                             {active && <CheckBadge hex={activeHex} />}
                           </button>
                         );
@@ -392,7 +396,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         <span className={IDX}>{index + 1}.</span>
                         <span
                           className="relative w-10 h-10 overflow-hidden flex-shrink-0 flex items-start justify-center pt-1 ring-1 ring-black/10 dark:ring-white/10"
-                          style={{ background: option.isDark ? '#0f172a' : '#ffffff', borderRadius: 10 }}
+                          style={{ background: option.isDark ? '#0f172a' : '#ffffff', borderRadius: 'var(--radius)' }}
                         >
                           {option.isDark ? <Moon className="w-3.5 h-3.5" style={{ color: option.hex }} /> : <Sun className="w-3.5 h-3.5" style={{ color: option.hex }} />}
                           <span className="absolute inset-x-0 bottom-0 h-3.5" style={{ background: `linear-gradient(90deg, ${option.hex}, ${option.hex}aa)` }} />
@@ -528,7 +532,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         className={`${CARD_BASE} ${isSelected ? CARD_ON : CARD_IDLE}`}
                       >
                         <span className={IDX}>{index + 1}.</span>
-                        <span className="w-12 h-10 flex items-center justify-center flex-shrink-0 font-bold leading-none border border-border-primary" style={{ fontSize: `${preset.px}px`, color: activeHex, borderRadius: 10 }}>
+                        <span className="w-12 h-10 flex items-center justify-center flex-shrink-0 font-bold leading-none border border-border-primary" style={{ fontSize: `${preset.px}px`, color: activeHex, borderRadius: 'var(--radius)' }}>
                           {translate('Aa')}
                         </span>
                         <span className="flex-1 text-left">

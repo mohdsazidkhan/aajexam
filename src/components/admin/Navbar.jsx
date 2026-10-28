@@ -139,7 +139,7 @@ const AdminNavbar = () => {
             <Link
               href="/admin/notifications"
               aria-label="Notifications"
-              className="hidden xl:flex relative w-8 h-8 rounded-lg ring-1 ring-primary-200 dark:bg-slate-800 dark:ring-white/10 items-center justify-center text-primary-600 hover:text-primary-900 dark:hover:text-white transition-all flex-shrink-0"
+              className="hidden xl:flex relative w-8 h-8 rounded-md border border-primary-600 items-center justify-center text-primary-600 transition-all flex-shrink-0"
             >
               <Bell className="w-3.5 h-3.5" />
               {notifCount > 0 && (
@@ -150,14 +150,14 @@ const AdminNavbar = () => {
             </Link>
 
             {/* Theme colour + dark mode */}
-            <ThemeColorMenuButton buttonClassName="flex w-8 h-8 rounded-lg ring-1 ring-primary-200 dark:bg-slate-800 dark:ring-white/10 items-center justify-center text-primary-600 hover:text-primary-900 dark:hover:text-white transition-all flex-shrink-0" />
+            <ThemeColorMenuButton buttonClassName="flex w-8 h-8 rounded-md border border-primary-600 items-center justify-center text-primary-600 transition-all flex-shrink-0" />
 
             {/* Profile avatar */}
             <button
               onClick={() => setShowProfileMenu(!showProfileMenu)}
               aria-label="Profile menu"
               aria-expanded={showProfileMenu}
-              className="p-0.5 rounded-full flex-shrink-0"
+              className="p-0.5 rounded-md border border-primary-600 flex-shrink-0"
             >
               <div className="w-7 h-7 xl:w-8 xl:h-8 rounded-full overflow-hidden bg-primary-600 p-[2px]">
                 <div className="w-full h-full rounded-full bg-background-surface flex items-center justify-center text-content-primary text-[10px] font-bold uppercase">
@@ -194,16 +194,16 @@ const AdminNavbar = () => {
               exit={{ opacity: 0, y: -10 }}
               role="menu"
               className="fixed top-12 xl:top-16 right-3 xl:right-8 w-72 max-w-[calc(100vw-1.5rem)] bg-background-surface border border-border-primary z-[170] overflow-hidden"
-              style={{ borderRadius: 20 }}
+              style={{ borderRadius: 'var(--radius)' }}
             >
               {/* Identity header: avatar, name, email, role (same as the student menu) */}
               <div className="relative overflow-hidden px-4 pt-4 pb-3 border-b border-border-primary bg-background-surface">
-                <span className="absolute top-3 right-3 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-on-primary bg-primary-600" style={{ borderRadius: 999 }}>
+                <span className="absolute top-3 right-3 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-on-primary bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                   Admin
                 </span>
                 <div className="relative flex items-center gap-3">
-                  <div className="shrink-0 p-[3px] bg-primary-600" style={{ borderRadius: 16 }}>
-                    <div className="w-12 h-12 flex items-center justify-center bg-primary-600 text-on-primary text-lg font-bold border border-white dark:border-slate-900" style={{ borderRadius: 13 }}>
+                  <div className="shrink-0 p-[3px] bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
+                    <div className="w-12 h-12 flex items-center justify-center bg-primary-600 text-on-primary text-lg font-bold border border-white dark:border-slate-900" style={{ borderRadius: 'var(--radius)' }}>
                       {user?.name?.charAt(0) || 'A'}
                     </div>
                   </div>
@@ -224,8 +224,8 @@ const AdminNavbar = () => {
                   { label: 'Announcements', icon: Megaphone, path: '/admin/announcements' },
                 ].map(item => (
                   <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
-                    <button className="group w-full flex items-center gap-3 px-2 py-2 text-sm font-bold text-content-secondary transition-colors" style={{ borderRadius: 12 }}>
-                      <span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors" style={{ borderRadius: 10 }}>
+                    <button className="group w-full flex items-center gap-3 px-2 py-2 text-sm font-bold text-content-secondary transition-colors" style={{ borderRadius: 'var(--radius)' }}>
+                      <span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors" style={{ borderRadius: 'var(--radius)' }}>
                         <item.icon className="w-4 h-4" />
                       </span>
                       <span className="flex-1 text-left truncate">{item.label}</span>
@@ -239,7 +239,7 @@ const AdminNavbar = () => {
                 <button
                   onClick={handleLogout}
                   className="w-full flex items-center justify-center gap-2.5 px-3 py-2.5 text-sm font-bold uppercase tracking-[0.08em] bg-red-500 hover:bg-red-600 text-white transition-all"
-                  style={{ borderRadius: 12 }}
+                  style={{ borderRadius: 'var(--radius)' }}
                 >
                   <LogOut className="w-4 h-4" /> Log out
                 </button>

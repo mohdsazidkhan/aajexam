@@ -222,7 +222,7 @@ const AllIndiaRankPage = () => {
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : data.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-20 h-20 bg-background-surface-secondary rounded-3xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-20 h-20 bg-background-surface-secondary rounded-md flex items-center justify-center mx-auto mb-4 border border-primary-600">
                 <Trophy className="w-10 h-10 text-slate-300" />
               </div>
               <h3 className="text-lg font-bold text-content-muted">No Rankings Found</h3>

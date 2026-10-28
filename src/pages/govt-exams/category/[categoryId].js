@@ -105,7 +105,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
           {translate('Back')}
         </button>
 
-        <div className="p-5 xl:p-8 relative overflow-hidden ring-1 ring-white/10 bg-primary-600" style={{ borderRadius: 16 }}>
+        <div className="p-5 xl:p-8 relative overflow-hidden ring-1 ring-white/10 bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
           {/* Background atmosphere */}
 
           <header className="relative z-10 space-y-6">
@@ -173,7 +173,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
 
         {exams.length === 0 && (
           <section className="py-24 text-center space-y-6 bg-background-surface rounded-3xl border border-dashed border-border-primary">
-            <div className="w-20 h-20 bg-background-surface-secondary rounded-3xl flex items-center justify-center mx-auto text-content-muted">
+            <div className="w-20 h-20 bg-background-surface-secondary rounded-md flex items-center justify-center mx-auto text-content-muted border border-primary-600">
               <Info className="w-10 h-10" />
             </div>
             <div>

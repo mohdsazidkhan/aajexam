@@ -60,7 +60,7 @@ const SubjectAccordion = ({ subject }) => {
         className="w-full flex items-center justify-between p-4 sm:p-5 bg-background-surface transition-colors"
       >
         <div className="flex items-center gap-4">
-          <div style={{ borderRadius: 14 }} className={`w-12 h-12 flex items-center justify-center flex-shrink-0 ${isAllDone ? 'text-on-primary bg-primary-600' : 'text-on-primary bg-primary-600'}`}>
+          <div style={{ borderRadius: 'var(--radius)' }} className={`w-12 h-12 flex items-center justify-center flex-shrink-0 ${isAllDone ? 'text-on-primary bg-primary-600' : 'text-on-primary bg-primary-600'}`}>
             <BookOpen className="w-6 h-6" />
           </div>
           <div className="text-left">
@@ -72,7 +72,7 @@ const SubjectAccordion = ({ subject }) => {
         </div>
         <div className="flex items-center gap-3">
           {/* Mini progress circle */}
-          <div className="hidden sm:flex items-center justify-center relative w-10 h-10">
+          <div className="hidden sm:flex items-center justify-center relative w-10 h-10 border border-primary-600">
             <svg className="w-full h-full transform" viewBox="0 0 36 36">
               <path className="text-slate-200 dark:text-slate-700" strokeWidth="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
               <path className={`${isAllDone ? 'text-primary-600' : 'text-primary-500'}`} strokeWidth="3" strokeDasharray={`${subject.totalTopics ? (subject.completedTopics / subject.totalTopics) * 100 : 0}, 100`} stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -91,7 +91,7 @@ const SubjectAccordion = ({ subject }) => {
               ) : (
                 <div className="space-y-1.5">
                   {subject.topics.map(topic => (
-                    <div key={topic._id} className="flex items-center justify-between p-3 border border-transparent hover:border-primary-200 dark:hover:border-white/15 hover:bg-background-surface dark:hover:bg-slate-800 transition-colors" style={{ borderRadius: 10 }}>
+                    <div key={topic._id} className="flex items-center justify-between p-3 border border-transparent hover:border-primary-200 dark:hover:border-white/15 hover:bg-background-surface dark:hover:bg-slate-800 transition-colors" style={{ borderRadius: 'var(--radius)' }}>
                       <div className="flex items-center gap-3">
                         {topic.isCompleted ? (
                           <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
@@ -246,9 +246,9 @@ const SyllabusTrackerPage = () => {
 
               {/* Accordions */}
               <div>
-                <h3 className="flex items-center gap-2.5 text-sm font-bold text-content-primary uppercase mb-3 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span>{translate('Subjects')}</h3>
+                <h3 className="flex items-center gap-2.5 text-sm font-bold text-content-primary uppercase mb-3 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><BookOpen className="w-4 h-4" /></span>{translate('Subjects')}</h3>
                 {trackerData.syllabus.length === 0 ? (
-                  <div className="text-center py-10 bg-background-surface border border-dashed border-primary-300 dark:border-slate-700" style={{ borderRadius: 16 }}>
+                  <div className="text-center py-10 bg-background-surface border border-dashed border-primary-300 dark:border-slate-700" style={{ borderRadius: 'var(--radius)' }}>
                     <p className="text-sm font-bold text-content-muted">{translate('No syllabus data found for this exam.')}</p>
                   </div>
                 ) : (

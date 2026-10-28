@@ -85,7 +85,7 @@ const AdminUserWallets = () => {
       render: (_, row) => (
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-primary-600 p-[2px] group-hover:rotate-6 transition-transform">
-            <div className="w-full h-full rounded-[14px] bg-background-surface flex items-center justify-center font-bold text-xs text-primary-600">
+            <div className="w-full h-full rounded-2xl bg-background-surface flex items-center justify-center font-bold text-xs text-primary-600">
               {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
             </div>
           </div>

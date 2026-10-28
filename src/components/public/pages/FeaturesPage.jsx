@@ -139,9 +139,9 @@ const HIGHLIGHTS = [
 
 const Cell = ({ value }) => {
   const { translate } = useTranslate();
-  if (value === true) return <span className="mx-auto w-5 h-5 xl:w-6 xl:h-6 flex items-center justify-center text-primary-600" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5 xl:w-4 xl:h-4" /></span>;
+  if (value === true) return <span className="mx-auto w-5 h-5 xl:w-6 xl:h-6 flex items-center justify-center text-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><CircleCheck className="w-3.5 h-3.5 xl:w-4 xl:h-4" /></span>;
   if (value === false) return <X className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-slate-300 dark:text-slate-700 mx-auto" />;
-  return <span className="inline-block whitespace-nowrap px-2.5 py-0.5 text-[9px] xl:text-[10px] font-bold uppercase tracking-wide text-primary-600 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{translate(value)}</span>;
+  return <span className="inline-block whitespace-nowrap px-2.5 py-0.5 text-[9px] xl:text-[10px] font-bold uppercase tracking-wide text-primary-600 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 'var(--radius-sm)' }}>{translate(value)}</span>;
 };
 
 const FeaturesPage = () => {
@@ -165,10 +165,10 @@ const FeaturesPage = () => {
         <section className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8">
           <Card as="section" className="relative overflow-hidden p-4 xl:p-10 space-y-3 xl:space-y-6">
             <div className="flex items-center justify-between">
-              <div className="p-2.5 xl:p-4 bg-background-surface-secondary text-content-secondary" style={{ borderRadius: 14 }}>
+              <div className="p-2.5 xl:p-4 bg-background-surface-secondary text-content-secondary" style={{ borderRadius: 'var(--radius)' }}>
                 <GraduationCap className="w-5 h-5 xl:w-7 xl:h-7" />
               </div>
-              <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] px-2.5 xl:px-3 py-1 text-content-secondary border border-border-primary" style={{ borderRadius: 999 }}>{translate('Free forever')}</span>
+              <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] px-2.5 xl:px-3 py-1 text-content-secondary border border-border-primary" style={{ borderRadius: 'var(--radius-sm)' }}>{translate('Free forever')}</span>
             </div>
             <section>
               <h2 className="text-lg xl:text-2xl font-bold font-outfit tracking-tight">{translate('FREE')}</h2>
@@ -177,7 +177,7 @@ const FeaturesPage = () => {
             <ul className="space-y-1.5 xl:space-y-2.5">
               {FREE_PLAN_FEATURES.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-xs xl:text-sm font-bold text-content-secondary">
-                  <span className="mt-0.5 w-5 h-5 flex-shrink-0 flex items-center justify-center text-primary-600" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5" /></span>
+                  <span className="mt-0.5 w-5 h-5 flex-shrink-0 flex items-center justify-center text-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><CircleCheck className="w-3.5 h-3.5" /></span>
                   {f}
                 </li>
               ))}
@@ -190,7 +190,7 @@ const FeaturesPage = () => {
           <Card as="section" className="isolate p-4 xl:p-10 space-y-3 xl:space-y-6 ring-2 ring-primary-400/60 dark:ring-white/20 relative overflow-hidden bg-background-surface">
             <Crown className="absolute -bottom-8 -right-8 w-44 h-44 text-primary-600/10 dark:text-white/5" />
             <div className="flex items-center justify-between relative z-10">
-              <div className="p-2.5 xl:p-4 text-on-primary bg-primary-600" style={{ borderRadius: 14 }}>
+              <div className="p-2.5 xl:p-4 text-on-primary bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
                 <Crown className="w-5 h-5 xl:w-7 xl:h-7" />
               </div>
               <ProBadge size="sm" />
@@ -202,7 +202,7 @@ const FeaturesPage = () => {
             <ul className="space-y-1.5 xl:space-y-2.5 relative z-10">
               {PRO_PLAN_FEATURES.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-xs xl:text-sm font-bold text-content-secondary">
-                  <span className="mt-0.5 w-5 h-5 flex-shrink-0 flex items-center justify-center text-primary-600" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5" /></span>
+                  <span className="mt-0.5 w-5 h-5 flex-shrink-0 flex items-center justify-center text-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><CircleCheck className="w-3.5 h-3.5" /></span>
                   {f}
                 </li>
               ))}
@@ -226,7 +226,7 @@ const FeaturesPage = () => {
                   <div className="flex items-center justify-between gap-2 min-h-[24px]">
                     <h3 className="text-sm xl:text-xl font-bold font-outfit tracking-tight">{translate(plan.label)}</h3>
                     {plan.badge && (
-                      <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] px-2.5 py-1 text-on-primary whitespace-nowrap bg-primary-600" style={{ borderRadius: 999 }}>{translate(plan.badge)}</span>
+                      <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] px-2.5 py-1 text-on-primary whitespace-nowrap bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>{translate(plan.badge)}</span>
                     )}
                   </div>
                   <div className="flex items-end gap-2">
@@ -238,7 +238,7 @@ const FeaturesPage = () => {
                     {plan.saving > 0 && <> · {translate('Save ₹{amount}', { amount: plan.saving })}</>}
                   </p>
                   {plan.discountPct > 0 && (
-                    <span className="inline-block text-[10px] xl:text-xs font-bold px-2.5 py-1 text-primary-600 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{plan.discountPct}% OFF</span>
+                    <span className="inline-block text-[10px] xl:text-xs font-bold px-2.5 py-1 text-primary-600 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 'var(--radius-sm)' }}>{plan.discountPct}% OFF</span>
                   )}
                 </div>
                 <Button variant={plan.badge ? 'primary' : 'secondary'} size="sm" fullWidth icon={ArrowRight} iconPosition="right" onClick={() => router.push('/student/subscription')}>{translate('Choose plan')}</Button>
@@ -251,7 +251,7 @@ const FeaturesPage = () => {
         <section className="grid grid-cols-1 xl:grid-cols-3 gap-4 xl:gap-8">
           {HIGHLIGHTS.map((h, i) => (
             <Card as="article" key={i} className="group relative overflow-hidden space-y-2.5 xl:space-y-5 hover:-translate-y-1 transition-all duration-300">
-              <div className="p-2.5 xl:p-4 text-on-primary group-hover:rotate-0 transition-transform w-fit bg-primary-600" style={{ borderRadius: 14 }}>
+              <div className="p-2.5 xl:p-4 text-on-primary group-hover:rotate-0 transition-transform w-fit bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
                 <h.icon className="w-4 h-4 xl:w-6 xl:h-6" />
               </div>
               <div className="space-y-1 xl:space-y-2">
@@ -273,7 +273,7 @@ const FeaturesPage = () => {
             {FEATURE_GROUPS.map((group) => (
               <Card as="article" key={group.title} className="p-0 overflow-hidden" padded={false}>
                 <section className="relative flex items-center gap-2 xl:gap-3 px-3 py-2.5 xl:px-6 xl:py-4 text-content-primary border-b border-border-primary dark:border-transparent bg-background-surface">
-                  <div className="relative p-2 xl:p-2.5 text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
+                  <div className="relative p-2 xl:p-2.5 text-on-primary bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
                     <group.icon className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
                   </div>
                   <h3 className="relative text-xs xl:text-sm font-bold font-outfit uppercase tracking-[0.08em]">{translate(group.title)}</h3>
@@ -303,7 +303,7 @@ const FeaturesPage = () => {
 
         {/* --- CTA --- */}
         <section className="px-0 py-4 xl:py-8">
-          <Card as="section" className="p-5 xl:p-16 text-center border border-primary-200 dark:border-slate-800 text-content-primary relative overflow-hidden bg-background-surface" style={{ borderRadius: 16 }}>
+          <Card as="section" className="p-5 xl:p-16 text-center border border-primary-200 dark:border-slate-800 text-content-primary relative overflow-hidden bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
             <section className="relative z-10 space-y-2 xl:space-y-4 xl:space-y-8">
               <h2 className="text-lg xl:text-4xl font-bold font-outfit tracking-tight tracking-tight">{rich('Ready to go <0>PRO</0>?', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
               <p className="text-xs xl:text-lg font-bold opacity-80 max-w-2xl mx-auto tracking-wide leading-relaxed px-1">

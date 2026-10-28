@@ -53,10 +53,10 @@ const TestStartModal = ({
 
   return (
     <div className="fixed inset-0 bg-slate-950/40 flex items-end sm:items-center justify-center z-[9999] p-2 sm:p-4 font-outfit">
-      <div className="relative bg-background-surface p-4 sm:p-6 xl:p-10 max-w-lg w-full border border-border-primary max-h-[92vh] overflow-y-auto scrollbar-none animate-bounce-in" style={{ maxHeight: '92dvh', borderRadius: 20 }}>
+      <div className="relative bg-background-surface p-4 sm:p-6 xl:p-10 max-w-lg w-full border border-border-primary max-h-[92vh] overflow-y-auto scrollbar-none animate-bounce-in" style={{ maxHeight: '92dvh', borderRadius: 'var(--radius)' }}>
         <div className="text-center">
           {/* Header */}
-          <div className="w-10 xl:w-20 h-10 xl:h-20 text-primary-600 flex items-center justify-center mx-auto mb-6 border border-border-primary" style={{ borderRadius: 18 }}>
+          <div className="w-10 xl:w-20 h-10 xl:h-20 text-primary-600 flex items-center justify-center mx-auto mb-6 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
             <FaSchool className="text-xl xl:text-3xl" />
           </div>
 
@@ -65,7 +65,7 @@ const TestStartModal = ({
           </h2>
 
           {/* Test Info */}
-          <section className="dark:bg-background-surface-secondary p-3 xl:p-6 mb-3 xl:mb-6 border border-dashed border-primary-300 dark:border-slate-700" style={{ borderRadius: 16 }}>
+          <section className="dark:bg-background-surface-secondary p-3 xl:p-6 mb-3 xl:mb-6 border border-dashed border-primary-300 dark:border-slate-700" style={{ borderRadius: 'var(--radius)' }}>
             <h3 className="text-content-primary text-sm xl:text-md mb-3 xl:mb-6 uppercase font-bold tracking-[0.08em] leading-relaxed text-center px-2 break-words">
               {translateData(testTitle)}
             </h3>
@@ -93,26 +93,26 @@ const TestStartModal = ({
 
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
+                <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                   <BookOpen className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{translateData(categoryName)}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
+                <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{translateData(examTitle)}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
+                <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                   <Clock className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{durationText}</span>
               </div>
               {pattern?.totalMarks && (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
+                  <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                     <Trophy className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{translate('{count} Marks', { count: pattern.totalMarks })}</span>
@@ -120,7 +120,7 @@ const TestStartModal = ({
               )}
               {pattern?.negativeMarking > 0 ? (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
+                  <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                     <Info className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] text-center">
@@ -129,7 +129,7 @@ const TestStartModal = ({
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
+                  <div className="w-10 h-10 text-primary-600 rounded-md xl:rounded-md flex items-center justify-center border border-primary-600">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] text-center">
@@ -142,7 +142,7 @@ const TestStartModal = ({
 
           {/* Sections Preview */}
           {sections.length > 0 && (
-            <div className="bg-background-surface p-3 xl:p-6 mb-3 xl:mb-6 border border-border-primary" style={{ borderRadius: 16 }}>
+            <div className="bg-background-surface p-3 xl:p-6 mb-3 xl:mb-6 border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
               <h4 className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-6 text-center flex items-center justify-center gap-2">
                 <FaList className="w-3 h-3" />
                 Exam Stages ({sections.length})

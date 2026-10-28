@@ -336,8 +336,8 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
     <div className="min-h-screen font-outfit text-content-primary pb-20">
       <div className="py-4 w-full mx-auto">
         {/* ===== Header: back link + step indicator in one row ===== */}
-        <div className="relative isolate overflow-hidden mb-3 px-3 py-2.5 flex flex-wrap items-center justify-between gap-3 border border-border-primary bg-background-surface" style={{ borderRadius: 16 }}>
-          <Link href="/admin/email-campaigns" className="inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-bold text-content-primary hover:bg-background-surface border border-border-primary transition-colors" style={{ borderRadius: 999 }}>
+        <div className="relative isolate overflow-hidden mb-3 px-3 py-2.5 flex flex-wrap items-center justify-between gap-3 border border-border-primary bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
+          <Link href="/admin/email-campaigns" className="inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-bold text-content-primary hover:bg-background-surface border border-border-primary transition-colors" style={{ borderRadius: 'var(--radius-sm)' }}>
             ← All campaigns
           </Link>
 
@@ -348,7 +348,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                   i < activeStep ? 'text-primary-600 ring-1 ring-primary-300 dark:text-primary-600 dark:ring-white/15'
                     : i === activeStep ? 'text-on-primary bg-primary-600'
                     : 'text-content-muted ring-1 ring-primary-200/70 dark:ring-white/10'
-                }`} style={{ borderRadius: 999 }}>
+                }`} style={{ borderRadius: 'var(--radius-sm)' }}>
                   {i + 1}. {s.label}
                   {i === activeStep && status === 'paused' && ' (paused)'}
                 </div>
@@ -358,11 +358,11 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
           </div>
         </div>
 
-        <section className="relative overflow-hidden bg-background-surface p-4 border border-border-primary" style={{ borderRadius: 16 }}>
+        <section className="relative overflow-hidden bg-background-surface p-4 border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
           <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
             <section>
               <h2 className="text-xl font-bold font-outfit tracking-tight flex items-center gap-2.5">
-                <span className="w-9 h-9 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
+                <span className="w-9 h-9 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
               </h2>
               <p className="text-sm text-content-muted mt-1">
                 The platform logo &amp; footer are added automatically.
@@ -618,11 +618,11 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                 <div className="flex items-center justify-between mb-1">
                   <label className="block text-[11px] font-bold uppercase tracking-[0.08em] text-primary-600">Live Preview</label>
                   <button onClick={openPreviewTab}
-                    className="flex items-center gap-1 text-xs font-bold px-2.5 py-1 text-primary-600 hover:brightness-95 transition-all" style={{ borderRadius: 999 }}>
+                    className="flex items-center gap-1 text-xs font-bold px-2.5 py-1 text-primary-600 hover:brightness-95 transition-all" style={{ borderRadius: 'var(--radius-sm)' }}>
                     <ExternalLink size={12} /> Open in new tab
                   </button>
                 </div>
-                <div className="border border-dashed border-primary-300 dark:border-white/20 overflow-hidden dark:bg-slate-900 p-3 h-[420px] overflow-y-auto" style={{ borderRadius: 12 }}>
+                <div className="border border-dashed border-primary-300 dark:border-white/20 overflow-hidden dark:bg-slate-900 p-3 h-[420px] overflow-y-auto" style={{ borderRadius: 'var(--radius)' }}>
                   <div dangerouslySetInnerHTML={{ __html: previewHtml }} />
                 </div>
               </div>

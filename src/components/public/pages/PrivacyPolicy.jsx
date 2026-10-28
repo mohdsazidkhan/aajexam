@@ -112,7 +112,7 @@ const PrivacyPolicy = () => {
                               { title: 'Payment Details', body: 'Encrypted bank details for processing reward withdrawals.', icon: CreditCard, color: 'primary' },
                               { title: 'Device Information', body: 'Your IP address, browser, and device details.', icon: Smartphone, color: 'primary' }
                            ].map((item, i) => (
-                              <section key={i} className="bg-background-surface p-4 xl:p-5 rounded-[1rem] xl:rounded-3xl border border-border-primary hover:border-primary-500/20 transition-all group">
+                              <section key={i} className="bg-background-surface p-4 xl:p-5 rounded-2xl xl:rounded-3xl border border-border-primary hover:border-primary-500/20 transition-all group">
                                  <div className="flex items-start gap-4">
                                     <div className={`p-4 bg-${item.color === 'primary' ? 'primary' : item.color}-500/10 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-2xl border border-transparent group-hover:border-current transition-all`}>
                                        <item.icon className="w-6 h-6" />
@@ -149,7 +149,7 @@ const PrivacyPolicy = () => {
                               </div>
                            ))}
 
-                           <section className="ml-0 xl:ml-8 p-4 xl:p-6 rounded-[1rem] xl:rounded-3xl border-l-4 border-primary-600 space-y-6">
+                           <section className="ml-0 xl:ml-8 p-4 xl:p-6 rounded-2xl xl:rounded-3xl border-l-4 border-primary-600 space-y-6">
                               <div className="flex items-center gap-4 text-primary-600">
                                  <Zap className="w-6 h-6" />
                                  <h3 className="text-sm font-bold uppercase tracking-[0.08em]">Referral Rewards</h3>
@@ -162,7 +162,7 @@ const PrivacyPolicy = () => {
                      </section>
 
                      {/* Cookies & AdSense */}
-                     <section id="cookies" className="bg-background-surface p-4 xl:p-5 rounded-[1rem] xl:rounded-3xl space-y-6 xl:space-y-8 border-none">
+                     <section id="cookies" className="bg-background-surface p-4 xl:p-5 rounded-2xl xl:rounded-3xl space-y-6 xl:space-y-8 border-none">
                         <div className="flex items-center gap-4">
                            <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-content-primary rounded-3xl flex items-center justify-center border border-border-primary">
                               <Cookie className="w-6 h-6" />

@@ -296,7 +296,7 @@ const ResponsiveTable = ({
           className="flex flex-col sm:flex-row items-center justify-between gap-6"
         >
           {showViewToggle && (
-            <div className="p-2 bg-slate-100/50 dark:bg-slate-800/40 rounded-[1.25rem] xl:rounded-2xl border border-border-primary w-full sm:w-auto">
+            <div className="p-2 bg-slate-100/50 dark:bg-slate-800/40 rounded-2xl xl:rounded-2xl border border-border-primary w-full sm:w-auto">
               <ViewToggle
                 currentView={currentViewState}
                 onViewChange={handleViewChange}
@@ -306,7 +306,7 @@ const ResponsiveTable = ({
           )}
 
           {showPagination && (
-            <div className="px-5 py-3 xl:py-2.5 bg-background-surface border border-border-primary rounded-[1.25rem] xl:rounded-2xl flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto">
+            <div className="px-5 py-3 xl:py-2.5 bg-background-surface border border-border-primary rounded-2xl xl:rounded-2xl flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto">
               <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] font-outfit">{translate('Page Size')}</span>
               <Select
                 value={itemsPerPageState}

@@ -88,7 +88,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
         <div className="hidden xl:flex justify-end mb-4"><BackButton onClick={() => router.back()}><ArrowLeft className="w-4 h-4" /> {translate('Back')}</BackButton></div>
 
         {/* Hero */}
-        <div className="relative overflow-hidden text-on-primary ring-1 ring-white/10 p-5 xl:p-6 mb-5 bg-primary-600" style={{ borderRadius: 16 }}>
+        <div className="relative overflow-hidden text-on-primary ring-1 ring-white/10 p-5 xl:p-6 mb-5 bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
           <header className="z-auto relative">
           <Layers className="w-8 h-8 mb-2 text-primary-300" />
           <h1 className="text-xl xl:text-3xl font-bold">{translateData(topic.name)}</h1>
@@ -106,7 +106,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
               className="w-full sm:w-auto bg-background-surface text-content-primary hover:bg-background-surface-secondary font-bold text-sm uppercase tracking-[0.08em] px-6 py-3 rounded-lg xl:rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {generatingAdaptive ? (
-                <><div className="w-4 h-4 border border-black dark:border-white border-t-transparent rounded-full animate-spin" /> {translate('GENERATING...')}</>
+                <><div className="w-4 h-4 border border-black dark:border-white border-t-transparent rounded-[50%] animate-spin" /> {translate('GENERATING...')}</>
               ) : (
                 <><BrainCircuit className="w-5 h-5" /> {translate('START ADAPTIVE PRACTICE')} <span className="text-[10px] bg-background-surface-secondary text-content-primary px-1.5 py-0.5 rounded-md ml-1">{translate('PRO')}</span></>
               )}

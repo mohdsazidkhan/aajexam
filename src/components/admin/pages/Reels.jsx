@@ -331,7 +331,7 @@ const AdminReels = () => {
               <div className="flex-1 min-h-0 overflow-auto">
                 {items.length === 0 ? (
                   <div className="py-20 text-center">
-                    <div className="w-20 h-20 bg-background-surface-secondary rounded-3xl flex items-center justify-center mx-auto mb-4">
+                    <div className="w-20 h-20 bg-background-surface-secondary rounded-md flex items-center justify-center mx-auto mb-4 border border-primary-600">
                       <Flame className="w-10 h-10 text-slate-300" />
                     </div>
                     <p className="text-lg font-bold text-content-muted">No reels found</p>

@@ -22,7 +22,7 @@ const Skeleton = ({
     width: width || '100%',
     height: height || (variant === 'text' ? '1rem' : 'auto'),
     borderRadius: borderRadius || (
-      variant === 'circle' ? '9999px' : 
+      variant === 'circle' ? 'var(--radius-sm)' : 
       variant === 'card' ? '2rem' : 
       variant === 'text' ? '0.5rem' : '1rem'
     )

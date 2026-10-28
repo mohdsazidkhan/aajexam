@@ -51,13 +51,13 @@ const Stat = ({ label, value, sub, Icon, tone, cur, prev, inverse, onClick }) =>
   return (
     <Wrap
       {...(onClick ? { type: 'button', onClick, title: 'Click to see who' } : {})}
-      style={{ borderRadius: 14 }}
+      style={{ borderRadius: 'var(--radius)' }}
       className={`group relative isolate overflow-hidden w-full px-2.5 py-2 text-left border border-border-primary hover:-translate-y-0.5 transition-all bg-background-surface ${onClick ? 'cursor-pointer' : ''}`}
     >
       <Icon className="pointer-events-none absolute -right-2 -bottom-2 w-14 h-14 text-primary-600/10 dark:text-white/10 rotate-12" />
       <div className="flex items-start justify-between gap-2">
         <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 leading-tight">{label}</div>
-        <span className="shrink-0 w-7 h-7 flex items-center justify-center text-primary-600 group-hover:rotate-0 transition-transform border border-border-primary" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
+        <span className="shrink-0 w-7 h-7 flex items-center justify-center text-primary-600 group-hover:rotate-0 transition-transform border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Icon className="w-3.5 h-3.5" /></span>
       </div>
       <div className="mt-1 flex items-baseline justify-between gap-2">
         <div className="text-2xl font-bold font-outfit tabular-nums leading-none text-primary-600">{value}</div>
@@ -198,7 +198,7 @@ const countryName = (code) => {
 };
 
 const List = ({ title, rows }) => (
-  <div className="relative overflow-hidden bg-background-surface border border-border-primary h-52 max-lg:h-auto flex flex-col" style={{ borderRadius: 14 }}>
+  <div className="relative overflow-hidden bg-background-surface border border-border-primary h-52 max-lg:h-auto flex flex-col" style={{ borderRadius: 'var(--radius)' }}>
     <div className="shrink-0 px-3 py-2 border-b border-border-primary dark:border-transparent text-[10px] font-bold uppercase tracking-[0.08em] text-content-primary bg-background-surface">{title}</div>
     <div className="min-h-0 flex-1 overflow-y-auto max-lg:overflow-visible px-3 py-1">
       {rows.length === 0 ? <div className="py-2 text-xs text-content-muted">No data yet</div> : rows.map((r) => (
@@ -257,7 +257,7 @@ export default function Traffic() {
       <div className="py-4 w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="order-1 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.08em] text-content-secondary">
-            <span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Activity className="w-4 h-4" /></span> Traffic          </div>
+            <span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Activity className="w-4 h-4" /></span> Traffic          </div>
           <div className="order-3 md:order-2 w-full md:w-auto flex gap-1 p-1 bg-background-surface border border-border-primary max-w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="tablist">
             {SEGMENTS.map((s) => (
               <button
@@ -267,7 +267,7 @@ export default function Traffic() {
                 aria-selected={segment === s.id}
                 title={s.hint}
                 onClick={() => setSegment(s.id)}
-                style={{ borderRadius: 999 }} className={`px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] whitespace-nowrap transition-all ${segment === s.id ? 'text-on-primary bg-primary-600' : 'text-content-muted dark:hover:bg-white/10 hover:text-content-primary dark:hover:text-white'}`}
+                style={{ borderRadius: 'var(--radius-sm)' }} className={`px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] whitespace-nowrap transition-all ${segment === s.id ? 'text-on-primary bg-primary-600' : 'text-content-muted dark:hover:bg-white/10 hover:text-content-primary dark:hover:text-white'}`}
               >
                 {s.label}
               </button>

@@ -118,7 +118,7 @@ export default function QuizPreview({
           </nav>
 
           {/* Hero — server-rendered */}
-          <header className="relative overflow-hidden border border-border-primary p-3 md:p-6 xl:p-8 bg-background-surface" style={{ borderRadius: 16 }}>
+          <header className="relative overflow-hidden border border-border-primary p-3 md:p-6 xl:p-8 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
             <div className="relative">
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               {subjectName && <span className="px-3 py-1 rounded-full text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em]">{translateData(subjectName)}</span>}

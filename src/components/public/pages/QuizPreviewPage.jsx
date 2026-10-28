@@ -119,9 +119,9 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
         </div>
 
         {/* Quiz Header Card */}
-        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-5 xl:p-8 mb-6 bg-background-surface" style={{ borderRadius: 16 }}>
+        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-5 xl:p-8 mb-6 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
           <div className="flex items-center mb-4">
-            <div className="w-8 xl:w-12 h-8 xl:h-12 text-primary-600 flex items-center justify-center mr-4 shrink-0 border border-border-primary" style={{ borderRadius: 12 }}>
+            <div className="w-8 xl:w-12 h-8 xl:h-12 text-primary-600 flex items-center justify-center mr-4 shrink-0 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
               <BrainCircuit className="w-5 xl:w-6 h-5 xl:h-6" />
             </div>
             <h1 className="text-xl xl:text-3xl font-bold text-content-primary flex items-center gap-3">

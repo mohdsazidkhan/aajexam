@@ -15,7 +15,7 @@ import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext
 const Panel = ({ icon: Icon, title, children, className = '' }) => (
   <section className={`relative overflow-hidden bg-background-surface rounded-2xl border border-border-primary ${className}`}>
     <section className="relative flex items-center gap-2.5 px-4 py-2.5 text-content-primary border-b border-border-primary dark:border-transparent bg-background-surface">
-      <span className="relative w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></span>
+      <span className="relative w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Icon className="w-4 h-4" /></span>
       <h2 className="relative text-xs font-bold uppercase tracking-[0.08em]">{title}</h2>
     </section>
     <div className="p-4">{children}</div>
@@ -66,11 +66,11 @@ const AdminMentorDetail = () => {
           </Link>
 
           {/* Header */}
-          <section className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-5 bg-background-surface" style={{ borderRadius: 16 }}>
+          <section className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-5 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
 
             <div className="flex items-start justify-between flex-wrap gap-3">
               <div className="flex items-start gap-3 min-w-0">
-                <div className="w-14 h-14 xl:w-16 xl:h-16 shrink-0 flex items-center justify-center text-2xl font-bold text-on-primary bg-primary-600" style={{ borderRadius: 18 }}>
+                <div className="w-14 h-14 xl:w-16 xl:h-16 shrink-0 flex items-center justify-center text-2xl font-bold text-on-primary bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
                   {(mentor.user?.name || 'M').charAt(0).toUpperCase()}
                 </div>
                 <div className="min-w-0">
@@ -115,9 +115,9 @@ const AdminMentorDetail = () => {
                 { icon: Clock, value: mentor.preparationMonths || 0, label: 'Prep Months' },
                 { icon: MessageCircle, value: mentor.amaThreads?.length || 0, label: 'AMA Threads' },
               ].map((st) => (
-                <div key={st.label} className="relative overflow-hidden flex items-center gap-3 px-3 py-2.5 hover:bg-background-surface border border-border-primary transition-colors" style={{ borderRadius: 12 }}>
+                <div key={st.label} className="relative overflow-hidden flex items-center gap-3 px-3 py-2.5 hover:bg-background-surface border border-border-primary transition-colors" style={{ borderRadius: 'var(--radius)' }}>
                   <st.icon className="absolute -right-2 -bottom-2 w-12 h-12 text-primary-600/10 dark:text-white/10" />
-                  <span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><st.icon className="w-4 h-4" /></span>
+                  <span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><st.icon className="w-4 h-4" /></span>
                   <div className="min-w-0">
                     <p className="text-xl font-bold font-outfit leading-none text-primary-600">{st.value}</p>
                     <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 leading-tight">{st.label}</p>

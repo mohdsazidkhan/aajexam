@@ -115,12 +115,12 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
   const FlagPills = ({ blog }) => (
     <>
       {blog.isFeatured && (
-        <span className="w-7 h-7 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 8 }}>
+        <span className="w-7 h-7 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
           <Star className="w-4 h-4 fill-current" />
         </span>
       )}
       {blog.isPinned && (
-        <span className="w-7 h-7 flex items-center justify-center text-primary-600" style={{ borderRadius: 8 }}>
+        <span className="w-7 h-7 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
           <Pin className="w-4 h-4 fill-current" />
         </span>
       )}
@@ -129,14 +129,14 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
 
   const Stub = ({ blog, readLabel }) => (
     <div className="relative flex items-center justify-between gap-3 px-4 py-3 border-t-2 border-dashed border-primary-500/30">
-      <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
-      <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
+      <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
+      <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-bold text-content-muted min-w-0">
         <span className="flex items-center gap-1"><Eye className="w-3.5 h-3.5" /> {blog.views || 0}</span>
         <span className="flex items-center gap-1"><Heart className="w-3.5 h-3.5" /> {blog.likes || 0}</span>
         <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {readLabel}</span>
       </div>
-      <span className="shrink-0 px-3 py-1 text-on-primary text-[11px] font-bold uppercase tracking-[0.08em] group-hover:brightness-105 bg-primary-600" style={{ borderRadius: 999 }}>
+      <span className="shrink-0 px-3 py-1 text-on-primary text-[11px] font-bold uppercase tracking-[0.08em] group-hover:brightness-105 bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
         {translate('Read More')}
       </span>
     </div>
@@ -145,12 +145,12 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
   const GridView = () => (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
       {blogs.map((blog) => (
-        <Link key={blog._id} href={`/blog/${blog.slug}`} className={`${cardBase} flex-col`} style={{ borderRadius: 16 }}>
+        <Link key={blog._id} href={`/blog/${blog.slug}`} className={`${cardBase} flex-col`} style={{ borderRadius: 'var(--radius)' }}>
           <div className="relative w-full h-44 sm:h-48 bg-center bg-cover" style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }}>
             <div className="absolute inset-0 bg-slate-950" />
             <div className="absolute top-3 left-3 flex items-center gap-1.5"><FlagPills blog={blog} /></div>
             {blog.exam && (
-              <span className="absolute bottom-3 left-3 max-w-[85%] truncate px-2.5 py-1 text-on-primary text-[11px] font-bold bg-primary-600" style={{ borderRadius: 999 }}>
+              <span className="absolute bottom-3 left-3 max-w-[85%] truncate px-2.5 py-1 text-on-primary text-[11px] font-bold bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                 {blog.exam.name}
               </span>
             )}
@@ -174,7 +174,7 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
   const ListView = () => (
     <div className="space-y-3 xl:space-y-4">
       {blogs.map((blog) => (
-        <Link key={blog._id} href={`/blog/${blog.slug}`} className={`${cardBase} flex-col md:flex-row`} style={{ borderRadius: 16 }}>
+        <Link key={blog._id} href={`/blog/${blog.slug}`} className={`${cardBase} flex-col md:flex-row`} style={{ borderRadius: 'var(--radius)' }}>
           <div className="relative md:w-72 w-full h-44 md:h-auto flex-shrink-0 bg-cover bg-center" style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }}>
             <div className="absolute inset-0 md:bg-gradient-to-r bg-slate-950" />
             <div className="absolute top-3 left-3 flex items-center gap-1.5"><FlagPills blog={blog} /></div>
@@ -185,7 +185,7 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-primary-600 text-[11px] font-bold uppercase tracking-[0.08em]">{formatDate(blog.publishedAt || blog.createdAt)}</span>
                 {blog.exam && (
-                  <span className="ml-auto px-2.5 py-1 text-on-primary text-[11px] font-bold bg-primary-600" style={{ borderRadius: 999 }}>
+                  <span className="ml-auto px-2.5 py-1 text-on-primary text-[11px] font-bold bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                     {blog.exam.name}
                   </span>
                 )}

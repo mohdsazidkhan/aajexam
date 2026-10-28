@@ -122,7 +122,7 @@ const DailyChallengePage = () => {
         ])}
       />
       <div className="text-center space-y-2 xl:space-y-4">
-        <div className="w-20 h-20 flex items-center justify-center mx-auto text-primary-600 border border-border-primary" style={{ borderRadius: 20 }}><Target className="w-10 h-10" /></div>
+        <div className="w-20 h-20 flex items-center justify-center mx-auto text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Target className="w-10 h-10" /></div>
         <h2 className="text-2xl font-bold text-content-muted">{translate('No Challenge Today')}</h2>
         <p className="text-sm text-content-muted">{translate('Come back tomorrow for a new challenge!')}</p>
       </div>
@@ -153,7 +153,7 @@ const DailyChallengePage = () => {
       />
       <div className="py-4 xl:py-6 space-y-4 sm:space-y-6">
         {/* Header */}
-        <div className="relative isolate overflow-hidden border border-border-primary text-center space-y-2 p-4 xl:p-6 bg-background-surface" style={{ borderRadius: 16 }}>
+        <div className="relative isolate overflow-hidden border border-border-primary text-center space-y-2 p-4 xl:p-6 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
           {attempted && (
             <LanguageToggle
               language={language}
@@ -163,7 +163,7 @@ const DailyChallengePage = () => {
             />
           )}
           <div className="flex items-center justify-center gap-2 px-14">
-            <span className="w-10 h-10 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 12 }}><Target className="w-5 h-5" /></span>
+            <span className="w-10 h-10 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Target className="w-5 h-5" /></span>
             <h1 className="text-xl sm:text-2xl xl:text-4xl font-bold tracking-tight text-content-primary break-words min-w-0">{challenge.title}</h1>
           </div>
           <p className="text-sm text-content-secondary dark:text-white/75 font-bold">{translate('{questions} Questions | {minutes} Minutes', { questions: challenge.questions.length, minutes: challenge.duration })}</p>
@@ -172,12 +172,12 @@ const DailyChallengePage = () => {
         {/* Not started yet */}
         {!started && !attempted && (
           <Card as="section" className="text-center space-y-6">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center mx-auto text-primary-600 border border-border-primary" style={{ borderRadius: 24 }}>
+            <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center mx-auto text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
               <Zap className="w-10 h-10 sm:w-12 sm:h-12" />
             </div>
             <h2 className="text-xl font-bold">{translate('Ready for Today\'s Challenge?')}</h2>
             <p className="text-sm text-content-muted">{translate('Complete it to maintain your streak!')}</p>
-            <button onClick={() => setStarted(true)} style={{ borderRadius: 12 }} className="w-full sm:w-auto px-8 py-3.5 sm:py-3 font-bold uppercase tracking-wide text-sm text-on-primary hover:brightness-105 hover:-translate-y-0.5 transition-all bg-primary-600">
+            <button onClick={() => setStarted(true)} style={{ borderRadius: 'var(--radius)' }} className="w-full sm:w-auto px-8 py-3.5 sm:py-3 font-bold uppercase tracking-wide text-sm text-on-primary hover:brightness-105 hover:-translate-y-0.5 transition-all bg-primary-600">
               {translate('Start Challenge')} <ArrowRight className="w-4 h-4 inline ml-2" />
             </button>
           </Card>
@@ -187,7 +187,7 @@ const DailyChallengePage = () => {
         {started && !attempted && (
           <div className="space-y-2 xl:space-y-4">
             <div className="flex justify-between items-center">
-              <span className="text-xs font-bold px-3 py-1 text-on-primary bg-primary-600" style={{ borderRadius: 999 }}>Q {currentQ + 1}/{challenge.questions.length}</span>
+              <span className="text-xs font-bold px-3 py-1 text-on-primary bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>Q {currentQ + 1}/{challenge.questions.length}</span>
               <div className="flex items-center gap-2">
                 <LanguageToggle
                   language={language}
@@ -195,7 +195,7 @@ const DailyChallengePage = () => {
                   translating={translating}
                   className="flex shrink-0 items-center justify-center gap-1.5 min-w-[44px] px-3 py-1 rounded-lg font-bold text-xs sm:text-sm bg-background-surface border border-border-primary text-content-secondary hover:border-primary-500 transition-colors"
                 />
-                <span style={{ borderRadius: 999 }} className={`text-sm font-bold flex items-center gap-1 px-3 py-1 bg-background-surface border ${timeLeft < 60 ? 'border-red-400 text-red-600 dark:text-red-400 animate-pulse' : 'border-border-primary text-content-secondary'}`}>
+                <span style={{ borderRadius: 'var(--radius-sm)' }} className={`text-sm font-bold flex items-center gap-1 px-3 py-1 bg-background-surface border ${timeLeft < 60 ? 'border-red-400 text-red-600 dark:text-red-400 animate-pulse' : 'border-border-primary text-content-secondary'}`}>
                 <Clock className="w-4 h-4" /> {formatTime(timeLeft)}
               </span>
               </div>
@@ -205,7 +205,7 @@ const DailyChallengePage = () => {
               <div className="space-y-3">
                 {challenge.questions[currentQ].options.map((opt, i) => (
                   <button key={i} onClick={() => selectOption(i)}
-                    style={{ borderRadius: 12 }} className={`w-full text-left px-3 sm:px-4 py-3 text-sm font-bold break-words transition-all border ${answers[currentQ]?.selectedOptionIndex === i
+                    style={{ borderRadius: 'var(--radius)' }} className={`w-full text-left px-3 sm:px-4 py-3 text-sm font-bold break-words transition-all border ${answers[currentQ]?.selectedOptionIndex === i
                       ? 'border-primary-400 text-primary-600'
                       : 'border-border-primary hover:border-primary-400 hover:-translate-y-0.5 text-content-secondary'}`}>
                     <span className="font-bold mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(challenge.questions[currentQ].question)?.optionTexts?.[i] || opt.text || opt}
@@ -216,8 +216,8 @@ const DailyChallengePage = () => {
             <div className="flex justify-between items-center gap-3 sticky bottom-0 -mx-1 px-1 py-2 bg-background-page/95 sm:static sm:bg-transparent sm:p-0">
               <button disabled={currentQ === 0} onClick={() => setCurrentQ(currentQ - 1)} className="px-4 py-3 sm:py-2.5 text-sm font-bold text-content-muted disabled:opacity-30 disabled:cursor-not-allowed">{translate('Previous')}</button>
               {currentQ < challenge.questions.length - 1
-                ? <button onClick={() => setCurrentQ(currentQ + 1)} style={{ borderRadius: 12 }} className="px-8 sm:px-6 py-3 sm:py-2.5 text-sm font-bold uppercase text-on-primary hover:brightness-105 hover:-translate-y-0.5 transition-all bg-primary-600">{translate('Next')}</button>
-                : <button onClick={handleSubmit} disabled={submitting} style={{ borderRadius: 12 }} className="px-8 sm:px-6 py-3 sm:py-2.5 text-sm font-bold uppercase text-on-primary hover:brightness-105 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-primary-600">{submitting ? translate('Submitting...') : translate('Submit')}</button>
+                ? <button onClick={() => setCurrentQ(currentQ + 1)} style={{ borderRadius: 'var(--radius)' }} className="px-8 sm:px-6 py-3 sm:py-2.5 text-sm font-bold uppercase text-on-primary hover:brightness-105 hover:-translate-y-0.5 transition-all bg-primary-600">{translate('Next')}</button>
+                : <button onClick={handleSubmit} disabled={submitting} style={{ borderRadius: 'var(--radius)' }} className="px-8 sm:px-6 py-3 sm:py-2.5 text-sm font-bold uppercase text-on-primary hover:brightness-105 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-primary-600">{submitting ? translate('Submitting...') : translate('Submit')}</button>
               }
             </div>
           </div>
@@ -250,7 +250,7 @@ const DailyChallengePage = () => {
             {challenge?.questions?.length > 0 && (
               <Card as="section" className="space-y-2 xl:space-y-4">
                 <h3 className="text-sm font-bold text-content-primary flex items-center gap-2">
-                  <span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Target className="w-4 h-4" /></span> Question Review & Discussion
+                  <span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Target className="w-4 h-4" /></span> Question Review & Discussion
                 </h3>
                 <div className="space-y-2 xl:space-y-4">
                   {challenge.questions.map((q, idx) => {
@@ -261,7 +261,7 @@ const DailyChallengePage = () => {
                     return (
                       <div key={q._id || idx} className={`rounded-lg xl:rounded-xl p-3 border ${isSkipped ? 'bg-background-surface-secondary border-border-primary' : isCorrect ? 'border-primary-200 dark:border-primary-600' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
                         <div className="flex items-start gap-2 mb-2">
-                          <div style={{ borderRadius: 8 }} className={`w-6 h-6 flex items-center justify-center text-xs font-bold shrink-0 ${isSkipped ? 'bg-border-secondary text-white' : isCorrect ? 'text-on-primary bg-primary-600' : 'text-white bg-red-600'}`}>{idx + 1}</div>
+                          <div style={{ borderRadius: 'var(--radius)' }} className={`w-6 h-6 flex items-center justify-center text-xs font-bold shrink-0 ${isSkipped ? 'bg-border-secondary text-white' : isCorrect ? 'text-on-primary bg-primary-600' : 'text-white bg-red-600'}`}>{idx + 1}</div>
                           <p className="text-sm font-bold text-content-primary break-words min-w-0">{getHindi(q.question)?.questionText || q.questionText}</p>
                         </div>
                         <div className="space-y-1 ml-0 sm:ml-8">
@@ -304,10 +304,10 @@ const DailyChallengePage = () => {
             {leaderboard.length > 0 && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
                 <Card as="section" className="space-y-3 relative overflow-hidden">
-                  <h3 className="text-sm font-bold text-content-primary flex items-center gap-2 relative z-10"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Trophy className="w-4 h-4" /></span> {translate('Today\'s Leaderboard')}</h3>
+                  <h3 className="text-sm font-bold text-content-primary flex items-center gap-2 relative z-10"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Trophy className="w-4 h-4" /></span> {translate('Today\'s Leaderboard')}</h3>
                   <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>
                     {leaderboard.slice(0, 10).map((entry, i) => (
-                      <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} style={{ borderRadius: 10 }} className="flex items-center gap-3 px-3 py-2 border border-transparent hover:border-primary-200 dark:hover:border-white/15 transition-colors">
+                      <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} style={{ borderRadius: 'var(--radius)' }} className="flex items-center gap-3 px-3 py-2 border border-transparent hover:border-primary-200 dark:hover:border-white/15 transition-colors">
                         <span className={`text-sm font-bold w-6 ${i < 3 ? 'text-primary-600' : 'text-content-muted'}`}>#{i + 1}</span>
                         <span className="text-sm font-bold text-content-secondary flex-1 min-w-0 truncate">{entry.user?.name || translate('Student')}</span>
                         <span className="text-sm font-bold text-primary-600">{entry.score}</span>

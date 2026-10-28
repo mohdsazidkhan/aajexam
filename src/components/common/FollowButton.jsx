@@ -62,7 +62,7 @@ const FollowButton = ({ userId, initialFollowing = false, onFollowChange, classN
       disabled={loading}
     >
       {loading ? (
-        <div className="w-4 h-4 border border-current border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-4 h-4 border border-current border-t-transparent rounded-[50%] animate-spin"></div>
       ) : isFollowing ? (
         translate('Following')
       ) : (

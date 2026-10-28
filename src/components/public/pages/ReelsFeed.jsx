@@ -1316,7 +1316,7 @@ const ReelsFeed = () => {
       {/* Loading next batch — full overlay */}
       {loadingMore && (
         <div className="absolute inset-0 z-30 bg-black/80 flex flex-col items-center justify-center">
-          <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin mb-3" />
+          <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-[50%] animate-spin mb-3" />
           <p className="text-xs font-bold text-white/50 uppercase tracking-widest">{translate('Loading reels...')}</p>
         </div>
       )}

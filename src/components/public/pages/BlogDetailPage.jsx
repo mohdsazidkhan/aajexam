@@ -171,16 +171,16 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
           {/* ───────────── Main column ───────────── */}
           <div className="min-w-0 space-y-4 xl:space-y-5">
             {/* Header */}
-            <header className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 bg-background-surface" style={{ borderRadius: 16 }}>
+            <header className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
 
               <div className="flex items-center gap-2 flex-wrap mb-3">
                 {blog.isFeatured && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 text-on-primary text-xs font-bold uppercase tracking-[0.08em] bg-primary-600" style={{ borderRadius: 999 }}>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 text-on-primary text-xs font-bold uppercase tracking-[0.08em] bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                     <Star className="w-3.5 h-3.5 fill-current" /> {translate('Featured')}
                   </span>
                 )}
                 {blog.isPinned && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 text-primary-600 dark:text-white ring-1 ring-primary-200 dark:ring-white/25 text-xs font-bold uppercase tracking-[0.08em]" style={{ borderRadius: 999 }}>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 text-primary-600 dark:text-white ring-1 ring-primary-200 dark:ring-white/25 text-xs font-bold uppercase tracking-[0.08em]" style={{ borderRadius: 'var(--radius-sm)' }}>
                     <Pin className="w-3.5 h-3.5 fill-current" /> {translate('Pinned')}
                   </span>
                 )}
@@ -202,7 +202,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
 
               <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-dashed border-border-primary">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 text-primary-600 flex items-center justify-center border border-border-primary" style={{ borderRadius: 12 }}>
+                  <div className="w-10 h-10 text-primary-600 flex items-center justify-center border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                     <span className="font-bold text-sm">{blog.author?.name?.charAt(0) || 'A'}</span>
                   </div>
                   <div>
@@ -216,7 +216,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                     { icon: Heart, v: blog.likes || 0 },
                     { icon: Clock, v: translate('{count} min', { count: blog.readingTime || 5 }) },
                   ].map((m, i) => (
-                    <span key={i} className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-border-primary text-xs font-bold text-content-secondary dark:text-white/80" style={{ borderRadius: 10 }}>
+                    <span key={i} className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-border-primary text-xs font-bold text-content-secondary dark:text-white/80" style={{ borderRadius: 'var(--radius)' }}>
                       <m.icon className="w-3.5 h-3.5" /> {m.v}
                     </span>
                   ))}
@@ -225,27 +225,27 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
             </header>
 
             {/* Featured image */}
-            <div className="relative overflow-hidden border border-border-primary" style={{ borderRadius: 16 }}>
+            <div className="relative overflow-hidden border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
               <img src={optimizedImage(blog.featuredImage) || '/default_banner.png'} alt={blog.featuredImageAlt || blog.title}
                 width={1200} height={630} fetchPriority="high" decoding="async"
                 className="w-full h-48 md:h-72 xl:h-96 object-cover" />
             </div>
 
             {/* Content */}
-            <article className="prose prose-lg max-w-none bg-background-surface text-content-primary p-4 xl:p-8 border border-border-primary [&_*:not(a)]:!text-black dark:[&_*:not(a)]:!text-white [&_img]:max-w-full [&_table]:block [&_table]:overflow-x-auto [&_pre]:overflow-x-auto" style={{ borderRadius: 16 }}>
+            <article className="prose prose-lg max-w-none bg-background-surface text-content-primary p-4 xl:p-8 border border-border-primary [&_*:not(a)]:!text-black dark:[&_*:not(a)]:!text-white [&_img]:max-w-full [&_table]:block [&_table]:overflow-x-auto [&_pre]:overflow-x-auto" style={{ borderRadius: 'var(--radius)' }}>
               <div className="text-content-primary leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: renderContent(blog.content) }} />
             </article>
 
             {/* Tags */}
             {blog.tags && blog.tags.length > 0 && (
-              <div className={`${panel} p-4 xl:p-5`} style={{ borderRadius: 16 }}>
+              <div className={`${panel} p-4 xl:p-5`} style={{ borderRadius: 'var(--radius)' }}>
                 {topLine}
                 <h3 className="text-lg font-bold text-content-primary mb-3 tracking-tight">{translate('Tags')}</h3>
                 <div className="flex flex-wrap gap-2">
                   {blog.tags.map((tag, index) => (
-                    <span key={index} className="inline-flex items-center gap-1.5 border border-dashed border-primary-500/30 text-content-secondary text-sm px-3 py-1 font-bold" style={{ borderRadius: 10 }}>
-                      <span className="w-1.5 h-1.5 bg-amber-400" style={{ borderRadius: '50%' }} />#{tag}
+                    <span key={index} className="inline-flex items-center gap-1.5 border border-dashed border-primary-500/30 text-content-secondary text-sm px-3 py-1 font-bold" style={{ borderRadius: 'var(--radius)' }}>
+                      <span className="w-1.5 h-1.5 bg-amber-400" style={{ borderRadius: 'var(--radius-sm)' }} />#{tag}
                     </span>
                   ))}
                 </div>
@@ -256,21 +256,21 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
           {/* ───────────── Sidebar ───────────── */}
           <aside className="space-y-4 xl:space-y-5">
             {/* Actions */}
-            <div className={`${panel} p-4 xl:p-5 space-y-4`} style={{ borderRadius: 16 }}>
+            <div className={`${panel} p-4 xl:p-5 space-y-4`} style={{ borderRadius: 'var(--radius)' }}>
               {topLine}
               <div className="flex flex-wrap items-center gap-3">
                 <button onClick={handleLike} disabled={liked}
                   className={`flex items-center gap-2 px-4 py-2 font-bold text-sm transition-colors ${liked
                     ? 'text-on-primary bg-primary-600'
                     : 'bg-background-surface-secondary text-content-secondary'}`}
-                  style={{ borderRadius: 10 }}>
+                  style={{ borderRadius: 'var(--radius)' }}>
                   <Heart className={`w-4 h-4 ${liked ? 'fill-current' : ''}`} />
                   {liked ? translate('Liked') : translate('Like')}
                 </button>
 
                 {canNativeShare ? (
                   <button onClick={handleNativeShare}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-on-primary font-bold text-sm hover:bg-primary-700" style={{ borderRadius: 10 }}>
+                    className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-on-primary font-bold text-sm hover:bg-primary-700" style={{ borderRadius: 'var(--radius)' }}>
                     <Share2 className="w-4 h-4" /> Share
                   </button>
                 ) : (
@@ -288,7 +288,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                 <div className="flex items-center gap-2 pt-3 border-t border-dashed border-primary-300 dark:border-white/20">
                   <span className="text-sm text-content-muted">{translate('Exam:')}</span>
                   <Link href={blog.exam.slug ? `/govt-exams/exam/${blog.exam.slug}` : '/govt-exams'}
-                    className="text-on-primary text-sm px-3 py-1 font-bold hover:brightness-105 bg-primary-600" style={{ borderRadius: 999 }}>
+                    className="text-on-primary text-sm px-3 py-1 font-bold hover:brightness-105 bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                     {blog.exam.name}
                   </Link>
                 </div>
@@ -296,7 +296,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
             </div>
 
             {/* Next steps — contextual internal links */}
-            <section className={`${panel} p-4 xl:p-5`} style={{ borderRadius: 16 }}>
+            <section className={`${panel} p-4 xl:p-5`} style={{ borderRadius: 'var(--radius)' }}>
               {topLine}
               <h2 className="text-lg font-bold text-content-primary mb-2 tracking-tight">
                 {translate('Prepare for {name} on AajExam', { name: blog.exam?.name || translate('this exam') })}
@@ -308,19 +308,19 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
               <div className="flex flex-col gap-2">
                 {blog.exam?.slug && (
                   <Link href={`/govt-exams/exam/${blog.exam.slug}`}
-                    className="flex items-center justify-between gap-2 px-4 py-2.5 text-on-primary font-bold text-sm hover:brightness-110 transition-all bg-primary-600" style={{ borderRadius: 10 }}>
+                    className="flex items-center justify-between gap-2 px-4 py-2.5 text-on-primary font-bold text-sm hover:brightness-110 transition-all bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
                     {blog.exam.name} syllabus & pattern <ArrowRight className="w-4 h-4 shrink-0" />
                   </Link>
                 )}
                 {hasPyq && blog.exam?.slug && (
-                  <Link href={`/pyq/${blog.exam.slug}`} className={outlineLink} style={{ borderRadius: 10 }}>
+                  <Link href={`/pyq/${blog.exam.slug}`} className={outlineLink} style={{ borderRadius: 'var(--radius)' }}>
                     {translate('Previous year question papers')} <ArrowRight className="w-4 h-4 shrink-0" />
                   </Link>
                 )}
-                <Link href="/quizzes" className={outlineLink} style={{ borderRadius: 10 }}>
+                <Link href="/quizzes" className={outlineLink} style={{ borderRadius: 'var(--radius)' }}>
                   {translate('Free practice quizzes')} <ArrowRight className="w-4 h-4 shrink-0" />
                 </Link>
-                <Link href="/govt-exams" className={outlineLink} style={{ borderRadius: 10 }}>
+                <Link href="/govt-exams" className={outlineLink} style={{ borderRadius: 'var(--radius)' }}>
                   {translate('All government exams')} <ArrowRight className="w-4 h-4 shrink-0" />
                 </Link>
               </div>
@@ -333,10 +333,10 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
               { key: 'topics', title: translate('Topics'), icon: Layers, href: (x) => `/topics/${x.slug}`, label: (x) => translateData(x.name) },
               { key: 'quizzes', title: translate('Quizzes'), icon: BrainCircuit, href: (x) => `/quiz/${x.slug || x._id}`, label: (x) => x.title },
             ].filter((g) => sideLists[g.key].length > 0).map((g) => (
-              <section key={g.key} className={`${panel} p-4 xl:p-5`} style={{ borderRadius: 16 }}>
+              <section key={g.key} className={`${panel} p-4 xl:p-5`} style={{ borderRadius: 'var(--radius)' }}>
                 {topLine}
                 <div className="flex items-center gap-2.5 mb-3">
-                  <span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}>
+                  <span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                     <g.icon className="w-4 h-4" />
                   </span>
                   <h3 className="text-base font-bold text-content-primary uppercase tracking-tight">{g.title}</h3>
@@ -344,7 +344,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                 <ul className="space-y-1.5">
                   {sideLists[g.key].map((item) => (
                     <li key={item._id}>
-                      <Link href={g.href(item)} className="group flex items-center justify-between gap-2 px-3 py-2 border border-border-primary text-sm font-bold text-content-secondary hover:border-primary-500 hover:text-primary-700 dark:hover:text-primary-600 transition-all" style={{ borderRadius: 10 }}>
+                      <Link href={g.href(item)} className="group flex items-center justify-between gap-2 px-3 py-2 border border-border-primary text-sm font-bold text-content-secondary hover:border-primary-500 hover:text-primary-700 dark:hover:text-primary-600 transition-all" style={{ borderRadius: 'var(--radius)' }}>
                         <span className="truncate">{g.label(item)}</span>
                         <ArrowRight className="w-3.5 h-3.5 shrink-0 text-primary-600 group-hover:translate-x-0.5 transition-transform" />
                       </Link>
@@ -363,7 +363,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
               {related.map((rel) => (
                 <Link key={rel._id} href={`/blog/${rel.slug}`}
-                  className="group relative flex flex-col overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 transition-all" style={{ borderRadius: 16 }}>
+                  className="group relative flex flex-col overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 transition-all" style={{ borderRadius: 'var(--radius)' }}>
                   {topLine}
                   {!liteMode && (
                     <img src={optimizedImage(rel.featuredImage, 480) || '/default_banner.png'} alt={rel.title}
@@ -379,8 +379,8 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                     </p>
                   </div>
                   <div className="relative flex items-center justify-between gap-3 px-4 py-2.5 border-t-2 border-dashed border-primary-500/30 text-xs font-bold text-content-muted">
-                    <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
-                    <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
+                    <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
+                    <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
                     <span>{formatDate(rel.publishedAt || rel.createdAt)}</span>
                     <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {translate('{count} min', { count: rel.readingTime || 5 })}</span>
                   </div>

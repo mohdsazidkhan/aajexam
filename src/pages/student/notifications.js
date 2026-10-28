@@ -115,11 +115,11 @@ const NotificationsPage = () => {
           badge={unreadCount > 0 ? String(unreadCount) : undefined}
           actions={
             <>
-              <div className="relative overflow-hidden ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
+              <div className="relative overflow-hidden ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[96px]" style={{ borderRadius: 'var(--radius)' }}>
                 <p className="text-lg font-bold font-outfit leading-none text-primary-600">{notifications.length}</p>
                 <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Notifications')}</p>
               </div>
-              <div className="relative overflow-hidden ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
+              <div className="relative overflow-hidden ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[96px]" style={{ borderRadius: 'var(--radius)' }}>
                 <p className="text-lg font-bold font-outfit leading-none text-primary-600">{unreadCount}</p>
                 <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Unread')}</p>
               </div>

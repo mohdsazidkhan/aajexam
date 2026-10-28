@@ -43,7 +43,7 @@ const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) 
    return (
    <div className="flex items-center justify-between mb-4 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15">
       <div className="flex items-center gap-2.5">
-         <div className="w-9 h-9 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}>
+         <div className="w-9 h-9 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
             <IconComp className="w-[18px] h-[18px]" />
          </div>
          <h2 className="text-base xl:text-lg font-bold text-content-primary tracking-tight">
@@ -71,9 +71,9 @@ const GovtExamCard = ({ item, onClick }) => {
    <div
       onClick={onClick}
       className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
-      style={{ borderRadius: 14 }}
+      style={{ borderRadius: 'var(--radius)' }}
    >
-      <div className="w-12 h-12 text-primary-600 flex items-center justify-center border border-border-primary" style={{ borderRadius: 12 }}>
+      <div className="w-12 h-12 text-primary-600 flex items-center justify-center border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
          <GraduationCap className="w-6 h-6" />
       </div>
       <p className="text-[13px] font-extrabold text-content-primary leading-tight line-clamp-2">
@@ -93,9 +93,9 @@ const QuizCard = ({ item, onClick }) => {
    <div
       onClick={onClick}
       className="min-w-[160px] xl:min-w-0 p-3.5 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all flex flex-col gap-2"
-      style={{ borderRadius: 14 }}
+      style={{ borderRadius: 'var(--radius)' }}
    >
-      <div className="w-10 h-10 text-primary-600 flex items-center justify-center border border-border-primary" style={{ borderRadius: 12 }}>
+      <div className="w-10 h-10 text-primary-600 flex items-center justify-center border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
          <Brain className="w-5 h-5" />
       </div>
       <p className="text-[13px] font-extrabold text-content-primary leading-tight line-clamp-2">
@@ -117,9 +117,9 @@ const SubjectCard = ({ item, onClick }) => {
    <div
       onClick={onClick}
       className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
-      style={{ borderRadius: 14 }}
+      style={{ borderRadius: 'var(--radius)' }}
    >
-      <div className="w-12 h-12 text-primary-600 flex items-center justify-center border border-border-primary" style={{ borderRadius: 12 }}>
+      <div className="w-12 h-12 text-primary-600 flex items-center justify-center border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
          <BookOpen className="w-6 h-6" />
       </div>
       <p className="text-[13px] font-extrabold text-content-primary leading-tight line-clamp-2">
@@ -141,9 +141,9 @@ const TopicCard = ({ item, onClick }) => {
    <div
       onClick={onClick}
       className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
-      style={{ borderRadius: 14 }}
+      style={{ borderRadius: 'var(--radius)' }}
    >
-      <div className="w-10 h-10 text-primary-600 flex items-center justify-center border border-border-primary" style={{ borderRadius: 12 }}>
+      <div className="w-10 h-10 text-primary-600 flex items-center justify-center border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
          <Layers className="w-5 h-5" />
       </div>
       <p className="text-[13px] font-extrabold text-content-primary leading-tight line-clamp-2">
@@ -170,7 +170,7 @@ const BlogCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
       className="min-w-0 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all overflow-hidden flex flex-col"
-      style={{ borderRadius: 14 }}
+      style={{ borderRadius: 'var(--radius)' }}
    >
       <div className="w-full h-24 bg-background-surface-secondary overflow-hidden">
          {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -204,7 +204,7 @@ const ReelCard = ({ item, onClick }) => {
       <div
          onClick={onClick}
          className="min-w-0 p-3.5 relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 cursor-pointer transition-all flex flex-col gap-2"
-      style={{ borderRadius: 14 }}
+      style={{ borderRadius: 'var(--radius)' }}
       >
          <div className="flex items-center gap-1.5 self-start px-2.5 py-1 text-on-primary rounded-lg bg-primary-600">
             <TypeIcon className="w-3.5 h-3.5" />
@@ -352,23 +352,23 @@ const HomePage = () => {
       <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-4 xl:mt-6">
             {/* ── Scorecard hero ── */}
             <section className="px-0 py-2 xl:py-3">
-               <div className="relative isolate overflow-hidden bg-background-surface p-3 xl:p-5" style={{ borderRadius: 16 }}>
+               <div className="relative isolate overflow-hidden bg-background-surface p-3 xl:p-5" style={{ borderRadius: 'var(--radius)' }}>
 
                   <div className="grid grid-cols-1 xl:grid-cols-[240px_minmax(0,1fr)] gap-3 xl:gap-4">
                      {/* Readiness */}
-                     <div className="relative overflow-hidden flex flex-col justify-center gap-2 px-4 py-3 border border-border-primary" style={{ borderRadius: 12 }}>
+                     <div className="relative overflow-hidden flex flex-col justify-center gap-2 px-4 py-3 border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
                         <TrendingUp className="absolute -right-3 -bottom-3 w-20 h-20 text-primary-600/10 dark:text-white/10" />
                         <div className="relative flex items-center justify-between gap-2">
                            <span className="text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Readiness')}</span>
                            {streakCount > 0 && (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-on-primary bg-primary-600" style={{ borderRadius: 999 }}>
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-on-primary bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                                  <Flame className="w-3.5 h-3.5 fill-current" />
                                  <span className="text-xs font-bold">{streakCount}</span>
                               </span>
                            )}
                         </div>
                         <p className="relative text-4xl xl:text-5xl font-bold font-outfit leading-none text-primary-600">{overallReadiness}%</p>
-                        <div className="relative h-2 overflow-hidden bg-background-surface-secondary" style={{ borderRadius: 999 }}>
+                        <div className="relative h-2 overflow-hidden bg-background-surface-secondary" style={{ borderRadius: 'var(--radius-sm)' }}>
                            <div className="h-full bg-primary-600" style={{ width: `${Math.min(100, Math.max(0, overallReadiness))}%` }} />
                         </div>
                      </div>
@@ -385,7 +385,7 @@ const HomePage = () => {
                            { icon: Flame, value: formatSecondsSpent(dailyChallengeTimeSpentSeconds), label: 'Challenge Time' },
                            { icon: Film, value: formatSecondsSpent(reelTimeSpentSeconds), label: 'Reels Time' },
                         ].map(({ icon: Icon, value, label }, idx) => (
-                           <div key={idx} className="relative overflow-hidden hover:bg-background-surface border border-border-primary px-3 py-2.5 transition-colors" style={{ borderRadius: 10 }}>
+                           <div key={idx} className="relative overflow-hidden hover:bg-background-surface border border-border-primary px-3 py-2.5 transition-colors" style={{ borderRadius: 'var(--radius)' }}>
                               <Icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-primary-600/10 dark:text-white/10" />
                               <p className="relative text-base xl:text-lg font-bold font-outfit leading-none text-content-primary truncate">{value}</p>
                               <p className="relative mt-1 text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 leading-tight truncate">{translate(label)}</p>
@@ -411,9 +411,9 @@ const HomePage = () => {
                         key={path}
                         onClick={() => router.push(path)}
                         className="group relative overflow-hidden flex items-center gap-2.5 p-2.5 xl:p-3 text-left bg-background-surface border border-border-primary hover:-translate-y-1 active:scale-[0.98] transition-all"
-                        style={{ borderRadius: 12 }}
+                        style={{ borderRadius: 'var(--radius)' }}
                      >
-                        <span className="ml-1 w-9 h-9 xl:w-10 xl:h-10 shrink-0 flex items-center justify-center text-primary-600 group-hover:rotate-0 transition-transform border border-border-primary" style={{ borderRadius: 10 }}>
+                        <span className="ml-1 w-9 h-9 xl:w-10 xl:h-10 shrink-0 flex items-center justify-center text-primary-600 group-hover:rotate-0 transition-transform border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                            <Icon className="w-4 h-4 xl:w-5 xl:h-5" />
                         </span>
                         <p className="flex-1 min-w-0 text-content-primary text-[11px] xl:text-xs font-bold uppercase tracking-wide leading-tight">{translate(label)}</p>

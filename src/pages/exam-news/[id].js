@@ -74,7 +74,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
       <div className="py-0 xl:py-6 space-y-3 xl:space-y-4">
         <div className="flex justify-end"><BackButton onClick={() => router.push('/exam-news')}><ArrowLeft className="w-4 h-4" /> {translate('Back')}</BackButton></div>
 
-        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 space-y-2 bg-background-surface" style={{ borderRadius: 16 }}>
+        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 space-y-2 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
           <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2 py-0.5 bg-background-surface-secondary rounded text-[9px] font-bold text-content-primary uppercase">{news.type?.replace('_', ' ')}</span>
             {news.exam?.name && <span className="text-[10px] font-bold text-content-muted dark:text-white/60">{news.exam.name}</span>}

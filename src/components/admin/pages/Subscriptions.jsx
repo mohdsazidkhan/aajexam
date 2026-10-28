@@ -412,7 +412,7 @@ const AdminSubscriptions = () => {
       render: (_, subscription) => (
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-primary-600 p-[2px] group-hover:rotate-6 transition-transform">
-            <div className="w-full h-full rounded-[14px] bg-background-surface flex items-center justify-center font-bold text-xs text-primary-600">
+            <div className="w-full h-full rounded-2xl bg-background-surface flex items-center justify-center font-bold text-xs text-primary-600">
               {subscription.user?.name?.charAt(0) || 'U'}
             </div>
           </div>
@@ -652,7 +652,7 @@ const AdminSubscriptions = () => {
               animate={{ opacity: 1, scale: 1 }}
               className="bg-black/10 dark:bg-white/10 border border-border-primary rounded-2xl xl:rounded-3xl p-4 xl:p-12 text-center"
             >
-              <div className="w-20 h-20 bg-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-4 xl:mb-4">
+              <div className="w-20 h-20 bg-primary-600 rounded-md flex items-center justify-center mx-auto mb-4 xl:mb-4">
                 <Zap className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-md md:text-xl xl:text-2xl font-bold text-content-primary tracking-tight mb-4">SOMETHING WENT WRONG</h3>

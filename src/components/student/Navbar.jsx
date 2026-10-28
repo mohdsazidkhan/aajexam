@@ -148,8 +148,8 @@ const StudentNavbar = () => {
               onClick={() => dispatch(toggleSidebar())}
               aria-label={isSidebarOpen ? translate('Close menu') : translate('Open menu')}
               aria-expanded={isSidebarOpen}
-              className={`hidden xl:flex w-10 h-10 rounded-2xl items-center justify-center transition-all active:scale-95 ${isSidebarOpen
-                  ? 'bg-background-surface-secondary text-content-secondary'
+              className={`hidden xl:flex w-10 h-10 rounded-md border border-primary-600 items-center justify-center transition-all active:scale-95 ${isSidebarOpen
+                  ? 'text-primary-600'
                   : 'text-on-primary hover:scale-105 bg-primary-600'
                 }`}
             >
@@ -198,7 +198,7 @@ const StudentNavbar = () => {
             <Link
               href="/student/notifications"
               aria-label={unreadCount > 0 ? translate('Notifications, {count} unread', { count: unreadCount }) : translate('Notifications')}
-              className="relative flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-background-surface-secondary items-center justify-center text-primary-600 dark:text-slate-300 hover:text-primary-900 transition-all flex-shrink-0"
+              className="relative flex w-9 h-9 xl:w-10 xl:h-10 rounded-md border border-primary-600 items-center justify-center text-primary-600 transition-all flex-shrink-0"
             >
               <Bell className="w-4 h-4 xl:w-5 xl:h-5" />
               {unreadCount > 0 && (
@@ -209,7 +209,7 @@ const StudentNavbar = () => {
             </Link>
 
             {/* Theme colour + dark mode */}
-            <ThemeColorMenuButton buttonClassName="flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-background-surface-secondary items-center justify-center text-primary-600 dark:text-slate-300 hover:text-primary-900 transition-all flex-shrink-0" />
+            <ThemeColorMenuButton buttonClassName="flex w-9 h-9 xl:w-10 xl:h-10 rounded-md border border-primary-600 items-center justify-center text-primary-600 transition-all flex-shrink-0" />
 
             {/* Profile avatar — plan (PRO/FREE/EXPIRED) now shown as a
                 badge next to the logo instead of floating on the avatar. */}
@@ -218,7 +218,7 @@ const StudentNavbar = () => {
               aria-label={translate('{plan} plan – Profile menu', { plan })}
               aria-expanded={showProfileMenu}
               title={isExpired ? translate('PRO plan expired') : translate('{plan} plan', { plan })}
-              className="p-0.5 rounded-full"
+              className="p-0.5 rounded-md border border-primary-600"
             >
               <div className="relative w-8 h-8 xl:w-10 xl:h-10">
                 <div className="w-full h-full rounded-full overflow-hidden p-[2px]">
@@ -268,15 +268,15 @@ const StudentNavbar = () => {
               exit={{ opacity: 0, y: -10 }}
               role="menu"
               className="fixed top-12 xl:top-16 right-3 xl:right-8 w-72 max-w-[calc(100vw-1.5rem)] bg-background-surface border border-border-primary z-[170] overflow-hidden"
-              style={{ borderRadius: 20 }}
+              style={{ borderRadius: 'var(--radius)' }}
             >
               {/* Identity header: photo, name, username, email, plan */}
               <div className="relative overflow-hidden px-4 pt-4 pb-3 border-b border-border-primary bg-background-surface">
-                <span className={`absolute top-3 right-3 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.08em] ${isExpired ? 'bg-red-500 text-white' : rawPlan === 'PRO' ? 'text-on-primary bg-primary-600' : 'bg-background-surface-secondary text-content-secondary ring-1 ring-slate-300 dark:bg-white/15 dark:ring-white/30'}`} style={{ borderRadius: 999 }}>
+                <span className={`absolute top-3 right-3 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.08em] ${isExpired ? 'bg-red-500 text-white' : rawPlan === 'PRO' ? 'text-on-primary bg-primary-600' : 'bg-background-surface-secondary text-content-secondary ring-1 ring-slate-300 dark:bg-white/15 dark:ring-white/30'}`} style={{ borderRadius: 'var(--radius-sm)' }}>
                   {isExpired ? 'EXPIRED' : rawPlan === 'PRO' ? 'PRO' : translate('FREE')}
                 </span>
                 <div className="relative flex items-center gap-3">
-                  <div className="shrink-0 p-[3px] bg-primary-600" style={{ borderRadius: 16 }}>
+                  <div className="shrink-0 p-[3px] bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
                     {profilePicture ? (
                       <Image
                         src={profilePicture}
@@ -284,10 +284,10 @@ const StudentNavbar = () => {
                         width={56}
                         height={56}
                         className="w-14 h-14 object-cover border border-white dark:border-slate-900"
-                        style={{ borderRadius: 13 }}
+                        style={{ borderRadius: 'var(--radius)' }}
                       />
                     ) : (
-                      <div className="w-14 h-14 flex items-center justify-center bg-primary-600 text-on-primary text-xl font-bold border border-white dark:border-slate-900" style={{ borderRadius: 13 }}>
+                      <div className="w-14 h-14 flex items-center justify-center bg-primary-600 text-on-primary text-xl font-bold border border-white dark:border-slate-900" style={{ borderRadius: 'var(--radius)' }}>
                         {user.name?.charAt(0)}
                       </div>
                     )}
@@ -308,13 +308,13 @@ const StudentNavbar = () => {
                   { label: translate('Settings'), icon: Settings, path: '/student/settings' },
                 ].map(item => (
                   <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
-                    <button className="group w-full flex items-center gap-3 px-2 py-2 text-sm font-bold text-content-secondary transition-colors" style={{ borderRadius: 12 }}>
-                      <span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors" style={{ borderRadius: 10 }}>
+                    <button className="group w-full flex items-center gap-3 px-2 py-2 text-sm font-bold text-content-secondary transition-colors" style={{ borderRadius: 'var(--radius)' }}>
+                      <span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors" style={{ borderRadius: 'var(--radius)' }}>
                         <item.icon className="w-4 h-4" />
                       </span>
                       <span className="flex-1 text-left truncate">{item.label}</span>
                       {item.showBalance ? (
-                        <span className="px-2 py-0.5 text-sm font-bold text-primary-600 flex items-center gap-0.5" style={{ borderRadius: 999 }}>
+                        <span className="px-2 py-0.5 text-sm font-bold text-primary-600 flex items-center gap-0.5" style={{ borderRadius: 'var(--radius-sm)' }}>
                           <IndianRupee className="w-3 h-3" />{user.walletBalance || 0}
                         </span>
                       ) : (
@@ -329,7 +329,7 @@ const StudentNavbar = () => {
                 <button
                   onClick={handleLogout}
                   className="w-full flex items-center justify-center gap-2.5 px-3 py-2.5 text-sm font-bold uppercase tracking-[0.08em] bg-red-500 hover:bg-red-600 text-white transition-all"
-                  style={{ borderRadius: 12 }}
+                  style={{ borderRadius: 'var(--radius)' }}
                 >
                   <LogOut className="w-4 h-4" /> {translate('Log out')}
                 </button>

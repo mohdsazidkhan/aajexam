@@ -103,7 +103,7 @@ const WelcomePromoModalInner = ({ onClose }) => {
             <div className="space-y-1.5 mb-4 text-left max-w-sm mx-auto">
               {PROMO_FEATURES.map((feature) => (
                 <div key={feature} className="flex items-center gap-2.5 text-xs font-bold text-content-secondary">
-                  <div className="w-6 h-6 rounded-full flex items-center justify-center text-primary-600 shrink-0">
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center text-primary-600 shrink-0 border border-primary-600">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                   </div>
                   {translate(feature)}
@@ -117,7 +117,7 @@ const WelcomePromoModalInner = ({ onClose }) => {
               className="w-full flex items-center justify-center gap-3 px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold uppercase tracking-[0.08em] rounded-2xl hover:bg-slate-800 dark:hover:bg-slate-100 transition disabled:opacity-70 group border-b-2 border-slate-700 dark:border-slate-300 active:border-b-0 active:translate-y-1"
             >
               {isGoogleLoading ? (
-                <div className="w-5 h-5 border border-slate-500 border-t-transparent rounded-full animate-spin" />
+                <div className="w-5 h-5 border border-slate-500 border-t-transparent rounded-[50%] animate-spin" />
               ) : (
                 <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
                   <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />

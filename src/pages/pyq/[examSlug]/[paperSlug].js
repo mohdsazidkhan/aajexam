@@ -116,7 +116,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     </nav>
 
                     {/* Hero */}
-                    <header className="relative overflow-hidden border border-border-primary p-6 md:p-6 xl:p-8 mb-10 bg-background-surface" style={{ borderRadius: 16 }}>
+                    <header className="relative overflow-hidden border border-border-primary p-6 md:p-6 xl:p-8 mb-10 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
             <div className="relative">
                         <div className="flex items-center gap-3 flex-wrap mb-6">
                             <span className="px-3 py-1 rounded-full text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em]">{translate('PYQ {year}', { year: paper.pyqYear || '' })}</span>

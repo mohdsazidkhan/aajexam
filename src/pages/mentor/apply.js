@@ -72,7 +72,7 @@ export default function MentorApply() {
       <div className="max-w-2xl mx-auto py-4 xl:py-8 px-4">
         <PageHero icon={Users} eyebrow={translate('Become a Mentor')} title={translate('Become a Mentor')} className="mb-4" />
 
-        <form onSubmit={handleSubmit} className="relative overflow-hidden space-y-6 p-4 xl:p-6 bg-background-surface border border-border-primary" style={{ borderRadius: 16 }}>
+        <form onSubmit={handleSubmit} className="relative overflow-hidden space-y-6 p-4 xl:p-6 bg-background-surface border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
           {/* Exams Cleared */}
           <div>
             <label className={labelClass}>{translate('Exams Cleared *')}</label>
@@ -150,7 +150,7 @@ export default function MentorApply() {
 
           {/* Submit */}
           <button type="submit" disabled={loading}
-            style={{ borderRadius: 14 }} className="w-full text-on-primary hover:brightness-105 font-bold py-3 px-8 transition-all active:translate-y-0.5 uppercase tracking-[0.08em] text-xs flex items-center justify-center gap-2 disabled:opacity-50 bg-primary-600">
+            style={{ borderRadius: 'var(--radius)' }} className="w-full text-on-primary hover:brightness-105 font-bold py-3 px-8 transition-all active:translate-y-0.5 uppercase tracking-[0.08em] text-xs flex items-center justify-center gap-2 disabled:opacity-50 bg-primary-600">
             <Send className="w-4 h-4" /> {loading ? translate('Submitting...') : translate('Submit Application')}
           </button>
         </form>

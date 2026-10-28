@@ -317,7 +317,7 @@ const LocationsPage = () => {
   const renderGridCard = (item, idx, { Icon, title, subtitle, onEdit, onDelete, page, itemsPerPage }) => (
     <section key={item._id} className="bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col gap-3 relative">
       <div className="flex items-start justify-between gap-2">
-        <div className="relative w-10 h-10 rounded-xl text-primary-600 flex items-center justify-center shrink-0 border border-border-primary">
+        <div className="relative w-10 h-10 rounded-md text-primary-600 flex items-center justify-center shrink-0 border border-primary-600">
           <Icon className="w-5 h-5" />
           <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{(page - 1) * itemsPerPage + idx + 1}</span>
         </div>
@@ -336,7 +336,7 @@ const LocationsPage = () => {
 
   const renderListRow = (item, idx, { Icon, title, subtitle, onEdit, onDelete, page, itemsPerPage }) => (
     <section key={item._id} className="bg-background-surface rounded-xl border border-border-primary p-3 flex items-center gap-3 relative">
-      <div className="relative w-10 h-10 rounded-xl text-primary-600 flex items-center justify-center shrink-0 border border-border-primary">
+      <div className="relative w-10 h-10 rounded-md text-primary-600 flex items-center justify-center shrink-0 border border-primary-600">
         <Icon className="w-5 h-5" />
         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{(page - 1) * itemsPerPage + idx + 1}</span>
       </div>

@@ -125,7 +125,7 @@ export default function AdminBankDetails() {
       key: 'user', header: 'USER', render: (_, detail) => (
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-primary-600 p-[2px] group-hover:rotate-6 transition-transform">
-            <div className="w-full h-full rounded-[14px] bg-background-surface flex items-center justify-center font-bold text-xs text-primary-600">
+            <div className="w-full h-full rounded-2xl bg-background-surface flex items-center justify-center font-bold text-xs text-primary-600">
               {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
             </div>
           </div>

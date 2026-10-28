@@ -91,7 +91,7 @@ const NudgeInner = ({ onClose }) => {
            className="w-full md:w-auto shrink-0 px-6 py-3.5 bg-primary-600 hover:bg-primary-600 text-on-primary font-bold uppercase tracking-[0.08em] text-xs rounded-lg xl:rounded-xl border-b-2 border-primary-600 active:border-b-0 active:translate-y-1 transition-all disabled:opacity-70 flex items-center justify-center gap-2 z-10"
         >
            {isGoogleLoading ? (
-               <div className="w-4 h-4 border border-white/50 border-t-white rounded-full animate-spin" />
+               <div className="w-4 h-4 border border-white/50 border-t-white rounded-[50%] animate-spin" />
            ) : translate('Save Progress Free')}
            {!isGoogleLoading && <ArrowRight className="w-4 h-4" />}
         </button>

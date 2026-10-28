@@ -155,7 +155,7 @@ const TermsAndConditions = () => {
                      </section>
 
                      {/* Reward Programs */}
-                     <section id="rewards" className="bg-background-surface p-4 xl:p-5 rounded-[1rem] xl:rounded-3xl space-y-6 xl:space-y-8 border-none">
+                     <section id="rewards" className="bg-background-surface p-4 xl:p-5 rounded-2xl xl:rounded-3xl space-y-6 xl:space-y-8 border-none">
                         <div className="flex items-center gap-4">
                            <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-content-primary rounded-3xl flex items-center justify-center border border-border-primary">
                               <Gift className="w-6 h-6" />

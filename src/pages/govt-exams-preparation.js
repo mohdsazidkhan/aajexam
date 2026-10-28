@@ -85,7 +85,7 @@ export default function GovtExamsPreparation({ initialData }) {
                             <div className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-8">
                                 {exams.length > 0 ? (
                                     exams.map((exam, index) => (
-                                        <section key={exam._id || index} className="bg-background-surface rounded-[1rem] xl:rounded-3xl p-4 xl:p-8 transition-all duration-300 border border-border-primary flex flex-col justify-between group active:translate-y-1 active:border-b-2">
+                                        <section key={exam._id || index} className="bg-background-surface rounded-2xl xl:rounded-3xl p-4 xl:p-8 transition-all duration-300 border border-border-primary flex flex-col justify-between group active:translate-y-1 active:border-b-2">
                                             <div>
                                                 <div className="flex items-center justify-start gap-4 mb-2 xl:mb-4">
                                                 <div className="w-10 xl:w-16 h-10 xl:h-16 rounded-2xl flex items-center justify-center border border-white dark:border-slate-800 overflow-hidden">

@@ -53,7 +53,7 @@ export default function EditorialPolicy() {
                     {/* Content Creation Process */}
                     <section className="bg-background-surface rounded-3xl p-4 md:p-8 xl:p-12 mb-16 border border-border-primary">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-600 rounded-2xl flex items-center justify-center border-b-2 border-primary-600">
+                            <div className="w-14 h-14 bg-primary-600 rounded-md flex items-center justify-center border-b-2 border-primary-600">
                                 <FaBook className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl xl:text-4xl font-bold text-content-primary tracking-tight">Creation Process</h2>
@@ -103,7 +103,7 @@ export default function EditorialPolicy() {
                     {/* User Feedback */}
                     <section className="dark:bg-black/90 rounded-3xl p-4 xl:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center">
+                            <div className="w-12 h-12 bg-primary-600 rounded-md xl:rounded-md flex items-center justify-center">
                                 <FaHandshake className="text-white text-2xl" />
                             </div>
                             <h2 className="text-2xl xl:text-3xl font-bold text-content-primary">User Feedback Integration</h2>

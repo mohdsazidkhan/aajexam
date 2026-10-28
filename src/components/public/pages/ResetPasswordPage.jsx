@@ -100,7 +100,7 @@ const ResetPasswordPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 text-center space-y-8"
                 >
-                  <div className="w-16 h-16 text-primary-600 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 text-primary-600 rounded-full flex items-center justify-center mx-auto border border-primary-600">
                     <CircleCheck className="w-8 h-8" />
                   </div>
                   <div className="space-y-2 xl:space-y-4">
@@ -170,7 +170,7 @@ const ResetPasswordPage = () => {
                     >
                       {isLoading ? (
                         <span className="flex items-center gap-2">
-                          <div className="w-4 h-4 border border-white border-t-transparent rounded-full animate-spin" />
+                          <div className="w-4 h-4 border border-white border-t-transparent rounded-[50%] animate-spin" />
                           {translate('UPDATING...')}
                         </span>
                       ) : (

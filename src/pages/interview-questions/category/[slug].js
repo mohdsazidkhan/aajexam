@@ -131,8 +131,8 @@ const CategoryDetailPage = () => {
           </div>
         </div>
 
-        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 flex items-center gap-3 bg-background-surface" style={{ borderRadius: 16 }}>
-          <div className="w-12 h-12 text-primary-600 flex items-center justify-center shrink-0 border border-border-primary" style={{ borderRadius: 12 }}>
+        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 flex items-center gap-3 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
+          <div className="w-12 h-12 text-primary-600 flex items-center justify-center shrink-0 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
             <Icon className="w-6 h-6" />
           </div>
           <div>
@@ -151,7 +151,7 @@ const CategoryDetailPage = () => {
           ) : (
             items.map((q, idx) => (
               <Card as="article" key={q._id} hoverable padded={false} onClick={() => router.push(`/interview-questions/${q.slug}`)}
-                className="group flex items-center gap-3 p-3 sm:p-4 border border-border-primary hover:border-black dark:hover:border-white transition-colors cursor-pointer rounded-[1.25rem]">
+                className="group flex items-center gap-3 p-3 sm:p-4 border border-border-primary hover:border-black dark:hover:border-white transition-colors cursor-pointer rounded-2xl">
                 <span className="w-6 h-6 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-bold flex items-center justify-center shrink-0">
                   {idx + 1}
                 </span>

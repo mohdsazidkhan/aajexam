@@ -87,7 +87,7 @@ export default function TopicPractice({
             <span className="text-content-secondary">{translateData(topicName)}</span>
           </nav>
 
-          <header className="relative overflow-hidden border border-border-primary p-3 md:p-6 xl:p-8 bg-background-surface" style={{ borderRadius: 16 }}>
+          <header className="relative overflow-hidden border border-border-primary p-3 md:p-6 xl:p-8 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
             <div className="relative">
             <span className="block text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] mb-2">
               {translateData(examName)} · {translateData(subjectName)}

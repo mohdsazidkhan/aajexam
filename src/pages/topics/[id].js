@@ -91,7 +91,7 @@ export default function TopicDetail({
           </nav>
 
           {/* Hero — server-rendered for crawlers */}
-          <header className="relative overflow-hidden border border-border-primary p-3 md:p-6 xl:p-8 bg-background-surface" style={{ borderRadius: 16 }}>
+          <header className="relative overflow-hidden border border-border-primary p-3 md:p-6 xl:p-8 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
             <div className="relative">
             <span className="block text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] mb-2">{subjectName ? translate('Topic · {name}', { name: translateData(subjectName) }) : translate('Topic')}</span>
             <div className="flex items-start justify-between gap-3">

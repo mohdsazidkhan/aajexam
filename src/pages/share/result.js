@@ -65,7 +65,7 @@ export default function SharedResult({ stats }) {
               </div>
 
               <header className="relative z-10 space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 text-on-primary text-xs font-bold uppercase tracking-[0.08em] bg-primary-600" style={{ borderRadius: 999 }}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 text-on-primary text-xs font-bold uppercase tracking-[0.08em] bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                   <Crown className="w-4 h-4" />
                   {translate(band)}
                 </div>
@@ -107,7 +107,7 @@ export default function SharedResult({ stats }) {
               { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: '' },
             ].map((item, idx) => (
               <Card as="article" key={idx} className="flex flex-col items-center text-center gap-2">
-                <div className="w-12 h-12 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 14 }}>
+                <div className="w-12 h-12 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                   <item.icon className="w-6 h-6" />
                 </div>
                 <span className="text-xl xl:text-2xl font-bold font-outfit">{item.value}</span>

@@ -112,7 +112,7 @@ export default function MentorProfilePage() {
   if (!mentor) return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
-        <span className="w-16 h-16 flex items-center justify-center mx-auto mb-4 text-primary-600 border border-border-primary" style={{ borderRadius: 18 }}><Users className="w-8 h-8" /></span>
+        <span className="w-16 h-16 flex items-center justify-center mx-auto mb-4 text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Users className="w-8 h-8" /></span>
         <p className="text-lg font-bold text-content-muted">{translate('Mentor not found')}</p>
         <button onClick={() => router.push('/mentors')} className="mt-4 text-sm font-bold text-primary-600">{translate('Back to Mentors')}</button>
       </div>
@@ -142,7 +142,7 @@ export default function MentorProfilePage() {
         {/* Profile Header */}
         <Card className="relative isolate overflow-hidden border border-border-primary bg-background-surface">
           <div className="flex items-start gap-4">
-            <div className="w-16 h-16 text-on-primary flex items-center justify-center font-bold text-2xl shrink-0 bg-primary-600" style={{ borderRadius: 18 }}>
+            <div className="w-16 h-16 text-on-primary flex items-center justify-center font-bold text-2xl shrink-0 bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
               {mentor.user?.name?.charAt(0) || 'M'}
             </div>
             <div className="flex-1">
@@ -163,7 +163,7 @@ export default function MentorProfilePage() {
         {/* Exams Cleared */}
         {mentor.examsCleared?.length > 0 && (
           <Card as="section">
-            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Award className="w-4 h-4" /></span> {translate('Exams Cleared')}</h2>
+            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Award className="w-4 h-4" /></span> {translate('Exams Cleared')}</h2>
             <div className="flex flex-col gap-2">
               {mentor.examsCleared.map((exam, i) => (
                 <div key={i} className="flex items-center justify-between p-3 rounded-lg xl:rounded-xl border border-dashed border-primary-300 dark:border-white/15">
@@ -190,7 +190,7 @@ export default function MentorProfilePage() {
         {/* Daily Routine */}
         {mentor.dailyRoutine && (
           <Card as="section">
-            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span> {translate('Daily Routine')}</h2>
+            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Clock className="w-4 h-4" /></span> {translate('Daily Routine')}</h2>
             <p className="text-sm text-content-secondary leading-relaxed whitespace-pre-line">{mentor.dailyRoutine}</p>
           </Card>
         )}
@@ -212,7 +212,7 @@ export default function MentorProfilePage() {
         {/* Books */}
         {mentor.booksRecommended?.length > 0 && (
           <Card as="section">
-            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span> {translate('Recommended Books')}</h2>
+            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><BookOpen className="w-4 h-4" /></span> {translate('Recommended Books')}</h2>
             <div className="flex flex-wrap gap-2">
               {mentor.booksRecommended.map((book, i) => (
                 <span key={i} className="px-3 py-1.5 ring-1 ring-primary-200 dark:ring-white/15 rounded-lg text-xs font-bold text-content-primary">{book}</span>
@@ -235,7 +235,7 @@ export default function MentorProfilePage() {
 
         {/* AMA Section */}
         <Card as="section">
-          <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-4 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><MessageCircle className="w-4 h-4" /></span> {translate('Ask Me Anything')}</h2>
+          <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-4 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><MessageCircle className="w-4 h-4" /></span> {translate('Ask Me Anything')}</h2>
 
           {/* Ask Question */}
           <div className="flex gap-2 mb-5">

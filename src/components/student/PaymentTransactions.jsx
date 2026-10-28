@@ -210,7 +210,7 @@ const PaymentTransactions = () => {
   }
 
   return (
-    <div className="relative bg-background-surface border border-border-primary overflow-hidden font-outfit mb-4 xl:mb-6" style={{ borderRadius: 16 }}>
+    <div className="relative bg-background-surface border border-border-primary overflow-hidden font-outfit mb-4 xl:mb-6" style={{ borderRadius: 'var(--radius)' }}>
       {/* Header */}
       <section className="text-content-primary border-b border-border-primary dark:border-transparent p-3 xl:p-4 pt-4 relative overflow-hidden group bg-background-surface">
         <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none transition-colors"></div>
@@ -242,7 +242,7 @@ const PaymentTransactions = () => {
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 text-primary-600 rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0 border border-border-primary">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 text-primary-600 rounded-md hidden sm:flex items-center justify-center transition-transform flex-shrink-0 border border-primary-600">
                   <FaRupeeSign className="text-xs xl:text-lg" />
                 </div>
               </div>
@@ -255,7 +255,7 @@ const PaymentTransactions = () => {
                     {summary.totalTransactions || 0}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 text-primary-600 rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0 border border-border-primary">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 text-primary-600 rounded-md hidden sm:flex items-center justify-center transition-transform flex-shrink-0 border border-primary-600">
                   <FaReceipt className="text-xs xl:text-lg" />
                 </div>
               </div>
@@ -268,7 +268,7 @@ const PaymentTransactions = () => {
                     {summary.paymentOrders?.completed || 0}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 text-primary-600 rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0 border border-border-primary">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 text-primary-600 rounded-md hidden sm:flex items-center justify-center transition-transform flex-shrink-0 border border-primary-600">
                   <FaCheckCircle className="text-xs xl:text-lg" />
                 </div>
               </div>

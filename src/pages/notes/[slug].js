@@ -95,7 +95,7 @@ const NoteDetailPage = ({ note }) => {
       <div className="py-0 xl:py-6 space-y-3 xl:space-y-4">
         <div className="flex justify-end"><BackButton onClick={() => router.push('/notes')}><ArrowLeft className="w-4 h-4" /> {translate('Back to Notes')}</BackButton></div>
 
-        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 flex items-start justify-between gap-4 bg-background-surface" style={{ borderRadius: 16 }}>
+        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 flex items-start justify-between gap-4 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
           <div className="space-y-2">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="px-2 py-0.5 rounded text-[9px] font-bold text-primary-600 uppercase">{note.noteType?.replace('_', ' ')}</span>

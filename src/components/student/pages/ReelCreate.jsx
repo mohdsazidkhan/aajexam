@@ -214,8 +214,8 @@ const ReelCreate = () => {
               <div className="grid grid-cols-2 xl:grid-cols-5 gap-3">
                 {TYPES.map(rt => (
                   <motion.button key={rt.value} onClick={() => setType(rt.value)}
-                    style={{ borderRadius: 14 }} className={`relative overflow-hidden p-2.5 xl:p-5 border text-left hover:-translate-y-1 transition-all ${rt.color}`}>
-                    <span className="w-11 h-11 mb-3 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 12 }}><rt.icon className="w-6 h-6" /></span>
+                    style={{ borderRadius: 'var(--radius)' }} className={`relative overflow-hidden p-2.5 xl:p-5 border text-left hover:-translate-y-1 transition-all ${rt.color}`}>
+                    <span className="w-11 h-11 mb-3 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><rt.icon className="w-6 h-6" /></span>
                     <h2 className="font-bold text-content-primary uppercase tracking-tight text-sm">{translate(rt.label)}</h2>
                     <p className="text-[10px] text-content-muted mt-1 font-medium">{translate(rt.desc)}</p>
                   </motion.button>
@@ -224,16 +224,16 @@ const ReelCreate = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="flex items-center justify-between bg-background-surface p-3 border border-border-primary" style={{ borderRadius: 14 }}>
+              <div className="flex items-center justify-between bg-background-surface p-3 border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 text-[10px] font-bold text-on-primary uppercase tracking-[0.08em] bg-primary-600" style={{ borderRadius: 999 }}>{type === 'current_affairs' ? 'CA' : type}</span>
+                  <span className="px-3 py-1 text-[10px] font-bold text-on-primary uppercase tracking-[0.08em] bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>{type === 'current_affairs' ? 'CA' : type}</span>
                   <p className="text-xs font-bold text-content-muted uppercase">{translate('New Reel')}</p>
                 </div>
                 <button type="button" onClick={() => setType('')} className="text-[10px] font-bold text-primary-600 hover:text-primary-600 uppercase tracking-[0.08em] px-3 py-1 rounded-lg">{translate('Change Type')}</button>
               </div>
 
               {/* Common */}
-              <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+              <div style={{ borderRadius: 'var(--radius)' }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
                 <div className="grid grid-cols-2 gap-3">
                   <div><label className={labelClass}>{translate('Exam')}</label>
                     <Select value={examType} onChange={e => { setExamType(e.target.value); setSubject(''); setTopic(''); }} className={inputClass}>
@@ -264,7 +264,7 @@ const ReelCreate = () => {
 
               {/* Question */}
               {type === 'question' && (
-                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div style={{ borderRadius: 'var(--radius)' }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
                   <div><label className={labelClass}>{translate('Question *')}</label><textarea value={questionText} onChange={e => setQuestionText(e.target.value)} rows={3} className={inputClass} required /></div>
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
                     {options.map((o, i) => (
@@ -284,7 +284,7 @@ const ReelCreate = () => {
 
               {/* Fact */}
               {type === 'fact' && (
-                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div style={{ borderRadius: 'var(--radius)' }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
                   <div><label className={labelClass}>{translate('Highlight Text')}</label><input value={highlightText} onChange={e => setHighlightText(e.target.value)} className={inputClass} /></div>
                   <div><label className={labelClass}>{translate('Content')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
                   <div>
@@ -302,7 +302,7 @@ const ReelCreate = () => {
 
               {/* Tip */}
               {type === 'tip' && (
-                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div style={{ borderRadius: 'var(--radius)' }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
                   <div><label className={labelClass}>{translate('Formula')}</label><input value={formula} onChange={e => setFormula(e.target.value)} className={inputClass} /></div>
                   <div><label className={labelClass}>{translate('Content')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
                   <div>
@@ -321,7 +321,7 @@ const ReelCreate = () => {
 
               {/* Poll */}
               {type === 'poll' && (
-                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div style={{ borderRadius: 'var(--radius)' }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
                   <div><label className={labelClass}>{translate('Poll Question *')}</label><input value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} className={inputClass} required /></div>
                   <div>
                     {pollOptions.map((o, i) => (
@@ -337,14 +337,14 @@ const ReelCreate = () => {
 
               {/* CA */}
               {type === 'current_affairs' && (
-                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+                <div style={{ borderRadius: 'var(--radius)' }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
                   <div><label className={labelClass}>{translate('Title *')}</label><input value={title} onChange={e => setTitle(e.target.value)} className={inputClass} required /></div>
                   <div><label className={labelClass}>{translate('Content *')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={4} className={inputClass} required /></div>
                 </div>
               )}
 
               {/* Audio & Duration — Instagram Style */}
-              <section style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
+              <section style={{ borderRadius: 'var(--radius)' }} className="relative overflow-hidden bg-background-surface border border-border-primary p-4 space-y-3">
                 <section className="flex items-center justify-between">
                   <h2 className="text-sm font-bold text-content-secondary flex items-center gap-2">
                     <Music className="w-4 h-4 text-content-primary" /> Add Audio

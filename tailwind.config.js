@@ -12,6 +12,16 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-lato)', 'Lato', 'Noto Sans', 'sans-serif'],
       },
+      // rounded-lg / xl / 2xl / 3xl all resolve to the card radius, so cards, buttons, inputs and icon tiles match.
+      // Change --radius in src/styles/index.css to restyle them together; rounded-full / rounded-md stay as they are.
+      borderRadius: {
+        lg: 'var(--radius)',
+        xl: 'var(--radius)',
+        '2xl': 'var(--radius)',
+        '3xl': 'var(--radius)',
+        md: 'var(--radius-sm)', // icon tiles: half the card radius
+        full: 'var(--radius-sm)', // no circles or pills anywhere: former rounded-full elements are rounded squares
+      },
       colors: {
         // Values come from CSS custom properties so the user-selected theme
         // color (ThemeColorMenuButton) can override them at runtime; defaults

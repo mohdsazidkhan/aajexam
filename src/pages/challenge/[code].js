@@ -72,10 +72,10 @@ export default function ChallengePage() {
                 </button>
 
                 {/* Challenge Header Card */}
-                <div className="border border-border-primary p-6 xl:p-8 text-center relative isolate overflow-hidden mb-8 bg-background-surface" style={{ borderRadius: 16 }}>
+                <div className="border border-border-primary p-6 xl:p-8 text-center relative isolate overflow-hidden mb-8 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
                     
                     <header className="relative z-10 flex flex-col items-center">
-                        <div className="w-20 h-20 text-primary-600 flex items-center justify-center mb-4 border border-border-primary" style={{ borderRadius: 22 }}>
+                        <div className="w-20 h-20 text-primary-600 flex items-center justify-center mb-4 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                             <Swords className="w-10 h-10" />
                         </div>
                         
@@ -86,7 +86,7 @@ export default function ChallengePage() {
                             {rich('Quiz: <0></0>', [() => <span className="text-primary-600 font-bold">{challenge.quiz?.title || translate('Unknown')}</span>])}
                         </p>
 
-                        <div className="inline-block border border-border-primary px-6 py-3 mb-6" style={{ borderRadius: 12 }}>
+                        <div className="inline-block border border-border-primary px-6 py-3 mb-6" style={{ borderRadius: 'var(--radius)' }}>
                             <p className="text-content-secondary dark:text-white/75 text-xs font-bold uppercase tracking-[0.08em] mb-1">{translate('Target to beat')}</p>
                             <p className="text-primary-600 text-4xl font-bold font-outfit">{Math.round(hostScore?.percentage || 0)}%</p>
                         </div>
@@ -94,7 +94,7 @@ export default function ChallengePage() {
                         {!challenge.hasPlayed ? (
                             <button 
                                 onClick={handleAcceptChallenge}
-                                style={{ borderRadius: 14 }} className="w-full text-on-primary hover:brightness-105 font-bold text-xl py-4 transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2 bg-primary-600"
+                                style={{ borderRadius: 'var(--radius)' }} className="w-full text-on-primary hover:brightness-105 font-bold text-xl py-4 transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2 bg-primary-600"
                             >
                                 <Play className="w-6 h-6 fill-current" /> ACCEPT CHALLENGE
                             </button>
@@ -108,9 +108,9 @@ export default function ChallengePage() {
 
                 {/* Private Leaderboard */}
                 {challenge.hasPlayed && (
-                    <section className="relative overflow-hidden bg-background-surface p-6 border border-border-primary" style={{ borderRadius: 16 }}>
+                    <section className="relative overflow-hidden bg-background-surface p-6 border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="text-on-primary p-2.5 bg-primary-600" style={{ borderRadius: 12 }}>
+                            <div className="text-on-primary p-2.5 bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
                                 <Users className="w-5 h-5" />
                             </div>
                             <h2 className="text-xl font-bold text-content-primary tracking-tight">{translate('Challenge Leaderboard')}</h2>

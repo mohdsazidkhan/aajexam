@@ -225,7 +225,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
 
   const stat = (label, value, Icon) => (
     <div className="bg-background-surface rounded-xl border border-border-primary px-2.5 py-2 flex items-center gap-2.5 hover:-translate-y-0.5 transition-all min-w-0">
-      <span className="w-7 h-7 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
+      <span className="w-7 h-7 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Icon className="w-3.5 h-3.5" /></span>
       <div className="min-w-0">
         <div className="text-base font-bold tabular-nums text-content-primary leading-none">{value ?? 0}</div>
         <div className="text-[8px] font-bold uppercase tracking-[0.08em] text-content-muted mt-1 leading-tight">{label}</div>

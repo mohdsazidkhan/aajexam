@@ -141,8 +141,8 @@ const SubscriptionPage = () => {
   // Radii are inline because styles/index.css forces every [class*="rounded"] to 8px !important.
   const notches = (
     <>
-      <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
-      <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
+      <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
+      <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
     </>
   );
 
@@ -157,7 +157,7 @@ const SubscriptionPage = () => {
         {subscription && (
           <section
             className="relative overflow-hidden text-content-primary ring-1 ring-primary-200 dark:ring-white/10 bg-background-surface"
-            style={{ borderRadius: 16 }}
+            style={{ borderRadius: 'var(--radius)' }}
           >
             <Crown className="pointer-events-none absolute right-6 top-6 w-36 h-36 text-primary-600/10 dark:text-white/5 rotate-12" />
 
@@ -165,12 +165,12 @@ const SubscriptionPage = () => {
               <header className="z-auto p-4 xl:p-6 space-y-4">
                 <div className="flex items-center gap-3">
                   {/* Card chip */}
-                  <span className="w-10 h-7 bg-background-surface" style={{ borderRadius: 6 }} />
+                  <span className="w-10 h-7 bg-background-surface" style={{ borderRadius: 'var(--radius)' }} />
                   <span className="text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/70">AajExam · {translate('Membership pass')}</span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 14 }}>
+                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                     <Crown className="w-7 h-7 xl:w-8 xl:h-8" />
                   </div>
                   <div className="min-w-0">
@@ -184,8 +184,8 @@ const SubscriptionPage = () => {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] ${isActive ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500/40' : 'bg-red-500/15 text-red-700 dark:text-red-300 ring-1 ring-red-500/40'}`} style={{ borderRadius: 999 }}>
-                    <span className={`w-1.5 h-1.5 ${isActive ? 'bg-emerald-500' : 'bg-red-500'}`} style={{ borderRadius: '50%' }} />
+                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] ${isActive ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500/40' : 'bg-red-500/15 text-red-700 dark:text-red-300 ring-1 ring-red-500/40'}`} style={{ borderRadius: 'var(--radius-sm)' }}>
+                    <span className={`w-1.5 h-1.5 ${isActive ? 'bg-emerald-500' : 'bg-red-500'}`} style={{ borderRadius: 'var(--radius-sm)' }} />
                     {isActive ? translate('Active') : translate('Expired')}
                   </span>
                   <p className="text-xs xl:text-sm font-semibold text-content-secondary dark:text-white/85">
@@ -202,9 +202,9 @@ const SubscriptionPage = () => {
 
               {/* Perforated stub: days left or the upgrade call-to-action */}
               <div className="relative p-4 xl:p-6 dark:bg-black/20 border-t border-dashed border-primary-300 dark:border-white/35 xl:border-t-0 xl:border-l flex flex-col items-center justify-center text-center gap-3">
-                <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
-                <span className="xl:hidden absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
-                <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
+                <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
+                <span className="xl:hidden absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
+                <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
                 {countdown !== null ? (
                   <div className="w-full">
                     {freePromoActive && (
@@ -219,7 +219,7 @@ const SubscriptionPage = () => {
                         { v: countdown.minutes, l: 'Min' },
                         { v: countdown.seconds, l: 'Sec' },
                       ].map((u) => (
-                        <div key={u.l} className="min-w-0 px-1 py-2 ring-1 ring-primary-200 dark:ring-white/20" style={{ borderRadius: 10 }}>
+                        <div key={u.l} className="min-w-0 px-1 py-2 ring-1 ring-primary-200 dark:ring-white/20" style={{ borderRadius: 'var(--radius)' }}>
                           <div className="text-xl xl:text-2xl font-bold font-outfit leading-none tabular-nums text-primary-600">{String(u.v).padStart(2, '0')}</div>
                           <div className="mt-1 text-[8px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 truncate">{translate(u.l)}</div>
                         </div>
@@ -247,7 +247,7 @@ const SubscriptionPage = () => {
           <section className="text-center space-y-2 xl:space-y-3 max-w-3xl mx-auto px-2">
             <h2 className="text-xl xl:text-4xl font-bold font-outfit tracking-tight">{translate('Choose your exam prep plan')}</h2>
             {freePromoActive && (
-              <p className="inline-block text-xs xl:text-base font-bold text-primary-600 border border-dashed border-primary-400/70 px-4 py-2" style={{ borderRadius: 12 }}>
+              <p className="inline-block text-xs xl:text-base font-bold text-primary-600 border border-dashed border-primary-400/70 px-4 py-2" style={{ borderRadius: 'var(--radius)' }}>
                 {translate('🎁 PRO is free for everyone till 31 Dec 2026 — every registered student already gets full access to all practice tests, mock exams, and detailed performance reports.')}
               </p>
             )}
@@ -261,9 +261,9 @@ const SubscriptionPage = () => {
           {/* Coupon voucher slot */}
           <div className="max-w-xl mx-auto w-full px-2">
             {appliedCoupon ? (
-              <div className="relative flex items-center justify-between gap-3 border border-dashed border-primary-500/60 px-4 py-3" style={{ borderRadius: 12 }}>
+              <div className="relative flex items-center justify-between gap-3 border border-dashed border-primary-500/60 px-4 py-3" style={{ borderRadius: 'var(--radius)' }}>
                 <div className="flex items-center gap-3 min-w-0">
-                  <span className="w-9 h-9 flex items-center justify-center border border-border-primary text-primary-600 shrink-0" style={{ borderRadius: 10 }}><Tag className="w-4 h-4" /></span>
+                  <span className="w-9 h-9 flex items-center justify-center border border-primary-600 text-primary-600 shrink-0" style={{ borderRadius: 'var(--radius-sm)' }}><Tag className="w-4 h-4" /></span>
                   <div className="min-w-0">
                     <p className="text-sm font-bold text-primary-600 tracking-[0.08em]">{appliedCoupon.code} {translate('applied')}</p>
                     <p className="text-xs font-medium text-content-secondary truncate">{appliedCoupon.description}</p>
@@ -274,7 +274,7 @@ const SubscriptionPage = () => {
                 </button>
               </div>
             ) : (
-              <form onSubmit={(e) => { e.preventDefault(); applyCoupon(); }} className="flex items-stretch bg-background-surface border border-dashed border-primary-500/40 overflow-hidden" style={{ borderRadius: 12 }}>
+              <form onSubmit={(e) => { e.preventDefault(); applyCoupon(); }} className="flex items-stretch bg-background-surface border border-dashed border-primary-500/40 overflow-hidden" style={{ borderRadius: 'var(--radius)' }}>
                 <span className="flex items-center px-3 text-primary-600"><Tag className="w-5 h-5" /></span>
                 <input
                   value={couponInput}
@@ -302,20 +302,20 @@ const SubscriptionPage = () => {
                 <div
                   key={plan.key}
                   className={`relative flex flex-col overflow-hidden h-full transition-transform hover:-translate-y-1 ${hl ? 'text-on-primary ring-2 ring-primary-300/70 bg-primary-600' : 'bg-background-surface border border-border-primary'}`}
-                  style={{ borderRadius: 16 }}
+                  style={{ borderRadius: 'var(--radius)' }}
                 >
-                  {hl && <div className="pointer-events-none absolute -top-16 -right-10 w-48 h-48 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />}
+                  {hl && <div className="pointer-events-none absolute -top-16 -right-10 w-48 h-48 bg-primary-300/20 blur-3xl" style={{ borderRadius: 'var(--radius-sm)' }} />}
 
                   <div className="relative p-4 xl:p-6 space-y-3 flex-1">
                     <div className="flex items-start justify-between gap-2 min-h-[28px]">
                       <div className="flex items-center gap-2 min-w-0">
-                        <span className={`w-8 h-8 flex items-center justify-center shrink-0 ${hl ? 'text-on-primary bg-primary-600' : 'text-primary-600'}`} style={{ borderRadius: 10 }}>
+                        <span className={`w-8 h-8 flex items-center justify-center shrink-0 ${hl ? 'text-on-primary bg-primary-600' : 'text-primary-600'}`} style={{ borderRadius: 'var(--radius)' }}>
                           <Crown className="w-4 h-4" />
                         </span>
                         <h3 className="text-base xl:text-xl font-bold font-outfit tracking-tight truncate">{translate(plan.label)}</h3>
                       </div>
                       {plan.badge && (
-                        <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] px-2 py-1 text-on-primary whitespace-nowrap bg-primary-600" style={{ borderRadius: 999 }}>
+                        <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] px-2 py-1 text-on-primary whitespace-nowrap bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                           {translate(plan.badge)}
                         </span>
                       )}
@@ -333,12 +333,12 @@ const SubscriptionPage = () => {
                       </p>
                       <div className="flex flex-wrap gap-1.5 pt-0.5">
                         {couponPrice && (
-                          <span className="text-[10px] xl:text-xs font-bold px-2.5 py-1 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500/40" style={{ borderRadius: 999 }}>
+                          <span className="text-[10px] xl:text-xs font-bold px-2.5 py-1 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500/40" style={{ borderRadius: 'var(--radius-sm)' }}>
                             {translate('Coupon saves ₹{amount}', { amount: fmtMoney(couponPrice.discount) })}
                           </span>
                         )}
                         {plan.discountPct > 0 && (
-                          <span className={`text-[10px] xl:text-xs font-bold px-2.5 py-1 ${hl ? 'bg-white/20 text-white' : 'text-primary-600'}`} style={{ borderRadius: 999 }}>
+                          <span className={`text-[10px] xl:text-xs font-bold px-2.5 py-1 ${hl ? 'bg-white/20 text-white' : 'text-primary-600'}`} style={{ borderRadius: 'var(--radius-sm)' }}>
                             {plan.discountPct}% OFF
                           </span>
                         )}
@@ -374,8 +374,8 @@ const SubscriptionPage = () => {
           <TicketCard icon={Crown} title={translate('What you get with every PRO plan')}>
             <ul className="grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-3">
               {PRO_PLAN_FEATURES.map((feature) => (
-                <li key={feature} className="flex items-center gap-3 px-3 py-2.5 bg-background-surface-secondary border-b-2 border-dashed border-primary-500/40" style={{ borderRadius: 10 }}>
-                  <span className="w-7 h-7 flex items-center justify-center text-primary-600 shrink-0" style={{ borderRadius: 8 }}>
+                <li key={feature} className="flex items-center gap-3 px-3 py-2.5 bg-background-surface-secondary border-b-2 border-dashed border-primary-500/40" style={{ borderRadius: 'var(--radius)' }}>
+                  <span className="w-7 h-7 flex items-center justify-center text-primary-600 shrink-0 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                     <CircleCheck className="w-4 h-4" />
                   </span>
                   <span className="text-xs xl:text-sm font-bold text-content-primary">{translate(feature)}</span>

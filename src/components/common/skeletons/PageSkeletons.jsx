@@ -347,7 +347,7 @@ export const SubscriptionPageSkeleton = () => (
 // footer actions | stat tiles + rank stub), the segmented tab bar and the first tab's cards.
 export const ProfilePageSkeleton = () => (
   <div className="container mx-auto space-y-2 xl:space-y-4 mt-4 font-outfit">
-    <div className="overflow-hidden bg-background-surface ring-1 ring-primary-200 dark:ring-white/10" style={{ borderRadius: 16 }}>
+    <div className="overflow-hidden bg-background-surface ring-1 ring-primary-200 dark:ring-white/10" style={{ borderRadius: 'var(--radius)' }}>
       {/* Header strip */}
       <div className="flex items-center justify-between gap-3 px-4 xl:px-6 py-2 dark:bg-black/25 border-b border-primary-200 dark:border-white/15">
         <div className="flex items-center gap-2">
@@ -408,7 +408,7 @@ export const ProfilePageSkeleton = () => (
     </div>
 
     {/* Segmented tab bar */}
-    <div className="flex gap-1 p-1 w-fit max-w-full bg-background-surface ring-1 ring-primary-200 dark:ring-white/10" style={{ borderRadius: 12 }}>
+    <div className="flex gap-1 p-1 w-fit max-w-full bg-background-surface ring-1 ring-primary-200 dark:ring-white/10" style={{ borderRadius: 'var(--radius)' }}>
       {[0, 1, 2].map((i) => <Sh key={i} className="h-9 w-28 rounded-lg shrink-0" />)}
     </div>
 

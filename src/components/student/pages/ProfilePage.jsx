@@ -189,7 +189,7 @@ const ProfilePage = () => {
   };
 
   const renderStatTile = (item) => (
-    <div key={item.label} className="relative overflow-hidden flex flex-col justify-center hover:bg-background-surface ring-1 ring-primary-200 dark:ring-white/20 px-2.5 py-1.5 transition-colors" style={{ borderRadius: 10 }}>
+    <div key={item.label} className="relative overflow-hidden flex flex-col justify-center hover:bg-background-surface ring-1 ring-primary-200 dark:ring-white/20 px-2.5 py-1.5 transition-colors" style={{ borderRadius: 'var(--radius)' }}>
       <item.icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-primary-600/10 dark:text-white/10" />
       <p className="relative text-base xl:text-xl font-bold font-outfit leading-none text-primary-600 truncate">{item.value}</p>
       <p className="relative mt-1 text-[8px] xl:text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 leading-tight break-words">{translate(item.label)}</p>
@@ -231,7 +231,7 @@ const ProfilePage = () => {
         {/* Hero — "Student admit card": a hall-ticket styled profile with a perforated rank stub */}
         <section
           className="relative overflow-hidden text-content-primary ring-1 ring-primary-200 dark:ring-white/10 bg-background-surface"
-          style={{ borderRadius: 16 }}
+          style={{ borderRadius: 'var(--radius)' }}
         >
 
           {/* Ticket header strip */}
@@ -247,7 +247,7 @@ const ProfilePage = () => {
                   <span
                     key={index}
                     className="inline-flex items-center gap-1 px-2 py-0.5 text-primary-600 ring-1 ring-primary-300 dark:text-white dark:ring-white/30 text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em]"
-                    style={{ borderRadius: 999 }}
+                    style={{ borderRadius: 'var(--radius-sm)' }}
                   >
                     <Award className="w-3 h-3" />
                     {badge}
@@ -275,7 +275,7 @@ const ProfilePage = () => {
             <div className="p-3 xl:p-4 space-y-3">
               <div className="flex items-start gap-4 xl:gap-6">
                 {/* Passport-style photo */}
-                <div className="shrink-0 bg-background-surface p-1" style={{ borderRadius: 6 }}>
+                <div className="shrink-0 bg-background-surface p-1" style={{ borderRadius: 'var(--radius)' }}>
                   <Avatar student={student} sizeClass="w-16 h-20 sm:w-20 sm:h-24 xl:w-24 xl:h-28 text-3xl xl:text-4xl" />
                 </div>
 
@@ -330,8 +330,8 @@ const ProfilePage = () => {
                 </div>
                 <div className="grid grid-cols-2 xl:grid-cols-3 grid-flow-dense gap-2">
                   {accountDetails.map((item) => (
-                    <div key={item.label} className={`flex items-center gap-2 px-2 py-1.5 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 min-w-0 ${['Email', 'City'].includes(item.label) ? 'col-span-2 xl:col-span-1' : ''}`} style={{ borderRadius: 10 }}>
-                      <div className="w-7 h-7 flex items-center justify-center text-primary-600 flex-shrink-0" style={{ borderRadius: 8 }}>
+                    <div key={item.label} className={`flex items-center gap-2 px-2 py-1.5 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 min-w-0 ${['Email', 'City'].includes(item.label) ? 'col-span-2 xl:col-span-1' : ''}`} style={{ borderRadius: 'var(--radius)' }}>
+                      <div className="w-7 h-7 flex items-center justify-center text-primary-600 flex-shrink-0 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                         <item.icon className="w-4 h-4" />
                       </div>
                       <div className="min-w-0">
@@ -378,9 +378,9 @@ const ProfilePage = () => {
 
             {/* Perforated rank stub */}
             <div className="relative p-3 xl:p-4 dark:bg-black/20 border-t border-dashed border-primary-300 dark:border-white/35 xl:border-t-0 xl:border-l flex flex-col gap-2.5">
-              <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
-              <span className="xl:hidden absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
-              <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
+              <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
+              <span className="xl:hidden absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
+              <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
 
               {/* Profile counters: streak, followers, following, views, referrals, referral rewards */}
               <div className="grid grid-cols-2 auto-rows-fr gap-1.5 pb-2.5 border-b border-dashed border-primary-300 dark:border-white/35 flex-1">
@@ -403,7 +403,7 @@ const ProfilePage = () => {
               </div>
 
               <div className="grid grid-cols-1 gap-1.5">
-                <div className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
+                <div className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 'var(--radius)' }}>
                   <p className="text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/70 leading-none">{translate('All India Rank')}</p>
                   <div className="flex flex-wrap items-baseline justify-between gap-x-2">
                     <p className="text-2xl font-bold font-outfit leading-tight text-primary-600">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
@@ -417,7 +417,7 @@ const ProfilePage = () => {
 
               <div className="grid grid-cols-2 gap-1.5">
                 {[{ label: 'State Rank', data: student?.stateRank }, { label: 'City Rank', data: student?.cityRank }].map(({ label, data }) => (
-                  <div key={label} className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-2 min-w-0" style={{ borderRadius: 10 }}>
+                  <div key={label} className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-2 min-w-0" style={{ borderRadius: 'var(--radius)' }}>
                     <p className="text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/70 leading-none">{translate(label)}</p>
                     <div className="flex flex-wrap items-baseline justify-between gap-x-2">
                       <p className="text-2xl font-bold font-outfit leading-tight text-primary-600">{data?.rank ? `#${data.rank}` : '—'}</p>
@@ -434,7 +434,7 @@ const ProfilePage = () => {
         </section>
 
         {/* Sub-tab navigation — green segmented bar */}
-        <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-background-surface ring-1 ring-primary-200 dark:ring-0 dark:bg-gradient-to-r dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 relative z-20 w-full sm:w-fit max-w-full" style={{ borderRadius: 12 }}>
+        <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-background-surface ring-1 ring-primary-200 dark:ring-0 dark:bg-gradient-to-r dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 relative z-20 w-full sm:w-fit max-w-full" style={{ borderRadius: 'var(--radius)' }}>
           {[
             { id: 'profile', label: 'My Profile', icon: Award },
             { id: 'bank', label: 'Bank Details', icon: Wallet },
@@ -472,7 +472,7 @@ const ProfilePage = () => {
                   <ProgressBar progress={completion.percentage} variant="primary" height="md" />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                     {completion.fields.map((field) => (
-                      <div key={field.field} className={`flex items-center gap-3 p-3 border border-dashed ${field.completed ? 'border-primary-500/40' : 'border-border-primary'}`} style={{ borderRadius: 10 }}>
+                      <div key={field.field} className={`flex items-center gap-3 p-3 border border-dashed ${field.completed ? 'border-primary-500/40' : 'border-border-primary'}`} style={{ borderRadius: 'var(--radius)' }}>
                         <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${field.completed ? 'text-primary-600' : 'text-slate-300 dark:text-slate-600'}`} />
                         <span className={`text-sm font-semibold ${field.completed ? 'text-content-primary' : 'text-content-secondary'}`}>{field.name}</span>
                       </div>
@@ -501,7 +501,7 @@ const ProfilePage = () => {
                       </button>
                       <div
                         className="flex flex-col items-center justify-center w-10 h-10 sm:w-14 sm:h-14 xl:w-16 xl:h-16 border-[3px] border-double border-primary-700 text-primary-600 dark:border-white/80 dark:text-white"
-                        style={{ borderRadius: 12, transform: 'rotate(-8deg)' }}
+                        style={{ borderRadius: 'var(--radius)', transform: 'rotate(-8deg)' }}
                         title={translate('Grade')}
                       >
                         <span className="text-base sm:text-xl xl:text-2xl font-bold font-outfit leading-none">{gradeFor(student?.performanceMetrics?.examStats?.overallReadiness || 0)}</span>
@@ -516,7 +516,7 @@ const ProfilePage = () => {
                       { label: 'Tests attempted', value: student?.performanceMetrics?.examStats?.mockTestsAttempted || 0 },
                       { label: 'Avg score', value: `${student?.performanceMetrics?.examStats?.averageMockScore || 0}%` },
                     ].map((item) => (
-                      <div key={item.label} className="border border-dashed border-border-primary bg-background-surface-secondary p-3 text-center" style={{ borderRadius: 12 }}>
+                      <div key={item.label} className="border border-dashed border-border-primary bg-background-surface-secondary p-3 text-center" style={{ borderRadius: 'var(--radius)' }}>
                         <p className="text-2xl xl:text-3xl font-bold font-outfit tracking-tight text-primary-600">{item.value}</p>
                         <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary mt-1">{translate(item.label)}</p>
                       </div>
@@ -554,7 +554,7 @@ const ProfilePage = () => {
                       </button>
                       <div
                         className="flex flex-col items-center justify-center w-10 h-10 sm:w-14 sm:h-14 xl:w-16 xl:h-16 border-[3px] border-double border-primary-700 text-primary-600 dark:border-white/80 dark:text-white"
-                        style={{ borderRadius: 12, transform: 'rotate(-8deg)' }}
+                        style={{ borderRadius: 'var(--radius)', transform: 'rotate(-8deg)' }}
                         title={translate('Grade')}
                       >
                         <span className="text-base sm:text-xl xl:text-2xl font-bold font-outfit leading-none">{gradeFor(quizStats?.avgAccuracy || 0)}</span>
@@ -570,7 +570,7 @@ const ProfilePage = () => {
                       { label: 'Avg score', value: `${quizStats?.avgScore || 0}%` },
                       { label: 'Best Score', value: `${quizStats?.bestScore || 0}%` },
                     ].map((item) => (
-                      <div key={item.label} className="border border-dashed border-border-primary bg-background-surface-secondary p-3 text-center" style={{ borderRadius: 12 }}>
+                      <div key={item.label} className="border border-dashed border-border-primary bg-background-surface-secondary p-3 text-center" style={{ borderRadius: 'var(--radius)' }}>
                         <p className="text-2xl xl:text-3xl font-bold font-outfit tracking-tight text-primary-600">{item.value}</p>
                         <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary mt-1">{translate(item.label)}</p>
                       </div>
@@ -613,12 +613,12 @@ const ProfilePage = () => {
                 {bankDetails ? (
                   <div className="flex flex-col lg:flex-row lg:items-center gap-5">
                     {/* Bank card visual */}
-                    <div className="relative overflow-hidden w-full max-w-md p-5 text-white ring-1 ring-white/10 bg-slate-950" style={{ borderRadius: 16 }}>
+                    <div className="relative overflow-hidden w-full max-w-md p-5 text-white ring-1 ring-white/10 bg-slate-950" style={{ borderRadius: 'var(--radius)' }}>
                       <div className="relative flex items-center justify-between">
                         <p className="text-sm font-bold uppercase tracking-[0.08em] truncate">{bankDetails.bankName}</p>
                         <Building2 className="w-6 h-6 text-primary-300 shrink-0" />
                       </div>
-                      <div className="relative mt-5 w-11 h-8 bg-background-surface" style={{ borderRadius: 6 }} />
+                      <div className="relative mt-5 w-11 h-8 bg-background-surface" style={{ borderRadius: 'var(--radius)' }} />
                       <p className="relative mt-4 font-mono text-lg xl:text-xl font-bold tracking-[0.08em]">•••• •••• {bankDetails.accountNumber?.slice(-4) || '----'}</p>
                       <p className="relative mt-3 text-xs font-bold uppercase tracking-[0.08em] text-white/80 truncate">{bankDetails.accountHolderName || translate('Account holder')}</p>
                     </div>
@@ -632,8 +632,8 @@ const ProfilePage = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="p-6 xl:p-10 border border-dashed border-border-primary text-center space-y-5" style={{ borderRadius: 14 }}>
-                    <div className="w-16 h-16 text-primary-600 flex items-center justify-center mx-auto" style={{ borderRadius: 14 }}>
+                  <div className="p-6 xl:p-10 border border-dashed border-border-primary text-center space-y-5" style={{ borderRadius: 'var(--radius)' }}>
+                    <div className="w-16 h-16 text-primary-600 flex items-center justify-center mx-auto border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                       <CreditCard className="w-8 h-8" />
                     </div>
                     <div className="space-y-2">
@@ -670,10 +670,10 @@ const ProfilePage = () => {
                       key={item.label}
                       onClick={item.onClick}
                       className="w-full flex items-center justify-between gap-3 px-4 py-3.5 bg-background-surface-secondary border-b-2 border-dashed border-primary-500/40 text-left transition-colors"
-                      style={{ borderRadius: 10 }}
+                      style={{ borderRadius: 'var(--radius)' }}
                     >
                       <span className="flex items-center gap-3 min-w-0">
-                        <span className="w-9 h-9 flex items-center justify-center text-primary-600 shrink-0" style={{ borderRadius: 10 }}><item.icon className="w-4 h-4" /></span>
+                        <span className="w-9 h-9 flex items-center justify-center text-primary-600 shrink-0 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><item.icon className="w-4 h-4" /></span>
                         <span className="text-sm font-bold text-content-primary truncate">{translate(item.label)}</span>
                       </span>
                       <ArrowRight className="w-4 h-4 text-primary-600 shrink-0" />

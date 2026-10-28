@@ -154,7 +154,7 @@ const AdminStreakPage = () => {
                       {rankedLeaderboard.map((entry, i) => (
                         <Card as="article" key={entry._id || i} className="flex flex-col gap-3">
                           <div className="flex items-start justify-between gap-2">
-                            <div className="w-10 h-10 rounded-xl text-primary-600 flex items-center justify-center shrink-0 border border-border-primary"><Flame className="w-5 h-5" /></div>
+                            <div className="w-10 h-10 rounded-md text-primary-600 flex items-center justify-center shrink-0 border border-primary-600"><Flame className="w-5 h-5" /></div>
                             <span className="text-[10px] font-bold text-content-muted">#{entry.rank}</span>
                           </div>
                           <div>

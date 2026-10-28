@@ -220,7 +220,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                     { label: totalPYQs === 1 ? 'verified PYQ paper' : 'verified PYQ papers', value: totalPYQs },
                                     { label: examsWithPYQ.length === 1 ? 'exam' : 'exams', value: examsWithPYQ.length },
                                 ].map((st) => (
-                                    <div key={st.label} className="border border-border-primary px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+                                    <div key={st.label} className="border border-border-primary px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 'var(--radius)' }}>
                                         <p className="text-lg font-bold font-outfit leading-none text-primary-600">{st.value}</p>
                                         <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary whitespace-nowrap">{st.label}</p>
                                     </div>

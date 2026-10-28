@@ -97,7 +97,7 @@ export default function FollowingListPage() {
                 <section
                   key={user._id}
                   onClick={() => handleUserClick(user.username)}
-                  className="flex items-center min-w-0 gap-3 xl:gap-4 p-3 xl:p-4 bg-background-surface rounded-[1rem] xl:rounded-3xl border border-border-primary hover:border-primary-700 transition-all cursor-pointer group active:translate-y-1 active:border-b-2"
+                  className="flex items-center min-w-0 gap-3 xl:gap-4 p-3 xl:p-4 bg-background-surface rounded-2xl xl:rounded-3xl border border-border-primary hover:border-primary-700 transition-all cursor-pointer group active:translate-y-1 active:border-b-2"
                 >
                   {user.profilePicture ? (
                     <img

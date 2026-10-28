@@ -148,7 +148,7 @@ const AboutUs = () => {
                <Card as="section" className="p-10 border-none border border-border-primary">
                   <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
                      <div className="xl:col-span-4 text-center xl:text-left space-y-6">
-                        <div className="w-20 h-20 bg-background-surface rounded-3xl flex items-center justify-center mx-auto xl:mx-0">
+                        <div className="w-20 h-20 bg-background-surface rounded-md flex items-center justify-center mx-auto xl:mx-0 border border-primary-600">
                            <Building2 className="w-10 h-10 text-primary-600" />
                         </div>
                         <div className="space-y-2">

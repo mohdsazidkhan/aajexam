@@ -118,7 +118,7 @@ export const ProfileSkeleton = () => (
 // strips) and the sections underneath (community questions, reels carousel).
 export const PublicProfileSkeleton = () => (
   <div className="font-outfit w-full pt-3 xl:pt-5 space-y-2 xl:space-y-3">
-    <div className="overflow-hidden bg-background-surface ring-1 ring-primary-200 dark:ring-white/10" style={{ borderRadius: 32 }}>
+    <div className="overflow-hidden bg-background-surface ring-1 ring-primary-200 dark:ring-white/10" style={{ borderRadius: 'var(--radius)' }}>
       <div className="p-3 sm:p-4 xl:p-5">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4">
           <Sh className="w-16 h-20 sm:w-20 sm:h-24 xl:w-24 xl:h-28 rounded-md shrink-0" />
@@ -157,7 +157,7 @@ export const PublicProfileSkeleton = () => (
       ))}
     </div>
 
-    <div className="bg-background-surface ring-1 ring-primary-500/15 p-3 sm:p-4 space-y-2.5" style={{ borderRadius: 22 }}>
+    <div className="bg-background-surface ring-1 ring-primary-500/15 p-3 sm:p-4 space-y-2.5" style={{ borderRadius: 'var(--radius)' }}>
       <div className="flex items-center gap-2"><Sh className="h-7 w-7 rounded-lg" /><Sh className="h-3 w-40 rounded-md" /></div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         <Sh className="h-20 rounded-2xl" />
@@ -165,10 +165,10 @@ export const PublicProfileSkeleton = () => (
       </div>
     </div>
 
-    <div className="bg-background-surface ring-1 ring-primary-500/15 p-3 sm:p-4 space-y-2.5" style={{ borderRadius: 22 }}>
+    <div className="bg-background-surface ring-1 ring-primary-500/15 p-3 sm:p-4 space-y-2.5" style={{ borderRadius: 'var(--radius)' }}>
       <div className="flex items-center gap-2"><Sh className="h-7 w-7 rounded-lg" /><Sh className="h-3 w-24 rounded-md" /></div>
       <div className="flex gap-3 overflow-hidden">
-        {[0, 1, 2, 3, 4].map((i) => <Sh key={i} className="w-36 sm:w-44 aspect-[3/4] rounded-[22px] shrink-0" />)}
+        {[0, 1, 2, 3, 4].map((i) => <Sh key={i} className="w-36 sm:w-44 aspect-[3/4] rounded-2xl shrink-0" />)}
       </div>
     </div>
   </div>

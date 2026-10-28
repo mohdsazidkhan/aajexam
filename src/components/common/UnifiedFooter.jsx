@@ -165,7 +165,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   aria-label={translate('Contact us on WhatsApp')}
                   className="flex items-center gap-3 group/item"
                 >
-                  <div className="w-11 h-11 border border-border-primary text-primary-600 rounded-xl flex items-center justify-center group-hover/item:border-primary-600 transition-colors">
+                  <div className="w-11 h-11 border border-primary-600 text-primary-600 rounded-md flex items-center justify-center group-hover/item:border-primary-600 transition-colors">
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">

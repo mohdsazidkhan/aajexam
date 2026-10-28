@@ -66,7 +66,7 @@ const ResetPasswordPage = () => {
 
           <Card as="section" className="w-full max-w-md p-5 xl:p-10 border relative z-10 space-y-8">
             <div className="text-center space-y-2">
-              <div className="w-16 h-16 text-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 text-primary-600 rounded-md flex items-center justify-center mx-auto mb-6 border border-primary-600">
                 <Lock className="w-8 h-8" />
               </div>
               <h1 className="text-xl xl:text-3xl font-bold font-outfit tracking-tight">Reset Password</h1>
@@ -75,7 +75,7 @@ const ResetPasswordPage = () => {
             <AnimatePresence mode="wait">
               {success ? (
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="py-10 text-center space-y-6">
-                  <div className="w-20 h-20 text-primary-600 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-20 h-20 text-primary-600 rounded-full flex items-center justify-center mx-auto border border-primary-600">
                     <ShieldCheck className="w-10 h-10" />
                   </div>
                   <section className="space-y-2">

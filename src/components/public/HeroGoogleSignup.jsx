@@ -57,9 +57,9 @@ const GoogleButton = () => {
       disabled={busy}
       onClick={() => { trackPrompt('sample', 'click'); googleSignup(); }}
       className={BTN}
-      style={{ borderRadius: 8 }}
+      style={{ borderRadius: 'var(--radius)' }}
     >
-      {busy ? <span className="w-4 h-4 border border-primary-800 border-t-transparent rounded-full animate-spin" /> : <GoogleIcon />}
+      {busy ? <span className="w-4 h-4 border border-primary-800 border-t-transparent rounded-[50%] animate-spin" /> : <GoogleIcon />}
       {busy ? translate('Signing in...') : translate(promoActive ? 'Get PRO Free Now' : 'Claim Free Account')}
     </button>
   );
@@ -72,7 +72,7 @@ export default function HeroGoogleSignup() {
   if (!clientId || clientId === 'your_google_client_id_here') {
     // No Google client configured (local setups): fall back to the regular sign-up page.
     return (
-      <Link href="/register" data-cta="hero_quiz_signup" className={BTN} style={{ borderRadius: 8 }}>
+      <Link href="/register" data-cta="hero_quiz_signup" className={BTN} style={{ borderRadius: 'var(--radius)' }}>
         {translate('Join Now For Free')} <ArrowRight className="w-3.5 h-3.5" />
       </Link>
     );

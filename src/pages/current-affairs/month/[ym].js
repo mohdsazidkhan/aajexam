@@ -27,7 +27,7 @@ const CurrentAffairsMonth = ({ year, month, total, groups, prevKey, nextKey, ind
         ])}
       />
 
-      <header className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 space-y-2 bg-background-surface" style={{ borderRadius: 16 }}>
+      <header className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 space-y-2 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
         <Link href="/current-affairs" className="block text-right text-sm font-bold text-primary-600 hover:underline">← Current Affairs</Link>
         <h1 className="text-2xl xl:text-4xl font-bold text-content-primary">Current Affairs {label} – Monthly Digest</h1>
         <p className="text-sm xl:text-base font-semibold text-content-secondary dark:text-white/60">

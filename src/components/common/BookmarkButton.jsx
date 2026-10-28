@@ -85,7 +85,7 @@ const BookmarkButton = ({ type, id, variant = 'icon', className = '' }) => {
     return (
       <button type="button" onClick={toggle} disabled={busy} aria-pressed={saved} title={label}
         className={`inline-flex items-center gap-1.5 px-3 py-1.5 ring-1 text-[11px] font-bold uppercase tracking-[0.08em] transition-colors disabled:opacity-60 ${tone} ${className}`}
-        style={{ borderRadius: 999 }}>
+        style={{ borderRadius: 'var(--radius-sm)' }}>
         <Icon className="w-4 h-4" />{label}
       </button>
     );
@@ -93,7 +93,7 @@ const BookmarkButton = ({ type, id, variant = 'icon', className = '' }) => {
   return (
     <button type="button" onClick={toggle} disabled={busy} aria-pressed={saved} aria-label={label} title={label}
       className={`inline-flex items-center justify-center w-9 h-9 ring-1 transition-colors disabled:opacity-60 ${tone} ${className}`}
-      style={{ borderRadius: 12 }}>
+      style={{ borderRadius: 'var(--radius)' }}>
       <Icon className="w-4 h-4" />
     </button>
   );

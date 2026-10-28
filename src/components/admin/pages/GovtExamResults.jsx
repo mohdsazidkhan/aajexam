@@ -547,7 +547,7 @@ const AdminGovtExamResults = () => {
 
                   <section className="px-4 py-2.5 border-b-2 border-border-primary flex items-center justify-between shrink-0">
                     <div className="flex items-center gap-2 xl:gap-3">
-                      <div className="w-10 h-10 xl:w-11 xl:h-11 border border-border-primary text-primary-600 rounded-xl flex items-center justify-center shrink-0"><Award className="w-5 h-5" /></div>
+                      <div className="w-10 h-10 xl:w-11 xl:h-11 border border-primary-600 text-primary-600 rounded-md flex items-center justify-center shrink-0"><Award className="w-5 h-5" /></div>
                       <section>
                         <h2 className="text-base xl:text-base font-bold text-content-primary uppercase italic tracking-tight leading-none">Attempt <span className="text-primary-600">Details</span></h2>
                         <p className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] mt-1.5 leading-none italic">{selectedAttempt.user?.name} // {selectedAttempt.practiceTest?.title}</p>

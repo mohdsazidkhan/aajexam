@@ -96,7 +96,7 @@ const InterviewQuestionDetailPage = ({ question }) => {
           )}
         </div>
 
-        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 space-y-2 bg-background-surface" style={{ borderRadius: 16 }}>
+        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 space-y-2 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
           <div className="flex items-center gap-2 flex-wrap">
             {question.category?.type && <span className="px-2 py-0.5 rounded text-[9px] font-bold text-primary-600 uppercase">{translate('{type} job', { type: question.category.type })}</span>}
             {question.category?.name && <span className="text-[10px] font-bold text-content-muted dark:text-white/60">{translate('{name} Interview Questions', { name: question.category.name })}</span>}

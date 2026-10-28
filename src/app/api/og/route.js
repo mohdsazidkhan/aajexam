@@ -73,7 +73,7 @@ export async function GET(request) {
                   marginLeft: '16px',
                   padding: '4px 12px',
                   border: '1px solid #334155',
-                  borderRadius: '20px',
+                  borderRadius: 'var(--radius)',
                   textTransform: 'uppercase',
                   letterSpacing: '1px',
                 }}

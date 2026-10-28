@@ -100,7 +100,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                     </nav>
 
                     {/* Hero */}
-                    <header className="relative overflow-hidden border border-border-primary p-6 md:p-6 xl:p-8 mb-10 bg-background-surface" style={{ borderRadius: 16 }}>
+                    <header className="relative overflow-hidden border border-border-primary p-6 md:p-6 xl:p-8 mb-10 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
             <div className="relative">
                         <div className="flex items-center mb-6 gap-4 flex-wrap">
                             <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-2xl flex items-center justify-center border border-border-primary flex-shrink-0">

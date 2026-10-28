@@ -47,7 +47,7 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
         <div className="hidden xl:flex justify-end mb-4"><BackButton onClick={() => router.back()}><ArrowLeft className="w-4 h-4" /> {translate('Back')}</BackButton></div>
 
         {/* Hero */}
-        <div className="relative overflow-hidden text-content-primary border border-border-primary p-5 xl:p-6 mb-5 bg-background-surface" style={{ borderRadius: 16 }}>
+        <div className="relative overflow-hidden text-content-primary border border-border-primary p-5 xl:p-6 mb-5 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
           <header className="z-auto relative">
           <BookMarked className="w-8 h-8 mb-2 text-content-secondary dark:text-primary-600" />
           <h1 className="text-xl xl:text-3xl font-bold">{translateData(subject.name)}</h1>

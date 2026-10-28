@@ -42,7 +42,7 @@ function StepBar({ step }) {
           <React.Fragment key={label}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
               <div style={{
-                width: 36, height: 36, borderRadius: '50%',
+                width: 36, height: 36, borderRadius: 'var(--radius-sm)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 background: done ? '#58cc02' : active ? '#58cc02' : 'rgba(var(--gt-fg),0.08)',
                 border: active ? '2px solid #58cc02' : done ? '2px solid #58cc02' : '2px solid rgba(var(--gt-fg),0.15)',
@@ -98,7 +98,7 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
       style={{
         background: 'rgba(var(--gt-fg),0.04)',
         border: `1px solid ${status === STATUS.GENERATING ? 'rgba(var(--gt-fg),0.4)' : status === STATUS.DONE ? 'rgba(88,204,2,0.25)' : status === STATUS.ERROR ? 'rgba(var(--gt-fg),0.3)' : 'rgba(var(--gt-fg),0.08)'}`,
-        borderRadius: 14,
+        borderRadius: 'var(--radius)',
         marginBottom: 12,
         overflow: 'hidden',
         transition: 'border-color 0.3s',
@@ -114,7 +114,7 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
         onClick={() => questions.length > 0 && onToggle()}
       >
         <div style={{
-          width: 8, height: 8, borderRadius: '50%',
+          width: 8, height: 8, borderRadius: 'var(--radius-sm)',
           background: statusColor,
           boxShadow: status === STATUS.GENERATING ? '0 0 10px rgba(var(--gt-fg),0.8)' : 'none',
           animation: status === STATUS.GENERATING ? 'pulse 1.5s ease-in-out infinite' : 'none',
@@ -160,7 +160,7 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
               {/* Show streaming text if generating */}
               {status === STATUS.GENERATING && streamText && (
                 <div style={{ 
-                  background: 'rgba(var(--gt-fg), 0.06)', padding: '12px 16px', borderRadius: 10,
+                  background: 'rgba(var(--gt-fg), 0.06)', padding: '12px 16px', borderRadius: 'var(--radius)',
                   border: '1px solid rgba(88,204,2,0.2)', color: 'var(--gt-accent)',
                   fontSize: 12, fontFamily: 'monospace', whiteSpace: 'pre-wrap',
                   maxHeight: 250, overflowY: 'auto'
@@ -193,12 +193,12 @@ function QuestionPreview({ question, index }) {
     <div style={{
       background: 'rgba(var(--gt-fg),0.03)',
       border: '1px solid rgba(var(--gt-fg),0.06)',
-      borderRadius: 10,
+      borderRadius: 'var(--radius)',
       padding: '12px 14px',
     }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 10 }}>
         <span style={{
-          minWidth: 24, height: 24, borderRadius: 6,
+          minWidth: 24, height: 24, borderRadius: 'var(--radius)',
           background: 'rgba(88,204,2,0.2)', display: 'flex', alignItems: 'center',
           justifyContent: 'center', fontSize: 11, fontWeight: 700, color: 'var(--gt-accent)',
         }}>
@@ -208,7 +208,7 @@ function QuestionPreview({ question, index }) {
           {question.questionText}
         </p>
         <span style={{
-          fontSize: 10, fontWeight: 600, padding: '2px 7px', borderRadius: 20,
+          fontSize: 10, fontWeight: 600, padding: '2px 7px', borderRadius: 'var(--radius)',
           background: `${diffColors[question.difficulty] || 'var(--gt-text)'}22`,
           color: diffColors[question.difficulty] || 'var(--gt-text)',
         }}>
@@ -262,7 +262,7 @@ function QuestionPreview({ question, index }) {
         <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', marginTop: 8 }}>
           {question.tags.map((t, ti) => (
             <span key={ti} style={{
-              fontSize: 10, padding: '2px 6px', borderRadius: 10,
+              fontSize: 10, padding: '2px 6px', borderRadius: 'var(--radius)',
               background: 'rgba(88,204,2,0.12)', color: 'var(--gt-accent)',
             }}>#{t}</span>
           ))}
@@ -575,7 +575,7 @@ const AdminGenerateTests = () => {
     <button onClick={handleReset} style={{
       width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '8px 14px',
       background: 'rgba(var(--gt-fg),0.06)', border: '1px solid rgba(var(--gt-fg),0.1)',
-      borderRadius: 8, color: 'var(--gt-text-2)', cursor: 'pointer', fontSize: 13,
+      borderRadius: 'var(--radius)', color: 'var(--gt-text-2)', cursor: 'pointer', fontSize: 13,
       fontFamily: 'inherit', transition: 'all 0.2s',
     }}>
       <RefreshCw size={13} /> Start Over
@@ -621,7 +621,7 @@ const AdminGenerateTests = () => {
         {/* ── STEP 1: SELECT EXAM ── */}
         {step === 1 && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <section style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 16, padding: 28 }}>
+            <section style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 'var(--radius)', padding: 28 }}>
               <h2 style={{ margin: '0 0 20px', fontSize: 16, fontWeight: 700, color: 'var(--gt-text)', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <BookOpen size={16} color="#58cc02" /> Select Exam
               </h2>
@@ -655,7 +655,7 @@ const AdminGenerateTests = () => {
                         key={exam._id}
                         onClick={() => handleExamSelect(exam)}
                         style={{
-                          padding: '14px 16px', borderRadius: 12, cursor: 'pointer',
+                          padding: '14px 16px', borderRadius: 'var(--radius)', cursor: 'pointer',
                           background: 'rgba(var(--gt-fg),0.04)',
                           border: '1px solid rgba(var(--gt-fg),0.1)',
                           color: 'var(--gt-text)', textAlign: 'left', fontFamily: 'inherit',
@@ -688,12 +688,12 @@ const AdminGenerateTests = () => {
         {/* ── STEP 2: SELECT PATTERN ── */}
         {step === 2 && selectedExam && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 16, padding: 28 }}>
+            <div style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 'var(--radius)', padding: 28 }}>
               <section style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
                 <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: 'var(--gt-text)', display: 'flex', alignItems: 'center', gap: 8 }}>
                   <Layers size={16} color="#58cc02" /> Select Exam Pattern
                 </h2>
-                <span style={{ fontSize: 12, padding: '3px 10px', borderRadius: 20, background: 'rgba(88,204,2,0.15)', color: 'var(--gt-accent)' }}>
+                <span style={{ fontSize: 12, padding: '3px 10px', borderRadius: 'var(--radius)', background: 'rgba(88,204,2,0.15)', color: 'var(--gt-accent)' }}>
                   {selectedExam.name}
                 </span>
               </section>
@@ -710,7 +710,7 @@ const AdminGenerateTests = () => {
                       key={pattern._id}
                       onClick={() => handlePatternSelect(pattern)}
                       style={{
-                        padding: '18px 20px', borderRadius: 14, cursor: 'pointer',
+                        padding: '18px 20px', borderRadius: 'var(--radius)', cursor: 'pointer',
                         background: 'rgba(var(--gt-fg),0.04)',
                         border: '1px solid rgba(var(--gt-fg),0.1)',
                         color: 'var(--gt-text)', textAlign: 'left', fontFamily: 'inherit',
@@ -741,7 +741,7 @@ const AdminGenerateTests = () => {
                         <div style={{ display: 'flex', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
                           {pattern.sections.map((s, si) => (
                             <span key={si} style={{
-                              fontSize: 11, padding: '3px 8px', borderRadius: 8,
+                              fontSize: 11, padding: '3px 8px', borderRadius: 'var(--radius)',
                               background: 'rgba(88,204,2,0.12)', color: 'var(--gt-accent)',
                             }}>
                               {s.name} ({s.totalQuestions}Q)
@@ -761,7 +761,7 @@ const AdminGenerateTests = () => {
         {step === 3 && selectedPattern && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             {/* Config card */}
-            <section style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+            <section style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 'var(--radius)', padding: 24, marginBottom: 20 }}>
               <h2 style={{ margin: '0 0 18px', fontSize: 15, fontWeight: 700, color: 'var(--gt-text)', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <Sparkles size={15} color="#58cc02" /> Generation Config
               </h2>
@@ -788,7 +788,7 @@ const AdminGenerateTests = () => {
                         key={val}
                         onClick={() => !generating && setLanguage(val)}
                         style={{
-                          flex: 1, padding: '10px 12px', borderRadius: 10, cursor: generating ? 'not-allowed' : 'pointer',
+                          flex: 1, padding: '10px 12px', borderRadius: 'var(--radius)', cursor: generating ? 'not-allowed' : 'pointer',
                           background: language === val ? 'rgba(88,204,2,0.25)' : 'rgba(var(--gt-fg),0.04)',
                           border: `1px solid ${language === val ? '#58cc02' : 'rgba(var(--gt-fg),0.1)'}`,
                           color: language === val ? 'var(--gt-accent)' : 'var(--gt-text-2)',
@@ -818,7 +818,7 @@ const AdminGenerateTests = () => {
               </div>
 
               {/* Pattern summary */}
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', padding: '12px 14px', background: 'rgba(var(--gt-fg),0.03)', borderRadius: 10, border: '1px solid rgba(var(--gt-fg),0.06)' }}>
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', padding: '12px 14px', background: 'rgba(var(--gt-fg),0.03)', borderRadius: 'var(--radius)', border: '1px solid rgba(var(--gt-fg),0.06)' }}>
                 <StatChip icon={<BookOpen size={11} />} label={selectedExam?.name} />
                 <StatChip icon={<Layers size={11} />} label={selectedPattern.title} />
                 <StatChip icon={<Clock size={11} />} label={`${selectedPattern.duration} min`} />
@@ -834,7 +834,7 @@ const AdminGenerateTests = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={handleGenerate}
                 style={{
-                  width: '100%', padding: '16px', marginBottom: 20, borderRadius: 14,
+                  width: '100%', padding: '16px', marginBottom: 20, borderRadius: 'var(--radius)',
                   background: '#58cc02',
                   border: 'none', color: '#fff', fontSize: 15, fontWeight: 700,
                   cursor: 'pointer', fontFamily: 'inherit',
@@ -849,7 +849,7 @@ const AdminGenerateTests = () => {
             {generating && (
               <div style={{ display: 'flex', gap: 10, marginBottom: 20 }}>
                 <div style={{
-                  flex: 1, padding: '14px 18px', borderRadius: 12,
+                  flex: 1, padding: '14px 18px', borderRadius: 'var(--radius)',
                   background: 'rgba(var(--gt-fg),0.08)', border: '1px solid rgba(var(--gt-fg),0.2)',
                   display: 'flex', alignItems: 'center', gap: 10,
                 }}>
@@ -861,7 +861,7 @@ const AdminGenerateTests = () => {
                 <button
                   onClick={handleCancel}
                   style={{
-                    padding: '12px 18px', borderRadius: 12, cursor: 'pointer',
+                    padding: '12px 18px', borderRadius: 'var(--radius)', cursor: 'pointer',
                     background: 'rgba(var(--gt-fg),0.1)', border: '1px solid rgba(var(--gt-fg),0.25)',
                     color: 'var(--gt-text)', fontFamily: 'inherit', fontSize: 13, fontWeight: 600,
                   }}
@@ -897,7 +897,7 @@ const AdminGenerateTests = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   style={{
-                    marginTop: 24, padding: '20px 24px', borderRadius: 16,
+                    marginTop: 24, padding: '20px 24px', borderRadius: 'var(--radius)',
                     background: 'rgba(88,204,2,0.07)', border: '1px solid rgba(88,204,2,0.25)',
                     display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap',
                   }}
@@ -916,7 +916,7 @@ const AdminGenerateTests = () => {
                     disabled={saving || !testTitle.trim()}
                     style={{
                       display: 'flex', alignItems: 'center', gap: 8, padding: '12px 22px',
-                      borderRadius: 12, cursor: saving ? 'not-allowed' : 'pointer',
+                      borderRadius: 'var(--radius)', cursor: saving ? 'not-allowed' : 'pointer',
                       background: saving ? 'rgba(var(--gt-fg),0.08)' : '#58cc02',
                       border: 'none', color: '#fff', fontFamily: 'inherit', fontSize: 14, fontWeight: 700,
                       boxShadow: saving ? 'none' : '0 4px 16px rgba(88,204,2,0.35)',
@@ -937,7 +937,7 @@ const AdminGenerateTests = () => {
               <button
                 onClick={handleGenerate}
                 style={{
-                  marginTop: 12, width: '100%', padding: '12px', borderRadius: 12,
+                  marginTop: 12, width: '100%', padding: '12px', borderRadius: 'var(--radius)',
                   background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.1)',
                   color: 'var(--gt-text-2)', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13,
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
@@ -968,14 +968,14 @@ function StatChip({ icon, label, color = '#64748b' }) {
 // SHARED STYLES
 // ─────────────────────────────────────────────
 const selectStyle = {
-  width: '100%', padding: '10px 12px', borderRadius: 10,
+  width: '100%', padding: '10px 12px', borderRadius: 'var(--radius)',
   background: 'rgba(var(--gt-fg),0.06)', border: '1px solid rgba(var(--gt-fg),0.28)',
   color: 'var(--gt-text)', fontSize: 13, fontFamily: 'inherit',
   outline: 'none', cursor: 'pointer',
 };
 
 const inputStyle = {
-  width: '100%', padding: '10px 12px', borderRadius: 10,
+  width: '100%', padding: '10px 12px', borderRadius: 'var(--radius)',
   background: 'rgba(var(--gt-fg),0.06)', border: '1px solid rgba(var(--gt-fg),0.28)',
   color: 'var(--gt-text)', fontSize: 13, fontFamily: 'inherit',
   outline: 'none', boxSizing: 'border-box',

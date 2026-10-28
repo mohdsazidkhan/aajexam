@@ -643,7 +643,7 @@ const TestStart = ({ resolvedId } = {}) => {
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-900/80" onClick={() => setShowSubmitModal(false)} />
             <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-background-surface rounded-3xl sm:rounded-3xl p-5 sm:p-10 max-w-md w-full max-h-[85vh] overflow-y-auto border border-primary-500/20">
-              <div className="w-14 h-14 sm:w-20 sm:h-20 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+              <div className="w-14 h-14 sm:w-20 sm:h-20 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 border border-primary-600">
                 <CircleAlert className="w-7 h-7 sm:w-10 sm:h-10" />
               </div>
               <h2 className="text-xl xl:text-2xl font-bold font-outfit text-center mb-2">{translate('Ready to finish?')}</h2>

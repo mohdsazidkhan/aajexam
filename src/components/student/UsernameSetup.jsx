@@ -112,7 +112,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
             }`}
         />
         {checking && (
-          <span className="checking-spinner w-6 h-6 border border-border-primary border-t-primary-500 rounded-full animate-spin ml-3"></span>
+          <span className="checking-spinner w-6 h-6 border border-border-primary border-t-primary-500 rounded-[50%] animate-spin ml-3"></span>
         )}
         {available === true && username !== currentUsername && (
           <span className="status-icon success ml-3 text-xl xl:text-2xl font-bold text-primary-600">✓</span>

@@ -121,7 +121,7 @@ export default function AdminsPage() {
                       transition={{ delay: Math.min(i, 10) * 0.03 }}
                       className="bg-background-surface rounded-xl border border-border-primary p-4 flex items-center gap-3 flex-wrap sm:flex-nowrap relative"
                     >
-                      <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-md bg-primary-600 flex items-center justify-center shrink-0">
                         <ShieldCheck className="w-5 h-5 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">

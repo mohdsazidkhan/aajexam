@@ -73,7 +73,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
       <div className="py-0 xl:py-6 space-y-3 xl:space-y-4">
         <div className="flex justify-end"><BackButton onClick={() => router.push('/current-affairs')}><ArrowLeft className="w-4 h-4" /> {translate('Back')}</BackButton></div>
 
-        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 space-y-2 bg-background-surface" style={{ borderRadius: 16 }}>
+        <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 space-y-2 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
           <div className="flex items-center gap-2">
             <span className="px-2 py-0.5 rounded text-[9px] font-bold text-primary-600 uppercase">{affair.category}</span>
             <span className="text-[10px] text-content-muted dark:text-white/60 flex items-center gap-1"><Calendar className="w-3 h-3" />{new Date(affair.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>

@@ -270,7 +270,7 @@ const DashboardAnalytics = () => {
         recentActivities.map((a, i) => (
           <div key={i} className="bg-background-surface border border-border-primary rounded-2xl p-4 transition-all duration-200 relative">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 rounded-md flex items-center justify-center border border-primary-600">
                 <User className="w-5 h-5 text-primary-600" />
               </div>
               <div>
@@ -283,7 +283,7 @@ const DashboardAnalytics = () => {
 
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md flex items-center justify-center">
+                <div className="w-6 h-6 rounded-md flex items-center justify-center border border-primary-600">
                   <BookOpen className="w-3.5 h-3.5 text-primary-600" />
                 </div>
                 <span className="text-sm text-content-secondary font-medium limit-text-1">
@@ -301,7 +301,7 @@ const DashboardAnalytics = () => {
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md flex items-center justify-center">
+                <div className="w-6 h-6 rounded-md flex items-center justify-center border border-primary-600">
                   <Calendar className="w-3.5 h-3.5 text-primary-600" />
                 </div>
                 <span className="text-xs text-content-secondary">
@@ -337,7 +337,7 @@ const DashboardAnalytics = () => {
           <div key={i} className="border border-primary-200 dark:border-primary-600 rounded-lg p-4 transition-all duration-200">
             <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 rounded-md flex items-center justify-center border border-primary-600">
                   <User className="w-5 h-5 text-primary-600" />
                 </div>
                 <div>
@@ -350,7 +350,7 @@ const DashboardAnalytics = () => {
 
               <div className="flex flex-col xl:flex-row items-start xl:items-center gap-3">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-md flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-md flex items-center justify-center border border-primary-600">
                     <BookOpen className="w-3.5 h-3.5 text-primary-600" />
                   </div>
                   <span className="text-sm text-content-secondary font-medium">
@@ -359,7 +359,7 @@ const DashboardAnalytics = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-md flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-md flex items-center justify-center border border-primary-600">
                     <Trophy className="w-3.5 h-3.5 text-content-primary" />
                   </div>
                   <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600' :
@@ -372,7 +372,7 @@ const DashboardAnalytics = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-md flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-md flex items-center justify-center border border-primary-600">
                     <Calendar className="w-3.5 h-3.5 text-primary-600" />
                   </div>
                   <span className="text-sm text-content-secondary">

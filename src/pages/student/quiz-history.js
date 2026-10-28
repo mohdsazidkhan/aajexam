@@ -90,7 +90,7 @@ const QuizHistoryPage = () => {
                {/* Results */}
                {attempts.length === 0 ? (
                   <div className="py-16 text-center space-y-2 xl:space-y-4">
-                     <div className="w-20 h-20 bg-background-surface-secondary rounded-2xl flex items-center justify-center mx-auto">
+                     <div className="w-20 h-20 bg-background-surface-secondary rounded-md flex items-center justify-center mx-auto border border-primary-600">
                         <BrainCircuit className="w-10 h-10 text-slate-300" />
                      </div>
                      <h2 className="text-xl font-bold text-content-muted">{translate('No quizzes attempted yet')}</h2>

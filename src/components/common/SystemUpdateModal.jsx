@@ -37,7 +37,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
         <div className="bg-primary-600 text-on-primary p-4 xl:p-10 rounded-t-[2.5rem] border-b-2 border-white/20">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-6">
-              <div className="w-16 h-16 bg-background-surface rounded-2xl flex items-center justify-center transform">
+              <div className="w-16 h-16 bg-background-surface rounded-md flex items-center justify-center transform border border-primary-600">
                 <FaGraduationCap className="text-3xl text-primary-600" />
               </div>
               <section>
@@ -47,7 +47,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
             </div>
             <button aria-label={translate('Close')}
               onClick={handleClose}
-              className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all active:translate-y-1"
+              className="w-12 h-12 rounded-md flex items-center justify-center transition-all active:translate-y-1 border border-primary-600"
             >
               <FaTimes className="text-xl" />
             </button>

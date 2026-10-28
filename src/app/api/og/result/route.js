@@ -49,9 +49,9 @@ export async function GET(request) {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '40px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
             <div style={{ fontSize: '36px', fontWeight: 900, color: '#58cc02', letterSpacing: '-1px' }}>AajExam</div>
-            <div style={{ fontSize: '14px', fontWeight: 700, color: '#94a3b8', padding: '6px 14px', border: '1px solid #334155', borderRadius: '999px', letterSpacing: '2px' }}>RESULT</div>
+            <div style={{ fontSize: '14px', fontWeight: 700, color: '#94a3b8', padding: '6px 14px', border: '1px solid #334155', borderRadius: 'var(--radius-sm)', letterSpacing: '2px' }}>RESULT</div>
           </div>
-          <div style={{ fontSize: '18px', fontWeight: 800, color: bandColor, padding: '10px 20px', border: `2px solid ${bandColor}`, borderRadius: '999px', letterSpacing: '3px' }}>{band}</div>
+          <div style={{ fontSize: '18px', fontWeight: 800, color: bandColor, padding: '10px 20px', border: `2px solid ${bandColor}`, borderRadius: 'var(--radius-sm)', letterSpacing: '3px' }}>{band}</div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '36px' }}>
@@ -81,11 +81,11 @@ export async function GET(request) {
         </div>
 
         <div style={{ display: 'flex', gap: '20px', marginBottom: '30px' }}>
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '20px 28px', background: 'rgba(255,255,255,0.04)', border: '1px solid #334155', borderRadius: '20px' }}>
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '20px 28px', background: 'rgba(255,255,255,0.04)', border: '1px solid #334155', borderRadius: 'var(--radius)' }}>
             <div style={{ fontSize: '12px', fontWeight: 900, color: '#64748b', letterSpacing: '3px', marginBottom: '6px' }}>SCORE</div>
             <div style={{ fontSize: '40px', fontWeight: 900, color: '#58cc02', lineHeight: 1 }}>{score}</div>
           </div>
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '20px 28px', background: 'rgba(255,255,255,0.04)', border: '1px solid #334155', borderRadius: '20px' }}>
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '20px 28px', background: 'rgba(255,255,255,0.04)', border: '1px solid #334155', borderRadius: 'var(--radius)' }}>
             <div style={{ fontSize: '12px', fontWeight: 900, color: '#64748b', letterSpacing: '3px', marginBottom: '6px' }}>ACCURACY</div>
             <div style={{ fontSize: '40px', fontWeight: 900, color: '#f8fafc', lineHeight: 1 }}>{parseFloat(accuracy).toFixed(0)}%</div>
           </div>

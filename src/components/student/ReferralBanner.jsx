@@ -63,7 +63,7 @@ const ReferralBanner = ({ user }) => {
   return (
     <section
       className="relative overflow-hidden mb-8 font-outfit text-content-primary border border-border-primary bg-background-surface"
-      style={{ borderRadius: 16 }}
+      style={{ borderRadius: 'var(--radius)' }}
     >
       {/* Decoration */}
       <Gift className="pointer-events-none absolute right-4 top-3 w-36 h-36 text-primary-600/10 dark:text-white/5 rotate-12" />
@@ -73,7 +73,7 @@ const ReferralBanner = ({ user }) => {
         <div className="p-5 xl:p-8 space-y-5">
           {/* Header */}
           <div className="flex items-start gap-3 xl:gap-4">
-            <div className="shrink-0 w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 12 }}>
+            <div className="shrink-0 w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
               <Gift className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
             <div className="min-w-0">
@@ -87,13 +87,13 @@ const ReferralBanner = ({ user }) => {
           </div>
 
           {/* Reward pill */}
-          <div className="inline-flex items-center gap-2 text-on-primary px-3 py-1.5 text-xs font-bold bg-primary-600" style={{ borderRadius: 999 }}>
+          <div className="inline-flex items-center gap-2 text-on-primary px-3 py-1.5 text-xs font-bold bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
             <Sparkles className="w-4 h-4 shrink-0" />
             {translate('Earn ₹{amount} when your friend buys a PRO plan', { amount: config.QUIZ_CONFIG.REFERRAL_REWARD_PRO })}
           </div>
 
           {/* Coupon: dashed box with the code */}
-          <div className="dark:bg-black/20 border border-dashed border-primary-400 dark:border-white/45 p-3 xl:p-4" style={{ borderRadius: 12 }}>
+          <div className="dark:bg-black/20 border border-dashed border-primary-400 dark:border-white/45 p-3 xl:p-4" style={{ borderRadius: 'var(--radius)' }}>
             <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/70 mb-2">{translate('Your Invitation Code')}</p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-3">
               <div className="flex-1 min-w-0 font-mono font-bold text-2xl xl:text-3xl tracking-[0.08em] text-primary-600 select-all truncate">
@@ -112,10 +112,10 @@ const ReferralBanner = ({ user }) => {
           {/* How it works */}
           <div className="grid grid-cols-3 gap-2">
             {steps.map((st, i) => (
-              <div key={st.label} className="flex flex-col items-center text-center gap-1.5 ring-1 ring-primary-200 dark:ring-white/15 px-2 py-3" style={{ borderRadius: 10 }}>
-                <div className="relative w-9 h-9 flex items-center justify-center text-primary-600 dark:text-white" style={{ borderRadius: 10 }}>
+              <div key={st.label} className="flex flex-col items-center text-center gap-1.5 ring-1 ring-primary-200 dark:ring-white/15 px-2 py-3" style={{ borderRadius: 'var(--radius)' }}>
+                <div className="relative w-9 h-9 flex items-center justify-center text-primary-600 dark:text-white border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                   <st.icon className="w-4 h-4" />
-                  <span className="absolute -top-1.5 -right-1.5 w-4 h-4 flex items-center justify-center bg-primary-300 text-primary-950 text-[9px] font-bold" style={{ borderRadius: '50%' }}>{i + 1}</span>
+                  <span className="absolute -top-1.5 -right-1.5 w-4 h-4 flex items-center justify-center bg-primary-300 text-primary-950 text-[9px] font-bold" style={{ borderRadius: 'var(--radius-sm)' }}>{i + 1}</span>
                 </div>
                 <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] leading-tight text-content-secondary dark:text-white/90">{translate(st.label)}</p>
               </div>
@@ -158,11 +158,11 @@ const ReferralBanner = ({ user }) => {
 
         {/* Perforated stub: friends joined */}
         <div className="relative p-5 xl:p-6 dark:bg-black/20 border-t border-dashed border-primary-300 dark:border-white/35 xl:border-t-0 xl:border-l flex xl:flex-col items-center justify-center gap-4 xl:gap-2 text-center">
-          <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
-          <span className="xl:hidden absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
-          <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
+          <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
+          <span className="xl:hidden absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
+          <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: 'var(--radius-sm)' }} />
 
-          <div className="w-12 h-12 flex items-center justify-center bg-background-surface ring-1 ring-primary-200 text-primary-600 dark:ring-white/25 dark:text-white" style={{ borderRadius: 12 }}>
+          <div className="w-12 h-12 flex items-center justify-center bg-background-surface ring-1 ring-primary-200 text-primary-600 dark:ring-white/25 dark:text-white" style={{ borderRadius: 'var(--radius)' }}>
             <Users className="w-6 h-6" />
           </div>
           <div>

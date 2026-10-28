@@ -93,7 +93,7 @@ const LoginPage = () => {
         <div className="hidden xl:flex w-1/2 p-16 flex-col justify-center items-start relative overflow-hidden bg-background-surface">
           <div className="space-y-4 xl:space-y-8 relative z-10">
             <motion.div animate={{ rotate: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-              <div className="p-5 text-on-primary w-fit bg-primary-600" style={{ borderRadius: 18 }}>
+              <div className="p-5 text-on-primary w-fit bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
                 <Trophy className="w-12 h-12" />
               </div>
             </motion.div>

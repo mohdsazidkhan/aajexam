@@ -346,7 +346,7 @@ const SearchPage = () => {
          case 'test':
             return (
                <div role="button" tabIndex={0} onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} onKeyDown={onActivateKey(() => router.push(`/govt-exams/test/${item.slug || item._id}/start`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-background-surface border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-md bg-primary-600 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-content-primary truncate">{translateData(item.title)}</p>
                      <p className="text-xs text-content-muted">{translate('{duration} min · {marks} marks', { duration: item.duration, marks: item.totalMarks })}</p>
@@ -359,7 +359,7 @@ const SearchPage = () => {
          case 'pattern':
             return (
                <div role="button" tabIndex={0} onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} onKeyDown={onActivateKey(() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams'))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-background-surface border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-md bg-primary-600 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-content-primary truncate">{translateData(item.name || item.title)}</p>
                      <p className="text-xs text-content-muted">{translateData(item.category?.name) || item.type || translate('Exam')}</p>
@@ -370,7 +370,7 @@ const SearchPage = () => {
          case 'quiz':
             return (
                <div role="button" tabIndex={0} onClick={() => router.push(`/quiz/${item.slug || item._id}`)} onKeyDown={onActivateKey(() => router.push(`/quiz/${item.slug || item._id}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-background-surface border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-md bg-primary-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-content-primary truncate">{translateData(item.title)}</p>
                      <p className="text-xs text-content-muted">
@@ -388,7 +388,7 @@ const SearchPage = () => {
          case 'subject':
             return (
                <div role="button" tabIndex={0} onClick={() => router.push(`/subjects/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/subjects/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-background-surface border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-md bg-primary-600 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-content-primary truncate">{translateData(item.name)}</p>
                      <p className="text-xs text-content-muted">{translateData(item.exam?.name) || translate('General')}{item.description ? ` · ${item.description}` : ''}</p>
@@ -399,7 +399,7 @@ const SearchPage = () => {
          case 'topic':
             return (
                <div role="button" tabIndex={0} onClick={() => router.push(`/topics/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/topics/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-background-surface border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-md bg-primary-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-content-primary truncate">{translateData(item.name)}</p>
                      <p className="text-xs text-content-muted">{item.subject?.name || ''}{item.exams?.length ? ` · ${item.exams.map(e => e.name).join(', ')}` : ''}</p>
@@ -410,7 +410,7 @@ const SearchPage = () => {
          case 'hashtag':
             return (
                <div role="button" tabIndex={0} onClick={() => goToTag(item.tag)} onKeyDown={onActivateKey(() => goToTag(item.tag))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-background-surface border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-md bg-primary-600 flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-content-primary">#{item.tag}</p>
                      <p className="text-xs text-content-muted">{item.count} question{item.count !== 1 ? 's' : ''}</p>
@@ -421,7 +421,7 @@ const SearchPage = () => {
          case 'blog':
             return (
                <div role="button" tabIndex={0} onClick={() => router.push(`/blog/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/blog/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-background-surface border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-md bg-primary-600 flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-content-primary truncate">{item.title}</p>
                      <p className="text-xs text-content-muted truncate">{item.exam?.name || translate('Blog')}{item.readingTime ? ` · ${translate('{count} min read', { count: item.readingTime })}` : ''}</p>
@@ -432,7 +432,7 @@ const SearchPage = () => {
          case 'note':
             return (
                <div role="button" tabIndex={0} onClick={() => router.push(`/notes/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/notes/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-background-surface border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-md bg-primary-600 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-content-primary truncate">{item.title}</p>
                      <p className="text-xs text-content-muted truncate">{(item.noteType || '').replace('_', ' ')}{item.subject?.name ? ` · ${item.subject.name}` : ''}{item.exam?.name ? ` · ${item.exam.name}` : ''}</p>
@@ -443,7 +443,7 @@ const SearchPage = () => {
          case 'examNews':
             return (
                <div role="button" tabIndex={0} onClick={() => router.push(`/exam-news/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/exam-news/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-background-surface border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-md bg-primary-600 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-content-primary truncate">{item.title}</p>
                      <p className="text-xs text-content-muted truncate">{(item.type || '').replace('_', ' ')}{item.exam?.name ? ` · ${item.exam.name}` : item.examName ? ` · ${item.examName}` : ''}</p>
@@ -454,7 +454,7 @@ const SearchPage = () => {
          case 'currentAffair':
             return (
                <div role="button" tabIndex={0} onClick={() => router.push(`/current-affairs/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/current-affairs/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-background-surface border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-md bg-primary-600 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-content-primary truncate">{item.title}</p>
                      <p className="text-xs text-content-muted truncate">{item.category || ''}{item.date ? ` · ${new Date(item.date).toLocaleDateString()}` : ''}</p>
@@ -516,7 +516,7 @@ const SearchPage = () => {
                      </button>
                   )}
                   <div className="flex-1 relative">
-                     <span className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 xl:w-8 xl:h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 8 }}><Search className="w-4 h-4" /></span>
+                     <span className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 xl:w-8 xl:h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius)' }}><Search className="w-4 h-4" /></span>
                      <input
                         ref={inputRef}
                         type="text"
@@ -566,7 +566,7 @@ const SearchPage = () => {
                      <button
                         key={tab.key}
                         onClick={() => handleTabChange(tab.key)}
-                        style={{ borderRadius: 999 }}
+                        style={{ borderRadius: 'var(--radius-sm)' }}
                         className={`flex-shrink-0 whitespace-nowrap flex items-center justify-center gap-1.5 px-4 py-2 text-[11px] xl:text-xs font-bold uppercase tracking-[0.08em] transition-all border ${
                            activeTab === tab.key
                               ? 'text-on-primary border-transparent bg-primary-600'
@@ -606,7 +606,7 @@ const SearchPage = () => {
                                           <Icon className="w-4 h-4 text-content-muted" />
                                           <h3 className="text-xs font-bold text-content-secondary uppercase tracking-[0.08em]">{translate(meta.label)}</h3>
                                        </div>
-                                       <button onClick={() => handleTabChange('reel')} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-on-primary hover:brightness-105 transition-all bg-primary-600">{translate('See all')}</button>
+                                       <button onClick={() => handleTabChange('reel')} style={{ borderRadius: 'var(--radius-sm)' }} className="shrink-0 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-on-primary hover:brightness-105 transition-all bg-primary-600">{translate('See all')}</button>
                                     </div>
                                     <div className="flex overflow-x-auto no-scrollbar gap-1.5 pb-1">
                                        {section.items.map(reel => renderReelCard(reel, 'small'))}
@@ -623,7 +623,7 @@ const SearchPage = () => {
                                        <h3 className="text-xs font-bold text-content-secondary uppercase tracking-[0.08em]">{translate(meta.label)}</h3>
                                     </div>
                                     {section.hasMore && (
-                                       <button onClick={() => handleTabChange(key)} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-on-primary hover:brightness-105 transition-all bg-primary-600">{translate('See all')}</button>
+                                       <button onClick={() => handleTabChange(key)} style={{ borderRadius: 'var(--radius-sm)' }} className="shrink-0 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-on-primary hover:brightness-105 transition-all bg-primary-600">{translate('See all')}</button>
                                     )}
                                  </div>
                                  <div className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-1">
@@ -636,7 +636,7 @@ const SearchPage = () => {
                         {/* No results at all */}
                         {!hasAnySectionResults && (
                            <div className="py-12 text-center space-y-3">
-                              <div className="w-16 h-16 bg-background-surface-secondary rounded-full flex items-center justify-center mx-auto">
+                              <div className="w-16 h-16 bg-background-surface-secondary rounded-full flex items-center justify-center mx-auto border border-primary-600">
                                  <Search className="w-7 h-7 text-slate-300" />
                               </div>
                               <p className="text-sm font-bold text-content-primary">{translate('No results found')}</p>
@@ -650,7 +650,7 @@ const SearchPage = () => {
                      <div className="px-3 xl:px-8">
                         {currentTabData.items.length === 0 ? (
                            <div className="py-12 text-center space-y-3">
-                              <div className="w-16 h-16 bg-background-surface-secondary rounded-full flex items-center justify-center mx-auto"><Play className="w-7 h-7 text-slate-300" /></div>
+                              <div className="w-16 h-16 bg-background-surface-secondary rounded-full flex items-center justify-center mx-auto border border-primary-600"><Play className="w-7 h-7 text-slate-300" /></div>
                               <p className="text-sm font-bold text-content-primary">{translate('No reels found')}</p>
                               <p className="text-xs text-content-muted">{translate('Try a different search term')}</p>
                            </div>
@@ -675,7 +675,7 @@ const SearchPage = () => {
                      <div className="px-3 xl:px-8">
                         {currentTabData.items.length === 0 ? (
                            <div className="py-12 text-center space-y-3">
-                              <div className="w-16 h-16 bg-background-surface-secondary rounded-full flex items-center justify-center mx-auto"><Search className="w-7 h-7 text-slate-300" /></div>
+                              <div className="w-16 h-16 bg-background-surface-secondary rounded-full flex items-center justify-center mx-auto border border-primary-600"><Search className="w-7 h-7 text-slate-300" /></div>
                               <p className="text-sm font-bold text-content-primary">{translate('No results found')}</p>
                               <p className="text-xs text-content-muted">{translate('Try a different search term')}</p>
                            </div>

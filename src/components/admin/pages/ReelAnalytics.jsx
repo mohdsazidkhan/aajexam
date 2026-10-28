@@ -166,7 +166,7 @@ const AdminReelAnalytics = () => {
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
                 {/* Type Breakdown */}
                 <section className="bg-background-surface rounded-2xl border border-border-primary p-3 sm:p-4 relative">
-                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 8 }}><Flame className="w-3.5 h-3.5" /></span>By Type</h3>
+                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Flame className="w-3.5 h-3.5" /></span>By Type</h3>
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
                     {(() => {
                       const maxCount = Math.max(1, ...data.typeBreakdown.map(i => i.count || 0));
@@ -191,7 +191,7 @@ const AdminReelAnalytics = () => {
 
                 {/* Subject Breakdown */}
                 <section className="bg-background-surface rounded-2xl border border-border-primary p-3 sm:p-4 relative">
-                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 8 }}><BarChart3 className="w-3.5 h-3.5" /></span>By Subject</h3>
+                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><BarChart3 className="w-3.5 h-3.5" /></span>By Subject</h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     {(() => {
                       const maxViews = Math.max(1, ...data.subjectBreakdown.map(i => i.views || 0));
@@ -215,7 +215,7 @@ const AdminReelAnalytics = () => {
               {/* Top Reels */}
               <section className="bg-background-surface rounded-2xl border border-border-primary p-4 sm:p-4 relative">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary uppercase tracking-tight text-sm"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 8 }}><Eye className="w-3.5 h-3.5" /></span>Top 10 Reels</h3>
+                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary uppercase tracking-tight text-sm"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Eye className="w-3.5 h-3.5" /></span>Top 10 Reels</h3>
                   <ViewToggle currentView={topReelsView} onViewChange={setTopReelsView} views={['table', 'list', 'grid']} />
                 </div>
                 {topReelsView === 'table' && <TopReelsTableView />}

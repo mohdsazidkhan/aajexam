@@ -67,8 +67,8 @@ const CircleProgress = ({ value = 0, size = 80, strokeWidth = 8, color = '#6366f
 
 // --- Helper: Stat Mini Card ---
 const StatMini = ({ icon: Icon, label, value }) => (
-   <div className="relative overflow-hidden flex items-center gap-2.5 p-2.5 bg-background-surface border border-border-primary hover:-translate-y-0.5 transition-all min-w-0" style={{ borderRadius: 12 }}>
-      <div className="ml-1 w-9 h-9 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}>
+   <div className="relative overflow-hidden flex items-center gap-2.5 p-2.5 bg-background-surface border border-border-primary hover:-translate-y-0.5 transition-all min-w-0" style={{ borderRadius: 'var(--radius)' }}>
+      <div className="ml-1 w-9 h-9 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
          <Icon className="w-4 h-4" />
       </div>
       <div className="min-w-0">
@@ -81,7 +81,7 @@ const StatMini = ({ icon: Icon, label, value }) => (
 // --- Helper: Section Header ---
 const SectionHeader = ({ icon: Icon, title, subtitle }) => (
    <div className="flex items-center gap-2.5 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15">
-      {Icon && <div className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></div>}
+      {Icon && <div className="w-8 h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Icon className="w-4 h-4" /></div>}
       <section>
          <h2 className="text-base xl:text-lg font-bold font-outfit tracking-tight">{title}</h2>
          {subtitle && <p className="text-xs text-content-secondary font-bold">{subtitle}</p>}
@@ -233,10 +233,10 @@ const MyAnalyticsPage = () => {
             />
 
             {/* --- Tab Switcher --- */}
-            <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1.5 max-w-full p-1.5 bg-background-surface border border-border-primary" style={{ borderRadius: 14 }}>
+            <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1.5 max-w-full p-1.5 bg-background-surface border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
                {TABS.map(tab => (
                   <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                     style={{ borderRadius: 999 }} className={`flex-shrink-0 whitespace-nowrap flex items-center gap-1.5 px-4 py-2 font-bold text-[11px] xl:text-xs uppercase tracking-wide transition-all ${activeTab === tab.key ? 'text-on-primary bg-primary-600' : 'text-content-secondary hover:text-primary-700 dark:hover:text-primary-600 dark:hover:bg-white/10'}`}>
+                     style={{ borderRadius: 'var(--radius-sm)' }} className={`flex-shrink-0 whitespace-nowrap flex items-center gap-1.5 px-4 py-2 font-bold text-[11px] xl:text-xs uppercase tracking-wide transition-all ${activeTab === tab.key ? 'text-on-primary bg-primary-600' : 'text-content-secondary hover:text-primary-700 dark:hover:text-primary-600 dark:hover:bg-white/10'}`}>
                      <tab.icon className="w-3.5 h-3.5" />
                      {translate(tab.label)}
                   </button>
@@ -319,7 +319,7 @@ const MyAnalyticsPage = () => {
                            <div className="space-y-2 xl:space-y-3">
                               <div className="flex items-center justify-between gap-2">
                                  <SectionHeader icon={Zap} title={translate('Quiz History')} />
-                                 <Link href="/student/quiz-history" className="shrink-0 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-on-primary hover:brightness-105 transition-all bg-primary-600" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
+                                 <Link href="/student/quiz-history" className="shrink-0 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-on-primary hover:brightness-105 transition-all bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>{translate('View All')}</Link>
                               </div>
                               <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {quizAttempts.map((a, idx) => (
@@ -399,7 +399,7 @@ const MyAnalyticsPage = () => {
                            <div className="space-y-2 xl:space-y-3">
                               <div className="flex items-center justify-between gap-2">
                                  <SectionHeader icon={GraduationCap} title={translate('Exam History')} />
-                                 <Link href="/student/exam-history" className="shrink-0 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-on-primary hover:brightness-105 transition-all bg-primary-600" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
+                                 <Link href="/student/exam-history" className="shrink-0 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-on-primary hover:brightness-105 transition-all bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>{translate('View All')}</Link>
                               </div>
                               <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {examAttempts.map((a, idx) => (
@@ -622,14 +622,14 @@ const MyAnalyticsPage = () => {
                            <div className="space-y-2 xl:space-y-3">
                               <div className="flex items-center justify-between gap-2">
                                  <SectionHeader icon={FileText} title={translate('My Reels')} />
-                                 <Link href="/student/my-reels" className="shrink-0 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-on-primary hover:brightness-105 transition-all bg-primary-600" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
+                                 <Link href="/student/my-reels" className="shrink-0 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-on-primary hover:brightness-105 transition-all bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>{translate('View All')}</Link>
                               </div>
                               <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {myReelsList.map((r, idx) => (
                                     <Card as="article" key={r._id || idx} padded={false} className="p-3 h-full flex flex-col gap-2">
                                        <div className="flex items-center justify-between gap-2">
-                                          <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase text-primary-600" style={{ borderRadius: 999 }}>{translate(r.type === 'current_affairs' ? 'Current Affairs' : r.type === 'tip' ? 'Tip' : r.type === 'fact' ? 'Fact' : r.type === 'poll' ? 'Poll' : 'Question')}</span>
-                                          <span className={`px-2.5 py-0.5 text-[10px] font-bold uppercase ${r.status === 'published' ? 'bg-primary-500 text-on-primary' : r.status === 'rejected' ? 'bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300' : 'bg-background-surface-secondary text-content-secondary'}`} style={{ borderRadius: 999 }}>{translate(r.status === 'published' ? 'Published' : r.status === 'pending' ? 'Pending' : r.status === 'rejected' ? 'Rejected' : r.status === 'archived' ? 'Archived' : 'Draft')}</span>
+                                          <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase text-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>{translate(r.type === 'current_affairs' ? 'Current Affairs' : r.type === 'tip' ? 'Tip' : r.type === 'fact' ? 'Fact' : r.type === 'poll' ? 'Poll' : 'Question')}</span>
+                                          <span className={`px-2.5 py-0.5 text-[10px] font-bold uppercase ${r.status === 'published' ? 'bg-primary-500 text-on-primary' : r.status === 'rejected' ? 'bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300' : 'bg-background-surface-secondary text-content-secondary'}`} style={{ borderRadius: 'var(--radius-sm)' }}>{translate(r.status === 'published' ? 'Published' : r.status === 'pending' ? 'Pending' : r.status === 'rejected' ? 'Rejected' : r.status === 'archived' ? 'Archived' : 'Draft')}</span>
                                        </div>
                                        <p className="flex-1 font-bold text-sm line-clamp-3 leading-snug">{getReelTitle(r)}</p>
                                        <div className="flex items-center justify-between text-[10px] font-bold text-content-secondary pt-2 border-t border-border-primary">
@@ -666,7 +666,7 @@ const MyAnalyticsPage = () => {
                      <>
                         <div className="grid grid-cols-2 xl:grid-cols-4 gap-2">
                            <Card padded={false} radius="xl" className="col-span-2 xl:col-span-1 text-on-primary border-none flex items-center gap-2.5 p-2.5 bg-primary-600">
-                              <div className="w-9 h-9 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Wallet className="w-4 h-4" /></div>
+                              <div className="w-9 h-9 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Wallet className="w-4 h-4" /></div>
                               <div className="min-w-0">
                                  <p className="text-xl font-bold font-outfit leading-tight">{wallet?.balance || 0}</p>
                                  <p className="text-[9px] font-bold opacity-70 uppercase leading-tight">{translate('Referral Rewards')}</p>

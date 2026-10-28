@@ -469,7 +469,7 @@ const ExamOverviewPage = () => {
                   <div key={exam._id} className="border border-border-primary rounded-lg xl:rounded-xl overflow-hidden bg-background-surface">
                     <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
                       <div className="flex items-center gap-3">
-                        <div className="relative w-10 h-10 rounded-lg text-primary-600 flex items-center justify-center shrink-0 border border-border-primary">
+                        <div className="relative w-10 h-10 rounded-md text-primary-600 flex items-center justify-center shrink-0 border border-primary-600">
                           <GraduationCap className="w-5 h-5" />
                           <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-900 bg-primary-600">{serialNumber}</span>
                         </div>

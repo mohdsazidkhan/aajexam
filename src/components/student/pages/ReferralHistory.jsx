@@ -191,11 +191,11 @@ export default function ReferralHistory() {
                icon={Users}
                title={rich('Referral <0>History</0>', [(c) => <span className="text-primary-600">{c}</span>])}
                actions={user && (
-                  <div className="w-full xl:w-auto xl:min-w-[300px] px-3 py-2 ring-1 ring-slate-200 dark:ring-white/20 text-left" style={{ borderRadius: 12 }}>
+                  <div className="w-full xl:w-auto xl:min-w-[300px] px-3 py-2 ring-1 ring-slate-200 dark:ring-white/20 text-left" style={{ borderRadius: 'var(--radius)' }}>
                      <p className="text-[9px] xl:text-xs font-bold text-content-secondary dark:text-white/75 uppercase tracking-[0.08em] leading-none mb-1">{translate('Your Referral Code')}</p>
                      <div className="flex items-center gap-2 xl:gap-3">
                         <p className="flex-1 text-sm xl:text-lg font-bold font-mono tracking-[0.08em] truncate text-primary-600">{user.referralCode}</p>
-                        <button type="button" className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase text-on-primary hover:brightness-105 transition-all bg-primary-600" style={{ borderRadius: 999 }} onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                        <button type="button" className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase text-on-primary hover:brightness-105 transition-all bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }} onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                            <Copy className="w-3.5 h-3.5 xl:w-4 xl:h-4" /> COPY LINK
                         </button>
                      </div>
@@ -213,9 +213,9 @@ export default function ReferralHistory() {
                      { label: 'Times Rewarded', val: user.referralRewards?.length || 0, icon: Gift, color: 'primary' },
                      { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'primary' }
                   ].map((s, i) => (
-                     <div key={i} className="group relative overflow-hidden p-3 bg-background-surface border border-border-primary hover:-translate-y-1 transition-all" style={{ borderRadius: 12 }}>
+                     <div key={i} className="group relative overflow-hidden p-3 bg-background-surface border border-border-primary hover:-translate-y-1 transition-all" style={{ borderRadius: 'var(--radius)' }}>
                         <div className="flex justify-between items-start mb-1.5">
-                           <div className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}>
+                           <div className="w-8 h-8 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                               <s.icon className="w-4 h-4" />
                            </div>
                         </div>
@@ -356,7 +356,7 @@ export default function ReferralHistory() {
                <div className="space-y-3">
                   <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 xl:gap-8">
                      <section className="space-y-2">
-                        <h2 className="flex items-center gap-2.5 text-xl font-bold font-outfit tracking-tight"><span className="w-9 h-9 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
+                        <h2 className="flex items-center gap-2.5 text-xl font-bold font-outfit tracking-tight"><span className="w-9 h-9 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
                      </section>
 
                      <div className="w-full xl:w-auto xl:min-w-[320px] space-y-2 xl:space-y-4">
@@ -372,7 +372,7 @@ export default function ReferralHistory() {
                                        <p className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] leading-none">{translate(b.label)}</p>
                                        <p className="text-xl font-bold font-outfit text-content-primary">₹{amount.toLocaleString()}</p>
                                     </div>
-                                    <div className="text-[10px] font-bold px-3 py-1 text-on-primary bg-primary-600" style={{ borderRadius: 999 }}>
+                                    <div className="text-[10px] font-bold px-3 py-1 text-on-primary bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                                        {translate('{count} FRIENDS', { count })}
                                     </div>
                                  </div>
@@ -388,7 +388,7 @@ export default function ReferralHistory() {
                <div className="space-y-2 xl:space-y-3">
                   <div className="flex items-center justify-between">
                      <section className="space-y-1 xl:space-y-2">
-                        <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-bold font-outfit tracking-tight"><span className="w-9 h-9 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
+                        <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-bold font-outfit tracking-tight"><span className="w-9 h-9 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
                      </section>
                   </div>
 
@@ -424,7 +424,7 @@ export default function ReferralHistory() {
                                           <motion.tr key={tx._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition-colors">
                                              <td className="px-4 py-3">
                                                 <div className="flex items-center gap-3">
-                                                   <div className="w-8 h-8 flex items-center justify-center font-bold text-sm text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
+                                                   <div className="w-8 h-8 flex items-center justify-center font-bold text-sm text-on-primary bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
                                                       {(tx.invitee?.name || 'S').charAt(0).toUpperCase()}
                                                    </div>
                                                    <div>
@@ -434,7 +434,7 @@ export default function ReferralHistory() {
                                                 </div>
                                              </td>
                                              <td className="px-4 py-3">
-                                                <span className="px-3 py-1 text-[10px] font-bold tracking-[0.08em] uppercase text-primary-600 border border-border-primary" style={{ borderRadius: 999 }}>
+                                                <span className="px-3 py-1 text-[10px] font-bold tracking-[0.08em] uppercase text-primary-600 border border-border-primary" style={{ borderRadius: 'var(--radius-sm)' }}>
                                                    {translate(rewardLabels[tx.rewardType] || '')}
                                                 </span>
                                              </td>
@@ -459,7 +459,7 @@ export default function ReferralHistory() {
                                     <button
                                        key={i}
                                        onClick={() => setPage(i + 1)}
-                                       style={{ borderRadius: 10 }} className={`w-10 h-10 text-xs font-bold transition-all ${page === i + 1 ? 'text-on-primary bg-primary-600' : 'bg-background-surface text-content-secondary border border-border-primary hover:border-primary-500'}`}
+                                       style={{ borderRadius: 'var(--radius)' }} className={`w-10 h-10 text-xs font-bold transition-all ${page === i + 1 ? 'text-on-primary bg-primary-600' : 'bg-background-surface text-content-secondary border border-border-primary hover:border-primary-500'}`}
                                     >
                                        {i + 1}
                                     </button>

@@ -30,6 +30,9 @@
     --border-primary: #e4e4e7;
     --border-secondary: #d4d4d8;
 
+    --radius: 0.5rem; /* 8px on web (4px below lg, see the media query below): cards, sections, buttons, inputs, items */
+    --radius-sm: calc(var(--radius) / 2); /* half the card radius: icon tiles, and what used to be a circle / pill (avatars, dots, chips) */
+
     --navbar-height: 5rem;
 
     /* Secondary text greys, darkened in light mode for 4.5:1 contrast (RGB channels; see tailwind.config.js) */
@@ -53,6 +56,13 @@
     --color-primary-800: #1c4a00;
     --color-primary-900: #153700;
     --color-primary-950: #0e2500;
+  }
+
+  /* below Tailwind's lg breakpoint (1024px) every radius is halved: 4px on mobile */
+  @media (max-width: 1023.98px) {
+    :root {
+      --radius: 0.25rem;
+    }
   }
 
   .dark {
@@ -86,6 +96,22 @@
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     letter-spacing: -0.02em;
+  }
+
+  /* Every section / article / page header carries the card radius (explicit rounded-* classes and inline
+     styles still win). Fixed chrome (navbar, sidebar, footer) is not a card, so it is left square. */
+  section,
+  article,
+  #main-content header {
+    border-radius: var(--radius);
+  }
+
+  /* Buttons and form fields default to the card radius too, so a control without a rounded-* class is never square */
+  button,
+  input:not([type='checkbox']):not([type='radio']):not([type='range']),
+  select,
+  textarea {
+    border-radius: var(--radius);
   }
 
   /* Native controls follow the theme (custom selects/inputs set their own colours) */
@@ -131,7 +157,7 @@
 
   ::-webkit-scrollbar-thumb {
     background: #cbd5e1;
-    border-radius: 20px;
+    border-radius: var(--radius);
     transition: all 0.3s ease;
   }
 
@@ -288,7 +314,7 @@ html:not(.dark) .bg-primary-500\/10.text-primary-500 {
     border: 1px solid var(--border-secondary);
     background-color: var(--bg-surface);
     color: var(--text-primary);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.2s;
     font-size: 14px;
@@ -327,7 +353,7 @@ html:not(.dark) .bg-primary-500\/10.text-primary-500 {
   .coupon-datepicker.react-datepicker {
     font-family: inherit;
     border: 1px solid var(--border-primary);
-    border-radius: 1rem;
+    border-radius: var(--radius);
     overflow: hidden;
     background: var(--bg-surface);
     color: var(--text-primary);
@@ -348,7 +374,7 @@ html:not(.dark) .bg-primary-500\/10.text-primary-500 {
   .coupon-datepicker .react-datepicker__day,
   .coupon-datepicker .react-datepicker__time-list-item {
     color: var(--text-secondary);
-    border-radius: 0.6rem;
+    border-radius: var(--radius-sm);
     font-weight: 500;
   }
   .coupon-datepicker .react-datepicker__day:hover,

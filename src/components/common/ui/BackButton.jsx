@@ -11,7 +11,7 @@ const BackButton = ({ onClick, children, className = '' }) => (
     type="button"
     onClick={onClick}
     className={`inline-flex items-center gap-1.5 px-3 py-1.5 bg-background-surface border border-border-primary text-xs font-bold uppercase tracking-[0.08em] text-primary-600 hover:-translate-y-0.5 transition-all ${className}`}
-    style={{ borderRadius: 10 }}
+    style={{ borderRadius: 'var(--radius)' }}
   >
     {children}
   </button>

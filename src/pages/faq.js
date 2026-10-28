@@ -207,7 +207,7 @@ const FAQ = () => {
                         return (
                             <div key={catIndex} className="mb-8 xl:mb-12">
                                 <div className="flex items-center gap-4 mb-6">
-                                    <div className="w-12 h-12 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center">
+                                    <div className="w-12 h-12 bg-primary-600 rounded-md xl:rounded-md flex items-center justify-center">
                                         <Icon className="text-white text-xl" />
                                     </div>
                                     <h2 className="text-2xl xl:text-3xl font-bold text-content-primary">

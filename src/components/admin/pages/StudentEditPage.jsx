@@ -16,7 +16,7 @@ import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext
 
 const IN = 'w-full px-3 py-2 bg-background-surface border border-border-primary rounded-lg text-sm font-semibold text-content-primary outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 disabled:opacity-60';
 const LB = 'block text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1';
-const TILE = 'w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary';
+const TILE = 'w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600';
 
 const STATUSES = ['active', 'inactive', 'suspended', 'banned'];
 const SOCIAL_FIELDS = [
@@ -42,7 +42,7 @@ const toDateInput = (d) => {
 const Section = ({ icon: Icon, title, children, className = '' }) => (
   <section className={`relative bg-background-surface rounded-2xl border border-border-primary p-4 ${className}`}>
     <h2 className="flex items-center gap-2.5 mb-3 text-xs font-bold uppercase tracking-[0.08em] text-content-primary">
-      <span className={TILE} style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></span>
+      <span className={TILE} style={{ borderRadius: 'var(--radius)' }}><Icon className="w-4 h-4" /></span>
       {title}
     </h2>
     {children}

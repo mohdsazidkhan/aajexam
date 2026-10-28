@@ -58,19 +58,19 @@ const StreakPage = () => {
           title={translate('Your Streak')}
           actions={
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full xl:w-auto">
-            <div className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+            <div className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 'var(--radius)' }}>
               <p className="text-lg font-bold font-outfit leading-none text-primary-600">{streak?.currentStreak || 0}</p>
               <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 whitespace-nowrap">{translate('Current Streak')}</p>
             </div>
-            <div className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+            <div className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 'var(--radius)' }}>
               <p className="text-lg font-bold font-outfit leading-none text-primary-600">{streak?.longestStreak || 0}</p>
               <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 whitespace-nowrap">{translate('Longest Streak')}</p>
             </div>
-            <div className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+            <div className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 'var(--radius)' }}>
               <p className="text-lg font-bold font-outfit leading-none text-primary-600">{streak?.totalActiveDays || 0}</p>
               <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 whitespace-nowrap">{translate('Active Days')}</p>
             </div>
-            <div className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+            <div className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 'var(--radius)' }}>
               <p className="text-lg font-bold font-outfit leading-none text-primary-600">{streak?.freezesAvailable || 0}</p>
               <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 whitespace-nowrap">{translate('Freezes Left')}</p>
             </div>

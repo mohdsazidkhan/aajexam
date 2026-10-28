@@ -130,7 +130,7 @@ const PricePreview = ({ form }) => {
                 <div key={p.id} className="px-3 py-2 space-y-1.5">
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-bold text-content-primary">{p.label}</span>
-                    <span className="px-2.5 py-0.5 text-base font-bold text-primary-600" style={{ borderRadius: 999 }}>{rs(finalAmount)}</span>
+                    <span className="px-2.5 py-0.5 text-base font-bold text-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>{rs(finalAmount)}</span>
                   </div>
                   {line('Price', rs(p.normalPrice))}
                   {line('Normal off', p.saving > 0 ? `-${rs(p.saving)}` : '-')}
@@ -158,7 +158,7 @@ const PricePreview = ({ form }) => {
                 const { discount, finalAmount } = computeDiscount(coupon, p.price);
                 return (
                   <tr key={p.id} className="border-dashed border-border-primary text-right align-top transition-colors">
-                    <td className="px-3 py-2 text-left"><span className="inline-block px-2 py-0.5 text-xs font-bold text-content-primary bg-background-surface" style={{ borderRadius: 8 }}>{p.label}</span></td>
+                    <td className="px-3 py-2 text-left"><span className="inline-block px-2 py-0.5 text-xs font-bold text-content-primary bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>{p.label}</span></td>
                     <td className="px-3 py-2 text-content-muted">{rs(p.normalPrice)}</td>
                     <td className="px-3 py-2 text-content-muted">{p.saving > 0 ? `-${rs(p.saving)}` : '-'}</td>
                     <td className="px-3 py-2 font-bold text-content-secondary">{rs(p.price)}</td>
@@ -170,7 +170,7 @@ const PricePreview = ({ form }) => {
                         </>
                       ) : <span className="text-xs text-content-muted">No discount</span>}
                     </td>
-                    <td className="px-3 py-2"><span className="inline-block px-2.5 py-0.5 text-base font-bold text-primary-600 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{rs(finalAmount)}</span></td>
+                    <td className="px-3 py-2"><span className="inline-block px-2.5 py-0.5 text-base font-bold text-primary-600 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 'var(--radius-sm)' }}>{rs(finalAmount)}</span></td>
                   </tr>
                 );
               })}
@@ -249,7 +249,7 @@ const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
       <div onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-hidden relative bg-background-surface rounded-t-2xl sm:rounded-2xl border border-border-primary flex flex-col relative">
         <div className="shrink-0 relative isolate overflow-hidden flex items-center justify-between gap-3 px-4 py-3 border-b border-border-primary dark:border-transparent bg-background-surface">
           <div className="min-w-0 flex items-center gap-3">
-            <span className="w-10 h-10 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 12 }}><Tag className="w-5 h-5" /></span>
+            <span className="w-10 h-10 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Tag className="w-5 h-5" /></span>
             <span className="text-2xl font-bold font-outfit tracking-[0.08em] text-primary-600 truncate">{c.code}</span>
           </div>
           <div className="shrink-0 flex items-center gap-2">
@@ -258,10 +258,10 @@ const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
           </div>
         </div>
         <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-4 flex flex-col gap-3">
-        <p className="text-sm font-semibold text-content-secondary px-3 py-2 border border-dashed border-primary-300 dark:border-white/20" style={{ borderRadius: 10 }}>{c.description}</p>
+        <p className="text-sm font-semibold text-content-secondary px-3 py-2 border border-dashed border-primary-300 dark:border-white/20" style={{ borderRadius: 'var(--radius)' }}>{c.description}</p>
         <dl className="grid grid-cols-2 lg:grid-cols-4 gap-2 text-sm">
           {rows.map(([k, v]) => (
-            <div key={k} className="relative overflow-hidden px-2.5 py-1.5 bg-background-surface ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 10 }}>
+            <div key={k} className="relative overflow-hidden px-2.5 py-1.5 bg-background-surface ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 'var(--radius)' }}>
               <div className="pointer-events-none absolute inset-y-1.5 left-0 w-0.5 rounded-r-full bg-primary-600" />
               <dt className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted">{k}</dt>
               <dd className="font-bold text-primary-600 dark:text-primary-100">{v}</dd>

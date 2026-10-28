@@ -61,7 +61,7 @@ const ReelsSaved = () => {
             eyebrow="Saved Reels"
             title="Saved Reels"
             actions={
-              <Link href="/reels" aria-label="Back" className="w-10 h-10 flex items-center justify-center hover:bg-background-surface ring-1 ring-primary-200 dark:ring-white/20 text-primary-600 dark:text-white transition-colors" style={{ borderRadius: 999 }}>
+              <Link href="/reels" aria-label="Back" className="w-10 h-10 flex items-center justify-center hover:bg-background-surface ring-1 ring-primary-200 dark:ring-white/20 text-primary-600 dark:text-white transition-colors" style={{ borderRadius: 'var(--radius-sm)' }}>
                 <ArrowLeft className="w-5 h-5" />
               </Link>
             }
@@ -71,12 +71,12 @@ const ReelsSaved = () => {
         <div className="max-w-2xl mx-auto p-4">
           {loading ? <CardGridSkeleton count={6} variant="media" /> : reels.length === 0 ? (
             <div className="text-center py-20 px-6">
-              <div className="w-20 h-20 flex items-center justify-center mx-auto mb-6 text-primary-600 border border-border-primary" style={{ borderRadius: 24 }}>
+              <div className="w-20 h-20 flex items-center justify-center mx-auto mb-6 text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                 <Bookmark className="w-10 h-10" />
               </div>
               <p className="text-xl font-bold text-content-primary tracking-tight">{translate('No saved reels yet')}</p>
               <p className="text-sm text-content-muted mt-2 max-w-[200px] mx-auto">{translate('Bookmark interesting reels to revisit them anytime')}</p>
-              <Link href="/reels" style={{ borderRadius: 14 }} className="inline-block mt-8 px-8 py-3 text-on-primary text-sm font-bold uppercase tracking-[0.08em] hover:brightness-105 transition-all active:scale-95 bg-primary-600">
+              <Link href="/reels" style={{ borderRadius: 'var(--radius)' }} className="inline-block mt-8 px-8 py-3 text-on-primary text-sm font-bold uppercase tracking-[0.08em] hover:brightness-105 transition-all active:scale-95 bg-primary-600">
                 {translate('Browse Reels')}
               </Link>
             </div>
@@ -90,10 +90,10 @@ const ReelsSaved = () => {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-5 hover:-translate-y-0.5 transition-all group active:scale-[0.98]"
+                    style={{ borderRadius: 'var(--radius)' }} className="relative overflow-hidden bg-background-surface border border-border-primary p-5 hover:-translate-y-0.5 transition-all group active:scale-[0.98]"
                   >
                     <div className="flex items-start gap-4">
-                      <div style={{ borderRadius: 14 }} className="w-12 h-12 flex items-center justify-center shrink-0 text-primary-600 border border-border-primary">
+                      <div style={{ borderRadius: 'var(--radius-sm)' }} className="w-12 h-12 flex items-center justify-center shrink-0 text-primary-600 border border-primary-600">
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -126,7 +126,7 @@ const ReelsSaved = () => {
               {hasMore && (
                 <button
                   onClick={() => setPage(p => p + 1)}
-                  style={{ borderRadius: 12 }} className="w-full py-3 text-sm font-bold uppercase tracking-wide text-primary-600 bg-background-surface border border-border-primary hover:border-primary-500 transition-all"
+                  style={{ borderRadius: 'var(--radius)' }} className="w-full py-3 text-sm font-bold uppercase tracking-wide text-primary-600 bg-background-surface border border-border-primary hover:border-primary-500 transition-all"
                 >
                   {translate('Load more')}
                 </button>
