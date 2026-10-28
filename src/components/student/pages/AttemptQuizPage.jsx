@@ -229,7 +229,7 @@ const AttemptQuizPage = () => {
         const lbRes = await API.getQuizLeaderboard(quizId);
         if (lbRes.success) setLeaderboard(lbRes.data || []);
       } catch (e) {
-        console.log('Leaderboard not available');
+        // console.log('Leaderboard not available');
       }
     } catch (error) {
       console.error('Error submitting quiz:', error);

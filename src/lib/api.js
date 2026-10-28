@@ -7,14 +7,14 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ||
 
 // Validate API configuration
 if (!process.env.NEXT_PUBLIC_API_URL && process.env.NODE_ENV === 'production') {
-  console.warn('⚠️ NEXT_PUBLIC_API_URL not set in production. Using fallback URL:', API_BASE_URL);
+  // console.warn('⚠️ NEXT_PUBLIC_API_URL not set in production. Using fallback URL:', API_BASE_URL);
 }
 
 class ApiService {
   constructor() {
     this.baseURL = API_BASE_URL;
     if (process.env.NODE_ENV !== 'production') {
-      console.log('🔧 API Service initialized with base URL:', this.baseURL);
+      // console.log('🔧 API Service initialized with base URL:', this.baseURL);
     }
   }
 
@@ -68,8 +68,8 @@ class ApiService {
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 
     if (process.env.NODE_ENV !== 'production') {
-      console.log(`🌐 API Request: ${options.method || 'GET'} ${url}`);
-      console.log('🔑 Token:', token ? 'Present' : 'Missing');
+      // console.log(`🌐 API Request: ${options.method || 'GET'} ${url}`);
+      // console.log('🔑 Token:', token ? 'Present' : 'Missing');
 
       // Debug JWT token content
       if (token) {
@@ -77,12 +77,12 @@ class ApiService {
           const tokenParts = token.split('.');
           if (tokenParts.length === 3) {
             const payload = JSON.parse(atob(tokenParts[1]));
-            console.log('🔍 JWT Payload:', payload);
-            console.log('🔍 JWT User ID:', payload.id);
-            console.log('🔍 JWT Role:', payload.role);
+            // console.log('🔍 JWT Payload:', payload);
+            // console.log('🔍 JWT User ID:', payload.id);
+            // console.log('🔍 JWT Role:', payload.role);
           }
         } catch (e) {
-          console.log('🔍 JWT Decode Error:', e.message);
+          // console.log('🔍 JWT Decode Error:', e.message);
         }
       }
     }
@@ -104,7 +104,7 @@ class ApiService {
     try {
       const response = await fetch(url, config);
       if (process.env.NODE_ENV !== 'production') {
-        console.log(`📡 Response status: ${response.status}`);
+        // console.log(`📡 Response status: ${response.status}`);
       }
 
       let data;
@@ -115,7 +115,7 @@ class ApiService {
         data = await response.text();
       }
       if (process.env.NODE_ENV !== 'production') {
-        console.log('📦 Response data:', data);
+        // console.log('📦 Response data:', data);
       }
 
       if (!response.ok) {

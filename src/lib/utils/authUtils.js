@@ -146,7 +146,7 @@ export const secureLogout = (router, showToast = true, shouldReload = true) => {
     // Show success message
     if (showToast) {
       // You can add toast notification here if needed
-      console.log('Logged out successfully!');
+      // console.log('Logged out successfully!');
     }
 
     // Navigate to login page instead of reloading

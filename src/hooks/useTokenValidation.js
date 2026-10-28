@@ -22,7 +22,7 @@ export const useTokenValidation = () => {
     }
     
     if (isTokenExpired(token)) {
-      console.log('Token expired, logging out user');
+      // console.log('Token expired, logging out user');
       handleTokenExpiration();
       return false;
     }
@@ -43,7 +43,7 @@ export const useTokenValidation = () => {
       // Show warning if expires within 5 minutes
       if (minutesLeft <= 5) {
         // You can show a toast notification here
-        console.warn(`Session expires in ${minutesLeft} minutes`);
+        // console.warn(`Session expires in ${minutesLeft} minutes`);
         
         // Optionally show a modal or notification
         if (minutesLeft <= 1) {

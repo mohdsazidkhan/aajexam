@@ -181,7 +181,7 @@ const TestStart = ({ resolvedId } = {}) => {
       if (element.requestFullscreen) await element.requestFullscreen();
       else if (element.webkitRequestFullscreen) await element.webkitRequestFullscreen();
       setIsFullscreen(true);
-    } catch (err) { console.log("Focus mode deferred"); }
+    } catch (err) { /* console.log("Focus mode deferred"); */ }
   }, []);
 
   const exitFullscreen = useCallback(async () => {

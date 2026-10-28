@@ -101,7 +101,7 @@ export const logAdminAction = (action, details = {}) => {
   const user = getCurrentUser();
 
   if (!user || !hasAdminPrivileges()) {
-    console.warn('Attempted to log admin action without admin privileges');
+    // console.warn('Attempted to log admin action without admin privileges');
     return;
   }
 
@@ -116,7 +116,7 @@ export const logAdminAction = (action, details = {}) => {
   };
 
   // In a real application, you would send this to your logging service
-  console.log('Admin Action:', logData);
+  // console.log('Admin Action:', logData);
 
   // You could also send this to your backend for persistent logging
   // API.post('/api/admin/logs', logData).catch(console.error);
