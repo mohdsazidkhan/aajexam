@@ -22,9 +22,8 @@ const ProBadge = ({ className = '', size = 'md' }) => {
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       className={`
-        inline-flex items-center font-black tracking-widest uppercase
-        bg-primary-600 text-on-primary rounded-full shadow-[0_2px_10px_rgba(88,204,2,0.3)]
-        border border-primary-300/30
+        inline-flex items-center font-bold tracking-[0.08em] uppercase
+        bg-primary-600 text-on-primary rounded-full
         ${sizes[size]}
         ${className}
       `}

@@ -77,7 +77,7 @@ const Pagination = ({
           whileTap={currentPage > 1 ? { y: 0 } : {}}
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={`flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 border-b-2 ${
+          className={`flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 border ${
             currentPage === 1
               ? 'bg-background-surface-secondary border-border-primary text-content-secondary opacity-50 cursor-not-allowed'
               : 'bg-background-surface border-border-primary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600'
@@ -99,7 +99,7 @@ const Pagination = ({
                  whileTap={!isDots && !isCurrent ? { y: 0 } : {}}
                  onClick={() => !isDots && onPageChange(page)}
                  disabled={isDots}
-                 className={`min-w-[32px] h-8 px-1.5 flex items-center justify-center rounded-lg font-bold font-outfit text-[11px] transition-all duration-300 border-b-2 ${
+                 className={`min-w-[32px] h-8 px-1.5 flex items-center justify-center rounded-lg font-bold font-outfit text-[11px] transition-all duration-300 border ${
                    isCurrent
                      ? 'bg-primary-600 border-primary-600 text-on-primary translate-y-0.5'
                      : isDots
@@ -119,7 +119,7 @@ const Pagination = ({
           whileTap={currentPage < totalPages ? { y: 0 } : {}}
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={`flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 border-b-2 ${
+          className={`flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 border ${
             currentPage === totalPages
               ? 'bg-background-surface-secondary border-border-primary text-content-secondary opacity-50 cursor-not-allowed'
               : 'bg-background-surface border-border-primary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600'
@@ -155,7 +155,7 @@ const Pagination = ({
   }
 
   return (
-    <div className={`${sticky ? 'sticky bottom-0 z-20 rounded-b-2xl' : 'rounded-2xl border'} flex flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-2.5 bg-background-surface border-t-2 border-border-primary transition-colors duration-300`}>
+    <div className={`${sticky ? 'sticky bottom-0 z-20 rounded-b-2xl border-t' : 'rounded-2xl border'} border-border-primary flex flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-2.5 bg-background-surface transition-colors duration-300`}>
       <div className="flex justify-start">{infoBlock}</div>
       <div className="flex justify-center">{pageSizeBlock}</div>
       <div className="flex justify-end">{navBlock}</div>

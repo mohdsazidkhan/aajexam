@@ -220,9 +220,9 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                     { label: totalPYQs === 1 ? 'verified PYQ paper' : 'verified PYQ papers', value: totalPYQs },
                                     { label: examsWithPYQ.length === 1 ? 'exam' : 'exams', value: examsWithPYQ.length },
                                 ].map((st) => (
-                                    <div key={st.label} className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+                                    <div key={st.label} className="border border-border-primary px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
                                         <p className="text-lg font-bold font-outfit leading-none text-primary-600">{st.value}</p>
-                                        <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 whitespace-nowrap">{st.label}</p>
+                                        <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary whitespace-nowrap">{st.label}</p>
                                     </div>
                                 ))}
                                 {examIdsFilter && (
@@ -237,7 +237,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                 <Select
                                     value={filterExam}
                                     onChange={onExamChange}
-                                    className="flex-1 xl:flex-none xl:w-56 min-w-0 px-3 h-10 bg-background-surface-secondary border border-border-primary rounded-xl text-xs font-bold outline-none truncate"
+                                    className="flex-1 xl:flex-none xl:w-56 min-w-0 px-3 h-10 border border-border-primary rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">{translate('All Exams')}</option>
                                     {exams.map((e) => <option key={e._id} value={e._id}>{translateData(e.name)}</option>)}
@@ -245,7 +245,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                 <Select
                                     value={filterYear}
                                     onChange={onYearChange}
-                                    className="flex-1 xl:flex-none xl:w-36 min-w-0 px-3 h-10 bg-background-surface-secondary border border-border-primary rounded-xl text-xs font-bold outline-none truncate"
+                                    className="flex-1 xl:flex-none xl:w-36 min-w-0 px-3 h-10 border border-border-primary rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">{translate('All Years')}</option>
                                     {years.map((y) => <option key={y} value={y}>{y}</option>)}
@@ -266,7 +266,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                     const pct = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
                                     
                                     return (
-                                    <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-background-surface-secondary rounded-xl p-3 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition relative overflow-hidden">
+                                    <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block rounded-xl p-3 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition relative overflow-hidden">
                                         <div className="relative z-10">
                                             <div className="text-xs xl:text-sm font-bold text-content-primary group-hover:text-primary-600 transition mb-1 leading-tight line-clamp-2 min-h-[2rem]">{translateData(e.name)}</div>
                                             <div className="text-[10px] font-bold text-content-muted flex items-center justify-between mb-2">
@@ -394,7 +394,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                         </h2>
                         <div className="space-y-2 xl:space-y-4">
                             {faqs.map((f, i) => (
-                                <details key={i} className="group bg-background-surface-secondary rounded-2xl border border-border-primary p-5 cursor-pointer">
+                                <details key={i} className="group rounded-2xl border border-border-primary p-5 cursor-pointer">
                                     <summary className="font-bold text-content-primary text-base xl:text-lg tracking-tight">{f.question}</summary>
                                     <p className="mt-3 text-content-secondary font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
                                 </details>

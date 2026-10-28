@@ -133,22 +133,22 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                         </p>
 
                         <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6 mb-8">
-                            <div className="bg-background-surface-secondary rounded-2xl p-4 text-center border border-border-primary">
+                            <div className="rounded-2xl p-4 text-center border border-border-primary">
                                 <FaListOl className="text-xl text-primary-600 mx-auto mb-2" />
                                 <div className="text-xl font-bold text-content-primary">{paper.questionCount || 0}</div>
                                 <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Questions')}</div>
                             </div>
-                            <div className="bg-background-surface-secondary rounded-2xl p-4 text-center border border-border-primary">
+                            <div className="rounded-2xl p-4 text-center border border-border-primary">
                                 <FaTrophy className="text-xl text-primary-600 mx-auto mb-2" />
                                 <div className="text-xl font-bold text-content-primary">{paper.totalMarks}</div>
                                 <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Total Marks')}</div>
                             </div>
-                            <div className="bg-background-surface-secondary rounded-2xl p-4 text-center border border-border-primary">
+                            <div className="rounded-2xl p-4 text-center border border-border-primary">
                                 <FaClock className="text-xl text-primary-600 mx-auto mb-2" />
                                 <div className="text-xl font-bold text-content-primary">{paper.duration}</div>
                                 <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Minutes')}</div>
                             </div>
-                            <div className="bg-background-surface-secondary rounded-2xl p-4 text-center border border-border-primary">
+                            <div className="rounded-2xl p-4 text-center border border-border-primary">
                                 <FaCalendar className="text-xl text-content-primary mx-auto mb-2" />
                                 <div className="text-md font-bold text-content-primary">{paper.pyqYear || '—'}</div>
                                 <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Year')}</div>
@@ -165,7 +165,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
           </header>
 
                     {/* About this paper — long-form intro for SEO */}
-                    <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                    <section className="mb-10 py-2 xl:py-4">
                         <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight flex items-center">
                             <FaBookOpen className="text-primary-600 mr-3" /> About This Paper
                         </h2>
@@ -176,7 +176,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                     {/* Section breakdown */}
                     {pattern?.sections?.length > 0 && (
-                        <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                        <section className="mb-10 py-2 xl:py-4">
                             <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('Exam Pattern & Sections')}
                             </h2>
@@ -207,7 +207,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                     {/* Sample questions */}
                     {sampleQuestions?.length > 0 && (
-                        <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                        <section className="mb-10 py-2 xl:py-4">
                             <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-2 tracking-tight">
                                 {translate('Sample Questions with Answers')}
                             </h2>
@@ -216,7 +216,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                             </p>
                             <div className="space-y-6">
                                 {sampleQuestions.map((q, idx) => (
-                                    <article key={idx} className="bg-background-surface-secondary rounded-2xl p-5 xl:p-6 border border-border-primary">
+                                    <article key={idx} className="rounded-2xl p-5 xl:p-6 border border-border-primary">
                                         <div className="flex items-start gap-3 mb-4">
                                             <span className="flex-shrink-0 w-8 h-8 bg-primary-600 text-on-primary rounded-full flex items-center justify-center font-bold text-sm">{idx + 1}</span>
                                             <div className="flex-1 space-y-2">
@@ -278,7 +278,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                                 'Instant Results',
                                                 'Free to attempt',
                                             ].map((tag) => (
-                                                <span key={tag} className="px-3 py-1 dark:bg-white/5 border border-primary-300 dark:border-white/10 rounded-full text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">{tag}</span>
+                                                <span key={tag} className="px-3 py-1 border border-border-primary rounded-full text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">{tag}</span>
                                             ))}
                                         </div>
                                     </div>
@@ -291,7 +291,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                         </button>
                                         <button
                                             onClick={() => router.push(`/login?next=${encodeURIComponent(router.asPath)}`)}
-                                            className="w-full px-8 py-4 dark:bg-white/5 hover:bg-white/10 text-content-secondary font-bold uppercase tracking-[0.08em] rounded-2xl border border-primary-300 dark:border-white/10 transition-all text-sm"
+                                            className="w-full px-8 py-4 hover:bg-background-surface-secondary text-content-secondary font-bold uppercase tracking-[0.08em] rounded-2xl border border-border-primary transition-all text-sm"
                                         >
                                             {translate('Already have account? Log in')}
                                         </button>
@@ -320,13 +320,13 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     {/* FAQ */}
                     {faqs?.length > 0 && (
 
-                        <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                        <section className="mb-10 py-2 xl:py-4">
                             <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('Frequently Asked Questions')}
                             </h2>
                             <div className="space-y-2 xl:space-y-4">
                                 {faqs.map((f, i) => (
-                                    <details key={i} className="group bg-background-surface-secondary rounded-2xl border border-border-primary p-5 cursor-pointer">
+                                    <details key={i} className="group rounded-2xl border border-border-primary p-5 cursor-pointer">
                                         <summary className="font-bold text-content-primary text-base xl:text-lg tracking-tight">
                                             {f.question}
                                         </summary>
@@ -341,13 +341,13 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                     {/* Related papers */}
                     {related?.length > 0 && (
-                        <section className="rounded-3xl mb-10 border border-border-primary px-0 py-4 xl:py-8">
+                        <section className="mb-10 py-2 xl:py-4">
                             <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('More {name} PYQ Papers', { name: translateData(examName) })}
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                                 {related.map((r) => (
-                                    <Link key={r._id} href={`/pyq/${exam.slug}/${r.slug}`} className="group block bg-background-surface-secondary rounded-2xl p-5 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition">
+                                    <Link key={r._id} href={`/pyq/${exam.slug}/${r.slug}`} className="group block rounded-2xl p-5 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition">
                                         <div className="flex items-center gap-2 mb-2 flex-wrap">
                                             {r.pyqYear && <span className="px-2 py-0.5 rounded text-[9px] font-bold text-primary-600 uppercase tracking-[0.08em]">{r.pyqYear}</span>}
                                             {r.pyqShift && <span className="text-[9px] font-bold text-content-secondary">{r.pyqShift}</span>}
