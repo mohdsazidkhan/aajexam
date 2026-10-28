@@ -414,7 +414,7 @@ const TestStart = ({ resolvedId } = {}) => {
             initial={false}
             animate={{ x: showSidebar ? 0 : -320 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="w-80 shrink-0 flex flex-col p-6 pb-0"
+            className="w-80 shrink-0 flex flex-col p-3 pb-0"
           >
           <div className="flex flex-col gap-6 flex-1 min-h-0">
             <div className="flex flex-col gap-2 xl:gap-4 flex-1 min-h-0">
@@ -426,7 +426,7 @@ const TestStart = ({ resolvedId } = {}) => {
                 return (
                   <div key={secName} className="space-y-2">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] truncate">
+                      <span className="text-[10px] font-bold text-content-secondary break-words">
                         {secName}
                       </span>
                       <span className="text-[10px] font-bold text-primary-600 shrink-0">
@@ -443,13 +443,7 @@ const TestStart = ({ resolvedId } = {}) => {
                             key={idx}
                             data-q-state={isMarked ? 'marked' : isAnswered ? 'answered' : undefined}
                             onClick={() => setCurrentQIndex(idx)}
-                            className={`
-                              h-10 rounded-lg xl:rounded-xl font-bold text-xs transition-all border-b-2
-                              ${isCurrent ? 'bg-primary-600 text-on-primary border-primary-600 -translate-y-1' :
-                                isMarked ?'bg-primary-600 text-on-primary border-primary-600':
-                                  isAnswered ? 'text-primary-600 border-primary-200 dark:border-primary-600' :
-                                    'bg-background-surface-secondary text-content-muted border-border-primary'}
-                            `}
+                            className={`h-10 rounded-lg xl:rounded-xl font-bold text-xs transition-all ${isCurrent ? 'border-2 border-content-primary' : isMarked ? 'border border-orange-500' : isAnswered ? 'border border-primary-600' : 'border border-border-primary'} ${isMarked ? 'bg-orange-500 text-white' : isAnswered ? 'bg-primary-600 text-on-primary' : `bg-background-page ${isCurrent ? 'text-content-primary' : 'text-content-muted'}`}`}
                           >
                             {idx + 1}
                           </button>
@@ -532,10 +526,10 @@ const TestStart = ({ resolvedId } = {}) => {
               <div className="xl:hidden grid grid-cols-2 gap-2 sm:gap-4 pt-2">
                 <Button
                   variant="primary"
-                  className="w-full !px-2 sm:!px-4 text-[11px] sm:text-sm"
+                  className={`w-full !px-2 sm:!px-4 text-[11px] sm:text-sm${marked.has(currentQ._id) ? ' !bg-orange-500 !border-orange-500 !text-white hover:!bg-orange-500' : ''}`}
                   onClick={toggleMark}
                 >
-                  <Flag className={`w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-content-primary' : 'text-content-muted'}`} />
+                  <Flag className={`w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-white text-white' : 'text-content-muted'}`} />
                   {marked.has(currentQ._id) ? translate('MARKED') : <><span className="sm:hidden">{translate('MARK')}</span><span className="hidden sm:inline">{translate('MARK FOR REVIEW')}</span></>}
                 </Button>
                 <Button
@@ -572,10 +566,10 @@ const TestStart = ({ resolvedId } = {}) => {
         <div className="hidden xl:flex flex-1 items-center justify-center gap-4">
           <Button
             variant="primary"
-            className="h-14 !px-6 min-w-[12rem] text-sm"
+            className={`h-14 !px-6 min-w-[12rem] text-sm${marked.has(currentQ._id) ? ' !bg-orange-500 !border-orange-500 !text-white hover:!bg-orange-500' : ''}`}
             onClick={toggleMark}
           >
-            <Flag className={`w-5 h-5 mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-content-primary' : 'text-content-muted'}`} />
+            <Flag className={`w-5 h-5 mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-white text-white' : 'text-content-muted'}`} />
             {marked.has(currentQ._id) ? translate('MARKED') : <>{translate('MARK FOR REVIEW')}</>}
           </Button>
           <Button
