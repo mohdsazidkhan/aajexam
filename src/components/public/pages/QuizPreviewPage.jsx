@@ -239,8 +239,8 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
             <div className="space-y-2">
               {leaderboard.slice(0, 10).map((entry, i) => (
                 <div key={entry._id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-background-surface-secondary">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold ${
-                    i === 0 ?'bg-primary-600': i === 1 ?'bg-border-secondary': i === 2 ?'bg-primary-600':'bg-border-primary dark:bg-slate-600 text-content-secondary'
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                    i === 0 ?'bg-primary-600 text-on-primary': i === 1 ?'bg-border-secondary text-content-primary': i === 2 ?'bg-primary-600 text-on-primary':'bg-border-primary text-content-secondary'
                   }`}>
                     {i + 1}
                   </div>

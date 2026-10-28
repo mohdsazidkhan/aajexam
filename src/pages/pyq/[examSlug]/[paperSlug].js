@@ -165,7 +165,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
           </header>
 
                     {/* About this paper — long-form intro for SEO */}
-                    <section className="mb-10 bg-background-surface rounded-2xl p-3 xl:p-5">
+                    <section className="mb-10 bg-background-surface border border-border-primary rounded-2xl p-3 xl:p-5">
                         <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight flex items-center">
                             <FaBookOpen className="text-primary-600 mr-3" /> About This Paper
                         </h2>
@@ -176,7 +176,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                     {/* Section breakdown */}
                     {pattern?.sections?.length > 0 && (
-                        <section className="mb-10 bg-background-surface rounded-2xl p-3 xl:p-5">
+                        <section className="mb-10 bg-background-surface border border-border-primary rounded-2xl p-3 xl:p-5">
                             <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('Exam Pattern & Sections')}
                             </h2>
@@ -207,7 +207,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                     {/* Sample questions */}
                     {sampleQuestions?.length > 0 && (
-                        <section className="mb-10 bg-background-surface rounded-2xl p-3 xl:p-5">
+                        <section className="mb-10 bg-background-surface border border-border-primary rounded-2xl p-3 xl:p-5">
                             <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-2 tracking-tight">
                                 {translate('Sample Questions with Answers')}
                             </h2>
@@ -320,7 +320,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     {/* FAQ */}
                     {faqs?.length > 0 && (
 
-                        <section className="mb-10 bg-background-surface rounded-2xl p-3 xl:p-5">
+                        <section className="mb-10 bg-background-surface border border-border-primary rounded-2xl p-3 xl:p-5">
                             <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('Frequently Asked Questions')}
                             </h2>
@@ -341,7 +341,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                     {/* Related papers */}
                     {related?.length > 0 && (
-                        <section className="mb-10 bg-background-surface rounded-2xl p-3 xl:p-5">
+                        <section className="mb-10 bg-background-surface border border-border-primary rounded-2xl p-3 xl:p-5">
                             <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('More {name} PYQ Papers', { name: translateData(examName) })}
                             </h2>

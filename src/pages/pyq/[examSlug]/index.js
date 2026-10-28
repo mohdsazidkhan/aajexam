@@ -103,7 +103,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                     <header className="relative overflow-hidden border border-border-primary p-6 md:p-6 xl:p-8 mb-10 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>
             <div className="relative">
                         <div className="flex items-center mb-6 gap-4 flex-wrap">
-                            <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-2xl flex items-center justify-center border border-border-primary flex-shrink-0">
+                            <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-md flex items-center justify-center border border-primary-600 flex-shrink-0 text-primary-600">
                                 <FaGraduationCap className="text-2xl xl:text-3xl text-primary-600" />
                             </div>
                             <div>
@@ -138,7 +138,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
           </header>
 
                     {/* Long-form intro */}
-                    <section className="mb-10 bg-background-surface rounded-2xl p-3 xl:p-5">
+                    <section className="mb-10 bg-background-surface border border-border-primary rounded-2xl p-3 xl:p-5">
                         <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight flex items-center">
                             <FaBookOpen className="text-primary-600 mr-3" /> {translate('About {name} PYQs', { name: translateData(examName) })}
                         </h2>
@@ -149,14 +149,14 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
                     {/* Year-grouped paper listings */}
                     {years.length === 0 ? (
-                        <section className="mb-10 text-center bg-background-surface rounded-2xl p-3 xl:p-5">
+                        <section className="mb-10 text-center bg-background-surface border border-border-primary rounded-2xl p-3 xl:p-5">
                             <FaListOl className="text-5xl text-slate-300 dark:text-slate-700 mx-auto mb-4" />
                             <h2 className="text-xl font-bold text-content-secondary mb-2 tracking-tight">{translate('No PYQ papers seeded yet')}</h2>
                             <p className="text-content-muted font-medium">{translate('{name} previous year papers will appear here as soon as they are added.', { name: translateData(examName) })}</p>
                         </section>
                     ) : (
                         years.map((year) => (
-                            <section key={year} id={`year-${year}`} className="mb-8 bg-background-surface rounded-2xl p-3 xl:p-5">
+                            <section key={year} id={`year-${year}`} className="mb-8 bg-background-surface border border-border-primary rounded-2xl p-3 xl:p-5">
                                 <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight flex items-center">
                                     <span className="mr-3 px-3 py-1 rounded-full text-primary-600 text-sm">{year}</span>
                                     {translate('{name} — {count} {unit}', { name: translateData(examName), count: papersByYear[year].length, unit: papersByYear[year].length === 1 ? translate('Paper') : translate('Papers') })}
@@ -228,13 +228,13 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                             <h3 className="text-lg font-bold font-outfit tracking-tight leading-tight">
                                                 {translateData(proModalTest.title)}
                                             </h3>
-                                            <p className="text-xs font-bold text-content-muted">
+                                            <p className="text-xs font-bold text-slate-400">
                                                 {translateData(proModalTest.examName)} &bull; {proModalTest.pyqYear} &bull; {translate('{count} Questions', { count: proModalTest.questionCount || 0 })} &bull; {translate('{count} min', { count: proModalTest.duration })}
                                             </p>
                                         </div>
                                         <button
                                             onClick={() => setProModalTest(null)}
-                                            className="flex-shrink-0 w-8 h-8 rounded-full transition flex items-center justify-center text-content-muted hover:text-white text-lg font-bold"
+                                            className="flex-shrink-0 w-8 h-8 rounded-full transition flex items-center justify-center text-slate-400 hover:text-white text-lg font-bold"
                                         >
                                             ✕
                                         </button>
@@ -285,7 +285,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
                     {/* FAQ */}
                     {faqs?.length > 0 && (
-                        <section className="mb-10 bg-background-surface rounded-2xl p-3 xl:p-5">
+                        <section className="mb-10 bg-background-surface border border-border-primary rounded-2xl p-3 xl:p-5">
                             <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('Frequently Asked Questions')}
                             </h2>
@@ -302,7 +302,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
                     {/* Other exams */}
                     {otherExams?.length > 0 && (
-                        <section className="mb-10 bg-background-surface rounded-2xl p-3 xl:p-5">
+                        <section className="mb-10 bg-background-surface border border-border-primary rounded-2xl p-3 xl:p-5">
                             <h2 className="text-xl xl:text-3xl font-bold text-content-primary mb-6 tracking-tight">
                                 {translate('Other Exam PYQs')}
                             </h2>

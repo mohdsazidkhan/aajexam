@@ -332,13 +332,13 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                             <h3 className="text-lg font-bold font-outfit tracking-tight leading-tight">
                                                 {translateData(proModalTest.title)}
                                             </h3>
-                                            <p className="text-xs font-bold text-content-muted">
+                                            <p className="text-xs font-bold text-slate-400">
                                                 {translateData(proModalTest.examName)} &bull; {proModalTest.pyqYear} &bull; {translate('{count} Questions', { count: proModalTest.questionCount || 0 })} &bull; {translate('{count} min', { count: proModalTest.duration })}
                                             </p>
                                         </div>
                                         <button
                                             onClick={() => setProModalTest(null)}
-                                            className="flex-shrink-0 w-8 h-8 rounded-full transition flex items-center justify-center text-content-muted hover:text-white text-lg font-bold"
+                                            className="flex-shrink-0 w-8 h-8 rounded-full transition flex items-center justify-center text-slate-400 hover:text-white text-lg font-bold"
                                         >
                                             ✕
                                         </button>

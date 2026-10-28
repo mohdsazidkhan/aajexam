@@ -1,0 +1,152 @@
+{
+ "exams": [
+  {
+   "name": "RRB Group D",
+   "slug": "rrb-group-d"
+  },
+  {
+   "name": "Delhi Police Constable- SSC",
+   "slug": "delhi-police-constable-ssc"
+  },
+  {
+   "name": "SSC Selection Post (Matriculation Level)",
+   "slug": "ssc-selection-post-matriculation-level"
+  },
+  {
+   "name": "SSC MTS",
+   "slug": "ssc-mts"
+  },
+  {
+   "name": "SSC CGL",
+   "slug": "ssc-cgl"
+  },
+  {
+   "name": "SSC GD Constable",
+   "slug": "ssc-gd-constable"
+  },
+  {
+   "name": "UPSC Prelims",
+   "slug": "upsc-prelims"
+  },
+  {
+   "name": "SSC Selection Post",
+   "slug": "ssc-selection-post"
+  },
+  {
+   "name": "Rajasthan Police Constable",
+   "slug": "rajasthan-police-constable"
+  },
+  {
+   "name": "SSC Stenographer Grade C & D",
+   "slug": "ssc-stenographer-grade-c-d"
+  },
+  {
+   "name": "SSC CHSL Tier-I",
+   "slug": "ssc-chsl-tier-i"
+  },
+  {
+   "name": "SSC CPO (SI Delhi Police & CAPF)",
+   "slug": "ssc-cpo-si-delhi-police-capf"
+  }
+ ],
+ "subjects": [
+  {
+   "name": "General Intelligence & Reasoning",
+   "slug": "general-intelligence-reasoning"
+  },
+  {
+   "name": "General Science",
+   "slug": "general-science"
+  },
+  {
+   "name": "General Awareness",
+   "slug": "general-awareness"
+  },
+  {
+   "name": "Quantitative Aptitude",
+   "slug": "quantitative-aptitude"
+  },
+  {
+   "name": "English Language",
+   "slug": "english-language"
+  },
+  {
+   "name": "Mathematics",
+   "slug": "mathematics"
+  },
+  {
+   "name": "General Knowledge",
+   "slug": "general-knowledge"
+  },
+  {
+   "name": "Reasoning / Logical Ability",
+   "slug": "reasoning-logical-ability"
+  },
+  {
+   "name": "General Studies",
+   "slug": "general-studies"
+  },
+  {
+   "name": "Reasoning Ability",
+   "slug": "reasoning-ability"
+  },
+  {
+   "name": "Biology",
+   "slug": "biology"
+  },
+  {
+   "name": "English Comprehension",
+   "slug": "english-comprehension"
+  }
+ ],
+ "topics": [
+  {
+   "name": "Number Series",
+   "slug": "number-series"
+  },
+  {
+   "name": "Digital Banking & Payments",
+   "slug": "digital-banking-payments"
+  },
+  {
+   "name": "Time Speed & Distance",
+   "slug": "time-speed-distance"
+  },
+  {
+   "name": "Medieval History",
+   "slug": "medieval-history"
+  },
+  {
+   "name": "Indian Polity",
+   "slug": "indian-polity"
+  },
+  {
+   "name": "Agriculture Economy",
+   "slug": "agriculture-economy"
+  },
+  {
+   "name": "Fill in the Blanks",
+   "slug": "fill-in-the-blanks"
+  },
+  {
+   "name": "Reading Comprehension",
+   "slug": "reading-comprehension"
+  },
+  {
+   "name": "Non-Verbal Reasoning",
+   "slug": "non-verbal-reasoning"
+  },
+  {
+   "name": "Modern History",
+   "slug": "modern-history"
+  },
+  {
+   "name": "Indian Economy",
+   "slug": "indian-economy"
+  },
+  {
+   "name": "Indian History",
+   "slug": "indian-history"
+  }
+ ]
+}

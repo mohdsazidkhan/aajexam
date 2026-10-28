@@ -213,7 +213,7 @@ const AdminNotificationsPage = () => {
       </button>
 
       <div className="px-4 py-2.5 bg-slate-900 text-white rounded-lg xl:rounded-3xl italic tracking-tight">
-         Page {page} <span className="text-content-muted ml-2">of</span> {totalPages}
+         Page {page} <span className="text-slate-400 ml-2">of</span> {totalPages}
       </div>
 
       <button aria-label="Next"

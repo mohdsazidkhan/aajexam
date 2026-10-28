@@ -19,6 +19,19 @@ import {
   Heart,
   Layers,
   Compass,
+  GraduationCap,
+  BookOpen,
+  Hash,
+  Brain,
+  Calculator,
+  Languages,
+  FlaskConical,
+  Globe,
+  Landmark,
+  TrendingUp,
+  Leaf,
+  Gauge,
+  PenLine,
 } from 'lucide-react';
 import { m as motion } from 'framer-motion';
 
@@ -26,9 +39,40 @@ import config from '../../lib/config/appConfig';
 import { FaEnvelope, FaPinterest } from 'react-icons/fa';
 import { isAdmin } from '../../lib/utils/adminUtils';
 import useTranslate from '../../hooks/useTranslate';
+import footerLinks from '../../data/footerLinks.json';
+
+// Direct links to the most popular exams, subjects and topics (src/data/footerLinks.json, rebuilt with
+// `node scripts/buildFooterLinks.js --write`). Headings reuse the existing translated nav labels.
+const ICON_RULES = {
+  subjects: [
+    [/reason|intelligen|logic/i, Brain],
+    [/quant|math|aptitude/i, Calculator],
+    [/english|language|comprehension/i, Languages],
+    [/science|biolog|physic|chem/i, FlaskConical],
+    [/aware|knowledge|studies|current|gk/i, Globe],
+  ],
+  topics: [
+    [/histor/i, Landmark],
+    [/polity|constitution|govern/i, Scale],
+    [/econom|banking|finance|payment/i, TrendingUp],
+    [/agricultur|environment/i, Leaf],
+    [/series|number|arithmetic/i, Hash],
+    [/time|speed|distance|work/i, Gauge],
+    [/blank|comprehension|verbal|grammar|vocab|passage/i, PenLine],
+    [/reason|logic/i, Brain],
+  ],
+};
+const DEFAULT_ICON = { exams: GraduationCap, subjects: BookOpen, topics: Hash };
+const iconFor = (key, name) => (ICON_RULES[key]?.find(([rx]) => rx.test(name)) || [])[1] || DEFAULT_ICON[key];
+
+const POPULAR = [
+  { key: 'exams', title: 'Exams', base: '/pyq' },
+  { key: 'subjects', title: 'Subjects', base: '/subjects' },
+  { key: 'topics', title: 'Topics', base: '/topics' },
+];
 
 const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
-  const { translate } = useTranslate();
+  const { translate, translateData } = useTranslate();
   const isUserAdmin = isAdmin();
   const legalLinks = config.LEGAL;
 
@@ -66,6 +110,34 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
     <footer className="relative pt-4 xl:pt-8 pb-4 xl:pb-8 overflow-hidden bg-background-surface border-t border-border-primary font-outfit">
 
       <div className="container mx-auto px-4">
+        {POPULAR.some(({ key }) => footerLinks[key]?.length) && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-8 mb-4 xl:mb-8 pb-6 xl:pb-8 border-b border-border-primary">
+            {POPULAR.filter(({ key }) => footerLinks[key]?.length).map(({ key, title, base }) => (
+              <nav key={key} aria-label={translate(title)} className="space-y-4">
+                <h3 className="text-xs font-bold text-content-primary uppercase tracking-[0.08em] flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-600" />
+                  {translate(title)}
+                </h3>
+                <ul className="space-y-2">
+                  {footerLinks[key].map((item) => {
+                    const ItemIcon = iconFor(key, item.name);
+                    return (
+                      <li key={item.slug} className="min-w-0">
+                        <Link href={`${base}/${item.slug}`} title={translateData(item.name)} className="group flex items-center gap-3 text-sm font-bold leading-snug text-content-secondary hover:text-primary-600 transition-colors">
+                          <span className="w-8 h-8 shrink-0 flex items-center justify-center rounded-md border border-primary-600 text-primary-600 transition-colors group-hover:bg-primary-600 group-hover:text-on-primary">
+                            <ItemIcon className="w-4 h-4" />
+                          </span>
+                          <span className="min-w-0">{translateData(item.name)}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
+            ))}
+          </div>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8 mb-4 xl:mb-8">
           <section className="xl:col-span-1 space-y-8">
             <section className="space-y-2 xl:space-y-4">
@@ -76,7 +148,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
             </section>
 
             <p className="text-sm font-bold text-content-secondary leading-relaxed max-w-xs">
-              {translate('Practice smarter, prepare with confidence, and track your progress in one place.')}
+              {translate('Prepare Your Exam Today')}
             </p>
 
             <nav className="flex flex-wrap gap-3">
@@ -89,7 +161,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={translate('Follow us on {name}', { name: social.name })}
-                  className="w-10 h-10 xl:w-11 xl:h-11 rounded-xl border border-border-primary text-content-secondary hover:text-primary-600 hover:border-primary-600 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 xl:w-11 xl:h-11 rounded-md border border-primary-600 text-primary-600 hover:text-primary-600 hover:border-primary-600 flex items-center justify-center transition-colors"
                 >
                   <social.icon className="w-4 h-4" />
                 </motion.a>
@@ -98,7 +170,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </section>
 
           <nav aria-label={translate('Explore')} className="space-y-8">
-            <h3 className="text-xs font-bold text-primary-600 uppercase tracking-[0.08em] flex items-center gap-3">
+            <h3 className="text-xs font-bold text-content-primary uppercase tracking-[0.08em] flex items-center gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-primary-600" />
               {translate('Explore')}
             </h3>
@@ -106,7 +178,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
               {operationalLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="group flex items-center gap-4 text-sm font-bold text-content-secondary hover:text-content-primary transition-colors">
-                    <div className="w-10 h-10 rounded-xl border border-border-primary flex items-center justify-center group-hover:text-primary-600 group-hover:border-primary-600 transition-colors">
+                    <div className="w-10 h-10 rounded-md border border-primary-600 flex items-center justify-center group-hover:text-primary-600 group-hover:border-primary-600 transition-colors text-primary-600">
                       <link.icon className="w-4 h-4" />
                     </div>
                     <span>{translate(link.name)}</span>
@@ -117,7 +189,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </nav>
 
           <nav aria-label={translate('Legal')} className="space-y-8">
-            <h3 className="text-xs font-bold text-primary-600 uppercase tracking-[0.08em] flex items-center gap-3">
+            <h3 className="text-xs font-bold text-content-primary uppercase tracking-[0.08em] flex items-center gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-primary-600" />
               {translate('Legal')}
             </h3>
@@ -125,7 +197,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
               {legalLinksMap.map((link) => (
                 <li key={link.name}>
                   <Link href={link.path} className="group flex items-center gap-4 text-sm font-bold text-content-secondary hover:text-content-primary transition-colors">
-                    <div className="w-10 h-10 rounded-xl border border-border-primary flex items-center justify-center group-hover:text-primary-600 group-hover:border-primary-600 transition-colors">
+                    <div className="w-10 h-10 rounded-md border border-primary-600 flex items-center justify-center group-hover:text-primary-600 group-hover:border-primary-600 transition-colors text-primary-600">
                       <link.icon className="w-4 h-4" />
                     </div>
                     <span>{translate(link.name)}</span>
@@ -147,7 +219,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   aria-label={translate('Send us an email')}
                   className="flex items-center gap-3 group/item"
                 >
-                  <div className="w-11 h-11 border border-border-primary text-content-primary rounded-xl flex items-center justify-center group-hover/item:border-primary-600 group-hover/item:text-primary-600 transition-colors">
+                  <div className="w-11 h-11 border border-primary-600 text-primary-600 rounded-md flex items-center justify-center group-hover/item:border-primary-600 group-hover/item:text-primary-600 transition-colors">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">
@@ -193,7 +265,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           <div className="flex flex-col xl:flex-row items-center gap-4 xl:gap-6 text-sm font-black text-content-secondary tracking-[0.04em]">
             <span>&copy; {new Date().getFullYear()} {config.APP_NAME}</span>
             <div className="hidden xl:block h-4 w-px bg-slate-300 dark:bg-slate-700" />
-            <div className="flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full border border-slate-200 dark:border-white/10">
+            <div className="flex items-center gap-2 px-3 py-1 bg-background-surface-secondary rounded-full border border-slate-200 dark:border-white/10">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600" />
               <span>{translate('Version {version}', { version: config.APP_VERSION })}</span>
             </div>

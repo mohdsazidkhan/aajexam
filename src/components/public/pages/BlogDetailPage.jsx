@@ -232,7 +232,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
             </div>
 
             {/* Content */}
-            <article className="prose prose-lg max-w-none bg-background-surface text-content-primary p-4 xl:p-8 border border-border-primary [&_*:not(a)]:!text-black dark:[&_*:not(a)]:!text-white [&_img]:max-w-full [&_table]:block [&_table]:overflow-x-auto [&_pre]:overflow-x-auto" style={{ borderRadius: 'var(--radius)' }}>
+            <article className="prose prose-lg max-w-none bg-background-surface text-content-primary p-4 xl:p-8 border border-border-primary [&_*:not(a)]:!text-content-primary dark:[&_*:not(a)]:!text-white [&_img]:max-w-full [&_table]:block [&_table]:overflow-x-auto [&_pre]:overflow-x-auto" style={{ borderRadius: 'var(--radius)' }}>
               <div className="text-content-primary leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: renderContent(blog.content) }} />
             </article>

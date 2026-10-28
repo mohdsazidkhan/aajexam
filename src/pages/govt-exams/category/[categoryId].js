@@ -163,7 +163,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
                   </div>
                 </div>
 
-                <div className="w-8 xl:w-12 h-8 xl:h-12 rounded-2xl flex items-center justify-center text-content-muted group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:translate-x-1 border border-border-primary">
+                <div className="w-8 xl:w-12 h-8 xl:h-12 rounded-md flex items-center justify-center text-primary-600 group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:translate-x-1 border border-primary-600">
                   <ChevronRight className="w-6 h-6" />
                 </div>
               </section>

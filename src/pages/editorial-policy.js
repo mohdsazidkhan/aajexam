@@ -94,7 +94,7 @@ export default function EditorialPolicy() {
                                         <FaCheckCircle className="text-white text-lg" />
                                     </div>
                                     <h3 className="text-lg font-bold text-white tracking-tight mb-1">{item.title}</h3>
-                                    <p className="text-content-muted font-bold text-xs uppercase tracking-[0.08em]">{item.desc}</p>
+                                    <p className="text-slate-400 font-bold text-xs uppercase tracking-[0.08em]">{item.desc}</p>
                                 </section>
                             ))}
                         </div>

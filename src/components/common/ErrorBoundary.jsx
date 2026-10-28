@@ -75,7 +75,7 @@ const ErrorFallback = ({ error, errorInfo }) => {
                     </div>
                   </summary>
                   <div className="p-8 bg-slate-950 text-primary-400 font-mono text-[10px] whitespace-pre-wrap overflow-auto max-h-[350px] leading-relaxed border-t-2 border-border-primary">
-                    <div className="flex items-center gap-2 mb-4 text-content-primary border-b border-border-primary pb-2">
+                    <div className="flex items-center gap-2 mb-4 text-slate-200 border-b border-slate-700 pb-2">
                       <AlertCircle className="w-4 h-4" /> <span>{translate('Error Info')}</span>
                     </div>
                     <span className="text-black/80 dark:text-white/80"># Error:</span> {error?.toString()}

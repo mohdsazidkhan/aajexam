@@ -140,7 +140,7 @@ const MyChallengesPage = () => {
                                  </section>
 
                                  {/* Leaderboard Section */}
-                                 <section className="p-5 bg-background-surface">
+                                 <section className="p-5 bg-background-surface border border-border-primary">
                                     <h3 className="text-xs font-bold text-content-muted uppercase tracking-[0.08em] mb-3 flex items-center gap-2">
                                        <Trophy className="w-3.5 h-3.5" /> Opponent Scores
                                     </h3>

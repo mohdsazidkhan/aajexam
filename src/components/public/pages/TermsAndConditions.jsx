@@ -111,7 +111,7 @@ const TermsAndConditions = () => {
                               { title: 'Correct Information', body: 'You agree that all information provided during registration is 100% accurate.', icon: Info }
                            ].map((item, i) => (
                               <div key={i} className="flex gap-4 group">
-                                 <div className="w-12 h-12 bg-background-surface rounded-2xl flex items-center justify-center shrink-0 border border-border-primary group-hover:border-primary-500/20 transition-all">
+                                 <div className="w-12 h-12 bg-background-surface rounded-md flex items-center justify-center shrink-0 border border-primary-600 group-hover:border-primary-500/20 transition-all text-primary-600">
                                     <item.icon className="w-6 h-6 text-content-muted group-hover:text-primary-600" />
                                  </div>
                                  <div className="space-y-2">

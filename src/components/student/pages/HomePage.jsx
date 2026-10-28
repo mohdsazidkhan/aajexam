@@ -352,14 +352,14 @@ const HomePage = () => {
       <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-4 xl:mt-6">
             {/* ── Scorecard hero ── */}
             <section className="px-0 py-2 xl:py-3">
-               <div className="relative isolate overflow-hidden bg-background-surface p-3 xl:p-5" style={{ borderRadius: 'var(--radius)' }}>
+               <div className="relative isolate overflow-hidden border border-border-primary bg-background-surface p-3 xl:p-5" style={{ borderRadius: 'var(--radius)' }}>
 
                   <div className="grid grid-cols-1 xl:grid-cols-[240px_minmax(0,1fr)] gap-3 xl:gap-4">
                      {/* Readiness */}
                      <div className="relative overflow-hidden flex flex-col justify-center gap-2 px-4 py-3 border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
                         <TrendingUp className="absolute -right-3 -bottom-3 w-20 h-20 text-primary-600/10 dark:text-white/10" />
                         <div className="relative flex items-center justify-between gap-2">
-                           <span className="text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Readiness')}</span>
+                           <span className="text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Exam Readiness')}</span>
                            {streakCount > 0 && (
                               <span className="inline-flex items-center gap-1 px-2 py-0.5 text-on-primary bg-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
                                  <Flame className="w-3.5 h-3.5 fill-current" />

@@ -123,7 +123,7 @@ const ContactUs = ({ contactInfo = {
                            </section>
                            <div className="flex flex-wrap gap-4">
                               {socialLinks.map((s, i) => (
-                                 <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={translate('Follow us on {name}', { name: s.name })} className="w-11 h-11 bg-background-surface hover:bg-primary-700 hover:text-white dark:hover:text-white flex items-center justify-center rounded-lg xl:rounded-xl transition-all border border-border-primary text-content-secondary group/link">
+                                 <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={translate('Follow us on {name}', { name: s.name })} className="w-11 h-11 bg-background-surface hover:bg-primary-700 hover:text-white dark:hover:text-white flex items-center justify-center rounded-md xl:rounded-md transition-all border border-primary-600 text-primary-600 group/link">
                                     <s.icon className="w-5 h-5 group-hover/link:scale-110 transition-transform" />
                                  </a>
                               ))}
@@ -135,7 +135,7 @@ const ContactUs = ({ contactInfo = {
                      {/* Support Info */}
                      <Card as="section" className="border-none text-content-primary border border-border-primary overflow-hidden group relative bg-background-surface">
                         <div className="flex items-center gap-5 relative z-10">
-                           <div className="w-14 h-14 rounded-2xl border border-border-primary flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                           <div className="w-14 h-14 rounded-md border border-primary-600 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 text-primary-600">
                               <Headset className="w-8 h-8" />
                            </div>
                            <div className="space-y-1">
