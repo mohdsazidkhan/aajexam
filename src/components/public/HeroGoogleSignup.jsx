@@ -9,7 +9,7 @@ import useTranslate from '../../hooks/useTranslate';
 import { trackPrompt } from '../../lib/tracker';
 import { useFreePromoActive } from '../../lib/freePromo';
 
-const BTN = 'inline-flex items-center gap-2 px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.08em] bg-[#fff] text-primary-600 transition-colors disabled:opacity-70';
+const BTN = 'inline-flex items-center gap-2 px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.08em] bg-background-surface text-primary-600 border border-primary-600 hover:bg-background-surface-secondary transition-colors disabled:opacity-70';
 
 const GoogleIcon = () => (
   <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">

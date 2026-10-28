@@ -19,6 +19,7 @@ import {
    Check,
    X,
    RotateCcw,
+   Gift,
 } from 'lucide-react';
 import { m as motion } from 'framer-motion';
 import MobileAppWrapper from "../../common/MobileAppWrapper";
@@ -185,7 +186,7 @@ const HeroQuizCard = () => {
       <>
          <div className="flex items-center justify-between gap-3 px-5 py-3.5 border-b border-border-primary">
             <div className="flex items-center gap-3 min-w-0">
-               <h3 className="shrink-0 text-lg xl:text-2xl font-bold tracking-tight text-primary-600">{translate('Try Free Now')}</h3>
+               <h3 className="shrink-0 inline-flex items-center gap-2 text-lg xl:text-2xl font-bold tracking-tight text-primary-600"><Gift className="w-5 h-5 xl:w-6 xl:h-6" />{translate('Try Free Now')}</h3>
                <div className="relative w-10 h-10 shrink-0">
                   <svg viewBox="0 0 36 36" className="w-10 h-10 -rotate-90" aria-hidden="true">
                      <circle cx="18" cy="18" r="15" fill="none" strokeWidth="3" style={{ stroke: 'var(--border-primary)' }} />
@@ -407,7 +408,7 @@ const ModernLandingPage = () => {
                <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] items-center gap-8 xl:gap-12 py-8 xl:py-4">
                   {/* Copy */}
                   <div className="space-y-5 xl:space-y-7 text-center xl:text-left">
-                     <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border-primary text-primary-600 text-sm font-bold uppercase tracking-[0.08em] rounded-full">
+                     <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border-primary text-primary-600 text-sm font-bold rounded-full">
                         <span className="w-2 h-2 rounded-full bg-primary-600" />
                         {translate('Trusted by students across India')}
                      </div>

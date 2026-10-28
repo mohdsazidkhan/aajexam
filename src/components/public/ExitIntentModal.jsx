@@ -145,7 +145,7 @@ const ExitIntentModalInner = ({ onClose }) => {
           <button
             onClick={() => { trackPrompt('exit', 'click'); googleSignup(); }}
             disabled={isGoogleLoading}
-            className="w-full flex items-center justify-center gap-3 px-5 py-3.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold uppercase tracking-[0.08em] text-sm rounded-2xl hover:bg-slate-800 dark:hover:bg-slate-100 transition disabled:opacity-70 border-slate-700 dark:border-slate-300 active:border-b-0 active:translate-y-1"
+            className="w-full flex items-center justify-center gap-3 px-5 py-3.5 bg-background-surface text-content-primary border border-primary-600 font-bold uppercase tracking-[0.08em] text-sm rounded-2xl hover:bg-background-surface-secondary transition disabled:opacity-70"
           >
             {isGoogleLoading ? (
               <div className="w-5 h-5 border border-slate-500 border-t-transparent rounded-[50%] animate-spin" />
