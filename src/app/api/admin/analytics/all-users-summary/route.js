@@ -15,7 +15,7 @@ export async function GET(req) {
         await dbConnect();
 
         // Basic stats
-        const totalUsers = await User.countDocuments({ role: 'student' });
+        const totalUsers = await User.countDocuments({ role: { $ne: 'admin' } }); // every non-admin account, whatever its status
 
         // Total Revenue (Subscriptions)
         const revenue = await PaymentOrder.aggregate([

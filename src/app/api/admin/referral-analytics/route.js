@@ -45,7 +45,7 @@ export async function GET(req) {
 
         const analytics = await User.aggregate(pipeline);
         const totalUsersWithReferrals = await User.countDocuments(userQuery);
-        const totalOverallUsers = await User.countDocuments({});
+        const totalOverallUsers = await User.countDocuments({ role: { $ne: 'admin' } }); // every non-admin account, whatever its status
 
         // Calculate summary
         const totalReferralsAggr = await User.aggregate([

@@ -39,7 +39,7 @@ export async function GET(req) {
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 10, 1), 1000);
         const fetchCount = page * limit;
 
-        const totalUsers = await User.countDocuments({ role: 'student' });
+        const totalUsers = await User.countDocuments({ role: { $ne: 'admin' } }); // every non-admin account, whatever its status
 
         const now = new Date();
         const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);

@@ -7,7 +7,7 @@ import User from '@/models/User';
 export async function GET() {
     try {
         await dbConnect();
-        const total = await User.countDocuments({ role: 'student' });
+        const total = await User.countDocuments({ role: { $ne: 'admin' } }); // every non-admin account, whatever its status
         return NextResponse.json(
             { success: true, count: Math.floor(total / 10) * 10 },
             { headers: { 'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400' } }

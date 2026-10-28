@@ -108,8 +108,8 @@ export async function GET(req) {
             newStudentsYesterday,
             newStudentsLast30Days,
         ] = await Promise.all([
-            // Users
-            User.countDocuments({ role: 'student' }),
+            // Users (total: every non-admin account, whatever its status)
+            User.countDocuments({ role: { $ne: 'admin' } }),
             User.countDocuments({ role: 'student', createdAt: { $gte: startOfDay } }),
             User.countDocuments({ role: 'student', createdAt: { $gte: startOfMonth } }),
             User.countDocuments({ role: 'student', lastLogin: { $gte: startOfDay } }),

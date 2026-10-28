@@ -61,7 +61,8 @@ export async function GET(req) {
             User.find({ _id: { $in: timed.map((u) => u.userId) }, status: 'active', role: { $ne: 'admin' } })
                 .select('_id')
                 .lean(),
-            User.countDocuments({ status: 'active', role: { $ne: 'admin' } }),
+            // Total students: every non-admin account, whatever its status
+            User.countDocuments({ role: { $ne: 'admin' } }),
         ]);
         const validIds = new Set(validDocs.map((d) => String(d._id)));
         const activeList = timed

@@ -19,7 +19,7 @@ export async function GET(req) {
         const { searchParams } = new URL(req.url);
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200);
 
-        const totalUsers = await User.countDocuments({ role: 'student' });
+        const totalUsers = await User.countDocuments({ role: { $ne: 'admin' } }); // every non-admin account, whatever its status
 
         const now = new Date();
         const activeProUsers = await User.countDocuments({

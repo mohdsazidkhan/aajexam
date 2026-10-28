@@ -45,7 +45,8 @@ export async function GET() {
             quizAttemptsLast30Days,
             totalPracticeTests,
         ] = await Promise.all([
-            User.countDocuments({ role: 'student' }),
+            // Every non-admin account counts as a student, whatever its status (active, suspended, blocked)
+            User.countDocuments({ role: { $ne: 'admin' } }),
             // Real exams = active exams that actually have PYQ papers (matches the PYQ page);
             // the placeholder CBSE exam doc is not real and is always excluded.
             PracticeTest.distinct('examPattern', { isPYQ: true })
