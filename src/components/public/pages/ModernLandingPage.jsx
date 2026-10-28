@@ -576,20 +576,21 @@ const ModernLandingPage = () => {
                                  <BookOpen className="w-4 h-4" />
                               </span>
                               <span className="text-sm xl:text-base font-bold leading-tight text-content-primary">{exam.name}</span>
+                              <span className="xl:hidden ml-auto shrink-0 px-2.5 py-0.5 border border-primary-600 text-primary-600 text-[11px] font-bold rounded-full">{translate('Latest Free')}</span>
                            </div>
-                           <div className="grid gap-1.5">
+                           <div className="flex sm:grid gap-1.5">
                               {[
                                  { icon: BookOpen, text: translate('{count} PYQs', { count: exam.pyqCount }) },
-                                 { icon: Target, text: translate('{count} Practice Tests', { count: exam.practiceTestCount }) },
+                                 { icon: Target, text: translate('{count} Tests', { count: exam.practiceTestCount }) },
                                  { icon: Gamepad2, text: translate('{count} Quizzes', { count: exam.quizCount }) },
                               ].map((row, i) => (
-                                 <span key={i} className="flex items-center gap-1.5 px-2 py-1 border border-border-primary rounded-lg text-xs font-medium text-content-secondary">
-                                    <row.icon className="w-3 h-3 shrink-0 text-primary-600" />
-                                    <span className="truncate">{row.text}</span>
+                                 <span key={i} className="flex flex-1 sm:flex-none min-w-0 items-center justify-center sm:justify-start gap-1 sm:gap-1.5 px-1.5 sm:px-2 py-1 border border-border-primary rounded-lg text-[10px] sm:text-xs font-medium leading-tight text-center sm:text-left text-content-secondary">
+                                    <row.icon className="hidden sm:block w-3 h-3 shrink-0 text-primary-600" />
+                                    <span className="sm:truncate">{row.text}</span>
                                  </span>
                               ))}
                            </div>
-                           <span className="self-start px-2.5 py-0.5 border border-primary-600 text-primary-600 text-[11px] font-bold rounded-full">{translate('Latest Free')}</span>
+                           <span className="hidden xl:inline-flex self-end px-2.5 py-0.5 border border-primary-600 text-primary-600 text-[11px] font-bold rounded-full">{translate('Latest Free')}</span>
                         </div>
                      </motion.div>
                   )) : null}
@@ -599,7 +600,7 @@ const ModernLandingPage = () => {
                <nav aria-label="Previous year papers by exam" className="flex flex-wrap items-center justify-center gap-2 mb-6">
                   {POPULAR_PYQ_EXAMS.map((e) => (
                      <Link key={e.slug} href={`/pyq/${e.slug}`} className="inline-flex items-center px-3 py-1.5 border border-border-primary text-xs xl:text-sm font-medium text-content-secondary hover:text-content-primary hover:border-primary-600 transition-colors rounded-full">
-                        {e.name} {translate('Previous Year Papers')}
+                        {e.name} {translate('Previous Year Question Papers')}
                      </Link>
                   ))}
                </nav>
