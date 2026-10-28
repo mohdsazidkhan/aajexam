@@ -83,26 +83,30 @@ const AdminNavbar = () => {
 
           {/* Left */}
           <div className="flex items-center gap-2 xl:gap-4 min-w-0 flex-1">
-            {/* Hamburger — desktop only (mobile version sits at the right end) */}
-            <button
-              onClick={() => dispatch(toggleSidebar())}
-              aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={isSidebarOpen}
-              className={`hidden xl:flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 shrink-0 ${
-                isSidebarOpen
-                  ? 'bg-background-surface-secondary text-content-secondary'
-                  : 'text-on-primary hover:scale-105 bg-primary-600'
-              }`}
-            >
-              {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-            </button>
+            {/* Desktop: hamburger + logo fill the sidebar's width (256px, less the header's 16px padding and the 16px gap before the title) so the page title starts exactly where the sidebar ends */}
+            <div className={`hidden xl:flex items-center gap-4 shrink-0 ${isSidebarOpen ? 'w-[calc(256px-2rem)]' : ''}`}>
+              {/* Hamburger — desktop only (mobile version sits at the right end) */}
+              <button
+                onClick={() => dispatch(toggleSidebar())}
+                aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isSidebarOpen}
+                className={`hidden xl:flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 shrink-0 ${
+                  isSidebarOpen
+                    ? 'bg-background-surface-secondary text-content-secondary'
+                    : 'text-on-primary hover:scale-105 bg-primary-600'
+                }`}
+              >
+                {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              </button>
 
-            {/* Logo — desktop */}
-            <Link href="/admin/dashboard" className="hidden xl:flex items-center shrink-0">
-              <span className="text-2xl xl:text-3xl font-bold font-outfit tracking-tight text-content-primary">
-                AAJ<span className="text-primary-600">EXAM</span>
-              </span>
-            </Link>
+              {/* Logo — desktop */}
+              <Link href="/admin/dashboard" className="hidden xl:flex items-center shrink-0">
+                <span className="text-2xl xl:text-3xl font-bold font-outfit tracking-tight text-content-primary">
+                  AAJ<span className="text-primary-600">EXAM</span>
+                </span>
+              </Link>
+
+            </div>
 
             {/* Logo — mobile, smaller, left-aligned */}
             <Link href="/admin/dashboard" className="xl:hidden flex items-center shrink-0">
@@ -113,7 +117,7 @@ const AdminNavbar = () => {
 
             {/* Page title + count — shown right after the logo (web + mobile) */}
             {header.title && (
-              <div className="flex items-center gap-1 xl:gap-2 min-w-0 pl-2 xl:pl-4 ml-0 xl:ml-1 border-l border-primary-600">
+              <div className="flex items-center gap-1 xl:gap-2 min-w-0 pl-2 xl:pl-4 ml-0 border-l border-primary-600">
                 <span className="text-sm xl:text-lg font-bold text-content-primary truncate">{header.title}</span>
                 {header.count !== null && header.count !== undefined && (
                   <span className="text-xs xl:text-sm font-bold text-content-muted shrink-0">({header.count})</span>

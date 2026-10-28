@@ -288,7 +288,8 @@ export default function Traffic() {
         {(() => {
           const c = data?.summary?.current || {};
           const p = data?.summary?.previous || {};
-          const signups = (o) => (o.signupGoogle || 0) + (o.signupPassword || 0);
+          // Signups = accounts really created in the period (users collection, web + app), the same list the card's modal shows
+          const signups = (o) => o.dbSignups || 0;
           const logins = (o) => (o.loginGoogle || 0) + (o.loginPassword || 0);
           return (
             <div className="flex flex-col gap-2">
@@ -296,7 +297,7 @@ export default function Traffic() {
                 <Stat label="Visitors" value={c.visitors ?? 0} cur={c.visitors || 0} prev={p.visitors || 0} sub={`${c.alreadyLoggedIn || 0} already logged in · ${data?.uniqueIps || 0} unique IPs`} Icon={Users} tone="bg-sky-500/10 text-sky-600" />
                 <Stat label="Opened login / register" value={c.sawAuthPage ?? 0} cur={c.sawAuthPage || 0} prev={p.sawAuthPage || 0} sub={`${pct(c.sawAuthPage, c.newVisitors)} of new`} Icon={MousePointerClick} tone="bg-violet-500/10 text-violet-600" />
                 <Stat label="Left without login/signup" value={c.leftWithoutAuth ?? 0} cur={c.leftWithoutAuth || 0} prev={p.leftWithoutAuth || 0} inverse sub={`${pct(c.leftWithoutAuth, c.newVisitors)} of new`} Icon={LogOut} tone="bg-rose-500/10 text-rose-600" />
-                <Stat label="Signups" value={signups(c)} cur={signups(c)} prev={signups(p)} sub={`Google ${c.signupGoogle || 0} · Normal ${c.signupPassword || 0} · DB ${c.dbSignups || 0}`} Icon={UserPlus} tone="bg-emerald-500/10 text-emerald-600" onClick={() => setUsersModal('signup')} />
+                <Stat label="Signups" value={signups(c)} cur={signups(c)} prev={signups(p)} sub={`Google ${c.dbSignupsGoogle || 0} · Normal ${c.dbSignupsPassword || 0}`} Icon={UserPlus} tone="bg-emerald-500/10 text-emerald-600" onClick={() => setUsersModal('signup')} />
                 <Stat label="Logins" value={logins(c)} cur={logins(c)} prev={logins(p)} sub={`Google ${c.loginGoogle || 0} · Normal ${c.loginPassword || 0}`} Icon={LogIn} tone="bg-amber-500/10 text-amber-600" onClick={() => setUsersModal('login')} />
               </div>
             </div>
