@@ -170,7 +170,7 @@ const SubscriptionPage = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 14 }}>
+                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 14 }}>
                     <Crown className="w-7 h-7 xl:w-8 xl:h-8" />
                   </div>
                   <div className="min-w-0">
@@ -219,7 +219,7 @@ const SubscriptionPage = () => {
                         { v: countdown.minutes, l: 'Min' },
                         { v: countdown.seconds, l: 'Sec' },
                       ].map((u) => (
-                        <div key={u.l} className="min-w-0 px-1 py-2 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 10 }}>
+                        <div key={u.l} className="min-w-0 px-1 py-2 ring-1 ring-primary-200 dark:ring-white/20" style={{ borderRadius: 10 }}>
                           <div className="text-xl xl:text-2xl font-bold font-outfit leading-none tabular-nums text-primary-600">{String(u.v).padStart(2, '0')}</div>
                           <div className="mt-1 text-[8px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 truncate">{translate(u.l)}</div>
                         </div>
@@ -263,13 +263,13 @@ const SubscriptionPage = () => {
             {appliedCoupon ? (
               <div className="relative flex items-center justify-between gap-3 border border-dashed border-primary-500/60 px-4 py-3" style={{ borderRadius: 12 }}>
                 <div className="flex items-center gap-3 min-w-0">
-                  <span className="w-9 h-9 flex items-center justify-center bg-primary-600 text-on-primary shrink-0" style={{ borderRadius: 10 }}><Tag className="w-4 h-4" /></span>
+                  <span className="w-9 h-9 flex items-center justify-center border border-border-primary text-primary-600 shrink-0" style={{ borderRadius: 10 }}><Tag className="w-4 h-4" /></span>
                   <div className="min-w-0">
                     <p className="text-sm font-bold text-primary-600 tracking-[0.08em]">{appliedCoupon.code} {translate('applied')}</p>
                     <p className="text-xs font-medium text-content-secondary truncate">{appliedCoupon.description}</p>
                   </div>
                 </div>
-                <button type="button" onClick={removeCoupon} aria-label={translate('Remove coupon')} className="p-1.5 text-content-secondary hover:bg-black/5 dark:hover:bg-white/10">
+                <button type="button" onClick={removeCoupon} aria-label={translate('Remove coupon')} className="p-1.5 text-content-secondary hover:bg-black/5">
                   <X className="w-4 h-4" />
                 </button>
               </div>

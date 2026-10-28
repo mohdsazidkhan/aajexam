@@ -145,7 +145,7 @@ const AboutUs = () => {
 
             {/* --- Trust & Commitment --- */}
             <section>
-               <Card as="section" className="p-10 border-none bg-background-surface-secondary border border-border-primary">
+               <Card as="section" className="p-10 border-none border border-border-primary">
                   <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
                      <div className="xl:col-span-4 text-center xl:text-left space-y-6">
                         <div className="w-20 h-20 bg-background-surface rounded-3xl flex items-center justify-center mx-auto xl:mx-0">

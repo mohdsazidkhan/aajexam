@@ -143,7 +143,7 @@ const AdminBlogs = () => {
   const getStatusBadge = (status) => {
     const cfg = {
       published: 'text-primary-600 ring-primary-200 dark:text-primary-600 dark:ring-white/15',
-      draft: 'bg-background-surface-secondary text-content-secondary ring-slate-200 dark:bg-white/10 dark:ring-white/10',
+      draft: 'bg-background-surface-secondary text-content-secondary ring-slate-200 dark:ring-white/10',
       archived: 'bg-amber-100 text-amber-800 ring-amber-200 dark:bg-amber-500/20 dark:text-amber-300 dark:ring-white/10'
     };
     return (
@@ -195,7 +195,7 @@ const AdminBlogs = () => {
             <Edit3 className="w-4 h-4" />
           </Link>
           {blog.status === 'published' ? (
-            <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] bg-background-surface-secondary text-content-secondary border border-border-primary hover:bg-background-surface-secondary transition-all">Unpublish</button>
+            <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary border border-border-primary hover:bg-background-surface-secondary transition-all">Unpublish</button>
           ) : (
             <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] text-on-primary hover:brightness-110 transition-all bg-primary-600">Publish</button>
           )}
@@ -250,7 +250,7 @@ const AdminBlogs = () => {
           <div className="mt-3 flex items-center gap-2">
             <Link href={`/admin/blogs/${blog._id}/edit`} className="p-1.5 rounded-lg text-primary-600 transition-colors text-[10px] font-bold uppercase tracking-[0.08em] px-2.5">Edit</Link>
             {blog.status === 'published' ? (
-              <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] bg-background-surface-secondary text-content-secondary border border-border-primary hover:bg-background-surface-secondary transition-all">Unpublish</button>
+              <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary border border-border-primary hover:bg-background-surface-secondary transition-all">Unpublish</button>
             ) : (
               <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] text-on-primary hover:brightness-110 transition-all bg-primary-600">Publish</button>
             )}
@@ -297,7 +297,7 @@ const AdminBlogs = () => {
             <div className="mt-2 flex items-center gap-3">
               <Link href={`/admin/blogs/${blog._id}/edit`} className="p-1.5 rounded-lg text-primary-600 transition-colors text-[10px] font-bold uppercase tracking-[0.08em] px-2.5">Edit</Link>
               {blog.status === 'published' ? (
-                <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] bg-background-surface-secondary text-content-secondary border border-border-primary hover:bg-background-surface-secondary transition-all">Unpublish</button>
+                <button onClick={() => handleUnpublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary border border-border-primary hover:bg-background-surface-secondary transition-all">Unpublish</button>
               ) : (
                 <button onClick={() => handlePublish(blog._id)} className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.08em] text-on-primary hover:brightness-110 transition-all bg-primary-600">Publish</button>
               )}
@@ -434,7 +434,7 @@ const AdminBlogs = () => {
         )}
 
         {error && (
-          <div className="shrink-0 mt-4 bg-background-surface-secondary border border-border-primary dark:border-white rounded-md p-4">
+          <div className="shrink-0 mt-4 border border-border-primary dark:border-white rounded-md p-4">
             <p className="text-content-primary">{error}</p>
           </div>
         )}

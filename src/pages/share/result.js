@@ -107,7 +107,7 @@ export default function SharedResult({ stats }) {
               { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: '' },
             ].map((item, idx) => (
               <Card as="article" key={idx} className="flex flex-col items-center text-center gap-2">
-                <div className="w-12 h-12 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 14 }}>
+                <div className="w-12 h-12 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 14 }}>
                   <item.icon className="w-6 h-6" />
                 </div>
                 <span className="text-xl xl:text-2xl font-bold font-outfit">{item.value}</span>

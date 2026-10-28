@@ -663,7 +663,7 @@ const AdminSubscriptions = () => {
               key="empty"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-background-surface-secondary border border-border-primary rounded-2xl xl:rounded-3xl p-24 text-center"
+              className="border border-border-primary rounded-2xl xl:rounded-3xl p-24 text-center"
             >
               <Layers className="w-24 h-24 text-slate-300 mx-auto mb-4 xl:mb-4 opacity-20" />
               <h3 className="text-xl xl:text-2xl font-bold text-content-muted tracking-tight">NO SUBSCRIPTIONS FOUND</h3>
@@ -781,7 +781,7 @@ const AdminSubscriptions = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={closeExtendModal}
-                className="absolute inset-0 bg-[#fafafa]/80 dark:bg-[#050505]/80"
+                className="absolute inset-0 bg-[#fafafa]/80 dark:bg-black/80"
               />
               <motion.div
                 initial={{ x: '100%' }}
@@ -807,7 +807,7 @@ const AdminSubscriptions = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-4 mb-4 bg-background-surface-secondary p-4 xl:p-5 rounded-lg xl:rounded-xl xl:rounded-3xl border border-border-primary">
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-4 mb-4 p-4 xl:p-5 rounded-lg xl:rounded-xl xl:rounded-3xl border border-border-primary">
                     <div className="space-y-2 xl:space-y-3">
                       <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4">SELECT PLAN</label>
                       <Select

@@ -94,8 +94,8 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
           <h1 className="text-xl xl:text-3xl font-bold">{translateData(topic.name)}</h1>
           <p className="text-sm opacity-80 mt-1">{topic.subject?.name || ''}{topic.exams?.length ? ` · ${topic.exams.map(e => e.name).join(', ')}` : ''}</p>
           <div className="flex gap-3 mt-3">
-            <span className="text-xs font-bold bg-white/15 ring-1 ring-white/25 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{translate('{count} Quizzes', { count: quizzes.length })}</span>
-            <span className="text-xs font-bold bg-white/15 ring-1 ring-white/25 px-3 py-1.5 rounded-lg"><FileText className="w-3 h-3 inline mr-1" />{translate('{count} Tests', { count: practiceTests.length })}</span>
+            <span className="text-xs font-bold ring-1 ring-white/25 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{translate('{count} Quizzes', { count: quizzes.length })}</span>
+            <span className="text-xs font-bold ring-1 ring-white/25 px-3 py-1.5 rounded-lg"><FileText className="w-3 h-3 inline mr-1" />{translate('{count} Tests', { count: practiceTests.length })}</span>
           </div>
           
           {/* Adaptive Practice Button */}
@@ -179,11 +179,11 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
                         <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-primary-600 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                       </div>
                       <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
-                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
+                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                           <HelpCircle className="w-3 h-3" />
                           {quiz.totalMarks || 0} {translate('marks')}
                         </div>
-                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
+                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                           <Clock className="w-3 h-3" />
                           {translate('{count} min', { count: quiz.duration || 0 })}
                         </div>
@@ -210,14 +210,14 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
                         <h2 className="text-base font-bold text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(test.title)}</h2>
                       </div>
                       <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
-                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
+                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                           <HelpCircle className="w-3 h-3" />
                           {test.questionCount || 0} Qs
                         </div>
-                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
+                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                           {test.totalMarks || 0} {translate('marks')}
                         </div>
-                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
+                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                           <Clock className="w-3 h-3" />
                           {fmtDur(test.duration || 0)}
                         </div>

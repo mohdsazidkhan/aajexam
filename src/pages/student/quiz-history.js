@@ -77,7 +77,7 @@ const QuizHistoryPage = () => {
                   title={translate('Quiz History')}
                   actions={
                      <Select
-                        className="px-4 py-2.5 bg-background-surface-secondary border border-border-primary rounded-lg xl:rounded-xl text-xs font-bold outline-none focus:border-primary-700"
+                        className="px-4 py-2.5 border border-border-primary rounded-lg xl:rounded-xl text-xs font-bold outline-none focus:border-primary-700"
                         value={filter} onChange={e => { setFilter(e.target.value); setCurrentPage(1); }}
                      >
                         <option value="">{translate('All')}</option>

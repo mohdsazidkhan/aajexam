@@ -131,7 +131,7 @@ export default function TopicDetail({
               </h2>
               <div className="space-y-2 xl:space-y-4">
                 {faqs.map((f, i) => (
-                  <details key={i} className="group bg-background-surface-secondary rounded-2xl border border-border-primary p-5 cursor-pointer">
+                  <details key={i} className="group rounded-2xl border border-border-primary p-5 cursor-pointer">
                     <summary className="font-bold text-content-primary text-base xl:text-lg tracking-tight">{f.question}</summary>
                     <p className="mt-3 text-content-secondary font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
                   </details>
@@ -149,7 +149,7 @@ export default function TopicDetail({
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {relatedQuizzes.map((q) => (
-                  <Link key={q.slug} href={`/quiz/${q.slug}`} className="group block bg-background-surface-secondary rounded-2xl p-4 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition">
+                  <Link key={q.slug} href={`/quiz/${q.slug}`} className="group block rounded-2xl p-4 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition">
                     <div className="text-sm font-bold text-content-primary group-hover:text-primary-600 transition leading-snug">{translateData(q.title)}</div>
                   </Link>
                 ))}
@@ -165,7 +165,7 @@ export default function TopicDetail({
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
                 {siblingTopics.map((t) => (
-                  <Link key={t.slug} href={`/topics/${t.slug}`} className="group block bg-background-surface-secondary rounded-2xl p-4 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition">
+                  <Link key={t.slug} href={`/topics/${t.slug}`} className="group block rounded-2xl p-4 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition">
                     <div className="text-sm font-bold text-content-primary group-hover:text-primary-600 transition leading-tight">{translateData(t.name)}</div>
                   </Link>
                 ))}

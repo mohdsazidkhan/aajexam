@@ -176,7 +176,7 @@ const PaymentHistoryPage = () => {
    ];
 
    const viewToggleButtons = (
-      <div className="flex items-center gap-1 p-1 bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 10 }}>
+      <div className="flex items-center gap-1 p-1 ring-1 ring-slate-200 dark:ring-white/20" style={{ borderRadius: 10 }}>
          {[
             { icon: TableIcon, id: 'table', label: translate('Table') },
             { icon: LayoutGrid, id: 'grid', label: translate('Grid') },
@@ -203,7 +203,7 @@ const PaymentHistoryPage = () => {
             { label: translate('Successful'), val: summary.successCount || 0 },
             { label: translate('Pending Amount'), val: summary.pendingAmount || 0, isCurrency: true }
          ].map((stat) => (
-            <div key={stat.label} className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+            <div key={stat.label} className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
                <p className="text-base xl:text-lg font-bold font-outfit leading-none text-primary-600 tabular-nums whitespace-nowrap">{stat.isCurrency ? formatCurrency(stat.val) : stat.val.toLocaleString()}</p>
                <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 whitespace-nowrap">{stat.label}</p>
             </div>
@@ -236,7 +236,7 @@ const PaymentHistoryPage = () => {
             </Select>
          )}
          {(filterMonth || filterYear) && (
-            <button onClick={clearFilters} className="px-3 py-2 text-xs font-bold text-primary-600 hover:bg-white/60 dark:hover:bg-white/10 rounded-lg transition-colors">
+            <button onClick={clearFilters} className="px-3 py-2 text-xs font-bold text-primary-600 rounded-lg transition-colors">
                {translate('Clear')}
             </button>
          )}

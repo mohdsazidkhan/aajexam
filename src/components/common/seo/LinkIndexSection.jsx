@@ -45,7 +45,7 @@ export default function LinkIndexSection({ title, intro, groups = [], columns = 
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="block rounded-2xl border border-border-primary bg-background-surface-secondary px-4 py-3 hover:border-primary-300 dark:hover:border-primary-700 transition"
+                    className="block rounded-2xl border border-border-primary px-4 py-3 hover:border-primary-300 dark:hover:border-primary-700 transition"
                   >
                     <span className="block text-sm font-bold text-content-primary leading-snug line-clamp-2">
                       {item.name}

@@ -469,7 +469,7 @@ const ExamOverviewPage = () => {
                   <div key={exam._id} className="border border-border-primary rounded-lg xl:rounded-xl overflow-hidden bg-background-surface">
                     <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
                       <div className="flex items-center gap-3">
-                        <div className="relative w-10 h-10 rounded-lg text-on-primary flex items-center justify-center shrink-0 bg-primary-600">
+                        <div className="relative w-10 h-10 rounded-lg text-primary-600 flex items-center justify-center shrink-0 border border-border-primary">
                           <GraduationCap className="w-5 h-5" />
                           <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-900 bg-primary-600">{serialNumber}</span>
                         </div>
@@ -564,36 +564,36 @@ const ExamOverviewPage = () => {
                       </div>
 
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4 mt-auto">
-                        <div className="bg-background-surface-secondary rounded-lg p-2 text-center border border-border-primary">
+                        <div className="rounded-lg p-2 text-center border border-border-primary">
                           <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted mb-1">Patterns</div>
                           <div className="text-lg font-bold text-content-primary leading-none">{exam.counts.patterns}</div>
                         </div>
-                        <div className="bg-background-surface-secondary rounded-lg p-2 text-center border border-border-primary">
+                        <div className="rounded-lg p-2 text-center border border-border-primary">
                           <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted mb-1">Subjects</div>
                           <div className="text-lg font-bold text-primary-600 leading-none">{exam.counts.subjects}</div>
                         </div>
-                        <div className="bg-background-surface-secondary rounded-lg p-2 text-center border border-border-primary">
+                        <div className="rounded-lg p-2 text-center border border-border-primary">
                           <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted mb-1">Topics</div>
                           <div className="text-lg font-bold text-content-primary leading-none">{exam.counts.topics}</div>
                         </div>
-                        <div className="bg-background-surface-secondary rounded-lg p-2 text-center border border-border-primary">
+                        <div className="rounded-lg p-2 text-center border border-border-primary">
                           <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted mb-1">Quizzes</div>
                           <div className="text-lg font-bold text-content-primary leading-none">{exam.counts.quizzes}</div>
                         </div>
-                        <div className="bg-background-surface-secondary rounded-lg p-2 text-center border border-border-primary">
+                        <div className="rounded-lg p-2 text-center border border-border-primary">
                           <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted mb-1">PYQs</div>
                           <div className="text-lg font-bold text-content-primary leading-none">{exam.counts.pyqs}</div>
                         </div>
-                        <div className="bg-background-surface-secondary rounded-lg p-2 text-center border border-border-primary">
+                        <div className="rounded-lg p-2 text-center border border-border-primary">
                           <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted mb-1">Mocks</div>
                           <div className="text-lg font-bold text-content-primary leading-none">{exam.counts.practiceTests}</div>
                         </div>
-                        <div className="bg-background-surface-secondary rounded-lg p-2 text-center border border-border-primary cursor-help flex flex-col justify-center" title={`Total: ${formatNumber(exam.counts.questions)} (Mocks: ${formatNumber(exam.counts.mockQuestions)} | PYQs: ${formatNumber(exam.counts.pyqQuestions)} | Bank: ${formatNumber(exam.counts.qBankQuestions)})`}>
+                        <div className="rounded-lg p-2 text-center border border-border-primary cursor-help flex flex-col justify-center" title={`Total: ${formatNumber(exam.counts.questions)} (Mocks: ${formatNumber(exam.counts.mockQuestions)} | PYQs: ${formatNumber(exam.counts.pyqQuestions)} | Bank: ${formatNumber(exam.counts.qBankQuestions)})`}>
                           <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted mb-1">Questions</div>
                           <div className="text-lg font-bold text-content-primary leading-none">{formatNumber(exam.counts.questions)}</div>
                           <div className="text-[9px] text-content-muted mt-1 truncate">{formatNumber(exam.counts.mockQuestions + exam.counts.pyqQuestions)} test • {formatNumber(exam.counts.qBankQuestions)} bank</div>
                         </div>
-                        <div className="bg-background-surface-secondary rounded-lg p-2 text-center border border-border-primary">
+                        <div className="rounded-lg p-2 text-center border border-border-primary">
                           <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted mb-1">Blogs</div>
                           <div className="text-lg font-bold text-content-primary leading-none">{exam.counts.blogs}</div>
                         </div>

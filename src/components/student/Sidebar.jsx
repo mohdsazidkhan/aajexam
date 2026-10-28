@@ -192,7 +192,7 @@ const StudentSidebar = () => {
 
   return (
     <aside
-      className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-background-surface border-r-2 border-border-primary overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
+      className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-background-surface border-r border-border-primary overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
         }`}
     >
 
@@ -210,7 +210,7 @@ const StudentSidebar = () => {
                   <Link key={itemIdx} href={item.path} onClick={handleNavClick} aria-current={active ? 'page' : undefined} data-active={active ? 'true' : undefined}>
                     <button className={`w-full flex items-center justify-between px-2 py-2 transition-all duration-200 relative group overflow-hidden ${active
                       ? 'text-on-primary'
-                      : darkMode ? 'text-content-muted hover:text-white hover:bg-white/5' : 'text-content-secondary hover:text-primary-800'
+                      : darkMode ? 'text-content-muted hover:text-white' : 'text-content-secondary hover:text-primary-800'
                       }`}>
                       {active && (
                         <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-600" />

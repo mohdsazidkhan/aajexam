@@ -196,11 +196,11 @@ const DashboardPage = () => {
             <item.icon className="pointer-events-none absolute -right-3 -bottom-3 w-20 h-20 text-primary-600/10 dark:text-white/10 rotate-12" />
             <div className="flex items-start justify-between gap-2">
               <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 leading-tight">{item.label}</p>
-              <span className="shrink-0 w-8 h-8 flex items-center justify-center text-on-primary group-hover:rotate-0 transition-transform bg-primary-600" style={{ borderRadius: 10 }}>
+              <span className="shrink-0 w-8 h-8 flex items-center justify-center text-primary-600 group-hover:rotate-0 transition-transform border border-border-primary" style={{ borderRadius: 10 }}>
                 <item.icon className="w-4 h-4" />
               </span>
             </div>
-            <p className="mt-2 text-2xl xl:text-4xl font-bold font-outfit leading-none tracking-tight text-primary-600">{item.value}</p>
+            <p className="mt-2 text-2xl xl:text-4xl font-bold font-outfit leading-none tracking-tight text-content-primary">{item.value}</p>
             <p className="mt-2 pt-2 border-t border-dashed border-border-primary text-[10px] font-bold uppercase tracking-wide text-content-secondary dark:text-white/75 leading-tight">{item.subtitle}</p>
           </div>
         ))}
@@ -234,17 +234,16 @@ const DashboardPage = () => {
                   className="group h-full cursor-pointer relative overflow-hidden bg-background-surface border border-border-primary hover:-translate-y-1 transition-all flex flex-col"
                   style={{ borderRadius: 14 }}
                 >
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                   <div className="flex items-center justify-between gap-2 px-3 pt-3 pb-2">
-                    <span className="w-10 h-10 shrink-0 flex items-center justify-center text-on-primary group-hover:rotate-0 transition-transform bg-primary-600" style={{ borderRadius: 12 }}>
+                    <span className="w-10 h-10 shrink-0 flex items-center justify-center text-primary-600 group-hover:rotate-0 transition-transform border border-border-primary" style={{ borderRadius: 12 }}>
                       <card.icon className="w-5 h-5" />
                     </span>
-                    <span className="text-2xl xl:text-3xl font-bold font-outfit tracking-tight text-primary-600 tabular-nums leading-none">{card.count}</span>
+                    <span className="text-2xl xl:text-3xl font-bold font-outfit tracking-tight text-content-primary tabular-nums leading-none">{card.count}</span>
                   </div>
                   <section className="px-3 pb-2">
                     <h2 className="text-xs xl:text-sm font-bold uppercase tracking-tight text-content-primary group-hover:text-primary-600 transition-colors leading-tight break-words">{card.title}</h2>
                   </section>
-                  <div className="relative mt-auto px-3 py-1.5 border-t border-dashed border-border-primary dark:bg-white/5">
+                  <div className="relative mt-auto px-3 py-1.5 border-t border-dashed border-border-primary">
                     <span className="absolute -left-1.5 -top-[7px] w-3 h-3 bg-background-page" style={{ borderRadius: 999 }} />
                     <span className="absolute -right-1.5 -top-[7px] w-3 h-3 bg-background-page" style={{ borderRadius: 999 }} />
                     <p className="text-[9px] font-bold text-content-muted uppercase tracking-wide leading-tight break-words">{card.subtitle || 'METRIC'}</p>
@@ -268,7 +267,7 @@ const DashboardPage = () => {
         <Zap className="pointer-events-none absolute right-4 top-3 w-24 h-24 xl:w-32 xl:h-32 text-primary-600/10 dark:text-white/5 rotate-12" />
 
         <div className="relative flex items-center gap-3 mb-3 xl:mb-4 pb-3 border-b border-dashed border-border-primary">
-          <div className="w-11 h-11 xl:w-12 xl:h-12 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 14 }}>
+          <div className="w-11 h-11 xl:w-12 xl:h-12 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 14 }}>
             <Zap className="w-5 h-5 xl:w-6 xl:h-6 fill-current" />
           </div>
           <div>
@@ -298,16 +297,15 @@ const DashboardPage = () => {
             { href: '/admin/contacts', label: 'Contacts', desc: 'View user contact submissions', icon: Mail },
           ].map((action, i) => (
             <motion.div key={i} whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>
-              <Link href={action.href} className="group relative flex items-center gap-3 p-3 bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary transition-all h-full" style={{ borderRadius: 12 }}>
-                <div className="pointer-events-none absolute inset-y-2 left-0 w-1 rounded-r-full bg-primary-600" />
-                <span className="ml-1 w-10 h-10 shrink-0 flex items-center justify-center text-on-primary group-hover:rotate-0 transition-transform bg-primary-600" style={{ borderRadius: 12 }}>
+              <Link href={action.href} className="group relative flex items-center gap-3 p-3 hover:bg-background-surface border border-border-primary transition-all h-full" style={{ borderRadius: 12 }}>
+                <span className="ml-1 w-10 h-10 shrink-0 flex items-center justify-center text-primary-600 group-hover:rotate-0 transition-transform border border-border-primary" style={{ borderRadius: 12 }}>
                   <action.icon className="w-5 h-5" />
                 </span>
                 <div className="min-w-0 flex-1">
                   <h3 className="font-bold uppercase text-xs tracking-wide text-content-primary group-hover:text-primary-700 dark:group-hover:text-primary-600 transition-colors leading-tight">{action.label}</h3>
                   <p className="mt-0.5 text-[10px] font-bold text-content-muted dark:text-white/65 leading-snug">{action.desc}</p>
                 </div>
-                <ChevronRight className="w-4 h-4 shrink-0 text-primary-600 group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="w-4 h-4 shrink-0 text-content-muted group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
           ))}

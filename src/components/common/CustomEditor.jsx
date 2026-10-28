@@ -181,7 +181,7 @@ const CustomEditor = ({
         <select
           key={button.type}
           onChange={(e) => execCommand('formatBlock', e.target.value)}
-          className="px-2 py-1 text-sm bg-background-surface-secondary hover:bg-background-surface-secondary dark:hover:bg-gray-500 border border-border-primary rounded"
+          className="px-2 py-1 text-sm hover:bg-background-surface-secondary dark:hover:bg-gray-500 border border-border-primary rounded"
           title={button.title}
           disabled={disabled}
         >
@@ -218,7 +218,7 @@ const CustomEditor = ({
         key={button.type}
         type="button"
         onClick={buttonActions[button.type]}
-        className="px-2 py-1 text-sm bg-background-surface-secondary hover:bg-background-surface-secondary dark:hover:bg-gray-500 border border-border-primary rounded disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-2 py-1 text-sm hover:bg-background-surface-secondary dark:hover:bg-gray-500 border border-border-primary rounded disabled:opacity-50 disabled:cursor-not-allowed"
         title={button.title}
         disabled={disabled}
       >

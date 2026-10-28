@@ -323,7 +323,7 @@ const AdminGovtExamResults = () => {
     {
       key: 'actions', header: 'Details', align: 'right', render: (_, a) => (
         <div className="flex justify-end">
-          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleViewDetails(a._id)} className="p-3 bg-background-surface dark:bg-white/5 text-primary-600 rounded-lg xl:rounded-xl border border-border-primary hover:bg-primary-600 hover:text-white transition-all"><Eye className="w-4 h-4" /></motion.button>
+          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleViewDetails(a._id)} className="p-3 bg-background-surface text-primary-600 rounded-lg xl:rounded-xl border border-border-primary hover:bg-primary-600 hover:text-white transition-all"><Eye className="w-4 h-4" /></motion.button>
         </div>
       )
     }
@@ -483,11 +483,11 @@ const AdminGovtExamResults = () => {
                         <h3 className="text-lg font-bold text-content-primary italic tracking-tight leading-none mb-1 truncate">{a.user?.name || 'User'}</h3>
                         <p className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] mb-4 xl:mb-4 truncate">{a.practiceTest?.title || 'Practice Test'}</p>
                         <div className="grid grid-cols-2 gap-3 mb-4 xl:mb-4">
-                          <div className="p-4 bg-background-surface-secondary rounded-2xl border border-border-primary">
+                          <div className="p-4 rounded-2xl border border-border-primary">
                             <span className="block text-[8px] font-bold text-content-muted uppercase mb-1">Score</span>
                             <span className="text-sm font-bold text-content-primary">{a.score || 0}/{a.practiceTest?.totalMarks || 0}</span>
                           </div>
-                          <div className="p-4 bg-background-surface-secondary rounded-2xl border border-border-primary">
+                          <div className="p-4 rounded-2xl border border-border-primary">
                             <span className="block text-[8px] font-bold text-content-muted uppercase mb-1">Time</span>
                             <span className="text-sm font-bold text-content-primary">{formatTime(a.totalTime)}</span>
                           </div>
@@ -543,11 +543,11 @@ const AdminGovtExamResults = () => {
             {showDetails && selectedAttempt && (
               <div className="fixed inset-0 z-[999]">
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowDetails(false)} className="absolute inset-0 bg-[#0A0F1E]/90" />
-                <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-[#0D1225] xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col">
+                <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-black xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col">
 
                   <section className="px-4 py-2.5 border-b-2 border-border-primary flex items-center justify-between shrink-0">
                     <div className="flex items-center gap-2 xl:gap-3">
-                      <div className="w-10 h-10 xl:w-11 xl:h-11 bg-primary-600 text-on-primary rounded-xl flex items-center justify-center shrink-0"><Award className="w-5 h-5" /></div>
+                      <div className="w-10 h-10 xl:w-11 xl:h-11 border border-border-primary text-primary-600 rounded-xl flex items-center justify-center shrink-0"><Award className="w-5 h-5" /></div>
                       <section>
                         <h2 className="text-base xl:text-base font-bold text-content-primary uppercase italic tracking-tight leading-none">Attempt <span className="text-primary-600">Details</span></h2>
                         <p className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] mt-1.5 leading-none italic">{selectedAttempt.user?.name} // {selectedAttempt.practiceTest?.title}</p>
@@ -564,7 +564,7 @@ const AdminGovtExamResults = () => {
                         { label: 'Time Spent', val: formatTime(selectedAttempt.totalTime), icon: Clock, color: 'primary' },
                         { label: 'Rank', val: `#${selectedAttempt.rank || '-'}`, icon: Trophy, color: 'primary' }
                       ].map((s, i) => (
-                        <div key={i} className="flex items-center gap-2.5 px-3 py-2 bg-background-surface-secondary rounded-xl border border-border-primary">
+                        <div key={i} className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-border-primary">
                           <div className="p-2 text-on-primary rounded-lg shrink-0 bg-primary-600"><s.icon className="w-4 h-4" /></div>
                           <div className="min-w-0">
                             <div className="text-base font-bold text-content-primary uppercase italic leading-tight truncate">{s.val}</div>
@@ -586,7 +586,7 @@ const AdminGovtExamResults = () => {
                           );
                           const hasSelection = ans.selectedIndex !== undefined && ans.selectedIndex !== null && ans.selectedIndex >= 0;
                           return (
-                            <div key={i} className="px-3 py-2.5 bg-background-surface dark:bg-white/5 rounded-lg border border-border-primary group">
+                            <div key={i} className="px-3 py-2.5 bg-background-surface rounded-lg border border-border-primary group">
                               <div className="flex items-start justify-between gap-2 mb-2">
                                 <div className="flex items-start gap-2.5 min-w-0">
                                   <div className="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center font-bold text-xs italic text-on-primary bg-primary-600">{i + 1}</div>
@@ -614,7 +614,7 @@ const AdminGovtExamResults = () => {
                                           : isSelectedOpt ? 'bg-red-500/10 border-red-500/30 text-red-600 dark:text-red-400'
                                           : 'bg-background-surface-secondary border-transparent text-content-muted'
                                       }`}>
-                                        <span className="w-5 h-5 shrink-0 rounded-full flex items-center justify-center text-[9px] font-bold bg-white/60 dark:bg-black/30">{String.fromCharCode(65 + oi)}</span>
+                                        <span className="w-5 h-5 shrink-0 rounded-full flex items-center justify-center text-[9px] font-bold dark:bg-black/30">{String.fromCharCode(65 + oi)}</span>
                                         <span className="flex-1 leading-snug">{opt}</span>
                                         {isCorrectOpt && <CheckCircle2 className="w-4 h-4 shrink-0" />}
                                         {isSelectedOpt && !isCorrectOpt && <AlertCircle className="w-4 h-4 shrink-0" />}

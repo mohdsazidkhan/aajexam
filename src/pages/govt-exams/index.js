@@ -221,7 +221,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                     <FileText className="w-3 h-3" />
                     {translate('{count} Tests', { count: exam.practiceTestCount || 0 })}
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
+                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                     <History className="w-3 h-3" />
                     {translate('{count} PYQs', { count: exam.pyqCount || 0 })}
                   </div>

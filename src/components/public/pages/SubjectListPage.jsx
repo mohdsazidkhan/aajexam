@@ -165,7 +165,7 @@ const SubjectListPage = ({ initialSubjects = [] } = {}) => {
                     <BrainCircuit className="w-3 h-3" />
                     {translate('{count} Quizzes', { count: sub.quizCount || 0 })}
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
+                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                     <Layers className="w-3 h-3" />
                     {translate('{count} Topics', { count: sub.topicCount || 0 })}
                   </div>

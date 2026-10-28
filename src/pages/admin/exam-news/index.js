@@ -65,7 +65,7 @@ const AdminExamNews = () => {
 
   const typeColor = (t) => {
     const on = 'text-primary-600 ring-1 ring-primary-200 dark:text-primary-600 dark:ring-white/15';
-    const off = 'bg-background-surface-secondary text-content-secondary ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/10';
+    const off = 'bg-background-surface-secondary text-content-secondary ring-1 ring-slate-200 dark:ring-white/10';
     if (t === 'admit_card' || t === 'date_change') return off;
     return on;
   };
@@ -258,7 +258,7 @@ const AdminExamNews = () => {
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowForm(false); setEditId(null); }} className="absolute inset-0 bg-black/50" />
                 <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-background-surface overflow-hidden flex flex-col">
                   <div className="px-4 py-2.5 border-b-2 border-border-primary flex items-center justify-between shrink-0">
-                    <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><section>
+                    <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><section>
                       <h2 className="text-base font-bold text-content-primary">{editId ? 'Edit Exam News' : 'Add New Exam News'}</h2>
                       <p className="text-xs text-content-muted mt-0.5">Fill in the details below</p>
                     </section></div>

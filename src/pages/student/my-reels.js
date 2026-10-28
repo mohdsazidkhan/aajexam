@@ -110,7 +110,7 @@ const MyReelsPage = () => {
                   actions={
                      <>
                      <Select
-                        className="px-4 py-3 bg-background-surface-secondary border border-border-primary rounded-2xl text-xs font-bold outline-none focus:border-primary-700"
+                        className="px-4 py-3 border border-border-primary rounded-2xl text-xs font-bold outline-none focus:border-primary-700"
                         value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setCurrentPage(1); }}
                      >
                         <option value="">{translate('All Status')}</option>

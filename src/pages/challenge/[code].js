@@ -75,7 +75,7 @@ export default function ChallengePage() {
                 <div className="border border-border-primary p-6 xl:p-8 text-center relative isolate overflow-hidden mb-8 bg-background-surface" style={{ borderRadius: 16 }}>
                     
                     <header className="relative z-10 flex flex-col items-center">
-                        <div className="w-20 h-20 text-on-primary flex items-center justify-center mb-4 bg-primary-600" style={{ borderRadius: 22 }}>
+                        <div className="w-20 h-20 text-primary-600 flex items-center justify-center mb-4 border border-border-primary" style={{ borderRadius: 22 }}>
                             <Swords className="w-10 h-10" />
                         </div>
                         
@@ -109,7 +109,6 @@ export default function ChallengePage() {
                 {/* Private Leaderboard */}
                 {challenge.hasPlayed && (
                     <section className="relative overflow-hidden bg-background-surface p-6 border border-border-primary" style={{ borderRadius: 16 }}>
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                         <div className="flex items-center gap-3 mb-6">
                             <div className="text-on-primary p-2.5 bg-primary-600" style={{ borderRadius: 12 }}>
                                 <Users className="w-5 h-5" />

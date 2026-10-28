@@ -134,7 +134,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
         <div className={`username-message p-2.5 px-4 rounded-md my-4 text-sm ${available === true
           ? 'text-primary-600 border border-primary-300 dark:border-primary-600'
           : available === false
-            ? 'bg-background-surface-secondary text-content-primary border border-border-primary dark:border-white'
+            ? 'text-content-primary border border-border-primary dark:border-white'
             : 'text-primary-600 border border-primary-300 dark:border-primary-600'
           }`}>
           {message}

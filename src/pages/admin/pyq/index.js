@@ -223,7 +223,7 @@ const AdminPYQ = () => {
                   return (
                     <Card as="section" key={t._id || i} className="flex flex-col gap-3">
                       <div className="flex items-start justify-between gap-2">
-                        <div className="w-10 h-10 rounded-xl text-on-primary flex items-center justify-center shrink-0 bg-primary-600"><FileText className="w-5 h-5" /></div>
+                        <div className="w-10 h-10 rounded-xl text-primary-600 flex items-center justify-center shrink-0 border border-border-primary"><FileText className="w-5 h-5" /></div>
                         <span className={`text-[9px] font-bold px-2 py-0.5 rounded ${isFree ? 'text-primary-600' : 'bg-background-surface-secondary text-content-primary'}`}>{isFree ? 'FREE' : 'PRO'}</span>
                       </div>
                       <div>

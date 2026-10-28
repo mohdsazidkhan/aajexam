@@ -145,9 +145,9 @@ const AllIndiaRankPage = () => {
                 {/* Podium */}
                 {loading ? (
                   <div className="h-24 flex items-end justify-center gap-3 animate-pulse">
-                    <div className="w-16 h-14 bg-white/15 rounded-t-xl" />
-                    <div className="w-16 h-20 bg-white/20 rounded-t-xl" />
-                    <div className="w-16 h-10 bg-white/15 rounded-t-xl" />
+                    <div className="w-16 h-14 rounded-t-xl" />
+                    <div className="w-16 h-20 rounded-t-xl" />
+                    <div className="w-16 h-10 rounded-t-xl" />
                   </div>
                 ) : top3.length > 0 ? (
                   <Podium top3={top3} currentUserId={currentUserId} />

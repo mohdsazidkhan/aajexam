@@ -97,7 +97,7 @@ export default function AboutAuthor() {
                                 { title:'System Architecture', desc:'Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.', color:'bg-primary-600'},
                                 { title: 'Data Analytics', desc: 'Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize outcomes.', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <article key={idx} className="bg-background-surface-secondary rounded-3xl p-4 mlgp-8 border border-border-primary hover:border-primary-500/30 transition-all">
+                                <article key={idx} className="rounded-3xl p-4 mlgp-8 border border-border-primary hover:border-primary-500/30 transition-all">
                                     <h3 className="text-sm xl:text-xl font-bold text-content-primary mb-3 tracking-tight flex items-center gap-3">
                                         <div className={`w-2 h-6 ${item.color} rounded-full`} />
                                         {translate(item.title)}
@@ -153,7 +153,7 @@ export default function AboutAuthor() {
                                 { title:'Content Curation', desc:'Curated thousands of exam questions across multiple subjects.', color:'bg-primary-600'},
                                 { title: 'User Growth', desc: 'Onboarded thousands of students across India.', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <section key={idx} className="flex items-start gap-5 p-6 bg-background-surface-secondary rounded-3xl border border-border-primary">
+                                <section key={idx} className="flex items-start gap-5 p-6 rounded-3xl border border-border-primary">
                                     <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold border-b-2 border-black/20`}>
                                         ✓
                                     </div>
@@ -168,7 +168,6 @@ export default function AboutAuthor() {
 
                     {/* Philosophy */}
                     <section className="dark:bg-slate-950 p-4 md:p-8 xl:p-10 mb-10 xl:mb-12 ring-1 ring-primary-200 dark:ring-slate-800 relative overflow-hidden" style={{ borderRadius: 16 }}>
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                         <h2 className="text-xl xl:text-4xl font-bold text-content-primary mb-6 tracking-tight relative z-10">{translate('Educational Philosophy')}</h2>
                         <div className="space-y-5 text-content-secondary text-base xl:text-lg font-bold leading-relaxed relative z-10">
                             <p>
@@ -184,7 +183,7 @@ export default function AboutAuthor() {
                     <section className="relative isolate overflow-hidden border border-border-primary p-4 xl:p-8 mb-8 bg-background-surface" style={{ borderRadius: 16 }}>
 
                         <div className="flex items-center gap-3 mb-5 xl:mb-6">
-                            <div className="w-11 h-11 xl:w-12 xl:h-12 text-on-primary flex items-center justify-center bg-primary-600" style={{ borderRadius: 12 }}>
+                            <div className="w-11 h-11 xl:w-12 xl:h-12 text-primary-600 flex items-center justify-center border border-border-primary" style={{ borderRadius: 12 }}>
                                 <FaEnvelope className="text-lg xl:text-xl" />
                             </div>
                             <h2 className="text-xl xl:text-3xl font-bold text-content-primary tracking-tight">{translate('Connect with Sazid')}</h2>
@@ -200,10 +199,10 @@ export default function AboutAuthor() {
                                     key={c.label}
                                     href={c.href}
                                     {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                                    className="group relative flex items-center gap-3 px-4 py-3.5 bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary hover:-translate-y-1 transition-all"
+                                    className="group relative flex items-center gap-3 px-4 py-3.5 hover:bg-background-surface border border-border-primary hover:-translate-y-1 transition-all"
                                     style={{ borderRadius: 12 }}
                                 >
-                                    <span className="w-10 h-10 shrink-0 text-on-primary flex items-center justify-center transition-transform bg-primary-600" style={{ borderRadius: 10 }}>
+                                    <span className="w-10 h-10 shrink-0 text-primary-600 flex items-center justify-center transition-transform border border-border-primary" style={{ borderRadius: 10 }}>
                                         <c.icon className="text-xl" />
                                     </span>
                                     <span className="font-bold text-sm xl:text-base text-content-primary">{c.label}</span>

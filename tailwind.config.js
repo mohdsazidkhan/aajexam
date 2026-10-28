@@ -29,11 +29,11 @@ module.exports = {
         ),
         'on-primary': 'var(--on-primary)',
         slate: {
-          950: '#09090b', // Dark page background (matches --bg-page in dark mode)
-          900: '#09090b', // Same as 950: one flat dark background
-          800: '#18181b', // Raised/secondary dark surface (matches --bg-surface-secondary)
-          700: '#27272a', // Dark borders (matches --border-primary in dark mode)
-          600: '#3f3f46',
+          950: '#000000', // Dark section / card surface: pure black (matches --bg-surface in dark mode)
+          900: '#000000', // Same as 950
+          800: '#111113', // Raised/secondary dark surface (matches --bg-surface-secondary)
+          700: '#52525b', // Dark borders (matches --border-primary in dark mode)
+          600: '#71717a',
           // Light mode text on white / #f1f1f1 / tinted chips needs >= 4.5:1, so 400 and 500 darken in light mode
           // and keep the original slate values in dark mode (channels defined in src/styles/index.css).
           500: 'rgb(var(--slate-500) / <alpha-value>)',
@@ -61,7 +61,7 @@ module.exports = {
       },
       backgroundImage: {
         'aajexam-light': 'linear-gradient(to bottom, #f7f7f7, #ffffff)',
-        'aajexam-dark': 'linear-gradient(to bottom, #09090b, #18181b)',
+        'aajexam-dark': 'linear-gradient(to bottom, #000000, #111113)',
       },
       boxShadow: {
         'duo': '0 4px 0 0 rgba(0, 0, 0, 0.1)',

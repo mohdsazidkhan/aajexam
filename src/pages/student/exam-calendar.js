@@ -80,8 +80,7 @@ const EventCard = ({ event, compact = false }) => {
         animate={{ opacity: 1, y: 0 }}
         style={{ borderRadius: 14 }} className="relative overflow-hidden flex items-start gap-3 p-3.5 pl-4 border border-border-primary bg-background-surface hover:-translate-y-0.5 transition-all group cursor-pointer"
       >
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-primary-600" />
-        <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
+        <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}>
           <Icon className="w-4 h-4" />
         </div>
         <div className="flex-1 min-w-0">
@@ -122,7 +121,7 @@ const DayPanel = ({ date, events, onClose }) => {
         <Card padded={false} className="overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 text-content-primary border-b border-border-primary dark:border-transparent bg-background-surface">
             <div className="flex items-center gap-2">
-              <span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><CalendarDays className="w-4 h-4" /></span>
+              <span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><CalendarDays className="w-4 h-4" /></span>
               <span className="text-sm font-bold">{dateLabel}</span>
               <span className="text-[10px] font-bold uppercase text-on-primary px-2 py-0.5 rounded-full bg-primary-600">
                 {events.length} event{events.length > 1 ? 's' : ''}
@@ -238,7 +237,7 @@ const ExamCalendarPage = () => {
               {['admit_card', 'result', 'vacancy', 'notification'].map(typeKey => {
                 const cfg = getType(typeKey);
                 return (
-                  <div key={typeKey} className="flex items-center gap-1.5 bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-2.5 py-1 shrink-0 whitespace-nowrap" style={{ borderRadius: 999 }}>
+                  <div key={typeKey} className="flex items-center gap-1.5 ring-1 ring-slate-200 dark:ring-white/20 px-2.5 py-1 shrink-0 whitespace-nowrap" style={{ borderRadius: 999 }}>
                     <div className={`w-2 h-2 rounded-full ${cfg.dot}`} />
                     <span className="text-[10px] font-bold text-content-primary uppercase">{translate(cfg.label)}</span>
                   </div>
@@ -348,7 +347,7 @@ const ExamCalendarPage = () => {
               onClick={() => setShowUpcoming(v => !v)}
             >
               <div className="flex items-center gap-2">
-                <span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span>
+                <span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span>
                 <h2 className="text-base sm:text-lg font-bold text-content-primary tracking-tight">
                   {translate('Upcoming (Next 30 Days)')}
                 </h2>

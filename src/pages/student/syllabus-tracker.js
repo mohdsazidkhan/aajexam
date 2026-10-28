@@ -57,7 +57,7 @@ const SubjectAccordion = ({ subject }) => {
     <Card as="section" padded={false} className="overflow-hidden mb-3 hover:-translate-y-0.5 transition-all">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-4 sm:p-5 bg-background-surface dark:hover:bg-white/5 transition-colors"
+        className="w-full flex items-center justify-between p-4 sm:p-5 bg-background-surface transition-colors"
       >
         <div className="flex items-center gap-4">
           <div style={{ borderRadius: 14 }} className={`w-12 h-12 flex items-center justify-center flex-shrink-0 ${isAllDone ? 'text-on-primary bg-primary-600' : 'text-on-primary bg-primary-600'}`}>
@@ -85,7 +85,7 @@ const SubjectAccordion = ({ subject }) => {
       <AnimatePresence>
         {isOpen && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="border-t border-border-primary">
-            <div className="p-2 sm:p-4 dark:bg-white/5">
+            <div className="p-2 sm:p-4">
               {subject.topics.length === 0 ? (
                 <p className="text-sm text-content-muted text-center py-4 font-bold">{translate('No topics mapped yet.')}</p>
               ) : (
@@ -246,7 +246,7 @@ const SyllabusTrackerPage = () => {
 
               {/* Accordions */}
               <div>
-                <h3 className="flex items-center gap-2.5 text-sm font-bold text-content-primary uppercase mb-3 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15"><span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span>{translate('Subjects')}</h3>
+                <h3 className="flex items-center gap-2.5 text-sm font-bold text-content-primary uppercase mb-3 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span>{translate('Subjects')}</h3>
                 {trackerData.syllabus.length === 0 ? (
                   <div className="text-center py-10 bg-background-surface border border-dashed border-primary-300 dark:border-slate-700" style={{ borderRadius: 16 }}>
                     <p className="text-sm font-bold text-content-muted">{translate('No syllabus data found for this exam.')}</p>

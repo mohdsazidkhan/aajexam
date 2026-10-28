@@ -115,11 +115,11 @@ const NotificationsPage = () => {
           badge={unreadCount > 0 ? String(unreadCount) : undefined}
           actions={
             <>
-              <div className="relative overflow-hidden bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
+              <div className="relative overflow-hidden ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
                 <p className="text-lg font-bold font-outfit leading-none text-primary-600">{notifications.length}</p>
                 <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Notifications')}</p>
               </div>
-              <div className="relative overflow-hidden bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
+              <div className="relative overflow-hidden ring-1 ring-slate-200 dark:ring-white/20 px-3 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
                 <p className="text-lg font-bold font-outfit leading-none text-primary-600">{unreadCount}</p>
                 <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Unread')}</p>
               </div>
@@ -168,7 +168,7 @@ const NotificationsPage = () => {
 
                     <div className="flex items-center gap-1 shrink-0">
                       {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Mark as read')}><Eye className="w-4 h-4" /></button>}
-                      <button onClick={() => deleteOne(n.id)} className="p-2 text-content-primary hover:bg-black/10 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Delete notification')}><Trash2 className="w-4 h-4" /></button>
+                      <button onClick={() => deleteOne(n.id)} className="p-2 text-content-primary hover:bg-black/10 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Delete notification')}><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </motion.div>
                 ))}

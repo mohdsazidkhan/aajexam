@@ -236,7 +236,7 @@ export default function AdminContacts() {
                  animate={{ opacity: 1, scale: 1 }}
                  className="flex flex-col items-center justify-center py-10 xl:py-20 text-center rounded-2xl xl:rounded-3xl border border-dashed border-border-primary"
                >
-                 <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 xl:mb-4">
+                 <div className="p-4 xl:p-10 bg-slate-100/50 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 xl:mb-4">
                    <Mail className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl xl:text-3xl font-bold text-content-primary italic tracking-tight mb-3">No Messages Found</h3>
@@ -281,7 +281,7 @@ export default function AdminContacts() {
                           <h3 className="text-sm font-bold text-content-primary leading-tight mb-0.5">{contact.name || 'Unknown'}</h3>
                           <div className="text-[10px] font-bold text-primary-600 mb-3">{contact.email || 'No email'}</div>
 
-                          <div className="p-3 bg-background-surface-secondary rounded-xl border border-border-primary w-full mb-3">
+                          <div className="p-3 rounded-xl border border-border-primary w-full mb-3">
                              <p className="text-[10px] font-medium leading-relaxed text-content-muted line-clamp-3">{contact.message}</p>
                           </div>
 

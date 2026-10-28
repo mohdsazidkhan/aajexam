@@ -400,7 +400,7 @@ const ModernLandingPage = () => {
    return (
       <MobileAppWrapper showHeader={true} title={translate('Home')}>
          <div className="xl:min-h-[calc(100vh-5.5rem)] xl:flex xl:flex-col">
-         <section className="-mx-4 xl:-mx-8 xl:flex-1 xl:flex xl:items-center bg-background-page text-content-primary">
+         <section className="-mx-4 xl:-mx-8 xl:flex-1 xl:flex xl:items-center bg-background-surface text-content-primary">
             <div className="container mx-auto px-4 xl:px-6 w-full">
                <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] items-center gap-8 xl:gap-12 py-8 xl:py-4">
                   {/* Copy */}
@@ -470,7 +470,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Ticker Stats ── */}
-         <section aria-label="Last 30 days activity" className="border-y border-border-primary text-content-secondary overflow-hidden flex">
+         <section aria-label="Last 30 days activity" className="border-y border-border-primary bg-background-surface text-content-secondary overflow-hidden flex">
             <div className="flex w-max hover:[animation-play-state:paused]" style={{ animation: 'marquee 32s linear infinite' }}>
                {/* Repeat content twice for a seamless loop */}
                {[0, 1].map((iteration) => (
@@ -489,7 +489,7 @@ const ModernLandingPage = () => {
          </div>
 
          {/* ── 3-Step How It Works ── */}
-         <section className="py-6 xl:py-10">
+         <section className="bg-background-surface py-6 xl:py-10">
             <div className="container mx-auto px-3 xl:px-0">
                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 xl:gap-6">
                   {[
@@ -515,7 +515,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Counts ── */}
-         <section className="py-3 xl:py-5">
+         <section className="bg-background-surface py-3 xl:py-5">
             <div className="container mx-auto px-3 xl:px-0">
                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-px border border-border-primary rounded-2xl overflow-hidden bg-border-primary">
                   {[
@@ -537,7 +537,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── PYQ Section ── */}
-         <section className="py-8 xl:py-12">
+         <section className="bg-background-surface py-8 xl:py-12">
             <div className="container mx-auto px-3 xl:px-0">
                <div className="text-center space-y-3 mb-6 xl:mb-8">
                   <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border-primary text-xs font-bold rounded-full text-primary-600">
@@ -610,7 +610,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Features Section ── */}
-         <section id="features" className="py-8 xl:py-12 border-t border-border-primary">
+         <section id="features" className="bg-background-surface py-8 xl:py-12 border-t border-border-primary">
             <div className="container mx-auto px-3 xl:px-0 space-y-6 xl:space-y-8">
                <div className="text-center space-y-3 max-w-3xl mx-auto">
                   <h2 className="text-3xl xl:text-5xl font-extrabold font-outfit tracking-tight leading-tight">{translate('Study Smart.')} <br /> {translate('Pass Your Exam.')}</h2>
@@ -671,7 +671,7 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
-         <section className="py-8 xl:py-12">
+         <section className="bg-background-surface py-8 xl:py-12">
             <div className="container mx-auto px-3 xl:px-0 space-y-6 xl:space-y-8">
                <h2 className="text-center text-3xl xl:text-5xl font-extrabold font-outfit tracking-tight leading-tight">
                   {translate('Study with')} <br /><span className="text-primary-600">{translate('Confidence.')}</span>

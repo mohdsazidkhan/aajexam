@@ -176,7 +176,7 @@ const AdminQuizSubjects = () => {
           {filtered.map((sub, idx) => (
             <div key={sub._id} className="bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col gap-3 hover:-translate-y-0.5 transition-all relative">
               <div className="flex items-start justify-between gap-2">
-                <div className="relative w-10 h-10 rounded-xl text-on-primary flex items-center justify-center shrink-0 bg-primary-600">
+                <div className="relative w-10 h-10 rounded-xl text-primary-600 flex items-center justify-center shrink-0 border border-border-primary">
                   <BookMarked className="w-5 h-5" />
                   <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{idx + 1}</span>
                 </div>
@@ -198,7 +198,7 @@ const AdminQuizSubjects = () => {
         <div className="h-full overflow-auto space-y-2">
           {filtered.map((sub, idx) => (
             <section key={sub._id} className="bg-background-surface rounded-xl border border-border-primary p-3 flex items-center gap-3 hover:-translate-y-0.5 transition-all relative">
-              <div className="relative w-10 h-10 rounded-xl text-on-primary flex items-center justify-center shrink-0 bg-primary-600">
+              <div className="relative w-10 h-10 rounded-xl text-primary-600 flex items-center justify-center shrink-0 border border-border-primary">
                 <BookMarked className="w-5 h-5" />
                 <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{idx + 1}</span>
               </div>
@@ -225,7 +225,7 @@ const AdminQuizSubjects = () => {
           <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 w-full bg-background-surface overflow-hidden flex flex-col">
           <div className="w-full h-full flex flex-col">
 <section className="shrink-0 flex justify-between items-center px-4 py-2.5 border-b border-border-primary">
-              <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><h2 className="text-base font-bold uppercase tracking-tight text-content-primary">{editing ? 'Edit' : 'Create'} Subject</h2></div>
+              <div className="flex items-center gap-2.5"><span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Plus className="w-4 h-4" /></span><h2 className="text-base font-bold uppercase tracking-tight text-content-primary">{editing ? 'Edit' : 'Create'} Subject</h2></div>
               <button aria-label="Close" onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </section>
             <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">

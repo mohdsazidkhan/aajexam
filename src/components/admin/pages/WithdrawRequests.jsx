@@ -249,7 +249,7 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
               ) : viewMode === 'list' ? (
                 <div className="flex-1 min-h-0 overflow-auto space-y-3">
                   {items.map((req, idx) => (
-                    <motion.div key={req._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }} className="bg-background-surface dark:bg-white/5 rounded-lg xl:rounded-xl border border-border-primary p-3 xl:p-4 flex flex-col sm:flex-row sm:items-center gap-3 hover:border-primary-500/20 transition-all">
+                    <motion.div key={req._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }} className="bg-background-surface rounded-lg xl:rounded-xl border border-border-primary p-3 xl:p-4 flex flex-col sm:flex-row sm:items-center gap-3 hover:border-primary-500/20 transition-all">
                       <div className="flex items-center gap-3 flex-1 min-w-0">
                         <div className="relative w-10 h-10 text-on-primary rounded-full flex items-center justify-center font-bold text-xs uppercase shrink-0 bg-primary-600">
                           {req.userId?.name?.[0] || 'U'}
@@ -309,7 +309,7 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
               ) : (
                 <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-4">
                   {items.map((req, idx) => (
-                    <motion.div key={req._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-background-surface dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 relative font-outfit overflow-hidden group hover:border-primary-500/20 transition-all">
+                    <motion.div key={req._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-background-surface rounded-lg xl:rounded-xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 relative font-outfit overflow-hidden group hover:border-primary-500/20 transition-all">
                       <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-600" />
                       <div className="flex justify-between items-start mb-4 xl:mb-4">
                         <div className="flex items-center gap-3">
@@ -322,7 +322,7 @@ const AdminWithdrawRequests = ({ tabs = null }) => {
                         <div className={`px-3 py-1 rounded-lg xl:rounded-xl text-[8px] font-bold uppercase border ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-content-primary border-border-primary' : req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-content-primary border-border-primary' : 'text-primary-600 border-primary-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>
                       </div>
 
-                      <div className="bg-background-surface-secondary rounded-3xl p-4 mb-4 xl:mb-4 border border-border-primary">
+                      <div className="rounded-3xl p-4 mb-4 xl:mb-4 border border-border-primary">
                         <div className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1">Withdrawal Amount</div>
                         <div className="text-3xl font-bold text-primary-600 italic tracking-tight leading-none mb-4">{formatCurrency(req.amount)}</div>
                         <div className="pt-4 border-t-2 border-border-primary">

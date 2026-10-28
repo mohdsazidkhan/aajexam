@@ -46,8 +46,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
     return (
       <div className="text-center py-4 mb-4">
         <section className="relative overflow-hidden bg-background-surface p-6 border border-border-primary" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
-          <span className="w-14 h-14 flex items-center justify-center mx-auto mb-3 text-on-primary bg-primary-600" style={{ borderRadius: 16 }}><Trophy className="w-7 h-7" /></span>
+          <span className="w-14 h-14 flex items-center justify-center mx-auto mb-3 text-primary-600 border border-border-primary" style={{ borderRadius: 16 }}><Trophy className="w-7 h-7" /></span>
           <h3 className="text-lg font-semibold text-content-secondary mb-1">{translate('No Leaderboard Yet')}</h3>
           <p className="text-sm text-content-muted">{translate('Be the first to complete this quiz!')}</p>
         </section>
@@ -58,7 +57,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
   return (
     <div className="mt-6">
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 12 }}>
+        <div className="w-10 h-10 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 12 }}>
           <Trophy className="w-5 h-5" />
         </div>
         <h3 className="text-lg font-bold tracking-tight text-content-primary">{translate('Leaderboard')}</h3>
@@ -357,16 +356,15 @@ const AttemptQuizPage = () => {
     return (
       <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[60] p-4">
         <section className="relative overflow-hidden bg-background-surface p-6 max-w-md w-full border border-border-primary" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
           <div className="text-center">
-            <div className="w-14 h-14 flex items-center justify-center mx-auto mb-4 text-on-primary bg-primary-600" style={{ borderRadius: 16 }}>
+            <div className="w-14 h-14 flex items-center justify-center mx-auto mb-4 text-primary-600 border border-border-primary" style={{ borderRadius: 16 }}>
               <AlertTriangle className="w-7 h-7" />
             </div>
             <h2 className="text-lg font-bold text-content-primary mb-3">{translate('Exit Quiz?')}</h2>
             <p className="text-sm text-content-secondary mb-4">
               {translate('Question {current} of {total}. Exiting will submit your quiz with current answers.', { current: currentQuestionIndex + 1, total: quiz?.questions?.length || 0 })}
             </p>
-            <div className="dark:bg-white/5 border border-dashed border-primary-300 dark:border-white/20 rounded-lg p-3 mb-5">
+            <div className="border border-dashed border-primary-300 dark:border-white/20 rounded-lg p-3 mb-5">
               <p className="text-xs font-bold text-content-primary">{translate('This action cannot be undone.')}</p>
             </div>
             <div className="flex gap-3">
@@ -472,27 +470,27 @@ const AttemptQuizPage = () => {
               <h2 className="text-xl xl:text-3xl font-bold font-outfit tracking-tight text-content-primary mb-4">{translate('Quiz Completed!')}</h2>
 
               <div className="grid grid-cols-3 md:grid-cols-6 gap-2 xl:gap-3 mb-4">
-                <div className="relative overflow-hidden bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
+                <div className="relative overflow-hidden hover:bg-background-surface border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
                   <div className="text-2xl font-bold font-outfit text-primary-600">{result.correctCount}</div>
                   <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Correct')}</div>
                 </div>
-                <div className="relative overflow-hidden bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
+                <div className="relative overflow-hidden hover:bg-background-surface border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
                   <div className="text-2xl font-bold font-outfit text-primary-600">{result.wrongCount}</div>
                   <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Wrong')}</div>
                 </div>
-                <div className="relative overflow-hidden bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
+                <div className="relative overflow-hidden hover:bg-background-surface border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
                   <div className="text-2xl font-bold font-outfit text-primary-600">{Math.round(result.percentage || 0)}%</div>
                   <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Score')}</div>
                 </div>
-                <div className="relative overflow-hidden bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
+                <div className="relative overflow-hidden hover:bg-background-surface border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
                   <div className="text-2xl font-bold font-outfit text-primary-600">{Math.round(result.accuracy || 0)}%</div>
                   <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Accuracy')}</div>
                 </div>
-                <div className="relative overflow-hidden bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
+                <div className="relative overflow-hidden hover:bg-background-surface border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
                   <div className="text-2xl font-bold font-outfit text-primary-600">{quiz?.duration ? `${quiz.duration}m` : '—'}</div>
                   <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Quiz Total Time')}</div>
                 </div>
-                <div className="relative overflow-hidden bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
+                <div className="relative overflow-hidden hover:bg-background-surface border border-border-primary p-3 transition-colors" style={{ borderRadius: 10 }}>
                   <div className="text-2xl font-bold font-outfit text-primary-600">{fmtSec(timeTaken.reduce((sum, t) => sum + (t || 0), 0)) || '0s'}</div>
                   <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75">{translate('Total Time Taken')}</div>
                 </div>
@@ -509,9 +507,8 @@ const AttemptQuizPage = () => {
 
           {/* Quiz Review */}
           <section className="relative overflow-hidden bg-background-surface p-4 xl:p-8 border border-border-primary mb-6" style={{ borderRadius: 16 }}>
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 12 }}>
+              <div className="w-10 h-10 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 12 }}>
                 <Brain className="w-5 h-5" />
               </div>
               <h2 className="text-lg font-bold tracking-tight text-content-primary">{translate('Quiz Review')}</h2>
@@ -577,7 +574,7 @@ const AttemptQuizPage = () => {
                     </div>
 
                     {question.explanation && (
-                      <div className="mt-3 p-2.5 dark:bg-white/5 border border-dashed border-primary-300 dark:border-white/20 rounded-lg">
+                      <div className="mt-3 p-2.5 border border-dashed border-primary-300 dark:border-white/20 rounded-lg">
                         <p className="text-xs text-content-primary"><span className="font-semibold">{translate('Explanation:')}</span> {question.explanation}</p>
                       </div>
                     )}
@@ -635,12 +632,11 @@ const AttemptQuizPage = () => {
 
         {/* Quiz Header */}
         <header className="z-auto relative overflow-hidden bg-background-surface border border-border-primary p-3 mb-3" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
           {/* 3-column layout on desktop: left=title | center=dots | right=controls */}
           <div className="flex items-center mb-2">
             {/* Left: Logo + Title */}
             <div className="flex items-center gap-2 flex-1 min-w-0">
-              <div className="w-8 h-8 flex items-center justify-center shrink-0 text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
+              <div className="w-8 h-8 flex items-center justify-center shrink-0 text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}>
                 <BrainCircuit className="w-4 h-4" />
               </div>
               <div className="min-w-0">
@@ -738,7 +734,6 @@ const AttemptQuizPage = () => {
 
         {/* Question Card */}
         <div className="relative overflow-hidden bg-background-surface p-4 xl:p-8 border border-border-primary mb-3" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
           <div className="flex items-start gap-3 mb-5">
             <div className="w-9 h-9 flex items-center justify-center text-sm font-bold shrink-0 text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
               {currentQuestionIndex + 1}

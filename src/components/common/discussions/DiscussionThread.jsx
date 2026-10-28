@@ -161,7 +161,7 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
                 onChange={e => setReplyText(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && submitReply()}
                 placeholder={translate('Write a reply…')}
-                className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-border-primary bg-background-surface-secondary focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-border-primary focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <button onClick={submitReply} className="px-3 py-1.5 text-xs font-bold bg-primary-600 text-on-primary rounded-lg hover:bg-primary-600">
                 {translate('Post')}
@@ -311,7 +311,7 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
                 onChange={e => setNewComment(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && !submitting && submitNew()}
                 placeholder={translate('Share your approach, shortcut, or doubt…')}
-                className="flex-1 text-sm px-3 py-2 rounded-lg border border-border-primary bg-background-surface-secondary focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-1 text-sm px-3 py-2 rounded-lg border border-border-primary focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <button
                 disabled={submitting || newComment.trim().length < 2}

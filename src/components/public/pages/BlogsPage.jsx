@@ -115,12 +115,12 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
   const FlagPills = ({ blog }) => (
     <>
       {blog.isFeatured && (
-        <span className="w-7 h-7 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 8 }}>
+        <span className="w-7 h-7 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 8 }}>
           <Star className="w-4 h-4 fill-current" />
         </span>
       )}
       {blog.isPinned && (
-        <span className="w-7 h-7 flex items-center justify-center bg-white/90 text-primary-600" style={{ borderRadius: 8 }}>
+        <span className="w-7 h-7 flex items-center justify-center text-primary-600" style={{ borderRadius: 8 }}>
           <Pin className="w-4 h-4 fill-current" />
         </span>
       )}
@@ -272,7 +272,7 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
         <div className="mt-8"><Pagination currentPage={currentPage} totalPages={pagination.totalPages} onPageChange={goToPage} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); goToPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
 
         {error && (
-          <div className="mt-4 bg-background-surface-secondary border border-border-primary dark:border-white rounded-md p-4">
+          <div className="mt-4 border border-border-primary dark:border-white rounded-md p-4">
             <p className="text-content-primary">{error}</p>
           </div>
         )}

@@ -413,11 +413,11 @@ const AdminGovtExamTests = () => {
                                  </div>
                                  <h3 className="text-sm xl:text-xl font-bold text-content-primary italic tracking-tight leading-tight mb-1 xl:mb-4 line-clamp-2">{test.title}</h3>
                                  <div className="grid grid-cols-2 gap-2 xl:gap-3 mb-2 xl:mb-4">
-                                    <div className="p-2 xl:p-4 bg-background-surface-secondary rounded-lg xl:rounded-2xl border border-border-primary">
+                                    <div className="p-2 xl:p-4 rounded-lg xl:rounded-2xl border border-border-primary">
                                        <span className="text-[7px] xl:text-[8px] font-bold text-content-muted uppercase mb-0.5 xl:mb-1">Questions</span>
                                        <span className="text-xs xl:text-sm font-bold text-content-primary">{test.questions?.length || 0} Qs</span>
                                     </div>
-                                    <div className="p-2 xl:p-4 bg-background-surface-secondary rounded-lg xl:rounded-2xl border border-border-primary">
+                                    <div className="p-2 xl:p-4 rounded-lg xl:rounded-2xl border border-border-primary">
                                        <span className="text-[7px] xl:text-[8px] font-bold text-content-muted uppercase mb-0.5 xl:mb-1">Duration</span>
                                        <span className="text-xs xl:text-sm font-bold text-content-primary">{test.duration}m</span>
                                     </div>
@@ -468,7 +468,7 @@ const AdminGovtExamTests = () => {
                {showModal && (
                   <div className="fixed inset-0 z-[999]">
                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-[#0A0F1E]/80" />
-                     <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-[#0D1225] xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col font-outfit">
+                     <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-black xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col font-outfit">
 
                         <section className="px-4 py-2.5 border-b-2 border-border-primary flex items-center justify-between shrink-0">
                            <div className="flex items-center gap-3">
@@ -491,7 +491,7 @@ const AdminGovtExamTests = () => {
                               <div className="w-full max-w-4xl mx-auto flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 xl:p-6 space-y-3">
                                  <section className="p-3 xl:p-5 rounded-lg xl:rounded-xl xl:rounded-3xl border border-dashed border-primary-500/20">
                                     <div className="flex items-center gap-3 mb-4">
-                                       <div className="p-3 bg-background-surface dark:bg-white/10 rounded-2xl text-primary-600"><Download className="w-6 h-6" /></div>
+                                       <div className="p-3 bg-background-surface rounded-2xl text-primary-600"><Download className="w-6 h-6" /></div>
                                        <div>
                                           <h3 className="text-sm font-bold text-content-primary uppercase tracking-tight">Bulk JSON Upload</h3>
                                           <p className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">Paste your questions JSON below to import in bulk</p>
@@ -519,7 +519,7 @@ const AdminGovtExamTests = () => {
                                        <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">Duration (Min)</label>
                                        <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) })} className="w-full px-3 py-2 bg-background-surface border border-border-primary rounded-lg text-xs font-bold outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all" />
                                     </div>
-                                    <div className="col-span-2 xl:col-span-1 flex items-center gap-2 px-3 py-2 bg-background-surface dark:bg-white/5 border border-border-primary rounded-lg" title="Auto-managed: the latest-year PYQ tests of each exam are Free, the rest are PRO">
+                                    <div className="col-span-2 xl:col-span-1 flex items-center gap-2 px-3 py-2 bg-background-surface border border-border-primary rounded-lg" title="Auto-managed: the latest-year PYQ tests of each exam are Free, the rest are PRO">
                                        <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-[0.08em] shrink-0 ${editingTest?.accessLevel === 'FREE' ? 'text-primary-600' : 'bg-background-surface-secondary text-content-secondary'}`}>
                                           {editingTest ? (editingTest.accessLevel === 'FREE' ? 'Free' : 'PRO') : 'Auto'}
                                        </span>
@@ -564,7 +564,7 @@ const AdminGovtExamTests = () => {
                                                       <p className="text-xs font-bold text-content-secondary line-clamp-2 leading-snug">{q.questionText}</p>
                                                       <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
                                                          <span className="text-[8px] font-bold text-primary-600 uppercase px-2 py-0.5 rounded-md">{q.section || 'General'}</span>
-                                                         <span className="text-[8px] font-bold text-white px-2 py-0.5 bg-slate-800 dark:bg-white/20 rounded-md uppercase">Ans: {q.correctAnswerIndex + 1}</span>
+                                                         <span className="text-[8px] font-bold text-white px-2 py-0.5 bg-slate-800 rounded-md uppercase">Ans: {q.correctAnswerIndex + 1}</span>
                                                       </div>
                                                    </div>
                                                    <div className="flex flex-col gap-1 shrink-0">

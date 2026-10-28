@@ -191,7 +191,7 @@ export default function ReferralHistory() {
                icon={Users}
                title={rich('Referral <0>History</0>', [(c) => <span className="text-primary-600">{c}</span>])}
                actions={user && (
-                  <div className="w-full xl:w-auto xl:min-w-[300px] px-3 py-2 bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 text-left" style={{ borderRadius: 12 }}>
+                  <div className="w-full xl:w-auto xl:min-w-[300px] px-3 py-2 ring-1 ring-slate-200 dark:ring-white/20 text-left" style={{ borderRadius: 12 }}>
                      <p className="text-[9px] xl:text-xs font-bold text-content-secondary dark:text-white/75 uppercase tracking-[0.08em] leading-none mb-1">{translate('Your Referral Code')}</p>
                      <div className="flex items-center gap-2 xl:gap-3">
                         <p className="flex-1 text-sm xl:text-lg font-bold font-mono tracking-[0.08em] truncate text-primary-600">{user.referralCode}</p>
@@ -214,9 +214,8 @@ export default function ReferralHistory() {
                      { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'primary' }
                   ].map((s, i) => (
                      <div key={i} className="group relative overflow-hidden p-3 bg-background-surface border border-border-primary hover:-translate-y-1 transition-all" style={{ borderRadius: 12 }}>
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                         <div className="flex justify-between items-start mb-1.5">
-                           <div className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
+                           <div className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}>
                               <s.icon className="w-4 h-4" />
                            </div>
                         </div>
@@ -357,7 +356,7 @@ export default function ReferralHistory() {
                <div className="space-y-3">
                   <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 xl:gap-8">
                      <section className="space-y-2">
-                        <h2 className="flex items-center gap-2.5 text-xl font-bold font-outfit tracking-tight"><span className="w-9 h-9 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
+                        <h2 className="flex items-center gap-2.5 text-xl font-bold font-outfit tracking-tight"><span className="w-9 h-9 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
                      </section>
 
                      <div className="w-full xl:w-auto xl:min-w-[320px] space-y-2 xl:space-y-4">
@@ -389,7 +388,7 @@ export default function ReferralHistory() {
                <div className="space-y-2 xl:space-y-3">
                   <div className="flex items-center justify-between">
                      <section className="space-y-1 xl:space-y-2">
-                        <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-bold font-outfit tracking-tight"><span className="w-9 h-9 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
+                        <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-bold font-outfit tracking-tight"><span className="w-9 h-9 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
                      </section>
                   </div>
 

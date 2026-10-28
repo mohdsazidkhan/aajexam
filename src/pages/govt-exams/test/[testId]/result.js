@@ -238,7 +238,7 @@ const TestResult = ({ resolvedId } = {}) => {
           }
         ].map((item, idx) => (
           <Card as="article" key={idx} className="flex flex-col items-center text-center gap-1.5 hover:-translate-y-0.5 transition-all">
-            <div className="w-14 h-14 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 16 }}>
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 16 }}>
               <item.icon className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
             <span className="text-xl xl:text-2xl font-bold font-outfit">{item.value}</span>

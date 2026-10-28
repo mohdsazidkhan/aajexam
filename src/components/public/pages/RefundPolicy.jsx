@@ -136,14 +136,14 @@ const RefundPolicy = () => {
                            </p>
 
                            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                              <section className="p-4 xl:p-5 dark:bg-white/5 rounded-3xl border border-primary-300 dark:border-white/10 space-y-2 xl:space-y-4 hover:border-primary-500/30 transition-all">
+                              <section className="p-4 xl:p-5 rounded-3xl border border-primary-300 dark:border-white/10 space-y-2 xl:space-y-4 hover:border-primary-500/30 transition-all">
                                  <div className="flex items-center gap-4 text-primary-600">
                                     <TriangleAlert className="w-5 h-5" />
                                     <h3 className="text-xs font-bold uppercase tracking-[0.08em]">Double Payment</h3>
                                  </div>
                                  <p className="text-xs font-medium text-content-secondary leading-relaxed">When you are accidentally charged twice for the same plan.</p>
                               </section>
-                              <section className="p-4 xl:p-5 dark:bg-white/5 rounded-3xl border border-primary-300 dark:border-white/10 space-y-2 xl:space-y-4 hover:border-primary-500/30 transition-all">
+                              <section className="p-4 xl:p-5 rounded-3xl border border-primary-300 dark:border-white/10 space-y-2 xl:space-y-4 hover:border-primary-500/30 transition-all">
                                  <div className="flex items-center gap-4 text-primary-600">
                                     <Zap className="w-5 h-5" />
                                     <h3 className="text-xs font-bold uppercase tracking-[0.08em]">Activation Failure</h3>

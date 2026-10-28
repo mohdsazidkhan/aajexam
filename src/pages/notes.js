@@ -161,11 +161,11 @@ const NotesPage = ({ initialItems = [], initialTotalPages = 1, initialTotal } = 
                       <Icon className="w-3 h-3" />
                       {translate(cfg.label)}
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-muted uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary dark:border-slate-600">
+                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-muted uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary dark:border-slate-600">
                       <Eye className="w-3 h-3" />
                       {note.views || 0}
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
+                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                       <Bookmark className="w-3 h-3" />
                       {note.bookmarks || 0}
                     </div>

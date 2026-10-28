@@ -222,7 +222,7 @@ export default function AdminBankDetails() {
             {detail.user?.subscriptionStatus && getSubscriptionBadge(detail.user.subscriptionStatus)}
           </div>
 
-          <div className="p-3 bg-background-surface-secondary rounded-xl border border-border-primary space-y-1.5">
+          <div className="p-3 rounded-xl border border-border-primary space-y-1.5">
             <div className="flex items-center justify-between text-[10px]">
               <span className="font-bold text-content-muted uppercase">Account Holder</span>
               <span className="font-bold text-content-primary">{detail.accountHolderName}</span>
@@ -274,7 +274,7 @@ export default function AdminBankDetails() {
           </div>
 
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-3 xl:mx-4">
-            <div className="px-3 py-2 bg-background-surface-secondary rounded-lg border border-border-primary flex gap-2 items-center">
+            <div className="px-3 py-2 rounded-lg border border-border-primary flex gap-2 items-center">
               <CreditCard className="w-3.5 h-3.5 text-primary-600 shrink-0" />
               <div className="min-w-0">
                 <div className="text-xs font-bold text-content-primary truncate">{detail.accountHolderName}</div>

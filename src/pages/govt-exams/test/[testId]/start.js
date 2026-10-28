@@ -298,7 +298,7 @@ const TestStart = ({ resolvedId } = {}) => {
             onClick={() => setShowPalette(true)}
             title={translate('Questions')}
             aria-label={translate('Open questions')}
-            className="xl:hidden shrink-0 p-2.5 bg-white/90 dark:bg-slate-900/90 text-content-muted hover:text-primary-600 rounded-xl border border-border-primary transition-all active:scale-95"
+            className="xl:hidden shrink-0 p-2.5 dark:bg-slate-900/90 text-content-muted hover:text-primary-600 rounded-xl border border-border-primary transition-all active:scale-95"
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -323,7 +323,7 @@ const TestStart = ({ resolvedId } = {}) => {
           </div>
           
           {/* Center: Test Progress (Minimalist) */}
-          <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-2xl px-5 py-2.5 xl:px-6 xl:py-3 border border-border-primary pointer-events-auto hidden md:block">
+          <div className="flex-1 max-w-xl dark:bg-slate-900/90 rounded-2xl px-5 py-2.5 xl:px-6 xl:py-3 border border-border-primary pointer-events-auto hidden md:block">
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] leading-none">
                 <span className="pr-4">{translateData(test?.title)}</span>
@@ -346,12 +346,12 @@ const TestStart = ({ resolvedId } = {}) => {
               language={language}
               onToggle={toggleLanguage}
               translating={translatingQ}
-              className="px-2.5 py-2 xl:px-4 xl:py-2.5 min-w-[44px] xl:min-w-[56px] bg-white/90 dark:bg-slate-900/90 text-content-secondary hover:text-primary-600 rounded-xl border border-border-primary transition-all active:scale-95 font-bold text-sm tracking-[0.08em] uppercase flex items-center justify-center gap-1.5"
+              className="px-2.5 py-2 xl:px-4 xl:py-2.5 min-w-[44px] xl:min-w-[56px] dark:bg-slate-900/90 text-content-secondary hover:text-primary-600 rounded-xl border border-border-primary transition-all active:scale-95 font-bold text-sm tracking-[0.08em] uppercase flex items-center justify-center gap-1.5"
             />
 
             <button
               onClick={toggleFullscreen}
-              className="p-2.5 xl:p-3 bg-white/90 dark:bg-slate-900/90 text-content-muted hover:text-primary-600 rounded-xl border border-border-primary transition-all active:scale-95 group"
+              className="p-2.5 xl:p-3 dark:bg-slate-900/90 text-content-muted hover:text-primary-600 rounded-xl border border-border-primary transition-all active:scale-95 group"
               title={translate('Toggle Focus Mode')}
             >
               {isFullscreen ? <Minimize className="w-5 h-5 xl:w-6 xl:h-6" /> : <Maximize className="w-5 h-5 xl:w-6 xl:h-6" />}
@@ -359,7 +359,7 @@ const TestStart = ({ resolvedId } = {}) => {
 
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="p-2.5 xl:p-3 bg-white/90 dark:bg-slate-900/90 text-content-muted hover:text-content-primary dark:hover:text-white rounded-xl border border-border-primary transition-all active:scale-95 group"
+              className="p-2.5 xl:p-3 dark:bg-slate-900/90 text-content-muted hover:text-content-primary dark:hover:text-white rounded-xl border border-border-primary transition-all active:scale-95 group"
               title={translate('Exit Test')}
             >
               <X className="w-5 h-5 xl:w-6 xl:h-6 group-hover:rotate-90 transition-transform" />
@@ -484,7 +484,7 @@ const TestStart = ({ resolvedId } = {}) => {
                     >
                       <div className={`
                             w-8 h-8 sm:w-10 sm:h-10 rounded-lg xl:rounded-xl flex items-center justify-center font-bold text-base sm:text-lg shrink-0 transition-colors
-                            ${isSelected ? 'bg-white/20 text-white' : 'bg-background-surface-secondary text-content-muted'}
+                            ${isSelected ? 'text-white' : 'bg-background-surface-secondary text-content-muted'}
                          `}>
                         {String.fromCharCode(65 + idx)}
                       </div>
@@ -523,7 +523,7 @@ const TestStart = ({ resolvedId } = {}) => {
       </div>
 
       {/* --- Bottom Action Bar (Fixed) --- */}
-      <footer className="min-h-[4rem] sm:min-h-[5rem] xl:h-24 shrink-0 bg-white/80 dark:bg-slate-900/90 border-t border-border-primary px-3 sm:px-6 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] gap-2 flex items-center justify-between z-50">
+      <footer className="min-h-[4rem] sm:min-h-[5rem] xl:h-24 shrink-0 dark:bg-slate-900/90 border-t border-border-primary px-3 sm:px-6 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] gap-2 flex items-center justify-between z-50">
         <Button
           variant="secondary"
           size="lg"

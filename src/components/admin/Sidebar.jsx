@@ -190,7 +190,7 @@ const Sidebar = () => {
   if (!isMounted || !isAdmin() || !hasAdminPrivileges()) return null;
 
   return (
-    <aside className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out bg-background-surface-secondary border-r-2 border-border-primary overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'}`}>
+    <aside className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out bg-background-surface border-r border-border-primary overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'}`}>
       {/* Navigation */}
       <nav ref={navRef} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium relative z-10">
         {displaySections.map((section, idx) => (
@@ -205,7 +205,7 @@ const Sidebar = () => {
                   <Link key={itemIdx} href={item.path} onClick={() => handleNavClick(item.key)} data-active={isActiveRoute(item.path) ? 'true' : undefined}>
                     <button className={`w-full flex items-center gap-3 px-3 py-2 transition-all duration-200 relative group overflow-hidden ${active
                       ? 'text-on-primary'
-                      : darkMode ? 'text-content-muted hover:text-white hover:bg-white/5' : 'text-content-secondary hover:text-primary-800'
+                      : darkMode ? 'text-content-muted hover:text-white' : 'text-content-secondary hover:text-primary-800'
                       }`}>
                       {active && (
                         <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-primary-600" />

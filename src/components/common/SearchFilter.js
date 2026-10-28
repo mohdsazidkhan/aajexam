@@ -39,7 +39,7 @@ const SearchFilter = ({
             onChange={(e) => handleChange?.(e.target.value)}
             placeholder={placeholder}
             className={compact
-              ? "w-full pl-9 pr-4 py-2 bg-background-surface-secondary border border-border-primary rounded-lg xl:rounded-xl outline-none text-sm font-bold font-outfit text-content-secondary placeholder:text-slate-600 transition-all duration-300"
+              ? "w-full pl-9 pr-4 py-2 border border-border-primary rounded-lg xl:rounded-xl outline-none text-sm font-bold font-outfit text-content-secondary placeholder:text-slate-600 transition-all duration-300"
               : "w-full pl-16 pr-6 py-4 bg-background-surface-secondary border border-transparent focus:border-primary-500/30 rounded-2xl outline-none text-sm font-bold font-outfit text-content-secondary placeholder:text-slate-600 transition-all duration-300"}
           />
         </div>

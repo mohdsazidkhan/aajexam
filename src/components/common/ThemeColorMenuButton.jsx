@@ -268,7 +268,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               className="fixed inset-x-0 bottom-0 z-[170] w-full h-[75vh] xl:h-[90vh] bg-background-surface border-t border-border-primary rounded-t-3xl flex flex-col"
             >
               <div className="flex-shrink-0 p-4 pb-2">
-                <div className="flex items-center gap-1 mb-3 bg-background-surface-secondary border border-border-primary p-1 overflow-x-auto no-scrollbar" style={{ borderRadius: 14 }}>
+                <div className="flex items-center gap-1 mb-3 border border-border-primary p-1 overflow-x-auto no-scrollbar" style={{ borderRadius: 14 }}>
                   {tabs.map((tabItem) => (
                     <button
                       key={tabItem.id}
@@ -528,7 +528,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         className={`${CARD_BASE} ${isSelected ? CARD_ON : CARD_IDLE}`}
                       >
                         <span className={IDX}>{index + 1}.</span>
-                        <span className="w-12 h-10 flex items-center justify-center flex-shrink-0 font-bold leading-none bg-background-surface-secondary border border-border-primary" style={{ fontSize: `${preset.px}px`, color: activeHex, borderRadius: 10 }}>
+                        <span className="w-12 h-10 flex items-center justify-center flex-shrink-0 font-bold leading-none border border-border-primary" style={{ fontSize: `${preset.px}px`, color: activeHex, borderRadius: 10 }}>
                           {translate('Aa')}
                         </span>
                         <span className="flex-1 text-left">

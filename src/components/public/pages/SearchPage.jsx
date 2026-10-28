@@ -516,7 +516,7 @@ const SearchPage = () => {
                      </button>
                   )}
                   <div className="flex-1 relative">
-                     <span className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 xl:w-8 xl:h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 8 }}><Search className="w-4 h-4" /></span>
+                     <span className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 xl:w-8 xl:h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 8 }}><Search className="w-4 h-4" /></span>
                      <input
                         ref={inputRef}
                         type="text"

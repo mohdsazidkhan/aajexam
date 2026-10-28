@@ -79,7 +79,7 @@ const MyChallengesPage = () => {
                   eyebrow={translate('My Challenges')}
                   title={translate('My Challenges')}
                   actions={
-                     <div className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-4 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
+                     <div className="ring-1 ring-slate-200 dark:ring-white/20 px-4 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
                         <p className="text-lg font-bold font-outfit leading-none text-primary-600">{challenges.length}</p>
                         <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 whitespace-nowrap">{translate('My Challenges')}</p>
                      </div>
@@ -126,7 +126,7 @@ const MyChallengesPage = () => {
                                        </button>
                                     </div>
 
-                                    <div className="flex items-center gap-4 bg-white/60 dark:bg-slate-900/60 p-3 rounded-lg xl:rounded-xl">
+                                    <div className="flex items-center gap-4 dark:bg-slate-900/60 p-3 rounded-lg xl:rounded-xl">
                                        <div className="flex-1">
                                           <div className="text-[10px] font-bold text-content-muted uppercase">{translate('Your Score')}</div>
                                           <div className="text-lg font-bold text-content-primary">{Math.round(hostPercentage)}%</div>

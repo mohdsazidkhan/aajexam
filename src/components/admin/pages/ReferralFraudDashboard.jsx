@@ -288,11 +288,11 @@ export default function ReferralFraudDashboard() {
                         {u.signals.length > 3 && <span className="text-[9px] font-bold px-2 py-0.5 rounded-lg bg-background-surface-secondary text-content-muted">+{u.signals.length - 3}</span>}
                       </div>
                       <div className="grid grid-cols-2 gap-2 text-center">
-                        <div className="p-2 bg-background-surface-secondary rounded-lg border border-border-primary">
+                        <div className="p-2 rounded-lg border border-border-primary">
                           <div className="text-sm font-bold text-content-primary tabular-nums">{u.referralCount}</div>
                           <div className="text-[9px] font-bold text-content-muted uppercase">Invites</div>
                         </div>
-                        <div className="p-2 bg-background-surface-secondary rounded-lg border border-border-primary">
+                        <div className="p-2 rounded-lg border border-border-primary">
                           <div className="text-sm font-bold text-primary-600 tabular-nums">{inr(u.referralEarnings)}</div>
                           <div className="text-[9px] font-bold text-content-muted uppercase">Earned</div>
                         </div>
@@ -353,7 +353,7 @@ export default function ReferralFraudDashboard() {
                             <div className="text-[8px] font-bold uppercase tracking-[0.08em] text-content-muted">earned</div>
                           </div>
                           <button onClick={() => setExpanded(open ? null : u._id)}
-                            className="p-2.5 rounded-lg xl:rounded-xl bg-background-surface-secondary border border-border-primary">
+                            className="p-2.5 rounded-lg xl:rounded-xl border border-border-primary">
                             {open ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                           </button>
                         </div>
@@ -373,7 +373,7 @@ export default function ReferralFraudDashboard() {
                                   const created = r.createdAt ? new Date(r.createdAt).getTime() : 0;
                                   const dormant = !r.lastLoginDate || (new Date(r.lastLoginDate).getTime() - created < 3 * 60 * 1000);
                                   return (
-                                    <div key={r._id} className="flex items-center justify-between gap-2 bg-background-surface dark:bg-white/5 rounded-lg xl:rounded-xl border border-border-primary px-3 py-2">
+                                    <div key={r._id} className="flex items-center justify-between gap-2 bg-background-surface rounded-lg xl:rounded-xl border border-border-primary px-3 py-2">
                                       <div className="min-w-0">
                                         <div className="text-[11px] font-bold truncate">{r.name || 'Unknown'}</div>
                                         <div className="text-[9px] text-content-muted font-bold truncate">{r.email}</div>

@@ -6,7 +6,7 @@ const TicketCard = ({ icon: Icon, title, subtitle, right, children, className = 
   <section className={`overflow-hidden bg-background-surface border border-border-primary ${className}`} style={{ borderRadius: 16 }}>
     <section className="relative flex items-center justify-between gap-3 px-4 xl:px-6 py-3 text-content-primary border-b border-border-primary dark:border-transparent bg-background-surface">
       <div className="relative flex items-center gap-3 min-w-0">
-        <span className="shrink-0 w-9 h-9 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
+        <span className="shrink-0 w-9 h-9 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}>
           <Icon className="w-4 h-4" />
         </span>
         <section className="min-w-0">

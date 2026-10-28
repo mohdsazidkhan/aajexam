@@ -365,11 +365,11 @@ const AdminGovtExamPatterns = () => {
                     <h3 className="text-base xl:text-xl font-bold text-content-primary italic tracking-tight max-w-[220px]">{p.title}</h3>
                   </div>
                   <div className="grid grid-cols-2 gap-2 xl:gap-3 mb-2 xl:mb-4">
-                    <div className="p-2 xl:p-4 bg-background-surface-secondary rounded-lg xl:rounded-2xl border border-border-primary">
+                    <div className="p-2 xl:p-4 rounded-lg xl:rounded-2xl border border-border-primary">
                       <p className="text-[7px] xl:text-[8px] font-bold text-content-muted uppercase mb-0.5 xl:mb-1">Duration</p>
                       <p className="text-xs xl:text-sm font-bold text-content-primary">{p.duration} MIN</p>
                     </div>
-                    <div className="p-2 xl:p-4 bg-background-surface-secondary rounded-lg xl:rounded-2xl border border-border-primary">
+                    <div className="p-2 xl:p-4 rounded-lg xl:rounded-2xl border border-border-primary">
                       <p className="text-[7px] xl:text-[8px] font-bold text-content-muted uppercase mb-0.5 xl:mb-1">Sections</p>
                       <p className="text-xs xl:text-sm font-bold text-content-primary">{p.sections?.length || 0}</p>
                     </div>
@@ -423,7 +423,7 @@ const AdminGovtExamPatterns = () => {
       {showModal && (
         <div className="fixed inset-0 z-[999]">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-slate-950/60" />
-          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col">
+          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-black xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col">
             <section className="px-4 py-2.5 border-b-2 border-border-primary flex items-center justify-between shrink-0">
               <div className="flex items-center gap-3">
                 <div className="p-2 text-on-primary rounded-2xl bg-primary-600"><Binary className="w-5 h-5" /></div>
@@ -467,7 +467,7 @@ const AdminGovtExamPatterns = () => {
                   <div className="space-y-2 xl:space-y-3">
                     <h3 className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-4 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-600" /> Sections ({formData.sections.length})</h3>
                     {formData.sections.map((sec, i) => (
-                      <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="p-4 bg-background-surface dark:bg-white/5 rounded-lg xl:rounded-3xl border border-border-primary flex items-center justify-between group">
+                      <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="p-4 bg-background-surface rounded-lg xl:rounded-3xl border border-border-primary flex items-center justify-between group">
                         <div className="flex items-center gap-3 xl:gap-3">
                           <div className="w-12 h-12 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center font-bold text-xs font-outfit bg-primary-600">{i + 1}</div>
                           <div>
@@ -479,7 +479,7 @@ const AdminGovtExamPatterns = () => {
                       </motion.div>
                     ))}
                   </div>
-                  <div className="p-3 xl:p-5 bg-background-surface dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-3xl border border-dashed border-primary-500/20 relative font-outfit">
+                  <div className="p-3 xl:p-5 bg-background-surface rounded-lg xl:rounded-xl xl:rounded-3xl border border-dashed border-primary-500/20 relative font-outfit">
                     <div className="absolute -top-4 left-8 px-4 py-1 text-on-primary rounded-full text-[9px] font-bold uppercase tracking-[0.08em] bg-primary-600">Add Section</div>
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-3 mt-4">
                       <div className="xl:col-span-2 space-y-2">

@@ -337,7 +337,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
       <div className="py-4 w-full mx-auto">
         {/* ===== Header: back link + step indicator in one row ===== */}
         <div className="relative isolate overflow-hidden mb-3 px-3 py-2.5 flex flex-wrap items-center justify-between gap-3 border border-border-primary bg-background-surface" style={{ borderRadius: 16 }}>
-          <Link href="/admin/email-campaigns" className="inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-bold text-content-primary bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/20 border border-border-primary transition-colors" style={{ borderRadius: 999 }}>
+          <Link href="/admin/email-campaigns" className="inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-bold text-content-primary hover:bg-background-surface border border-border-primary transition-colors" style={{ borderRadius: 999 }}>
             ← All campaigns
           </Link>
 
@@ -347,7 +347,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                 <div className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold whitespace-nowrap transition-all ${
                   i < activeStep ? 'text-primary-600 ring-1 ring-primary-300 dark:text-primary-600 dark:ring-white/15'
                     : i === activeStep ? 'text-on-primary bg-primary-600'
-                    : 'bg-white/70 text-content-muted ring-1 ring-primary-200/70 dark:bg-white/5 dark:ring-white/10'
+                    : 'text-content-muted ring-1 ring-primary-200/70 dark:ring-white/10'
                 }`} style={{ borderRadius: 999 }}>
                   {i + 1}. {s.label}
                   {i === activeStep && status === 'paused' && ' (paused)'}
@@ -359,11 +359,10 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
         </div>
 
         <section className="relative overflow-hidden bg-background-surface p-4 border border-border-primary" style={{ borderRadius: 16 }}>
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
           <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
             <section>
               <h2 className="text-xl font-bold font-outfit tracking-tight flex items-center gap-2.5">
-                <span className="w-9 h-9 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
+                <span className="w-9 h-9 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><PenSquare className="w-4 h-4" /></span> Custom Email Template
               </h2>
               <p className="text-sm text-content-muted mt-1">
                 The platform logo &amp; footer are added automatically.
@@ -380,7 +379,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             {/* --- Editor --- */}
             <div className="space-y-2 xl:space-y-3">
               {!canEditFields && (
-                <div className="p-3 rounded-lg bg-background-surface-secondary border border-border-primary dark:border-white text-xs text-content-primary">
+                <div className="p-3 rounded-lg border border-border-primary dark:border-white text-xs text-content-primary">
                   {isPublished
                     ? 'Published — fields are locked. Use "Back to Draft" to edit.'
                     : isCompleted
@@ -439,7 +438,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {/* ---- Step 1: Save as Draft ---- */}
               {canEditFields && (
                 <button onClick={saveDraft} disabled={isSavingDraft}
-                  className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-slate-700 hover:bg-slate-800 dark:hover:bg-white/20 text-white disabled:opacity-50">
+                  className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-slate-700 hover:bg-slate-800 text-white disabled:opacity-50">
                   {isSavingDraft ? 'Saving…' : campaign ? '💾 Update Draft' : '💾 Save as Draft'}
                 </button>
               )}
@@ -454,7 +453,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                   <div className="flex gap-2">
                     <input type="email" placeholder="admin@example.com" value={testEmail} onChange={(e) => setTestEmail(e.target.value)} className={inputClass} />
                     <button onClick={sendTest} disabled={isTesting}
-                      className="whitespace-nowrap px-4 py-2 bg-background-surface-secondary text-content-primary rounded-lg hover:bg-background-surface-secondary dark:hover:bg-white/20 disabled:opacity-50">
+                      className="whitespace-nowrap px-4 py-2 bg-background-surface-secondary text-content-primary rounded-lg hover:bg-background-surface-secondary disabled:opacity-50">
                       {isTesting ? 'Sending…' : 'Send Test'}
                     </button>
                   </div>
@@ -496,7 +495,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             {/* --- Right column: preview + campaign progress --- */}
             <aside className="space-y-2 xl:space-y-3">
               {campaign && (
-                <section className="border border-border-primary rounded-lg xl:rounded-xl p-4 bg-background-surface-secondary">
+                <section className="border border-border-primary rounded-lg xl:rounded-xl p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-sm font-bold">
                       {isDraft && '📝 Draft'}
@@ -519,15 +518,15 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                       </div>
 
                       <div className="grid grid-cols-3 gap-2 mt-3 text-center text-sm">
-                        <div className="p-2 rounded-lg bg-background-surface dark:bg-white/5">
+                        <div className="p-2 rounded-lg bg-background-surface">
                           <div className="text-primary-600 font-bold">{campaign.sentCount}</div>
                           <div className="text-[10px] text-content-muted uppercase">Sent</div>
                         </div>
-                        <div className="p-2 rounded-lg bg-background-surface dark:bg-white/5">
+                        <div className="p-2 rounded-lg bg-background-surface">
                           <div className="text-content-primary font-bold">{campaign.failedCount}</div>
                           <div className="text-[10px] text-content-muted uppercase">Failed</div>
                         </div>
-                        <div className="p-2 rounded-lg bg-background-surface dark:bg-white/5">
+                        <div className="p-2 rounded-lg bg-background-surface">
                           <div className="text-content-primary font-bold">{Math.max(0, campaign.totalTargeted - campaign.processed)}</div>
                           <div className="text-[10px] text-content-muted uppercase">Left</div>
                         </div>
@@ -558,10 +557,10 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                   )}
 
                   <div className="flex flex-wrap gap-2 mt-3">
-                    <button onClick={toggleRecipients} className="flex-1 py-2 px-3 rounded-lg text-sm bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-white/20">
+                    <button onClick={toggleRecipients} className="flex-1 py-2 px-3 rounded-lg text-sm bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary">
                       {showRecipients ? 'Hide sent list' : '👥 View sent list'}
                     </button>
-                    <button onClick={deleteCampaign} disabled={isRunning || busyAction} className="py-2 px-3 rounded-lg text-sm bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-white/20 disabled:opacity-50">
+                    <button onClick={deleteCampaign} disabled={isRunning || busyAction} className="py-2 px-3 rounded-lg text-sm bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary disabled:opacity-50">
                       {isCompleted ? 'Dismiss' : 'Delete'}
                     </button>
                   </div>

@@ -101,7 +101,7 @@ export default function ReferralDashboard() {
       key: 'referralCode',
       header: 'REFERRAL CODE',
       render: (_, u) => (
-        <div className="px-4 py-1 rounded-full bg-background-surface-secondary border border-border-primary text-[9px] font-bold text-primary-600 italic inline-flex items-center gap-2 tabular-nums">
+        <div className="px-4 py-1 rounded-full border border-border-primary text-[9px] font-bold text-primary-600 italic inline-flex items-center gap-2 tabular-nums">
           <Zap className="w-3 h-3" /> {u.referralCode || 'N/A'}
         </div>
       )
@@ -131,7 +131,7 @@ export default function ReferralDashboard() {
           {u.referralRewards?.length > 0 ? (
             <>
               {u.referralRewards.slice(0, 2).map((reward, idx) => (
-                <div key={idx} className="flex items-center gap-3 px-3 py-1 bg-background-surface dark:bg-white/5 border border-border-primary rounded-lg">
+                <div key={idx} className="flex items-center gap-3 px-3 py-1 bg-background-surface border border-border-primary rounded-lg">
                   <div className="w-2 h-2 rounded-full bg-primary-600 animate-pulse" />
                   <span className="text-[8px] font-bold text-content-muted uppercase tracking-[0.08em]">{getRewardTypeLabel(reward.type)}: <span className="text-primary-600">₹{reward.amount}</span></span>
                 </div>

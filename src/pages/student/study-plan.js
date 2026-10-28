@@ -138,7 +138,7 @@ const StudyPlanPage = () => {
                 <div>
                   <label className="text-[10px] font-bold text-content-muted uppercase block mb-1">{translate('Target Exam *')}</label>
                   <Select value={form.examId} onChange={e => setForm({ ...form, examId: e.target.value })}
-                    className="w-full px-3 py-2 bg-background-surface-secondary border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none">
+                    className="w-full px-3 py-2 border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none">
                     <option value="">{translate('Select Exam')}</option>
                     {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
                   </Select>
@@ -146,7 +146,7 @@ const StudyPlanPage = () => {
                 <div>
                   <label className="text-[10px] font-bold text-content-muted uppercase block mb-1">{translate('Exam Date *')}</label>
                   <input type="date" value={form.examDate} min={todayStr} onChange={e => setForm({ ...form, examDate: e.target.value })}
-                    className="w-full px-3 py-2 bg-background-surface-secondary border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none" />
                   {durationPreview && (
                     durationPreview.invalid
                       ? <p className="text-[10px] font-bold text-content-primary mt-1">{translate('This date has already passed')}</p>
@@ -160,17 +160,17 @@ const StudyPlanPage = () => {
                 <div>
                   <label className="text-[10px] font-bold text-content-muted uppercase block mb-1">{translate('Daily Hours *')}</label>
                   <input type="number" min="1" max="16" value={form.dailyHours} onChange={e => setForm({ ...form, dailyHours: e.target.value })}
-                    className="w-full px-3 py-2 bg-background-surface-secondary border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold text-content-muted uppercase block mb-1">{translate('Weak Subjects (comma separated)')}</label>
                   <input type="text" placeholder={translate('Maths, English')} value={form.weakSubjects} onChange={e => setForm({ ...form, weakSubjects: e.target.value })}
-                    className="w-full px-3 py-2 bg-background-surface-secondary border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold text-content-muted uppercase block mb-1">{translate('Strong Subjects (comma separated)')}</label>
                   <input type="text" placeholder={translate('GK, Reasoning')} value={form.strongSubjects} onChange={e => setForm({ ...form, strongSubjects: e.target.value })}
-                    className="w-full px-3 py-2 bg-background-surface-secondary border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none" />
                 </div>
               </div>
               <button onClick={generatePlan} disabled={generating} className="px-6 py-2.5 bg-primary-600 text-on-primary rounded-lg xl:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">

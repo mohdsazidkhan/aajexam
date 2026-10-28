@@ -68,8 +68,7 @@ const CircleProgress = ({ value = 0, size = 80, strokeWidth = 8, color = '#6366f
 // --- Helper: Stat Mini Card ---
 const StatMini = ({ icon: Icon, label, value }) => (
    <div className="relative overflow-hidden flex items-center gap-2.5 p-2.5 bg-background-surface border border-border-primary hover:-translate-y-0.5 transition-all min-w-0" style={{ borderRadius: 12 }}>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-primary-600" />
-      <div className="ml-1 w-9 h-9 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
+      <div className="ml-1 w-9 h-9 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}>
          <Icon className="w-4 h-4" />
       </div>
       <div className="min-w-0">
@@ -82,7 +81,7 @@ const StatMini = ({ icon: Icon, label, value }) => (
 // --- Helper: Section Header ---
 const SectionHeader = ({ icon: Icon, title, subtitle }) => (
    <div className="flex items-center gap-2.5 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15">
-      {Icon && <div className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></div>}
+      {Icon && <div className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></div>}
       <section>
          <h2 className="text-base xl:text-lg font-bold font-outfit tracking-tight">{title}</h2>
          {subtitle && <p className="text-xs text-content-secondary font-bold">{subtitle}</p>}
@@ -667,7 +666,7 @@ const MyAnalyticsPage = () => {
                      <>
                         <div className="grid grid-cols-2 xl:grid-cols-4 gap-2">
                            <Card padded={false} radius="xl" className="col-span-2 xl:col-span-1 text-on-primary border-none flex items-center gap-2.5 p-2.5 bg-primary-600">
-                              <div className="w-9 h-9 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Wallet className="w-4 h-4" /></div>
+                              <div className="w-9 h-9 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Wallet className="w-4 h-4" /></div>
                               <div className="min-w-0">
                                  <p className="text-xl font-bold font-outfit leading-tight">{wallet?.balance || 0}</p>
                                  <p className="text-[9px] font-bold opacity-70 uppercase leading-tight">{translate('Referral Rewards')}</p>

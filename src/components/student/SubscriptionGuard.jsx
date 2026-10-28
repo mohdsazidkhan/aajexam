@@ -27,7 +27,7 @@ const SubscriptionGuard = ({
       <Lock className="pointer-events-none absolute right-6 top-4 w-28 h-28 xl:w-40 xl:h-40 text-primary-600/10 dark:text-white/5 rotate-12 -z-10" />
 
       <div className="relative max-w-xl mx-auto">
-        <div className="w-16 h-16 xl:w-20 xl:h-20 mx-auto mb-4 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 20 }}>
+        <div className="w-16 h-16 xl:w-20 xl:h-20 mx-auto mb-4 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 20 }}>
           <Lock className="w-8 h-8 xl:w-10 xl:h-10" />
         </div>
         <h3 className="text-xl xl:text-3xl font-bold font-outfit tracking-tight text-content-primary mb-2">

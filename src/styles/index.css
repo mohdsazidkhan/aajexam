@@ -21,8 +21,8 @@
     --font-primary: var(--font-inter), 'Inter', var(--font-lato), Lato, 'Noto Sans', sans-serif;
 
     /* Central Theme Tokens - Light Mode */
-    --bg-page: #ffffff;
-    --bg-surface: #ffffff; /* same as the page: surfaces are told apart by border, not by fill */
+    --bg-page: #f5f6f7; /* body */
+    --bg-surface: #ffffff; /* sections and component cards */
     --bg-surface-secondary: #f4f4f5;
     --text-primary: #09090b;
     --text-secondary: #52525b;
@@ -62,14 +62,14 @@
     --gray-500: 140 148 162; /* was 107 114 128 */
 
     /* Central Theme Tokens - Dark Mode (AajExam Inspired) */
-    --bg-page: #09090b;
-    --bg-surface: #09090b; /* same as the page: surfaces are told apart by border, not by fill */
-    --bg-surface-secondary: #18181b;
+    --bg-page: #1c1c1c; /* body: ~1.24:1 from the black card so sections and cards stand out clearly */
+    --bg-surface: #000000; /* sections and component cards: pure black */
+    --bg-surface-secondary: #111113;
     --text-primary: #fafafa;
-    --text-secondary: #a1a1aa;
-    --text-muted: #8a8a93; /* 4.5:1+ on the page surface */
-    --border-primary: #3f3f46;
-    --border-secondary: #52525b;
+    --text-secondary: #d4d4d8; /* readable on both the grey body and black cards */
+    --text-muted: #b4b4bb;
+    --border-primary: #52525b; /* visible on the grey body and inside black cards */
+    --border-secondary: #71717a;
   }
 
   html, body {

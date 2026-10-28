@@ -63,7 +63,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
   const formattedPhone = config.CONTACT.PHONE.replace(/\D/g, '');
 
   return (
-    <footer className="relative pt-4 xl:pt-8 pb-4 xl:pb-8 overflow-hidden bg-background-page border-t border-border-primary font-outfit">
+    <footer className="relative pt-4 xl:pt-8 pb-4 xl:pb-8 overflow-hidden bg-background-surface border-t border-border-primary font-outfit">
 
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8 mb-4 xl:mb-8">
@@ -193,7 +193,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           <div className="flex flex-col xl:flex-row items-center gap-4 xl:gap-6 text-sm font-black text-content-secondary tracking-[0.04em]">
             <span>&copy; {new Date().getFullYear()} {config.APP_NAME}</span>
             <div className="hidden xl:block h-4 w-px bg-slate-300 dark:bg-slate-700" />
-            <div className="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-white/5 rounded-full border border-slate-200 dark:border-white/10">
+            <div className="flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full border border-slate-200 dark:border-white/10">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600" />
               <span>{translate('Version {version}', { version: config.APP_VERSION })}</span>
             </div>

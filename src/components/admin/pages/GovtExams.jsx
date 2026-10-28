@@ -325,7 +325,7 @@ const AdminGovtExams = () => {
                     </div>
                   </div>
                   <div className="space-y-2 xl:space-y-3 mb-4 xl:mb-4">
-                    <div className="p-4 bg-background-surface-secondary rounded-2xl border border-border-primary flex justify-between">
+                    <div className="p-4 rounded-2xl border border-border-primary flex justify-between">
                       <span className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">Category</span>
                       <span className="text-xs font-bold text-content-primary uppercase tracking-tight">{exam.category?.name}</span>
                     </div>
@@ -388,7 +388,7 @@ const AdminGovtExams = () => {
       {showModal && (
         <div className="fixed inset-0 z-[999]">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-slate-950/60" />
-          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col">
+          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-black xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col">
             <section className="px-4 py-2.5 border-b-2 border-border-primary flex items-center justify-between shrink-0">
               <div className="flex items-center gap-3">
                 <div className="p-2 text-on-primary rounded-2xl bg-primary-600">
@@ -429,7 +429,7 @@ const AdminGovtExams = () => {
                   <label className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] ml-4 block border-l-4 border-primary-600 pl-3">Logo URL</label>
                   <input type="text" value={formData.logo} onChange={(e) => setFormData({ ...formData, logo: e.target.value })} placeholder="https://..." className="w-full px-3 xl:px-4 py-3 bg-background-surface border focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none border-border-primary" />
                 </div>
-                <div className="p-4 bg-background-surface-secondary rounded-3xl flex items-center justify-between border border-border-primary">
+                <div className="p-4 rounded-3xl flex items-center justify-between border border-border-primary">
                   <div className="flex items-center gap-3">
                     <div className={`p-3 rounded-lg xl:rounded-xl ${formData.isActive ? 'text-on-primary bg-primary-600' : 'bg-background-surface-secondary'}`}><Zap className="w-5 h-5" /></div>
                     <div>

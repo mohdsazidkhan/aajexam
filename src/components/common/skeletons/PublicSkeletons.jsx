@@ -183,12 +183,12 @@ const DetailPageSkeleton = ({ color ='bg-primary-600'}) => (
       <Sh className="h-4 w-16 rounded-full mb-4" />
       {/* Hero banner */}
       <div className={`${color} rounded-2xl p-6 mb-5 space-y-3 opacity-40`}>
-        <Sh className="h-8 w-8 rounded-lg xl:rounded-xl bg-white/40" />
-        <Sh className="h-7 w-48 rounded-lg xl:rounded-xl bg-white/40" />
-        <Sh className="h-3 w-64 rounded-lg bg-white/40" />
+        <Sh className="h-8 w-8 rounded-lg xl:rounded-xl" />
+        <Sh className="h-7 w-48 rounded-lg xl:rounded-xl" />
+        <Sh className="h-3 w-64 rounded-lg bg-background-surface-secondary" />
         <div className="flex gap-2">
-          <Sh className="h-7 w-20 rounded-lg bg-white/40" />
-          <Sh className="h-7 w-24 rounded-lg bg-white/40" />
+          <Sh className="h-7 w-20 rounded-lg" />
+          <Sh className="h-7 w-24 rounded-lg" />
         </div>
       </div>
       {/* Tabs */}

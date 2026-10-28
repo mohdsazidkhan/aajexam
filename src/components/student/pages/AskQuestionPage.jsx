@@ -192,7 +192,7 @@ const AskQuestionPage = () => {
         <form onSubmit={handleSubmit}>
           {/* Error */}
           {error && (
-            <div className="mb-4 px-4 py-3 rounded-lg xl:rounded-xl bg-background-surface-secondary border border-border-primary text-content-primary text-sm font-semibold">
+            <div className="mb-4 px-4 py-3 rounded-lg xl:rounded-xl border border-border-primary text-content-primary text-sm font-semibold">
               {error}
             </div>
           )}

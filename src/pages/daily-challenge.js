@@ -122,7 +122,7 @@ const DailyChallengePage = () => {
         ])}
       />
       <div className="text-center space-y-2 xl:space-y-4">
-        <div className="w-20 h-20 flex items-center justify-center mx-auto text-on-primary bg-primary-600" style={{ borderRadius: 20 }}><Target className="w-10 h-10" /></div>
+        <div className="w-20 h-20 flex items-center justify-center mx-auto text-primary-600 border border-border-primary" style={{ borderRadius: 20 }}><Target className="w-10 h-10" /></div>
         <h2 className="text-2xl font-bold text-content-muted">{translate('No Challenge Today')}</h2>
         <p className="text-sm text-content-muted">{translate('Come back tomorrow for a new challenge!')}</p>
       </div>
@@ -163,7 +163,7 @@ const DailyChallengePage = () => {
             />
           )}
           <div className="flex items-center justify-center gap-2 px-14">
-            <span className="w-10 h-10 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 12 }}><Target className="w-5 h-5" /></span>
+            <span className="w-10 h-10 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 12 }}><Target className="w-5 h-5" /></span>
             <h1 className="text-xl sm:text-2xl xl:text-4xl font-bold tracking-tight text-content-primary break-words min-w-0">{challenge.title}</h1>
           </div>
           <p className="text-sm text-content-secondary dark:text-white/75 font-bold">{translate('{questions} Questions | {minutes} Minutes', { questions: challenge.questions.length, minutes: challenge.duration })}</p>
@@ -172,7 +172,7 @@ const DailyChallengePage = () => {
         {/* Not started yet */}
         {!started && !attempted && (
           <Card as="section" className="text-center space-y-6">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center mx-auto text-on-primary bg-primary-600" style={{ borderRadius: 24 }}>
+            <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center mx-auto text-primary-600 border border-border-primary" style={{ borderRadius: 24 }}>
               <Zap className="w-10 h-10 sm:w-12 sm:h-12" />
             </div>
             <h2 className="text-xl font-bold">{translate('Ready for Today\'s Challenge?')}</h2>
@@ -250,7 +250,7 @@ const DailyChallengePage = () => {
             {challenge?.questions?.length > 0 && (
               <Card as="section" className="space-y-2 xl:space-y-4">
                 <h3 className="text-sm font-bold text-content-primary flex items-center gap-2">
-                  <span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Target className="w-4 h-4" /></span> Question Review & Discussion
+                  <span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Target className="w-4 h-4" /></span> Question Review & Discussion
                 </h3>
                 <div className="space-y-2 xl:space-y-4">
                   {challenge.questions.map((q, idx) => {
@@ -282,7 +282,7 @@ const DailyChallengePage = () => {
                           })}
                         </div>
                         {q.explanation && (
-                          <div className="ml-0 sm:ml-8 mt-2 p-2.5 dark:bg-white/5 border border-dashed border-primary-300 dark:border-white/20 rounded-lg">
+                          <div className="ml-0 sm:ml-8 mt-2 p-2.5 border border-dashed border-primary-300 dark:border-white/20 rounded-lg">
                             <p className="text-[11px] text-content-primary"><span className="font-semibold">{translate('Explanation:')}</span> {q.explanation}</p>
                           </div>
                         )}
@@ -304,10 +304,10 @@ const DailyChallengePage = () => {
             {leaderboard.length > 0 && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
                 <Card as="section" className="space-y-3 relative overflow-hidden">
-                  <h3 className="text-sm font-bold text-content-primary flex items-center gap-2 relative z-10"><span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Trophy className="w-4 h-4" /></span> {translate('Today\'s Leaderboard')}</h3>
+                  <h3 className="text-sm font-bold text-content-primary flex items-center gap-2 relative z-10"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Trophy className="w-4 h-4" /></span> {translate('Today\'s Leaderboard')}</h3>
                   <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>
                     {leaderboard.slice(0, 10).map((entry, i) => (
-                      <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} style={{ borderRadius: 10 }} className="flex items-center gap-3 px-3 py-2 dark:bg-white/5 border border-transparent hover:border-primary-200 dark:hover:border-white/15 transition-colors">
+                      <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} style={{ borderRadius: 10 }} className="flex items-center gap-3 px-3 py-2 border border-transparent hover:border-primary-200 dark:hover:border-white/15 transition-colors">
                         <span className={`text-sm font-bold w-6 ${i < 3 ? 'text-primary-600' : 'text-content-muted'}`}>#{i + 1}</span>
                         <span className="text-sm font-bold text-content-secondary flex-1 min-w-0 truncate">{entry.user?.name || translate('Student')}</span>
                         <span className="text-sm font-bold text-primary-600">{entry.score}</span>

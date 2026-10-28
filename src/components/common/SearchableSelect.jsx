@@ -48,7 +48,7 @@ const SearchableSelect = ({ value, onChange, options = [], placeholder = 'Search
       </div>
 
       {isOpen && (
-        <div className="absolute z-50 w-full min-w-[240px] max-w-[85vw] mt-1 bg-background-surface-secondary border border-border-primary rounded-2xl max-h-60 overflow-y-auto">
+        <div className="absolute z-50 w-full min-w-[240px] max-w-[85vw] mt-1 border border-border-primary rounded-2xl max-h-60 overflow-y-auto">
           {filtered.length > 0 ? (
             <ul className="py-1">
               {filtered.map((o) => (

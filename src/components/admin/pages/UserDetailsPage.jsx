@@ -227,15 +227,15 @@ export default function UserDetailsPage() {
                       <div className="mb-4 mx-auto relative">
                         <div className="w-20 h-20 text-on-primary rounded-lg xl:rounded-3xl flex items-center justify-center font-bold text-3xl group-hover:rotate-6 transition-all bg-primary-600">{u.name?.[0] || 'U'}</div>
                         <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-primary-600 text-on-primary text-[10px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-[#0D1225]">{(page - 1) * itemsPerPage + i + 1}</span>
-                        {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-background-surface dark:bg-[#0D1225] rounded-lg xl:rounded-xl border border-black dark:border-white"><Crown className="w-4 h-4 text-content-primary" /></div>}
+                        {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-background-surface dark:bg-black rounded-lg xl:rounded-xl border border-black dark:border-white"><Crown className="w-4 h-4 text-content-primary" /></div>}
                       </div>
                       <Link href={`/@${u.username}`} target="_blank" className="text-lg font-bold text-content-primary italic tracking-tight leading-none mb-1 truncate hover:text-primary-600 transition-colors block">{u.name || 'Anonymous'}</Link>
                       <Link href={`/@${u.username}`} target="_blank" className="text-[9px] font-bold text-content-muted uppercase tracking-[0.08em] mb-4 xl:mb-4 hover:text-primary-600 transition-colors block">{u.username ? `@${u.username}` : '@unknown'}</Link>
 
                       <div className="space-y-2 xl:space-y-3 mb-4 xl:mb-4">
-                        <div className="flex items-center gap-3 text-[10px] font-bold text-content-muted uppercase truncate bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg xl:rounded-xl border border-border-primary"><Mail className="w-4 text-black/50 dark:text-white/50" /> {u.email || 'N/A'}</div>
-                        <div className="flex items-center gap-3 text-[10px] font-bold text-content-muted uppercase bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg xl:rounded-xl border border-border-primary"><Phone className="w-4 text-primary-500/50" /> {u.phone || 'N/A'}</div>
-                        <div className="flex items-center gap-3 text-[9px] font-bold text-content-muted bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg xl:rounded-xl border border-border-primary"><Calendar className="w-4 text-primary-500/50 shrink-0" /> {formatDate(u.createdAt)}</div>
+                        <div className="flex items-center gap-3 text-[10px] font-bold text-content-muted uppercase truncate bg-slate-50/50 p-3 rounded-lg xl:rounded-xl border border-border-primary"><Mail className="w-4 text-black/50 dark:text-white/50" /> {u.email || 'N/A'}</div>
+                        <div className="flex items-center gap-3 text-[10px] font-bold text-content-muted uppercase bg-slate-50/50 p-3 rounded-lg xl:rounded-xl border border-border-primary"><Phone className="w-4 text-primary-500/50" /> {u.phone || 'N/A'}</div>
+                        <div className="flex items-center gap-3 text-[9px] font-bold text-content-muted bg-slate-50/50 p-3 rounded-lg xl:rounded-xl border border-border-primary"><Calendar className="w-4 text-primary-500/50 shrink-0" /> {formatDate(u.createdAt)}</div>
                       </div>
 
                       <Link href={`/admin/user-details/${u.username || u._id}`} className="w-full py-2.5 text-on-primary rounded-2xl text-[9px] font-bold uppercase tracking-[0.08em] group-hover:bg-primary-700 group-hover:text-white transition-all text-center flex items-center justify-center gap-2 bg-primary-600"><Eye className="w-4 h-4" /> View Full Details</Link>

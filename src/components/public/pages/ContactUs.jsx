@@ -161,7 +161,7 @@ const ContactUs = ({ contactInfo = {
                               <div className="space-y-2 xl:space-y-4">
                                  <label className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] px-2 block">{translate('Your Full Name')}</label>
                                  <input
-                                    className="w-full px-6 py-5 rounded-2xl border border-border-primary bg-background-surface-secondary font-bold text-content-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-content-muted autofill:[-webkit-text-fill-color:white]"
+                                    className="w-full px-6 py-5 rounded-2xl border border-border-primary font-bold text-content-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-content-muted autofill:[-webkit-text-fill-color:white]"
                                     placeholder={translate('e.g. John Doe')}
                                     value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} required
                                  />
@@ -170,7 +170,7 @@ const ContactUs = ({ contactInfo = {
                                  <label className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] px-2 block">{translate('Email Address')}</label>
                                  <input
                                     type="email"
-                                    className="w-full px-6 py-5 rounded-2xl border border-border-primary bg-background-surface-secondary font-bold text-content-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-content-muted autofill:[-webkit-text-fill-color:white]"
+                                    className="w-full px-6 py-5 rounded-2xl border border-border-primary font-bold text-content-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-content-muted autofill:[-webkit-text-fill-color:white]"
                                     placeholder={translate('john@example.com')}
                                     value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} required
                                  />
@@ -180,7 +180,7 @@ const ContactUs = ({ contactInfo = {
                            <div className="space-y-2 xl:space-y-4">
                               <label className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] px-2 block">{translate('Subject')}</label>
                               <input
-                                 className="w-full px-6 py-5 rounded-2xl border border-border-primary bg-background-surface-secondary font-bold text-content-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-content-muted autofill:[-webkit-text-fill-color:white]"
+                                 className="w-full px-6 py-5 rounded-2xl border border-border-primary font-bold text-content-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-content-muted autofill:[-webkit-text-fill-color:white]"
                                  placeholder={translate('How can we help?')}
                                  value={formData.subject} onChange={e => setFormData({ ...formData, subject: e.target.value })} required
                               />
@@ -190,7 +190,7 @@ const ContactUs = ({ contactInfo = {
                               <label className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] px-2 block">{translate('Your Message')}</label>
                               <textarea
                                  rows="5"
-                                 className="w-full px-6 py-5 rounded-2xl border border-border-primary bg-background-surface-secondary font-bold text-content-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all resize-none placeholder:text-content-muted autofill:[-webkit-text-fill-color:white]"
+                                 className="w-full px-6 py-5 rounded-2xl border border-border-primary font-bold text-content-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all resize-none placeholder:text-content-muted autofill:[-webkit-text-fill-color:white]"
                                  placeholder={translate('Type your message here...')}
                                  value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })} required
                               />

@@ -350,7 +350,7 @@ const AdminMostActiveUsers = () => {
                                                 { label: 'Score', value: `${a.score} / ${a.totalMarks}` },
                                                 { label: 'Time Spent', value: formatDuration(a.timeSpent) }
                                             ].map((c) => (
-                                                <div key={c.label} className="px-2.5 py-1 bg-background-surface-secondary rounded-lg border border-border-primary text-center min-w-[72px]">
+                                                <div key={c.label} className="px-2.5 py-1 rounded-lg border border-border-primary text-center min-w-[72px]">
                                                     <div className="text-xs font-bold text-primary-600 tabular-nums">{c.value}</div>
                                                     <div className="text-[9px] font-bold text-content-muted uppercase">{c.label}</div>
                                                 </div>
@@ -427,7 +427,7 @@ const AdminMostActiveUsers = () => {
                                                             { label: 'Exams', value: u.exams },
                                                             { label: 'Total', value: u.totalActivities }
                                                         ].map((s) => (
-                                                            <div key={s.label} className="p-2 bg-background-surface-secondary rounded-lg border border-border-primary">
+                                                            <div key={s.label} className="p-2 rounded-lg border border-border-primary">
                                                                 <div className="text-sm font-bold text-primary-600 tabular-nums">{s.value}</div>
                                                                 <div className="text-[9px] font-bold text-content-muted uppercase">{s.label}</div>
                                                             </div>
@@ -471,7 +471,7 @@ const AdminMostActiveUsers = () => {
                                                             { label: 'Total', value: u.totalActivities },
                                                             { label: 'Time', value: formatDuration(u.totalTimeSpent) }
                                                         ].map((s) => (
-                                                            <div key={s.label} className="px-3 py-1.5 bg-background-surface-secondary rounded-lg border border-border-primary text-center min-w-[72px]">
+                                                            <div key={s.label} className="px-3 py-1.5 rounded-lg border border-border-primary text-center min-w-[72px]">
                                                                 <div className="text-sm font-bold text-primary-600 tabular-nums">{s.value}</div>
                                                                 <div className="text-[9px] font-bold text-content-muted uppercase">{s.label}</div>
                                                             </div>

@@ -112,7 +112,7 @@ export default function MentorProfilePage() {
   if (!mentor) return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
-        <span className="w-16 h-16 flex items-center justify-center mx-auto mb-4 text-on-primary bg-primary-600" style={{ borderRadius: 18 }}><Users className="w-8 h-8" /></span>
+        <span className="w-16 h-16 flex items-center justify-center mx-auto mb-4 text-primary-600 border border-border-primary" style={{ borderRadius: 18 }}><Users className="w-8 h-8" /></span>
         <p className="text-lg font-bold text-content-muted">{translate('Mentor not found')}</p>
         <button onClick={() => router.push('/mentors')} className="mt-4 text-sm font-bold text-primary-600">{translate('Back to Mentors')}</button>
       </div>
@@ -163,7 +163,7 @@ export default function MentorProfilePage() {
         {/* Exams Cleared */}
         {mentor.examsCleared?.length > 0 && (
           <Card as="section">
-            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Award className="w-4 h-4" /></span> {translate('Exams Cleared')}</h2>
+            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Award className="w-4 h-4" /></span> {translate('Exams Cleared')}</h2>
             <div className="flex flex-col gap-2">
               {mentor.examsCleared.map((exam, i) => (
                 <div key={i} className="flex items-center justify-between p-3 rounded-lg xl:rounded-xl border border-dashed border-primary-300 dark:border-white/15">
@@ -190,7 +190,7 @@ export default function MentorProfilePage() {
         {/* Daily Routine */}
         {mentor.dailyRoutine && (
           <Card as="section">
-            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span> {translate('Daily Routine')}</h2>
+            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span> {translate('Daily Routine')}</h2>
             <p className="text-sm text-content-secondary leading-relaxed whitespace-pre-line">{mentor.dailyRoutine}</p>
           </Card>
         )}
@@ -212,10 +212,10 @@ export default function MentorProfilePage() {
         {/* Books */}
         {mentor.booksRecommended?.length > 0 && (
           <Card as="section">
-            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span> {translate('Recommended Books')}</h2>
+            <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-3 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><BookOpen className="w-4 h-4" /></span> {translate('Recommended Books')}</h2>
             <div className="flex flex-wrap gap-2">
               {mentor.booksRecommended.map((book, i) => (
-                <span key={i} className="px-3 py-1.5 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/15 rounded-lg text-xs font-bold text-content-primary">{book}</span>
+                <span key={i} className="px-3 py-1.5 ring-1 ring-primary-200 dark:ring-white/15 rounded-lg text-xs font-bold text-content-primary">{book}</span>
               ))}
             </div>
           </Card>
@@ -235,13 +235,13 @@ export default function MentorProfilePage() {
 
         {/* AMA Section */}
         <Card as="section">
-          <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-4 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><MessageCircle className="w-4 h-4" /></span> {translate('Ask Me Anything')}</h2>
+          <h2 className="text-sm font-bold text-content-primary uppercase tracking-wide mb-4 flex items-center gap-2.5"><span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><MessageCircle className="w-4 h-4" /></span> {translate('Ask Me Anything')}</h2>
 
           {/* Ask Question */}
           <div className="flex gap-2 mb-5">
             <input type="text" placeholder={translate('Ask a question...')} value={question} onChange={e => setQuestion(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleAskQuestion()}
-              className="flex-1 bg-background-surface-secondary rounded-lg xl:rounded-xl py-2.5 px-4 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-border-primary" />
+              className="flex-1 rounded-lg xl:rounded-xl py-2.5 px-4 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-border-primary" />
             <button aria-label={translate('Send')} onClick={handleAskQuestion} disabled={askingQuestion || !question.trim()}
               className="px-4 py-2.5 text-on-primary rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0 bg-primary-600">
               <Send className="w-4 h-4" />
@@ -267,7 +267,7 @@ export default function MentorProfilePage() {
                       <div className="flex gap-2">
                         <input type="text" placeholder={translate('Write your answer...')} value={answerText} onChange={e => setAnswerText(e.target.value)}
                           onKeyDown={e => e.key === 'Enter' && handleAnswer(thread._id)}
-                          className="flex-1 bg-background-surface-secondary rounded-lg xl:rounded-xl py-2 px-3 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none border border-border-primary" />
+                          className="flex-1 rounded-lg xl:rounded-xl py-2 px-3 text-sm font-semibold text-content-primary placeholder:text-slate-400 outline-none border border-border-primary" />
                         <button aria-label={translate('Send')} onClick={() => handleAnswer(thread._id)} disabled={submittingAnswer || !answerText.trim()}
                           className="px-3 py-2 text-on-primary rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0 bg-primary-600">
                           <Send className="w-4 h-4" />

@@ -14,7 +14,7 @@ import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../../../lib/constants/pag
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const STATUS_STYLES = {
-  draft: 'bg-background-surface-secondary text-content-secondary dark:bg-white/10',
+  draft: 'bg-background-surface-secondary text-content-secondary',
   published: 'bg-background-surface-secondary text-content-primary',
   active: 'bg-background-surface-secondary text-content-primary',
   paused: 'bg-background-surface-secondary text-content-primary',
@@ -257,7 +257,7 @@ const EmailCampaignsListPage = () => {
       <Select
         value={itemsPerPage}
         onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
-        className="px-3 py-1.5 rounded-lg bg-background-surface-secondary border border-border-primary"
+        className="px-3 py-1.5 rounded-lg border border-border-primary"
       >
         {PAGE_SIZE_OPTIONS.map(v => <option key={v} value={v}>{v} per page</option>)}
       </Select>
@@ -286,7 +286,7 @@ const EmailCampaignsListPage = () => {
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {sendingCampaign && (
-            <div className="shrink-0 mb-4 p-3 rounded-lg bg-background-surface-secondary border border-border-primary dark:border-white text-xs text-content-primary">
+            <div className="shrink-0 mb-4 p-3 rounded-lg border border-border-primary dark:border-white text-xs text-content-primary">
               📤 &ldquo;{sendingCampaign.subject}&rdquo; is mid-send. Only one campaign can send at a time — finish it before starting another.
             </div>
           )}
@@ -296,7 +296,7 @@ const EmailCampaignsListPage = () => {
           {loading ? (
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : campaigns.length === 0 ? (
-            <div className="p-10 text-center bg-background-surface dark:bg-white/5 rounded-2xl border border-border-primary">
+            <div className="p-10 text-center bg-background-surface rounded-2xl border border-border-primary">
               <p className="text-content-muted mb-4">
                 {filter === 'all' ? 'No campaigns yet.' : `No ${filter} campaigns.`}
               </p>
@@ -306,7 +306,7 @@ const EmailCampaignsListPage = () => {
             </div>
           ) : view === 'table' ? (
             /* ---------- TABLE ---------- */
-            <div className="bg-background-surface dark:bg-white/5 rounded-2xl border border-border-primary overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col">
+            <div className="bg-background-surface rounded-2xl border border-border-primary overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col">
               <ResponsiveTable
                 data={campaigns}
                 columns={campaignColumns}
@@ -321,7 +321,7 @@ const EmailCampaignsListPage = () => {
             /* ---------- LIST ---------- */
             <div className="flex-1 min-h-0 overflow-auto space-y-2">
               {campaigns.map((c, idx) => (
-                <div key={c._id} className="bg-background-surface dark:bg-white/5 rounded-2xl border border-border-primary p-4 flex flex-wrap items-center gap-3">
+                <div key={c._id} className="bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-wrap items-center gap-3">
                   <div className="flex-1 min-w-[200px]">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="shrink-0 w-5 h-5 rounded-full bg-background-surface-secondary text-content-muted text-[9px] font-bold flex items-center justify-center">{(page - 1) * itemsPerPage + idx + 1}</span>
@@ -350,7 +350,7 @@ const EmailCampaignsListPage = () => {
             /* ---------- GRID ---------- */
             <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
               {campaigns.map((c, idx) => (
-                <div key={c._id} className="relative bg-background-surface dark:bg-white/5 rounded-2xl border border-border-primary p-4 flex flex-col">
+                <div key={c._id} className="relative bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col">
                   <span className="absolute top-2 left-2 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 bg-primary-600">{(page - 1) * itemsPerPage + idx + 1}</span>
                   <div className="flex items-start justify-between gap-2 mb-2 pl-6">
                     <StatusBadge status={c.status} />

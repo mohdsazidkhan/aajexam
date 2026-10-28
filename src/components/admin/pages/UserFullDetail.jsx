@@ -103,7 +103,7 @@ const Table = ({ rows, cols, empty = 'Nothing yet' }) => {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
         {rows.map((row, i) => (
-          <div key={row._id || i} className="rounded-lg border border-border-primary bg-slate-50/50 dark:bg-white/5 p-3">
+          <div key={row._id || i} className="rounded-lg border border-border-primary bg-slate-50/50 p-3">
             <div className="flex items-start gap-2">
               <SNo n={i + 1} />
               <div className="min-w-0 text-sm font-bold break-words">{cols[0].r(row, i)}</div>
@@ -129,7 +129,7 @@ const Table = ({ rows, cols, empty = 'Nothing yet' }) => {
     return (
       <div className="flex flex-col gap-2">
         {rows.map((row, i) => (
-          <div key={row._id || i} className="rounded-lg border border-border-primary bg-slate-50/50 dark:bg-white/5 px-3 py-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+          <div key={row._id || i} className="rounded-lg border border-border-primary bg-slate-50/50 px-3 py-2 flex flex-wrap items-center gap-x-3 gap-y-1">
             <div className="flex items-center gap-2 min-w-0 sm:min-w-[220px] flex-1 basis-full sm:basis-auto">
               <SNo n={i + 1} />
               <div className="min-w-0 text-sm font-bold break-words">{cols[0].r(row, i)}</div>
@@ -255,7 +255,7 @@ export default function UserFullDetail() {
         {p._id ? (
           <div className="inline-flex p-1 rounded-full bg-background-surface border border-border-primary">
             <span className="px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] text-on-primary bg-primary-600">Details</span>
-            <Link href={`/admin/students/${p._id}`} className="px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:hover:bg-white/10">Edit</Link>
+            <Link href={`/admin/students/${p._id}`} className="px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] text-content-secondary">Edit</Link>
           </div>
         ) : null}
         {p.username ? (

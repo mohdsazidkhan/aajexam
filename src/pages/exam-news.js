@@ -162,7 +162,7 @@ const ExamNewsPage = ({ initialItems = [], initialTotalPages = 1, initialTotal }
                       {translate(cfg.label)}
                     </div>
                     {item.isPinned && (
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                         <Pin className="w-3 h-3" /> Pinned
                       </div>
                     )}

@@ -338,7 +338,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                         </div>
                                         <button
                                             onClick={() => setProModalTest(null)}
-                                            className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-content-muted hover:text-white text-lg font-bold"
+                                            className="flex-shrink-0 w-8 h-8 rounded-full transition flex items-center justify-center text-content-muted hover:text-white text-lg font-bold"
                                         >
                                             ✕
                                         </button>

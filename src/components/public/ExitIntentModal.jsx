@@ -101,18 +101,18 @@ const ExitIntentModalInner = ({ onClose }) => {
       >
         {/* Header: gradient band with the offer */}
         <div className="relative shrink-0 px-5 pt-5 pb-5 text-center text-on-primary overflow-hidden bg-primary-600">
-          <div className="absolute -top-10 -left-10 w-36 h-36 rounded-full bg-white/10 pointer-events-none" />
-          <div className="absolute -bottom-12 -right-8 w-40 h-40 rounded-full bg-white/10 pointer-events-none" />
+          <div className="absolute -top-10 -left-10 w-36 h-36 rounded-full pointer-events-none" />
+          <div className="absolute -bottom-12 -right-8 w-40 h-40 rounded-full pointer-events-none" />
 
           <button aria-label={translate('Close')}
             onClick={onClose}
-            className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 text-white transition"
+            className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full text-white transition"
           >
             <X className="w-5 h-5" />
           </button>
 
           <div className="relative z-10">
-            <div className="w-12 h-12 mx-auto mb-2 rounded-2xl bg-white/20 flex items-center justify-center ring-4 ring-white/20">
+            <div className="w-12 h-12 mx-auto mb-2 rounded-2xl flex items-center justify-center ring-4 ring-white/20">
               <Gift className="w-6 h-6 text-white" />
             </div>
             <h2 className="text-lg sm:text-xl font-bold font-outfit tracking-tight leading-tight mb-2">

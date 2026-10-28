@@ -515,7 +515,7 @@ const AdminReelCreate = () => {
                       <div key={a.value}
                         onClick={() => handleAudioSelect(a.value)}
                         className={`flex items-center gap-3 p-3 rounded-lg xl:rounded-xl cursor-pointer transition-all ${audioFile === a.value
-                          ? 'bg-background-surface-secondary border border-border-primary dark:border-white'
+                          ? 'border border-border-primary dark:border-white'
                           : 'hover:bg-background-surface-secondary border border-transparent'}`}
                       >
                         <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}

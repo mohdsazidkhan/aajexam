@@ -107,7 +107,7 @@ const SearchableDropdown = ({
       </div>
 
       {isOpen && !disabled && (
-        <div className="absolute z-50 w-full mt-1 bg-background-surface-secondary border border-border-primary rounded-2xl max-h-60 overflow-y-auto">
+        <div className="absolute z-50 w-full mt-1 border border-border-primary rounded-2xl max-h-60 overflow-y-auto">
           {loading ? (
             <div className="p-4 text-center text-sm font-semibold text-content-muted">{translate('Loading...')}</div>
           ) : options.length > 0 ? (

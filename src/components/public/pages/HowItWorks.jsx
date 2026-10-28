@@ -134,7 +134,7 @@ const HowItWorks = () => {
                            {step.details && (
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                                  {step.details.map((d, di) => (
-                                    <div key={di} className="p-4 bg-background-surface-secondary rounded-2xl border border-border-primary space-y-1">
+                                    <div key={di} className="p-4 rounded-2xl border border-border-primary space-y-1">
                                        <div className="flex items-center gap-2">
                                           <d.icon className={`w-3 h-3 ${di === 1 ? 'text-primary-600' : 'text-primary-600'}`} />
                                           <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary">{translate(d.label)}</p>

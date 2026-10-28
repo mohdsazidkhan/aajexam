@@ -57,7 +57,7 @@ const Stat = ({ label, value, sub, Icon, tone, cur, prev, inverse, onClick }) =>
       <Icon className="pointer-events-none absolute -right-2 -bottom-2 w-14 h-14 text-primary-600/10 dark:text-white/10 rotate-12" />
       <div className="flex items-start justify-between gap-2">
         <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 leading-tight">{label}</div>
-        <span className="shrink-0 w-7 h-7 flex items-center justify-center text-on-primary group-hover:rotate-0 transition-transform bg-primary-600" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
+        <span className="shrink-0 w-7 h-7 flex items-center justify-center text-primary-600 group-hover:rotate-0 transition-transform border border-border-primary" style={{ borderRadius: 8 }}><Icon className="w-3.5 h-3.5" /></span>
       </div>
       <div className="mt-1 flex items-baseline justify-between gap-2">
         <div className="text-2xl font-bold font-outfit tabular-nums leading-none text-primary-600">{value}</div>
@@ -119,7 +119,7 @@ const UsersModal = ({ kind, range, segment, onClose }) => {
           {users.length > 0 ? (
             <div className="md:hidden grid grid-cols-1 gap-2 p-2">
               {users.map((u, i) => (
-                <div key={`${u.id}-${i}`} className="min-w-0 p-2.5 text-xs rounded-xl border border-border-primary bg-background-surface-secondary">
+                <div key={`${u.id}-${i}`} className="min-w-0 p-2.5 text-xs rounded-xl border border-border-primary">
                   <div className="flex flex-col gap-0.5">
                     <UserName u={u} prefix={`${i + 1}. `} className="font-bold break-words min-w-0" />
                     <span className="text-[9px] font-bold uppercase tracking-[0.08em] text-content-muted">{u.method}{u.referred ? ' · referred' : ''}</span>
@@ -257,7 +257,7 @@ export default function Traffic() {
       <div className="py-4 w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="order-1 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.08em] text-content-secondary">
-            <span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Activity className="w-4 h-4" /></span> Traffic          </div>
+            <span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Activity className="w-4 h-4" /></span> Traffic          </div>
           <div className="order-3 md:order-2 w-full md:w-auto flex gap-1 p-1 bg-background-surface border border-border-primary max-w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="tablist">
             {SEGMENTS.map((s) => (
               <button

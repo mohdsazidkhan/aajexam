@@ -134,7 +134,7 @@ const TermsAndConditions = () => {
                         </div>
 
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 relative z-10">
-                           <section className="p-4 xl:p-5 dark:bg-white/5 rounded-3xl border border-primary-300 dark:border-white/10 space-y-2 xl:space-y-4">
+                           <section className="p-4 xl:p-5 rounded-3xl border border-primary-300 dark:border-white/10 space-y-2 xl:space-y-4">
                               <h3 className="text-primary-600 font-bold uppercase tracking-[0.08em] text-xs">Free Plan</h3>
                               <p className="text-sm font-medium text-content-secondary">Unlimited topic-wise practice, 2 subject tests/day, first full mock test free, and latest-year PYQs for every exam.</p>
                            </section>
@@ -147,7 +147,7 @@ const TermsAndConditions = () => {
                            </div>
                         </div>
 
-                        <div className="p-4 xl:p-6 dark:bg-white/5 rounded-3xl border-l-4 border-primary-600 relative z-10">
+                        <div className="p-4 xl:p-6 rounded-3xl border-l-4 border-primary-600 relative z-10">
                            <p className="text-sm font-medium text-content-secondary leading-relaxed">
                               <strong className="text-primary-600">PAYMENT TERMS:</strong> All subscription fees are processed securely and are non-refundable. If your account is banned for breaking rules, you will not receive a refund.
                            </p>

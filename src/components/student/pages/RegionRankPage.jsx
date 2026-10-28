@@ -133,7 +133,7 @@ const RegionRankPage = ({ kind }) => {
                   {/* Place chip + exam filter, one row */}
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full max-w-xl mx-auto xl:mx-0 text-left">
                     {place && (
-                      <div className="inline-flex max-w-full sm:max-w-[45%] shrink-0 items-center gap-2 bg-white/15 border border-white/30 text-white text-sm font-bold rounded-xl h-10 px-3">
+                      <div className="inline-flex max-w-full sm:max-w-[45%] shrink-0 items-center gap-2 border border-white/30 text-white text-sm font-bold rounded-xl h-10 px-3">
                         <MapPin className="w-4 h-4 shrink-0" />
                         <span className="truncate">{place}</span>
                       </div>
@@ -152,9 +152,9 @@ const RegionRankPage = ({ kind }) => {
 
                 {loading ? (
                   <div className="h-24 flex items-end justify-center gap-3 animate-pulse">
-                    <div className="w-16 h-14 bg-white/15 rounded-t-xl" />
-                    <div className="w-16 h-20 bg-white/20 rounded-t-xl" />
-                    <div className="w-16 h-10 bg-white/15 rounded-t-xl" />
+                    <div className="w-16 h-14 rounded-t-xl" />
+                    <div className="w-16 h-20 rounded-t-xl" />
+                    <div className="w-16 h-10 rounded-t-xl" />
                   </div>
                 ) : top3.length > 0 ? (
                   <Podium top3={top3} currentUserId={currentUserId} />

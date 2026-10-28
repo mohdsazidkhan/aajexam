@@ -189,7 +189,7 @@ const ProfilePage = () => {
   };
 
   const renderStatTile = (item) => (
-    <div key={item.label} className="relative overflow-hidden flex flex-col justify-center bg-white/80 hover:bg-background-surface ring-1 ring-primary-200 dark:bg-white/10 dark:hover:bg-white/15 dark:ring-white/20 px-2.5 py-1.5 transition-colors" style={{ borderRadius: 10 }}>
+    <div key={item.label} className="relative overflow-hidden flex flex-col justify-center hover:bg-background-surface ring-1 ring-primary-200 dark:ring-white/20 px-2.5 py-1.5 transition-colors" style={{ borderRadius: 10 }}>
       <item.icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-primary-600/10 dark:text-white/10" />
       <p className="relative text-base xl:text-xl font-bold font-outfit leading-none text-primary-600 truncate">{item.value}</p>
       <p className="relative mt-1 text-[8px] xl:text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 leading-tight break-words">{translate(item.label)}</p>
@@ -246,7 +246,7 @@ const ProfilePage = () => {
                 {(student?.badges?.length ? student.badges : ['Student']).map((badge, index) => (
                   <span
                     key={index}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 bg-white/80 text-primary-600 ring-1 ring-primary-300 dark:bg-white/15 dark:text-white dark:ring-white/30 text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em]"
+                    className="inline-flex items-center gap-1 px-2 py-0.5 text-primary-600 ring-1 ring-primary-300 dark:text-white dark:ring-white/30 text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em]"
                     style={{ borderRadius: 999 }}
                   >
                     <Award className="w-3 h-3" />
@@ -308,7 +308,7 @@ const ProfilePage = () => {
                         {socialLinks.map(([key, url]) => {
                           const { icon: Icon } = SOCIAL_ICONS[key];
                           return (
-                            <a key={key} href={url} target="_blank" rel="noopener noreferrer" aria-label={key} className="p-2 bg-background-surface ring-1 ring-primary-200 text-primary-600 dark:bg-white/15 dark:hover:bg-white/25 dark:ring-white/25 dark:text-white transition-colors">
+                            <a key={key} href={url} target="_blank" rel="noopener noreferrer" aria-label={key} className="p-2 bg-background-surface ring-1 ring-primary-200 text-primary-600 dark:ring-white/25 dark:text-white transition-colors">
                               <Icon className="w-4 h-4" />
                             </a>
                           );
@@ -403,7 +403,7 @@ const ProfilePage = () => {
               </div>
 
               <div className="grid grid-cols-1 gap-1.5">
-                <div className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
+                <div className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
                   <p className="text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/70 leading-none">{translate('All India Rank')}</p>
                   <div className="flex flex-wrap items-baseline justify-between gap-x-2">
                     <p className="text-2xl font-bold font-outfit leading-tight text-primary-600">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
@@ -417,7 +417,7 @@ const ProfilePage = () => {
 
               <div className="grid grid-cols-2 gap-1.5">
                 {[{ label: 'State Rank', data: student?.stateRank }, { label: 'City Rank', data: student?.cityRank }].map(({ label, data }) => (
-                  <div key={label} className="bg-white/80 ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2 min-w-0" style={{ borderRadius: 10 }}>
+                  <div key={label} className="ring-1 ring-slate-200 dark:ring-white/20 px-3 py-2 min-w-0" style={{ borderRadius: 10 }}>
                     <p className="text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/70 leading-none">{translate(label)}</p>
                     <div className="flex flex-wrap items-baseline justify-between gap-x-2">
                       <p className="text-2xl font-bold font-outfit leading-tight text-primary-600">{data?.rank ? `#${data.rank}` : '—'}</p>
@@ -467,7 +467,7 @@ const ProfilePage = () => {
                   icon={Target}
                   title={translate('Complete your profile')}
                   subtitle={translate('A complete profile helps you stand out and unlocks rewards.')}
-                  right={<span className="px-2.5 py-1 text-primary-600 ring-1 ring-primary-300 dark:bg-white/15 dark:text-white dark:ring-white/30 text-sm font-bold">{completion.percentage}%</span>}
+                  right={<span className="px-2.5 py-1 text-primary-600 ring-1 ring-primary-300 dark:text-white dark:ring-white/30 text-sm font-bold">{completion.percentage}%</span>}
                 >
                   <ProgressBar progress={completion.percentage} variant="primary" height="md" />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">

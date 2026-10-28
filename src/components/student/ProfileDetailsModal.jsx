@@ -23,7 +23,7 @@ const FIELDS = ['qualification', 'dateOfBirth', 'gender', 'heardFrom'];
 const TEST_ROUTE = /\/(attempt|start)$/; // /quiz/[id]/attempt, /govt-exams/test/[testId]/start
 const FALLBACK_WAIT_MS = 20000;
 
-const FIELD_CLASSNAME = 'w-full px-3 py-2.5 rounded-xl border border-border-primary bg-background-surface-secondary text-sm font-bold outline-none focus:border-primary-700 transition-all';
+const FIELD_CLASSNAME = 'w-full px-3 py-2.5 rounded-xl border border-border-primary text-sm font-bold outline-none focus:border-primary-700 transition-all';
 
 const readState = (uid) => {
   try { return JSON.parse(localStorage.getItem(`profileDetails:${uid}`)) || {}; } catch { return {}; }

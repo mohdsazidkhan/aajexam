@@ -104,7 +104,7 @@ export default function AdminsPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center py-10 xl:py-20 text-center rounded-2xl xl:rounded-3xl border border-dashed border-border-primary"
               >
-                <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 xl:mb-4">
+                <div className="p-4 xl:p-10 bg-slate-100/50 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 xl:mb-4">
                   <ShieldCheck className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                 </div>
                 <h3 className="text-xl xl:text-3xl font-bold text-content-primary italic tracking-tight mb-3">No Admins Found</h3>

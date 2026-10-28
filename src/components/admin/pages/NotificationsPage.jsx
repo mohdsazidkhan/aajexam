@@ -196,7 +196,7 @@ const AdminNotificationsPage = () => {
   const clearAllButton = (
     <button
       onClick={handleClearAll}
-      className="w-full px-4 xl:px-4 py-2.5 bg-background-surface dark:bg-white/5 border border-border-primary text-content-primary rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all flex items-center justify-center gap-2 active:scale-95"
+      className="w-full px-4 xl:px-4 py-2.5 bg-background-surface border border-border-primary text-content-primary rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all flex items-center justify-center gap-2 active:scale-95"
     >
       <Trash2 className="w-4 h-4" /> Clear All
     </button>
@@ -207,7 +207,7 @@ const AdminNotificationsPage = () => {
       <button aria-label="Previous"
         onClick={handlePrev}
         disabled={page <= 1}
-        className="p-3 bg-background-surface dark:bg-white/5 border border-border-primary rounded-full text-content-muted hover:text-primary-600 disabled:opacity-20 transition-all active:scale-90"
+        className="p-3 bg-background-surface border border-border-primary rounded-full text-content-muted hover:text-primary-600 disabled:opacity-20 transition-all active:scale-90"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
@@ -219,7 +219,7 @@ const AdminNotificationsPage = () => {
       <button aria-label="Next"
         onClick={handleNext}
         disabled={page >= totalPages}
-        className="p-3 bg-background-surface dark:bg-white/5 border border-border-primary rounded-full text-content-muted hover:text-primary-600 disabled:opacity-20 transition-all active:scale-90"
+        className="p-3 bg-background-surface border border-border-primary rounded-full text-content-muted hover:text-primary-600 disabled:opacity-20 transition-all active:scale-90"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
@@ -295,7 +295,7 @@ const AdminNotificationsPage = () => {
                  animate={{ opacity: 1, scale: 1 }}
                  className="flex flex-col items-center justify-center py-10 xl:py-20 text-center rounded-2xl xl:rounded-3xl border border-dashed border-border-primary"
                >
-                 <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 xl:mb-4">
+                 <div className="p-4 xl:p-10 bg-slate-100/50 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 xl:mb-4">
                    <Bell className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl xl:text-3xl font-bold text-content-primary italic tracking-tight mb-3">No Notifications</h3>
@@ -338,7 +338,7 @@ const AdminNotificationsPage = () => {
                                  <div className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] italic">{formatDate(n.createdAt)} &middot; {formatTime(n.createdAt)}</div>
                               </div>
                            </div>
-                           <div className="p-3 bg-background-surface-secondary rounded-lg xl:rounded-xl border border-border-primary group-hover:bg-primary-700 group-hover:text-white transition-all shrink-0">
+                           <div className="p-3 rounded-lg xl:rounded-xl border border-border-primary group-hover:bg-primary-700 group-hover:text-white transition-all shrink-0">
                               <ArrowRight className="w-4 h-4" />
                            </div>
                         </div>

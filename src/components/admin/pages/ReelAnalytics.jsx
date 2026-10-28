@@ -110,7 +110,7 @@ const AdminReelAnalytics = () => {
   const TopReelsGridView = () => (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
       {data.topReels.map((reel, i) => (
-        <div key={reel._id} className="group p-3 rounded-xl bg-background-surface dark:bg-white/5 border border-border-primary hover:border-primary-300 hover:-translate-y-0.5 transition-all flex flex-col gap-2">
+        <div key={reel._id} className="group p-3 rounded-xl bg-background-surface border border-border-primary hover:border-primary-300 hover:-translate-y-0.5 transition-all flex flex-col gap-2">
           <div className="flex items-center justify-between">
             <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${i < 3 ? 'text-on-primary bg-primary-600' : 'bg-background-surface-secondary text-content-secondary'}`}>{i + 1}</span>
             <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-[0.08em] text-primary-600 capitalize">{reel.type?.replace('_', ' ')}</span>
@@ -166,18 +166,18 @@ const AdminReelAnalytics = () => {
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
                 {/* Type Breakdown */}
                 <section className="bg-background-surface rounded-2xl border border-border-primary p-3 sm:p-4 relative">
-                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 8 }}><Flame className="w-3.5 h-3.5" /></span>By Type</h3>
+                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 8 }}><Flame className="w-3.5 h-3.5" /></span>By Type</h3>
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
                     {(() => {
                       const maxCount = Math.max(1, ...data.typeBreakdown.map(i => i.count || 0));
                       return data.typeBreakdown.map(item => (
-                        <div key={item._id} className="px-3 py-2 rounded-xl bg-background-surface-secondary border border-border-primary">
+                        <div key={item._id} className="px-3 py-2 rounded-xl border border-border-primary">
                           <div className="flex items-center justify-between gap-2 mb-1.5">
                             <span className="font-bold text-xs text-content-primary capitalize">{item._id === 'current_affairs' ? 'Current Affairs' : item._id}</span>
                             <div className="flex items-center gap-1.5">
                               <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-[0.08em] text-primary-600">{item.count} reels</span>
-                              <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-[0.08em] bg-background-surface-secondary text-content-secondary dark:bg-white/10 flex items-center gap-1"><Eye className="w-3 h-3" />{item.views}</span>
-                              <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-[0.08em] bg-background-surface-secondary text-content-secondary dark:bg-white/10 flex items-center gap-1"><Heart className="w-3 h-3" />{item.likes}</span>
+                              <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-[0.08em] bg-background-surface-secondary text-content-secondary flex items-center gap-1"><Eye className="w-3 h-3" />{item.views}</span>
+                              <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-[0.08em] bg-background-surface-secondary text-content-secondary flex items-center gap-1"><Heart className="w-3 h-3" />{item.likes}</span>
                             </div>
                           </div>
                           <div className="h-1.5 rounded-full bg-background-surface-secondary overflow-hidden">
@@ -191,12 +191,12 @@ const AdminReelAnalytics = () => {
 
                 {/* Subject Breakdown */}
                 <section className="bg-background-surface rounded-2xl border border-border-primary p-3 sm:p-4 relative">
-                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 8 }}><BarChart3 className="w-3.5 h-3.5" /></span>By Subject</h3>
+                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary mb-3 uppercase tracking-tight text-xs"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 8 }}><BarChart3 className="w-3.5 h-3.5" /></span>By Subject</h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     {(() => {
                       const maxViews = Math.max(1, ...data.subjectBreakdown.map(i => i.views || 0));
                       return data.subjectBreakdown.map(item => (
-                        <div key={item._id} className="px-3 py-2 rounded-xl bg-background-surface-secondary border border-border-primary hover:border-primary-300 transition-all">
+                        <div key={item._id} className="px-3 py-2 rounded-xl border border-border-primary hover:border-primary-300 transition-all">
                           <p className="font-bold text-content-primary text-[11px] truncate uppercase tracking-tight">{item._id}</p>
                           <div className="flex items-center gap-1.5 mt-1 text-[9px] font-bold uppercase tracking-[0.08em]">
                             <span className="px-1.5 py-0.5 rounded-full text-primary-600">{item.count} reels</span>
@@ -215,7 +215,7 @@ const AdminReelAnalytics = () => {
               {/* Top Reels */}
               <section className="bg-background-surface rounded-2xl border border-border-primary p-4 sm:p-4 relative">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary uppercase tracking-tight text-sm"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 8 }}><Eye className="w-3.5 h-3.5" /></span>Top 10 Reels</h3>
+                  <h3 className="flex items-center gap-2.5 font-bold text-content-primary uppercase tracking-tight text-sm"><span className="w-7 h-7 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 8 }}><Eye className="w-3.5 h-3.5" /></span>Top 10 Reels</h3>
                   <ViewToggle currentView={topReelsView} onViewChange={setTopReelsView} views={['table', 'list', 'grid']} />
                 </div>
                 {topReelsView === 'table' && <TopReelsTableView />}

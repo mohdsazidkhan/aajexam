@@ -126,7 +126,7 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
       {/* Options */}
       <div className="space-y-2.5 sm:space-y-3 mb-4 sm:mb-6">
         {reel.options?.map((opt, i) => {
-          let optionStyle = 'border-white/15 bg-white/5 hover:bg-white/10';
+          let optionStyle = 'border-white/15';
           if (answered && result) {
             if (i === result.correctAnswerIndex) {
               optionStyle = 'border-primary-400/60 bg-primary-500/20';
@@ -136,7 +136,7 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
               optionStyle = 'border-white/5 bg-white/[0.02] opacity-50';
             }
           } else if (i === selected) {
-            optionStyle = 'border-white/40 bg-white/15 ring-1 ring-white/20';
+            optionStyle = 'border-white/40 ring-1 ring-white/20';
           }
 
           return (
@@ -174,8 +174,8 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
 const FactReelCard = ({ reel, onTagPress }) => (
   <div className="flex flex-col h-full pl-4 pb-4 justify-center">
     <div className="flex items-center gap-2 mb-2 sm:mb-4">
-      <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-bold uppercase tracking-widest text-white/70">#{reel.subject}</ClickableTag>
-      {reel.topic && <ClickableTag text={reel.topic} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-semibold text-white/60">#{reel.topic}</ClickableTag>}
+      <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest text-white/70">#{reel.subject}</ClickableTag>
+      {reel.topic && <ClickableTag text={reel.topic} onPress={onTagPress} className="px-2.5 py-1 rounded-lg text-[10px] font-semibold text-white/60">#{reel.topic}</ClickableTag>}
     </div>
     <div className="h-px bg-transparent mb-2 sm:mb-4" />
 
@@ -192,7 +192,7 @@ const FactReelCard = ({ reel, onTagPress }) => (
     {reel.tags?.length > 0 && (
       <div className="flex flex-wrap gap-2 mt-2 sm:mt-4">
         {reel.tags.map((tag, i) => (
-          <ClickableTag key={i} text={tag} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/5 text-[10px] font-medium text-white/50">#{tag}</ClickableTag>
+          <ClickableTag key={i} text={tag} onPress={onTagPress} className="px-2.5 py-1 rounded-lg text-[10px] font-medium text-white/50">#{tag}</ClickableTag>
         ))}
       </div>
     )}
@@ -207,14 +207,14 @@ const TipReelCard = ({ reel, onTagPress }) => {
     <div className="flex items-center gap-2 mb-4">
       <Zap className="w-4 h-4 text-black dark:text-white" />
       <span className="text-[10px] font-bold uppercase tracking-widest text-black/80 dark:text-white/80">{translate('Quick Trick')}</span>
-      {reel.subject && <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-semibold text-white/60">#{reel.subject}</ClickableTag>}
+      {reel.subject && <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2.5 py-1 rounded-lg text-[10px] font-semibold text-white/60">#{reel.subject}</ClickableTag>}
     </div>
     <div className="h-px bg-transparent mb-5" />
 
     <h2 className="text-md sm:text-lg md:text-xl xl:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.title}</h2>
 
     {reel.formula && (
-      <div className="p-2 sm:p-4 rounded-lg xl:rounded-xl sm:rounded-2xl bg-white/10 border border-white/10 mb-2 sm:mb-4 font-mono text-center">
+      <div className="p-2 sm:p-4 rounded-lg xl:rounded-xl sm:rounded-2xl border border-white/10 mb-2 sm:mb-4 font-mono text-center">
         <p className="text-md sm:text-lg font-bold text-black dark:text-white">{reel.formula}</p>
       </div>
     )}
@@ -403,7 +403,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => {
   >
     {/* Handle bar */}
     <div className="flex justify-center pt-3 pb-2 sticky top-0 bg-slate-900/95 z-10">
-      <div className="w-10 h-1 rounded-full bg-white/20" />
+      <div className="w-10 h-1 rounded-full bg-background-surface-secondary" />
     </div>
 
     <div className="px-5 pb-20 space-y-5">
@@ -412,7 +412,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => {
           <Filter className="w-5 h-5 text-white/70" />
           <h3 className="text-sm font-black text-white uppercase tracking-widest">{translate('Filters')}</h3>
         </div>
-        <button aria-label={translate('Close')} onClick={onClose} className="p-1.5 rounded-full bg-white/10">
+        <button aria-label={translate('Close')} onClick={onClose} className="p-1.5 rounded-full">
           <X className="w-4 h-4 text-white/60" />
         </button>
       </div>
@@ -424,7 +424,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => {
           {[['all', 'All'], ['question', 'Questions'], ['fact', 'Facts'], ['tip', 'Tips'], ['current_affairs', 'CA'], ['poll', 'Polls']].map(([val, label]) => (
             <button key={val} onClick={() => onChange({ ...selected, type: val === 'all' ? '' : val })}
               className={`px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold transition-all border ${(!selected.type && val === 'all') || selected.type === val
-                ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10 hover:border-white/20'}`}>
+                ? 'bg-white text-black border-white' : 'text-white/60 border-white/10 hover:border-white/20'}`}>
               {label}
             </button>
           ))}
@@ -468,7 +468,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => {
           {['all', 'easy', 'medium', 'hard'].map(d => (
             <button key={d} onClick={() => onChange({ ...selected, difficulty: d === 'all' ? '' : d })}
               className={`px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold border ${(!selected.difficulty && d === 'all') || selected.difficulty === d
-                ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>
+                ? 'bg-white text-black border-white' : 'text-white/60 border-white/10'}`}>
               {d.charAt(0).toUpperCase() + d.slice(1)}
             </button>
           ))}
@@ -851,7 +851,7 @@ const ReelsFeed = () => {
         <Flame className="w-16 h-16 text-slate-600 mb-4" />
         <p className="text-lg font-bold mb-2">{translate('No reels yet')}</p>
         <p className="text-sm text-white/50 text-center">{translate('Reels will appear here once published')}</p>
-        <Link href="/" className="mt-6 px-6 py-2.5 rounded-lg xl:rounded-xl bg-white/10 text-sm font-semibold hover:bg-white/20 transition-colors">
+        <Link href="/" className="mt-6 px-6 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold transition-colors">
           {translate('Go Home')}
         </Link>
       </div>
@@ -904,7 +904,7 @@ const ReelsFeed = () => {
                 {selectedFilters.tag && (
                   <button
                     onClick={() => setSelectedFilters(prev => ({ ...prev, tag: '' }))}
-                    className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/15 text-[10px] font-bold text-white"
+                    className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold text-white"
                   >
                     #{selectedFilters.tag} <X className="w-3 h-3" />
                   </button>
@@ -925,9 +925,9 @@ const ReelsFeed = () => {
 
             {/* ── Audio Progress Bar (top, like Instagram stories) ── */}
             {currentReel.audioFile && currentReel.duration > 0 && (
-              <div className="absolute top-0 left-0 right-0 z-30 h-[3px] bg-white/10">
+              <div className="absolute top-0 left-0 right-0 z-30 h-[3px]">
                 <motion.div
-                  className="h-full bg-white/80 rounded-r-full"
+                  className="h-full rounded-r-full"
                   initial={{ width: '0%' }}
                   animate={{ width: `${audioProgress}%` }}
                   transition={{ duration: 0.3, ease: 'linear' }}
@@ -975,11 +975,11 @@ const ReelsFeed = () => {
               {/* Desktop: nav arrows (above profile avatar) */}
               <div className="hidden xl:flex flex-col gap-3">
                 <button aria-label={translate('Collapse')} onClick={goPrev} disabled={currentIndex === 0}
-                  className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm text-white/60 hover:bg-white/20 disabled:opacity-20 transition-all">
+                  className="p-2.5 rounded-full backdrop-blur-sm text-white/60 disabled:opacity-20 transition-all">
                   <ChevronUp className="w-5 h-5" />
                 </button>
                 <button aria-label={translate('Expand')} onClick={goNext} disabled={currentIndex >= reels.length - 1 && !hasMore}
-                  className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm text-white/60 hover:bg-white/20 disabled:opacity-20 transition-all">
+                  className="p-2.5 rounded-full backdrop-blur-sm text-white/60 disabled:opacity-20 transition-all">
                   <ChevronDown className="w-5 h-5" />
                 </button>
               </div>
@@ -1027,7 +1027,7 @@ const ReelsFeed = () => {
                       animation: isAudioPlaying && !isMuted ? 'spin 3s linear infinite' : 'none',
                     }}
                   >
-                    <div className="w-3.5 h-3.5 rounded-full bg-white/20 border border-white/30" />
+                    <div className="w-3.5 h-3.5 rounded-full border border-white/30" />
                     <Music className="w-3 h-3 text-white/60 absolute" />
                   </div>
                   {/* Outer ring glow when playing */}
@@ -1061,7 +1061,7 @@ const ReelsFeed = () => {
                     <button
                       onClick={() => handleFollowToggle(currentReel.createdBy._id)}
                       disabled={followLoading === currentReel.createdBy._id}
-                      className="px-3 py-1 rounded-lg bg-white/20 backdrop-blur-sm text-[11px] font-extrabold text-white border border-white/30"
+                      className="px-3 py-1 rounded-lg backdrop-blur-sm text-[11px] font-extrabold text-white border border-white/30"
                     >
                       {translate('Follow')}
                     </button>
@@ -1153,7 +1153,7 @@ const ReelsFeed = () => {
                 >
                   {/* Handle bar */}
                   <div className="flex justify-center pt-3 pb-2 sticky top-0 bg-slate-900/95 z-10">
-                    <div className="w-10 h-1 rounded-full bg-white/20" />
+                    <div className="w-10 h-1 rounded-full bg-background-surface-secondary" />
                   </div>
 
                   <div className="px-5 pb-6 space-y-2 xl:space-y-4">
@@ -1165,7 +1165,7 @@ const ReelsFeed = () => {
                           {currentReel.type === 'question' ? translate('Explanation') : translate('More Details')}
                         </span>
                       </div>
-                      <button aria-label={translate('Close')} onClick={() => setShowExplanation(false)} className="p-1.5 rounded-full bg-white/10">
+                      <button aria-label={translate('Close')} onClick={() => setShowExplanation(false)} className="p-1.5 rounded-full">
                         <X className="w-4 h-4 text-white/60" />
                       </button>
                     </div>
@@ -1211,7 +1211,7 @@ const ReelsFeed = () => {
                           <p className="text-[13px] text-white/90 leading-relaxed">{currentReel.content}</p>
                         )}
                         {currentReel.keyPoints?.length > 0 && (
-                          <div className="p-3 rounded-2xl bg-white/10 border border-white/10 space-y-2">
+                          <div className="p-3 rounded-2xl border border-white/10 space-y-2">
                             <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">{translate('Key Points')}</p>
                             {currentReel.keyPoints.map((point, i) => (
                               <div key={i} className="flex items-start gap-2">
@@ -1231,12 +1231,12 @@ const ReelsFeed = () => {
                           <p className="text-[13px] text-white/90 leading-relaxed">{currentReel.content}</p>
                         )}
                         {currentReel.formula && (
-                          <div className="p-3 rounded-2xl bg-white/10 border border-white/10 font-mono text-center">
+                          <div className="p-3 rounded-2xl border border-white/10 font-mono text-center">
                             <p className="text-lg font-bold text-black dark:text-white">{currentReel.formula}</p>
                           </div>
                         )}
                         {currentReel.steps?.length > 0 && (
-                          <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+                          <div className="p-3 rounded-2xl border border-white/10 space-y-3">
                             <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">{translate('Steps')}</p>
                             {currentReel.steps.map((step, i) => (
                               <div key={i} className="flex items-start gap-3">
@@ -1341,12 +1341,12 @@ const ReelsFeed = () => {
               style={{ scrollbarWidth: 'none' }}
             >
               <div className="flex justify-center pt-3 pb-2">
-                <div className="w-10 h-1 rounded-full bg-white/20" />
+                <div className="w-10 h-1 rounded-full bg-background-surface-secondary" />
               </div>
               <div className="px-5 pb-24 pt-2">
                 <div className="flex items-center justify-between mb-5">
                   <h3 className="text-sm font-black text-white uppercase tracking-wider">{translate('Create Reel')}</h3>
-                  <button aria-label={translate('Close')} onClick={() => setShowCreateDrawer(false)} className="p-1.5 rounded-full bg-white/10">
+                  <button aria-label={translate('Close')} onClick={() => setShowCreateDrawer(false)} className="p-1.5 rounded-full">
                     <X className="w-4 h-4 text-white/60" />
                   </button>
                 </div>

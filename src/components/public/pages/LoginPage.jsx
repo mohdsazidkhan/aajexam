@@ -113,7 +113,7 @@ const LoginPage = () => {
                 { icon: Sparkles, text: 'Play daily quizzes subject & topic wise' }
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 text-content-secondary font-bold">
-                  <div className="p-2 dark:bg-white/15 rounded-lg xl:rounded-xl">
+                  <div className="p-2 rounded-lg xl:rounded-xl">
                     <item.icon className="w-5 h-5 text-primary-600" />
                   </div>
                   <span className="text-sm font-bold tracking-[0.04em]">{translate(item.text)}</span>
@@ -161,7 +161,7 @@ const LoginPage = () => {
                     <input
                       type="text"
                       required
-                      className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                       placeholder={translate('you@example.com')}
                       value={identifier}
                       onChange={(e) => setIdentifier(e.target.value)}
@@ -181,7 +181,7 @@ const LoginPage = () => {
                     <input
                       type={showPassword ? 'text' : 'password'}
                       required
-                      className="w-full pl-12 pr-12 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-12 pr-12 py-4 rounded-2xl border border-border-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                       placeholder={translate('Enter your password')}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}

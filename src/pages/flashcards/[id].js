@@ -100,7 +100,7 @@ export default function FlashcardDeck() {
                     {/* Segmented Progress */}
                     <div className="flex gap-1 mb-4">
                         {deck.cards.map((_, idx) => (
-                            <div key={idx} className="h-1 flex-1 bg-white/30 rounded-full overflow-hidden">
+                            <div key={idx} className="h-1 flex-1 rounded-full overflow-hidden bg-background-surface-secondary">
                                 <div 
                                     className={`h-full bg-background-surface transition-all duration-300 ${idx < currentIndex ? 'w-full' : idx === currentIndex ? 'w-full' : 'w-0'}`} 
                                     style={{ opacity: idx <= currentIndex ? 1 : 0 }}
@@ -112,7 +112,7 @@ export default function FlashcardDeck() {
                     {/* Header */}
                     <div className="flex items-center justify-between text-white">
                         <div className="flex items-center gap-3">
-                            <button aria-label={translate('Back')} onClick={() => router.back()} className="p-2 hover:bg-white/20 rounded-full transition">
+                            <button aria-label={translate('Back')} onClick={() => router.back()} className="p-2 rounded-full transition">
                                 <ArrowLeft className="w-5 h-5" />
                             </button>
                             <div>
@@ -122,7 +122,7 @@ export default function FlashcardDeck() {
                         </div>
                         <button aria-label={translate('Share')} onClick={() => {
                             navigator.share && navigator.share({ title: deck.title, url: window.location.href }).catch(() => {});
-                        }} className="p-2 hover:bg-white/20 rounded-full transition">
+                        }} className="p-2 rounded-full transition">
                             <Share2 className="w-5 h-5" />
                         </button>
                     </div>
@@ -145,7 +145,7 @@ export default function FlashcardDeck() {
                             transition={{ duration: 0.2 }}
                             className="w-full text-center"
                         >
-                            <div className="bg-white/10 border border-white/20 p-8 rounded-3xl">
+                            <div className="border border-white/20 p-8 rounded-3xl">
                                 {currentCard.image && (
                                     <img 
                                         src={currentCard.image} 
@@ -160,9 +160,9 @@ export default function FlashcardDeck() {
                             </div>
                             
                             <div className="mt-8 text-white/50 text-xs font-bold uppercase tracking-[0.08em] flex items-center justify-center gap-2">
-                                <span className="w-8 h-[1px] bg-white/20" />
+                                <span className="w-8 h-[1px]" />
                                 {translate('Tap right to next')}
-                                <span className="w-8 h-[1px] bg-white/20" />
+                                <span className="w-8 h-[1px]" />
                             </div>
                         </motion.div>
                     </AnimatePresence>

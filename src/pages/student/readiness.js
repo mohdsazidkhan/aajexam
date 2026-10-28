@@ -40,8 +40,8 @@ const ReadinessSkeleton = () => (
         <Sh className="h-4 w-40" />
         {[1, 2, 3].map(j => (
           <div key={j} className="flex items-center justify-between px-3 py-3 bg-background-surface-secondary rounded-lg">
-            <Sh className="h-3 w-28 bg-white/60 dark:bg-slate-700" />
-            <Sh className="h-3 w-8 bg-white/60 dark:bg-slate-700" />
+            <Sh className="h-3 w-28 dark:bg-slate-700 bg-background-surface-secondary" />
+            <Sh className="h-3 w-8 dark:bg-slate-700 bg-background-surface-secondary" />
           </div>
         ))}
       </Card>
@@ -98,7 +98,7 @@ const ReadinessPage = () => {
             actions={
           <div className="flex flex-col xl:flex-row gap-3 xl:gap-5 w-full xl:w-auto">
             <Select value={selectedExam} onChange={e => setSelectedExam(e.target.value)}
-              className="w-full xl:flex-1 px-3 py-2.5 bg-background-surface-secondary border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none">
+              className="w-full xl:flex-1 px-3 py-2.5 border border-border-primary rounded-lg xl:rounded-xl text-sm outline-none">
               <option value="">{translate('Select Exam')}</option>
               {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
             </Select>

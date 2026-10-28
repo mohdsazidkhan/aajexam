@@ -634,7 +634,7 @@ const StudentsPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => router.push(`/admin/user-details/${student.username || student._id}`)}
-                        className="group relative bg-[#0D1225]/5 dark:bg-white/5 rounded-2xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 hover:border-primary-500/30 transition-all flex flex-col items-center text-center cursor-pointer overflow-hidden"
+                        className="group relative bg-[#0D1225]/5 rounded-2xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 hover:border-primary-500/30 transition-all flex flex-col items-center text-center cursor-pointer overflow-hidden"
                       >
                         <div className="absolute top-0 left-0 w-full h-2 bg-primary-600" />
 
@@ -643,7 +643,7 @@ const StudentsPage = () => {
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
                           <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full text-on-primary text-[10px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-[#0D1225] bg-primary-600">{(currentPage - 1) * itemsPerPage + i + 1}</span>
-                          <div className="absolute -bottom-2 -right-2 p-2 bg-background-surface dark:bg-[#0D1225] rounded-lg xl:rounded-xl border border-border-primary">
+                          <div className="absolute -bottom-2 -right-2 p-2 bg-background-surface dark:bg-black rounded-lg xl:rounded-xl border border-border-primary">
                             <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'PRO' ? 'text-content-primary' : 'text-slate-300'}`} />
                           </div>
                         </div>
@@ -706,9 +706,9 @@ const StudentsPage = () => {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-                className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-[#0A0F1E] xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col font-sans"
+                className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-black xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col font-sans"
               >
-                <section className="px-4 py-2.5 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50 dark:bg-white/5 shrink-0">
+                <section className="px-4 py-2.5 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50 shrink-0">
                   <div className="flex items-center gap-3 xl:gap-3">
                     <div className="p-4 text-primary-600 rounded-lg xl:rounded-2xl">
                       <Zap className="w-8 h-8 fill-current" />
@@ -831,9 +831,9 @@ const StudentsPage = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ type: 'tween', duration: 0.2 }}
-                className="relative w-full max-w-md bg-background-surface dark:bg-[#0A0F1E] rounded-3xl border border-border-primary overflow-hidden"
+                className="relative w-full max-w-md bg-background-surface dark:bg-black rounded-3xl border border-border-primary overflow-hidden"
               >
-                <section className="p-4 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+                <section className="p-4 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50">
                   <div className="flex items-center gap-3">
                     <div className="p-3 text-on-primary rounded-xl bg-primary-600">
                       <MapPin className="w-5 h-5" />

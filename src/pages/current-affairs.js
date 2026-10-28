@@ -142,7 +142,7 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1, initialT
             </div>
             {hasFilters && (
               <button onClick={() => { setSearch(''); setSelectedMonth(now.getMonth() + 1); setSelectedYear(CURRENT_YEAR); setCategory('all'); setPage(1); }}
-                className="flex items-center gap-1 px-4 py-2.5 text-primary-600 dark:bg-white/20 dark:text-white rounded-lg xl:rounded-xl text-xs font-bold uppercase border border-primary-300 dark:border-white/30">
+                className="flex items-center gap-1 px-4 py-2.5 text-primary-600 dark:text-white rounded-lg xl:rounded-xl text-xs font-bold uppercase border border-primary-300 dark:border-white/30">
                 <X className="w-3 h-3" /> Clear
               </button>
             )}
@@ -169,7 +169,7 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1, initialT
 
         {/* Today highlight */}
         {todayAffairs?.total > 0 && !search && isCurrentMonth && category === 'all' && (
-          <section className="bg-background-surface-secondary rounded-2xl p-4 border border-border-primary">
+          <section className="rounded-2xl p-4 border border-border-primary">
             <h2 className="text-sm font-bold text-content-primary mb-2 flex items-center gap-2">
               <Flame className="w-4 h-4" /> {translate('Today — {count} Updates', { count: todayAffairs.total })}
             </h2>
@@ -217,12 +217,12 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1, initialT
                       <Tag className="w-3 h-3" />
                       {translate((affair.category || '').charAt(0).toUpperCase() + (affair.category || '').slice(1))}
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-muted uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary dark:border-slate-600">
+                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-muted uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary dark:border-slate-600">
                       <Eye className="w-3 h-3" />
                       {affair.views || 0}
                     </div>
                     {affair.questions?.length > 0 && (
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase bg-background-surface-secondary px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-content-primary uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-border-primary">
                         <Tag className="w-3 h-3" />
                         {affair.questions.length} Qs
                       </div>

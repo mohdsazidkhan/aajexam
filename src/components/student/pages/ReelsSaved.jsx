@@ -61,7 +61,7 @@ const ReelsSaved = () => {
             eyebrow="Saved Reels"
             title="Saved Reels"
             actions={
-              <Link href="/reels" aria-label="Back" className="w-10 h-10 flex items-center justify-center bg-white/80 hover:bg-background-surface ring-1 ring-primary-200 dark:bg-white/10 dark:hover:bg-white/20 dark:ring-white/20 text-primary-600 dark:text-white transition-colors" style={{ borderRadius: 999 }}>
+              <Link href="/reels" aria-label="Back" className="w-10 h-10 flex items-center justify-center hover:bg-background-surface ring-1 ring-primary-200 dark:ring-white/20 text-primary-600 dark:text-white transition-colors" style={{ borderRadius: 999 }}>
                 <ArrowLeft className="w-5 h-5" />
               </Link>
             }
@@ -71,7 +71,7 @@ const ReelsSaved = () => {
         <div className="max-w-2xl mx-auto p-4">
           {loading ? <CardGridSkeleton count={6} variant="media" /> : reels.length === 0 ? (
             <div className="text-center py-20 px-6">
-              <div className="w-20 h-20 flex items-center justify-center mx-auto mb-6 text-on-primary bg-primary-600" style={{ borderRadius: 24 }}>
+              <div className="w-20 h-20 flex items-center justify-center mx-auto mb-6 text-primary-600 border border-border-primary" style={{ borderRadius: 24 }}>
                 <Bookmark className="w-10 h-10" />
               </div>
               <p className="text-xl font-bold text-content-primary tracking-tight">{translate('No saved reels yet')}</p>
@@ -92,9 +92,8 @@ const ReelsSaved = () => {
                     transition={{ delay: i * 0.05 }}
                     style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-border-primary p-5 hover:-translate-y-0.5 transition-all group active:scale-[0.98]"
                   >
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
                     <div className="flex items-start gap-4">
-                      <div style={{ borderRadius: 14 }} className="w-12 h-12 flex items-center justify-center shrink-0 text-on-primary bg-primary-600">
+                      <div style={{ borderRadius: 14 }} className="w-12 h-12 flex items-center justify-center shrink-0 text-primary-600 border border-border-primary">
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
                       <div className="flex-1 min-w-0">

@@ -182,7 +182,7 @@ export default function UserReferralDetail() {
     if (!userId || error) {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center p-3 xl:p-5">
-                <div className="p-4 xl:p-10 bg-background-surface dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-3xl border-b-2 border-border-primary mb-4 xl:mb-4">
+                <div className="p-4 xl:p-10 bg-background-surface rounded-lg xl:rounded-xl xl:rounded-3xl border-b-2 border-border-primary mb-4 xl:mb-4">
                     <Zap className="w-16 h-16 text-slate-200 dark:text-slate-700" />
                 </div>
                 <h3 className="text-xl xl:text-3xl font-bold text-content-primary tracking-tight mb-4 italic">{error ? 'Error' : 'User Not Found'}</h3>
@@ -225,7 +225,7 @@ export default function UserReferralDetail() {
                         <div className="flex flex-wrap items-center gap-3">
                             <button
                                 onClick={() => router.push('/admin/referral-history')}
-                                className="px-4 xl:px-4 py-2.5 bg-background-surface dark:bg-white/5 border border-border-primary text-content-primary rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] hover:scale-105 transition-transform flex items-center gap-2"
+                                className="px-4 xl:px-4 py-2.5 bg-background-surface border border-border-primary text-content-primary rounded-lg xl:rounded-xl text-[10px] font-bold uppercase tracking-[0.08em] hover:scale-105 transition-transform flex items-center gap-2"
                             >
                                 <ArrowLeft className="w-4 h-4 text-primary-600" /> Back to History
                             </button>
@@ -306,7 +306,7 @@ export default function UserReferralDetail() {
                             animate={{ opacity: 1, scale: 1 }}
                             className="flex flex-col items-center justify-center py-10 xl:py-20 text-center rounded-2xl xl:rounded-3xl border border-dashed border-border-primary"
                         >
-                            <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 xl:mb-4">
+                            <div className="p-4 xl:p-10 bg-slate-100/50 rounded-lg xl:rounded-xl xl:rounded-3xl mb-4 xl:mb-4">
                                 <Wallet className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                             </div>
                             <h3 className="text-xl xl:text-3xl font-bold text-content-primary italic tracking-tight mb-3">NO TRANSACTIONS YET</h3>

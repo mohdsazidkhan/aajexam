@@ -48,7 +48,7 @@ const IndiaOnlyNotice = () => {
     return (
       <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-slate-950 p-6 text-center" role="alert">
         <div>
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white/10">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
             <LogOut className="h-8 w-8 text-white" />
           </div>
           <h2 className="text-2xl font-bold text-white">Thank you for visiting</h2>

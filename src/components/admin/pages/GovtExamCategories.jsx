@@ -192,10 +192,10 @@ const AdminGovtExamCategories = () => {
     {
       key: 'actions', header: 'ACTIONS', align: 'center', render: (_, category) => (
         <div className="flex justify-center gap-3">
-          <button aria-label="Edit" onClick={() => handleEdit(category)} className="p-3 bg-background-surface dark:bg-white/5 text-content-muted border border-border-primary rounded-lg xl:rounded-xl hover:text-primary-600 hover:border-primary-500/30 transition-all">
+          <button aria-label="Edit" onClick={() => handleEdit(category)} className="p-3 bg-background-surface text-content-muted border border-border-primary rounded-lg xl:rounded-xl hover:text-primary-600 hover:border-primary-500/30 transition-all">
             <Edit className="w-4 h-4" />
           </button>
-          <button aria-label="Delete" onClick={() => handleDelete(category._id)} className="p-3 bg-background-surface dark:bg-white/5 text-content-muted border border-border-primary rounded-lg xl:rounded-xl hover:text-content-primary dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all">
+          <button aria-label="Delete" onClick={() => handleDelete(category._id)} className="p-3 bg-background-surface text-content-muted border border-border-primary rounded-lg xl:rounded-xl hover:text-content-primary dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all">
             <Trash2 className="w-4 h-4" />
           </button>
         </div>
@@ -333,10 +333,10 @@ const AdminGovtExamCategories = () => {
                       </div>
 
                       <div className="flex gap-2 xl:gap-3">
-                        <button aria-label="Edit" onClick={() => handleEdit(category)} className="p-2 xl:p-4 bg-background-surface dark:bg-white/5 text-content-muted border border-border-primary dark:border-white/10 rounded-lg xl:rounded-3xl hover:text-primary-600 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all">
+                        <button aria-label="Edit" onClick={() => handleEdit(category)} className="p-2 xl:p-4 bg-background-surface text-content-muted border border-border-primary dark:border-white/10 rounded-lg xl:rounded-3xl hover:text-primary-600 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all">
                           <Edit className="w-3.5 h-3.5 xl:w-6 xl:h-6" />
                         </button>
-                        <button aria-label="Delete" onClick={() => handleDelete(category._id)} className="p-2 xl:p-4 bg-background-surface dark:bg-white/5 text-content-muted border border-border-primary dark:border-white/10 rounded-lg xl:rounded-3xl hover:text-content-primary dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 hover:scale-105 active:scale-95 transition-all">
+                        <button aria-label="Delete" onClick={() => handleDelete(category._id)} className="p-2 xl:p-4 bg-background-surface text-content-muted border border-border-primary dark:border-white/10 rounded-lg xl:rounded-3xl hover:text-content-primary dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 hover:scale-105 active:scale-95 transition-all">
                           <Trash2 className="w-3.5 h-3.5 xl:w-6 xl:h-6" />
                         </button>
                       </div>
@@ -369,10 +369,10 @@ const AdminGovtExamCategories = () => {
                       <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] text-content-muted leading-relaxed mb-2 xl:mb-10 line-clamp-3">{category.description || 'No description'}</p>
 
                       <div className="w-full flex justify-center gap-2 xl:gap-3 mt-auto">
-                        <button onClick={() => handleEdit(category)} title="Edit" className="p-2 xl:p-3 bg-background-surface dark:bg-white/5 text-content-muted border border-border-primary rounded-lg xl:rounded-xl hover:text-primary-600 hover:border-primary-500/30 transition-all">
+                        <button onClick={() => handleEdit(category)} title="Edit" className="p-2 xl:p-3 bg-background-surface text-content-muted border border-border-primary rounded-lg xl:rounded-xl hover:text-primary-600 hover:border-primary-500/30 transition-all">
                           <Edit className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
                         </button>
-                        <button onClick={() => handleDelete(category._id)} title="Delete" className="p-2 xl:p-3 bg-background-surface dark:bg-white/5 text-content-muted border border-border-primary rounded-lg xl:rounded-xl hover:text-content-primary dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all">
+                        <button onClick={() => handleDelete(category._id)} title="Delete" className="p-2 xl:p-3 bg-background-surface text-content-muted border border-border-primary rounded-lg xl:rounded-xl hover:text-content-primary dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all">
                           <Trash2 className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
                         </button>
                       </div>
@@ -400,7 +400,7 @@ const AdminGovtExamCategories = () => {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-                className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-[#0f172a] xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col"
+                className="absolute inset-y-0 right-0 left-0 w-full bg-background-surface dark:bg-black xl:rounded-l-2xl border-l-2 border-border-primary overflow-hidden flex flex-col"
               >
                 <div className="px-4 py-2.5 border-b-2 border-border-primary dark:border-white/5 flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-3">

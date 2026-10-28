@@ -47,7 +47,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
             </div>
             <button aria-label={translate('Close')}
               onClick={handleClose}
-              className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-2xl flex items-center justify-center transition-all active:translate-y-1"
+              className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all active:translate-y-1"
             >
               <FaTimes className="text-xl" />
             </button>
@@ -58,7 +58,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
         <div className="p-4 xl:p-10 space-y-8">
 
           {/* PLATFORM UPDATE */}
-          <section className="bg-background-surface-secondary border border-border-primary dark:border-white rounded-2xl p-6">
+          <section className="border border-border-primary dark:border-white rounded-2xl p-6">
             <h3 className="text-sm xl:text-lg font-bold text-content-primary mb-2 flex items-center tracking-tight">
               <FaShieldAlt className="text-content-primary mr-2" /> Platform Update
             </h3>

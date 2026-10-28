@@ -317,7 +317,7 @@ const LocationsPage = () => {
   const renderGridCard = (item, idx, { Icon, title, subtitle, onEdit, onDelete, page, itemsPerPage }) => (
     <section key={item._id} className="bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col gap-3 relative">
       <div className="flex items-start justify-between gap-2">
-        <div className="relative w-10 h-10 rounded-xl text-on-primary flex items-center justify-center shrink-0 bg-primary-600">
+        <div className="relative w-10 h-10 rounded-xl text-primary-600 flex items-center justify-center shrink-0 border border-border-primary">
           <Icon className="w-5 h-5" />
           <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{(page - 1) * itemsPerPage + idx + 1}</span>
         </div>
@@ -336,7 +336,7 @@ const LocationsPage = () => {
 
   const renderListRow = (item, idx, { Icon, title, subtitle, onEdit, onDelete, page, itemsPerPage }) => (
     <section key={item._id} className="bg-background-surface rounded-xl border border-border-primary p-3 flex items-center gap-3 relative">
-      <div className="relative w-10 h-10 rounded-xl text-on-primary flex items-center justify-center shrink-0 bg-primary-600">
+      <div className="relative w-10 h-10 rounded-xl text-primary-600 flex items-center justify-center shrink-0 border border-border-primary">
         <Icon className="w-5 h-5" />
         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full text-on-primary text-[9px] font-bold flex items-center justify-center z-10 ring-2 ring-white dark:ring-slate-800 bg-primary-600">{(page - 1) * itemsPerPage + idx + 1}</span>
       </div>
@@ -428,8 +428,8 @@ const LocationsPage = () => {
           {stateModal && (
             <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setStateModal(false)} className="absolute inset-0 bg-[#0A0F1E]/90" />
-              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-background-surface dark:bg-[#0A0F1E] rounded-3xl border border-border-primary overflow-hidden">
-                <section className="p-4 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-background-surface dark:bg-black rounded-3xl border border-border-primary overflow-hidden">
+                <section className="p-4 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50">
                   <h2 className="text-lg font-bold text-content-primary italic tracking-tight">{editingState ? 'Edit' : 'Add'} State</h2>
                   <button aria-label="Close" onClick={() => setStateModal(false)} className="p-3 bg-background-surface-secondary text-content-muted hover:text-content-primary dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>
                 </section>
@@ -449,8 +449,8 @@ const LocationsPage = () => {
           {cityModal && (
             <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setCityModal(false)} className="absolute inset-0 bg-[#0A0F1E]/90" />
-              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-background-surface dark:bg-[#0A0F1E] rounded-3xl border border-border-primary overflow-hidden">
-                <section className="p-4 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-background-surface dark:bg-black rounded-3xl border border-border-primary overflow-hidden">
+                <section className="p-4 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50">
                   <h2 className="text-lg font-bold text-content-primary italic tracking-tight">{editingCity ? 'Edit' : 'Add'} City</h2>
                   <button aria-label="Close" onClick={() => setCityModal(false)} className="p-3 bg-background-surface-secondary text-content-muted hover:text-content-primary dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>
                 </section>

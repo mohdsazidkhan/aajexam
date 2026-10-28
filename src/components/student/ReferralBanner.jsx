@@ -58,7 +58,7 @@ const ReferralBanner = ({ user }) => {
     { icon: Wallet, label: 'You earn rewards' },
   ];
 
-  const optionBtn = 'flex items-center justify-center gap-2 px-4 py-3 bg-background-surface ring-1 ring-primary-200 text-primary-600 dark:bg-white/15 dark:hover:bg-white/25 dark:ring-white/30 dark:text-white text-xs font-bold uppercase tracking-[0.08em] transition-colors';
+  const optionBtn = 'flex items-center justify-center gap-2 px-4 py-3 bg-background-surface ring-1 ring-primary-200 text-primary-600 dark:ring-white/30 dark:text-white text-xs font-bold uppercase tracking-[0.08em] transition-colors';
 
   return (
     <section
@@ -73,7 +73,7 @@ const ReferralBanner = ({ user }) => {
         <div className="p-5 xl:p-8 space-y-5">
           {/* Header */}
           <div className="flex items-start gap-3 xl:gap-4">
-            <div className="shrink-0 w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 12 }}>
+            <div className="shrink-0 w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 12 }}>
               <Gift className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
             <div className="min-w-0">
@@ -93,7 +93,7 @@ const ReferralBanner = ({ user }) => {
           </div>
 
           {/* Coupon: dashed box with the code */}
-          <div className="bg-white/70 dark:bg-black/20 border border-dashed border-primary-400 dark:border-white/45 p-3 xl:p-4" style={{ borderRadius: 12 }}>
+          <div className="dark:bg-black/20 border border-dashed border-primary-400 dark:border-white/45 p-3 xl:p-4" style={{ borderRadius: 12 }}>
             <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/70 mb-2">{translate('Your Invitation Code')}</p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-3">
               <div className="flex-1 min-w-0 font-mono font-bold text-2xl xl:text-3xl tracking-[0.08em] text-primary-600 select-all truncate">
@@ -112,8 +112,8 @@ const ReferralBanner = ({ user }) => {
           {/* How it works */}
           <div className="grid grid-cols-3 gap-2">
             {steps.map((st, i) => (
-              <div key={st.label} className="flex flex-col items-center text-center gap-1.5 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/15 px-2 py-3" style={{ borderRadius: 10 }}>
-                <div className="relative w-9 h-9 flex items-center justify-center text-primary-600 dark:bg-white/15 dark:text-white" style={{ borderRadius: 10 }}>
+              <div key={st.label} className="flex flex-col items-center text-center gap-1.5 ring-1 ring-primary-200 dark:ring-white/15 px-2 py-3" style={{ borderRadius: 10 }}>
+                <div className="relative w-9 h-9 flex items-center justify-center text-primary-600 dark:text-white" style={{ borderRadius: 10 }}>
                   <st.icon className="w-4 h-4" />
                   <span className="absolute -top-1.5 -right-1.5 w-4 h-4 flex items-center justify-center bg-primary-300 text-primary-950 text-[9px] font-bold" style={{ borderRadius: '50%' }}>{i + 1}</span>
                 </div>
@@ -162,7 +162,7 @@ const ReferralBanner = ({ user }) => {
           <span className="xl:hidden absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
           <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
 
-          <div className="w-12 h-12 flex items-center justify-center bg-background-surface ring-1 ring-primary-200 text-primary-600 dark:bg-white/15 dark:ring-white/25 dark:text-white" style={{ borderRadius: 12 }}>
+          <div className="w-12 h-12 flex items-center justify-center bg-background-surface ring-1 ring-primary-200 text-primary-600 dark:ring-white/25 dark:text-white" style={{ borderRadius: 12 }}>
             <Users className="w-6 h-6" />
           </div>
           <div>

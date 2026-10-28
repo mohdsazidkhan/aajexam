@@ -33,7 +33,7 @@ const PromoTopBar = () => {
   const { translate } = useTranslate();
   const text = translate('AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.');
   const gift = (
-    <span className="shrink-0 w-5 h-5 rounded-full bg-white/20 ring-1 ring-white/40 flex items-center justify-center animate-pulse">
+    <span className="shrink-0 w-5 h-5 rounded-full ring-1 ring-white/40 flex items-center justify-center animate-pulse">
       <Gift className="w-3 h-3" />
     </span>
   );
@@ -106,8 +106,8 @@ const PublicNavbar = () => {
       {promoActive && <PromoTopBar />}
       <header
         className={`fixed ${promoActive ? 'top-8' : 'top-0'} left-0 right-0 z-[100] pointer-events-none ${scrolled
-          ? 'py-2.5 bg-background-page border-b border-border-primary'
-          : 'py-2.5 bg-background-page border-b border-border-primary'
+          ? 'py-2.5 bg-background-surface border-b border-border-primary'
+          : 'py-2.5 bg-background-surface border-b border-border-primary'
           }`}
       >
         <div className="container mx-auto px-4 xxl:px-0 pointer-events-auto">

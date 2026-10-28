@@ -122,7 +122,7 @@ const AdminUserAnalyticsDetail = () => {
 
                             {!loading && (
                                 <div className="flex flex-wrap items-center gap-3 xl:gap-3">
-                                    <div className="flex items-center gap-3 px-3 xl:px-4 py-2 bg-background-surface-secondary rounded-2xl border border-border-primary">
+                                    <div className="flex items-center gap-3 px-3 xl:px-4 py-2 rounded-2xl border border-border-primary">
                                         <Mail className="w-4 h-4 text-content-muted" />
                                         <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em]">{userData.email || 'N/A'}</span>
                                     </div>

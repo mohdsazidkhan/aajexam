@@ -48,7 +48,7 @@ const BackendStatusBanner = () => {
         >
           <div className="relative group">
             {/* Glassmorphism Container */}
-            <section className="bg-white/90 dark:bg-slate-900/90 border border-border-primary rounded-3xl p-6 flex flex-col xl:flex-row items-center gap-8 overflow-hidden transition-all duration-500">
+            <section className="dark:bg-slate-900/90 border border-border-primary rounded-3xl p-6 flex flex-col xl:flex-row items-center gap-8 overflow-hidden transition-all duration-500">
               {/* Background Tech Highlight */}
 
               {/* HUD Icon with Pulsing Effect */}

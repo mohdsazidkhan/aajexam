@@ -100,15 +100,15 @@ export default function SubjectDetail({
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <div className="bg-background-surface-secondary rounded-lg xl:rounded-xl p-3 text-center border border-border-primary">
+              <div className="rounded-lg xl:rounded-xl p-3 text-center border border-border-primary">
                 <div className="text-xl font-bold text-content-primary">{topics.length}</div>
                 <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Topics')}</div>
               </div>
-              <div className="bg-background-surface-secondary rounded-lg xl:rounded-xl p-3 text-center border border-border-primary">
+              <div className="rounded-lg xl:rounded-xl p-3 text-center border border-border-primary">
                 <div className="text-xl font-bold text-content-primary">{quizCount}</div>
                 <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Quizzes')}</div>
               </div>
-              <div className="bg-background-surface-secondary rounded-lg xl:rounded-xl p-3 text-center border border-border-primary">
+              <div className="rounded-lg xl:rounded-xl p-3 text-center border border-border-primary">
                 <div className="text-xl font-bold text-primary-600">{translate('FREE')}</div>
                 <div className="text-[10px] font-bold text-content-muted uppercase tracking-[0.08em]">{translate('Access')}</div>
               </div>
@@ -136,7 +136,7 @@ export default function SubjectDetail({
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
                 {topics.map((t) => (
-                  <Link key={t.slug} href={`/topics/${t.slug}`} className="group block bg-background-surface-secondary rounded-2xl p-4 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition">
+                  <Link key={t.slug} href={`/topics/${t.slug}`} className="group block rounded-2xl p-4 border border-border-primary hover:border-primary-300 dark:hover:border-primary-700 transition">
                     <div className="text-sm font-bold text-content-primary group-hover:text-primary-600 transition leading-tight">{translateData(t.name)}</div>
                   </Link>
                 ))}
@@ -155,7 +155,7 @@ export default function SubjectDetail({
               </h2>
               <div className="space-y-2 xl:space-y-4">
                 {faqs.map((f, i) => (
-                  <details key={i} className="group bg-background-surface-secondary rounded-2xl border border-border-primary p-5 cursor-pointer">
+                  <details key={i} className="group rounded-2xl border border-border-primary p-5 cursor-pointer">
                     <summary className="font-bold text-content-primary text-base xl:text-lg tracking-tight">{f.question}</summary>
                     <p className="mt-3 text-content-secondary font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
                   </details>

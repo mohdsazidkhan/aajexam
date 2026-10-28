@@ -97,7 +97,7 @@ const AdminProfilePage = () => {
       {/* Change password */}
       <section className="relative overflow-hidden bg-background-surface rounded-2xl border border-border-primary">
         <section className="relative flex items-center gap-3 px-4 py-2.5 text-content-primary border-b border-border-primary dark:border-transparent bg-background-surface">
-          <span className="relative w-9 h-9 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Lock className="w-4 h-4" /></span>
+          <span className="relative w-9 h-9 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Lock className="w-4 h-4" /></span>
           <section className="relative min-w-0">
             <h2 className="text-sm font-bold uppercase tracking-[0.08em] leading-tight">Change password</h2>
             <p className="text-[11px] font-bold text-primary-800/70 dark:text-white/70 leading-tight">Use a strong password to keep your account safe.</p>
@@ -120,7 +120,7 @@ const AdminProfilePage = () => {
                     type="button"
                     aria-label={showPass[item.id] ? 'Hide password' : 'Show password'}
                     onClick={() => setShowPass({ ...showPass, [item.id]: !showPass[item.id] })}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg text-content-muted hover:text-primary-600 dark:hover:bg-white/10 transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg text-content-muted hover:text-primary-600 transition-colors"
                   >
                     {showPass[item.id] ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>

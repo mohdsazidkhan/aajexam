@@ -34,7 +34,7 @@ export default function QuestionList({ questions = [], title = 'Questions with s
         {questions.map((q, qi) => {
           const correctIndex = (q.options || []).findIndex((o) => o.isCorrect);
           return (
-            <li key={q._id || qi} className="rounded-2xl border border-border-primary bg-background-surface-secondary p-5">
+            <li key={q._id || qi} className="rounded-2xl border border-border-primary p-5">
               <h3 className="text-base xl:text-lg font-bold text-content-primary leading-snug mb-1">
                 <span className="text-primary-600 mr-2">Q{qi + 1}.</span>
                 {q.questionText}

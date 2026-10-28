@@ -54,10 +54,9 @@ const TestStartModal = ({
   return (
     <div className="fixed inset-0 bg-slate-950/40 flex items-end sm:items-center justify-center z-[9999] p-2 sm:p-4 font-outfit">
       <div className="relative bg-background-surface p-4 sm:p-6 xl:p-10 max-w-lg w-full border border-border-primary max-h-[92vh] overflow-y-auto scrollbar-none animate-bounce-in" style={{ maxHeight: '92dvh', borderRadius: 20 }}>
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 z-10 bg-primary-600" />
         <div className="text-center">
           {/* Header */}
-          <div className="w-10 xl:w-20 h-10 xl:h-20 text-on-primary flex items-center justify-center mx-auto mb-6 bg-primary-600" style={{ borderRadius: 18 }}>
+          <div className="w-10 xl:w-20 h-10 xl:h-20 text-primary-600 flex items-center justify-center mx-auto mb-6 border border-border-primary" style={{ borderRadius: 18 }}>
             <FaSchool className="text-xl xl:text-3xl" />
           </div>
 
@@ -94,26 +93,26 @@ const TestStartModal = ({
 
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center bg-primary-600">
+                <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
                   <BookOpen className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{translateData(categoryName)}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center bg-primary-600">
+                <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{translateData(examTitle)}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center bg-primary-600">
+                <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
                   <Clock className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{durationText}</span>
               </div>
               {pattern?.totalMarks && (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center bg-primary-600">
+                  <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
                     <Trophy className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-bold text-content-secondary uppercase tracking-[0.08em] text-center">{translate('{count} Marks', { count: pattern.totalMarks })}</span>
@@ -121,7 +120,7 @@ const TestStartModal = ({
               )}
               {pattern?.negativeMarking > 0 ? (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center bg-primary-600">
+                  <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
                     <Info className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-bold text-content-primary uppercase tracking-[0.08em] text-center">
@@ -130,7 +129,7 @@ const TestStartModal = ({
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 text-on-primary rounded-lg xl:rounded-xl flex items-center justify-center bg-primary-600">
+                  <div className="w-10 h-10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center border border-border-primary">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] text-center">
@@ -152,7 +151,7 @@ const TestStartModal = ({
                 {sections.map((section, index) => (
                   <div
                     key={index}
-                    className="p-4 bg-background-surface-secondary rounded-2xl border border-border-primary text-left group hover:border-primary-500/50 transition-all"
+                    className="p-4 rounded-2xl border border-border-primary text-left group hover:border-primary-500/50 transition-all"
                   >
                     <p className="text-sm font-bold text-content-primary uppercase tracking-[0.08em] leading-none mb-2">
                       {section.name}
@@ -168,7 +167,7 @@ const TestStartModal = ({
           )}
 
           {/* Test Rules */}
-          <div className="bg-background-surface-secondary rounded-2xl sm:rounded-3xl p-4 sm:p-6 mb-4 sm:mb-8 border border-border-primary">
+          <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 mb-4 sm:mb-8 border border-border-primary">
             <h4 className="text-[10px] font-bold text-primary-600 uppercase tracking-[0.08em] mb-4 text-center">
               {translate('Test Instructions')}
             </h4>
@@ -188,7 +187,7 @@ const TestStartModal = ({
             </ul>
           </div>
 
-          <div className="bg-background-surface-secondary p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-border-primary mb-4 sm:mb-8 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all group">
+          <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-border-primary mb-4 sm:mb-8 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all group">
             <label className="flex items-center gap-3 sm:gap-4 cursor-pointer">
               <div className="relative shrink-0">
                 <input
@@ -211,7 +210,7 @@ const TestStartModal = ({
           <div className="flex gap-3 sm:gap-4 sticky bottom-0 -mx-4 sm:mx-0 px-4 sm:px-0 pt-3 pb-1 bg-background-surface">
             <button
               onClick={onClose}
-              className="flex-1 px-4 sm:px-6 py-4 sm:py-5 bg-background-surface-secondary text-content-secondary rounded-2xl sm:rounded-2xl text-[10px] font-bold uppercase tracking-[0.08em] border border-border-primary hover:bg-background-surface-secondary transition-all active:translate-y-1"
+              className="flex-1 px-4 sm:px-6 py-4 sm:py-5 text-content-secondary rounded-2xl sm:rounded-2xl text-[10px] font-bold uppercase tracking-[0.08em] border border-border-primary hover:bg-background-surface-secondary transition-all active:translate-y-1"
             >
               {translate('Cancel')}
             </button>

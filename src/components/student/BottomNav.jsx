@@ -63,7 +63,7 @@ const StudentBottomNav = () => {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed bottom-0 left-0 right-0 z-[70] max-h-[85%] flex flex-col rounded-t-3xl bg-background-surface border-t-4 border-primary-300"
+              className="fixed bottom-0 left-0 right-0 z-[70] max-h-[85%] flex flex-col rounded-t-3xl bg-background-surface border-t border-border-primary"
             >
               <div className="shrink-0">
                 <div className="flex justify-center pt-3 pb-2">
@@ -106,7 +106,7 @@ const StudentBottomNav = () => {
       </AnimatePresence>
 
       {/* Bottom Nav */}
-      <nav aria-label={translate('Main navigation')} className="xl:hidden fixed bottom-0 left-0 right-0 h-14 bg-background-surface border-t-2 border-border-primary flex items-stretch justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
+      <nav aria-label={translate('Main navigation')} className="xl:hidden fixed bottom-0 left-0 right-0 h-14 bg-background-surface border-t border-border-primary flex items-stretch justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
         {navItems.map((item) => {
           // Create — its own flex slot like every other item, just lifted up
           // by translate so it floats half above / half inside the bar.

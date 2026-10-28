@@ -171,7 +171,7 @@ function AnswerItem({
                 onChange={e => setReplyText(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && submitReply()}
                 placeholder={translate('Write a reply…')}
-                className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-border-primary bg-background-surface-secondary focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-border-primary focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <button onClick={submitReply} className="px-3 py-1.5 text-xs font-bold bg-primary-600 text-on-primary rounded-lg hover:bg-primary-600">
                 {translate('Post')}
@@ -302,7 +302,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
             onChange={e => setNewAnswer(e.target.value)}
             placeholder={translate('Write your answer…')}
             rows={3}
-            className="w-full text-sm px-3 py-2 rounded-lg border border-border-primary bg-background-surface-secondary focus:outline-none focus:ring-2 focus:ring-primary-500 resize-y"
+            className="w-full text-sm px-3 py-2 rounded-lg border border-border-primary focus:outline-none focus:ring-2 focus:ring-primary-500 resize-y"
           />
           <div className="mt-2 flex justify-end">
             <button
@@ -315,7 +315,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
           </div>
         </div>
       ) : (
-        <div className="mb-4 p-3 rounded-lg xl:rounded-xl border border-border-primary bg-background-surface-secondary text-center">
+        <div className="mb-4 p-3 rounded-lg xl:rounded-xl border border-border-primary text-center">
           <p className="text-sm text-content-muted">
             <Link href="/login" className="text-primary-600 font-bold hover:underline">{translate('Login')}</Link> to post an answer
           </p>

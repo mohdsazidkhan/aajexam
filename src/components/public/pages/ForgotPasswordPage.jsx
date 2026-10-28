@@ -108,7 +108,7 @@ const ForgotPasswordPage = () => {
                       <Mail className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-600 transition-colors" />
                       <input
                         type="email"
-                        className="w-full bg-background-surface-secondary border border-border-primary rounded-2xl p-6 pl-16 text-sm font-bold placeholder:text-slate-300 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:font-bold"
+                        className="w-full border border-border-primary rounded-2xl p-6 pl-16 text-sm font-bold placeholder:text-slate-300 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:font-bold"
                         placeholder={translate('Enter your email...')}
                         value={email}
                         onChange={e => setEmail(e.target.value?.toLowerCase())}

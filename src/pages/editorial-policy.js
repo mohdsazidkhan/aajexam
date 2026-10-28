@@ -66,7 +66,7 @@ export default function EditorialPolicy() {
                                 { step: 3, title:'Verification', desc:'Factual information cross-verified with authoritative sources and government publications.', color:'bg-primary-600'},
                                 { step: 4, title: 'Regular Updates', desc: 'Continuous monitoring and updating of syllabus changes and current affairs.', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <section key={idx} className="flex gap-6 p-6 bg-background-surface-secondary rounded-3xl border border-border-primary hover:border-primary-500/30 transition-all">
+                                <section key={idx} className="flex gap-6 p-6 rounded-3xl border border-border-primary hover:border-primary-500/30 transition-all">
                                     <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-bold text-2xl border-b-2 border-black/20`}>
                                         {item.step}
                                     </div>
@@ -89,7 +89,7 @@ export default function EditorialPolicy() {
                                 { title:'Clarity', desc:'Unambiguous and easily understood', color:'bg-primary-600'},
                                 { title: 'Calibration', desc: 'Appropriately calibrated difficulty', color: 'bg-primary-600' }
                             ].map((item, idx) => (
-                                <section key={idx} className="bg-white/5 border border-white/10 p-6 rounded-3xl flex flex-col items-center gap-4">
+                                <section key={idx} className="border border-white/10 p-6 rounded-3xl flex flex-col items-center gap-4">
                                     <div className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center">
                                         <FaCheckCircle className="text-white text-lg" />
                                     </div>
@@ -101,7 +101,7 @@ export default function EditorialPolicy() {
                     </section>
 
                     {/* User Feedback */}
-                    <section className="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-4 xl:p-8 mb-8">
+                    <section className="dark:bg-black/90 rounded-3xl p-4 xl:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-12 h-12 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center">
                                 <FaHandshake className="text-white text-2xl" />
@@ -119,7 +119,7 @@ export default function EditorialPolicy() {
                     </section>
 
                     {/* Corrections Policy */}
-                    <section className="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-4 xl:p-8 mb-8">
+                    <section className="dark:bg-black/90 rounded-3xl p-4 xl:p-8 mb-8">
                         <h2 className="text-2xl xl:text-3xl font-bold text-content-primary mb-6">Corrections and Updates Policy</h2>
                         <div className="space-y-2 xl:space-y-4 text-content-secondary text-lg leading-relaxed">
                             <p>

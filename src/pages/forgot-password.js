@@ -84,7 +84,7 @@ const ForgotPasswordPage = () => {
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300" />
                       <input
                         type="email" required
-                        className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary font-bold outline-none focus:border-primary-700 transition-all"
+                        className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border-primary font-bold outline-none focus:border-primary-700 transition-all"
                         placeholder="Enter your registered email"
                         value={email} onChange={e => setEmail(e.target.value)}
                       />

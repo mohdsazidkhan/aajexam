@@ -144,8 +144,8 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
 
   // Radii are inline throughout: styles/index.css forces every [class*="rounded"] to 8px !important.
   const panel = 'relative overflow-hidden bg-background-surface border border-border-primary';
-  const topLine = <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />;
-  const outlineLink = 'flex items-center justify-between gap-2 px-4 py-2.5 bg-background-surface-secondary border border-border-primary text-primary-600 font-bold text-sm hover:border-primary-500 hover:-translate-y-0.5 transition-all';
+  const topLine = null; // the green accent line was removed
+  const outlineLink = 'flex items-center justify-between gap-2 px-4 py-2.5 border border-border-primary text-primary-600 font-bold text-sm hover:border-primary-500 hover:-translate-y-0.5 transition-all';
   const related = (relatedBlogs || []).filter(r => r._id !== blog._id).slice(0, 6);
 
   return (
@@ -202,7 +202,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
 
               <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-dashed border-border-primary">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 text-on-primary flex items-center justify-center bg-primary-600" style={{ borderRadius: 12 }}>
+                  <div className="w-10 h-10 text-primary-600 flex items-center justify-center border border-border-primary" style={{ borderRadius: 12 }}>
                     <span className="font-bold text-sm">{blog.author?.name?.charAt(0) || 'A'}</span>
                   </div>
                   <div>
@@ -229,7 +229,6 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
               <img src={optimizedImage(blog.featuredImage) || '/default_banner.png'} alt={blog.featuredImageAlt || blog.title}
                 width={1200} height={630} fetchPriority="high" decoding="async"
                 className="w-full h-48 md:h-72 xl:h-96 object-cover" />
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary-600" />
             </div>
 
             {/* Content */}
@@ -337,7 +336,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
               <section key={g.key} className={`${panel} p-4 xl:p-5`} style={{ borderRadius: 16 }}>
                 {topLine}
                 <div className="flex items-center gap-2.5 mb-3">
-                  <span className="w-8 h-8 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}>
+                  <span className="w-8 h-8 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}>
                     <g.icon className="w-4 h-4" />
                   </span>
                   <h3 className="text-base font-bold text-content-primary uppercase tracking-tight">{g.title}</h3>
@@ -345,7 +344,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                 <ul className="space-y-1.5">
                   {sideLists[g.key].map((item) => (
                     <li key={item._id}>
-                      <Link href={g.href(item)} className="group flex items-center justify-between gap-2 px-3 py-2 bg-background-surface-secondary border border-border-primary text-sm font-bold text-content-secondary hover:border-primary-500 hover:text-primary-700 dark:hover:text-primary-600 transition-all" style={{ borderRadius: 10 }}>
+                      <Link href={g.href(item)} className="group flex items-center justify-between gap-2 px-3 py-2 border border-border-primary text-sm font-bold text-content-secondary hover:border-primary-500 hover:text-primary-700 dark:hover:text-primary-600 transition-all" style={{ borderRadius: 10 }}>
                         <span className="truncate">{g.label(item)}</span>
                         <ArrowRight className="w-3.5 h-3.5 shrink-0 text-primary-600 group-hover:translate-x-0.5 transition-transform" />
                       </Link>

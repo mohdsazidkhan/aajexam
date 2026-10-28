@@ -21,7 +21,7 @@ import useTranslate from '../../hooks/useTranslate';
 import { QUALIFICATIONS, GENDERS, HEARD_FROM, MIN_AGE_YEARS, MAX_AGE_YEARS } from '../../lib/constants/profileOptions';
 import { calcAge } from '../../lib/utils/age';
 
-const FIELD_CLASSNAME = 'w-full h-10 px-3 rounded-xl text-sm border border-border-primary bg-background-surface-secondary font-bold outline-none focus:border-primary-700 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-600';
+const FIELD_CLASSNAME = 'w-full h-10 px-3 rounded-xl text-sm border border-border-primary font-bold outline-none focus:border-primary-700 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-600';
 
 const SOCIAL_FIELDS = [
   { key: 'instagram', label: 'Instagram', icon: Instagram, placeholder: 'https://instagram.com/username' },
@@ -157,7 +157,7 @@ const SettingsPage = () => {
             eyebrow={translate('Settings')}
             title={translate('Settings')}
           >
-            <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-background-surface-secondary rounded-xl w-full sm:w-fit sm:max-w-[70%] border border-border-primary relative z-20 flex-shrink-0">
+            <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 rounded-xl w-full sm:w-fit sm:max-w-[70%] border border-border-primary relative z-20 flex-shrink-0">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
@@ -276,7 +276,7 @@ const SettingsPage = () => {
                                   { value: age.months, label: 'Months' },
                                   { value: age.days, label: 'Days' },
                                 ].map((part) => (
-                                  <div key={part.label} className="h-10 px-2 rounded-xl border border-border-primary bg-background-surface-secondary flex items-center justify-center gap-1">
+                                  <div key={part.label} className="h-10 px-2 rounded-xl border border-border-primary flex items-center justify-center gap-1">
                                     <div className="text-sm font-bold text-content-primary leading-none">{part.value}</div>
                                     <div className="text-[9px] font-bold uppercase tracking-[0.08em] text-content-muted leading-none">{translate(part.label)}</div>
                                   </div>

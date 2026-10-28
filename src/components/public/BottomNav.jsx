@@ -27,7 +27,7 @@ const PublicBottomNav = () => {
   ];
 
   return (
-    <nav className="xl:hidden fixed bottom-0 left-0 right-0 h-16 bg-background-page border-t border-border-primary flex items-center justify-around px-4 z-50">
+    <nav className="xl:hidden fixed bottom-0 left-0 right-0 h-16 bg-background-surface border-t border-border-primary flex items-center justify-around px-4 z-50">
       {navItems.map((item) => {
         const isActive = currentPath === item.path;
         return (

@@ -260,7 +260,7 @@ const FinancialAnalytics = () => {
 
                 {/* Performance Grids */}
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-4">
-                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-background-surface dark:bg-white/5 rounded-2xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 relative">
+                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-background-surface rounded-2xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 relative">
                     <div className="flex items-center justify-between mb-4 xl:mb-4">
                        <h3 className="text-[12px] font-bold text-content-primary uppercase tracking-[0.08em]">Subscription Tiers</h3>
                        <PieChart className="w-5 h-5 text-primary-600 opacity-30" />
@@ -270,7 +270,7 @@ const FinancialAnalytics = () => {
                     </div>
                   </motion.div>
 
-                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-background-surface dark:bg-white/5 rounded-2xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 relative">
+                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-background-surface rounded-2xl xl:rounded-3xl border border-border-primary p-3 xl:p-5 relative">
                     <div className="flex items-center justify-between mb-4 xl:mb-4">
                        <h3 className="text-[12px] font-bold text-content-primary uppercase tracking-[0.08em]">Revenue Over Time</h3>
                        <BarChart3 className="w-5 h-5 text-primary-600 opacity-30" />

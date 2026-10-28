@@ -144,10 +144,10 @@ const CouponOfferModal = () => {
               className="pointer-events-none absolute inset-0"
               style={{ backgroundImage: 'radial-gradient(circle at 12% 0%, rgba(255,255,255,0.22), transparent 45%), radial-gradient(circle at 100% 100%, rgba(255,255,255,0.16), transparent 50%)' }}
             />
-            <button aria-label={translate('Close')} onClick={close} className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/25 text-white transition">
+            <button aria-label={translate('Close')} onClick={close} className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full text-white transition">
               <X className="w-4 h-4" />
             </button>
-            <span className="relative inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em]">
+            <span className="relative inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em]">
               <Sparkles className="w-3.5 h-3.5" /> {translate(upcoming ? 'Coming soon' : 'Limited time offer')}
             </span>
             <p className="relative mt-4 text-6xl xl:text-7xl font-bold font-outfit leading-none tracking-tight">{offerText}</p>

@@ -311,7 +311,7 @@ const AdminBlogForm = () => {
 
           {/* Error */}
           {error && (
-            <div className="bg-background-surface-secondary border border-border-primary dark:border-white rounded-md p-4">
+            <div className="border border-border-primary dark:border-white rounded-md p-4">
               <p className="text-content-primary">{error}</p>
             </div>
           )}

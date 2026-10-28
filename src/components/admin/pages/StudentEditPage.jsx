@@ -16,7 +16,7 @@ import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext
 
 const IN = 'w-full px-3 py-2 bg-background-surface border border-border-primary rounded-lg text-sm font-semibold text-content-primary outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 disabled:opacity-60';
 const LB = 'block text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] mb-1';
-const TILE = 'w-8 h-8 shrink-0 flex items-center justify-center text-on-primary bg-primary-600';
+const TILE = 'w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary';
 
 const STATUSES = ['active', 'inactive', 'suspended', 'banned'];
 const SOCIAL_FIELDS = [
@@ -203,7 +203,7 @@ const StudentEditPage = ({ studentId }) => {
                 <div className="text-[10px] font-bold text-content-muted truncate">{original?.email}</div>
               </div>
               <div className="inline-flex p-1 rounded-full bg-background-surface border border-border-primary">
-                <Link href={`/admin/user-details/${original?.username || studentId}`} className="px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:hover:bg-white/10">Details</Link>
+                <Link href={`/admin/user-details/${original?.username || studentId}`} className="px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] text-content-secondary">Details</Link>
                 <span className="px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.08em] text-on-primary bg-primary-600">Edit</span>
               </div>
             </div>

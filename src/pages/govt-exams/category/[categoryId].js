@@ -126,7 +126,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
       <section className="space-y-8">
         <section className="flex justify-between items-center px-4">
           <h2 className="text-md md:text-xl xl:text-2xl font-bold text-content-primary tracking-tight">{translate('Available Exams')}</h2>
-          <span className="bg-background-surface-secondary px-5 py-2 rounded-2xl text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] border border-border-primary dark:border-slate-800">
+          <span className="px-5 py-2 rounded-2xl text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] border border-border-primary dark:border-slate-800">
             {translate('{count} TOTAL', { count: exams.length })}
           </span>
         </section>
@@ -163,7 +163,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
                   </div>
                 </div>
 
-                <div className="w-8 xl:w-12 h-8 xl:h-12 bg-background-surface-secondary rounded-2xl flex items-center justify-center text-content-muted group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:translate-x-1 border border-border-primary">
+                <div className="w-8 xl:w-12 h-8 xl:h-12 rounded-2xl flex items-center justify-center text-content-muted group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:translate-x-1 border border-border-primary">
                   <ChevronRight className="w-6 h-6" />
                 </div>
               </section>

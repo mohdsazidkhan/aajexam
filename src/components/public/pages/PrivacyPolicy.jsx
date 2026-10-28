@@ -149,7 +149,7 @@ const PrivacyPolicy = () => {
                               </div>
                            ))}
 
-                           <section className="ml-0 xl:ml-8 p-4 xl:p-6 dark:bg-white/5 rounded-[1rem] xl:rounded-3xl border-l-4 border-primary-600 space-y-6">
+                           <section className="ml-0 xl:ml-8 p-4 xl:p-6 rounded-[1rem] xl:rounded-3xl border-l-4 border-primary-600 space-y-6">
                               <div className="flex items-center gap-4 text-primary-600">
                                  <Zap className="w-6 h-6" />
                                  <h3 className="text-sm font-bold uppercase tracking-[0.08em]">Referral Rewards</h3>

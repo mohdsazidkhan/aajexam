@@ -252,7 +252,7 @@ export const MyRankCard = ({ entry, totalUsers }) => {
         <Trophy className="pointer-events-none absolute -right-2 -bottom-4 w-20 h-20 text-white/10" />
         {/* One row on desktop (rank · avatar · name · top % · stats); wraps on small screens */}
         <div className="relative flex flex-wrap items-center gap-x-3 gap-y-1.5">
-          <div className="flex items-baseline gap-1.5 rounded-xl bg-white/15 px-2.5 py-1 ring-1 ring-white/30">
+          <div className="flex items-baseline gap-1.5 rounded-xl px-2.5 py-1 ring-1 ring-white/30">
             <span className="text-sm sm:text-base font-bold uppercase tracking-wide text-white">{translate('Your Rank')}</span>
             <span className="text-xl sm:text-2xl font-bold leading-none text-primary-200">#{entry.rank}</span>
           </div>
@@ -271,7 +271,7 @@ export const MyRankCard = ({ entry, totalUsers }) => {
           </div>
           <div className="flex flex-wrap gap-1.5 xl:ml-auto">
             {chips.map((c) => (
-              <span key={c.label} className="inline-flex items-center gap-1 rounded-full bg-white/15 ring-1 ring-white/30 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-white">
+              <span key={c.label} className="inline-flex items-center gap-1 rounded-full ring-1 ring-white/30 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-white">
                 <span className="text-white/90">{c.label}</span>
                 <span className="font-bold text-primary-200">{c.value}</span>
               </span>

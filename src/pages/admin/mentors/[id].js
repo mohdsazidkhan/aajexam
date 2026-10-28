@@ -15,7 +15,7 @@ import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext
 const Panel = ({ icon: Icon, title, children, className = '' }) => (
   <section className={`relative overflow-hidden bg-background-surface rounded-2xl border border-border-primary ${className}`}>
     <section className="relative flex items-center gap-2.5 px-4 py-2.5 text-content-primary border-b border-border-primary dark:border-transparent bg-background-surface">
-      <span className="relative w-8 h-8 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></span>
+      <span className="relative w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></span>
       <h2 className="relative text-xs font-bold uppercase tracking-[0.08em]">{title}</h2>
     </section>
     <div className="p-4">{children}</div>
@@ -115,9 +115,9 @@ const AdminMentorDetail = () => {
                 { icon: Clock, value: mentor.preparationMonths || 0, label: 'Prep Months' },
                 { icon: MessageCircle, value: mentor.amaThreads?.length || 0, label: 'AMA Threads' },
               ].map((st) => (
-                <div key={st.label} className="relative overflow-hidden flex items-center gap-3 px-3 py-2.5 bg-white/80 hover:bg-background-surface dark:bg-white/10 dark:hover:bg-white/15 border border-border-primary transition-colors" style={{ borderRadius: 12 }}>
+                <div key={st.label} className="relative overflow-hidden flex items-center gap-3 px-3 py-2.5 hover:bg-background-surface border border-border-primary transition-colors" style={{ borderRadius: 12 }}>
                   <st.icon className="absolute -right-2 -bottom-2 w-12 h-12 text-primary-600/10 dark:text-white/10" />
-                  <span className="w-8 h-8 shrink-0 flex items-center justify-center text-on-primary bg-primary-600" style={{ borderRadius: 10 }}><st.icon className="w-4 h-4" /></span>
+                  <span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary-600 border border-border-primary" style={{ borderRadius: 10 }}><st.icon className="w-4 h-4" /></span>
                   <div className="min-w-0">
                     <p className="text-xl font-bold font-outfit leading-none text-primary-600">{st.value}</p>
                     <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.08em] text-content-secondary dark:text-white/75 leading-tight">{st.label}</p>
@@ -133,7 +133,7 @@ const AdminMentorDetail = () => {
               <Panel icon={Award} title="Exams Cleared">
                 <div className="space-y-2">
                   {mentor.examsCleared.map((e, i) => (
-                    <div key={i} className="flex items-center justify-between gap-2 flex-wrap px-3 py-2 rounded-xl dark:bg-white/5 border border-dashed border-primary-300 dark:border-white/15 text-xs">
+                    <div key={i} className="flex items-center justify-between gap-2 flex-wrap px-3 py-2 rounded-xl border border-dashed border-primary-300 dark:border-white/15 text-xs">
                       <span className="font-bold text-content-primary">{e.examName} ({e.year})</span>
                       <span className="flex flex-wrap gap-1.5">
                         {e.rank ? <span className="px-2 py-0.5 rounded-full text-primary-600 text-[10px] font-bold">Rank {e.rank}</span> : null}
@@ -203,7 +203,7 @@ const AdminMentorDetail = () => {
             <Panel icon={MessageCircle} title="AMA Threads">
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
                 {mentor.amaThreads.map((t, i) => (
-                  <div key={i} className="p-3 rounded-xl bg-background-surface-secondary border border-border-primary space-y-1.5">
+                  <div key={i} className="p-3 rounded-xl border border-border-primary space-y-1.5">
                     <p className="text-xs font-bold text-content-primary">Q: {t.question}</p>
                     <p className="text-[9px] font-bold text-content-muted">Asked by {t.askedBy?.name || 'Anonymous'} · {t.upvotes || 0} upvotes</p>
                     {t.answer ? (

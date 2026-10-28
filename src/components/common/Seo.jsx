@@ -47,7 +47,8 @@ const Seo = ({
       <meta name="description" content={description} />
       {keywordsString && <meta name="keywords" content={keywordsString} />}
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
-      <meta name="theme-color" content="#3b82f6" />
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-title" content={config.APP_NAME} />

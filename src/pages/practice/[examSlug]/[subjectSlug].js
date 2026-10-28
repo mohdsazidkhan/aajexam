@@ -167,7 +167,7 @@ export default function SubjectPractice({
               </h2>
               <div className="space-y-2 xl:space-y-4">
                 {faqs.map((f, i) => (
-                  <details key={i} className="group bg-background-surface-secondary rounded-2xl border border-border-primary p-5 cursor-pointer">
+                  <details key={i} className="group rounded-2xl border border-border-primary p-5 cursor-pointer">
                     <summary className="font-bold text-content-primary text-base xl:text-lg tracking-tight">{f.question}</summary>
                     <p className="mt-3 text-content-secondary font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
                   </details>

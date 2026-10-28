@@ -334,7 +334,7 @@ const AdminUserWallets = () => {
                       </div>
                     </div>
                     <div className="text-[10px] text-content-muted">Joined {formatDate(row.createdAt)}</div>
-                    <div className="p-2.5 bg-background-surface-secondary rounded-lg border border-border-primary flex items-center justify-between">
+                    <div className="p-2.5 rounded-lg border border-border-primary flex items-center justify-between">
                       <span className="text-[9px] font-bold text-content-muted uppercase">Balance</span>
                       <span className="text-sm font-bold text-primary-600 tabular-nums">{formatAmount(row.amount || row.walletBalance)}</span>
                     </div>

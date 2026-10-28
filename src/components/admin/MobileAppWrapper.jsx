@@ -66,7 +66,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
   return (
     <div className={`min-h-screen bg-background-page transition-colors duration-500 font-outfit`}>
       {showHeader && (
-        <header className="fixed top-0 left-0 right-0 z-[110] xl:hidden h-16 xl:h-20 bg-white/90 dark:bg-[#0A0F1E]/80 border-b border-border-primary px-4 flex items-center justify-between overflow-hidden">
+        <header className="fixed top-0 left-0 right-0 z-[110] xl:hidden h-16 xl:h-20 bg-white/90 dark:bg-black/80 border-b border-border-primary px-4 flex items-center justify-between overflow-hidden">
           {/* Decorative Pattern */}
           <div className="absolute inset-0 bg-grid-slate-900/[0.04] dark:bg-grid-slate-100/[0.04] pointer-events-none" />
 

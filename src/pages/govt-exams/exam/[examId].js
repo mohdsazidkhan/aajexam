@@ -415,7 +415,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {subjects.length > 0 ? subjects.map((subject) => (
-              <div key={subject._id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3 p-3 rounded-lg xl:rounded-xl bg-background-surface-secondary border border-border-primary">
+              <div key={subject._id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3 p-3 rounded-lg xl:rounded-xl border border-border-primary">
                 <span className="text-sm font-bold text-content-primary">{translateData(subject.name)}</span>
                 {subject.slug ? (
                   <button
@@ -431,7 +431,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 )}
               </div>
             )) : subjectAreas.map((subject) => (
-              <div key={subject} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3 p-3 rounded-lg xl:rounded-xl bg-background-surface-secondary border border-border-primary">
+              <div key={subject} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3 p-3 rounded-lg xl:rounded-xl border border-border-primary">
                 <span className="text-sm font-bold text-content-primary">{subject}</span>
                 <button
                   onClick={() => setActiveTab('quizzes')}

@@ -162,7 +162,7 @@ const RegisterPageInner = () => {
                 { icon: ShieldCheck, text: 'See your score and rank anytime' }
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 text-content-secondary font-bold">
-                  <div className="p-2 dark:bg-white/15 rounded-lg xl:rounded-xl">
+                  <div className="p-2 rounded-lg xl:rounded-xl">
                     <item.icon className="w-5 h-5 text-primary-600" />
                   </div>
                   <span className="text-sm font-bold tracking-[0.04em]">{pyqCount ? translate(item.text).replace(/500\+/, String(pyqCount)) : translate(item.text)}</span>
@@ -218,7 +218,7 @@ const RegisterPageInner = () => {
                   <input
                     type="text"
                     required
-                    className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                    className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                     placeholder={translate('Enter your full name')}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -234,7 +234,7 @@ const RegisterPageInner = () => {
                     <input
                       type="email"
                       required
-                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-border-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
                       placeholder={translate('Email')}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -252,7 +252,7 @@ const RegisterPageInner = () => {
                       pattern="[0-9]*"
                       maxLength={10}
                       required
-                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-border-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
                       placeholder={translate('10 digits')}
                       value={phone}
                       onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
@@ -268,7 +268,7 @@ const RegisterPageInner = () => {
                   <input
                     type={showPassword ? 'text' : 'password'}
                     required
-                    className="w-full pl-12 pr-12 py-4 rounded-2xl border border-border-primary bg-background-surface-secondary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                    className="w-full pl-12 pr-12 py-4 rounded-2xl border border-border-primary outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                     placeholder={translate('Create a password')}
                     value={password}
                     onChange={handlePasswordChange}

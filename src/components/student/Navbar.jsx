@@ -138,7 +138,7 @@ const StudentNavbar = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-[150] h-12 xl:h-16 bg-background-surface border-b-2 border-border-primary flex items-center">
+      <header className="fixed top-0 left-0 right-0 z-[150] h-12 xl:h-16 bg-background-surface border-b border-border-primary flex items-center">
         <div className="relative w-full mx-auto px-2 xl:px-4 flex items-center justify-between">
 
           {/* Left */}

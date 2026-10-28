@@ -172,7 +172,7 @@ const AdminReferralAnalytics = () => {
         },
         {
             key: 'referralCode', header: 'Referral Code', render: (_, user) => (
-                <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-background-surface-secondary border border-border-primary text-[9px] font-bold text-primary-600 italic">
+                <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-border-primary text-[9px] font-bold text-primary-600 italic">
                     <Hash className="w-3 h-3" /> {user.referralCode}
                 </div>
             )
@@ -367,11 +367,11 @@ const AdminReferralAnalytics = () => {
                                                     <p className="text-[10px] text-content-muted truncate">{user.email || 'No email'}</p>
                                                 </div>
                                                 <div className="grid grid-cols-2 gap-2 text-center">
-                                                    <div className="p-2 bg-background-surface-secondary rounded-lg border border-border-primary">
+                                                    <div className="p-2 rounded-lg border border-border-primary">
                                                         <div className="text-sm font-bold text-primary-600 tabular-nums">{user.totalReferrals}</div>
                                                         <div className="text-[9px] font-bold text-content-muted uppercase">Total</div>
                                                     </div>
-                                                    <div className="p-2 bg-background-surface-secondary rounded-lg border border-border-primary">
+                                                    <div className="p-2 rounded-lg border border-border-primary">
                                                         <div className="text-sm font-bold text-primary-600 tabular-nums">{user.monthlyReferrals}</div>
                                                         <div className="text-[9px] font-bold text-content-muted uppercase">Monthly</div>
                                                     </div>
@@ -402,11 +402,11 @@ const AdminReferralAnalytics = () => {
                                                     </div>
                                                 </div>
                                                 <div className="flex gap-2 shrink-0">
-                                                    <div className="px-3 py-1.5 bg-background-surface-secondary rounded-lg border border-border-primary text-center min-w-[90px]">
+                                                    <div className="px-3 py-1.5 rounded-lg border border-border-primary text-center min-w-[90px]">
                                                         <div className="text-sm font-bold text-primary-600 tabular-nums">{user.totalReferrals}</div>
                                                         <div className="text-[9px] font-bold text-content-muted uppercase">Total</div>
                                                     </div>
-                                                    <div className="px-3 py-1.5 bg-background-surface-secondary rounded-lg border border-border-primary text-center min-w-[90px]">
+                                                    <div className="px-3 py-1.5 rounded-lg border border-border-primary text-center min-w-[90px]">
                                                         <div className="text-sm font-bold text-primary-600 tabular-nums">{user.monthlyReferrals}</div>
                                                         <div className="text-[9px] font-bold text-content-muted uppercase">Monthly</div>
                                                     </div>

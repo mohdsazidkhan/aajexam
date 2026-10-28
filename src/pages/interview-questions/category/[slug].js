@@ -132,7 +132,7 @@ const CategoryDetailPage = () => {
         </div>
 
         <header className="z-auto relative isolate overflow-hidden border border-border-primary p-4 xl:p-6 flex items-center gap-3 bg-background-surface" style={{ borderRadius: 16 }}>
-          <div className="w-12 h-12 text-on-primary flex items-center justify-center shrink-0 bg-primary-600" style={{ borderRadius: 12 }}>
+          <div className="w-12 h-12 text-primary-600 flex items-center justify-center shrink-0 border border-border-primary" style={{ borderRadius: 12 }}>
             <Icon className="w-6 h-6" />
           </div>
           <div>

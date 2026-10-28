@@ -141,7 +141,7 @@ const Cell = ({ value }) => {
   const { translate } = useTranslate();
   if (value === true) return <span className="mx-auto w-5 h-5 xl:w-6 xl:h-6 flex items-center justify-center text-primary-600" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5 xl:w-4 xl:h-4" /></span>;
   if (value === false) return <X className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-slate-300 dark:text-slate-700 mx-auto" />;
-  return <span className="inline-block whitespace-nowrap px-2.5 py-0.5 text-[9px] xl:text-[10px] font-bold uppercase tracking-wide dark:bg-white/10 text-primary-600 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{translate(value)}</span>;
+  return <span className="inline-block whitespace-nowrap px-2.5 py-0.5 text-[9px] xl:text-[10px] font-bold uppercase tracking-wide text-primary-600 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{translate(value)}</span>;
 };
 
 const FeaturesPage = () => {
@@ -168,7 +168,7 @@ const FeaturesPage = () => {
               <div className="p-2.5 xl:p-4 bg-background-surface-secondary text-content-secondary" style={{ borderRadius: 14 }}>
                 <GraduationCap className="w-5 h-5 xl:w-7 xl:h-7" />
               </div>
-              <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] px-2.5 xl:px-3 py-1 bg-background-surface-secondary text-content-secondary border border-border-primary" style={{ borderRadius: 999 }}>{translate('Free forever')}</span>
+              <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.08em] px-2.5 xl:px-3 py-1 text-content-secondary border border-border-primary" style={{ borderRadius: 999 }}>{translate('Free forever')}</span>
             </div>
             <section>
               <h2 className="text-lg xl:text-2xl font-bold font-outfit tracking-tight">{translate('FREE')}</h2>
@@ -280,7 +280,7 @@ const FeaturesPage = () => {
                 </section>
                 <table className="w-full">
                   <thead className="border-b border-border-primary">
-                    <tr className="text-[8px] xl:text-[9px] font-bold uppercase tracking-[0.08em] text-content-muted dark:bg-white/5">
+                    <tr className="text-[8px] xl:text-[9px] font-bold uppercase tracking-[0.08em] text-content-muted">
                       <th className="text-left px-3 py-1.5 xl:px-6 xl:py-2 font-bold">{translate('Feature')}</th>
                       <th className="whitespace-nowrap px-2 xl:px-3 py-1.5 xl:py-2 font-bold">{translate('Free')}</th>
                       <th className="whitespace-nowrap px-2 xl:px-3 py-1.5 xl:py-2 font-bold">{translate('Pro')}</th>
@@ -311,7 +311,7 @@ const FeaturesPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 xl:gap-4 items-center justify-center">
                 <Button variant="primary" size="md" fullWidth icon={Crown} className="sm:w-fit" onClick={() => router.push('/student/subscription')}>{translate('Upgrade to PRO')}</Button>
-                <Button variant="secondary" size="md" fullWidth className="sm:w-fit !bg-background-surface !border-primary-200 !text-content-primary dark:!bg-white/5 dark:!border-white/10 dark:!text-white" onClick={() => router.push('/register')}>{translate('Start free')}</Button>
+                <Button variant="secondary" size="md" fullWidth className="sm:w-fit !bg-background-surface !border-primary-200 !text-content-primary dark:! dark:!border-white/10 dark:!text-white" onClick={() => router.push('/register')}>{translate('Start free')}</Button>
               </div>
             </section>
           </Card>
