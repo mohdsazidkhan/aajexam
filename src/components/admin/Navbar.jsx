@@ -84,25 +84,30 @@ const AdminNavbar = () => {
           {/* Left */}
           <div className="flex items-center gap-2 xl:gap-4 min-w-0 flex-1">
             {/* Desktop: hamburger + logo fill the sidebar's width (256px, less the header's 16px padding and the 16px gap before the title) so the page title starts exactly where the sidebar ends */}
-            <div className={`hidden xl:flex items-center gap-4 shrink-0 ${isSidebarOpen ? 'w-[calc(256px-2rem)]' : ''}`}>
+            <div className={`hidden xl:flex items-center gap-2 shrink-0 ${isSidebarOpen ? 'w-[calc(256px-2rem)]' : ''}`}>
               {/* Hamburger — desktop only (mobile version sits at the right end) */}
               <button
                 onClick={() => dispatch(toggleSidebar())}
                 aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={isSidebarOpen}
-                className={`hidden xl:flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 shrink-0 ${
+                className={`hidden xl:flex w-10 h-10 rounded-md border border-primary-600 items-center justify-center transition-all active:scale-95 shrink-0 ${
                   isSidebarOpen
-                    ? 'bg-background-surface-secondary text-content-secondary'
+                    ? 'text-primary-600'
                     : 'text-on-primary hover:scale-105 bg-primary-600'
                 }`}
               >
-                {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+                {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
 
               {/* Logo — desktop */}
-              <Link href="/admin/dashboard" className="hidden xl:flex items-center shrink-0">
-                <span className="text-2xl xl:text-3xl font-bold font-outfit tracking-tight text-content-primary">
-                  AAJ<span className="text-primary-600">EXAM</span>
+              <Link href="/admin/dashboard" className="hidden xl:flex items-start gap-1 shrink-0">
+                <span className="flex flex-col leading-none">
+                  <span className="text-2xl font-bold font-outfit tracking-tight text-content-primary">
+                    AAJ<span className="text-primary-600">EXAM</span>
+                  </span>
+                  <span className="text-[10px] font-bold text-content-muted tracking-[0.1em] uppercase mt-0.5">
+                    Prepare Your Exam Today
+                  </span>
                 </span>
               </Link>
 
