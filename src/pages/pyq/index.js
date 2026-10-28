@@ -234,6 +234,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                         {translate('Your target exams · Show all')}
                                     </button>
                                 )}
+                                <div className="flex w-full xl:w-auto items-center gap-2">
                                 <Select
                                     value={filterExam}
                                     onChange={onExamChange}
@@ -250,6 +251,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                     <option value="">{translate('All Years')}</option>
                                     {years.map((y) => <option key={y} value={y}>{y}</option>)}
                                 </Select>
+                                </div>
                             </div>
                         }
                     />

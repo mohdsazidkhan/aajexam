@@ -628,10 +628,10 @@ const AttemptQuizPage = () => {
   // ─── QUIZ IN PROGRESS ───
   return (
     <div className="min-h-screen bg-background-page overflow-x-hidden">
-      <div className="pt-3 pb-32 sm:pb-36">
+      <div className="pt-0 xl:pt-3 pb-32 sm:pb-36">
 
         {/* Quiz Header */}
-        <header className="z-auto relative overflow-hidden bg-background-surface border border-border-primary p-3 mb-3" style={{ borderRadius: 'var(--radius)' }}>
+        <header className="z-auto relative overflow-hidden bg-background-surface border border-border-primary p-2 mb-2 xl:p-3 xl:mb-3" style={{ borderRadius: 'var(--radius)' }}>
           {/* 3-column layout on desktop: left=title | center=dots | right=controls */}
           <div className="flex items-center mb-2">
             {/* Left: Logo + Title */}
@@ -640,7 +640,7 @@ const AttemptQuizPage = () => {
                 <BrainCircuit className="w-4 h-4" />
               </div>
               <div className="min-w-0">
-                <h1 title={quiz?.title} className="text-sm xl:text-lg font-bold text-content-primary truncate xl:max-w-none">{translateData(quiz?.title)}</h1>
+                <h1 title={quiz?.title} className="text-[13px] xl:text-lg font-bold text-content-primary leading-tight break-words">{translateData(quiz?.title)}</h1>
                 <p className="text-[10px] xl:text-xs text-content-muted">{translate('{count} Questions', { count: quiz.questions.length })}</p>
               </div>
             </div>
@@ -669,7 +669,7 @@ const AttemptQuizPage = () => {
             </div>
 
             {/* Right: Language + Timer + Fullscreen */}
-            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 xl:flex-1 justify-end">
+            <div className="hidden xl:flex items-center gap-1.5 sm:gap-2 shrink-0 xl:flex-1 justify-end">
               {/* Language */}
               <LanguageToggle
                 language={language}
@@ -677,11 +677,6 @@ const AttemptQuizPage = () => {
                 translating={translating}
                 className="flex shrink-0 items-center justify-center gap-1.5 min-w-[44px] sm:min-w-[52px] px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-slate-600 transition-colors"
               />
-              {/* Timer */}
-              <div className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm ${timeLeft <= 60 ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 animate-pulse' : 'dark:bg-white/10 text-primary-600 ring-1 ring-primary-200 dark:ring-white/15'}`}>
-                <Clock className="w-4 h-4" />
-                {formatTime(timeLeft)}
-              </div>
               {/* Fullscreen Toggle */}
               <button
                 onClick={toggleFullscreen}
@@ -697,15 +692,43 @@ const AttemptQuizPage = () => {
           <div className="w-full bg-background-surface-secondary rounded-full h-1.5">
             <div className="h-1.5 rounded-full transition-all duration-300 bg-primary-600" style={{ width: `${progress}%` }} />
           </div>
-          <div className="flex justify-between mt-1">
-            <span className="text-[10px] text-content-muted">{translate('Q {current}/{total}', { current: currentQuestionIndex + 1, total: quiz.questions.length })}</span>
-            <span className="text-[10px] text-content-muted">{translate('{count} answered', { count: answeredCount })}</span>
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center mt-1.5">
+            {/* Phones: counter + answered stacked on the left, language + fullscreen at the end of the row */}
+            <div className="flex flex-col gap-0.5">
+              <span className="text-[10px] text-content-muted">{translate('Q {current}/{total}', { current: currentQuestionIndex + 1, total: quiz.questions.length })}</span>
+              <span className="xl:hidden text-[10px] text-content-muted">{translate('{count} answered', { count: answeredCount })}</span>
+            </div>
+            {/* Timer, centred between the question counter and the answered count */}
+            <div className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm ${timeLeft <= 60 ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 animate-pulse' : 'dark:bg-white/10 text-primary-600 ring-1 ring-primary-200 dark:ring-white/15'}`}>
+              <Clock className="w-4 h-4" />
+              {formatTime(timeLeft)}
+            </div>
+            <div className="justify-self-end flex items-center gap-1.5">
+              <div className="flex xl:hidden items-center gap-1.5">
+              {/* Language */}
+              <LanguageToggle
+                language={language}
+                onToggle={toggleLanguage}
+                translating={translating}
+                className="flex shrink-0 items-center justify-center gap-1.5 min-w-[44px] sm:min-w-[52px] px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-slate-600 transition-colors"
+              />
+              {/* Fullscreen Toggle */}
+              <button
+                onClick={toggleFullscreen}
+                title={isFullscreen ? translate('Exit Fullscreen') : translate('Enter Fullscreen')}
+                className="flex shrink-0 items-center justify-center w-8 h-8 rounded-lg xl:rounded-xl bg-background-surface-secondary text-content-secondary hover:bg-background-surface-secondary dark:hover:bg-slate-600 transition-colors"
+              >
+                {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+              </button>
+              </div>
+              <span className="hidden xl:inline text-[10px] text-content-muted">{translate('{count} answered', { count: answeredCount })}</span>
+            </div>
           </div>
 
         </header>
 
         {/* Question Navigation Dots — mobile only, standalone card */}
-        <div className="xl:hidden bg-background-surface p-3 mb-3 border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
+        <div className="xl:hidden bg-background-surface p-2 mb-2 border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
           <div
             className="flex flex-nowrap gap-1.5 overflow-x-auto pb-0.5"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}

@@ -113,8 +113,6 @@ export default function QuizPreview({
                 <Link href={`/topics/${quiz.topic.slug}`} className="text-primary-600 hover:text-primary-600">{translateData(topicName)}</Link>
               </>
             )}
-            <span className="text-content-muted">/</span>
-            <span className="text-content-secondary truncate max-w-[60%]">{quizTitle}</span>
           </nav>
 
           {/* Hero — server-rendered */}
@@ -136,7 +134,7 @@ export default function QuizPreview({
             <p className="text-md xl:text-lg font-bold text-content-secondary dark:text-white/80 leading-relaxed max-w-3xl mb-5">
               {quiz?.description ? quiz.description.slice(0, 220) : `Free practice quiz on ${quizTitle} with detailed solutions for government exam preparation.`}
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-center">
+            <div className="grid grid-cols-3 gap-2 xl:gap-3 text-center">
               {quiz?.duration && (
                 <div className="border border-border-primary p-3">
                   <div className="text-lg font-bold text-content-primary">{quiz.duration}</div>

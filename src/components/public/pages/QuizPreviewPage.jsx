@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import Link from '@/components/common/AppLink';
 import {
@@ -93,30 +93,27 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
     <div className="bg-background-page">
       <div className="container mx-auto">
 
-        {/* Breadcrumb */}
-        <div className="mb-6 flex items-center gap-2 text-sm">
-          <button onClick={() => router.back()} className="flex items-center gap-1 text-primary-600 hover:underline">
-            <ArrowLeft className="w-4 h-4" /> Back
-          </button>
-          {quiz.applicableExams?.length > 0 && (
-            <>
-              <span className="text-content-muted">·</span>
-              <span className="text-content-muted">{quiz.applicableExams.map(e => e.name).join(', ')}</span>
-            </>
-          )}
-          {quiz.subject && (
-            <>
-              <span className="text-content-muted">·</span>
-              <span className="text-content-muted">{translateData(quiz.subject.name)}</span>
-            </>
-          )}
-          {quiz.topic && (
-            <>
-              <span className="text-content-muted">·</span>
-              <span className="text-content-muted">{translateData(quiz.topic.name)}</span>
-            </>
-          )}
-        </div>
+        {/* Breadcrumb: phones show only Back and the current (last) item on one row; desktop shows the whole trail */}
+        {(() => {
+          const trail = [
+            quiz.applicableExams?.length > 0 && { key: 'exam', text: quiz.applicableExams.map(e => e.name).join(', ') },
+            quiz.subject && { key: 'subject', text: translateData(quiz.subject.name) },
+            quiz.topic && { key: 'topic', text: translateData(quiz.topic.name) },
+          ].filter(Boolean);
+          return (
+            <div className="mb-6 flex items-center gap-2 text-sm min-w-0">
+              <button onClick={() => router.back()} className="flex shrink-0 items-center gap-1 text-primary-600 hover:underline">
+                <ArrowLeft className="w-4 h-4" /> Back
+              </button>
+              {trail.map((item, i) => (
+                <React.Fragment key={item.key}>
+                  <span className={`${i === trail.length - 1 ? 'inline' : 'hidden xl:inline'} text-content-muted`}>·</span>
+                  <span className={`${i === trail.length - 1 ? 'inline' : 'hidden xl:inline'} min-w-0 truncate text-content-muted`}>{item.text}</span>
+                </React.Fragment>
+              ))}
+            </div>
+          );
+        })()}
 
         {/* Quiz Header Card */}
         <header className="z-auto relative isolate overflow-hidden border border-border-primary p-5 xl:p-8 mb-6 bg-background-surface" style={{ borderRadius: 'var(--radius)' }}>

@@ -470,7 +470,7 @@ const PublicProfilePage = ({ username: ssrUsername, profile: ssrProfile, seo }) 
               <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1 no-scrollbar md:grid md:grid-cols-2 xl:grid-cols-3 md:overflow-visible md:pb-0 md:mx-0 md:px-0">
                 {cQuestions.map((q) => (
                   <Link href={`/community-questions/${q._id}`} key={q._id} className="snap-start shrink-0 w-[80%] sm:w-[55%] md:w-auto md:shrink">
-                    <div className="group relative h-full p-4 pl-5 ring-1 ring-primary-500/15 hover:ring-primary-500/45 hover:-translate-y-0.5 transition-all overflow-hidden" style={{ borderRadius: 'var(--radius)' }}>
+                    <div className="group relative h-full p-4 pl-5 bg-background-page border border-border-primary hover:border-primary-600 hover:-translate-y-0.5 transition-all overflow-hidden" style={{ borderRadius: 'var(--radius)' }}>
                       <span className="absolute left-0 inset-y-0 w-1.5 bg-primary-600" />
                       <p className="text-sm font-bold text-content-primary leading-snug line-clamp-2 group-hover:text-primary-700 dark:group-hover:text-primary-600 transition-colors">{q.question}</p>
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mt-3 text-[10px] sm:text-[11px] font-bold text-content-muted">
@@ -505,17 +505,17 @@ const PublicProfilePage = ({ username: ssrUsername, profile: ssrProfile, seo }) 
                   const displayTitle = reel.type === 'question' ? reel.questionText : reel.type === 'poll' ? reel.pollQuestion : reel.title;
                   return (
                     <Link href="/reels" key={reel._id} className="snap-start shrink-0">
-                      <div className="relative w-36 sm:w-44 aspect-[3/4] overflow-hidden group hover:-translate-y-1 transition-all bg-primary-600" style={{ borderRadius: 'var(--radius)' }}>
-                        <Icon className="pointer-events-none absolute -right-3 -bottom-3 w-24 h-24 text-white/10" />
+                      <div className="relative w-36 sm:w-44 aspect-[3/4] overflow-hidden group hover:-translate-y-1 transition-all bg-background-page border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
+                        <Icon className="pointer-events-none absolute right-3 top-3 w-5 h-5 text-primary-600/40" />
                         <div className="absolute inset-0 p-3.5 pb-10 flex flex-col justify-between">
                           <span className="inline-flex w-fit items-center gap-1 px-2 py-0.5" style={{ borderRadius: 'var(--radius-sm)' }}>
-                            <Icon className="w-3 h-3 text-white" />
-                            <span className="text-[8px] sm:text-[9px] font-bold text-white uppercase tracking-[0.08em]">{translate(config.label)}</span>
+                            <Icon className="w-3 h-3 text-primary-600" />
+                            <span className="text-[8px] sm:text-[9px] font-bold text-primary-600 uppercase tracking-[0.08em]">{translate(config.label)}</span>
                           </span>
-                          <p className="text-xs sm:text-[13px] font-bold text-white leading-snug line-clamp-5">{displayTitle || translate('Untitled')}</p>
+                          <p className="text-xs sm:text-[13px] font-bold text-content-primary leading-snug line-clamp-5">{displayTitle || translate('Untitled')}</p>
                         </div>
-                        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent px-3.5 pb-2.5 pt-7">
-                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-white/90"><Eye className="w-3 h-3" />{compact(reel.viewsCount)}</span>
+                        <div className="absolute bottom-0 inset-x-0 px-3.5 pb-2.5 pt-7">
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-content-secondary"><Eye className="w-3 h-3" />{compact(reel.viewsCount)}</span>
                         </div>
                       </div>
                     </Link>
