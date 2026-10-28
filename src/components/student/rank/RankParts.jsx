@@ -102,13 +102,13 @@ export const Podium = ({ top3, currentUserId }) => {
             >
               {isFirst && <Crown className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300 animate-bounce" />}
               <Avatar entry={entry} size="lg" ring />
-              {isMe && <span className="text-[9px] font-bold uppercase bg-background-surface text-primary-600 px-1.5 py-0.5 rounded-full">{translate('You')}</span>}
+              {isMe && <span className="text-[9px] font-bold uppercase bg-background-page border border-primary-600 text-primary-600 px-1.5 py-0.5 rounded-full">{translate('You')}</span>}
               <div className="text-center w-[76px] sm:w-24 px-1 mt-1.5 mb-1">
-                <p className="text-[10px] sm:text-[11px] font-bold leading-tight break-words text-white">
+                <p className="text-[10px] sm:text-[11px] font-bold leading-tight break-words text-content-primary">
                   {entry.name || entry.username || translate('User')}
                 </p>
               </div>
-              <div className={`w-[76px] sm:w-24 ${stepH[entry.rank] || 'h-9'} ${rc?.gradient || 'bg-border-secondary'} flex flex-col items-center justify-center`} style={{ borderRadius: '8px 8px 0 0' }}>
+              <div className={`w-[76px] sm:w-24 ${stepH[entry.rank] || 'h-9'} ${rc?.gradient || 'bg-border-secondary'} border border-b-0 border-border-primary flex flex-col items-center justify-center`} style={{ borderRadius: '8px 8px 0 0' }}>
                 <span className={`font-bold text-xs sm:text-sm leading-none ${rc?.badgeText || 'text-white'}`}>#{entry.rank}</span>
                 <span className={`mt-0.5 text-[9px] sm:text-[10px] font-bold uppercase leading-none opacity-80 ${rc?.badgeText || 'text-white'}`}>{formatTimeExact(entry.totalTimeSpent, 'exam')}</span>
               </div>
@@ -248,13 +248,13 @@ export const MyRankCard = ({ entry, totalUsers }) => {
   ];
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="sticky bottom-4 z-30 px-1">
-      <div className="relative overflow-hidden rounded-2xl text-on-primary px-3 py-2 bg-primary-600">
-        <Trophy className="pointer-events-none absolute -right-2 -bottom-4 w-20 h-20 text-white/10" />
+      <div className="relative overflow-hidden rounded-2xl text-content-primary px-3 py-2 bg-background-surface border border-border-primary">
+        <Trophy className="pointer-events-none absolute -right-2 -bottom-4 w-20 h-20 text-primary-600/10" />
         {/* One row on desktop (rank · avatar · name · top % · stats); wraps on small screens */}
         <div className="relative flex flex-wrap items-center gap-x-3 gap-y-1.5">
-          <div className="flex items-baseline gap-1.5 rounded-xl px-2.5 py-1 ring-1 ring-white/30">
-            <span className="text-sm sm:text-base font-bold uppercase tracking-wide text-white">{translate('Your Rank')}</span>
-            <span className="text-xl sm:text-2xl font-bold leading-none text-primary-200">#{entry.rank}</span>
+          <div className="flex items-baseline gap-1.5 rounded-xl px-2.5 py-1 border border-primary-600">
+            <span className="text-sm sm:text-base font-bold uppercase tracking-wide text-content-primary">{translate('Your Rank')}</span>
+            <span className="text-xl sm:text-2xl font-bold leading-none text-primary-600">#{entry.rank}</span>
           </div>
           <Avatar entry={entry} size="sm" />
 <div className="min-w-0">
@@ -263,17 +263,17 @@ export const MyRankCard = ({ entry, totalUsers }) => {
               {entry.subscriptionStatus === 'PRO' && <ProBadge size="xs" className="flex-shrink-0" />}
             </div>
             <div className="flex items-center gap-2 flex-wrap">
-              {entry.username && <p className="text-[10px] font-bold text-white/80 truncate">@{entry.username}</p>}
+              {entry.username && <p className="text-[10px] font-bold text-content-secondary truncate">@{entry.username}</p>}
               {topPct !== null && (
-                <p className="text-[10px] font-bold text-primary-200 whitespace-nowrap">{translate('Top {percent}% of {total} ranked students', { percent: topPct, total: totalUsers })}</p>
+                <p className="text-[10px] font-bold text-primary-600 whitespace-nowrap">{translate('Top {percent}% of {total} ranked students', { percent: topPct, total: totalUsers })}</p>
               )}
             </div>
           </div>
           <div className="flex flex-wrap gap-1.5 xl:ml-auto">
             {chips.map((c) => (
-              <span key={c.label} className="inline-flex items-center gap-1 rounded-full ring-1 ring-white/30 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-white">
-                <span className="text-white/90">{c.label}</span>
-                <span className="font-bold text-primary-200">{c.value}</span>
+              <span key={c.label} className="inline-flex items-center gap-1 rounded-full border border-primary-600 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-content-primary">
+                <span className="text-content-secondary">{c.label}</span>
+                <span className="font-bold text-primary-600">{c.value}</span>
               </span>
             ))}
           </div>

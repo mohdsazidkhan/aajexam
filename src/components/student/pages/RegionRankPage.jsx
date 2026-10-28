@@ -100,9 +100,9 @@ const RegionRankPage = ({ kind }) => {
           <div className="space-y-3 xl:space-y-4">
 
             {/* ── Hero Banner — same as All India Rank ── */}
-            <section className="relative rounded-2xl text-on-primary bg-primary-600">
+            <section className="relative rounded-2xl text-content-primary bg-background-surface border border-border-primary">
               <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
-              <Trophy className="absolute right-3 top-2 w-28 h-28 text-white/5 rotate-12" />
+              <Trophy className="absolute right-3 top-2 w-28 h-28 text-primary-600/10 rotate-12" />
               </div>
 
               <div className="relative z-40 grid grid-cols-1 xl:grid-cols-2 items-end gap-2 xl:gap-6 px-3 xl:px-6 pt-3 xl:pt-4 pb-0">
@@ -110,7 +110,7 @@ const RegionRankPage = ({ kind }) => {
                   <div className="flex flex-wrap items-center justify-center xl:justify-start gap-2 xl:gap-3">
                     <motion.h1
                       initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                      className="text-xl xl:text-3xl font-bold text-white tracking-tight leading-tight"
+                      className="text-xl xl:text-3xl font-bold text-content-primary tracking-tight leading-tight"
                     >
                       {translate(cfg.title)}
                     </motion.h1>
@@ -125,15 +125,15 @@ const RegionRankPage = ({ kind }) => {
                     </motion.div>
                   </div>
 
-                  <p className="text-[11px] xl:text-xs font-bold text-white/80 max-w-md mx-auto xl:mx-0 flex items-center justify-center xl:justify-start gap-1.5">
-                    <Trophy className="w-3.5 h-3.5 shrink-0 text-primary-300" />
+                  <p className="text-[11px] xl:text-xs font-bold text-content-secondary max-w-md mx-auto xl:mx-0 flex items-center justify-center xl:justify-start gap-1.5">
+                    <Trophy className="w-3.5 h-3.5 shrink-0 text-primary-600" />
                     {translate('Top 100 Student Rankings')}
                   </p>
 
                   {/* Place chip + exam filter, one row */}
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full max-w-xl mx-auto xl:mx-0 text-left">
                     {place && (
-                      <div className="inline-flex max-w-full sm:max-w-[45%] shrink-0 items-center gap-2 border border-white/30 text-white text-sm font-bold rounded-xl h-10 px-3">
+                      <div className="inline-flex max-w-full sm:max-w-[45%] shrink-0 items-center gap-2 border border-primary-600 text-primary-600 text-sm font-bold rounded-xl h-10 px-3">
                         <MapPin className="w-4 h-4 shrink-0" />
                         <span className="truncate">{place}</span>
                       </div>
