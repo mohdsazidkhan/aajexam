@@ -184,9 +184,9 @@ const HeroQuizCard = () => {
 
    return (
       <>
-         <div className="flex items-center justify-between gap-3 px-5 py-3.5 border-b border-border-primary">
+         <div className="flex items-center justify-between gap-3 px-2 py-2 xl:px-5 xl:py-3.5 border-b border-border-primary">
             <div className="flex items-center gap-3 min-w-0">
-               <h3 className="shrink-0 inline-flex items-center gap-2 text-lg xl:text-2xl font-bold tracking-tight text-primary-600"><Gift className="w-5 h-5 xl:w-6 xl:h-6" />{translate('Try Free Now')}</h3>
+               <h3 className="shrink-0 inline-flex items-center gap-2 text-lg xl:text-2xl font-bold tracking-tight text-primary-600"><Gift className="w-5 h-5 xl:w-6 xl:h-6" aria-hidden="true" /><span className="sr-only xl:not-sr-only">{translate('Try Free Now')}</span></h3>
                <div className="relative w-10 h-10 shrink-0">
                   <svg viewBox="0 0 36 36" className="w-10 h-10 -rotate-90" aria-hidden="true">
                      <circle cx="18" cy="18" r="15" fill="none" strokeWidth="3" style={{ stroke: 'var(--border-primary)' }} />
@@ -219,7 +219,7 @@ const HeroQuizCard = () => {
          </div>
 
          {done ? (
-            <div className="p-5 xl:p-6 pt-6 space-y-5 text-center">
+            <div className="p-2.5 xl:p-6 pt-3 xl:pt-6 space-y-2.5 xl:space-y-5 text-center">
                <div>
                   <p className="text-5xl xl:text-6xl font-extrabold font-outfit leading-none">{score}<span className="text-content-muted">/{total}</span></p>
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.08em] text-content-secondary">{translate('Correct')}</p>
@@ -365,8 +365,8 @@ const ModernLandingPage = () => {
       try {
          const res = await API.getPublicLandingStats();
          if (res.success) {
-            // Real DB counts, shown exactly (no inflated fallbacks, no rounding up)
-            const formatNum = (n) => (n >= 1000 ? `${(Math.floor(n / 100) / 10).toFixed(1)}K` : `${n || 0}`);
+            // Real DB counts, shown exactly (no inflated fallbacks, no rounding up, no K abbreviation)
+            const formatNum = (n) => (Number(n) || 0).toLocaleString('en-IN');
             setStats({
                activeStudents: formatNum(res.data?.activeStudents),
                totalExams: formatNum(res.data?.totalExams),
@@ -401,7 +401,7 @@ const ModernLandingPage = () => {
 
    return (
       <MobileAppWrapper showHeader={true} title={translate('Home')}>
-         <div className="container mx-auto px-3 xl:px-0 py-3 xl:py-4 space-y-3 xl:space-y-4">
+         <div className="container mx-auto px-0 py-3 xl:py-4 space-y-3 xl:space-y-4">
          <div className="xl:min-h-[calc(100vh-7.5rem)] flex flex-col gap-3 xl:gap-4">
          <section className="xl:flex-1 xl:flex xl:items-center bg-background-surface border border-border-primary text-content-primary">
             <div className="container mx-auto px-4 xl:px-6 w-full">
@@ -413,7 +413,7 @@ const ModernLandingPage = () => {
                         {translate('Trusted by students across India')}
                      </div>
 
-                     <h1 className="text-4xl xl:text-6xl font-extrabold font-outfit tracking-tight leading-[1.08]">
+                     <h1 className="text-3xl xl:text-6xl font-extrabold font-outfit tracking-tight leading-[1.08]">
                         {translate('Prepare Today.')}
                         <span className="block text-primary-600">{translate('Succeed Tomorrow.')}</span>
                      </h1>
@@ -518,7 +518,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Counts ── */}
-         <section className="bg-background-surface border border-border-primary p-4 xl:p-6">
+         <section className="bg-background-surface border border-border-primary p-0 xl:p-6">
             <div className="w-full">
                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-px rounded-2xl overflow-hidden bg-border-primary">
                   {[
@@ -530,9 +530,13 @@ const ModernLandingPage = () => {
                      { label: 'Questions', val: stats.totalQuestions, icon: Brain }
                   ].map((stat) => (
                      <div key={stat.label} className="p-4 xl:p-5 bg-background-surface">
-                        <stat.icon className="w-5 h-5 mb-3 text-primary-600" />
-                        <div className="text-2xl xl:text-3xl font-extrabold font-outfit leading-none tabular-nums">{stat.val}</div>
-                        <div className="mt-2 text-xs font-bold tracking-[0.08em] uppercase text-content-secondary">{translate(stat.label)}</div>
+                        <div className="flex items-center gap-3">
+                           <stat.icon className="w-6 h-6 xl:w-7 xl:h-7 shrink-0 text-primary-600" />
+                           <div className="min-w-0">
+                              <div className="text-xl xl:text-3xl font-extrabold font-outfit leading-none tabular-nums">{stat.val}</div>
+                              <div className="mt-2 text-xs font-bold tracking-[0.08em] uppercase text-content-secondary">{translate(stat.label)}</div>
+                           </div>
+                        </div>
                      </div>
                   ))}
                </div>
@@ -558,7 +562,7 @@ const ModernLandingPage = () => {
                </div>
 
                {/* Exam tiles */}
-               <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 mb-6">
+               <div className="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-6 gap-3 mb-6">
                   {stats.examStats && stats.examStats.length > 0 ? stats.examStats.map((exam) => (
                      <motion.div
                         key={exam._id}
