@@ -111,7 +111,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-md bg-background-surface rounded-2xl xl:rounded-3xl border border-border-primary p-4 xl:p-5 relative"
+            className="w-full max-w-md bg-background-surface rounded-2xl xl:rounded-3xl p-4 xl:p-5 relative border border-primary-600"
           >
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg xl:text-2xl font-bold italic tracking-tight flex items-center gap-2">

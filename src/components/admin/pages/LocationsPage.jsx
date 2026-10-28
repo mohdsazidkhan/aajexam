@@ -428,7 +428,7 @@ const LocationsPage = () => {
           {stateModal && (
             <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setStateModal(false)} className="absolute inset-0 bg-[#0A0F1E]/90" />
-              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-background-surface dark:bg-black rounded-3xl border border-border-primary overflow-hidden">
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-background-surface dark:bg-black rounded-3xl overflow-hidden border border-primary-600">
                 <section className="p-4 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50">
                   <h2 className="text-lg font-bold text-content-primary italic tracking-tight">{editingState ? 'Edit' : 'Add'} State</h2>
                   <button aria-label="Close" onClick={() => setStateModal(false)} className="p-3 bg-background-surface-secondary text-content-muted hover:text-content-primary dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>
@@ -449,7 +449,7 @@ const LocationsPage = () => {
           {cityModal && (
             <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setCityModal(false)} className="absolute inset-0 bg-[#0A0F1E]/90" />
-              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-background-surface dark:bg-black rounded-3xl border border-border-primary overflow-hidden">
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-background-surface dark:bg-black rounded-3xl overflow-hidden border border-primary-600">
                 <section className="p-4 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50">
                   <h2 className="text-lg font-bold text-content-primary italic tracking-tight">{editingCity ? 'Edit' : 'Add'} City</h2>
                   <button aria-label="Close" onClick={() => setCityModal(false)} className="p-3 bg-background-surface-secondary text-content-muted hover:text-content-primary dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>

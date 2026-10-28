@@ -189,7 +189,7 @@ const ProfileDetailsModal = () => {
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           role="dialog"
           aria-modal="true"
-          className="relative w-full max-w-md max-h-[92vh] overflow-y-auto bg-background-surface rounded-3xl border border-primary-500/20 p-5 sm:p-6"
+          className="relative w-full max-w-md max-h-[92vh] overflow-y-auto bg-background-surface rounded-3xl p-5 sm:p-6 border border-primary-600"
         >
           <button
             aria-label={translate('Close')}

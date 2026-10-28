@@ -246,7 +246,7 @@ const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
   ];
   return createPortal(
     <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60" onClick={onClose}>
-      <div onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-hidden relative bg-background-surface rounded-t-2xl sm:rounded-2xl border border-border-primary flex flex-col relative">
+      <div onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-hidden relative bg-background-surface rounded-t-2xl sm:rounded-2xl flex flex-col relative border border-primary-600">
         <div className="shrink-0 relative isolate overflow-hidden flex items-center justify-between gap-3 px-4 py-3 border-b border-border-primary dark:border-transparent bg-background-surface">
           <div className="min-w-0 flex items-center gap-3">
             <span className="w-10 h-10 shrink-0 flex items-center justify-center text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}><Tag className="w-5 h-5" /></span>
@@ -335,7 +335,7 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
   // Portal to <body>: inside the admin layout, `fixed` is clipped under the top header.
   return createPortal(
     <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60" onClick={onClose}>
-      <form onSubmit={submit} onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-y-auto bg-background-surface rounded-t-2xl sm:rounded-2xl border border-border-primary p-4 sm:p-4 flex flex-col gap-3 relative">
+      <form onSubmit={submit} onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-y-auto bg-background-surface rounded-t-2xl sm:rounded-2xl p-4 sm:p-4 flex flex-col gap-3 relative border border-primary-600">
         <div className="flex items-center justify-between">
           <h3 className="font-bold text-lg text-content-primary">{editing ? `Edit ${coupon.code}` : 'New coupon'}</h3>
           <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-content-muted hover:bg-background-surface-secondary"><X className="w-5 h-5" /></button>

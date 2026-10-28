@@ -97,7 +97,7 @@ const ExitIntentModalInner = ({ onClose }) => {
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative w-full max-w-md bg-background-surface rounded-3xl border border-primary-500/30 overflow-hidden max-h-[70vh] flex flex-col"
+        className="relative w-full max-w-md bg-background-surface rounded-3xl overflow-hidden max-h-[70vh] flex flex-col border border-primary-600"
       >
         {/* Header: gradient band with the offer */}
         <div className="relative shrink-0 px-5 pt-5 pb-5 text-center text-on-primary overflow-hidden bg-primary-600">

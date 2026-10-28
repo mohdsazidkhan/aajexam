@@ -355,7 +355,7 @@ const AttemptQuizPage = () => {
   if (showExitConfirm) {
     return (
       <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[60] p-4">
-        <section className="relative overflow-hidden bg-background-surface p-6 max-w-md w-full border border-border-primary" style={{ borderRadius: 'var(--radius)' }}>
+        <section className="relative overflow-hidden bg-background-surface p-6 max-w-md w-full border border-primary-600" style={{ borderRadius: 'var(--radius)' }}>
           <div className="text-center">
             <div className="w-14 h-14 flex items-center justify-center mx-auto mb-4 text-primary-600 border border-primary-600" style={{ borderRadius: 'var(--radius-sm)' }}>
               <AlertTriangle className="w-7 h-7" />

@@ -53,7 +53,7 @@ const TestStartModal = ({
 
   return (
     <div className="fixed inset-0 bg-slate-950/40 flex items-end sm:items-center justify-center z-[9999] p-2 sm:p-4 font-outfit">
-      <div className="relative bg-background-surface p-4 sm:p-6 xl:p-10 max-w-lg w-full border border-border-primary max-h-[92vh] overflow-y-auto scrollbar-none animate-bounce-in" style={{ maxHeight: '92dvh', borderRadius: 'var(--radius)' }}>
+      <div className="relative bg-background-surface p-4 sm:p-6 xl:p-10 max-w-lg w-full max-h-[92vh] overflow-y-auto scrollbar-none animate-bounce-in border border-primary-600" style={{ maxHeight: '92dvh', borderRadius: 'var(--radius)' }}>
         <div className="text-center">
           {/* Header: icon on the left, title on the right */}
           <div className="flex items-center justify-center gap-3 mb-3 xl:mb-6">

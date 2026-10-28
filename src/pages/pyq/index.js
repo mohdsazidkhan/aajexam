@@ -321,7 +321,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
 
                             {/* Modal card */}
                             <div
-                                className="relative w-full max-w-lg bg-background-surface rounded-3xl border border-border-primary overflow-hidden"
+                                className="relative w-full max-w-lg bg-background-surface rounded-3xl overflow-hidden border border-primary-600"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 {/* Dark header */}

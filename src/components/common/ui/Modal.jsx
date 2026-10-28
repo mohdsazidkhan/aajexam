@@ -111,7 +111,7 @@ const Modal = ({
             className={`
  relative bg-background-surface ${sizes[size]}
               ${size === 'fullscreen' ? 'rounded-none' : 'rounded-2xl xl:rounded-3xl'}
- border border-border-primary
+ border border-primary-600
               font-outfit overflow-hidden
               ${className}
             `}

@@ -133,7 +133,7 @@ const CityPromptModal = () => {
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="relative w-full max-w-md bg-background-surface rounded-3xl border border-primary-500/20 p-5 sm:p-6"
+          className="relative w-full max-w-md bg-background-surface rounded-3xl p-5 sm:p-6 border border-primary-600"
         >
           <button aria-label={translate('Close')}
             onClick={handleClose}

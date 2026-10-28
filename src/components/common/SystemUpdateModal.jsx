@@ -31,7 +31,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
       />
 
       <div
-        className={`relative bg-background-surface rounded-3xl max-w-4xl w-full max-h-[75vh] overflow-y-auto transition-all duration-500 transform border border-border-primary font-outfit scrollbar-none ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        className={`relative bg-background-surface rounded-3xl max-w-4xl w-full max-h-[75vh] overflow-y-auto transition-all duration-500 transform font-outfit scrollbar-none border border-primary-600 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
       >
         {/* HEADER */}
         <div className="bg-primary-600 text-on-primary p-4 xl:p-10 rounded-t-[2.5rem] border-b-2 border-white/20">

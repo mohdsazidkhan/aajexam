@@ -101,7 +101,7 @@ const UsersModal = ({ kind, range, segment, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-3" onClick={onClose}>
-      <div className="w-full max-w-4xl h-[70vh] min-h-[70vh] max-h-[70vh] flex flex-col overflow-hidden bg-background-surface rounded-2xl border border-border-primary relative" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
+      <div className="w-full max-w-4xl h-[70vh] min-h-[70vh] max-h-[70vh] flex flex-col overflow-hidden bg-background-surface rounded-2xl relative border border-primary-600" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
         <div className="flex items-start justify-between gap-3 p-4 border-b border-border-primary">
           <div>
             <div className="text-sm font-bold text-content-primary">{isSignup ? 'Signed up' : 'Logged in'} · {range.label}</div>

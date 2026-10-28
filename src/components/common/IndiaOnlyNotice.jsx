@@ -75,7 +75,7 @@ const IndiaOnlyNotice = () => {
 
   return (
     <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/80 p-4" role="alertdialog" aria-modal="true" aria-labelledby="india-only-title" aria-describedby="india-only-desc">
-      <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-background-surface ring-1 ring-rose-500/30">
+      <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-background-surface border border-primary-600">
         {/* warning stripe */}
         <div className="h-2 w-full bg-[repeating-linear-gradient(45deg,#f59e0b,#f59e0b_14px,#111827_14px,#111827_28px)]" aria-hidden="true" />
 

@@ -86,7 +86,7 @@ const AnnouncementViewModal = ({ announcement, onClose }) => {
   const a = announcement;
   return (
     <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/60" onClick={onClose}>
-      <section className="w-full max-w-lg max-h-[85vh] overflow-auto bg-background-surface rounded-2xl border border-border-primary p-4 flex flex-col gap-3 relative" onClick={(e) => e.stopPropagation()}>
+      <section className="w-full max-w-lg max-h-[85vh] overflow-auto bg-background-surface rounded-2xl p-4 flex flex-col gap-3 relative border border-primary-600" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
             <div className="w-10 h-10 rounded-md text-primary-600 flex items-center justify-center shrink-0 border border-primary-600">

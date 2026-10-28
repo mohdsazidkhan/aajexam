@@ -399,7 +399,7 @@ const ModernLandingPage = () => {
 
    return (
       <MobileAppWrapper showHeader={true} title={translate('Home')}>
-         <div className="container mx-auto px-3 xl:px-4 py-3 xl:py-4 space-y-3 xl:space-y-4">
+         <div className="container mx-auto px-3 xl:px-0 py-3 xl:py-4 space-y-3 xl:space-y-4">
          <div className="xl:min-h-[calc(100vh-7.5rem)] flex flex-col gap-3 xl:gap-4">
          <section className="xl:flex-1 xl:flex xl:items-center bg-background-surface border border-border-primary text-content-primary">
             <div className="container mx-auto px-4 xl:px-6 w-full">

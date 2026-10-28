@@ -831,7 +831,7 @@ const StudentsPage = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ type: 'tween', duration: 0.2 }}
-                className="relative w-full max-w-md bg-background-surface dark:bg-black rounded-3xl border border-border-primary overflow-hidden"
+                className="relative w-full max-w-md bg-background-surface dark:bg-black rounded-3xl overflow-hidden border border-primary-600"
               >
                 <section className="p-4 border-b-2 border-border-primary flex items-center justify-between bg-slate-50/50">
                   <div className="flex items-center gap-3">

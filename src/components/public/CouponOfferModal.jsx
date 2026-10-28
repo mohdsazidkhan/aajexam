@@ -135,7 +135,7 @@ const CouponOfferModal = () => {
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="relative w-full max-w-md xl:max-w-lg max-h-[92vh] overflow-y-auto bg-background-surface rounded-3xl border border-primary-500/20"
+          className="relative w-full max-w-md xl:max-w-lg max-h-[92vh] overflow-y-auto bg-background-surface rounded-3xl border border-primary-600"
         >
           {/* Hero */}
           <div className="relative overflow-hidden px-6 pt-8 pb-10 xl:pt-10 xl:pb-12 text-center text-on-primary bg-primary-600">
