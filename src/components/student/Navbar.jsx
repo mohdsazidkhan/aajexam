@@ -178,9 +178,9 @@ const StudentNavbar = () => {
             </Link>
           </div>
 
-          {/* Active page title — desktop: starts where the sidebar ends (240px) so it lines up with the page content */}
+          {/* Active page title — desktop: starts where the sidebar ends (256px) so it lines up with the page content */}
           {pageTitle && (
-            <p className="hidden xl:block absolute left-[256px] top-1/2 -translate-y-1/2 max-w-[13rem] 2xl:max-w-[22rem] truncate pl-3 border-l-4 border-primary-600 dark:border-primary-300 leading-tight text-lg font-bold tracking-tight text-content-primary">
+            <p className="hidden xl:block absolute left-[256px] top-1/2 -translate-y-1/2 max-w-[13rem] 2xl:max-w-[22rem] truncate pl-3 border-l-4 border-primary-600 leading-tight text-lg font-bold tracking-tight text-content-primary">
               {translate(pageTitle)}
             </p>
           )}

@@ -113,7 +113,7 @@ const AdminNavbar = () => {
 
             {/* Page title + count — shown right after the logo (web + mobile) */}
             {header.title && (
-              <div className="flex items-center gap-1 xl:gap-2 min-w-0 pl-2 xl:pl-4 ml-0 xl:ml-1 border-l border-border-primary">
+              <div className="flex items-center gap-1 xl:gap-2 min-w-0 pl-2 xl:pl-4 ml-0 xl:ml-1 border-l border-primary-600">
                 <span className="text-sm xl:text-lg font-bold text-content-primary truncate">{header.title}</span>
                 {header.count !== null && header.count !== undefined && (
                   <span className="text-xs xl:text-sm font-bold text-content-muted shrink-0">({header.count})</span>

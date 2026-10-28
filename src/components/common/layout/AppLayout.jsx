@@ -137,8 +137,8 @@ const AppLayout = ({ children }) => {
         {showAppNav && !isUserAdmin && <StudentSidebar />}
         <main
           style={{
-            marginLeft: shouldShiftContent ? '240px' : '0px',
-            width: shouldShiftContent ? 'calc(100% - 240px)' : '100%',
+            marginLeft: shouldShiftContent ? '256px' : '0px',
+            width: shouldShiftContent ? 'calc(100% - 256px)' : '100%',
             transition: 'margin-left 0.3s ease-in-out, width 0.3s ease-in-out',
           }}
           className="pt-12 xl:pt-16"
@@ -175,8 +175,8 @@ const AppLayout = ({ children }) => {
           className="h-full xl:pt-16 transition-all duration-300"
           style={{
             overflow: 'hidden',
-            marginLeft: shouldShiftContent ? '240px' : '0px',
-            width: shouldShiftContent ? 'calc(100% - 240px)' : '100%',
+            marginLeft: shouldShiftContent ? '256px' : '0px',
+            width: shouldShiftContent ? 'calc(100% - 256px)' : '100%',
           }}
         >
           {children}
@@ -223,8 +223,8 @@ const AppLayout = ({ children }) => {
       {/* --- Main Content Area --- */}
       <div
         style={{
-          marginLeft: shouldShiftContent ? '240px' : '0px',
-          width: shouldShiftContent ? 'calc(100% - 240px)' : '100%',
+          marginLeft: shouldShiftContent ? '256px' : '0px',
+          width: shouldShiftContent ? 'calc(100% - 256px)' : '100%',
           transition: 'margin-left 0.3s ease-in-out, width 0.3s ease-in-out',
         }}
         className={`min-h-screen

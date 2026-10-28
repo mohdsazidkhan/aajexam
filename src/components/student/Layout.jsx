@@ -123,7 +123,7 @@ const StudentLayout = ({ children }) => {
             <StudentSidebar />
           </ClientOnly>
         )}
-        <main className={`flex-1 min-w-0 w-full min-h-[calc(100vh-64px)] overflow-x-hidden transition-[margin-left,width] duration-300 ease-in-out [&_.container]:w-full ${showSidebar && isOpen ? 'md:ml-[240px] md:w-[calc(100%-240px)]' : ''}`}>
+        <main className={`flex-1 min-w-0 w-full min-h-[calc(100vh-64px)] overflow-x-hidden transition-[margin-left,width] duration-300 ease-in-out [&_.container]:w-full ${showSidebar && isOpen ? 'md:ml-[256px] md:w-[calc(100%-256px)]' : ''}`}>
           {children}
         </main>
       </div>

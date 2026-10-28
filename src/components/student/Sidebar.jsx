@@ -192,12 +192,12 @@ const StudentSidebar = () => {
 
   return (
     <aside
-      className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-background-surface border-r border-border-primary overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
+      className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-background-surface border-r border-border-primary overflow-hidden ${isOpen ? 'translate-x-0 w-64' : '-translate-x-full w-0 opacity-0'
         }`}
     >
 
       {/* Navigation */}
-      <nav ref={navRef} aria-label={translate('Sidebar navigation')} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium min-w-[240px] relative z-10">
+      <nav ref={navRef} aria-label={translate('Sidebar navigation')} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium min-w-[256px] relative z-10">
         {displaySections.map((section, idx) => (
           <section key={idx}>
             <h3 className="text-[11px] font-bold text-primary-600 uppercase tracking-[0.08em] px-2 mb-2">
@@ -232,7 +232,7 @@ const StudentSidebar = () => {
       </nav>
 
       {/* Logout */}
-      <div className="p-4 border-t border-border-primary min-w-[240px]">
+      <div className="p-4 border-t border-border-primary min-w-[256px]">
         <button
           onClick={() => secureLogout(router)}
           className="w-full py-3 rounded-lg xl:rounded-xl hover:brightness-110 text-white text-[11px] font-bold tracking-wide transition-all flex items-center justify-center gap-2 group bg-red-600"

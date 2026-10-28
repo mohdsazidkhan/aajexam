@@ -190,7 +190,7 @@ const Sidebar = () => {
   if (!isMounted || !isAdmin() || !hasAdminPrivileges()) return null;
 
   return (
-    <aside className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out bg-background-surface border-r border-border-primary overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'}`}>
+    <aside className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out bg-background-surface border-r border-border-primary overflow-hidden ${isOpen ? 'translate-x-0 w-64' : '-translate-x-full w-0 opacity-0'}`}>
       {/* Navigation */}
       <nav ref={navRef} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium relative z-10">
         {displaySections.map((section, idx) => (
