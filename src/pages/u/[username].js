@@ -301,7 +301,7 @@ const PublicProfilePage = ({ username: ssrUsername, profile: ssrProfile, seo }) 
 
               <div className="min-w-0 flex-1 space-y-1.5">
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1.5">
-                  <h1 className="text-xl sm:text-2xl xl:text-3xl font-bold tracking-tight leading-none break-words bg-clip-text text-transparent">{profile.name}</h1>
+                  <h1 className="text-xl sm:text-2xl xl:text-3xl font-bold tracking-tight leading-none break-words text-content-primary">{profile.name}</h1>
                   {socialLinks.length > 0 && (
                     <div className="flex items-center gap-1.5">
                       {socialLinks.map(([key, url]) => {
