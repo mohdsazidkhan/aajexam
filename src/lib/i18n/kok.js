@@ -932,6 +932,7 @@ const KOK = {
   'Bookmark interesting reels to revisit them anytime': 'रोचक रील्स केन्नाय परत पळोवपाक बुकमार्क करात',
   'Bookmark reels while watching to save them here': 'पळयतना रील्स बुकमार्क करात, तीं हांगा सांबाळटले',
   'Bookmarked!': 'बुकमार्क जालें!',
+  'Bookmarked': 'बुकमार्क जालें',
   'Books Recommended': 'शिफारस केल्लीं पुस्तकां',
   'Browse Reels': 'रील्स पळयात',
   'Browse by Category': 'वर्गा प्रमाण पळयात',

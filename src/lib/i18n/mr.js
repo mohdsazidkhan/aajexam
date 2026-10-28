@@ -932,6 +932,7 @@ const MR = {
   'Bookmark interesting reels to revisit them anytime': 'मनोरंजक रील्स कधीही पुन्हा पाहण्यासाठी बुकमार्क करा',
   'Bookmark reels while watching to save them here': 'पाहताना रील्स बुकमार्क केल्यास त्या येथे जतन होतील',
   'Bookmarked!': 'बुकमार्क झाले!',
+  'Bookmarked': 'बुकमार्क झाले',
   'Books Recommended': 'शिफारस केलेली पुस्तके',
   'Browse Reels': 'रील्स पहा',
   'Browse by Category': 'श्रेणीनुसार पहा',

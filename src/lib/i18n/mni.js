@@ -932,6 +932,7 @@ const MANIPURI = {
   'Bookmark interesting reels to revisit them anytime': 'ꯌꯥꯔꯕꯥ ꯔꯤꯂꯁꯤꯡ ꯕꯨꯛꯃꯥꯔꯛ ꯇꯧꯗꯨꯅꯥ ꯈꯨꯗꯤꯡꯃꯛ ꯎꯠꯄꯥ ꯌꯥꯕꯥ',
   'Bookmark reels while watching to save them here': 'ꯔꯤꯂ ꯎꯅꯕꯒꯤ ꯃꯇꯥꯡꯗꯥ ꯕꯨꯛꯃꯥꯔꯛ ꯇꯧꯕꯤꯌꯨ, ꯃꯁꯤꯗꯥ ꯁꯦꯜꯂꯤ꯫',
   'Bookmarked!': 'ꯕꯨꯛꯃꯥꯔꯛ ꯇꯧꯔꯕꯥ!',
+  'Bookmarked': 'ꯕꯨꯛꯃꯥꯔꯛ ꯇꯧꯔꯕꯥ',
   'Books Recommended': 'ꯄꯥꯔꯤꯁꯤꯡ ꯄꯤꯔꯤꯕꯥ',
   'Browse Reels': 'ꯔꯤꯂꯁꯤꯡ ꯎꯕꯤꯌꯨ',
   'Browse by Category': 'ꯀꯦꯇꯦꯒꯣꯔꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ ꯎꯕꯤꯌꯨ',

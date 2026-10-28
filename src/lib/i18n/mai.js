@@ -932,6 +932,7 @@ const MAI = {
   'Bookmark interesting reels to revisit them anytime': 'दिलचस्प रील्स केँ बुकमार्क करू जाहि सँ कखनहुँ फेर देखि सकी',
   'Bookmark reels while watching to save them here': 'देखैत काल रील्स बुकमार्क करू, ओ सभ एतय सहेजल जायत',
   'Bookmarked!': 'बुकमार्क भ\' गेल!',
+  'Bookmarked': 'बुकमार्क भ\' गेल',
   'Books Recommended': 'सुझाओल गेल किताब',
   'Browse Reels': 'रील्स देखू',
   'Browse by Category': 'श्रेणीक अनुसार देखू',

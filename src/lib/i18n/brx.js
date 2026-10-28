@@ -932,6 +932,7 @@ const BODO = {
   'Bookmark interesting reels to revisit them anytime': 'गोसोमोनाय रीलफोरखौ बुकमार्क खालाम जेनो हाबायबो नायफिननो हायो',
   'Bookmark reels while watching to save them here': 'रील नायसामाव बुकमार्क खालाम, बेयाव सहेजा जागोन',
   'Bookmarked!': 'बुकमार्क खालामबाय!',
+  'Bookmarked': 'बुकमार्क खालामबाय',
   'Books Recommended': 'सिफारिस खालामनाय बिलाइफोर',
   'Browse Reels': 'रीलफोर नाय',
   'Browse by Category': 'थाखो हिसाबै नाय',

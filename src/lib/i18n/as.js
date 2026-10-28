@@ -932,6 +932,7 @@ const AS = {
   'Bookmark interesting reels to revisit them anytime': 'আকৰ্ষণীয় ৰীলবোৰ যিকোনো সময়তে পুনৰ চাবলৈ বুকমাৰ্ক কৰক',
   'Bookmark reels while watching to save them here': 'চাওঁতে ৰীল বুকমাৰ্ক কৰিলে ইয়াত সংৰক্ষিত হ\'ব',
   'Bookmarked!': 'বুকমাৰ্ক কৰা হ\'ল!',
+  'Bookmarked': 'বুকমাৰ্ক কৰা হ\'ল',
   'Books Recommended': 'পৰামৰ্শ দিয়া কিতাপ',
   'Browse Reels': 'ৰীল চাওক',
   'Browse by Category': 'শ্ৰেণী অনুসৰি চাওক',

@@ -932,6 +932,7 @@ const KS = {
   'Bookmark interesting reels to revisit them anytime': 'دلچسپ ریلز کو بک مارک کٔرِو تاکہ کسی بھی وقت دوبارہ دیکھ سکیں',
   'Bookmark reels while watching to save them here': 'دیکھتے وقت ریلز کو بک مارک کٔرِو، وہ یہاں محفوظ ہو جائیں گی',
   'Bookmarked!': 'بک مارک گیٚے!',
+  'Bookmarked': 'بک مارک گیٚے',
   'Books Recommended': 'تجویز کردہ کتابیں',
   'Browse Reels': 'ریلز وچھِو',
   'Browse by Category': 'زمرے کے لحاظ سے وچھِو',

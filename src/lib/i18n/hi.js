@@ -942,6 +942,7 @@ const HI = {
   'Bookmark interesting reels to revisit them anytime': 'दिलचस्प रील्स को बुकमार्क करें ताकि कभी भी दोबारा देख सकें',
   'Bookmark reels while watching to save them here': 'देखते समय रील्स बुकमार्क करें, वे यहाँ सहेजी जाएँगी',
   'Bookmarked!': 'बुकमार्क हो गया!',
+  'Bookmarked': 'बुकमार्क हो गया',
   'Books Recommended': 'सुझाई गई किताबें',
   'Browse Reels': 'रील्स देखें',
   'Browse by Category': 'श्रेणी के अनुसार देखें',

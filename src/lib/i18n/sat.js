@@ -932,6 +932,7 @@ const SAT = {
   'Bookmark interesting reels to revisit them anytime': 'ᱚᱠᱛᱚ ᱫᱚᱦᱲᱟ ᱧᱮᱞ ᱞᱟᱹᱜᱤᱫ ᱵᱷᱟᱞᱮ ᱨᱤᱞ ᱵᱩᱠᱢᱟᱨᱠ ᱢᱮ',
   'Bookmark reels while watching to save them here': 'ᱧᱮᱞ ᱚᱠᱛᱚ ᱨᱤᱞ ᱵᱩᱠᱢᱟᱨᱠ ᱢᱮ, ᱱᱚᱸᱰᱮ ᱥᱟᱸᱪᱟᱣ ᱦᱩᱭᱟ',
   'Bookmarked!': 'ᱵᱩᱠᱢᱟᱨᱠ ᱦᱩᱭᱮᱱᱟ!',
+  'Bookmarked': 'ᱵᱩᱠᱢᱟᱨᱠ ᱦᱩᱭᱮᱱᱟ',
   'Books Recommended': 'ᱥᱟᱹᱠᱷᱤ ᱮᱢᱟ ᱵᱟᱦᱤ',
   'Browse Reels': 'ᱨᱤᱞ ᱧᱮᱞ ᱢᱮ',
   'Browse by Category': 'ᱵᱷᱟᱜ ᱞᱮᱠᱟᱛᱮ ᱧᱮᱞ ᱢᱮ',

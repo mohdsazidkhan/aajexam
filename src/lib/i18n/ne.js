@@ -932,6 +932,7 @@ const NE = {
   'Bookmark interesting reels to revisit them anytime': 'रोचक रिलहरू जतिबेला पनि फेरि हेर्न बुकमार्क गर्नुहोस्',
   'Bookmark reels while watching to save them here': 'हेर्दा रिल बुकमार्क गर्नुहोस्, ती यहाँ सुरक्षित हुन्छन्',
   'Bookmarked!': 'बुकमार्क भयो!',
+  'Bookmarked': 'बुकमार्क भयो',
   'Books Recommended': 'सिफारिस गरिएका किताब',
   'Browse Reels': 'रिल हेर्नुहोस्',
   'Browse by Category': 'श्रेणीअनुसार हेर्नुहोस्',

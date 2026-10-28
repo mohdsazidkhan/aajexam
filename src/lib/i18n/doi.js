@@ -932,6 +932,7 @@ const DogriDict = {
   'Bookmark interesting reels to revisit them anytime': 'दिलचस्प रीलां गी कदें बी फी दिक्खने लेई बुकमार्क करो',
   'Bookmark reels while watching to save them here': 'दिक्खदे होई रीलां बुकमार्क करो, ओह् एत्थें सेव होई जाङन',
   'Bookmarked!': 'बुकमार्क होई गेआ!',
+  'Bookmarked': 'बुकमार्क होई गेआ',
   'Books Recommended': 'सुझाईयां गेइयां कताबां',
   'Browse Reels': 'रीलां दिक्खो',
   'Browse by Category': 'श्रेणी मताबक दिक्खो',

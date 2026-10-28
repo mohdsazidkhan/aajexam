@@ -932,6 +932,7 @@ const UrduDict = {
   'Bookmark interesting reels to revisit them anytime': 'دلچسپ ریلز کو بُک مارک کریں تاکہ کبھی بھی دوبارہ دیکھ سکیں',
   'Bookmark reels while watching to save them here': 'دیکھتے وقت ریلز بُک مارک کریں، وہ یہاں محفوظ ہوں گی',
   'Bookmarked!': 'بُک مارک ہو گیا!',
+  'Bookmarked': 'بُک مارک ہو گیا',
   'Books Recommended': 'تجویز کردہ کتابیں',
   'Browse Reels': 'ریلز دیکھیں',
   'Browse by Category': 'زمرے کے مطابق دیکھیں',

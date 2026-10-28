@@ -932,6 +932,7 @@ const TA = {
   'Bookmark interesting reels to revisit them anytime': 'சுவாரஸ்யமான ரீல்களை எப்போது வேண்டுமானாலும் மீண்டும் பார்க்க புக்மார்க் செய்யுங்கள்',
   'Bookmark reels while watching to save them here': 'பார்க்கும்போது ரீல்களை புக்மார்க் செய்தால் அவை இங்கே சேமிக்கப்படும்',
   'Bookmarked!': 'புக்மார்க் செய்யப்பட்டது!',
+  'Bookmarked': 'புக்மார்க் செய்யப்பட்டது',
   'Books Recommended': 'பரிந்துரைக்கப்பட்ட புத்தகங்கள்',
   'Browse Reels': 'ரீல்களைப் பாருங்கள்',
   'Browse by Category': 'வகை வாரியாகப் பாருங்கள்',

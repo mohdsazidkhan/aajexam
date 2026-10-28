@@ -932,6 +932,7 @@ const BN = {
   'Bookmark interesting reels to revisit them anytime': 'আকর্ষণীয় রিলস যেকোনো সময় আবার দেখতে বুকমার্ক করুন',
   'Bookmark reels while watching to save them here': 'দেখার সময় রিলস বুকমার্ক করলে সেগুলো এখানে সংরক্ষিত থাকবে',
   'Bookmarked!': 'বুকমার্ক হয়েছে!',
+  'Bookmarked': 'বুকমার্ক হয়েছে',
   'Books Recommended': 'সুপারিশকৃত বই',
   'Browse Reels': 'রিলস দেখুন',
   'Browse by Category': 'ক্যাটাগরি অনুযায়ী দেখুন',

@@ -932,6 +932,7 @@ const KN = {
   'Bookmark interesting reels to revisit them anytime': 'ಆಸಕ್ತಿಕರ ರೀಲ್‌ಗಳನ್ನು ಯಾವಾಗ ಬೇಕಾದರೂ ಮತ್ತೆ ನೋಡಲು ಬುಕ್‌ಮಾರ್ಕ್ ಮಾಡಿ',
   'Bookmark reels while watching to save them here': 'ನೋಡುವಾಗ ರೀಲ್‌ಗಳನ್ನು ಬುಕ್‌ಮಾರ್ಕ್ ಮಾಡಿದರೆ ಅವು ಇಲ್ಲಿ ಉಳಿಯುತ್ತವೆ',
   'Bookmarked!': 'ಬುಕ್‌ಮಾರ್ಕ್ ಆಗಿದೆ!',
+  'Bookmarked': 'ಬುಕ್‌ಮಾರ್ಕ್ ಆಗಿದೆ',
   'Books Recommended': 'ಶಿಫಾರಸು ಮಾಡಿದ ಪುಸ್ತಕಗಳು',
   'Browse Reels': 'ರೀಲ್‌ಗಳನ್ನು ನೋಡಿ',
   'Browse by Category': 'ವರ್ಗದ ಪ್ರಕಾರ ನೋಡಿ',

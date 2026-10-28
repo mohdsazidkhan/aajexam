@@ -932,6 +932,7 @@ const TE = {
   'Bookmark interesting reels to revisit them anytime': 'ఆసక్తికరమైన రీల్స్‌ను ఎప్పుడైనా మళ్లీ చూడటానికి బుక్‌మార్క్ చేయండి',
   'Bookmark reels while watching to save them here': 'చూసేటప్పుడు రీల్స్‌ను బుక్‌మార్క్ చేస్తే అవి ఇక్కడ సేవ్ అవుతాయి',
   'Bookmarked!': 'బుక్‌మార్క్ అయింది!',
+  'Bookmarked': 'బుక్‌మార్క్ అయింది',
   'Books Recommended': 'సిఫార్సు చేసిన పుస్తకాలు',
   'Browse Reels': 'రీల్స్ చూడండి',
   'Browse by Category': 'కేటగిరీ వారీగా చూడండి',

@@ -932,6 +932,7 @@ const PA = {
   'Bookmark interesting reels to revisit them anytime': 'ਦਿਲਚਸਪ ਰੀਲਜ਼ ਕਦੇ ਵੀ ਦੁਬਾਰਾ ਦੇਖਣ ਲਈ ਬੁੱਕਮਾਰਕ ਕਰੋ',
   'Bookmark reels while watching to save them here': 'ਦੇਖਦੇ ਸਮੇਂ ਰੀਲਜ਼ ਬੁੱਕਮਾਰਕ ਕਰੋ ਤਾਂ ਉਹ ਇੱਥੇ ਸੰਭਾਲੀਆਂ ਜਾਣਗੀਆਂ',
   'Bookmarked!': 'ਬੁੱਕਮਾਰਕ ਹੋ ਗਿਆ!',
+  'Bookmarked': 'ਬੁੱਕਮਾਰਕ ਹੋ ਗਿਆ',
   'Books Recommended': 'ਸਿਫਾਰਸ਼ ਕੀਤੀਆਂ ਕਿਤਾਬਾਂ',
   'Browse Reels': 'ਰੀਲਜ਼ ਦੇਖੋ',
   'Browse by Category': 'ਸ਼੍ਰੇਣੀ ਮੁਤਾਬਕ ਬ੍ਰਾਊਜ਼ ਕਰੋ',

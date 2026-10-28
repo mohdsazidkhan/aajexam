@@ -932,6 +932,7 @@ const ML = {
   'Bookmark interesting reels to revisit them anytime': 'രസകരമായ റീലുകൾ എപ്പോൾ വേണമെങ്കിലും വീണ്ടും കാണാൻ ബുക്ക്മാർക്ക് ചെയ്യുക',
   'Bookmark reels while watching to save them here': 'കാണുമ്പോൾ റീലുകൾ ബുക്ക്മാർക്ക് ചെയ്താൽ ഇവിടെ സേവ് ആകും',
   'Bookmarked!': 'ബുക്ക്മാർക്ക് ചെയ്തു!',
+  'Bookmarked': 'ബുക്ക്മാർക്ക് ചെയ്തു',
   'Books Recommended': 'ശുപാർശ ചെയ്ത പുസ്തകങ്ങൾ',
   'Browse Reels': 'റീലുകൾ കാണുക',
   'Browse by Category': 'വിഭാഗം അനുസരിച്ച് കാണുക',

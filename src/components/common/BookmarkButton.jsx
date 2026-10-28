@@ -30,8 +30,8 @@ const loadIds = (type) => {
 
 // type: test | quiz | community | news | affair | subject | topic | blog | note
 // id:   the content's _id (notes: slug). Anything else the API can resolve from a slug works too.
-// variant: 'icon' (round icon button) | 'pill' (icon + label)
-const BookmarkButton = ({ type, id, variant = 'icon', className = '' }) => {
+// variant is accepted for old call sites; the button is always icon only
+const BookmarkButton = ({ type, id, className = '' }) => {
   const { translate } = useTranslate();
   const router = useRouter();
   const key = id ? String(id) : '';
@@ -76,24 +76,16 @@ const BookmarkButton = ({ type, id, variant = 'icon', className = '' }) => {
   };
 
   const Icon = saved ? BookmarkCheck : Bookmark;
-  const label = translate(saved ? 'Remove bookmark' : 'Bookmark');
+  // Icon only; the tooltip (and screen readers) say Bookmark / Bookmarked
+  const label = translate(saved ? 'Bookmarked' : 'Bookmark');
   const tone = saved
-    ? 'bg-primary-600 text-on-primary ring-primary-600'
-    : 'bg-background-surface text-content-secondary ring-slate-200 hover:bg-background-surface-secondary dark:ring-slate-700 dark:hover:bg-slate-700';
+    ? 'bg-primary-600 text-on-primary'
+    : 'bg-background-surface text-primary-600 hover:bg-primary-600 hover:text-on-primary';
 
-  if (variant === 'pill') {
-    return (
-      <button type="button" onClick={toggle} disabled={busy} aria-pressed={saved} title={label}
-        className={`inline-flex items-center gap-1.5 px-3 py-1.5 ring-1 text-[11px] font-bold uppercase tracking-[0.08em] transition-colors disabled:opacity-60 ${tone} ${className}`}
-        style={{ borderRadius: 'var(--radius-sm)' }}>
-        <Icon className="w-4 h-4" />{label}
-      </button>
-    );
-  }
   return (
     <button type="button" onClick={toggle} disabled={busy} aria-pressed={saved} aria-label={label} title={label}
-      className={`inline-flex items-center justify-center w-9 h-9 ring-1 transition-colors disabled:opacity-60 ${tone} ${className}`}
-      style={{ borderRadius: 'var(--radius)' }}>
+      className={`inline-flex items-center justify-center w-9 h-9 border border-primary-600 transition-colors disabled:opacity-60 ${tone} ${className}`}
+      style={{ borderRadius: 'var(--radius-sm)' }}>
       <Icon className="w-4 h-4" />
     </button>
   );

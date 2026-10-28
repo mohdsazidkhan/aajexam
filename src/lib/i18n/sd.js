@@ -932,6 +932,7 @@ const SD = {
   'Bookmark interesting reels to revisit them anytime': 'दिलचस्प रील्स खे बुकमार्क करियो ताकि कडहिं बि वरी ॾिसी सघो',
   'Bookmark reels while watching to save them here': 'ॾिसंदे रील्स बुकमार्क करियो, उहे हिते सुरक्षित थींदियूं',
   'Bookmarked!': 'बुकमार्क थी वियो!',
+  'Bookmarked': 'बुकमार्क थी वियो',
   'Books Recommended': 'सिफ़ारिश कयल किताब',
   'Browse Reels': 'रील्स ॾिसो',
   'Browse by Category': 'वर्ग मुताबिक़ ॾिसो',

@@ -932,6 +932,7 @@ const SA = {
   'Bookmark interesting reels to revisit them anytime': 'रोचकाः रीलाः कदापि पुनः द्रष्टुं पृष्ठचिह्नयत',
   'Bookmark reels while watching to save them here': 'पश्यन् रीलाः पृष्ठचिह्नयत, ताः अत्र रक्ष्यन्ते',
   'Bookmarked!': 'पृष्ठचिह्नितम्!',
+  'Bookmarked': 'पृष्ठचिह्नितम्',
   'Books Recommended': 'अनुशंसिताः ग्रन्थाः',
   'Browse Reels': 'रीलाः पश्यत',
   'Browse by Category': 'वर्गानुसारं पश्यत',

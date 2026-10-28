@@ -935,6 +935,7 @@ const HINGLISH = {
   'Bookmark interesting reels to revisit them anytime': 'Dilchasp reels bookmark karo taaki kabhi bhi dobara dekh sako',
   'Bookmark reels while watching to save them here': 'Dekhte waqt reels bookmark karo, wo yahan save ho jayengi',
   'Bookmarked!': 'Bookmark ho gaya!',
+  'Bookmarked': 'Bookmark ho gaya',
   'Books Recommended': 'Recommended Books',
   'Browse Reels': 'Reels dekhein',
   'Browse by Category': 'Category ke hisaab se browse karein',

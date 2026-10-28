@@ -932,6 +932,7 @@ const OR_ = {
   'Bookmark interesting reels to revisit them anytime': 'ଆକର୍ଷଣୀୟ ରିଲ୍ସ ଯେକୌଣସି ସମୟରେ ପୁଣି ଦେଖିବାକୁ ବୁକମାର୍କ କରନ୍ତୁ',
   'Bookmark reels while watching to save them here': 'ଦେଖିବା ବେଳେ ରିଲ୍ସ ବୁକମାର୍କ କଲେ ସେଗୁଡ଼ିକ ଏଠାରେ ସେଭ୍ ହେବ',
   'Bookmarked!': 'ବୁକମାର୍କ ହେଲା!',
+  'Bookmarked': 'ବୁକମାର୍କ ହେଲା',
   'Books Recommended': 'ସୁପାରିଶ କରାଯାଇଥିବା ବହି',
   'Browse Reels': 'ରିଲ୍ସ ଦେଖନ୍ତୁ',
   'Browse by Category': 'ବର୍ଗ ଅନୁସାରେ ବ୍ରାଉଜ୍ କରନ୍ତୁ',

@@ -932,6 +932,7 @@ const GU = {
   'Bookmark interesting reels to revisit them anytime': 'રસપ્રદ રીલ્સ ગમે ત્યારે ફરી જોવા બુકમાર્ક કરો',
   'Bookmark reels while watching to save them here': 'જોતી વખતે રીલ્સ બુકમાર્ક કરશો તો તે અહીં સચવાશે',
   'Bookmarked!': 'બુકમાર્ક થયું!',
+  'Bookmarked': 'બુકમાર્ક થયું',
   'Books Recommended': 'ભલામણ કરેલા પુસ્તકો',
   'Browse Reels': 'રીલ્સ જુઓ',
   'Browse by Category': 'શ્રેણી મુજબ બ્રાઉઝ કરો',
