@@ -133,12 +133,12 @@ const RegionRankPage = ({ kind }) => {
                   {/* Place chip + exam filter, one row */}
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full max-w-xl mx-auto xl:mx-0 text-left">
                     {place && (
-                      <div className="inline-flex max-w-full sm:max-w-[45%] shrink-0 items-center gap-2 border border-primary-600 text-primary-600 text-sm font-bold rounded-xl h-10 px-3">
+                      <div className="flex sm:inline-flex w-full justify-center sm:justify-start sm:w-auto max-w-full sm:max-w-[45%] shrink-0 items-center gap-2 border border-primary-600 text-primary-600 text-sm font-bold rounded-xl h-10 px-3">
                         <MapPin className="w-4 h-4 shrink-0" />
                         <span className="truncate">{place}</span>
                       </div>
                     )}
-                    <div className="w-full max-w-[260px] min-w-0">
+                    <div className="w-full sm:max-w-[260px] min-w-0">
                       <SearchableSelect
                         icon={Target}
                         value={selectedExamId}
@@ -188,13 +188,13 @@ const RegionRankPage = ({ kind }) => {
             {!loading && me && <MyRankCard entry={me} totalUsers={totalUsers} />}
 
             {/* ── List Actions ── */}
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row sm:justify-between items-center gap-2">
               <div className="flex items-center gap-2.5">
                 <span className="h-6 w-1.5 rounded-full bg-primary-600" />
                 <h3 className="text-sm xl:text-base font-bold text-content-primary uppercase">{translate('Students')}</h3>
               </div>
-              <div className="flex items-center gap-2 min-w-0">
-                <div className="w-44 sm:w-72 min-w-0"><RankSortSelect value={sort} onChange={setSort} /></div>
+              <div className="flex items-center gap-2 min-w-0 w-full sm:w-auto">
+                <div className="flex-1 sm:flex-none sm:w-72 min-w-0"><RankSortSelect value={sort} onChange={setSort} /></div>
               <button
                 onClick={() => load(true)}
                 disabled={refreshing || loading}

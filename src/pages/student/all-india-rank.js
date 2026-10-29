@@ -130,7 +130,7 @@ const AllIndiaRankPage = () => {
 
                   {/* Exam filter + rank-based-on, one row */}
                   <div className="flex flex-col sm:flex-row gap-2 w-full max-w-sm mx-auto xl:mx-0 text-left">
-                    <div className="w-full max-w-[260px] min-w-0">
+                    <div className="w-full sm:max-w-[260px] min-w-0">
                       <SearchableSelect
                         icon={Target}
                         value={selectedExamId}
@@ -181,15 +181,15 @@ const AllIndiaRankPage = () => {
             {!loading && myEntry && <MyRankCard entry={myEntry} totalUsers={totalUsers} />}
 
             {/* ── List Actions ── */}
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row sm:justify-between items-center gap-2">
                <div className="flex items-center gap-2.5">
                  <span className="h-6 w-1.5 rounded-full bg-primary-600" />
                  <h3 className="text-sm xl:text-base font-bold text-content-primary uppercase">
                    {selectedExamId ? translate('Filtered Ranks') : translate('Students')}
                  </h3>
                </div>
-               <div className="flex items-center gap-2 min-w-0">
-                 <div className="w-44 sm:w-72 min-w-0"><RankSortSelect value={sort} onChange={setSort} /></div>
+               <div className="flex items-center gap-2 min-w-0 w-full sm:w-auto">
+                 <div className="flex-1 sm:flex-none sm:w-72 min-w-0"><RankSortSelect value={sort} onChange={setSort} /></div>
                <button
                 onClick={() => fetchAIR(true)}
                 disabled={refreshing || loading}
