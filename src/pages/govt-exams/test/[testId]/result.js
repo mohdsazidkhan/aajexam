@@ -1,6 +1,6 @@
-import { withPageCache } from '@/lib/utils/pageCache';
 /* eslint-disable @next/next/no-img-element */
 'use client';
+import { withPageCache } from '@/lib/utils/pageCache';
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { fmtNum } from '../../../../lib/utils/formatNumber';

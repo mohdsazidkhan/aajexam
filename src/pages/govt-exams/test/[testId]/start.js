@@ -1,6 +1,6 @@
-import { withPageCache } from '@/lib/utils/pageCache';
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import { withPageCache } from '@/lib/utils/pageCache';
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
