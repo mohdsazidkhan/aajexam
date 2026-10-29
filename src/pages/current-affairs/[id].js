@@ -1,3 +1,4 @@
+import { withPageCache } from '@/lib/utils/pageCache';
 'use client';
 import BackButton from '@/components/common/ui/BackButton';
 import BookmarkButton from '../../components/common/BookmarkButton';
@@ -129,7 +130,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
 
 export default CurrentAffairDetail;
 
-export async function getServerSideProps({ params }) {
+async function getServerSidePropsImpl({ params }) {
   const dbConnect = (await import('../../lib/db')).default;
   const CurrentAffair = (await import('../../models/CurrentAffair')).default;
   const { isObjectId, slugRedirect } = await import('../../lib/web/slugRouting');
@@ -159,3 +160,6 @@ export async function getServerSideProps({ params }) {
     return { notFound: true };
   }
 }
+
+// Public, URL-only data: let the CDN keep it instead of running this function on every request.
+export const getServerSideProps = withPageCache(getServerSidePropsImpl, { sMaxAge: 86400, swr: 604800 });

@@ -1,3 +1,4 @@
+import { withPageCache } from '@/lib/utils/pageCache';
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
@@ -493,7 +494,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
 export default TestResult;
 
-export async function getServerSideProps({ params, query }) {
+async function getServerSidePropsImpl({ params, query }) {
   const dbConnect = (await import('../../../../lib/db')).default;
   const PracticeTest = (await import('../../../../models/PracticeTest')).default;
   const { isObjectId } = await import('../../../../lib/web/slugRouting');
@@ -528,3 +529,6 @@ export async function getServerSideProps({ params, query }) {
     return { notFound: true };
   }
 }
+
+// Public, URL-only data: let the CDN keep it instead of running this function on every request.
+export const getServerSideProps = withPageCache(getServerSidePropsImpl, { sMaxAge: 86400, swr: 604800 });

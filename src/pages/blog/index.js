@@ -72,7 +72,7 @@ export default function Blog(props) {
 export async function getStaticProps() {
   try {
     const { buildBlogIndex } = await import('../../lib/blogIndex');
-    return { props: await buildBlogIndex(), revalidate: 900 };
+    return { props: await buildBlogIndex(), revalidate: 3600 };
   } catch (e) {
     console.error('Error in blog index getStaticProps:', e);
     return { props: { groups: [], allPosts: [] }, revalidate: 300 };

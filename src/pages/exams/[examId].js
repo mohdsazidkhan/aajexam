@@ -1,3 +1,4 @@
+import { withPageCache } from '@/lib/utils/pageCache';
 // /exams/<slug-or-id> → 301 → /govt-exams/exam/<slug>
 //
 // Canonical exam URL is /govt-exams/exam/<slug>. This route exists only to
@@ -13,7 +14,7 @@ export default function ExamRedirectStub() {
     return null;
 }
 
-export async function getServerSideProps({ params }) {
+async function getServerSidePropsImpl({ params }) {
     const { isObjectId } = await import('../../lib/web/slugRouting');
     const segment = params?.examId;
     if (!segment) return { notFound: true };
@@ -43,3 +44,6 @@ export async function getServerSideProps({ params }) {
         return { notFound: true };
     }
 }
+
+// Public, URL-only data: let the CDN keep it instead of running this function on every request.
+export const getServerSideProps = withPageCache(getServerSidePropsImpl, { sMaxAge: 86400, swr: 604800 });

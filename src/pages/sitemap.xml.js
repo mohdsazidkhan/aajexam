@@ -286,14 +286,15 @@ export async function getServerSideProps({ res }) {
         const sitemap = generateSiteMap({ currentAffairDigests, exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries, practiceTopics, interviewCategories, interviewQuestions, profiles });
 
         res.setHeader('Content-Type', 'text/xml');
-        res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=600');
+        res.setHeader('Cache-Control', 'public, s-maxage=21600, stale-while-revalidate=604800');
         res.write(sitemap);
         res.end();
     } catch (e) {
         console.error('Error generating sitemap:', e);
         const sitemap = generateSiteMap({});
         res.setHeader('Content-Type', 'text/xml');
-        res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=600');
+        // The fallback sitemap is empty: do not let the CDN keep it for long.
+        res.setHeader('Cache-Control', 'public, s-maxage=60');
         res.write(sitemap);
         res.end();
     }

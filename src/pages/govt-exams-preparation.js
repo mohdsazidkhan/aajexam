@@ -1,3 +1,4 @@
+import { withPageCache } from '@/lib/utils/pageCache';
 import React, { useState } from 'react';
 import PageHero from '@/components/common/ui/PageHero';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -142,7 +143,7 @@ export default function GovtExamsPreparation({ initialData }) {
     );
 }
 
-export async function getServerSideProps(context) {
+async function getServerSidePropsImpl(context) {
     try {
         const { page = 1 } = context.query;
         const pageNum = parseInt(page, 10);
@@ -179,9 +180,12 @@ export async function getServerSideProps(context) {
         console.error('Error in govt-exams-preparation getServerSideProps:', error);
         return {
             props: {
-                initialData: { exams: [], pagination: {} }
+                initialData: { exams: [], pagination: {} },
+                initialError: 'Failed to load data.'
             }
         };
     }
 }
 
+// Public, URL-only data: let the CDN keep it instead of running this function on every request.
+export const getServerSideProps = withPageCache(getServerSidePropsImpl, { sMaxAge: 3600, swr: 86400, shared: { key: ({ query }) => `page:govt-prep:${query?.page || 1}:${query?.limit || ''}`, ttl: 900 } });

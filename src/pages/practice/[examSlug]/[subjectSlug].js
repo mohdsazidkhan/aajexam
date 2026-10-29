@@ -349,7 +349,7 @@ export async function getStaticProps({ params }) {
         // A series with barely any questions would just be another thin page.
         indexable: totalQuestions >= MIN_QUESTIONS_TO_INDEX && questions.length > 0,
       },
-      revalidate: 3600,
+      revalidate: 86400,
     };
   } catch (e) {
     console.error('practice getStaticProps failed:', e);

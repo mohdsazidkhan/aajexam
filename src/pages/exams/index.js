@@ -1,3 +1,4 @@
+import { withPageCache } from '@/lib/utils/pageCache';
 // /exams (listing) → 301 → /govt-exams
 //
 // Canonical exam hub is /govt-exams. The /exams listing was emitting a
@@ -9,6 +10,9 @@ export default function ExamsListRedirectStub() {
     return null;
 }
 
-export async function getServerSideProps() {
+async function getServerSidePropsImpl() {
     return { redirect: { destination: '/govt-exams', permanent: true } };
 }
+
+// Public, URL-only data: let the CDN keep it instead of running this function on every request.
+export const getServerSideProps = withPageCache(getServerSidePropsImpl, { sMaxAge: 86400, swr: 604800 });

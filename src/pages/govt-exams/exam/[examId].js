@@ -1,3 +1,4 @@
+import { withPageCache } from '@/lib/utils/pageCache';
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
@@ -758,7 +759,7 @@ Suggested ${examName} preparation strategy using AajExam: start with the most re
 All ${examName} content on AajExam is mobile-friendly, free to start, and designed for serious aspirants who want exam-replicating practice rather than passive reading. Bookmark this page and revisit it weekly — new ${examName} mock tests, PYQs and current-affairs notes are added on a continuous basis.`;
 }
 
-export async function getServerSideProps({ params }) {
+async function getServerSidePropsImpl({ params }) {
   const dbConnect = (await import('../../../lib/db')).default;
   const Exam = (await import('../../../models/Exam')).default;
   const ExamPattern = (await import('../../../models/ExamPattern')).default;
@@ -932,3 +933,6 @@ export async function getServerSideProps({ params }) {
     return { props: { examId: segment, initialError: 'Failed to load data.' } };
   }
 }
+
+// Public, URL-only data: let the CDN keep it instead of running this function on every request.
+export const getServerSideProps = withPageCache(getServerSidePropsImpl, { sMaxAge: 1800, swr: 86400, shared: { key: ({ params }) => `page:govt-exam:${params?.examId}`, ttl: 600 } });

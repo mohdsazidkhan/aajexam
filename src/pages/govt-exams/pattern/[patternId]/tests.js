@@ -1,3 +1,4 @@
+import { withPageCache } from '@/lib/utils/pageCache';
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
@@ -255,7 +256,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
 
 export default PatternTests;
 
-export async function getServerSideProps({ params, query }) {
+async function getServerSidePropsImpl({ params, query }) {
   const dbConnect = (await import('../../../../lib/db')).default;
   const PracticeTest = (await import('../../../../models/PracticeTest')).default;
   const ExamPattern = (await import('../../../../models/ExamPattern')).default;
@@ -289,3 +290,6 @@ export async function getServerSideProps({ params, query }) {
     return { props: { initialError: 'An error occurred.' } };
   }
 }
+
+// Public, URL-only data: let the CDN keep it instead of running this function on every request.
+export const getServerSideProps = withPageCache(getServerSidePropsImpl, { sMaxAge: 1800, swr: 86400 });

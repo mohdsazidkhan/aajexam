@@ -1,3 +1,4 @@
+import { withPageCache } from '@/lib/utils/pageCache';
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
@@ -189,7 +190,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
 
 export default CategoryExams;
 
-export async function getServerSideProps({ params }) {
+async function getServerSidePropsImpl({ params }) {
   const dbConnect = (await import('../../../lib/db')).default;
   const Exam = (await import('../../../models/Exam')).default;
   const ExamCategory = (await import('../../../models/ExamCategory')).default;
@@ -249,3 +250,6 @@ export async function getServerSideProps({ params }) {
     return { props: { initialError: 'Failed to load data.' } };
   }
 }
+
+// Public, URL-only data: let the CDN keep it instead of running this function on every request.
+export const getServerSideProps = withPageCache(getServerSidePropsImpl, { sMaxAge: 3600, swr: 86400, shared: { key: ({ params }) => `page:govt-cat:${params?.categoryId}`, ttl: 900 } });

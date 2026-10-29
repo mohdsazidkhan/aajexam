@@ -573,7 +573,7 @@ export async function getStaticProps({ params }) {
   } catch (e) {
     console.error('Error in profile getStaticProps:', e);
   }
-  if (!profile) return { notFound: true, revalidate: 60 };
+  if (!profile) return { notFound: true, revalidate: 600 };
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
   const titleBase = 'AajExam';
@@ -593,7 +593,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: safeProps,
-    revalidate: 60
+    revalidate: 600
   };
 }
 

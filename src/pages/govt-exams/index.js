@@ -1,3 +1,4 @@
+import { withPageCache } from '@/lib/utils/pageCache';
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import PageHero from '@/components/common/ui/PageHero';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -250,7 +251,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
 
 export default GovernmentExamsLanding;
 
-export async function getServerSideProps() {
+async function getServerSidePropsImpl() {
   const dbConnect = (await import('../../lib/db')).default;
   const Exam = (await import('../../models/Exam')).default;
   const PracticeTest = (await import('../../models/PracticeTest')).default;
@@ -297,3 +298,6 @@ export async function getServerSideProps() {
     return { props: { initialExams: [], initialError: 'Failed to load data.' } };
   }
 }
+
+// Public, URL-only data: let the CDN keep it instead of running this function on every request.
+export const getServerSideProps = withPageCache(getServerSidePropsImpl, { sMaxAge: 3600, swr: 86400, shared: { key: () => 'page:govt-exams-hub', ttl: 900 } });

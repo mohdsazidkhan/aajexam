@@ -80,7 +80,7 @@ export default function Quizzes(props) {
 export async function getStaticProps() {
   try {
     const { buildQuizzesIndex } = await import('../lib/quizzesIndex');
-    return { props: await buildQuizzesIndex(), revalidate: 1800 };
+    return { props: await buildQuizzesIndex(), revalidate: 3600 };
   } catch (e) {
     console.error('Error in quizzes getStaticProps:', e);
     return { props: { subjects: [], latestQuizzes: [], practiceGroups: [] }, revalidate: 300 };

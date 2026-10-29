@@ -124,7 +124,7 @@ export async function getStaticProps({ params }) {
       .lean();
 
     if (!blogDoc) {
-      return { notFound: true, revalidate: 60 };
+      return { notFound: true, revalidate: 3600 };
     }
 
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
@@ -230,10 +230,10 @@ export async function getStaticProps({ params }) {
 
     return {
       props: safeProps,
-      revalidate: 60
+      revalidate: 3600
     };
   } catch (e) {
     console.error('Error in blog getStaticProps:', e);
-    return { notFound: true, revalidate: 60 };
+    return { notFound: true, revalidate: 3600 };
   }
 }

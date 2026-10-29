@@ -385,7 +385,7 @@ export async function getStaticProps({ params }) {
         aboutText: buildAbout({ examName, subjectName, topicName, totalQuestions, quizCount }),
         faqs: buildFaqs({ examName, subjectName, topicName, totalQuestions, quizCount }),
       },
-      revalidate: 3600,
+      revalidate: 86400,
     };
   } catch (e) {
     console.error('topic practice getStaticProps failed:', e);

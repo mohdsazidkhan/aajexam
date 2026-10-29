@@ -3,7 +3,6 @@ import React from 'react';
 import { generateOrganizationSchema, generateWebsiteSchema } from '../utils/schema';
 
 import Seo from '../components/common/Seo';
-import dbConnect from '../lib/db';
 
 import LandingPage from '../components/public/pages/ModernLandingPage';
 
@@ -35,49 +34,15 @@ export default function Index({ educationalContent, isAuthenticated }) {
   );
 }
 
-// Server-side authentication and data fetching
-export async function getServerSideProps(context) {
-  // Check authentication server-side
-  const token = context.req.cookies.token || context.req.cookies.authToken;
-
-  // If authenticated, redirect to appropriate dashboard
-  if (token) {
-    try {
-      // Verify token and check if admin
-      // Note: You'll need to implement proper token verification
-      // For now, we'll check a simple admin cookie or decode JWT
-      const isAdminUser = context.req.cookies.isAdmin === 'true';
-
-      return {
-        redirect: {
-          destination: isAdminUser ? '/admin/dashboard' : '/student/dashboard',
-          permanent: false,
-        },
-      };
-    } catch (error) {
-      console.error('Error verifying token:', error);
-      // If token is invalid, continue to show landing page
-    }
-  }
-
-  // Fetch educational content for non-authenticated users
-  try {
-    await dbConnect();
-    // Return null to use default content in component
-    return {
-      props: {
-        educationalContent: null,
-        isAuthenticated: false,
-      },
-    };
-  } catch (error) {
-    console.error('Error fetching homepage content:', error);
-    // Return null to use default content in component
-    return {
-      props: {
-        educationalContent: null,
-        isAuthenticated: false,
-      },
-    };
-  }
+// The landing page is the same for every visitor, so it is generated once and served from the CDN (it used to run a
+// function and open a DB connection on every hit just to return these constants). Signed-in users are sent to their
+// dashboard by the landing page itself on the client (the app keeps its token in localStorage, not in a cookie).
+export async function getStaticProps() {
+  return {
+    props: {
+      educationalContent: null,
+      isAuthenticated: false,
+    },
+    revalidate: 86400,
+  };
 }

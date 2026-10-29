@@ -34,6 +34,14 @@ const PUBLIC_CACHED_API_PATHS = [
   '/api/exam-news/calendar',
   '/api/real-exams/web/exams/by-slug/:slug/content',
   '/api/real-exams/web/exams/:id/content',
+  '/api/quiz/quizzes/:id',
+  '/api/daily-dose',
+  '/api/public/app-version',
+  '/api/public/sitemap',
+  '/api/public/blogs/index',
+  '/api/public/blogs/featured',
+  '/api/public/blogs/:id',
+  '/api/reels/trending',
 ];
 
 /** @type {import('next').NextConfig} */
@@ -47,6 +55,8 @@ const nextConfig = {
   generateEtags: true,
 
   reactStrictMode: true,
+
+  poweredByHeader: false,
 
   // Strip console.* (except error/warn) in production to reduce JS payload
   compiler: {
@@ -73,7 +83,9 @@ const nextConfig = {
 
   images: {
     unoptimized: false,
-    formats: ['image/avif', 'image/webp'],
+    // WebP only (AVIF doubled the number of billed transformations); optimized images are kept for 30 days.
+    formats: ['image/webp'],
+    minimumCacheTTL: 2592000,
     remotePatterns: [
       {
         protocol: 'https',
@@ -143,12 +155,12 @@ const nextConfig = {
         ],
       },
       // Public catalogue GETs: the response depends only on the URL (no auth, cookies or headers read),
-      // so the CDN can serve it for a minute and refresh in the background. Bodies are unchanged.
+      // so the CDN can serve it for five minutes and refresh in the background. Bodies are unchanged.
       // Routes that already set their own Cache-Control (quiz/topics/all, public/landing-stats,
       // public/blogs) are left out.
       ...PUBLIC_CACHED_API_PATHS.map((source) => ({
         source,
-        headers: [{ key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=300' }],
+        headers: [{ key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=86400' }],
       })),
       // Logged-in student area: never index (public twins keep the SEO value).
       {
