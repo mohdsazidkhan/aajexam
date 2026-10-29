@@ -1,5 +1,5 @@
-import { withPageCache } from '@/lib/utils/pageCache';
 'use client';
+import { withPageCache } from '@/lib/utils/pageCache';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import BookmarkButton from '../../../../components/common/BookmarkButton';

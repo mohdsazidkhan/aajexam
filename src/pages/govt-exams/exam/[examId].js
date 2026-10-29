@@ -1,5 +1,5 @@
-import { withPageCache } from '@/lib/utils/pageCache';
 'use client';
+import { withPageCache } from '@/lib/utils/pageCache';
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { fmtNum } from '../../../lib/utils/formatNumber';
