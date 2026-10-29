@@ -1848,8 +1848,6 @@ const SA = {
   'Multiplayer Challenges (1v1)': 'बहुक्रीडकचुनौत्यः (1v1)',
   'Refer & earn': 'निर्दिशत अर्जयत च',
   'Referral code & invite tracking': 'निर्देशसङ्केतः आमन्त्रणानुसरणं च',
-  'Cash reward when a friend buys PRO': 'मित्रेण PRO क्रीते नगदपुरस्कारः',
-  'Withdraw to bank account': 'बैङ्कखाते निष्कासनम्',
   'Experience': 'अनुभवः',
   'Ad-free practice': 'विज्ञापनरहितः अभ्यासः',
   'PRO badge on profile & leaderboard': 'परिचयपत्रे अग्रगण्यपट्टिकायां च PRO चिह्नपदकम्',

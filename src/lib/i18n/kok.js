@@ -1848,8 +1848,6 @@ const KOK = {
   'Multiplayer Challenges (1v1)': 'मल्टीप्लेयर चॅलेंज (1v1)',
   'Refer & earn': 'रेफर करात आनी कमयात',
   'Referral code & invite tracking': 'रेफरल कोड आनी आमंत्रण ट्रॅकिंग',
-  'Cash reward when a friend buys PRO': 'इश्टान PRO घेतल्यार रोखडें इनाम',
-  'Withdraw to bank account': 'बँक खात्यांत रक्कम काडप',
   'Experience': 'अणभव',
   'Ad-free practice': 'जाहिरात-मुक्त सराव',
   'PRO badge on profile & leaderboard': 'प्रोफाइल आनी लीडरबोर्डाचेर PRO बॅज',

@@ -1848,8 +1848,6 @@ const SD = {
   'Multiplayer Challenges (1v1)': 'मल्टीप्लेयर चैलेंज (1v1)',
   'Refer & earn': 'रेफ़र करियो ऐं कमायो',
   'Referral code & invite tracking': 'रेफ़रल कोड ऐं सॾ ट्रैकिंग',
-  'Cash reward when a friend buys PRO': 'दोस्त PRO वठे त कैश इनाम',
-  'Withdraw to bank account': 'बैंक अकाउंट में रक़म कढणु',
   'Experience': 'तजुर्बो',
   'Ad-free practice': 'इश्तिहार कान सवाय मश्क',
   'PRO badge on profile & leaderboard': 'प्रोफ़ाइल ऐं लीडरबोर्ड ते PRO बैज',

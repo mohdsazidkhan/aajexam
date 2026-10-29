@@ -1848,8 +1848,6 @@ const MAI = {
   'Multiplayer Challenges (1v1)': 'मल्टीप्लेयर चैलेंज (1v1)',
   'Refer & earn': 'रेफर करू आ कमाउ',
   'Referral code & invite tracking': 'रेफरल कोड आ आमंत्रण ट्रैकिंग',
-  'Cash reward when a friend buys PRO': 'मित्रक PRO लेला पर कैश रिवॉर्ड',
-  'Withdraw to bank account': 'बैंक खाता मे निकासी',
   'Experience': 'अनुभव',
   'Ad-free practice': 'विज्ञापन-मुक्त अभ्यास',
   'PRO badge on profile & leaderboard': 'प्रोफाइल आ लीडरबोर्ड पर PRO बैज',

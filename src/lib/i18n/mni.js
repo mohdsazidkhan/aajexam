@@ -1848,8 +1848,6 @@ const MANIPURI = {
   'Multiplayer Challenges (1v1)': 'ꯃꯜꯇꯤꯄ꯭ꯂꯦꯌꯔ ꯆꯦꯂꯦꯟꯖ (1v1)',
   'Refer & earn': 'ꯔꯦꯐꯔ ꯑꯃꯁꯨꯡ ꯑꯣꯏꯕ ꯉꯝꯕ',
   'Referral code & invite tracking': 'ꯔꯦꯐꯔꯦꯜ ꯀꯣꯗ ꯑꯃꯁꯨꯡ ꯏꯟꯕꯥꯏꯠ ꯇ꯭ꯔꯦꯀꯤꯡ',
-  'Cash reward when a friend buys PRO': 'ꯁꯣꯡꯗꯣꯡꯕꯅꯥ PRO ꯂꯧꯕ ꯃꯇꯝꯗ ꯀꯦꯁ ꯔꯤꯋꯥꯔꯗ',
-  'Withdraw to bank account': 'ꯕꯦꯡꯛ ꯑꯀꯥꯎꯟꯇꯇ ꯑꯣꯏꯕ ꯅꯤꯈꯥꯔ',
   'Experience': 'ꯑꯣꯏꯕ ꯃꯇꯝꯁꯤ',
   'Ad-free practice': 'ꯑꯦꯗ-ꯐ꯭ꯔꯤ ꯄ꯭ꯔꯥꯛꯇꯤꯁ',
   'PRO badge on profile & leaderboard': 'ꯄ꯭ꯔꯣꯐꯥꯏꯜ ꯑꯃꯁꯨꯡ ꯂꯤꯗꯔꯕꯣꯔꯗꯇ PRO ꯕꯦꯖ',

@@ -1848,8 +1848,6 @@ const NE = {
   'Multiplayer Challenges (1v1)': 'मल्टिप्लेयर च्यालेन्ज (1v1)',
   'Refer & earn': 'रेफर गर्नुहोस् र कमाउनुहोस्',
   'Referral code & invite tracking': 'रेफरल कोड र निमन्त्रणा ट्र्याकिङ',
-  'Cash reward when a friend buys PRO': 'साथीले PRO किन्दा नगद पुरस्कार',
-  'Withdraw to bank account': 'बैंक खातामा निकासी',
   'Experience': 'अनुभव',
   'Ad-free practice': 'विज्ञापनमुक्त अभ्यास',
   'PRO badge on profile & leaderboard': 'प्रोफाइल र लिडरबोर्डमा PRO ब्याज',

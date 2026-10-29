@@ -1848,8 +1848,6 @@ const KS = {
   'Multiplayer Challenges (1v1)': 'ملٹی پلیئر چیلنجز (1v1)',
   'Refer & earn': 'ریفر کٔرِو تہٕ کمائیں',
   'Referral code & invite tracking': 'ریفرل کوڈ تہٕ دعوت کی ٹریکنگ',
-  'Cash reward when a friend buys PRO': 'دوست کے PRO لینے پر کیش انعام',
-  'Withdraw to bank account': 'بینک اکاؤنٹ منٛز رقم نکالیں',
   'Experience': 'تجربہ',
   'Ad-free practice': 'اشتہار سے پاک مشق',
   'PRO badge on profile & leaderboard': 'پروفائل تہٕ لیڈر بورڈ پر PRO بیج',

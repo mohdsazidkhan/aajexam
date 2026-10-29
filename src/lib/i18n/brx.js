@@ -1848,8 +1848,6 @@ const BODO = {
   'Multiplayer Challenges (1v1)': 'मल्टिप्लेयार चेलेंज (1v1)',
   'Refer & earn': 'रेफार खालाम आरो कमाइ',
   'Referral code & invite tracking': 'रेफाराल कोड आरो आमन्त्रण ट्रेकिं',
-  'Cash reward when a friend buys PRO': 'जोंनानै PRO खरलायोब्ला क्यास रिवार्ड',
-  'Withdraw to bank account': 'बैंक एकाउन्टाव निखार',
   'Experience': 'रोंगौथाय',
   'Ad-free practice': 'एड-मुक्त प्राक्टिस',
   'PRO badge on profile & leaderboard': 'प्रोफाइल आरो लिडारबोर्डआव PRO ब्याज',

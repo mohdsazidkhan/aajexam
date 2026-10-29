@@ -1848,8 +1848,6 @@ const DogriDict = {
   'Multiplayer Challenges (1v1)': 'मल्टीप्लेयर चैलेंज (1v1)',
   'Refer & earn': 'रेफर करो ते कमाओ',
   'Referral code & invite tracking': 'रेफरल कोड ते न्यौता ट्रैकिंग',
-  'Cash reward when a friend buys PRO': 'मित्तर दे PRO खरीदने पर कैश इनाम',
-  'Withdraw to bank account': 'बैंक खाते च निकासी',
   'Experience': 'अनुभव',
   'Ad-free practice': 'बिना इश्तिहार अभ्यास',
   'PRO badge on profile & leaderboard': 'प्रोफाइल ते लीडरबोर्ड पर PRO बैज',

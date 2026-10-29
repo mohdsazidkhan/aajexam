@@ -1848,8 +1848,6 @@ const SAT = {
   'Multiplayer Challenges (1v1)': 'ᱢᱟᱞᱴᱤᱯᱞᱮᱭᱟᱨ ᱪᱮᱞᱮᱱᱡ (1v1)',
   'Refer & earn': 'ᱨᱮᱯᱷᱮᱨ ᱢᱮ ᱟᱨ ᱧᱟᱢ ᱢᱮ',
   'Referral code & invite tracking': 'ᱨᱮᱯᱷᱮᱨᱟᱞ ᱠᱚᱰ ᱟᱨ ᱥᱮᱸᱫᱽᱨᱟ ᱴᱨᱮᱠᱤᱝ',
-  'Cash reward when a friend buys PRO': 'ᱵᱚᱱᱫᱷᱩ PRO ᱠᱤᱱᱟ ᱚᱠᱛᱚ ᱠᱮᱥ ᱨᱤᱣᱟᱨᱰ',
-  'Withdraw to bank account': 'ᱵᱮᱸᱠ ᱮᱠᱟᱣᱱᱴ ᱛᱮ ᱯᱩᱭᱥᱟ ᱚᱪᱚᱭ',
   'Experience': 'ᱟᱱᱩᱵᱷᱚᱵ',
   'Ad-free practice': 'ᱵᱤᱡᱽᱧᱟᱯᱚᱱ ᱵᱟᱝ ᱯᱨᱮᱠᱴᱤᱥ',
   'PRO badge on profile & leaderboard': 'ᱯᱨᱚᱯᱷᱟᱭᱤᱞ ᱟᱨ ᱞᱤᱰᱟᱨᱵᱚᱨᱰ ᱨᱮ PRO ᱵᱮᱡ',

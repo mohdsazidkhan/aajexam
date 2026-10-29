@@ -116,8 +116,8 @@ const FEATURE_GROUPS = [
     color: 'primary',
     items: [
       { label: 'Referral code & invite tracking', free: true, pro: true },
-      { label: 'Cash reward when a friend buys PRO', free: true, pro: true },
-      { label: 'Withdraw to bank account', free: true, pro: true },
+      { label: 'Referral Rewards when a friend buys PRO', free: true, pro: true },
+      { label: 'Withdraw', free: true, pro: true },
     ],
   },
   {
