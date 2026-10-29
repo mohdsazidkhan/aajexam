@@ -7,7 +7,7 @@ export async function GET(req) {
         const currentVersion = searchParams.get('currentVersion') || '1.0.0';
 
         // In a real app, you might fetch this from a DB or config
-        const latestVersion = '2.4.0';
+        const latestVersion = '3.5.0';
         const forceUpdate = false;
         const updateUrl = platform === 'android'
             ? 'https://play.google.com/store/apps/details?id=com.aajexam.app'
