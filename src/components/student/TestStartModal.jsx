@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { getCurrentUser } from '../../lib/utils/authUtils';
 import { ProBadge } from '../common/ui';
+import BookmarkButton from '../common/BookmarkButton';
 import useTranslate from '../../hooks/useTranslate';
 
 const TestStartModal = ({
@@ -66,7 +67,8 @@ const TestStartModal = ({
           </div>
 
           {/* Test Info */}
-          <section className="dark:bg-background-surface-secondary p-3 xl:p-6 mb-3 xl:mb-6 border border-dashed border-primary-300 dark:border-slate-700" style={{ borderRadius: 'var(--radius)' }}>
+          <section className="relative dark:bg-background-surface-secondary p-3 xl:p-6 mb-3 xl:mb-6 border border-dashed border-primary-300 dark:border-slate-700" style={{ borderRadius: 'var(--radius)' }}>
+            {test._id && <BookmarkButton type="test" id={test._id} className="absolute top-2 right-2" />}
             <h3 className="text-content-primary text-sm xl:text-md mb-3 xl:mb-6 uppercase font-bold tracking-[0.08em] leading-relaxed text-center px-2 break-words">
               {translateData(testTitle)}
             </h3>

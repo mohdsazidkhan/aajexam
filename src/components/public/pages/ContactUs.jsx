@@ -94,37 +94,37 @@ const ContactUs = ({ contactInfo = {
                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-10 items-start">
 
                   {/* --- Contact Details --- */}
-                  <div className="xl:col-span-6 space-y-8">
-                     <address className="not-italic grid grid-cols-1 xl:grid-cols-2 gap-6">
+                  <div className="xl:col-span-6 space-y-4">
+                     <address className="not-italic grid grid-cols-1 xl:grid-cols-2 gap-4">
                         {[
                            { label: 'Email Support', val: contactInfo.email, icon: Mail, color: 'primary' },
                            { label: 'Phone Number', val: contactInfo.phone, icon: Phone, color: 'primary' },
                            { label: 'Office Address', val: contactInfo.address, icon: MapPin, color: 'primary' },
                            { label: 'Working Hours', val: contactInfo.businessHours, icon: Clock, color: 'primary' }
                         ].map((item, i) => (
-                           <Card key={i} className="flex items-center gap-6 xl:gap-10 border border-border-primary hover:border-primary-500/30 transition-all rounded-3xl xl:rounded-3xl bg-background-surface group">
-                              <div className={`w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center bg-${item.color === 'primary' ? 'primary-500' : item.color + '-500'}/25 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-lg xl:rounded-xl xl:rounded-2xl border border-transparent group-hover:border-current transition-all shrink-0`}>
-                                 <item.icon className="w-5 h-5 xl:w-6 xl:h-6" />
+                           <Card key={i} className="flex items-center gap-3 xl:gap-4 border border-border-primary hover:border-primary-500/30 transition-all rounded-3xl xl:rounded-3xl bg-background-surface group">
+                              <div className={`w-10 h-10 xl:w-11 xl:h-11 flex items-center justify-center bg-${item.color === 'primary' ? 'primary-500' : item.color + '-500'}/25 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-lg xl:rounded-xl xl:rounded-2xl border border-transparent group-hover:border-current transition-all shrink-0`}>
+                                 <item.icon className="w-4 h-4 xl:w-5 xl:h-5" />
                               </div>
                               <div className="min-w-0">
-                                 <p className="text-[9px] xl:text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] leading-none mb-1.5 xl:mb-2">{translate(item.label)}</p>
-                                 <p className="text-sm xl:text-base font-bold text-content-primary uppercase tracking-tight truncate">{item.val}</p>
+                                 <p className="text-[9px] xl:text-[10px] font-bold text-content-muted uppercase tracking-[0.08em] leading-none mb-1">{translate(item.label)}</p>
+                                 <p className="text-sm font-bold text-content-primary uppercase tracking-tight break-all leading-tight">{item.val}</p>
                               </div>
                            </Card>
                         ))}
                      </address>
 
                      {/* Social Links */}
-                     <Card as="section" className="space-y-6 bg-background-surface border border-border-primary overflow-hidden relative rounded-3xl">
-                        <div className="relative z-10 space-y-6">
+                     <Card as="section" className="bg-background-surface border border-border-primary overflow-hidden relative rounded-3xl">
+                        <div className="relative z-10 space-y-3">
                            <section className="space-y-1">
                               <h2 className="text-[10px] font-bold uppercase tracking-[0.08em] text-primary-600">{translate('Follow Us')}</h2>
-                              <p className="text-xl font-bold font-outfit tracking-tight text-content-primary">{translate('Find Us on Social Media')}</p>
+                              <p className="text-lg font-bold font-outfit tracking-tight text-content-primary">{translate('Find Us on Social Media')}</p>
                            </section>
-                           <div className="flex flex-wrap gap-4">
+                           <div className="flex flex-wrap gap-2.5">
                               {socialLinks.map((s, i) => (
-                                 <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={translate('Follow us on {name}', { name: s.name })} className="w-11 h-11 bg-background-surface hover:bg-primary-700 hover:text-white dark:hover:text-white flex items-center justify-center rounded-md xl:rounded-md transition-all border border-primary-600 text-primary-600 group/link">
-                                    <s.icon className="w-5 h-5 group-hover/link:scale-110 transition-transform" />
+                                 <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={translate('Follow us on {name}', { name: s.name })} className="w-9 h-9 bg-background-surface hover:bg-primary-700 hover:text-white dark:hover:text-white flex items-center justify-center rounded-md xl:rounded-md transition-all border border-primary-600 text-primary-600 group/link">
+                                    <s.icon className="w-4 h-4 group-hover/link:scale-110 transition-transform" />
                                  </a>
                               ))}
                            </div>
@@ -134,12 +134,12 @@ const ContactUs = ({ contactInfo = {
 
                      {/* Support Info */}
                      <Card as="section" className="border-none text-content-primary border border-border-primary overflow-hidden group relative bg-background-surface">
-                        <div className="flex items-center gap-5 relative z-10">
-                           <div className="w-14 h-14 rounded-md border border-primary-600 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 text-primary-600">
-                              <Headset className="w-8 h-8" />
+                        <div className="flex items-center gap-3 relative z-10">
+                           <div className="w-10 h-10 rounded-md border border-primary-600 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 text-primary-600">
+                              <Headset className="w-5 h-5" />
                            </div>
                            <div className="space-y-1">
-                              <h3 className="text-xl font-bold font-outfit tracking-tight leading-none">{translate('We Are Here For You')}</h3>
+                              <h3 className="text-lg font-bold font-outfit tracking-tight leading-none">{translate('We Are Here For You')}</h3>
                               <p className="text-xs font-medium opacity-90">{translate('Students always come first. We are ready to help.')}</p>
                            </div>
                         </div>
