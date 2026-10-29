@@ -119,6 +119,27 @@
     color: var(--text-primary);
   }
 
+  /* Fields without their own bg-* class must not fall back to the browser's white (base layer, so any utility still wins) */
+  input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']):not([type='file']),
+  textarea,
+  select {
+    background-color: var(--bg-surface);
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  /* Browser autofill paints its own light background */
+  .dark input:-webkit-autofill,
+  .dark textarea:-webkit-autofill,
+  .dark select:-webkit-autofill {
+    -webkit-text-fill-color: var(--text-primary);
+    caret-color: var(--text-primary);
+    box-shadow: 0 0 0 1000px var(--bg-surface) inset;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+
   select option {
     background-color: var(--bg-surface);
     color: var(--text-primary);
