@@ -15,6 +15,8 @@ export async function GET(req) {
         const page = parseInt(searchParams.get('page')) || 1;
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200);
         const search = searchParams.get('search');
+        // The monthly digest screen shows each item's text; plain lists stay light.
+        const digest = searchParams.get('digest') === '1';
 
         let query = { status: 'published' };
         if (category) query.category = category;
@@ -33,7 +35,7 @@ export async function GET(req) {
 
         const [affairs, total] = await Promise.all([
             CurrentAffair.find(query)
-                .select('title slug category date keyPoints tags views questions.length')
+                .select(digest ? 'title slug category date content keyPoints' : 'title slug category date keyPoints tags views questions.length')
                 .sort({ date: -1 })
                 .skip((page - 1) * limit)
                 .limit(limit)
