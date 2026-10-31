@@ -21,7 +21,7 @@ export async function GET() {
         const __hit = await readCache('landing-stats');
         if (__hit) {
             const cachedRes = NextResponse.json(__hit);
-            cachedRes.headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
+            cachedRes.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
             return cachedRes;
         }
 
@@ -134,9 +134,9 @@ export async function GET() {
                 examStats,
             }
         };
-        await writeCache('landing-stats', JSON.parse(JSON.stringify(__body)), 300);
+        await writeCache('landing-stats', JSON.parse(JSON.stringify(__body)), 3600);
         const response = NextResponse.json(__body);
-        response.headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
+        response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
         return response;
 
     } catch (error) {
