@@ -2,9 +2,10 @@
 import Select from '../../../components/common/ui/Select';
 import React, { useState, useEffect } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
-import { Newspaper, Plus, Pencil, Trash2, Eye, LayoutGrid, List, Table2, Calendar, Tag, X, Search } from 'lucide-react';
+import { Newspaper, Plus, Pencil, Trash2, Eye, LayoutGrid, List, Table2, Calendar, Tag, X, Search, ClipboardPaste } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import Head from 'next/head';
+import Link from 'next/link';
 import API from '../../../lib/api';
 import Card from '../../../components/common/ui/Card';
 import ResponsiveTable from '../../../components/common/ResponsiveTable';
@@ -121,9 +122,14 @@ const AdminCurrentAffairs = () => {
   );
 
   const addNewButton = (
-    <button onClick={() => { setShowForm(true); setEditId(null); }} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors text-on-primary bg-primary-600">
-      <Plus className="w-3 h-3" /> Add New
-    </button>
+    <div className="flex items-center gap-2 w-full">
+      <button onClick={() => { setShowForm(true); setEditId(null); }} className="flex-1 px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors text-on-primary bg-primary-600">
+        <Plus className="w-3 h-3" /> Add New
+      </button>
+      <Link href="/admin/current-affairs/bulk" className="flex-1 px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border border-primary-600 text-primary-600">
+        <ClipboardPaste className="w-3 h-3" /> Bulk Add
+      </Link>
+    </div>
   );
 
   const paginationControl = totalItems > 0 && (
