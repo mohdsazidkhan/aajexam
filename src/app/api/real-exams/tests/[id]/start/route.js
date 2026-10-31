@@ -1,10 +1,9 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import PracticeTest from '@/models/PracticeTest';
 import ExamPattern from '@/models/ExamPattern';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import { protect } from '@/middleware/auth';
-import { hydrateTestQuestions } from '@/lib/utils/hydrateTestQuestions';
+import { loadHydratedTest } from '@/lib/utils/hydrateTestQuestions';
 
 export async function GET(req, { params }) {
     try {
@@ -13,9 +12,8 @@ export async function GET(req, { params }) {
         const auth = await protect(req);
         if (!auth.authenticated) return NextResponse.json({ message: 'Login required' }, { status: 401 });
 
-        const test = await PracticeTest.findById(testId).populate('examPattern', 'title duration totalMarks sections negativeMarking').lean();
+        const test = await loadHydratedTest(testId);
         if (!test) return NextResponse.json({ success: false, message: 'Test not found' }, { status: 404 });
-        await hydrateTestQuestions(test);
 
         const user = auth.user;
 

@@ -22,7 +22,8 @@ export async function POST(req, { params }) {
                 path: 'questions',
                 match: { isActive: true },
                 select: 'questionText options.text difficulty image'
-            });
+            })
+            .lean();
 
         if (!quiz) return NextResponse.json({ message: 'Quiz not found' }, { status: 404 });
 

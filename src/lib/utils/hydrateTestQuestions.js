@@ -5,6 +5,7 @@
 //   - a question without one (a repeat inside the same test, an invalid one) keeps whatever it carries.
 // This also works after the embedded copies are removed, and it keeps working while they are still there.
 import Question from '../../models/Question';
+import PracticeTest from '../../models/PracticeTest';
 
 const needsContent = (q) => !!q && q._id != null;
 
@@ -111,4 +112,34 @@ export async function questionIdsByText(regex, limit = 3000) {
     if (!regex) return [];
     const docs = await Question.find({ $or: [{ questionText: regex }, { explanation: regex }] }).select('_id').limit(limit).lean();
     return docs.map((d) => d._id);
+}
+
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Start / attempt-detail routes load the same test (with its examPattern and every question) for each student. That is the
+// heaviest read in the app, so keep the hydrated test in this instance's memory for two minutes. Callers must treat it as read-only.
+const TEST_TTL_MS = 120 * 1000;
+const TEST_MAX = 30;
+const testCache = new Map();
+const testInflight = new Map();
+
+export async function loadHydratedTest(testId) {
+    const key = String(testId);
+    const hit = testCache.get(key);
+    if (hit && hit.exp > Date.now()) return hit.test;
+    if (testInflight.has(key)) return testInflight.get(key);
+    const run = (async () => {
+        try {
+            const test = await PracticeTest.findById(testId).populate('examPattern', 'title duration totalMarks sections negativeMarking').lean();
+            if (!test) return null;
+            await hydrateTestQuestions(test);
+            testCache.set(key, { test, exp: Date.now() + TEST_TTL_MS });
+            if (testCache.size > TEST_MAX) testCache.delete(testCache.keys().next().value);
+            return test;
+        } finally {
+            testInflight.delete(key);
+        }
+    })();
+    testInflight.set(key, run);
+    return run;
 }

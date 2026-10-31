@@ -3,6 +3,7 @@ import UserTestAttempt from '@/models/UserTestAttempt';
 import UserStreak from '@/models/UserStreak';
 import mongoose from 'mongoose';
 import { rowSort } from '@/lib/utils/rankSort';
+import { cached } from '@/lib/utils/sharedCache';
 
 // State / City rank: the All India Rank ordering (total exam time, then exams, accuracy, score)
 // restricted to the active students of one state or one city. `state` and `city` are free-text on
@@ -52,14 +53,12 @@ export async function listPlaces(field) {
 // (rank is the real position) and `me` is the caller's row even when they are outside the top.
 // `examId` (optional) limits the ranking to attempts of that one exam; omitted = all exams combined.
 // `sort` (see rankSort.js) picks the metric the ranking is based on; default is total time spent.
-export async function rankPlace({ field, value, limit = 10, userId = null, examId = null, sort = 'time' }) {
-    const key = placeKey(value, field);
-    if (!FIELDS.includes(field) || !key) return { place: '', totalUsers: 0, data: [], me: null };
+async function computeRanking({ field, key, examId, sort }) {
 
     const users = await User.find({ status: 'active', role: { $ne: 'admin' }, [field]: placeRegex(key, field) })
         .select('name username profilePicture city state subscriptionStatus')
         .lean();
-    if (!users.length) return { place: key === 'delhi' ? 'Delhi' : titleCase(key), totalUsers: 0, data: [], me: null };
+    if (!users.length) return { place: key === 'delhi' ? 'Delhi' : titleCase(key), ranked: [] };
 
     const byId = new Map(users.map((u) => [String(u._id), u]));
     const examStages = examId && mongoose.Types.ObjectId.isValid(examId) ? [
@@ -118,6 +117,19 @@ export async function rankPlace({ field, value, limit = 10, userId = null, examI
         for (const u of users) { const raw = String(u[field]).trim(); counts.set(raw, (counts.get(raw) || 0) + 1); }
         return [...counts.entries()].sort((a, b) => b[1] - a[1])[0][0];
     })();
+
+    // Plain JSON so the shared cache can store it (ids as strings).
+    return JSON.parse(JSON.stringify({ place, ranked }));
+}
+
+// Ranking is the same for every caller and costs a users scan + attempts aggregate, so it is kept for 5 minutes;
+// only the caller's own row (`me`) is picked per request.
+export async function rankPlace({ field, value, limit = 10, userId = null, examId = null, sort = 'time' }) {
+    const key = placeKey(value, field);
+    if (!FIELDS.includes(field) || !key) return { place: '', totalUsers: 0, data: [], me: null };
+
+    const { place, ranked } = await cached(`rank:${field}:${key}:${examId || ''}:${sort}`, 300, () => computeRanking({ field, key, examId, sort }));
+    if (!ranked.length) return { place, totalUsers: 0, data: [], me: null };
 
     const meId = userId ? String(userId) : null;
     return {

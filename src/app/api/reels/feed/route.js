@@ -30,7 +30,7 @@ export async function GET(req) {
 		if (difficulty) filter.difficulty = difficulty;
 		if (tag) filter.tags = { $in: [tag.toLowerCase()] };
 
-		const [reels, total] = await Promise.all([
+		const [[reels, total], auth] = await Promise.all([Promise.all([
 			Reel.find(filter)
 				.sort({ publishedAt: -1 })
 				.skip(skip)
@@ -38,10 +38,9 @@ export async function GET(req) {
 				.populate('createdBy', 'name username profilePicture')
 				.lean(),
 			Reel.countDocuments(filter)
-		]);
+		]), protect(req)]);
 
 		// If user is logged in, attach their interaction data
-		const auth = await protect(req);
 		let reelsWithInteraction = reels;
 
 		if (auth.authenticated) {

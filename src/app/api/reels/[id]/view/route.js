@@ -11,11 +11,13 @@ export async function POST(req, { params }) {
 		const body = await req.json().catch(() => ({}));
 		const timeSpentSeconds = body.timeSpentSeconds || 0;
 
-		// Always increment view count
-		await Reel.findByIdAndUpdate(id, { $inc: { viewsCount: 1 } });
+		// View count and the login check are independent, so run them together.
+		const [auth] = await Promise.all([
+			protect(req),
+			Reel.updateOne({ _id: id }, { $inc: { viewsCount: 1 } }),
+		]);
 
 		// Track per-user interaction if logged in
-		const auth = await protect(req);
 		if (auth.authenticated) {
 			await ReelInteraction.findOneAndUpdate(
 				{ userId: auth.user._id, reelId: id },

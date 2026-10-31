@@ -15,6 +15,7 @@ export async function GET() {
 			Reel.distinct('tags', { status: 'published' })
 		]);
 
+		// Filter lists change rarely and are the same for everyone, so let the CDN hold them.
 		return NextResponse.json({
 			success: true,
 			data: {
@@ -23,7 +24,7 @@ export async function GET() {
 				examTypes: examTypes.filter(Boolean).sort(),
 				tags: tags.filter(Boolean).sort()
 			}
-		});
+		}, { headers: { 'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400' } });
 	} catch (error) {
 		console.error('Reels stats error:', error);
 		return NextResponse.json({ success: false, message: error.message }, { status: 500 });
