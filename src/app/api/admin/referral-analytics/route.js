@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import { protect, admin } from '@/middleware/auth';
+import { readCache, writeCache } from '@/lib/utils/sharedCache';
 
 export async function GET(req) {
     try {
@@ -11,6 +12,11 @@ export async function GET(req) {
         }
 
         await dbConnect();
+
+        // Full-collection ranking: identical for every admin tab, so serve a two-minute copy per query string.
+        const __ck = `admin-referral-analytics:${new URL(req.url).search}`;
+        const __hit = await readCache(__ck);
+        if (__hit) return NextResponse.json(__hit);
         const { searchParams } = new URL(req.url);
         const page = parseInt(searchParams.get('page')) || 1;
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000);
@@ -53,7 +59,7 @@ export async function GET(req) {
         ]);
         const totalReferralsSum = totalReferralsAggr[0]?.total || 0;
 
-        return NextResponse.json({
+        const __body = {
             success: true,
             analytics,
             summary: {
@@ -67,7 +73,9 @@ export async function GET(req) {
                 page,
                 limit
             }
-        });
+        };
+        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 120);
+        return NextResponse.json(__body);
     } catch (error) {
         console.error('Referral analytics error:', error);
         return NextResponse.json({ success: false, message: error.message }, { status: 500 });

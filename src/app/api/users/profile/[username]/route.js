@@ -19,9 +19,14 @@ export async function GET(req, { params }) {
         const user = await User.findOne({ username: username.toLowerCase() }).select('-password -googleId').lean();
         if (!user) return errorResponse('User not found', 404);
 
-        if (!auth.authenticated || auth.user.id !== user._id.toString()) {
-            await User.findByIdAndUpdate(user._id, { $inc: { profileViews: 1 }, lastProfileView: new Date() });
-        }
+        const isOwnProfile = auth.authenticated && auth.user.id === user._id.toString();
+        const viewBump = isOwnProfile
+            ? null
+            : User.updateOne({ _id: user._id }, { $inc: { profileViews: 1 }, lastProfileView: new Date() }).exec();
+        const followCheck = auth.authenticated && !isOwnProfile
+            ? Follow.exists({ follower: auth.user.id, following: user._id, status: 'active' }).exec()
+            : null;
+        const regionRanksP = user.isPublicProfile || isOwnProfile ? regionRanksFor(user) : null;
 
         const [followersCount, followingCount, reelsCount, examAIR, quizAIR, quizzesAttempted] = await Promise.all([
             Follow.countDocuments({ following: user._id, status: 'active' }),
@@ -32,13 +37,9 @@ export async function GET(req, { params }) {
             QuizAttempt.countDocuments({ user: user._id, status: 'Completed' })
         ]);
 
-        let isFollowing = false;
-        const isOwnProfile = auth.authenticated && auth.user.id === user._id.toString();
-        if (auth.authenticated && !isOwnProfile) {
-            isFollowing = await Follow.exists({ follower: auth.user.id, following: user._id, status: 'active' });
-        }
-
-        const regionRanks = user.isPublicProfile || isOwnProfile ? await regionRanksFor(user) : {};
+        const [isFollowing, regionRanksRaw] = await Promise.all([followCheck, regionRanksP, viewBump]);
+        const isFollowingFlag = isFollowing || false;
+        const regionRanks = regionRanksRaw || {};
 
         return successResponse({
             user: {
@@ -61,7 +62,7 @@ export async function GET(req, { params }) {
                 createdAt: user.createdAt,
                 performanceMetrics: user.performanceMetrics
             },
-            isFollowing: !!isFollowing,
+            isFollowing: !!isFollowingFlag,
             isOwnProfile,
             stats: { examAIR, quizAIR, quizzesAttempted, ...regionRanks }
         });

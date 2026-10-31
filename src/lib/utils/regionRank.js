@@ -27,6 +27,10 @@ const titleCase = (s) => s.replace(/\b\w/g, (c) => c.toUpperCase());
 // Every place that has at least one active student, biggest first (admin dropdown).
 export async function listPlaces(field) {
     if (!FIELDS.includes(field)) return [];
+    return cached(`rank-places:${field}`, 600, () => computePlaces(field));
+}
+
+async function computePlaces(field) {
     const rows = await User.find({ status: 'active', role: { $ne: 'admin' }, [field]: { $type: 'string', $ne: '' } })
         .select(field)
         .lean();

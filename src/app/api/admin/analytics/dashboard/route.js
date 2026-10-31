@@ -145,7 +145,7 @@ export async function GET(req) {
                 }
             }
         };
-        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 60);
+        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 300);
         return NextResponse.json(__body);
 
     } catch (error) {

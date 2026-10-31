@@ -6,6 +6,7 @@ import User from '@/models/User';
 import UserStreak from '@/models/UserStreak';
 import { protect, admin } from '@/middleware/auth';
 import { getISTRange } from '@/lib/istRange';
+import { readCache, writeCache } from '@/lib/utils/sharedCache';
 
 // GET /api/admin/most-active-users?period=all-time|5y|1y|6m|3m|monthly|weekly|yesterday|today
 // (legacy 'weekly' = 7d, 'monthly' = 30d). All windows are calendar-aligned in IST (UTC+5:30).
@@ -23,6 +24,11 @@ export async function GET(req) {
         const { searchParams } = new URL(req.url);
         const period = searchParams.get('period') || 'all-time';
         const search = (searchParams.get('search') || '').trim().slice(0, 100);
+
+        // Scans every completed attempt: keep the answer for two minutes per period/search.
+        const __ck = `admin-most-active:${period}:${search}`;
+        const __hit = await readCache(__ck);
+        if (__hit) return NextResponse.json(__hit);
 
         const range = getISTRange(period);
         const dateFilter = range ? { createdAt: range } : {};
@@ -137,7 +143,9 @@ export async function GET(req) {
                 };
             });
 
-        return NextResponse.json({ success: true, data, summary, period, search });
+        const __body = { success: true, data, summary, period, search };
+        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 120);
+        return NextResponse.json(__body);
     } catch (error) {
         console.error('Admin most-active-users API error:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

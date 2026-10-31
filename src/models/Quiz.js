@@ -28,6 +28,8 @@ quizSchema.index({ applicableExams: 1, subject: 1, status: 1 });
 quizSchema.index({ applicableExams: 1, subject: 1, topic: 1, status: 1 });
 quizSchema.index({ status: 1, publishedAt: -1 });
 quizSchema.index({ type: 1, status: 1 });
+quizSchema.index({ subject: 1, status: 1, publishedAt: -1 }); // subject page / related quizzes
+quizSchema.index({ topic: 1, status: 1, publishedAt: -1 }); // topic page / related quizzes
 quizSchema.index({ tags: 1 });
 quizSchema.index({ accessLevel: 1, status: 1 });
 quizSchema.index({ slug: 1 }, { unique: true, sparse: true });

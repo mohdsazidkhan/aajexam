@@ -17,4 +17,7 @@ const NotificationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+NotificationSchema.index({ type: 1, createdAt: -1 }); // admin activity feed
+NotificationSchema.index({ userId: 1, createdAt: -1 }); // a student's inbox
+
 export default mongoose.models.Notification || mongoose.model('Notification', NotificationSchema);

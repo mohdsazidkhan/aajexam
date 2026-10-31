@@ -61,6 +61,16 @@ async function loadQuestions(sourceType, sourceId) {
     }));
 }
 
+// The read path only needs the question ids, so skip loading and hydrating every question's text.
+async function loadQuestionIds(sourceType, sourceId) {
+    if (sourceType === 'quiz') {
+        const quiz = await Quiz.findById(sourceId).select('questions').lean();
+        return quiz ? (quiz.questions || []) : null;
+    }
+    const test = await PracticeTest.findById(sourceId).select('questions._id').lean();
+    return test ? (test.questions || []).map((q) => q._id) : null;
+}
+
 function parseParams(source) {
     const sourceType = (source.sourceType || '').toLowerCase();
     const sourceId = source.sourceId;
@@ -94,11 +104,11 @@ export async function GET(req) {
         // Look up by question id, not by sourceId: quizzes share Question
         // documents, so a question translated for one quiz already serves the
         // others.
-        const questions = await loadQuestions(parsed.sourceType, parsed.sourceId);
-        if (!questions) return NextResponse.json({ error: 'Source not found' }, { status: 404 });
+        const questionIds = await loadQuestionIds(parsed.sourceType, parsed.sourceId);
+        if (!questionIds) return NextResponse.json({ error: 'Source not found' }, { status: 404 });
 
-        const docs = questions.length === 0 ? [] : await QuestionTranslation.find({
-            questionId: { $in: questions.map((q) => q._id) },
+        const docs = questionIds.length === 0 ? [] : await QuestionTranslation.find({
+            questionId: { $in: questionIds },
             lang: parsed.lang
         }).select('questionId questionText options').lean();
 

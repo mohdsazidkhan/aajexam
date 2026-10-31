@@ -4,6 +4,7 @@ import QuizAttempt from '@/models/QuizAttempt';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import UserStreak from '@/models/UserStreak';
 import { protect, admin } from '@/middleware/auth';
+import { readCache, writeCache } from '@/lib/utils/sharedCache';
 
 // GET /api/admin/leaderboard?type=quiz|exam&period=all-time|weekly|monthly&page=1&limit=20&search=
 // Admin-only mirror of /api/leaderboard — same ranking pipeline, but paginated
@@ -17,6 +18,11 @@ export async function GET(req) {
         }
 
         await dbConnect();
+
+        // Full-collection ranking: identical for every admin tab, so serve a two-minute copy per query string.
+        const __ck = `admin-leaderboard:${new URL(req.url).search}`;
+        const __hit = await readCache(__ck);
+        if (__hit) return NextResponse.json(__hit);
         const { searchParams } = new URL(req.url);
         const type = searchParams.get('type') || 'quiz'; // 'quiz' or 'exam'
         const period = searchParams.get('period') || 'all-time';
@@ -148,13 +154,15 @@ export async function GET(req) {
         const totalPages = Math.max(1, Math.ceil(total / limit));
         const paged = ranked.slice((page - 1) * limit, page * limit);
 
-        return NextResponse.json({
+        const __body = {
             success: true,
             data: paged,
             period,
             type,
             pagination: { page, limit, total, totalPages },
-        });
+        };
+        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 120);
+        return NextResponse.json(__body);
     } catch (error) {
         console.error('Admin leaderboard API error:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

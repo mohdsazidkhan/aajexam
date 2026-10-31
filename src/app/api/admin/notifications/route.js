@@ -9,6 +9,7 @@ import Quiz from '@/models/Quiz';
 import Subject from '@/models/Subject';
 import { protect, admin } from '@/middleware/auth';
 import { escapeRegex } from '@/lib/utils/pagination';
+import { cached } from '@/lib/utils/sharedCache';
 
 // Referenced only so their schemas are registered for populate() below.
 void User; void ExamCategory; void Subject;
@@ -47,11 +48,12 @@ export async function GET(req) {
                 .populate('userId', 'name username email')
                 .lean(),
             Notification.countDocuments(activityFilter),
-            Notification.aggregate([
+            // Same for every page/filter, so it is computed once a minute instead of on every request.
+            cached('admin-notification-type-counts', 60, () => Notification.aggregate([
                 { $match: { type: { $ne: 'announcement' } } }, // type tabs keep showing totals for every type
                 { $group: { _id: '$type', count: { $sum: 1 } } },
                 { $sort: { count: -1 } }
-            ])
+            ]))
         ]);
 
         // Enrich "exam_attempt" (govt exam test submitted) with Exam / Category / Test Title.

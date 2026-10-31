@@ -11,6 +11,7 @@ import Question from '@/models/Question';
 import Blog from '@/models/Blog';
 import { protect, admin } from '@/middleware/auth';
 import { notEmbedded } from '@/lib/utils/embeddedSource';
+import { readCache, writeCache } from '@/lib/utils/sharedCache';
 
 export async function GET(req) {
     try {
@@ -20,6 +21,11 @@ export async function GET(req) {
         }
 
         await dbConnect();
+
+        // Loads every exam, pattern, subject, topic, quiz and test: keep the result for five minutes.
+        const __ck = 'admin-exams-overview';
+        const __hit = await readCache(__ck);
+        if (__hit) return NextResponse.json(__hit);
 
         // 1. Overall Statistics
         const [
@@ -275,13 +281,15 @@ export async function GET(req) {
             };
         });
 
-        return NextResponse.json({
+        const __body = {
             success: true,
             data: {
                 overallStats,
                 examHierarchy
             }
-        });
+        };
+        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 300);
+        return NextResponse.json(__body);
     } catch (error) {
         console.error('Error fetching exams overview:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

@@ -3,6 +3,7 @@ import dbConnect from '@/lib/db';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import mongoose from 'mongoose';
 import { protect, admin } from '@/middleware/auth';
+import { readCache, writeCache } from '@/lib/utils/sharedCache';
 import { normalizeRankSort, rowSort } from '@/lib/utils/rankSort';
 
 // GET /api/admin/air?examId=optional&page=1&limit=20&search=&sort=time|attempts|correct|score|accuracy|avg
@@ -16,6 +17,11 @@ export async function GET(req) {
         }
 
         await dbConnect();
+
+        // Full-collection ranking: identical for every admin tab, so serve a two-minute copy per query string.
+        const __ck = `admin-air:${new URL(req.url).search}`;
+        const __hit = await readCache(__ck);
+        if (__hit) return NextResponse.json(__hit);
         const { searchParams } = new URL(req.url);
         const examId = searchParams.get('examId');
         const page = Math.max(parseInt(searchParams.get('page'), 10) || 1, 1);
@@ -150,12 +156,14 @@ export async function GET(req) {
         const totalPages = Math.max(1, Math.ceil(total / limit));
         const paged = ranked.slice((page - 1) * limit, page * limit);
 
-        return NextResponse.json({
+        const __body = {
             success: true,
             data: paged,
             examId,
             pagination: { page, limit, total, totalPages },
-        });
+        };
+        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 120);
+        return NextResponse.json(__body);
     } catch (error) {
         console.error('Admin AIR API error:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

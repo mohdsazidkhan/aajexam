@@ -82,6 +82,9 @@ const questionDiscussionSchema = new mongoose.Schema({
 questionDiscussionSchema.index({ question: 1, parent: 1, upvotes: -1 });
 questionDiscussionSchema.index({ question: 1, createdAt: -1 });
 questionDiscussionSchema.index({ rootId: 1, createdAt: 1 });
+// public discussions feed (latest / top / trending)
+questionDiscussionSchema.index({ parent: 1, status: 1, deletedAt: 1, createdAt: -1 });
+questionDiscussionSchema.index({ parent: 1, status: 1, deletedAt: 1, upvotes: -1, replyCount: -1, createdAt: -1 });
 
 export default mongoose.models?.QuestionDiscussion
   || mongoose.model('QuestionDiscussion', questionDiscussionSchema);

@@ -4,6 +4,7 @@ import VisitorDay from '@/models/VisitorDay';
 import User from '@/models/User';
 import Lead from '@/models/Lead';
 import { protect, admin } from '@/middleware/auth';
+import { readCache, writeCache } from '@/lib/utils/sharedCache';
 import { istDay, SEGMENTS, segmentFilter, PROMPT_NAMES, SOURCES, LEGACY_SOURCE } from '@/lib/utils/traffic';
 
 const SUM_KEYS = ['visitors', 'pageViews', 'alreadyLoggedIn', 'newVisitors', 'sawAuthPage', 'leftWithoutAuth', 'leftAfterAuthPage',
@@ -51,6 +52,11 @@ export async function GET(req) {
         // Tab: total (everything stored, bots included) | real (suspected bots removed) | india | outside (both real only).
         const segment = SEGMENTS.includes(sp.get('segment')) ? sp.get('segment') : 'total';
         const suspectFilter = segmentFilter(segment);
+
+        // 15 aggregations over the visitor log: keep the answer for a minute (the page polls and tabs re-request it).
+        const __ck = `admin-traffic:${days}:${offset}:${segment}`;
+        const __hit = await readCache(__ck);
+        if (__hit) return NextResponse.json(__hit);
 
         const inRange = { day: { $gte: rangeFrom, $lte: rangeTo }, ...suspectFilter };
         const top = (field, extra = {}) => VisitorDay.aggregate([
@@ -169,7 +175,7 @@ export async function GET(req) {
             });
         }
 
-        return NextResponse.json({
+        const __body = {
             success: true,
             data: {
                 summary: {
@@ -196,7 +202,9 @@ export async function GET(req) {
                 devices: devices.map((s) => ({ device: s._id || 'desktop', visitors: s.visitors })),
                 trackingSince: (await VisitorDay.findOne().sort({ createdAt: 1 }).select('day').lean())?.day || null,
             },
-        });
+        };
+        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 60);
+        return NextResponse.json(__body);
     } catch (error) {
         console.error('admin traffic error:', error);
         return NextResponse.json({ message: 'Failed to load traffic' }, { status: 500 });

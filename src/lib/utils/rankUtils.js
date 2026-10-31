@@ -1,6 +1,7 @@
 import QuizAttempt from '@/models/QuizAttempt';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import User from '@/models/User';
+import { cached } from '@/lib/utils/sharedCache';
 
 // Mirrors /api/leaderboard exactly (all-time, type=exam|quiz) so a user's rank on the
 // profile always equals their position on the Quizzes / Exams leaderboard tabs:
@@ -28,7 +29,10 @@ async function getUserAIR(userId, type) {
         totalTimeSpent: { $sum: '$totalTime' },
     };
 
-    const [ranked, totalStudents] = await Promise.all([
+    // The ranking is identical for every viewer and scans every completed attempt, so it is kept for 5 minutes
+    // and only the position of this one user is looked up per request.
+    const { ranked, totalStudents } = await cached(`air:${type}`, 300, async () => {
+    const [rows, total] = await Promise.all([
         Model.aggregate([
             { $match: { status: 'Completed' } },
             { $group: groupStage },
@@ -42,8 +46,10 @@ async function getUserAIR(userId, type) {
         ]),
         User.countDocuments({ role: { $ne: 'admin' } })
     ]);
+    return { ranked: rows.map((r) => ({ _id: String(r._id), totalTimeSpent: r.totalTimeSpent || 0 })), totalStudents: total };
+    });
 
-    const idx = ranked.findIndex((d) => d._id.toString() === userId.toString());
+    const idx = ranked.findIndex((d) => d._id === userId.toString());
     if (idx === -1) return null;
     // totalTimeSpent is in the model's own unit: seconds for quizzes, milliseconds for exams
     // (format with formatTimeSpent(value, type)).
