@@ -42,6 +42,14 @@ const PUBLIC_CACHED_API_PATHS = [
   '/api/public/blogs/featured',
   '/api/public/blogs/:id',
   '/api/reels/trending',
+  '/api/discussions/feed',
+];
+
+// Public leaderboards: same rules as above (nothing per-caller), but ranks change as people submit,
+// so the CDN keeps them for one minute only.
+const PUBLIC_SHORT_CACHED_API_PATHS = [
+  '/api/real-exams/tests/:id/leaderboard',
+  '/api/quiz/quizzes/:id/leaderboard',
 ];
 
 /** @type {import('next').NextConfig} */
@@ -161,6 +169,10 @@ const nextConfig = {
       ...PUBLIC_CACHED_API_PATHS.map((source) => ({
         source,
         headers: [{ key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=86400' }],
+      })),
+      ...PUBLIC_SHORT_CACHED_API_PATHS.map((source) => ({
+        source,
+        headers: [{ key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=300' }],
       })),
       // Logged-in student area: never index (public twins keep the SEO value).
       {

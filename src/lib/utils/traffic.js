@@ -2,7 +2,7 @@ import crypto from 'crypto';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import VisitorDay from '@/models/VisitorDay';
-import { enforceRateLimit, getClientIp } from '@/lib/rateLimit';
+import { getClientIp } from '@/lib/rateLimit';
 import { stateNameOf } from '@/lib/utils/regionNames';
 
 export const VID_COOKIE = 'aj_vid';
@@ -116,6 +116,24 @@ export const sourceOf = (ref, ownHost, utm = '') => {
 // Rows stored before this list existed used the older names; fold them into the current ones for display.
 export const LEGACY_SOURCE = { Google: 'Google Search', Search: 'Other', Social: 'Other', WhatsApp: 'Other', Telegram: 'Other', Referral: 'Other' };
 
+// Per-IP beacon limiter held in this function instance's memory. The shared Mongo limiter cost a second
+// DB write on every page view; for a best-effort analytics beacon a per-instance cap is enough.
+const TRACK_LIMIT = 600;
+const TRACK_WINDOW_MS = 3600 * 1000;
+const trackHits = new Map();
+
+const trackLimited = (ip) => {
+    const now = Date.now();
+    if (trackHits.size > 5000) {
+        for (const [k, v] of trackHits) if (v.resetAt <= now) trackHits.delete(k);
+        if (trackHits.size > 5000) trackHits.clear();
+    }
+    const hit = trackHits.get(ip);
+    if (!hit || hit.resetAt <= now) { trackHits.set(ip, { count: 1, resetAt: now + TRACK_WINDOW_MS }); return false; }
+    hit.count += 1;
+    return hit.count > TRACK_LIMIT;
+};
+
 /**
  * POST /api/track  { vid, path, ref, loggedIn }
  * Public, rate limited, best effort: answers 204 no matter what so it can never break the page.
@@ -126,8 +144,7 @@ export async function recordPageView(req) {
         const ua = req.headers.get('user-agent') || '';
         if (!ua || BOT_RX.test(ua)) return ok();
 
-        const limited = await enforceRateLimit(req, { name: 'track', limit: 600, windowSec: 3600 });
-        if (limited) return ok();
+        if (trackLimited(getClientIp(req))) return ok();
 
         const raw = await req.text();
         if (raw.length > 2000) return ok();
