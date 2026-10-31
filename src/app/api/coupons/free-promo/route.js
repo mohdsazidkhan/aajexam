@@ -19,7 +19,7 @@ export async function GET() {
         }).sort({ startDate: 1 }).select('startDate').lean();
 
         const end = next?.startDate ? new Date(next.startDate) : DEFAULT_PROMO_END;
-        return NextResponse.json({ success: true, promoEnd: end.toISOString() }, { headers: { 'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300' } });
+        return NextResponse.json({ success: true, promoEnd: end.toISOString() }, { headers: { 'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400' } });
     } catch (error) {
         return NextResponse.json({ success: true, promoEnd: DEFAULT_PROMO_END.toISOString() });
     }

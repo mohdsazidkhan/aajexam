@@ -168,7 +168,7 @@ const nextConfig = {
       // public/blogs) are left out.
       ...PUBLIC_CACHED_API_PATHS.map((source) => ({
         source,
-        headers: [{ key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=86400' }],
+        headers: [{ key: 'Cache-Control', value: 'public, s-maxage=3600, stale-while-revalidate=604800' }],
       })),
       ...PUBLIC_SHORT_CACHED_API_PATHS.map((source) => ({
         source,

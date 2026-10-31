@@ -467,7 +467,7 @@ export async function getServerSideProps({ params, res }) {
         const faqs = buildFaqs({ exam, totalPapers: papers.length });
 
         if (res) {
-            res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=86400');
+            res.setHeader('Cache-Control', 'public, s-maxage=21600, stale-while-revalidate=604800');
         }
 
         return {

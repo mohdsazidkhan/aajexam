@@ -5,12 +5,24 @@ export const FREE_PROMO_END = new Date('2026-12-31T23:59:59.999+05:30');
 
 // The real end follows the earliest active pop-up coupon's start date (see
 // /api/coupons/free-promo), so the free-promo messages stop exactly when the coupon starts.
+const PROMO_KEY = 'aj_promo_end';
 let endPromise = null;
 export const getFreePromoEnd = () => {
   if (!endPromise) {
+    // Cached in the browser for an hour so page loads do not each hit the API.
+    try {
+      const c = JSON.parse(localStorage.getItem(PROMO_KEY) || 'null');
+      if (c?.end && Date.now() - c.at < 3600 * 1000) endPromise = Promise.resolve(new Date(c.end));
+    } catch (e) { /* storage unavailable */ }
+  }
+  if (!endPromise) {
     endPromise = fetch('/api/coupons/free-promo')
       .then((r) => r.json())
-      .then((d) => (d?.promoEnd ? new Date(d.promoEnd) : FREE_PROMO_END))
+      .then((d) => {
+        if (!d?.promoEnd) return FREE_PROMO_END;
+        try { localStorage.setItem(PROMO_KEY, JSON.stringify({ end: d.promoEnd, at: Date.now() })); } catch (e) { /* ignore */ }
+        return new Date(d.promoEnd);
+      })
       .catch(() => FREE_PROMO_END);
   }
   return endPromise;

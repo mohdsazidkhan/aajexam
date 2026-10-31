@@ -531,7 +531,7 @@ export async function getServerSideProps({ params, res }) {
 
         // Cache 1 hour at the edge — PYQ papers don't change once seeded
         if (res) {
-            res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+            res.setHeader('Cache-Control', 'public, s-maxage=21600, stale-while-revalidate=604800');
         }
 
         return {

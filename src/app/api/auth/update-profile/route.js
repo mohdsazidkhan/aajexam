@@ -28,12 +28,12 @@ export async function PUT(req) {
 
         await dbConnect();
         const body = await req.json();
-        const userId = auth.user._id;
 
         // Fields allowed to be updated
         const { name, phone, bio, city, state, isPublicProfile, primaryTargetExam, targetExams, targetExamsPrompted, socialLinks, qualification, dateOfBirth, gender, heardFrom } = body;
 
-        const user = await User.findById(userId);
+        // protect() already loaded this user as a document; a second findById was a wasted round trip.
+        const user = auth.user;
         if (!user) {
             return errorResponse('User not found', 404);
         }

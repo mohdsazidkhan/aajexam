@@ -6,6 +6,8 @@ import { AlertTriangle, LogOut, ArrowRight } from 'lucide-react';
 
 const KEY = 'aj_non_india_ok';
 const REMEMBER_MS = 7 * 24 * 3600 * 1000;
+const IN_KEY = 'aj_geo_in';
+const IN_REMEMBER_MS = 24 * 3600 * 1000;
 
 /**
  * Shown only to visitors outside India (country from /api/geo). "Close" leaves the site,
@@ -28,11 +30,17 @@ const IndiaOnlyNotice = () => {
     try {
       const t = Number(localStorage.getItem(KEY));
       if (t && Date.now() - t < REMEMBER_MS) return undefined;
+      // An Indian visitor is re-checked only once a day instead of on every page load.
+      const inAt = Number(localStorage.getItem(IN_KEY));
+      if (inAt && Date.now() - inAt < IN_REMEMBER_MS) return undefined;
     } catch (e) { /* storage blocked: just ask again */ }
 
     fetch('/api/geo', { cache: 'no-store' })
       .then((r) => r.json())
-      .then((d) => { if (!cancelled && d?.outsideIndia) setOpen(true); })
+      .then((d) => {
+        if (d?.outsideIndia) { if (!cancelled) setOpen(true); return; }
+        try { localStorage.setItem(IN_KEY, String(Date.now())); } catch (e) { /* ignore */ }
+      })
       .catch(() => {});
     return () => { cancelled = true; };
   }, [skip]);

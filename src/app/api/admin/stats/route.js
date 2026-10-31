@@ -245,7 +245,7 @@ export async function GET(req) {
             walletBalance: walletBalanceAgg[0]?.total || 0,
             totalExpenses: expenseAgg[0]?.total || 0,
         };
-        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 60);
+        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 600);
         return NextResponse.json(__body);
     } catch (error) {
         console.error('Admin stats error:', error);

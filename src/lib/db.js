@@ -56,8 +56,10 @@ async function dbConnect() {
       // 500 connections cluster-wide, so keep each pool small and let idle
       // sockets go quickly.
       maxPoolSize: IS_BUILD ? 20 : 3,
-      minPoolSize: 0,
-      maxIdleTimeMS: 10000,
+      // Keep one socket warm for a minute: closing idle sockets after 10s made most requests on a
+      // warm function pay a fresh TLS handshake to Atlas (the biggest chunk of the 1-4s API times).
+      minPoolSize: IS_BUILD ? 0 : 1,
+      maxIdleTimeMS: 60000,
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
     };
